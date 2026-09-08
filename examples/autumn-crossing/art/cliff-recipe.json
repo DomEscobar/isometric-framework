@@ -1,0 +1,31 @@
+{
+  "source": "cliff-source.png",
+  "sha256": "a6c450a2adaa10eb198be15ee66920c136e60b56a604095b9153f6a4fc824ac2",
+  "crop": [
+    8,
+    8,
+    879,
+    879
+  ],
+  "size": [
+    64,
+    64
+  ],
+  "filter": "BOX",
+  "phaseAtlas": {
+    "size": [
+      128,
+      64
+    ],
+    "frames": 4,
+    "frameSize": [
+      32,
+      64
+    ],
+    "selection": "(c + r) modulo4; source horizontal quarters preserve broader rock masses"
+  },
+  "role": "Vertical side material on raised dry terrain; collision comes from tile elevation.",
+  "limits": [
+    "The crop is not proven seamless; repeated cracks remain possible."
+  ]
+}

@@ -1,0 +1,1010 @@
+{
+  "version": 2,
+  "name": "Environment contract calibration B",
+  "tileWidth": 64,
+  "tileHeight": 32,
+  "diagonal": false,
+  "maxStepHeight": 18,
+  "controlledId": "traveler",
+  "assets": {
+    "images": {
+      "challenge": {
+        "url": "/__environment-atlas.svg",
+        "sampling": "nearest"
+      }
+    },
+    "textures": {
+      "river-0": {
+        "image": "challenge",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 64,
+          "height": 32
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "river-1": {
+        "image": "challenge",
+        "frame": {
+          "x": 64,
+          "y": 0,
+          "width": 64,
+          "height": 32
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "river-2": {
+        "image": "challenge",
+        "frame": {
+          "x": 128,
+          "y": 0,
+          "width": 64,
+          "height": 32
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "river-3": {
+        "image": "challenge",
+        "frame": {
+          "x": 192,
+          "y": 0,
+          "width": 64,
+          "height": 32
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "fountain-0": {
+        "image": "challenge",
+        "frame": {
+          "x": 0,
+          "y": 32,
+          "width": 256,
+          "height": 224
+        },
+        "anchor": {
+          "x": 0.1875,
+          "y": 0.7142857142857143
+        }
+      },
+      "fountain-1": {
+        "image": "challenge",
+        "frame": {
+          "x": 256,
+          "y": 32,
+          "width": 256,
+          "height": 224
+        },
+        "anchor": {
+          "x": 0.1875,
+          "y": 0.7142857142857143
+        }
+      },
+      "fountain-2": {
+        "image": "challenge",
+        "frame": {
+          "x": 512,
+          "y": 32,
+          "width": 256,
+          "height": 224
+        },
+        "anchor": {
+          "x": 0.1875,
+          "y": 0.7142857142857143
+        }
+      },
+      "fountain-3": {
+        "image": "challenge",
+        "frame": {
+          "x": 768,
+          "y": 32,
+          "width": 256,
+          "height": 224
+        },
+        "anchor": {
+          "x": 0.1875,
+          "y": 0.7142857142857143
+        }
+      },
+      "deck": {
+        "image": "challenge",
+        "frame": {
+          "x": 0,
+          "y": 272,
+          "width": 64,
+          "height": 32
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      },
+      "pier": {
+        "image": "challenge",
+        "frame": {
+          "x": 80,
+          "y": 272,
+          "width": 64,
+          "height": 104
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8461538461538461
+        }
+      },
+      "rail-c": {
+        "image": "challenge",
+        "frame": {
+          "x": 160,
+          "y": 272,
+          "width": 64,
+          "height": 64
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.75
+        }
+      },
+      "rail-r": {
+        "image": "challenge",
+        "frame": {
+          "x": 240,
+          "y": 272,
+          "width": 64,
+          "height": 64
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.75
+        }
+      },
+      "proxy": {
+        "image": "challenge",
+        "frame": {
+          "x": 320,
+          "y": 272,
+          "width": 1,
+          "height": 1
+        },
+        "anchor": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "animations": {
+      "river.loop": {
+        "frames": [
+          "river-0",
+          "river-1",
+          "river-2",
+          "river-3"
+        ],
+        "fps": 4,
+        "loop": true
+      },
+      "fountain.loop": {
+        "frames": [
+          "fountain-0",
+          "fountain-1",
+          "fountain-2",
+          "fountain-3"
+        ],
+        "fps": 4,
+        "loop": true
+      }
+    }
+  },
+  "map": [
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "step18",
+      "step36",
+      "step54",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "step54",
+      "step36",
+      "step18",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ],
+    [
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "towpath",
+      "water",
+      "water",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass",
+      "grass"
+    ]
+  ],
+  "tiles": {
+    "grass": {
+      "color": 8558440
+    },
+    "towpath": {
+      "color": 12958097
+    },
+    "water": {
+      "color": 2522752,
+      "walkable": false
+    },
+    "step18": {
+      "color": 14138505,
+      "elevation": 18
+    },
+    "step36": {
+      "color": 13018223,
+      "elevation": 36
+    },
+    "step54": {
+      "color": 11899234,
+      "elevation": 54
+    },
+    "deck": {
+      "color": 13083248,
+      "texture": "deck"
+    }
+  },
+  "entityTypes": {
+    "traveler": {
+      "blocking": true,
+      "bodyHeight": 48,
+      "visual": {
+        "kind": "actor",
+        "color": 12870470,
+        "scale": 0.8727272727272727
+      }
+    },
+    "river": {
+      "blocking": false,
+      "bodyHeight": 1,
+      "visual": {
+        "kind": "sprite",
+        "animation": "river.loop",
+        "width": 64,
+        "scale": 1
+      }
+    },
+    "fountain": {
+      "blocking": true,
+      "columns": 3,
+      "rows": 3,
+      "bodyHeight": 12,
+      "visual": {
+        "kind": "sprite",
+        "animation": "fountain.loop",
+        "width": 256,
+        "scale": 1
+      }
+    },
+    "pier": {
+      "blocking": true,
+      "bodyHeight": 72,
+      "visual": {
+        "kind": "sprite",
+        "texture": "pier",
+        "width": 64,
+        "scale": 1
+      }
+    },
+    "rail-far": {
+      "blocking": true,
+      "bodyHeight": 24,
+      "visual": {
+        "kind": "sprite",
+        "texture": "rail-c",
+        "width": 64,
+        "scale": 1
+      }
+    },
+    "rail-near": {
+      "blocking": true,
+      "bodyHeight": 24,
+      "visual": {
+        "kind": "sprite",
+        "texture": "rail-c",
+        "width": 64,
+        "scale": 1,
+        "offset": {
+          "x": 32,
+          "y": 16
+        }
+      }
+    }
+  },
+  "entities": [
+    {
+      "id": "traveler",
+      "type": "traveler",
+      "c": 1,
+      "r": 6
+    },
+    {
+      "id": "fountain",
+      "type": "fountain",
+      "c": 1,
+      "r": 8
+    },
+    {
+      "id": "water-5-0",
+      "type": "river",
+      "c": 5,
+      "r": 0
+    },
+    {
+      "id": "water-6-0",
+      "type": "river",
+      "c": 6,
+      "r": 0
+    },
+    {
+      "id": "water-5-1",
+      "type": "river",
+      "c": 5,
+      "r": 1
+    },
+    {
+      "id": "water-6-1",
+      "type": "river",
+      "c": 6,
+      "r": 1
+    },
+    {
+      "id": "water-5-2",
+      "type": "river",
+      "c": 5,
+      "r": 2
+    },
+    {
+      "id": "water-6-2",
+      "type": "river",
+      "c": 6,
+      "r": 2
+    },
+    {
+      "id": "water-5-3",
+      "type": "river",
+      "c": 5,
+      "r": 3
+    },
+    {
+      "id": "water-6-3",
+      "type": "river",
+      "c": 6,
+      "r": 3
+    },
+    {
+      "id": "water-5-4",
+      "type": "river",
+      "c": 5,
+      "r": 4
+    },
+    {
+      "id": "water-6-4",
+      "type": "river",
+      "c": 6,
+      "r": 4
+    },
+    {
+      "id": "water-5-5",
+      "type": "river",
+      "c": 5,
+      "r": 5
+    },
+    {
+      "id": "water-6-5",
+      "type": "river",
+      "c": 6,
+      "r": 5
+    },
+    {
+      "id": "water-5-6",
+      "type": "river",
+      "c": 5,
+      "r": 6
+    },
+    {
+      "id": "water-6-6",
+      "type": "river",
+      "c": 6,
+      "r": 6
+    },
+    {
+      "id": "water-5-7",
+      "type": "river",
+      "c": 5,
+      "r": 7
+    },
+    {
+      "id": "water-6-7",
+      "type": "river",
+      "c": 6,
+      "r": 7
+    },
+    {
+      "id": "water-5-8",
+      "type": "river",
+      "c": 5,
+      "r": 8
+    },
+    {
+      "id": "water-6-8",
+      "type": "river",
+      "c": 6,
+      "r": 8
+    },
+    {
+      "id": "water-5-9",
+      "type": "river",
+      "c": 5,
+      "r": 9
+    },
+    {
+      "id": "water-6-9",
+      "type": "river",
+      "c": 6,
+      "r": 9
+    },
+    {
+      "id": "water-5-10",
+      "type": "river",
+      "c": 5,
+      "r": 10
+    },
+    {
+      "id": "water-6-10",
+      "type": "river",
+      "c": 6,
+      "r": 10
+    },
+    {
+      "id": "water-5-11",
+      "type": "river",
+      "c": 5,
+      "r": 11
+    },
+    {
+      "id": "water-6-11",
+      "type": "river",
+      "c": 6,
+      "r": 11
+    },
+    {
+      "id": "water-5-12",
+      "type": "river",
+      "c": 5,
+      "r": 12
+    },
+    {
+      "id": "water-6-12",
+      "type": "river",
+      "c": 6,
+      "r": 12
+    },
+    {
+      "id": "pier-3-4",
+      "type": "pier",
+      "c": 3,
+      "r": 4
+    },
+    {
+      "id": "pier-3-6",
+      "type": "pier",
+      "c": 3,
+      "r": 6
+    },
+    {
+      "id": "pier-8-4",
+      "type": "pier",
+      "c": 8,
+      "r": 4
+    },
+    {
+      "id": "pier-8-6",
+      "type": "pier",
+      "c": 8,
+      "r": 6
+    },
+    {
+      "id": "rail-3-4",
+      "type": "rail-far",
+      "c": 3,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-3-6",
+      "type": "rail-near",
+      "c": 3,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-4-4",
+      "type": "rail-far",
+      "c": 4,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-4-6",
+      "type": "rail-near",
+      "c": 4,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-5-4",
+      "type": "rail-far",
+      "c": 5,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-5-6",
+      "type": "rail-near",
+      "c": 5,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-6-4",
+      "type": "rail-far",
+      "c": 6,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-6-6",
+      "type": "rail-near",
+      "c": 6,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-7-4",
+      "type": "rail-far",
+      "c": 7,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-7-6",
+      "type": "rail-near",
+      "c": 7,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-8-4",
+      "type": "rail-far",
+      "c": 8,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "id": "rail-8-6",
+      "type": "rail-near",
+      "c": 8,
+      "r": 6,
+      "level": "bridge"
+    }
+  ],
+  "levels": [
+    {
+      "id": "bridge",
+      "name": "Bridge deck",
+      "height": 72,
+      "map": [
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "deck",
+          "deck",
+          "deck",
+          "deck",
+          "deck",
+          "deck",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "deck",
+          "deck",
+          "deck",
+          "deck",
+          "deck",
+          "deck",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          "deck",
+          "deck",
+          "deck",
+          "deck",
+          "deck",
+          "deck",
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      ]
+    }
+  ],
+  "links": [
+    {
+      "from": {
+        "c": 2,
+        "r": 5
+      },
+      "to": {
+        "c": 3,
+        "r": 5,
+        "level": "bridge"
+      },
+      "bidirectional": true
+    },
+    {
+      "from": {
+        "c": 8,
+        "r": 5,
+        "level": "bridge"
+      },
+      "to": {
+        "c": 9,
+        "r": 5
+      },
+      "bidirectional": true
+    }
+  ]
+}

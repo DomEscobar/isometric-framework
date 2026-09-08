@@ -1,0 +1,399 @@
+{
+  "version": 1,
+  "actor": "traveler",
+  "tolerancePx": 3,
+  "placements": [
+    {
+      "entity": "apothecary",
+      "origin": {
+        "c": 3,
+        "r": 2
+      },
+      "contacts": [
+        {
+          "texture": "apothecary",
+          "source": {
+            "x": 190,
+            "y": 970
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "apothecary",
+          "source": {
+            "x": 1068,
+            "y": 970
+          },
+          "grid": {
+            "c": 2.5,
+            "r": 2.5
+          }
+        },
+        {
+          "texture": "apothecary",
+          "source": {
+            "x": 626,
+            "y": 1186
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "entity": "bookbinder",
+      "origin": {
+        "c": 9,
+        "r": 2
+      },
+      "contacts": [
+        {
+          "texture": "bookbinder",
+          "source": {
+            "x": 190,
+            "y": 970
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "bookbinder",
+          "source": {
+            "x": 1060,
+            "y": 970
+          },
+          "grid": {
+            "c": 2.5,
+            "r": 2.5
+          }
+        },
+        {
+          "texture": "bookbinder",
+          "source": {
+            "x": 626,
+            "y": 1190
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 2.5
+          }
+        }
+      ]
+    },
+    {
+      "entity": "bank-near-4",
+      "origin": {
+        "c": 4,
+        "r": 8
+      },
+      "contacts": [
+        {
+          "texture": "quay-wall",
+          "source": {
+            "x": 40,
+            "y": 72
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "texture": "quay-wall",
+          "source": {
+            "x": 72,
+            "y": 56
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "texture": "quay-wall",
+          "source": {
+            "x": 72,
+            "y": 40
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          },
+          "height": 16
+        }
+      ]
+    },
+    {
+      "entity": "bank-near-10",
+      "origin": {
+        "c": 10,
+        "r": 8
+      },
+      "contacts": [
+        {
+          "texture": "quay-wall",
+          "source": {
+            "x": 40,
+            "y": 72
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "texture": "quay-wall",
+          "source": {
+            "x": 72,
+            "y": 56
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "texture": "quay-wall",
+          "source": {
+            "x": 72,
+            "y": 40
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          },
+          "height": 16
+        }
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "c": 4,
+      "r": 3
+    },
+    {
+      "c": 10,
+      "r": 3
+    },
+    {
+      "c": 0,
+      "r": 4
+    },
+    {
+      "c": 4,
+      "r": 7
+    },
+    {
+      "c": 10,
+      "r": 8
+    },
+    {
+      "c": 6,
+      "r": 7,
+      "level": "bridge"
+    },
+    {
+      "c": 8,
+      "r": 8,
+      "level": "bridge"
+    },
+    {
+      "c": 6,
+      "r": 6
+    },
+    {
+      "c": 7,
+      "r": 6
+    },
+    {
+      "c": 8,
+      "r": 6
+    },
+    {
+      "c": 6,
+      "r": 9
+    },
+    {
+      "c": 7,
+      "r": 9
+    },
+    {
+      "c": 8,
+      "r": 9
+    }
+  ],
+  "open": [
+    {
+      "c": 4,
+      "r": 5
+    },
+    {
+      "c": 11,
+      "r": 6
+    },
+    {
+      "c": 7,
+      "r": 11
+    }
+  ],
+  "solidHeights": [
+    {
+      "id": "apothecary full building",
+      "cell": {
+        "c": 4,
+        "r": 3
+      },
+      "minHeight": 252
+    },
+    {
+      "id": "bookbinder full building",
+      "cell": {
+        "c": 10,
+        "r": 3
+      },
+      "minHeight": 252
+    },
+    {
+      "id": "willow trunk",
+      "cell": {
+        "c": 0,
+        "r": 4
+      },
+      "minHeight": 200
+    }
+  ],
+  "paths": [
+    {
+      "id": "bridge from north",
+      "points": [
+        {
+          "c": 7,
+          "r": 5
+        },
+        {
+          "c": 7,
+          "r": 6,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 7,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 8,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 9,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 10
+        },
+        {
+          "c": 7,
+          "r": 11
+        }
+      ]
+    },
+    {
+      "id": "bridge from south",
+      "points": [
+        {
+          "c": 7,
+          "r": 11
+        },
+        {
+          "c": 7,
+          "r": 10
+        },
+        {
+          "c": 7,
+          "r": 9,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 8,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 7,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 6,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 5
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "shore to shore",
+      "from": {
+        "c": 4,
+        "r": 6
+      },
+      "to": {
+        "c": 7,
+        "r": 11
+      },
+      "reachable": true
+    },
+    {
+      "id": "return to east quay",
+      "from": {
+        "c": 7,
+        "r": 11
+      },
+      "to": {
+        "c": 11,
+        "r": 6
+      },
+      "reachable": true
+    },
+    {
+      "id": "water stays closed",
+      "from": {
+        "c": 4,
+        "r": 6
+      },
+      "to": {
+        "c": 4,
+        "r": 7
+      },
+      "reachable": false
+    },
+    {
+      "id": "rear apothecary passage",
+      "from": {
+        "c": 4,
+        "r": 5
+      },
+      "to": {
+        "c": 4,
+        "r": 1
+      },
+      "reachable": true
+    }
+  ]
+}

@@ -1,0 +1,530 @@
+{
+  "source": "../../autotile-lab/art/material-source.png",
+  "sourceSHA256": "aa8b1ee1d183cff0d7882b8962a94dbe738685848caf50cf15b9647e60c115f7",
+  "sourceDimensions": {
+    "width": 1254,
+    "height": 1254
+  },
+  "recipe": {
+    "tileWidth": 64,
+    "tileHeight": 32,
+    "materialResolution": 32,
+    "alphaMode": "opaque-material-rgb",
+    "crops": {
+      "soil": [
+        16,
+        16,
+        590,
+        590
+      ],
+      "paving": [
+        644,
+        16,
+        590,
+        590
+      ],
+      "wall": [
+        16,
+        644,
+        590,
+        590
+      ],
+      "grass": [
+        644,
+        644,
+        590,
+        590
+      ]
+    },
+    "grade": {
+      "grass": {
+        "saturation": 0.68,
+        "multiply": [
+          0.97,
+          1.03,
+          1.09
+        ]
+      },
+      "paving": {
+        "saturation": 0.68,
+        "multiply": [
+          0.98,
+          1,
+          1.03
+        ]
+      },
+      "wall": {
+        "saturation": 0.68,
+        "multiply": [
+          0.98,
+          1,
+          1.03
+        ]
+      },
+      "soil": {
+        "saturation": 0.78,
+        "multiply": [
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    "exposedMargin": 0.115,
+    "marginVariation": 0.018,
+    "soilLip": 0.024,
+    "structures": [
+      {
+        "id": "parapet-left",
+        "c": [
+          -0.5,
+          -0.25
+        ],
+        "r": [
+          -0.5,
+          0.5
+        ],
+        "height": 24,
+        "face": "c-min"
+      },
+      {
+        "id": "parapet-right",
+        "c": [
+          0.25,
+          0.5
+        ],
+        "r": [
+          -0.5,
+          0.5
+        ],
+        "height": 24,
+        "face": "c-min"
+      },
+      {
+        "id": "quay-wall",
+        "c": [
+          -0.5,
+          0.5
+        ],
+        "r": [
+          0.375,
+          0.5
+        ],
+        "height": 16,
+        "face": "r-max"
+      }
+    ]
+  },
+  "assembly": "Existing genuinely generated flat material sheet, prefiltered to shared pixel density, mildly color graded and mirror sampled onto fixed 64x32 diamond geometry. Blob47 changes material margins only. Parapets and quay walls use projected rectangular caps and longitudinal stone faces; c-min faces receive consistent 0.84 shading. No independently generated finished tile claim.",
+  "limitations": "Mirrored material repetition can be visible. Same-family grass/paving transition only; no universal terrain blending. Structure end faces are omitted for continuous repetition, so isolated endpoints need separate end caps. Alpha normalization is limited to the nearly opaque material sheet, not transparent props.",
+  "coverage": [
+    {
+      "id": "path-0",
+      "visible": 1024
+    },
+    {
+      "id": "path-1",
+      "visible": 1024
+    },
+    {
+      "id": "path-2",
+      "visible": 1024
+    },
+    {
+      "id": "path-3",
+      "visible": 1024
+    },
+    {
+      "id": "path-4",
+      "visible": 1024
+    },
+    {
+      "id": "path-5",
+      "visible": 1024
+    },
+    {
+      "id": "path-6",
+      "visible": 1024
+    },
+    {
+      "id": "path-7",
+      "visible": 1024
+    },
+    {
+      "id": "path-8",
+      "visible": 1024
+    },
+    {
+      "id": "path-9",
+      "visible": 1024
+    },
+    {
+      "id": "path-10",
+      "visible": 1024
+    },
+    {
+      "id": "path-11",
+      "visible": 1024
+    },
+    {
+      "id": "path-12",
+      "visible": 1024
+    },
+    {
+      "id": "path-13",
+      "visible": 1024
+    },
+    {
+      "id": "path-14",
+      "visible": 1024
+    },
+    {
+      "id": "path-15",
+      "visible": 1024
+    },
+    {
+      "id": "path-21",
+      "visible": 1024
+    },
+    {
+      "id": "path-23",
+      "visible": 1024
+    },
+    {
+      "id": "path-29",
+      "visible": 1024
+    },
+    {
+      "id": "path-31",
+      "visible": 1024
+    },
+    {
+      "id": "path-38",
+      "visible": 1024
+    },
+    {
+      "id": "path-39",
+      "visible": 1024
+    },
+    {
+      "id": "path-46",
+      "visible": 1024
+    },
+    {
+      "id": "path-47",
+      "visible": 1024
+    },
+    {
+      "id": "path-55",
+      "visible": 1024
+    },
+    {
+      "id": "path-63",
+      "visible": 1024
+    },
+    {
+      "id": "path-73",
+      "visible": 1024
+    },
+    {
+      "id": "path-75",
+      "visible": 1024
+    },
+    {
+      "id": "path-77",
+      "visible": 1024
+    },
+    {
+      "id": "path-79",
+      "visible": 1024
+    },
+    {
+      "id": "path-93",
+      "visible": 1024
+    },
+    {
+      "id": "path-95",
+      "visible": 1024
+    },
+    {
+      "id": "path-111",
+      "visible": 1024
+    },
+    {
+      "id": "path-127",
+      "visible": 1024
+    },
+    {
+      "id": "path-138",
+      "visible": 1024
+    },
+    {
+      "id": "path-139",
+      "visible": 1024
+    },
+    {
+      "id": "path-142",
+      "visible": 1024
+    },
+    {
+      "id": "path-143",
+      "visible": 1024
+    },
+    {
+      "id": "path-159",
+      "visible": 1024
+    },
+    {
+      "id": "path-174",
+      "visible": 1024
+    },
+    {
+      "id": "path-175",
+      "visible": 1024
+    },
+    {
+      "id": "path-191",
+      "visible": 1024
+    },
+    {
+      "id": "path-203",
+      "visible": 1024
+    },
+    {
+      "id": "path-207",
+      "visible": 1024
+    },
+    {
+      "id": "path-223",
+      "visible": 1024
+    },
+    {
+      "id": "path-239",
+      "visible": 1024
+    },
+    {
+      "id": "path-255",
+      "visible": 1024
+    },
+    {
+      "id": "grass",
+      "visible": 1024
+    },
+    {
+      "id": "paved",
+      "visible": 1024
+    }
+  ],
+  "signatures": [
+    {
+      "id": "path-0",
+      "signature": 702664773
+    },
+    {
+      "id": "path-1",
+      "signature": 1262076591
+    },
+    {
+      "id": "path-2",
+      "signature": 536422043
+    },
+    {
+      "id": "path-3",
+      "signature": 3613891341
+    },
+    {
+      "id": "path-4",
+      "signature": 1867136931
+    },
+    {
+      "id": "path-5",
+      "signature": 3658862437
+    },
+    {
+      "id": "path-6",
+      "signature": 611044516
+    },
+    {
+      "id": "path-7",
+      "signature": 3695915314
+    },
+    {
+      "id": "path-8",
+      "signature": 2415502627
+    },
+    {
+      "id": "path-9",
+      "signature": 4042444744
+    },
+    {
+      "id": "path-10",
+      "signature": 904842917
+    },
+    {
+      "id": "path-11",
+      "signature": 3795903166
+    },
+    {
+      "id": "path-12",
+      "signature": 4195120289
+    },
+    {
+      "id": "path-13",
+      "signature": 478531126
+    },
+    {
+      "id": "path-14",
+      "signature": 2797889418
+    },
+    {
+      "id": "path-15",
+      "signature": 3118923113
+    },
+    {
+      "id": "path-21",
+      "signature": 2860604884
+    },
+    {
+      "id": "path-23",
+      "signature": 2666373195
+    },
+    {
+      "id": "path-29",
+      "signature": 3496136047
+    },
+    {
+      "id": "path-31",
+      "signature": 1975385124
+    },
+    {
+      "id": "path-38",
+      "signature": 3064060467
+    },
+    {
+      "id": "path-39",
+      "signature": 2574121993
+    },
+    {
+      "id": "path-46",
+      "signature": 309446493
+    },
+    {
+      "id": "path-47",
+      "signature": 2803519866
+    },
+    {
+      "id": "path-55",
+      "signature": 484576196
+    },
+    {
+      "id": "path-63",
+      "signature": 466161571
+    },
+    {
+      "id": "path-73",
+      "signature": 4088335943
+    },
+    {
+      "id": "path-75",
+      "signature": 3767622829
+    },
+    {
+      "id": "path-77",
+      "signature": 2409429397
+    },
+    {
+      "id": "path-79",
+      "signature": 1868175662
+    },
+    {
+      "id": "path-93",
+      "signature": 2309539292
+    },
+    {
+      "id": "path-95",
+      "signature": 3943692083
+    },
+    {
+      "id": "path-111",
+      "signature": 4038898265
+    },
+    {
+      "id": "path-127",
+      "signature": 378894032
+    },
+    {
+      "id": "path-138",
+      "signature": 252473272
+    },
+    {
+      "id": "path-139",
+      "signature": 3955152435
+    },
+    {
+      "id": "path-142",
+      "signature": 1615738195
+    },
+    {
+      "id": "path-143",
+      "signature": 1736623672
+    },
+    {
+      "id": "path-159",
+      "signature": 368487753
+    },
+    {
+      "id": "path-174",
+      "signature": 1755240096
+    },
+    {
+      "id": "path-175",
+      "signature": 2490257023
+    },
+    {
+      "id": "path-191",
+      "signature": 45161490
+    },
+    {
+      "id": "path-203",
+      "signature": 3635024096
+    },
+    {
+      "id": "path-207",
+      "signature": 2023092471
+    },
+    {
+      "id": "path-223",
+      "signature": 399912462
+    },
+    {
+      "id": "path-239",
+      "signature": 2356916780
+    },
+    {
+      "id": "path-255",
+      "signature": 2431845985
+    },
+    {
+      "id": "grass",
+      "signature": 2924282773
+    },
+    {
+      "id": "paved",
+      "signature": 2431845985
+    }
+  ],
+  "structureCoverage": [
+    {
+      "id": "parapet-left",
+      "visible": 1024
+    },
+    {
+      "id": "parapet-right",
+      "visible": 1024
+    },
+    {
+      "id": "quay-wall",
+      "visible": 640
+    }
+  ]
+}

@@ -1,0 +1,671 @@
+{
+  "version": 1,
+  "actor": "traveler",
+  "tolerancePx": 0.01,
+  "placements": [
+    {
+      "entity": "fountain",
+      "origin": {
+        "c": 1,
+        "r": 8,
+        "level": "ground"
+      },
+      "contacts": [
+        {
+          "texture": "fountain-0",
+          "source": {
+            "x": 16,
+            "y": 160
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "fountain-0",
+          "source": {
+            "x": 112,
+            "y": 112
+          },
+          "grid": {
+            "c": 2.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "fountain-0",
+          "source": {
+            "x": 208,
+            "y": 160
+          },
+          "grid": {
+            "c": 2.5,
+            "r": 2.5
+          }
+        },
+        {
+          "texture": "fountain-0",
+          "source": {
+            "x": 112,
+            "y": 208
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 2.5
+          }
+        },
+        {
+          "texture": "fountain-1",
+          "source": {
+            "x": 16,
+            "y": 160
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "fountain-1",
+          "source": {
+            "x": 112,
+            "y": 112
+          },
+          "grid": {
+            "c": 2.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "fountain-1",
+          "source": {
+            "x": 208,
+            "y": 160
+          },
+          "grid": {
+            "c": 2.5,
+            "r": 2.5
+          }
+        },
+        {
+          "texture": "fountain-1",
+          "source": {
+            "x": 112,
+            "y": 208
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 2.5
+          }
+        },
+        {
+          "texture": "fountain-2",
+          "source": {
+            "x": 16,
+            "y": 160
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "fountain-2",
+          "source": {
+            "x": 112,
+            "y": 112
+          },
+          "grid": {
+            "c": 2.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "fountain-2",
+          "source": {
+            "x": 208,
+            "y": 160
+          },
+          "grid": {
+            "c": 2.5,
+            "r": 2.5
+          }
+        },
+        {
+          "texture": "fountain-2",
+          "source": {
+            "x": 112,
+            "y": 208
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 2.5
+          }
+        },
+        {
+          "texture": "fountain-3",
+          "source": {
+            "x": 16,
+            "y": 160
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "fountain-3",
+          "source": {
+            "x": 112,
+            "y": 112
+          },
+          "grid": {
+            "c": 2.5,
+            "r": -0.5
+          }
+        },
+        {
+          "texture": "fountain-3",
+          "source": {
+            "x": 208,
+            "y": 160
+          },
+          "grid": {
+            "c": 2.5,
+            "r": 2.5
+          }
+        },
+        {
+          "texture": "fountain-3",
+          "source": {
+            "x": 112,
+            "y": 208
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 2.5
+          }
+        }
+      ]
+    }
+  ],
+  "blocked": [
+    {
+      "c": 1,
+      "r": 8,
+      "level": "ground"
+    },
+    {
+      "c": 1,
+      "r": 9,
+      "level": "ground"
+    },
+    {
+      "c": 1,
+      "r": 10,
+      "level": "ground"
+    },
+    {
+      "c": 2,
+      "r": 8,
+      "level": "ground"
+    },
+    {
+      "c": 2,
+      "r": 9,
+      "level": "ground"
+    },
+    {
+      "c": 2,
+      "r": 10,
+      "level": "ground"
+    },
+    {
+      "c": 3,
+      "r": 8,
+      "level": "ground"
+    },
+    {
+      "c": 3,
+      "r": 9,
+      "level": "ground"
+    },
+    {
+      "c": 3,
+      "r": 10,
+      "level": "ground"
+    },
+    {
+      "c": 3,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "c": 3,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "c": 4,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "c": 4,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "c": 5,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "c": 5,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "c": 6,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "c": 6,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "c": 7,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "c": 7,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "c": 8,
+      "r": 4,
+      "level": "bridge"
+    },
+    {
+      "c": 8,
+      "r": 6,
+      "level": "bridge"
+    },
+    {
+      "c": 3,
+      "r": 4,
+      "level": "ground"
+    },
+    {
+      "c": 3,
+      "r": 6,
+      "level": "ground"
+    },
+    {
+      "c": 8,
+      "r": 4,
+      "level": "ground"
+    },
+    {
+      "c": 8,
+      "r": 6,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 0,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 1,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 2,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 3,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 4,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 5,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 6,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 7,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 8,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 9,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 10,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 11,
+      "level": "ground"
+    },
+    {
+      "c": 5,
+      "r": 12,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 0,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 1,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 2,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 3,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 4,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 5,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 6,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 7,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 8,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 9,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 10,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 11,
+      "level": "ground"
+    },
+    {
+      "c": 6,
+      "r": 12,
+      "level": "ground"
+    }
+  ],
+  "open": [
+    {
+      "c": 4,
+      "r": 3,
+      "level": "ground"
+    },
+    {
+      "c": 4,
+      "r": 4,
+      "level": "ground"
+    },
+    {
+      "c": 4,
+      "r": 5,
+      "level": "ground"
+    },
+    {
+      "c": 4,
+      "r": 6,
+      "level": "ground"
+    },
+    {
+      "c": 4,
+      "r": 7,
+      "level": "ground"
+    }
+  ],
+  "paths": [
+    {
+      "id": "bridge both banks",
+      "points": [
+        {
+          "c": 0,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 1,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 2,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 3,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 4,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 5,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 8,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 9,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 10,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 11,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 12,
+          "r": 5,
+          "level": "ground"
+        }
+      ]
+    },
+    {
+      "id": "bridge reverse",
+      "points": [
+        {
+          "c": 12,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 11,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 10,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 9,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 8,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 7,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 6,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 5,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 4,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 3,
+          "r": 5,
+          "level": "bridge"
+        },
+        {
+          "c": 2,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 1,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 0,
+          "r": 5,
+          "level": "ground"
+        }
+      ]
+    },
+    {
+      "id": "underpass",
+      "points": [
+        {
+          "c": 4,
+          "r": 3,
+          "level": "ground"
+        },
+        {
+          "c": 4,
+          "r": 4,
+          "level": "ground"
+        },
+        {
+          "c": 4,
+          "r": 5,
+          "level": "ground"
+        },
+        {
+          "c": 4,
+          "r": 6,
+          "level": "ground"
+        },
+        {
+          "c": 4,
+          "r": 7,
+          "level": "ground"
+        }
+      ]
+    }
+  ],
+  "clearances": [
+    {
+      "id": "underpass headroom",
+      "cell": {
+        "c": 4,
+        "r": 5,
+        "level": "ground"
+      },
+      "height": 48
+    }
+  ],
+  "solidHeights": [
+    {
+      "id": "fountain center stone",
+      "cell": {
+        "c": 2,
+        "r": 9,
+        "level": "ground"
+      },
+      "minHeight": 86
+    }
+  ]
+}

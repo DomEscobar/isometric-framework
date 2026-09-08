@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "source": "material-source.png",
+  "alphaMode": "opaque-material-rgb",
+  "materialResolution": 32,
+  "tileWidth": 64,
+  "tileHeight": 32,
+  "wallHeight": 12,
+  "rimWidth": 0.125,
+  "materials": {
+    "soil": [16, 16, 590, 590],
+    "cap": [644, 16, 590, 590],
+    "wall": [16, 644, 590, 590],
+    "grass": [644, 644, 590, 590]
+  }
+}

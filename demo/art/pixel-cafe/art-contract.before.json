@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "pack": "Sunflower courtyard original purple planter diagnostic; expected failure",
+  "projection": {
+    "tileWidth": 80,
+    "tileHeight": 40,
+    "heightPixelsPerUnit": 40
+  },
+  "tolerances": {
+    "groundErrorPx": 2,
+    "heightErrorPx": 4
+  },
+  "heightReferences": {
+    "standing": 1.85,
+    "leftSeat": 0.52,
+    "rightSeat": 0.49,
+    "tabletop": 0.74,
+    "parasolApex": 3.28,
+    "soil": 0.25,
+    "lantern": 1.9,
+    "palm": 2.65,
+    "orangePlant": 1.43,
+    "shrub": 1.62
+  },
+  "assets": [
+    {
+      "id": "purple-bed-before",
+      "kind": "prop",
+      "image": "garden-atlas.png",
+      "sha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "frame": {
+        "x": 15,
+        "y": 366,
+        "width": 300,
+        "height": 278
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.79
+      },
+      "render": {
+        "width": 82
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 4,
+            "y": 169
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 115,
+            "y": 104
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 294,
+            "y": 219
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 188,
+            "y": 271
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [],
+      "allowedOverhang": "Foliage may overhang; stone may not. Preserved approximate source corners from the original diagnostic."
+    }
+  ]
+}

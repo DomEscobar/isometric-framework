@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "pack": "new-art-pack",
+  "projection": { "tileWidth": 80, "tileHeight": 40, "heightPixelsPerUnit": 40 },
+  "tolerances": { "groundErrorPx": 1, "heightErrorPx": 2 },
+  "heightReferences": { "standing": 1.8, "seat": 0.45, "tabletop": 0.75 },
+  "assets": [
+    {
+      "id": "terrain",
+      "kind": "terrain",
+      "image": "./atlas.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "frame": { "x": 0, "y": 0, "width": 80, "height": 40 },
+      "anchor": { "x": 0.5, "y": 0.5 },
+      "render": { "width": 80 },
+      "footprint": { "columns": 1, "rows": 1 },
+      "groundPoints": [
+        { "source": { "x": 0, "y": 20 }, "grid": { "c": -0.5, "r": -0.5 } },
+        { "source": { "x": 40, "y": 0 }, "grid": { "c": 0.5, "r": -0.5 } },
+        { "source": { "x": 80, "y": 20 }, "grid": { "c": 0.5, "r": 0.5 } },
+        { "source": { "x": 40, "y": 40 }, "grid": { "c": -0.5, "r": 0.5 } }
+      ],
+      "heights": [],
+      "allowedOverhang": ""
+    },
+    {
+      "id": "actor-idle",
+      "kind": "actor",
+      "image": "./atlas.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "frame": { "x": 80, "y": 0, "width": 40, "height": 80 },
+      "anchor": { "x": 0.5, "y": 0.9 },
+      "render": { "width": 40 },
+      "footprint": { "columns": 1, "rows": 1 },
+      "groundPoints": [ { "source": { "x": 20, "y": 72 }, "grid": { "c": 0, "r": 0 } } ],
+      "heights": [ { "reference": "standing", "base": { "x": 20, "y": 72 }, "top": { "x": 20, "y": 0 } } ],
+      "allowedOverhang": ""
+    },
+    {
+      "id": "chair",
+      "kind": "prop",
+      "image": "./atlas.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "frame": { "x": 120, "y": 0, "width": 80, "height": 80 },
+      "anchor": { "x": 0.5, "y": 0.75 },
+      "render": { "width": 80 },
+      "footprint": { "columns": 1, "rows": 1 },
+      "groundPoints": [
+        { "source": { "x": 0, "y": 60 }, "grid": { "c": -0.5, "r": -0.5 } },
+        { "source": { "x": 40, "y": 40 }, "grid": { "c": 0.5, "r": -0.5 } },
+        { "source": { "x": 80, "y": 60 }, "grid": { "c": 0.5, "r": 0.5 } },
+        { "source": { "x": 40, "y": 80 }, "grid": { "c": -0.5, "r": 0.5 } }
+      ],
+      "heights": [ { "reference": "seat", "base": { "x": 40, "y": 60 }, "top": { "x": 40, "y": 42 } } ],
+      "allowedOverhang": ""
+    }
+  ]
+}

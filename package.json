@@ -1,0 +1,55 @@
+{
+  "name": "isometric-framework",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "TypeScript isometric game framework with playable examples and agent authoring skills",
+  "main": "./dist/runtime.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/runtime.js"
+    },
+    "./core": {
+      "types": "./dist/types/core.d.ts",
+      "import": "./dist/core.js"
+    },
+    "./art": {
+      "types": "./dist/types/art.d.ts",
+      "import": "./dist/art.js"
+    }
+  },
+  "files": [
+    "dist",
+    "AGENTS.md",
+    "docs",
+    "skills",
+    "README.md",
+    "PROVENANCE.md",
+    "APP_GUIDE.md",
+    "VERIFICATION.md"
+  ],
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4175 --strictPort",
+    "check": "npm run check:boundaries && tsc --noEmit",
+    "check:boundaries": "node scripts/check-boundaries.mjs",
+    "build": "npm run check && vite build && vite build --config vite.demo.config.ts && tsc --project tsconfig.build.json",
+    "preview": "vite preview --outDir demo-dist --host 127.0.0.1 --port 4175 --strictPort",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "test:art-skill": "node --test skills/isometric-art-integration/tests/*.test.mjs",
+    "test:asset-generation": "node --test skills/game-asset-generation/tests/*.test.mjs",
+    "test:browser": "node tests/run-browser.mjs"
+  },
+  "dependencies": {
+    "pixi.js": "6.5.9"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.15",
+    "playwright": "1.58.2",
+    "typescript": "5.9.3",
+    "vite": "6.4.3"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  }
+}

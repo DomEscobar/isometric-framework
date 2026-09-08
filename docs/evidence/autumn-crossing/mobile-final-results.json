@@ -1,0 +1,23 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "label": "water8,11ground",
+      "point": {
+        "x": 123.18292682926827,
+        "y": 428.91707317073167
+      },
+      "blocked": true
+    },
+    {
+      "label": "rail9,11bridge",
+      "point": {
+        "x": 153.6219512195122,
+        "y": 352.81951219512194
+      },
+      "blocked": true
+    }
+  ],
+  "position": "15, 17 · Ufer",
+  "pass": true
+}

@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "generation": {
+    "provider": "built-in image_gen",
+    "prompts": "PROMPTS.md",
+    "sources": [
+      "apothecary-source.png",
+      "bookbinder-source.png",
+      "willow-source.png"
+    ],
+    "referenceEdit": "bookbinder-source uses apothecary-source as style and camera reference"
+  },
+  "files": [
+    {
+      "file": "apothecary-source.png",
+      "sha256": "5c398e69406bac796706e9e06dca128fddd791a15f50556cc52321bdab8b8a34"
+    },
+    {
+      "file": "bookbinder-source.png",
+      "sha256": "017dc2472e81e1dd150d99b96ba5d885a79dece9bbd2b3e9d2741f9d5a5e9472"
+    },
+    {
+      "file": "bookbinder-cutout.png",
+      "sha256": "7ae30c8650400693eaba9734fd576948fa1c7cdd4a5e34d3bb0febcc51253ba6"
+    },
+    {
+      "file": "bookbinder-matted.png",
+      "sha256": "c7f68ab455216d409cd1ba098a662174146a48f7a61cd01065c681c1a0ffaa4f"
+    },
+    {
+      "file": "willow-source.png",
+      "sha256": "b3a1189d5a8021d0e8d523e1360fd3ce0cba9490ea4350bd0530d82a77e2c918"
+    },
+    {
+      "file": "ground-atlas.png",
+      "sha256": "e66fa5d0324bf6978704b0fc3871fb835100507444f64692d51c2a2881a68fc1"
+    }
+  ],
+  "processing": {
+    "bookbinder": {
+      "tool": "rembg",
+      "version": "2.0.75",
+      "model": "u2netp",
+      "modelSHA256": "309c8469258dda742793dce0ebea8e6dd393174f89934733ecc8b14c76f4ddd8",
+      "source": "bookbinder-source.png",
+      "result": "bookbinder-cutout.png",
+      "canvasChanged": false,
+      "command": "uv tool run --python 3.12 --from 'rembg[cpu,cli]==2.0.75' rembg i -m u2netp SOURCE RESULT",
+      "rejected": {
+        "file": "bookbinder-matted.png",
+        "flags": "-a -ae 8",
+        "reason": "Matting removes white halo but creates ragged colored edge fragments; ordinary cutout retained. Minor subpixel halo remains at game scale."
+      }
+    },
+    "materials": "ground-provenance.json",
+    "apothecaryAndWillow": "Original generated alpha retained; no background removal or normalization.",
+    "water": "Reused registered four-frame generated river; host visual tint0x8ba997, shimmer only."
+  },
+  "reused": {
+    "actor": "../../../demo/art/pixel-cafe/gardener-atlas.png",
+    "flowers": "../../../demo/art/pixel-cafe/flowers-v2.png",
+    "props": "../../../demo/art/pixel-cafe/garden-atlas.png",
+    "beds": "../../autotile-lab/art/bed-atlas.png",
+    "water": "../../environment-lab/art/generated/river-source.png"
+  },
+  "attribution": {
+    "rembg": "https://github.com/danielgatis/rembg/tree/v2.0.75",
+    "u2net": "https://github.com/xuebinqin/U-2-Net"
+  }
+}

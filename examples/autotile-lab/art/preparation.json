@@ -1,0 +1,282 @@
+{
+  "source": "material-source.png",
+  "sourceSHA256": "aa8b1ee1d183cff0d7882b8962a94dbe738685848caf50cf15b9647e60c115f7",
+  "sourceDimensions": {
+    "width": 1254,
+    "height": 1254
+  },
+  "recipe": {
+    "version": 1,
+    "source": "material-source.png",
+    "alphaMode": "opaque-material-rgb",
+    "materialResolution": 32,
+    "tileWidth": 64,
+    "tileHeight": 32,
+    "wallHeight": 12,
+    "rimWidth": 0.125,
+    "materials": {
+      "soil": [
+        16,
+        16,
+        590,
+        590
+      ],
+      "cap": [
+        644,
+        16,
+        590,
+        590
+      ],
+      "wall": [
+        16,
+        644,
+        590,
+        590
+      ],
+      "grass": [
+        644,
+        644,
+        590,
+        590
+      ]
+    }
+  },
+  "variants": [
+    {
+      "mask": 0,
+      "signature": 947608005,
+      "visible": 1792
+    },
+    {
+      "mask": 1,
+      "signature": 2998400749,
+      "visible": 1408
+    },
+    {
+      "mask": 2,
+      "signature": 3543110827,
+      "visible": 1792
+    },
+    {
+      "mask": 3,
+      "signature": 2182835071,
+      "visible": 1408
+    },
+    {
+      "mask": 4,
+      "signature": 2309206564,
+      "visible": 1792
+    },
+    {
+      "mask": 5,
+      "signature": 2154746852,
+      "visible": 1408
+    },
+    {
+      "mask": 6,
+      "signature": 1625316842,
+      "visible": 1792
+    },
+    {
+      "mask": 7,
+      "signature": 943407086,
+      "visible": 1408
+    },
+    {
+      "mask": 8,
+      "signature": 1088083842,
+      "visible": 1408
+    },
+    {
+      "mask": 9,
+      "signature": 685562734,
+      "visible": 1024
+    },
+    {
+      "mask": 10,
+      "signature": 3530149624,
+      "visible": 1408
+    },
+    {
+      "mask": 11,
+      "signature": 3563318000,
+      "visible": 1024
+    },
+    {
+      "mask": 12,
+      "signature": 3781228567,
+      "visible": 1408
+    },
+    {
+      "mask": 13,
+      "signature": 2782711987,
+      "visible": 1024
+    },
+    {
+      "mask": 14,
+      "signature": 1877911069,
+      "visible": 1408
+    },
+    {
+      "mask": 15,
+      "signature": 1075690669,
+      "visible": 1024
+    },
+    {
+      "mask": 21,
+      "signature": 3092778142,
+      "visible": 1408
+    },
+    {
+      "mask": 23,
+      "signature": 1074104476,
+      "visible": 1408
+    },
+    {
+      "mask": 29,
+      "signature": 2852523421,
+      "visible": 1024
+    },
+    {
+      "mask": 31,
+      "signature": 448097515,
+      "visible": 1024
+    },
+    {
+      "mask": 38,
+      "signature": 2183421025,
+      "visible": 1792
+    },
+    {
+      "mask": 39,
+      "signature": 3773605833,
+      "visible": 1408
+    },
+    {
+      "mask": 46,
+      "signature": 1524796062,
+      "visible": 1408
+    },
+    {
+      "mask": 47,
+      "signature": 227959338,
+      "visible": 1024
+    },
+    {
+      "mask": 55,
+      "signature": 3911928467,
+      "visible": 1408
+    },
+    {
+      "mask": 63,
+      "signature": 2880321452,
+      "visible": 1024
+    },
+    {
+      "mask": 73,
+      "signature": 939301057,
+      "visible": 1024
+    },
+    {
+      "mask": 75,
+      "signature": 749947103,
+      "visible": 1024
+    },
+    {
+      "mask": 77,
+      "signature": 3204337556,
+      "visible": 1024
+    },
+    {
+      "mask": 79,
+      "signature": 2879162794,
+      "visible": 1024
+    },
+    {
+      "mask": 93,
+      "signature": 2559249594,
+      "visible": 1024
+    },
+    {
+      "mask": 95,
+      "signature": 3539698668,
+      "visible": 1024
+    },
+    {
+      "mask": 111,
+      "signature": 388389629,
+      "visible": 1024
+    },
+    {
+      "mask": 127,
+      "signature": 3828729243,
+      "visible": 1024
+    },
+    {
+      "mask": 138,
+      "signature": 2622116942,
+      "visible": 1408
+    },
+    {
+      "mask": 139,
+      "signature": 286620718,
+      "visible": 1024
+    },
+    {
+      "mask": 142,
+      "signature": 3213244071,
+      "visible": 1408
+    },
+    {
+      "mask": 143,
+      "signature": 693506663,
+      "visible": 1024
+    },
+    {
+      "mask": 159,
+      "signature": 274230109,
+      "visible": 1024
+    },
+    {
+      "mask": 174,
+      "signature": 4069542724,
+      "visible": 1408
+    },
+    {
+      "mask": 175,
+      "signature": 2053942104,
+      "visible": 1024
+    },
+    {
+      "mask": 191,
+      "signature": 714535674,
+      "visible": 1024
+    },
+    {
+      "mask": 203,
+      "signature": 1507497473,
+      "visible": 1024
+    },
+    {
+      "mask": 207,
+      "signature": 2016782520,
+      "visible": 1024
+    },
+    {
+      "mask": 223,
+      "signature": 1327189242,
+      "visible": 1024
+    },
+    {
+      "mask": 239,
+      "signature": 2631678151,
+      "visible": 1024
+    },
+    {
+      "mask": 255,
+      "signature": 3971031597,
+      "visible": 1024
+    }
+  ],
+  "scope": "Generated materials on deterministic 2:1 bed geometry, mirrored texture repetition. Not independently generated full-tile sprites or universal Wang terrain transitions."
+}

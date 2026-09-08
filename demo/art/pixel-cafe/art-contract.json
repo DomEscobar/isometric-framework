@@ -1,0 +1,2103 @@
+{
+  "version": 1,
+  "pack": "Sunflower courtyard measured integration; metadata scope only",
+  "projection": {
+    "tileWidth": 80,
+    "tileHeight": 40,
+    "heightPixelsPerUnit": 40
+  },
+  "tolerances": {
+    "groundErrorPx": 2,
+    "heightErrorPx": 4
+  },
+  "heightReferences": {
+    "standing": 1.85,
+    "leftSeat": 0.52,
+    "rightSeat": 0.49,
+    "tabletop": 0.74,
+    "parasolApex": 3.28,
+    "soil": 0.25,
+    "lantern": 1.9,
+    "palm": 2.65,
+    "orangePlant": 1.43,
+    "shrub": 1.62
+  },
+  "assets": [
+    {
+      "id": "terracotta",
+      "kind": "terrain",
+      "image": "garden-atlas.png",
+      "sha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "frame": {
+        "x": 10,
+        "y": 992,
+        "width": 299,
+        "height": 197
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "render": {
+        "width": 80,
+        "height": 40
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 4,
+            "y": 97.5
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 147.5,
+            "y": 6
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 292,
+            "y": 97.5
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 146,
+            "y": 191
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [],
+      "allowedOverhang": ""
+    },
+    {
+      "id": "grass",
+      "kind": "terrain",
+      "image": "garden-atlas.png",
+      "sha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "frame": {
+        "x": 318,
+        "y": 991,
+        "width": 306,
+        "height": 198
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "render": {
+        "width": 80,
+        "height": 40
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 5,
+            "y": 99
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 152.5,
+            "y": 5
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 299,
+            "y": 98.5
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 152.5,
+            "y": 193
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [],
+      "allowedOverhang": ""
+    },
+    {
+      "id": "sandstone",
+      "kind": "terrain",
+      "image": "garden-atlas.png",
+      "sha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "frame": {
+        "x": 947,
+        "y": 991,
+        "width": 301,
+        "height": 198
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "render": {
+        "width": 80,
+        "height": 40
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 5,
+            "y": 99
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 151,
+            "y": 5
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 294,
+            "y": 98
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 151,
+            "y": 193
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [],
+      "allowedOverhang": ""
+    },
+    {
+      "id": "planter-base-0",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-1",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 160,
+        "y": 0,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-2",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 320,
+        "y": 0,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-3",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 480,
+        "y": 0,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-4",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 0,
+        "y": 128,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-5",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 160,
+        "y": 128,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-6",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 320,
+        "y": 128,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-7",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 480,
+        "y": 128,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-8",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 0,
+        "y": 256,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-9",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 160,
+        "y": 256,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-10",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 320,
+        "y": 256,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-11",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 480,
+        "y": 256,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-12",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 0,
+        "y": 384,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-13",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 160,
+        "y": 384,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-14",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 320,
+        "y": 384,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "planter-base-15",
+      "kind": "prop",
+      "image": "planter-bases.png",
+      "sha256": "1e2e0b0d81621bc66c4dfe526d862c19ead022acdc7443c363d438b0ddf42440",
+      "frame": {
+        "x": 480,
+        "y": 384,
+        "width": 160,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.6875
+      },
+      "render": {
+        "width": 80
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 0,
+            "y": 88
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 48
+          },
+          "grid": {
+            "c": 0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 160,
+            "y": 88
+          },
+          "grid": {
+            "c": 0.5,
+            "r": 0.5
+          }
+        },
+        {
+          "source": {
+            "x": 80,
+            "y": 128
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 0.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "soil",
+          "base": {
+            "x": 80,
+            "y": 88
+          },
+          "top": {
+            "x": 80,
+            "y": 68
+          }
+        }
+      ],
+      "allowedOverhang": "No rigid overhang. Ground envelope is known authored geometry; removed or hidden walls do not expose all four contacts. Separate flower sprites may overhang."
+    },
+    {
+      "id": "gardener-ne-0",
+      "kind": "actor",
+      "image": "gardener-atlas.png",
+      "sha256": "7bb2356b28300c152f0878a2d7b4996eb6c41ddb22c6800721a74b41bf67487a",
+      "frame": {
+        "x": 82,
+        "y": 25,
+        "width": 160,
+        "height": 280
+      },
+      "anchor": {
+        "x": 0.52,
+        "y": 0.9321428571428572
+      },
+      "render": {
+        "width": 48
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 83,
+            "y": 261
+          },
+          "grid": {
+            "c": 0,
+            "r": 0
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "standing",
+          "base": {
+            "x": 83,
+            "y": 261
+          },
+          "top": {
+            "x": 83,
+            "y": 13
+          }
+        }
+      ],
+      "allowedOverhang": "Hat and limbs intentionally extend beyond the compact foot contact. Height includes the hat."
+    },
+    {
+      "id": "gardener-se-0",
+      "kind": "actor",
+      "image": "gardener-atlas.png",
+      "sha256": "7bb2356b28300c152f0878a2d7b4996eb6c41ddb22c6800721a74b41bf67487a",
+      "frame": {
+        "x": 82,
+        "y": 328,
+        "width": 160,
+        "height": 280
+      },
+      "anchor": {
+        "x": 0.52,
+        "y": 0.9321428571428572
+      },
+      "render": {
+        "width": 48
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 83,
+            "y": 261
+          },
+          "grid": {
+            "c": 0,
+            "r": 0
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "standing",
+          "base": {
+            "x": 83,
+            "y": 261
+          },
+          "top": {
+            "x": 83,
+            "y": 12
+          }
+        }
+      ],
+      "allowedOverhang": "Hat and limbs intentionally extend beyond the compact foot contact. Height includes the hat."
+    },
+    {
+      "id": "gardener-sw-0",
+      "kind": "actor",
+      "image": "gardener-atlas.png",
+      "sha256": "7bb2356b28300c152f0878a2d7b4996eb6c41ddb22c6800721a74b41bf67487a",
+      "frame": {
+        "x": 82,
+        "y": 635,
+        "width": 160,
+        "height": 280
+      },
+      "anchor": {
+        "x": 0.52,
+        "y": 0.9285714285714286
+      },
+      "render": {
+        "width": 48
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 83,
+            "y": 260
+          },
+          "grid": {
+            "c": 0,
+            "r": 0
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "standing",
+          "base": {
+            "x": 83,
+            "y": 260
+          },
+          "top": {
+            "x": 83,
+            "y": 15
+          }
+        }
+      ],
+      "allowedOverhang": "Hat and limbs intentionally extend beyond the compact foot contact. Height includes the hat."
+    },
+    {
+      "id": "gardener-nw-0",
+      "kind": "actor",
+      "image": "gardener-atlas.png",
+      "sha256": "7bb2356b28300c152f0878a2d7b4996eb6c41ddb22c6800721a74b41bf67487a",
+      "frame": {
+        "x": 82,
+        "y": 939,
+        "width": 160,
+        "height": 280
+      },
+      "anchor": {
+        "x": 0.52,
+        "y": 0.9214285714285714
+      },
+      "render": {
+        "width": 48
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 83,
+            "y": 258
+          },
+          "grid": {
+            "c": 0,
+            "r": 0
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "standing",
+          "base": {
+            "x": 83,
+            "y": 258
+          },
+          "top": {
+            "x": 83,
+            "y": 11
+          }
+        }
+      ],
+      "allowedOverhang": "Hat and limbs intentionally extend beyond the compact foot contact. Height includes the hat."
+    },
+    {
+      "id": "parasol",
+      "kind": "prop",
+      "image": "garden-atlas.png",
+      "sha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "frame": {
+        "x": 42,
+        "y": 6,
+        "width": 275,
+        "height": 342
+      },
+      "anchor": {
+        "x": 0.5018181818181818,
+        "y": 0.8888888888888888
+      },
+      "render": {
+        "width": 120,
+        "offset": {
+          "x": 40,
+          "y": 0
+        }
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 25,
+            "y": 303
+          },
+          "grid": {
+            "c": -0.11,
+            "r": -0.13
+          }
+        },
+        {
+          "source": {
+            "x": 70,
+            "y": 327
+          },
+          "grid": {
+            "c": -0.12,
+            "r": 0.38
+          }
+        },
+        {
+          "source": {
+            "x": 134,
+            "y": 327
+          },
+          "grid": {
+            "c": 0.23,
+            "r": 0.73
+          }
+        },
+        {
+          "source": {
+            "x": 203,
+            "y": 316
+          },
+          "grid": {
+            "c": 0.72,
+            "r": 0.99
+          }
+        },
+        {
+          "source": {
+            "x": 254,
+            "y": 289
+          },
+          "grid": {
+            "c": 1.3,
+            "r": 0.97
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "leftSeat",
+          "base": {
+            "x": 70,
+            "y": 327
+          },
+          "top": {
+            "x": 69,
+            "y": 279
+          }
+        },
+        {
+          "reference": "rightSeat",
+          "base": {
+            "x": 203,
+            "y": 316
+          },
+          "top": {
+            "x": 204,
+            "y": 271
+          }
+        },
+        {
+          "reference": "tabletop",
+          "base": {
+            "x": 134,
+            "y": 327
+          },
+          "top": {
+            "x": 134,
+            "y": 259
+          }
+        },
+        {
+          "reference": "parasolApex",
+          "base": {
+            "x": 138,
+            "y": 304
+          },
+          "top": {
+            "x": 138,
+            "y": 3
+          }
+        }
+      ],
+      "allowedOverhang": "Canopy and tight shadow may overhang the separate support contacts. Inferred support grids establish containment only. Composite remains a blocked decorative seating group, not walk-under furniture."
+    },
+    {
+      "id": "lantern",
+      "kind": "prop",
+      "image": "garden-atlas.png",
+      "sha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "frame": {
+        "x": 742,
+        "y": 635,
+        "width": 110,
+        "height": 337
+      },
+      "anchor": {
+        "x": 0.4,
+        "y": 0.9287833827893175
+      },
+      "render": {
+        "width": 27
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 13,
+            "y": 310
+          },
+          "grid": {
+            "c": -0.1,
+            "r": -0.1
+          }
+        },
+        {
+          "source": {
+            "x": 44,
+            "y": 295
+          },
+          "grid": {
+            "c": 0.1,
+            "r": -0.1
+          }
+        },
+        {
+          "source": {
+            "x": 76,
+            "y": 312
+          },
+          "grid": {
+            "c": 0.1,
+            "r": 0.1
+          }
+        },
+        {
+          "source": {
+            "x": 44,
+            "y": 329
+          },
+          "grid": {
+            "c": -0.1,
+            "r": 0.1
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "lantern",
+          "base": {
+            "x": 44,
+            "y": 313
+          },
+          "top": {
+            "x": 44,
+            "y": 3
+          }
+        }
+      ],
+      "allowedOverhang": "Tight source shadow may extend beyond the footing."
+    },
+    {
+      "id": "orange-pot",
+      "kind": "prop",
+      "image": "garden-atlas.png",
+      "sha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "frame": {
+        "x": 977,
+        "y": 59,
+        "width": 236,
+        "height": 277
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.92
+      },
+      "render": {
+        "width": 54
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 77,
+            "y": 249
+          },
+          "grid": {
+            "c": -0.08,
+            "r": -0.15
+          }
+        },
+        {
+          "source": {
+            "x": 163,
+            "y": 249
+          },
+          "grid": {
+            "c": 0.16,
+            "r": 0.1
+          }
+        },
+        {
+          "source": {
+            "x": 120,
+            "y": 264
+          },
+          "grid": {
+            "c": -0.05,
+            "r": 0.06
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "orangePlant",
+          "base": {
+            "x": 120,
+            "y": 253
+          },
+          "top": {
+            "x": 120,
+            "y": 3
+          }
+        }
+      ],
+      "allowedOverhang": "Foliage and tight shadow may overhang the curved pot bottom. Contact grids are inferred from the observed curve; this checks containment, not independent projection compatibility."
+    },
+    {
+      "id": "shrub",
+      "kind": "prop",
+      "image": "garden-atlas.png",
+      "sha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "frame": {
+        "x": 993,
+        "y": 357,
+        "width": 223,
+        "height": 277
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.93
+      },
+      "render": {
+        "width": 58
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 65,
+            "y": 249
+          },
+          "grid": {
+            "c": -0.1,
+            "r": -0.21
+          }
+        },
+        {
+          "source": {
+            "x": 153,
+            "y": 249
+          },
+          "grid": {
+            "c": 0.19,
+            "r": 0.08
+          }
+        },
+        {
+          "source": {
+            "x": 110,
+            "y": 265
+          },
+          "grid": {
+            "c": -0.05,
+            "r": 0.04
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "shrub",
+          "base": {
+            "x": 110,
+            "y": 257
+          },
+          "top": {
+            "x": 110,
+            "y": 8
+          }
+        }
+      ],
+      "allowedOverhang": "Foliage and tight shadow may overhang the curved pot bottom. Contact grids are inferred from the observed curve; this checks containment, not independent projection compatibility."
+    },
+    {
+      "id": "palm",
+      "kind": "prop",
+      "image": "garden-atlas.png",
+      "sha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "frame": {
+        "x": 945,
+        "y": 642,
+        "width": 292,
+        "height": 325
+      },
+      "anchor": {
+        "x": 0.523972602739726,
+        "y": 0.9230769230769231
+      },
+      "render": {
+        "width": 104
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 118,
+            "y": 296
+          },
+          "grid": {
+            "c": -0.12,
+            "r": -0.19
+          }
+        },
+        {
+          "source": {
+            "x": 189,
+            "y": 296
+          },
+          "grid": {
+            "c": 0.2,
+            "r": 0.12
+          }
+        },
+        {
+          "source": {
+            "x": 153,
+            "y": 310
+          },
+          "grid": {
+            "c": -0.09,
+            "r": 0.09
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "palm",
+          "base": {
+            "x": 153,
+            "y": 300
+          },
+          "top": {
+            "x": 153,
+            "y": 3
+          }
+        }
+      ],
+      "allowedOverhang": "Foliage and tight shadow may overhang the curved pot bottom. Contact grids are inferred from the observed curve; this checks containment, not independent projection compatibility."
+    }
+  ]
+}

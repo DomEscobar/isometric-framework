@@ -1,0 +1,80 @@
+{
+  "tree-gold": {
+    "image": "autumn-props",
+    "frame": {
+      "x": 0,
+      "y": 0,
+      "width": 167,
+      "height": 210
+    },
+    "anchor": {
+      "x": 0.48915451828790235,
+      "y": 0.9791271347248577
+    }
+  },
+  "tree-rust": {
+    "image": "autumn-props",
+    "frame": {
+      "x": 256,
+      "y": 0,
+      "width": 166,
+      "height": 218
+    },
+    "anchor": {
+      "x": 0.4709262187381689,
+      "y": 0.9815157116451017
+    }
+  },
+  "tree-olive": {
+    "image": "autumn-props",
+    "frame": {
+      "x": 512,
+      "y": 0,
+      "width": 150,
+      "height": 202
+    },
+    "anchor": {
+      "x": 0.501445937300064,
+      "y": 0.9692898272552783
+    }
+  },
+  "rock": {
+    "image": "autumn-props",
+    "frame": {
+      "x": 0,
+      "y": 256,
+      "width": 61,
+      "height": 51
+    },
+    "anchor": {
+      "x": 0.4828660436137071,
+      "y": 0.9650601673691284
+    }
+  },
+  "shrub": {
+    "image": "autumn-props",
+    "frame": {
+      "x": 256,
+      "y": 256,
+      "width": 54,
+      "height": 41
+    },
+    "anchor": {
+      "x": 0.5124555160142349,
+      "y": 0.9514799062581373
+    }
+  },
+  "bench": {
+    "image": "autumn-props",
+    "frame": {
+      "x": 512,
+      "y": 256,
+      "width": 72,
+      "height": 65
+    },
+    "anchor": {
+      "x": 0.5298507462686568,
+      "y": 0.9175660160734788
+    }
+  }
+}

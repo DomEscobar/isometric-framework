@@ -1,0 +1,17 @@
+{
+  "source": "bridge-source-v2.png",
+  "sourcePlane": "near r/z masonry above left arch spring",
+  "inverseMatrix": [
+    4,
+    0,
+    256,
+    1.92,
+    4,
+    370
+  ],
+  "size": [
+    32,
+    32
+  ],
+  "purpose": "Repeatable vertical stair/slab face material; appearance only."
+}

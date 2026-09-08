@@ -1,0 +1,525 @@
+{
+  "source": "bridge-source-v2.png",
+  "sourceSha256": "d9bf855679380540abe889cd9bf8b15f1bd566fcc2bb663eb9d444141d457fab",
+  "cutout": {
+    "file": "bridge-cutout.png",
+    "tool": "rembg",
+    "version": "2.0.75",
+    "model": "u2netp"
+  },
+  "preparation": "Pillow 11.3.0; measured polygon masks and separate r/z face transforms",
+  "projection": {
+    "tileWidth": 64,
+    "tileHeight": 32
+  },
+  "measurement": "Manually measured visible post contacts; inferred deck plane +/- 3 source pixels.",
+  "limitations": [
+    "Render-only arch opening. Host must separately declare physical piers and underpass.",
+    "Near arch and parapet are independently height fitted, meeting at the same deck plane.",
+    "End-post caps intentionally overhang the edge endpoints; they do not expand collision.",
+    "No original generated floor or perpendicular end wall is included."
+  ],
+  "acceptance": {
+    "metadata": "measured",
+    "alpha": "inspected",
+    "inGame": "unverified"
+  },
+  "parts": {
+    "arch": {
+      "file": "bridge-arch.png",
+      "sha256": "3985705d447ed00be20ec9595d45936f979f4368584e5635aac22cc739be3afc",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 352,
+        "height": 288
+      },
+      "width": 352,
+      "anchor": {
+        "x": 0.18181818181818182,
+        "y": 0.3888888888888889
+      },
+      "origin": {
+        "c": 6,
+        "r": 6,
+        "level": "ground"
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 6
+      },
+      "bodyHeight": 64,
+      "blocking": false,
+      "sourcePolygon": [
+        [
+          190,
+          276
+        ],
+        [
+          255,
+          241
+        ],
+        [
+          323,
+          273
+        ],
+        [
+          323,
+          309
+        ],
+        [
+          899,
+          580
+        ],
+        [
+          957,
+          583
+        ],
+        [
+          1027,
+          611
+        ],
+        [
+          1027,
+          901
+        ],
+        [
+          965,
+          928
+        ],
+        [
+          898,
+          896
+        ],
+        [
+          897,
+          865
+        ],
+        [
+          852,
+          877
+        ],
+        [
+          785,
+          844
+        ],
+        [
+          760,
+          762
+        ],
+        [
+          712,
+          677
+        ],
+        [
+          667,
+          623
+        ],
+        [
+          614,
+          576
+        ],
+        [
+          548,
+          551
+        ],
+        [
+          480,
+          547
+        ],
+        [
+          423,
+          562
+        ],
+        [
+          389,
+          594
+        ],
+        [
+          385,
+          677
+        ],
+        [
+          312,
+          642
+        ],
+        [
+          307,
+          598
+        ],
+        [
+          258,
+          585
+        ],
+        [
+          189,
+          550
+        ]
+      ],
+      "clipBaseline": [
+        [
+          190,
+          335
+        ],
+        [
+          963,
+          709
+        ]
+      ],
+      "keepAbove": false,
+      "sourceToWorld": {
+        "sx": 0.24838292367399742,
+        "sy": 0.29906542056074764,
+        "k": -0.02050513232822719,
+        "tx": -79.19275549805951,
+        "ty": -160.2909407454873
+      },
+      "contacts": [
+        {
+          "source": [
+            190,
+            549
+          ],
+          "target": [
+            -32,
+            0
+          ],
+          "actual": [
+            -32.0,
+            0.0
+          ],
+          "errorPixels": 0.0
+        },
+        {
+          "source": [
+            963,
+            923
+          ],
+          "target": [
+            160,
+            96
+          ],
+          "actual": [
+            160.0,
+            95.99999999999997
+          ],
+          "errorPixels": 2.842170943040401e-14
+        }
+      ],
+      "alphaBounds": [
+        32,
+        48,
+        240,
+        209
+      ]
+    },
+    "nearRail": {
+      "file": "bridge-near-rail.png",
+      "sha256": "a7af700aaaefd7580f6460bbc021444573b5d5a57be367c9da45630d854b08b6",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 352,
+        "height": 288
+      },
+      "width": 352,
+      "anchor": {
+        "x": 0.18181818181818182,
+        "y": 0.3888888888888889
+      },
+      "origin": {
+        "c": 6,
+        "r": 6,
+        "level": "bridge"
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 6
+      },
+      "bodyHeight": 24,
+      "blocking": false,
+      "sourcePolygon": [
+        [
+          190,
+          276
+        ],
+        [
+          255,
+          241
+        ],
+        [
+          323,
+          273
+        ],
+        [
+          323,
+          309
+        ],
+        [
+          899,
+          580
+        ],
+        [
+          957,
+          583
+        ],
+        [
+          1027,
+          611
+        ],
+        [
+          1027,
+          901
+        ],
+        [
+          965,
+          928
+        ],
+        [
+          898,
+          896
+        ],
+        [
+          897,
+          865
+        ],
+        [
+          852,
+          877
+        ],
+        [
+          785,
+          844
+        ],
+        [
+          760,
+          762
+        ],
+        [
+          712,
+          677
+        ],
+        [
+          667,
+          623
+        ],
+        [
+          614,
+          576
+        ],
+        [
+          548,
+          551
+        ],
+        [
+          480,
+          547
+        ],
+        [
+          423,
+          562
+        ],
+        [
+          389,
+          594
+        ],
+        [
+          385,
+          677
+        ],
+        [
+          312,
+          642
+        ],
+        [
+          307,
+          598
+        ],
+        [
+          258,
+          585
+        ],
+        [
+          189,
+          550
+        ]
+      ],
+      "clipBaseline": [
+        [
+          190,
+          335
+        ],
+        [
+          963,
+          709
+        ]
+      ],
+      "keepAbove": true,
+      "sourceToWorld": {
+        "sx": 0.24838292367399742,
+        "sy": 0.19047619047619047,
+        "k": 0.03203351198176554,
+        "tx": -79.19275549805951,
+        "ty": -69.89589108605925
+      },
+      "contacts": [
+        {
+          "source": [
+            190,
+            335
+          ],
+          "target": [
+            -32,
+            0
+          ],
+          "actual": [
+            -32.0,
+            0.0
+          ],
+          "errorPixels": 0.0
+        },
+        {
+          "source": [
+            963,
+            709
+          ],
+          "target": [
+            160,
+            96
+          ],
+          "actual": [
+            160.0,
+            95.99999999999999
+          ],
+          "errorPixels": 1.4210854715202004e-14
+        }
+      ],
+      "alphaBounds": [
+        32,
+        96,
+        240,
+        216
+      ]
+    },
+    "farRail": {
+      "file": "bridge-far-rail.png",
+      "sha256": "b59d1d79f1b936da0cbfbd0c45c30478ef6a281cc0870a5c786b69919d1fe984",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 352,
+        "height": 288
+      },
+      "width": 352,
+      "anchor": {
+        "x": 0.18181818181818182,
+        "y": 0.3888888888888889
+      },
+      "origin": {
+        "c": 8,
+        "r": 6,
+        "level": "bridge"
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 6
+      },
+      "bodyHeight": 24,
+      "blocking": false,
+      "sourcePolygon": [
+        [
+          468,
+          126
+        ],
+        [
+          527,
+          91
+        ],
+        [
+          597,
+          119
+        ],
+        [
+          599,
+          160
+        ],
+        [
+          1214,
+          438
+        ],
+        [
+          1278,
+          426
+        ],
+        [
+          1339,
+          456
+        ],
+        [
+          1341,
+          744
+        ],
+        [
+          470,
+          342
+        ]
+      ],
+      "clipBaseline": [
+        [
+          470,
+          211
+        ],
+        [
+          1278,
+          581
+        ]
+      ],
+      "keepAbove": true,
+      "sourceToWorld": {
+        "sx": 0.2376237623762376,
+        "sy": 0.1610738255033557,
+        "k": 0.04505282743039405,
+        "tx": -111.68316831683168,
+        "ty": -71.16140607349325
+      },
+      "contacts": [
+        {
+          "source": [
+            470,
+            211
+          ],
+          "target": [
+            0,
+            -16
+          ],
+          "actual": [
+            0.0,
+            -16.0
+          ],
+          "errorPixels": 0.0
+        },
+        {
+          "source": [
+            1278,
+            581
+          ],
+          "target": [
+            192,
+            80
+          ],
+          "actual": [
+            191.99999999999997,
+            80.0
+          ],
+          "errorPixels": 2.842170943040401e-14
+        }
+      ],
+      "alphaBounds": [
+        64,
+        79,
+        271,
+        199
+      ]
+    }
+  }
+}

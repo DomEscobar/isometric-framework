@@ -1,0 +1,86 @@
+{
+  "source": "materials-source.png",
+  "sha256": "639da75a008acc4f6fddbf43cde9d9a63619ff80bdd563d09ed742d0366d7240",
+  "description": "Generated material RGB with deterministic projection, phase selection and neighbor transition masks; no independent generated tiles.",
+  "sourceCrops": {
+    "grass": [
+      12,
+      12,
+      615,
+      615
+    ],
+    "dirt": [
+      639,
+      12,
+      1242,
+      615
+    ],
+    "paving": [
+      12,
+      639,
+      615,
+      1242
+    ],
+    "water": [
+      639,
+      790,
+      1242,
+      1091
+    ]
+  },
+  "tileSize": [
+    64,
+    32
+  ],
+  "worldPeriod": {
+    "waterAndShoreFamilies": [
+      8,
+      8
+    ],
+    "otherFamilies": [
+      4,
+      4
+    ]
+  },
+  "prefilterSize": {
+    "grassDirtPaving": [
+      64,
+      64
+    ],
+    "water": [
+      128,
+      64
+    ]
+  },
+  "reflectedMaterialSize": {
+    "grassDirtPaving": [
+      128,
+      128
+    ],
+    "water": [
+      256,
+      128
+    ]
+  },
+  "waterSampling": "Continuous screen space: x=(c+r)*32, y=(r-c)*16. Isotropic source crop preserves stone shape.",
+  "alpha": "Full opaque64\u00d732 rectangles; the runtime applies the sole diamond clip.",
+  "maskBits": {
+    "c-1": 1,
+    "c+1": 2,
+    "r-1": 4,
+    "r+1": 8
+  },
+  "transitionWidthWorldTiles": 0.24,
+  "maximumMaskPerturbationWorldTiles": 0.068,
+  "atlasSize": [
+    4096,
+    2336
+  ],
+  "textureCount": 4624,
+  "limits": [
+    "Cardinal boundaries only; diagonal concave corners are not a blob47 catalog.",
+    "Mirrored periods remain finite: eight tiles for water/shore, four for other materials.",
+    "At three-material junctions shore takes priority; water chooses grass before dirt.",
+    "Geometry and walking cells remain authoritative; soft artwork edges are not collision outlines."
+  ]
+}

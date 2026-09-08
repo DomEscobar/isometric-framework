@@ -1,0 +1,176 @@
+{
+  "source": "props-source.png",
+  "sourceSha256": "81acbd1410f64142be224193c0a61de6bd9ce2b8003f642b3f517b37e194ee68",
+  "cutout": "rembg2.0.75 u2netp",
+  "preparation": "Opaque asset alpha threshold205, remove bright near-neutral baked background (spread<14,min>110); Lanczos registration to world pixel density; color factor0.72 and brightness0.87 to target muted palette; final alpha threshold128.",
+  "parts": [
+    {
+      "name": "tree-gold",
+      "sourceCrop": [
+        0,
+        110,
+        424,
+        738
+      ],
+      "alphaBounds": [
+        2,
+        60,
+        420,
+        587
+      ],
+      "sourceContact": [
+        207,
+        686
+      ],
+      "worldSize": [
+        167,
+        210
+      ],
+      "anchor": {
+        "x": 0.48915451828790235,
+        "y": 0.9791271347248577
+      },
+      "limit": "Outer golden/olive canopy touches source sheet edge; use in framing foliage, not as an isolated silhouette specimen."
+    },
+    {
+      "name": "tree-rust",
+      "sourceCrop": [
+        426,
+        110,
+        848,
+        738
+      ],
+      "alphaBounds": [
+        10,
+        49,
+        422,
+        590
+      ],
+      "sourceContact": [
+        630,
+        690
+      ],
+      "worldSize": [
+        166,
+        218
+      ],
+      "anchor": {
+        "x": 0.4709262187381689,
+        "y": 0.9815157116451017
+      },
+      "limit": ""
+    },
+    {
+      "name": "tree-olive",
+      "sourceCrop": [
+        850,
+        110,
+        1254,
+        738
+      ],
+      "alphaBounds": [
+        8,
+        74,
+        396,
+        595
+      ],
+      "sourceContact": [
+        1052,
+        689
+      ],
+      "worldSize": [
+        150,
+        202
+      ],
+      "anchor": {
+        "x": 0.501445937300064,
+        "y": 0.9692898272552783
+      },
+      "limit": "Outer golden/olive canopy touches source sheet edge; use in framing foliage, not as an isolated silhouette specimen."
+    },
+    {
+      "name": "rock",
+      "sourceCrop": [
+        0,
+        760,
+        421,
+        1130
+      ],
+      "alphaBounds": [
+        59,
+        51,
+        380,
+        320
+      ],
+      "sourceContact": [
+        214,
+        1070
+      ],
+      "worldSize": [
+        61,
+        51
+      ],
+      "anchor": {
+        "x": 0.4828660436137071,
+        "y": 0.9650601673691284
+      },
+      "limit": ""
+    },
+    {
+      "name": "shrub",
+      "sourceCrop": [
+        423,
+        760,
+        841,
+        1130
+      ],
+      "alphaBounds": [
+        63,
+        110,
+        344,
+        322
+      ],
+      "sourceContact": [
+        630,
+        1073
+      ],
+      "worldSize": [
+        54,
+        41
+      ],
+      "anchor": {
+        "x": 0.5124555160142349,
+        "y": 0.9514799062581373
+      },
+      "limit": ""
+    },
+    {
+      "name": "bench",
+      "sourceCrop": [
+        846,
+        760,
+        1254,
+        1130
+      ],
+      "alphaBounds": [
+        45,
+        90,
+        313,
+        332
+      ],
+      "sourceContact": [
+        1033,
+        1072
+      ],
+      "worldSize": [
+        72,
+        65
+      ],
+      "anchor": {
+        "x": 0.5298507462686568,
+        "y": 0.9175660160734788
+      },
+      "limit": ""
+    }
+  ]
+}

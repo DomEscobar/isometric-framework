@@ -1,0 +1,90 @@
+{
+  "results": [
+    {
+      "journey": "desktop",
+      "pass": true,
+      "northRoute": [
+        "10, 11 · Brücke",
+        "10, 10 · Brücke",
+        "10, 9 · Brücke",
+        "10, 8 · Ufer",
+        "9, 8 · Ufer",
+        "8, 8 · Ufer",
+        "8, 7 · Ufer",
+        "7, 7 · Ufer",
+        "7, 6 · Ufer"
+      ],
+      "southRoute": [
+        "7, 6 · Ufer",
+        "7, 7 · Ufer",
+        "7, 8 · Ufer",
+        "8, 8 · Ufer",
+        "9, 8 · Ufer",
+        "10, 8 · Ufer",
+        "10, 9 · Brücke",
+        "10, 10 · Brücke",
+        "10, 11 · Brücke",
+        "10, 12 · Brücke",
+        "10, 13 · Brücke",
+        "10, 14 · Brücke",
+        "10, 15 · Ufer",
+        "11, 15 · Ufer",
+        "12, 15 · Ufer",
+        "12, 16 · Ufer",
+        "13, 16 · Ufer",
+        "13, 17 · Ufer"
+      ],
+      "initialDetails": "traveler (traveler)\nCell: 10,11 · bridge · 64px\nPose: 10.00,11.00 · 64.0px\nFootprint: 1×1 · body 44px · blocking\nFacing: se · state: idle\nClip: idle-se · frame: 0\nTexture: actor-se-0 · override: none\nAnchor: 0.520,0.932\nRoute: none",
+      "afterKeyboard": [
+        15,
+        17
+      ],
+      "afterDpad": null
+    },
+    {
+      "journey": "mobile",
+      "pass": true,
+      "northRoute": [
+        "10, 11 · Brücke",
+        "10, 10 · Brücke",
+        "10, 9 · Brücke",
+        "10, 8 · Ufer",
+        "9, 8 · Ufer",
+        "8, 8 · Ufer",
+        "8, 7 · Ufer",
+        "7, 7 · Ufer",
+        "7, 6 · Ufer"
+      ],
+      "southRoute": [
+        "7, 6 · Ufer",
+        "7, 7 · Ufer",
+        "7, 8 · Ufer",
+        "8, 8 · Ufer",
+        "9, 8 · Ufer",
+        "10, 8 · Ufer",
+        "10, 9 · Brücke",
+        "10, 10 · Brücke",
+        "10, 11 · Brücke",
+        "10, 12 · Brücke",
+        "10, 13 · Brücke",
+        "10, 14 · Brücke",
+        "10, 15 · Ufer",
+        "11, 15 · Ufer",
+        "12, 15 · Ufer",
+        "12, 16 · Ufer",
+        "13, 16 · Ufer",
+        "13, 17 · Ufer"
+      ],
+      "initialDetails": "traveler (traveler)\nCell: 10,11 · bridge · 64px\nPose: 10.00,11.00 · 64.0px\nFootprint: 1×1 · body 44px · blocking\nFacing: se · state: idle\nClip: idle-se · frame: 0\nTexture: actor-se-0 · override: none\nAnchor: 0.520,0.932\nRoute: none",
+      "afterKeyboard": [
+        15,
+        17
+      ],
+      "afterDpad": [
+        15,
+        17
+      ]
+    }
+  ],
+  "errors": []
+}

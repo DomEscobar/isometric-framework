@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "image": "challenge",
+  "source": "challenge-atlas.svg",
+  "generator": "build-challenge-atlas.mjs",
+  "provenance": {
+    "method": "Deterministically authored SVG geometry",
+    "purpose": "Neutral shared fixture for comparing skill workflows",
+    "productionArt": false,
+    "referenceImagesReproduced": false,
+    "externalAssets": false
+  },
+  "atlas": {
+    "width": 1024,
+    "height": 384
+  },
+  "tile": {
+    "width": 64,
+    "height": 32,
+    "units": "world pixels at scale 1",
+    "projection": "x=(c+r)*32; y=(r-c)*16-elevation"
+  },
+  "animation": {
+    "river": {
+      "frames": [
+        "river-0",
+        "river-1",
+        "river-2",
+        "river-3"
+      ],
+      "fps": 4,
+      "loop": true
+    },
+    "fountain": {
+      "frames": [
+        "fountain-0",
+        "fountain-1",
+        "fountain-2",
+        "fountain-3"
+      ],
+      "fps": 4,
+      "loop": true
+    }
+  },
+  "notes": [
+    "Frame anchors are measured from each frame canvas, not the atlas origin. Use width equal to source frame width at scale 1.",
+    "Footprint metadata is an authored intent and still requires overlay + gameplay review. Frame alpha never determines collision.",
+    "SVG has transparent exterior pixels and no background removal requirement. It is a functional workflow probe, not evidence that generated illustration will satisfy the same bounds.",
+    "The fountain is a monolithic visual for a fully blocked basin; the bridge intentionally has separate deck, ground support, and rail pieces. No bridge arch is implied by the pier texture."
+  ],
+  "frames": {
+    "river-0": {
+      "image": "challenge",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 64,
+        "height": 32
+      },
+      "rootPixel": {
+        "x": 32,
+        "y": 16
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "note": "Exact 64x32 diamond. The unchanged perimeter meets neighboring cells; interior ripple phase advances 4 pixels modulo a 16-pixel period. Four-frame seamless temporal loop."
+    },
+    "river-1": {
+      "image": "challenge",
+      "frame": {
+        "x": 64,
+        "y": 0,
+        "width": 64,
+        "height": 32
+      },
+      "rootPixel": {
+        "x": 32,
+        "y": 16
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "note": "Exact 64x32 diamond. The unchanged perimeter meets neighboring cells; interior ripple phase advances 4 pixels modulo a 16-pixel period. Four-frame seamless temporal loop."
+    },
+    "river-2": {
+      "image": "challenge",
+      "frame": {
+        "x": 128,
+        "y": 0,
+        "width": 64,
+        "height": 32
+      },
+      "rootPixel": {
+        "x": 32,
+        "y": 16
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "note": "Exact 64x32 diamond. The unchanged perimeter meets neighboring cells; interior ripple phase advances 4 pixels modulo a 16-pixel period. Four-frame seamless temporal loop."
+    },
+    "river-3": {
+      "image": "challenge",
+      "frame": {
+        "x": 192,
+        "y": 0,
+        "width": 64,
+        "height": 32
+      },
+      "rootPixel": {
+        "x": 32,
+        "y": 16
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "note": "Exact 64x32 diamond. The unchanged perimeter meets neighboring cells; interior ripple phase advances 4 pixels modulo a 16-pixel period. Four-frame seamless temporal loop."
+    },
+    "fountain-0": {
+      "image": "challenge",
+      "frame": {
+        "x": 0,
+        "y": 32,
+        "width": 256,
+        "height": 224
+      },
+      "rootPixel": {
+        "x": 48,
+        "y": 160
+      },
+      "anchor": {
+        "x": 0.1875,
+        "y": 0.7142857142857143
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 3
+      },
+      "note": "Fixed 3x3 stone basin ground corners (16,160),(112,112),(208,160),(112,208); first occupied tile center/root (48,160). Basin wall rises 12px. Decorative center reaches y74; choose collision body height explicitly, independently of this silhouette. Only water paths vary; stone and anchor are identical in every frame."
+    },
+    "fountain-1": {
+      "image": "challenge",
+      "frame": {
+        "x": 256,
+        "y": 32,
+        "width": 256,
+        "height": 224
+      },
+      "rootPixel": {
+        "x": 48,
+        "y": 160
+      },
+      "anchor": {
+        "x": 0.1875,
+        "y": 0.7142857142857143
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 3
+      },
+      "note": "Fixed 3x3 stone basin ground corners (16,160),(112,112),(208,160),(112,208); first occupied tile center/root (48,160). Basin wall rises 12px. Decorative center reaches y74; choose collision body height explicitly, independently of this silhouette. Only water paths vary; stone and anchor are identical in every frame."
+    },
+    "fountain-2": {
+      "image": "challenge",
+      "frame": {
+        "x": 512,
+        "y": 32,
+        "width": 256,
+        "height": 224
+      },
+      "rootPixel": {
+        "x": 48,
+        "y": 160
+      },
+      "anchor": {
+        "x": 0.1875,
+        "y": 0.7142857142857143
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 3
+      },
+      "note": "Fixed 3x3 stone basin ground corners (16,160),(112,112),(208,160),(112,208); first occupied tile center/root (48,160). Basin wall rises 12px. Decorative center reaches y74; choose collision body height explicitly, independently of this silhouette. Only water paths vary; stone and anchor are identical in every frame."
+    },
+    "fountain-3": {
+      "image": "challenge",
+      "frame": {
+        "x": 768,
+        "y": 32,
+        "width": 256,
+        "height": 224
+      },
+      "rootPixel": {
+        "x": 48,
+        "y": 160
+      },
+      "anchor": {
+        "x": 0.1875,
+        "y": 0.7142857142857143
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 3
+      },
+      "note": "Fixed 3x3 stone basin ground corners (16,160),(112,112),(208,160),(112,208); first occupied tile center/root (48,160). Basin wall rises 12px. Decorative center reaches y74; choose collision body height explicitly, independently of this silhouette. Only water paths vary; stone and anchor are identical in every frame."
+    },
+    "deck": {
+      "image": "challenge",
+      "frame": {
+        "x": 0,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "rootPixel": {
+        "x": 32,
+        "y": 16
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "note": "Flat walking surface; visual texture only. Deck walkability and absolute height are supplied by floor data."
+    },
+    "pier": {
+      "image": "challenge",
+      "frame": {
+        "x": 80,
+        "y": 272,
+        "width": 64,
+        "height": 104
+      },
+      "rootPixel": {
+        "x": 32,
+        "y": 88
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8461538461538461
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "note": "One-cell ground support with a 72px vertical rise from root (32,88) to top center (32,16). Ground occupancy belongs on ground; do not block the deck floor with this entity."
+    },
+    "rail-c": {
+      "image": "challenge",
+      "frame": {
+        "x": 160,
+        "y": 272,
+        "width": 64,
+        "height": 64
+      },
+      "rootPixel": {
+        "x": 32,
+        "y": 48
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.75
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "note": "Thin 24px-high stone rail along the c-axis, at the tile boundary from local (-32,0) to (0,-16). Full-cell blocking is deliberately conservative; use a dedicated nonwalkable rail row, never a walkable lane."
+    },
+    "rail-r": {
+      "image": "challenge",
+      "frame": {
+        "x": 240,
+        "y": 272,
+        "width": 64,
+        "height": 64
+      },
+      "rootPixel": {
+        "x": 32,
+        "y": 48
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.75
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "note": "Thin 24px-high stone rail along the r-axis on the far boundary from local (0,-16) to (32,0). Use only with explicit dedicated blocker cells."
+    },
+    "proxy": {
+      "image": "challenge",
+      "frame": {
+        "x": 320,
+        "y": 272,
+        "width": 1,
+        "height": 1
+      },
+      "rootPixel": {
+        "x": 0,
+        "y": 0
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "note": "Fully transparent semantic/collision proxy. No rendered outline; inspect occupancy in the debug overlay."
+    }
+  }
+}

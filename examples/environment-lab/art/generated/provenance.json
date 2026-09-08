@@ -1,0 +1,71 @@
+{
+  "provider": "built-in image_gen",
+  "model": "not exposed by tool",
+  "promptSet": "PROMPTS.md",
+  "processing": "Unmodified original PNGs. Runtime atlas windows, uniform sprite scale and measured anchors only.",
+  "sources": [
+    {
+      "file": "bridge-source.png",
+      "sha256": "e699563256c6431e47281974294158e7f09c55fe27994552f8d3a59ce5a3bb11",
+      "width": 1774,
+      "height": 887,
+      "pngColorType": 6,
+      "used": true,
+      "status": "used; see measured limitations"
+    },
+    {
+      "file": "fountain-source.png",
+      "sha256": "7fa1dadad05fc0139014b46821df26cbdaefcc0fb81c3d96646ae3ac8e2468dd",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 6,
+      "used": true,
+      "status": "used; see measured limitations"
+    },
+    {
+      "file": "rail-source.png",
+      "sha256": "d50c7fc58f68b45fbe06c3a198c568780dec02009ebb71d6b1774af3dd51b86b",
+      "width": 1536,
+      "height": 1024,
+      "pngColorType": 6,
+      "used": true,
+      "status": "used; see measured limitations"
+    },
+    {
+      "file": "river-source.png",
+      "sha256": "a5f730bd01d3770893a3e7d4a01430cf5fd7405d13f811669566ae47b768f2f6",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 6,
+      "used": true,
+      "status": "used; see measured limitations"
+    },
+    {
+      "file": "splash-source.png",
+      "sha256": "fed69556dbb1b0b2c5a43ab5ab06d5f0bc35d7735adabafe8cc189543325631d",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 6,
+      "used": true,
+      "status": "used; see measured limitations"
+    },
+    {
+      "file": "water-overlay-rejected-retry.png",
+      "sha256": "fd75c5c5e30d9ed98330c2a6ce3df47d77381182fb65b31b5a6fd315144d663f",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "used": false,
+      "status": "rejected opaque checkerboard"
+    },
+    {
+      "file": "water-overlay-source.png",
+      "sha256": "f605843100da840647e4781dd12d30fe3f533b591584613e9cedf25bad9d0497",
+      "width": 1254,
+      "height": 1254,
+      "pngColorType": 2,
+      "used": false,
+      "status": "rejected opaque checkerboard"
+    }
+  ]
+}

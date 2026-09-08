@@ -1,0 +1,16 @@
+export type { Cell, Point, TileDefinition, VisualDefinition, EntityType, EntityDefinition, LevelDefinition, LevelLink, Scene } from './types.ts';
+export { levelOf, sameCell, levelMaps, levelHeight } from './levels.ts';
+export { project, unproject } from './geometry.ts';
+export { validateScene } from './scene.ts';
+export { findPath } from './pathfinding.ts';
+export { WorldModel } from './model.ts';
+export { createInteractions } from './interactions.ts';
+export { createInventory } from './inventory.ts';
+export type { ItemDefinition, InventoryOptions, InventorySnapshot, Inventory } from './inventory.ts';
+export { createSaveSlot } from './saves.ts';
+export type { SaveStorage, SaveRecord, SaveSlotOptions, SaveSlot } from './saves.ts';
+export type { InteractionRuntime, InteractionContext, InteractionAction, InteractionState, InteractionOptions, InteractionController } from './interactions.ts';
+export { validateAssetManifest, selectTileTexture, resolveAnimation } from './art.ts';
+export type { AssetManifest, ImageSource, TextureDefinition, AnimationClip, SpriteDirection, SpriteState, SpriteAnimationSet } from './art.ts';
+export { autotileMasks, analyzeAutotiles, resolveAutotiles } from './autotiling.ts';
+export type { AutotileMode, AutotileCell, AutotileOptions, AutotileRules, AutotileTopology, AutotileResolution, AutotileDiagnostic, AutotileResult } from './autotiling.ts';

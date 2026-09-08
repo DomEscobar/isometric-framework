@@ -1,0 +1,214 @@
+{
+  "version": 1,
+  "pack": "Weidenkai measured houses and reference actor; declared geometry for materials is separate",
+  "projection": {
+    "tileWidth": 64,
+    "tileHeight": 32,
+    "heightPixelsPerUnit": 40
+  },
+  "tolerances": {
+    "groundErrorPx": 3,
+    "heightErrorPx": 3
+  },
+  "heightReferences": {
+    "standing": 1.1,
+    "door": 1.4
+  },
+  "assets": [
+    {
+      "id": "apothecary",
+      "kind": "prop",
+      "image": "apothecary-source.png",
+      "sha256": "5c398e69406bac796706e9e06dca128fddd791a15f50556cc52321bdab8b8a34",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "anchor": {
+        "x": 0.49920255183413076,
+        "y": 0.773524720893142
+      },
+      "render": {
+        "width": 274.2232346241458,
+        "offset": {
+          "x": 64,
+          "y": 0
+        }
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 3
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 190,
+            "y": 970
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 1068,
+            "y": 970
+          },
+          "grid": {
+            "c": 2.5,
+            "r": 2.5
+          }
+        },
+        {
+          "source": {
+            "x": 626,
+            "y": 1186
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 2.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "door",
+          "base": {
+            "x": 810,
+            "y": 1055
+          },
+          "top": {
+            "x": 810,
+            "y": 805
+          }
+        }
+      ],
+      "allowedOverhang": "Roof, sign and attached flowers may overhang foundation; rigid front/side foundation contacts measured manually on actual decoded image. Hidden rear corner not measured."
+    },
+    {
+      "id": "bookbinder",
+      "kind": "prop",
+      "image": "bookbinder-cutout.png",
+      "sha256": "7ae30c8650400693eaba9734fd576948fa1c7cdd4a5e34d3bb0febcc51253ba6",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "anchor": {
+        "x": 0.49920255183413076,
+        "y": 0.773524720893142
+      },
+      "render": {
+        "width": 276.7448275862069,
+        "offset": {
+          "x": 64,
+          "y": 0
+        }
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 3
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 190,
+            "y": 970
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 1060,
+            "y": 970
+          },
+          "grid": {
+            "c": 2.5,
+            "r": 2.5
+          }
+        },
+        {
+          "source": {
+            "x": 626,
+            "y": 1190
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 2.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "door",
+          "base": {
+            "x": 810,
+            "y": 1055
+          },
+          "top": {
+            "x": 810,
+            "y": 805
+          }
+        }
+      ],
+      "allowedOverhang": "Roof, sign and attached flowers may overhang foundation; rigid front/side foundation contacts measured manually on actual decoded image. Hidden rear corner not measured."
+    },
+    {
+      "id": "actor-ne-0",
+      "kind": "actor",
+      "image": "../../../demo/art/pixel-cafe/gardener-atlas.png",
+      "sha256": "7bb2356b28300c152f0878a2d7b4996eb6c41ddb22c6800721a74b41bf67487a",
+      "frame": {
+        "x": 82,
+        "y": 25,
+        "width": 160,
+        "height": 280
+      },
+      "anchor": {
+        "x": 0.52,
+        "y": 0.9321428571428572
+      },
+      "render": {
+        "width": 28.4
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 83,
+            "y": 261
+          },
+          "grid": {
+            "c": 0,
+            "r": 0
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "standing",
+          "base": {
+            "x": 83,
+            "y": 261
+          },
+          "top": {
+            "x": 83,
+            "y": 13
+          }
+        }
+      ],
+      "allowedOverhang": "Hat and limbs intentionally extend beyond the compact foot contact. Height includes the hat."
+    }
+  ]
+}

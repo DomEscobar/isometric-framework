@@ -1,0 +1,185 @@
+{
+  "version": 1,
+  "pack": "mossbell-calibration",
+  "projection": {
+    "tileWidth": 64,
+    "tileHeight": 32,
+    "heightPixelsPerUnit": 1
+  },
+  "tolerances": {
+    "groundErrorPx": 3,
+    "heightErrorPx": 2
+  },
+  "heightReferences": {
+    "standing": 44
+  },
+  "assets": [
+    {
+      "id": "apothecary",
+      "kind": "prop",
+      "image": "./apothecary.png",
+      "sha256": "6eef592a72e30f2cc009161cb0803c35341d5f462bff4e58ded8cf246f8476fa",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "anchor": {
+        "x": 0.524,
+        "y": 0.79
+      },
+      "render": {
+        "width": 266,
+        "offset": {
+          "x": 64,
+          "y": 0
+        }
+      },
+      "footprint": {
+        "columns": 3,
+        "rows": 3
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 210,
+            "y": 990
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 1122,
+            "y": 990
+          },
+          "grid": {
+            "c": 2.5,
+            "r": 2.5
+          }
+        },
+        {
+          "source": {
+            "x": 650,
+            "y": 1178
+          },
+          "grid": {
+            "c": -0.25,
+            "r": 2.25
+          }
+        }
+      ],
+      "heights": [],
+      "allowedOverhang": "Roof and hanging sign; conservative base containment, not a perfect canonical diamond."
+    },
+    {
+      "id": "bell-tree-trunk",
+      "kind": "prop",
+      "image": "./bell-tree.png",
+      "sha256": "3dca32bc2373bdf10a3f9e39b4dea3c4b24c5e3dc16b49a3d73e4a49d2ba9f82",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "anchor": {
+        "x": 0.527,
+        "y": 0.91
+      },
+      "render": {
+        "width": 268
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 624,
+            "y": 1100
+          },
+          "grid": {
+            "c": 0.15,
+            "r": -0.4
+          }
+        },
+        {
+          "source": {
+            "x": 680,
+            "y": 1100
+          },
+          "grid": {
+            "c": 0.34,
+            "r": -0.2
+          }
+        },
+        {
+          "source": {
+            "x": 652,
+            "y": 1120
+          },
+          "grid": {
+            "c": 0.11,
+            "r": -0.17
+          }
+        }
+      ],
+      "heights": [],
+      "allowedOverhang": "Spreading roots and canopy are nonblocking overhang; trunk correspondences are inferred containment."
+    },
+    {
+      "id": "traveler-se-idle",
+      "kind": "actor",
+      "image": "../../../demo/art/pixel-cafe/gardener-atlas.png",
+      "sha256": "7bb2356b28300c152f0878a2d7b4996eb6c41ddb22c6800721a74b41bf67487a",
+      "frame": {
+        "x": 82,
+        "y": 328,
+        "width": 160,
+        "height": 280
+      },
+      "anchor": {
+        "x": 0.52,
+        "y": 0.9321428571428572
+      },
+      "render": {
+        "width": 28.4
+      },
+      "footprint": {
+        "columns": 1,
+        "rows": 1
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 83.2,
+            "y": 261
+          },
+          "grid": {
+            "c": 0,
+            "r": 0
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "standing",
+          "base": {
+            "x": 83.2,
+            "y": 261
+          },
+          "top": {
+            "x": 83.2,
+            "y": 13
+          }
+        }
+      ],
+      "allowedOverhang": "Reused directional gardener, height includes hat."
+    }
+  ]
+}

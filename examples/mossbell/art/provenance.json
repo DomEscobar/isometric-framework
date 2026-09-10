@@ -1,0 +1,92 @@
+[
+  {
+    "file": "bell-tree.png",
+    "sha256": "3dca32bc2373bdf10a3f9e39b4dea3c4b24c5e3dc16b49a3d73e4a49d2ba9f82",
+    "width": 1254,
+    "height": 1254,
+    "provider": "built-in image generation",
+    "outputIdentity": "exec-3c46a4a2-9596-43fe-9cbf-d0f2449d844f",
+    "processing": "original bytes preserved",
+    "date": "2026-09-10"
+  },
+  {
+    "file": "apothecary.png",
+    "sha256": "6eef592a72e30f2cc009161cb0803c35341d5f462bff4e58ded8cf246f8476fa",
+    "width": 1254,
+    "height": 1254,
+    "provider": "built-in image generation",
+    "outputIdentity": "exec-34febaa2-1776-4c3c-ab9b-faed1f58ef02",
+    "processing": "original bytes preserved",
+    "date": "2026-09-10"
+  },
+  {
+    "file": "spruce.png",
+    "sha256": "89e0857f83f63992bc9adb23d527f3074e2b48c134af1ce737eb47e371ca2f65",
+    "width": 1254,
+    "height": 1254,
+    "provider": "built-in image generation",
+    "outputIdentity": "exec-32e15b46-bff3-4933-81e6-b7379e58795d",
+    "processing": "original bytes preserved",
+    "date": "2026-09-10"
+  },
+  {
+    "file": "greenhouse.png",
+    "sha256": "2eb8ecea34328d8f782c4c19d9b10621622996c2ce2aa1de5cfe4bd819f10cca",
+    "width": 1254,
+    "height": 1254,
+    "provider": "built-in image generation",
+    "outputIdentity": "exec-e1509ed7-2879-4337-bd22-6d6c8a3f58c7",
+    "processing": "original bytes preserved",
+    "date": "2026-09-10"
+  },
+  {
+    "file": "fern-sheet.png",
+    "sha256": "9b391f91b91b355430a7551226ffc3058633075747485238e350b35d23186544",
+    "width": 1254,
+    "height": 1254,
+    "provider": "built-in image generation",
+    "outputIdentity": "exec-c3e308b7-ae17-44ee-b6e8-edabfa079021",
+    "processing": "original bytes preserved",
+    "date": "2026-09-10"
+  },
+  {
+    "file": "forest-materials.png",
+    "sha256": "1abbcab2b63b173d0aa688b7ffb806b2ec6703bfe3f8e19240e8908d5405920f",
+    "width": 1254,
+    "height": 1254,
+    "provider": "built-in image generation",
+    "outputIdentity": "exec-fb34d796-fd05-42ae-b1af-d0157cf75fc6",
+    "processing": "original bytes preserved",
+    "date": "2026-09-10"
+  },
+  {
+    "file": "forest-atlas.png",
+    "sha256": "33f72bfae6fd84ea7ce72fea0e6d1be593bfb0a41adf88e978fccdef08d80d24",
+    "width": 1024,
+    "height": 1536,
+    "provider": "local deterministic assembly",
+    "outputIdentity": null,
+    "processing": "sampled and assembled by prepare-forest.mjs",
+    "date": "2026-09-10"
+  },
+  {
+    "file": "bakery.png",
+    "sha256": "5c398e69406bac796706e9e06dca128fddd791a15f50556cc52321bdab8b8a34",
+    "width": 1254,
+    "height": 1254,
+    "provider": "repository reuse",
+    "outputIdentity": null,
+    "processing": "original bytes preserved",
+    "date": "2026-09-10"
+  },
+  {
+    "file": "bookshop.png",
+    "sha256": "7ae30c8650400693eaba9734fd576948fa1c7cdd4a5e34d3bb0febcc51253ba6",
+    "width": 1254,
+    "height": 1254,
+    "provider": "repository reuse",
+    "outputIdentity": null,
+    "processing": "original bytes preserved",
+    "date": "2026-09-10"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "version":1,"actor":"traveler","tolerancePx":3,"placements":[],
+  "blocked":[{"c":5,"r":15},{"c":1,"r":0},{"c":18,"r":6}],
+  "open":[{"c":3,"r":20},{"c":8,"r":15},{"c":8,"r":16},{"c":17,"r":10}],
+  "routes":[{"id":"entrance-to-spring","from":{"c":3,"r":20},"to":{"c":17,"r":10},"reachable":true},{"id":"shelter-loop","from":{"c":5,"r":5},"to":{"c":12,"r":11},"reachable":true},{"id":"grove-loop","from":{"c":18,"r":19},"to":{"c":18,"r":11},"reachable":true}],
+  "paths":[{"id":"log-crossing","points":[{"c":8,"r":14},{"c":8,"r":15},{"c":8,"r":16},{"c":8,"r":17}]}],
+  "clearances":[],"solidHeights":[{"id":"ancient-trunk","cell":{"c":18,"r":6},"minHeight":230}]
+}

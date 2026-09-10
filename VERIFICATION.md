@@ -1,4 +1,31 @@
-# Runtime verification — 2026-09-08
+# Runtime verification — 2026-09-10
+
+## Mossbell and Bellshade example
+
+Added a host-owned two-world twilight example at `examples/mossbell/`. The complete
+desktop and mobile journey crosses the town bridge, enters Bellshade, crosses its
+log, receives a seed at the spring, returns to town, plants the seed and restores
+the resulting bloom after reload. Sound begins on a gesture and uses original Web
+Audio synthesis; no recorded samples are represented as natural ambience.
+
+- `tests/mossbell-browser.mjs` passed 33 checks across desktop 1440x960 and mobile
+  390x844: movement, touch D-pad, routes, collision, two-way transitions, story,
+  persistence, animation, pause, audio signal/controls and browser errors. It kept
+  screenshots, video and town/forest WebM mix captures under
+  `test-results/mossbell/playtest-v4/`.
+- Actual-scene assembly checks passed 15/15 town and 12/12 forest assertions.
+  The environment lab desktop/mobile journey also passed with no page errors;
+  the generated-layered workflow fixture passed animation loop/pause and assembly.
+- Independent static review accepted the forest-material, phone-arrival and mobile
+  overview repairs. Remaining visual limits are broad angular forest paths,
+  repeated conifers and a subtle ending bloom at full-map desktop scale.
+- Frame timing was approximately 16.7ms median and 16.8-16.9ms p95 in all four
+  desktop/mobile-town/forest samples, essentially matching the 16.7/16.9ms blank
+  baseline. Browser: Chrome 152, ANGLE/D3D11 on Radeon RX 9070 XT; mobile is Chrome
+  emulation on that desktop GPU, not physical phone hardware.
+- Automated checks establish a non-silent mix, attenuation state and audio control
+  behavior. Human listening was unavailable, so subjective mix quality and speaker
+  playback remain unapproved.
 
 ## Current: near-bank wall anchor
 

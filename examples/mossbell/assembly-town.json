@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "actor": "traveler",
+  "tolerancePx": 3,
+  "placements": [],
+  "blocked": [{"c":5,"r":14},{"c":5,"r":2},{"c":7,"r":4},{"c":10,"r":14,"level":"bridge"},{"c":12,"r":15,"level":"bridge"},{"c":11,"r":13}],
+  "open": [{"c":9,"r":8},{"c":11,"r":12},{"c":11,"r":17},{"c":19,"r":19}],
+  "routes": [{"id":"town-to-forest","from":{"c":9,"r":8},"to":{"c":19,"r":19},"reachable":true},{"id":"home-to-seedbed","from":{"c":18,"r":19},"to":{"c":8,"r":7},"reachable":true}],
+  "paths": [{"id":"bridge-both-accesses","points":[{"c":11,"r":11},{"c":11,"r":12},{"c":11,"r":13,"level":"bridge"},{"c":11,"r":14,"level":"bridge"},{"c":11,"r":15,"level":"bridge"},{"c":11,"r":16,"level":"bridge"},{"c":11,"r":17},{"c":11,"r":18}]}],
+  "clearances": [],
+  "solidHeights": [{"id":"bridge-rail","cell":{"c":10,"r":14,"level":"bridge"},"minHeight":24},{"id":"apothecary-body","cell":{"c":6,"r":3},"minHeight":215}]
+}

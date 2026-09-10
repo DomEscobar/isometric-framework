@@ -4,3 +4,4 @@ demo-dist/
 test-results/
 *.tgz
 .world-build/
+.playwright-cli/

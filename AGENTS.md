@@ -8,54 +8,13 @@ game in `demo/`. It is not the legacy multiplayer client or a complete editor.
 
 1. Read `README.md` for setup and `docs/RUNTIME_API.md` for public API usage.
 2. Read `docs/ARCHITECTURE.md` before changing engine code.
-3. For a new game, follow `docs/CREATE_GAME.md`. Calibrate with one small playable
-   assembly, then complete the scope requested by the user. A rich environment
-   requested in a short prompt must not be reduced to a tiny final demo. For
-   prompt-driven world creation, use
-   [isometric-visual-loop](skills/isometric-visual-loop/SKILL.md) to infer appropriate
-   effort, plan the whole environment and coordinate art, assemblies and animation.
-   For sprites, textures, or a new visual theme, read `docs/ART_PIPELINE.md` and
-   apply [isometric-art-integration](skills/isometric-art-integration/SKILL.md).
-   To generate raster assets or prepare transparent cutouts, use
-   [game-asset-generation](skills/game-asset-generation/SKILL.md): WaveSpeed
-   Seedream/removal or an available provider, with local rembg as an alternative.
-   This does not require a GPT ImageGen skill or put provider keys in the game.
-   For directional character frames and action poses, apply
-   [directional-sprite-authoring](skills/directional-sprite-authoring/SKILL.md).
-   For rivers, fountains and other scenery loops, use
-   [animated-environments](skills/animated-environments/SKILL.md). For large assets,
-   buildings or bridges, pair it with
-   [multi-tile-asset-assembly](skills/multi-tile-asset-assembly/SKILL.md): declare
-   surfaces, openings and solid heights before fitting artwork. The environment
-   lab under `examples/environment-lab/` now defaults to real generated PNGs and
-   preserves raw/registered/layered stages plus the earlier SVG fixtures. Read
-   [the generated trial](docs/GENERATED_ENVIRONMENT_TRIAL.md) for source failures,
-   measured corrections and remaining limits. Generated-asset requests require
-   actual generated outputs; the SVG fixture alone is not evidence for that task.
-   For connected beds, paths, walls or water, read [AUTOTILING.md](docs/AUTOTILING.md)
-   and apply [consistent-tileset-authoring](skills/consistent-tileset-authoring/SKILL.md).
-   Approve shared edge geometry on a strip, L and hollow patch before decorating.
-   The visual loop also handles reference-driven improvement, distinguishing
-   style references from exact replicas and keeping visual, gameplay and performance
-   verdicts separate. See the generated [autumn crossing trial](docs/AUTUMN_CROSSING.md).
-   The generated-material bed lab is at `examples/autotile-lab/`; its assembler
-   needs authoring-only Playwright/Chromium, while the resolver remains headless.
-   For a composed generated-art district, see `examples/willow-quay/` and
-   [its trial record](docs/WILLOW_QUAY.md): reference-guided houses, shared material
-   geometry, measured scale and a playable canal crossing. Its stair regression
-   covers shared cross-floor depth ordering; read the limits for unsplit overhangs
-   and inspect idle access poses. It does not provide interiors/arched collision.
-   Approve visible facings, then bind explicit clips; a sheet's row order does
-   not establish direction. Custom effects remain host-owned; use the reusable
-   [interaction controller](docs/INTERACTIONS.md) for approach and action timing.
-   Inspect [debug snapshots and overlays](docs/DEBUGGING.md) when checking routes,
-   footprints, anchors, facing, and active clips.
-   For item quantities and resumable progress, use
-   [inventory and save modules](docs/INVENTORY_AND_SAVES.md); keep item definitions,
-   rewards, host state validation, and checkpoint timing in the game.
-   Calibrate projection, rigid footprints, and player/prop proportions before
-   accepting a pack. Metadata, visual compatibility, and gameplay need separate
-   verdicts; image bounds and collision tests do not prove visual correctness.
+3. For a new game, follow `docs/CREATE_GAME.md`. Before art or environment work,
+   consult the [skill catalog](skills/README.md) and read the relevant `SKILL.md`
+   files. For complete worlds or substantial visual refinement, start with
+   [isometric-visual-loop](skills/isometric-visual-loop/SKILL.md) and select its
+   specialists by feature. For focused work, use the matching specialist directly.
+   Infer relevant skills from the request; the user need not name them. Do not run
+   every skill for every task. Calibrate a small assembly, then finish the full scope.
 4. Use `APP_GUIDE.md` for current demo behavior and `VERIFICATION.md` for executed
    checks and their limits. Inspect actual source when those records may be stale.
 
@@ -63,13 +22,65 @@ These instructions travel with the folder. Do not require the original repo's
 backend, accounts, memory files, agent provider, or deployment environment.
 Use the user's authorized coding tools and follow their current scope.
 
-The art skill and its dependency-free tools travel in copied folders and npm
+All seven main skills and their supporting files travel in copied folders and npm
 packages. Read the linked `SKILL.md` directly if your agent does not automatically
-discover this repository-local skill; no global installation is required.
+discover repository-local skills; no global installation is required. Some authoring tools
+need additional dependencies or an available provider; see the selected skill.
 
-An installed package contains built exports, guides, and the art skill, not this development
+An installed package contains built exports, guides, and the skills, not this development
 checkout. Consumers use the public API in their own application; engine changes
 and the development commands below require the source folder.
+
+## Art workflows and example guidance
+
+For a new game, follow `docs/CREATE_GAME.md`. Calibrate with one small playable
+assembly, then complete the scope requested by the user. A rich environment
+requested in a short prompt must not be reduced to a tiny final demo. For
+prompt-driven world creation, use
+[isometric-visual-loop](skills/isometric-visual-loop/SKILL.md) to infer appropriate
+effort, plan the whole environment and coordinate art, assemblies and animation.
+For sprites, textures, or a new visual theme, read `docs/ART_PIPELINE.md` and
+apply [isometric-art-integration](skills/isometric-art-integration/SKILL.md).
+To generate raster assets or prepare transparent cutouts, use
+[game-asset-generation](skills/game-asset-generation/SKILL.md): WaveSpeed
+Seedream/removal or an available provider, with local rembg as an alternative.
+This does not require a GPT ImageGen skill or put provider keys in the game.
+For directional character frames and action poses, apply
+[directional-sprite-authoring](skills/directional-sprite-authoring/SKILL.md).
+For rivers, fountains and other scenery loops, use
+[animated-environments](skills/animated-environments/SKILL.md). For large assets,
+buildings or bridges, pair it with
+[multi-tile-asset-assembly](skills/multi-tile-asset-assembly/SKILL.md): declare
+surfaces, openings and solid heights before fitting artwork. The environment
+lab under `examples/environment-lab/` now defaults to real generated PNGs and
+preserves raw/registered/layered stages plus the earlier SVG fixtures. Read
+[the generated trial](docs/GENERATED_ENVIRONMENT_TRIAL.md) for source failures,
+measured corrections and remaining limits. Generated-asset requests require
+actual generated outputs; the SVG fixture alone is not evidence for that task.
+For connected beds, paths, walls or water, read [AUTOTILING.md](docs/AUTOTILING.md)
+and apply [consistent-tileset-authoring](skills/consistent-tileset-authoring/SKILL.md).
+Approve shared edge geometry on a strip, L and hollow patch before decorating.
+The visual loop also handles reference-driven improvement, distinguishing
+style references from exact replicas and keeping visual, gameplay and performance
+verdicts separate. See the generated [autumn crossing trial](docs/AUTUMN_CROSSING.md).
+The generated-material bed lab is at `examples/autotile-lab/`; its assembler
+needs authoring-only Playwright/Chromium, while the resolver remains headless.
+For a composed generated-art district, see `examples/willow-quay/` and
+[its trial record](docs/WILLOW_QUAY.md): reference-guided houses, shared material
+geometry, measured scale and a playable canal crossing. Its stair regression
+covers shared cross-floor depth ordering; read the limits for unsplit overhangs
+and inspect idle access poses. It does not provide interiors/arched collision.
+Approve visible facings, then bind explicit clips; a sheet's row order does
+not establish direction. Custom effects remain host-owned; use the reusable
+[interaction controller](docs/INTERACTIONS.md) for approach and action timing.
+Inspect [debug snapshots and overlays](docs/DEBUGGING.md) when checking routes,
+footprints, anchors, facing, and active clips.
+For item quantities and resumable progress, use
+[inventory and save modules](docs/INVENTORY_AND_SAVES.md); keep item definitions,
+rewards, host state validation, and checkpoint timing in the game.
+Calibrate projection, rigid footprints, and player/prop proportions before
+accepting a pack. Metadata, visual compatibility, and gameplay need separate
+verdicts; image bounds and collision tests do not prove visual correctness.
 
 ## Choose the owner before editing
 

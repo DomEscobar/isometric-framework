@@ -1,4 +1,4 @@
-﻿# Isometric Framework
+# Isometric Framework
 
 Build isometric games with TypeScript. Includes a standalone runtime, playable
 examples, local artwork and skills that help coding agents create complete worlds.
@@ -21,6 +21,7 @@ If that port is busy, use `npm run dev -- --port 4177` and open port 4177 instea
 | Example | Address after starting the server |
 | --- | --- |
 | Sunflower courtyard and small gameplay demos | [Main demo](http://127.0.0.1:4175/) |
+| Twilight town and connected enchanted forest | [Mossbell](http://127.0.0.1:4175/examples/mossbell/) |
 | Autumn river and stone bridge | [Goldlaub](http://127.0.0.1:4175/examples/autumn-crossing/) |
 | Shops and canal crossing | [Weidenkai](http://127.0.0.1:4175/examples/willow-quay/) |
 | Animated scenery and multipart structures | [Environment lab](http://127.0.0.1:4175/examples/environment-lab/) |
@@ -45,6 +46,19 @@ The bundled [world-production skill](skills/isometric-visual-loop/SKILL.md)
 coordinates layout, consistent art, complex structures, animation and visual
 checks. Asset generation uses an available provider; it is separate from running
 the game. Small calibration scenes are milestones, not a limit on the final world.
+
+## Choose an agent skill
+
+The [skill catalog](skills/README.md) lists all seven bundled workflows with task
+triggers and combinations: world production, art integration, asset generation,
+directional sprites, animated scenery, multi-tile assemblies and connected tilesets.
+Start with world production for a complete environment; use a specialist directly
+for a focused task. Agents should infer relevant skills from your request.
+
+Open the linked `SKILL.md` files even if your agent does not discover them
+automatically. No global skill installation is required. Authoring dependencies
+and provider setup are described in each skill; they are separate from running
+the game. Historical trial variants are listed separately in the catalog.
 
 ## What's included
 

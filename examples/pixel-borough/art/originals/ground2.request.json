@@ -1,0 +1,5 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Edit this GROUND ONLY isometric game terrain. Keep the quiet crisp pixel-art grass, continuous gray paving, upper dirt trail and square diamond shape. Fix the river: move the river inland so a broad grass bank, at least 15 percent of the diamond's width, lies between river and lower-right outer boundary. River must run continuously from the right-hand outer edge to the bottom-left side near the bottom corner, parallel to the lower-right boundary. It must NOT dead-end against paving. Both river banks grass and exposed earth, varying naturally; leave a clear narrow crossing location near the middle of the channel but do not draw a bridge. Keep central paving large for town buildings. No props, no bridge, no trees, no people. Pure solid magenta outside terrain, no checkerboard. Exact 2:1 isometric ground with symmetric slopes 0.5. Full terrain including margins, 1536x1024. This is an edit target, not just inspiration.",
+  "reference": "examples/pixel-borough/art/originals/ground.png"
+}

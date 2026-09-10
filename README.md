@@ -20,6 +20,7 @@ If that port is busy, use `npm run dev -- --port 4177` and open port 4177 instea
 
 | Example | Address after starting the server |
 | --- | --- |
+| Generated-sprite town and visual comparison trial | [Pixel Borough](http://127.0.0.1:4175/examples/pixel-borough/) |
 | Sunflower courtyard and small gameplay demos | [Main demo](http://127.0.0.1:4175/) |
 | Twilight town and connected enchanted forest | [Mossbell](http://127.0.0.1:4175/examples/mossbell/) |
 | Autumn river and stone bridge | [Goldlaub](http://127.0.0.1:4175/examples/autumn-crossing/) |
@@ -81,6 +82,8 @@ scene with our own actor, terrain, prop and animation, then finish both worlds
 and the agreed gameplay. Playtest in the browser, inspect actual sprite clips
 and environmental motion, and repair visual defects before calling it done.
 Use the framework's acceptance checks and report any unverified requirements.
+Compare our visual target with actual game screenshots after each repair; include
+the previous version and require concrete, image-located feedback.
 ```
 
 The bundled [world-production skill](skills/isometric-visual-loop/SKILL.md)
@@ -109,6 +112,13 @@ decoded atlas checks, a browser preview, protected requirements, and separate
 visual/motion/gameplay/performance reviews tied to the current files. It rejects
 missing or stale evidence; artistic quality still requires actual review. A passing
 build alone does not mean a world's visuals are accepted.
+The [image comparison loop](skills/isometric-visual-loop/references/visual-comparison.md)
+assembles target, previous and current captures for actual visual review, then
+checks that located defects were revisited after repairs. It does not score beauty.
+New worlds use [six production stages](skills/isometric-visual-loop/references/production-flow.md):
+technical preflight, spatial layout, representative assembly, complete scene,
+motion and final review. Failed prerequisites block the tool's next stage; placement
+checks catch roots on paths, blocked entrances and broken bridge support.
 
 ## What's included
 

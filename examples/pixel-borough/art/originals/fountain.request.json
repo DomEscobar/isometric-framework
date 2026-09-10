@@ -1,0 +1,5 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Production sprite sheet FOUR animation frames in one horizontal row for a small town FOUNTAIN in crisp dark-outlined 2:1 isometric pixel art matching target. Same warm gray circular stone basin and central short carved column in every frame, basin rigidly identical, same camera, same position and scale. Blue water and a small arcing upward spray change between four sequential loop phases; droplets fall back into basin, no enormous geyser. Four complete isolated fountain silhouettes with generous equal gutters and aligned ground contacts. At game scale whole fountain 78 pixels wide and 58 high, human 32 pixels high. Flat bright clustered colors, warm upper-left light. Solid flat pure MAGENTA #FF00FF backdrop, no checkerboard, magenta absent in subject, no labels, ground tile, cast shadows, characters or scenery. 1536x512 canvas. Do not draw a landscape; deliver actual reusable sprites.",
+  "reference": "test-results/real-visual-session/user-target.jpg"
+}

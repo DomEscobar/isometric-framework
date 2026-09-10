@@ -1,0 +1,1894 @@
+{
+ "animations": {
+  "bush_sway": {
+   "fps": 2.5,
+   "frames": [
+    "bush_0",
+    "bush_1"
+   ],
+   "loop": true
+  },
+  "fam_ember_ne_cast": {
+   "fps": 5,
+   "frames": [
+    "fam_ember_ne_cast0",
+    "fam_ember_ne_cast1"
+   ],
+   "loop": false
+  },
+  "fam_ember_ne_hit": {
+   "fps": 6,
+   "frames": [
+    "fam_ember_ne_hit"
+   ],
+   "loop": false
+  },
+  "fam_ember_ne_idle": {
+   "fps": 3,
+   "frames": [
+    "fam_ember_ne_idle0",
+    "fam_ember_ne_idle1"
+   ],
+   "loop": true
+  },
+  "fam_ember_ne_walk": {
+   "fps": 6,
+   "frames": [
+    "fam_ember_ne_walk0",
+    "fam_ember_ne_walk1"
+   ],
+   "loop": true
+  },
+  "fam_ember_nw_cast": {
+   "fps": 5,
+   "frames": [
+    "fam_ember_nw_cast0",
+    "fam_ember_nw_cast1"
+   ],
+   "loop": false
+  },
+  "fam_ember_nw_hit": {
+   "fps": 6,
+   "frames": [
+    "fam_ember_nw_hit"
+   ],
+   "loop": false
+  },
+  "fam_ember_nw_idle": {
+   "fps": 3,
+   "frames": [
+    "fam_ember_nw_idle0",
+    "fam_ember_nw_idle1"
+   ],
+   "loop": true
+  },
+  "fam_ember_nw_walk": {
+   "fps": 6,
+   "frames": [
+    "fam_ember_nw_walk0",
+    "fam_ember_nw_walk1"
+   ],
+   "loop": true
+  },
+  "fam_ember_se_cast": {
+   "fps": 5,
+   "frames": [
+    "fam_ember_se_cast0",
+    "fam_ember_se_cast1"
+   ],
+   "loop": false
+  },
+  "fam_ember_se_hit": {
+   "fps": 6,
+   "frames": [
+    "fam_ember_se_hit"
+   ],
+   "loop": false
+  },
+  "fam_ember_se_idle": {
+   "fps": 3,
+   "frames": [
+    "fam_ember_se_idle0",
+    "fam_ember_se_idle1"
+   ],
+   "loop": true
+  },
+  "fam_ember_se_walk": {
+   "fps": 6,
+   "frames": [
+    "fam_ember_se_walk0",
+    "fam_ember_se_walk1"
+   ],
+   "loop": true
+  },
+  "fam_ember_sw_cast": {
+   "fps": 5,
+   "frames": [
+    "fam_ember_sw_cast0",
+    "fam_ember_sw_cast1"
+   ],
+   "loop": false
+  },
+  "fam_ember_sw_hit": {
+   "fps": 6,
+   "frames": [
+    "fam_ember_sw_hit"
+   ],
+   "loop": false
+  },
+  "fam_ember_sw_idle": {
+   "fps": 3,
+   "frames": [
+    "fam_ember_sw_idle0",
+    "fam_ember_sw_idle1"
+   ],
+   "loop": true
+  },
+  "fam_ember_sw_walk": {
+   "fps": 6,
+   "frames": [
+    "fam_ember_sw_walk0",
+    "fam_ember_sw_walk1"
+   ],
+   "loop": true
+  },
+  "fam_leaf_ne_cast": {
+   "fps": 5,
+   "frames": [
+    "fam_leaf_ne_cast0",
+    "fam_leaf_ne_cast1"
+   ],
+   "loop": false
+  },
+  "fam_leaf_ne_hit": {
+   "fps": 6,
+   "frames": [
+    "fam_leaf_ne_hit"
+   ],
+   "loop": false
+  },
+  "fam_leaf_ne_idle": {
+   "fps": 3,
+   "frames": [
+    "fam_leaf_ne_idle0",
+    "fam_leaf_ne_idle1"
+   ],
+   "loop": true
+  },
+  "fam_leaf_ne_walk": {
+   "fps": 6,
+   "frames": [
+    "fam_leaf_ne_walk0",
+    "fam_leaf_ne_walk1"
+   ],
+   "loop": true
+  },
+  "fam_leaf_nw_cast": {
+   "fps": 5,
+   "frames": [
+    "fam_leaf_nw_cast0",
+    "fam_leaf_nw_cast1"
+   ],
+   "loop": false
+  },
+  "fam_leaf_nw_hit": {
+   "fps": 6,
+   "frames": [
+    "fam_leaf_nw_hit"
+   ],
+   "loop": false
+  },
+  "fam_leaf_nw_idle": {
+   "fps": 3,
+   "frames": [
+    "fam_leaf_nw_idle0",
+    "fam_leaf_nw_idle1"
+   ],
+   "loop": true
+  },
+  "fam_leaf_nw_walk": {
+   "fps": 6,
+   "frames": [
+    "fam_leaf_nw_walk0",
+    "fam_leaf_nw_walk1"
+   ],
+   "loop": true
+  },
+  "fam_leaf_se_cast": {
+   "fps": 5,
+   "frames": [
+    "fam_leaf_se_cast0",
+    "fam_leaf_se_cast1"
+   ],
+   "loop": false
+  },
+  "fam_leaf_se_hit": {
+   "fps": 6,
+   "frames": [
+    "fam_leaf_se_hit"
+   ],
+   "loop": false
+  },
+  "fam_leaf_se_idle": {
+   "fps": 3,
+   "frames": [
+    "fam_leaf_se_idle0",
+    "fam_leaf_se_idle1"
+   ],
+   "loop": true
+  },
+  "fam_leaf_se_walk": {
+   "fps": 6,
+   "frames": [
+    "fam_leaf_se_walk0",
+    "fam_leaf_se_walk1"
+   ],
+   "loop": true
+  },
+  "fam_leaf_sw_cast": {
+   "fps": 5,
+   "frames": [
+    "fam_leaf_sw_cast0",
+    "fam_leaf_sw_cast1"
+   ],
+   "loop": false
+  },
+  "fam_leaf_sw_hit": {
+   "fps": 6,
+   "frames": [
+    "fam_leaf_sw_hit"
+   ],
+   "loop": false
+  },
+  "fam_leaf_sw_idle": {
+   "fps": 3,
+   "frames": [
+    "fam_leaf_sw_idle0",
+    "fam_leaf_sw_idle1"
+   ],
+   "loop": true
+  },
+  "fam_leaf_sw_walk": {
+   "fps": 6,
+   "frames": [
+    "fam_leaf_sw_walk0",
+    "fam_leaf_sw_walk1"
+   ],
+   "loop": true
+  },
+  "flower0_sway": {
+   "fps": 2.5,
+   "frames": [
+    "flower0_0",
+    "flower0_1"
+   ],
+   "loop": true
+  },
+  "flower1_sway": {
+   "fps": 2.5,
+   "frames": [
+    "flower1_0",
+    "flower1_1"
+   ],
+   "loop": true
+  },
+  "flower2_sway": {
+   "fps": 2.5,
+   "frames": [
+    "flower2_0",
+    "flower2_1"
+   ],
+   "loop": true
+  },
+  "splash": {
+   "fps": 6,
+   "frames": [
+    "splash_0",
+    "splash_1",
+    "splash_2"
+   ],
+   "loop": true
+  },
+  "stream_0": {
+   "fps": 5,
+   "frames": [
+    "stream_0_0",
+    "stream_0_1",
+    "stream_0_2"
+   ],
+   "loop": true
+  },
+  "stream_1": {
+   "fps": 5,
+   "frames": [
+    "stream_1_0",
+    "stream_1_1",
+    "stream_1_2"
+   ],
+   "loop": true
+  },
+  "stream_2": {
+   "fps": 5,
+   "frames": [
+    "stream_2_0",
+    "stream_2_1",
+    "stream_2_2"
+   ],
+   "loop": true
+  },
+  "stream_3": {
+   "fps": 5,
+   "frames": [
+    "stream_3_0",
+    "stream_3_1",
+    "stream_3_2"
+   ],
+   "loop": true
+  },
+  "stream_4": {
+   "fps": 5,
+   "frames": [
+    "stream_4_0",
+    "stream_4_1",
+    "stream_4_2"
+   ],
+   "loop": true
+  },
+  "stream_5": {
+   "fps": 5,
+   "frames": [
+    "stream_5_0",
+    "stream_5_1",
+    "stream_5_2"
+   ],
+   "loop": true
+  },
+  "stream_6": {
+   "fps": 5,
+   "frames": [
+    "stream_6_0",
+    "stream_6_1",
+    "stream_6_2"
+   ],
+   "loop": true
+  },
+  "tree_sway": {
+   "fps": 3,
+   "frames": [
+    "tree_0",
+    "tree_1"
+   ],
+   "loop": true
+  },
+  "witch_enemy_ne_cast": {
+   "fps": 5,
+   "frames": [
+    "witch_enemy_ne_cast0",
+    "witch_enemy_ne_cast1"
+   ],
+   "loop": false
+  },
+  "witch_enemy_ne_hit": {
+   "fps": 6,
+   "frames": [
+    "witch_enemy_ne_hit"
+   ],
+   "loop": false
+  },
+  "witch_enemy_ne_idle": {
+   "fps": 3,
+   "frames": [
+    "witch_enemy_ne_idle0",
+    "witch_enemy_ne_idle1"
+   ],
+   "loop": true
+  },
+  "witch_enemy_ne_walk": {
+   "fps": 6,
+   "frames": [
+    "witch_enemy_ne_walk0",
+    "witch_enemy_ne_walk1"
+   ],
+   "loop": true
+  },
+  "witch_enemy_nw_cast": {
+   "fps": 5,
+   "frames": [
+    "witch_enemy_nw_cast0",
+    "witch_enemy_nw_cast1"
+   ],
+   "loop": false
+  },
+  "witch_enemy_nw_hit": {
+   "fps": 6,
+   "frames": [
+    "witch_enemy_nw_hit"
+   ],
+   "loop": false
+  },
+  "witch_enemy_nw_idle": {
+   "fps": 3,
+   "frames": [
+    "witch_enemy_nw_idle0",
+    "witch_enemy_nw_idle1"
+   ],
+   "loop": true
+  },
+  "witch_enemy_nw_walk": {
+   "fps": 6,
+   "frames": [
+    "witch_enemy_nw_walk0",
+    "witch_enemy_nw_walk1"
+   ],
+   "loop": true
+  },
+  "witch_enemy_se_cast": {
+   "fps": 5,
+   "frames": [
+    "witch_enemy_se_cast0",
+    "witch_enemy_se_cast1"
+   ],
+   "loop": false
+  },
+  "witch_enemy_se_hit": {
+   "fps": 6,
+   "frames": [
+    "witch_enemy_se_hit"
+   ],
+   "loop": false
+  },
+  "witch_enemy_se_idle": {
+   "fps": 3,
+   "frames": [
+    "witch_enemy_se_idle0",
+    "witch_enemy_se_idle1"
+   ],
+   "loop": true
+  },
+  "witch_enemy_se_walk": {
+   "fps": 6,
+   "frames": [
+    "witch_enemy_se_walk0",
+    "witch_enemy_se_walk1"
+   ],
+   "loop": true
+  },
+  "witch_enemy_sw_cast": {
+   "fps": 5,
+   "frames": [
+    "witch_enemy_sw_cast0",
+    "witch_enemy_sw_cast1"
+   ],
+   "loop": false
+  },
+  "witch_enemy_sw_hit": {
+   "fps": 6,
+   "frames": [
+    "witch_enemy_sw_hit"
+   ],
+   "loop": false
+  },
+  "witch_enemy_sw_idle": {
+   "fps": 3,
+   "frames": [
+    "witch_enemy_sw_idle0",
+    "witch_enemy_sw_idle1"
+   ],
+   "loop": true
+  },
+  "witch_enemy_sw_walk": {
+   "fps": 6,
+   "frames": [
+    "witch_enemy_sw_walk0",
+    "witch_enemy_sw_walk1"
+   ],
+   "loop": true
+  },
+  "witch_player_ne_cast": {
+   "fps": 5,
+   "frames": [
+    "witch_player_ne_cast0",
+    "witch_player_ne_cast1"
+   ],
+   "loop": false
+  },
+  "witch_player_ne_hit": {
+   "fps": 6,
+   "frames": [
+    "witch_player_ne_hit"
+   ],
+   "loop": false
+  },
+  "witch_player_ne_idle": {
+   "fps": 3,
+   "frames": [
+    "witch_player_ne_idle0",
+    "witch_player_ne_idle1"
+   ],
+   "loop": true
+  },
+  "witch_player_ne_walk": {
+   "fps": 6,
+   "frames": [
+    "witch_player_ne_walk0",
+    "witch_player_ne_walk1"
+   ],
+   "loop": true
+  },
+  "witch_player_nw_cast": {
+   "fps": 5,
+   "frames": [
+    "witch_player_nw_cast0",
+    "witch_player_nw_cast1"
+   ],
+   "loop": false
+  },
+  "witch_player_nw_hit": {
+   "fps": 6,
+   "frames": [
+    "witch_player_nw_hit"
+   ],
+   "loop": false
+  },
+  "witch_player_nw_idle": {
+   "fps": 3,
+   "frames": [
+    "witch_player_nw_idle0",
+    "witch_player_nw_idle1"
+   ],
+   "loop": true
+  },
+  "witch_player_nw_walk": {
+   "fps": 6,
+   "frames": [
+    "witch_player_nw_walk0",
+    "witch_player_nw_walk1"
+   ],
+   "loop": true
+  },
+  "witch_player_se_cast": {
+   "fps": 5,
+   "frames": [
+    "witch_player_se_cast0",
+    "witch_player_se_cast1"
+   ],
+   "loop": false
+  },
+  "witch_player_se_hit": {
+   "fps": 6,
+   "frames": [
+    "witch_player_se_hit"
+   ],
+   "loop": false
+  },
+  "witch_player_se_idle": {
+   "fps": 3,
+   "frames": [
+    "witch_player_se_idle0",
+    "witch_player_se_idle1"
+   ],
+   "loop": true
+  },
+  "witch_player_se_walk": {
+   "fps": 6,
+   "frames": [
+    "witch_player_se_walk0",
+    "witch_player_se_walk1"
+   ],
+   "loop": true
+  },
+  "witch_player_sw_cast": {
+   "fps": 5,
+   "frames": [
+    "witch_player_sw_cast0",
+    "witch_player_sw_cast1"
+   ],
+   "loop": false
+  },
+  "witch_player_sw_hit": {
+   "fps": 6,
+   "frames": [
+    "witch_player_sw_hit"
+   ],
+   "loop": false
+  },
+  "witch_player_sw_idle": {
+   "fps": 3,
+   "frames": [
+    "witch_player_sw_idle0",
+    "witch_player_sw_idle1"
+   ],
+   "loop": true
+  },
+  "witch_player_sw_walk": {
+   "fps": 6,
+   "frames": [
+    "witch_player_sw_walk0",
+    "witch_player_sw_walk1"
+   ],
+   "loop": true
+  }
+ },
+ "images": {
+  "bench_0": {
+   "url": "art/props/bench_0.png"
+  },
+  "bush_0": {
+   "url": "art/props/bush_0.png"
+  },
+  "bush_1": {
+   "url": "art/props/bush_1.png"
+  },
+  "crates_0": {
+   "url": "art/props/crates_0.png"
+  },
+  "dais_4_2": {
+   "url": "art/terrain/dais_4_2.png"
+  },
+  "dais_4_3": {
+   "url": "art/terrain/dais_4_3.png"
+  },
+  "dais_5_2": {
+   "url": "art/terrain/dais_5_2.png"
+  },
+  "dais_5_3": {
+   "url": "art/terrain/dais_5_3.png"
+  },
+  "fam_ember_ne_cast0": {
+   "url": "art/sprites/fam_ember_ne_cast0.png"
+  },
+  "fam_ember_ne_cast1": {
+   "url": "art/sprites/fam_ember_ne_cast1.png"
+  },
+  "fam_ember_ne_hit": {
+   "url": "art/sprites/fam_ember_ne_hit.png"
+  },
+  "fam_ember_ne_idle0": {
+   "url": "art/sprites/fam_ember_ne_idle0.png"
+  },
+  "fam_ember_ne_idle1": {
+   "url": "art/sprites/fam_ember_ne_idle1.png"
+  },
+  "fam_ember_ne_walk0": {
+   "url": "art/sprites/fam_ember_ne_walk0.png"
+  },
+  "fam_ember_ne_walk1": {
+   "url": "art/sprites/fam_ember_ne_walk1.png"
+  },
+  "fam_ember_nw_cast0": {
+   "url": "art/sprites/fam_ember_nw_cast0.png"
+  },
+  "fam_ember_nw_cast1": {
+   "url": "art/sprites/fam_ember_nw_cast1.png"
+  },
+  "fam_ember_nw_hit": {
+   "url": "art/sprites/fam_ember_nw_hit.png"
+  },
+  "fam_ember_nw_idle0": {
+   "url": "art/sprites/fam_ember_nw_idle0.png"
+  },
+  "fam_ember_nw_idle1": {
+   "url": "art/sprites/fam_ember_nw_idle1.png"
+  },
+  "fam_ember_nw_walk0": {
+   "url": "art/sprites/fam_ember_nw_walk0.png"
+  },
+  "fam_ember_nw_walk1": {
+   "url": "art/sprites/fam_ember_nw_walk1.png"
+  },
+  "fam_ember_se_cast0": {
+   "url": "art/sprites/fam_ember_se_cast0.png"
+  },
+  "fam_ember_se_cast1": {
+   "url": "art/sprites/fam_ember_se_cast1.png"
+  },
+  "fam_ember_se_hit": {
+   "url": "art/sprites/fam_ember_se_hit.png"
+  },
+  "fam_ember_se_idle0": {
+   "url": "art/sprites/fam_ember_se_idle0.png"
+  },
+  "fam_ember_se_idle1": {
+   "url": "art/sprites/fam_ember_se_idle1.png"
+  },
+  "fam_ember_se_walk0": {
+   "url": "art/sprites/fam_ember_se_walk0.png"
+  },
+  "fam_ember_se_walk1": {
+   "url": "art/sprites/fam_ember_se_walk1.png"
+  },
+  "fam_ember_sw_cast0": {
+   "url": "art/sprites/fam_ember_sw_cast0.png"
+  },
+  "fam_ember_sw_cast1": {
+   "url": "art/sprites/fam_ember_sw_cast1.png"
+  },
+  "fam_ember_sw_hit": {
+   "url": "art/sprites/fam_ember_sw_hit.png"
+  },
+  "fam_ember_sw_idle0": {
+   "url": "art/sprites/fam_ember_sw_idle0.png"
+  },
+  "fam_ember_sw_idle1": {
+   "url": "art/sprites/fam_ember_sw_idle1.png"
+  },
+  "fam_ember_sw_walk0": {
+   "url": "art/sprites/fam_ember_sw_walk0.png"
+  },
+  "fam_ember_sw_walk1": {
+   "url": "art/sprites/fam_ember_sw_walk1.png"
+  },
+  "fam_leaf_ne_cast0": {
+   "url": "art/sprites/fam_leaf_ne_cast0.png"
+  },
+  "fam_leaf_ne_cast1": {
+   "url": "art/sprites/fam_leaf_ne_cast1.png"
+  },
+  "fam_leaf_ne_hit": {
+   "url": "art/sprites/fam_leaf_ne_hit.png"
+  },
+  "fam_leaf_ne_idle0": {
+   "url": "art/sprites/fam_leaf_ne_idle0.png"
+  },
+  "fam_leaf_ne_idle1": {
+   "url": "art/sprites/fam_leaf_ne_idle1.png"
+  },
+  "fam_leaf_ne_walk0": {
+   "url": "art/sprites/fam_leaf_ne_walk0.png"
+  },
+  "fam_leaf_ne_walk1": {
+   "url": "art/sprites/fam_leaf_ne_walk1.png"
+  },
+  "fam_leaf_nw_cast0": {
+   "url": "art/sprites/fam_leaf_nw_cast0.png"
+  },
+  "fam_leaf_nw_cast1": {
+   "url": "art/sprites/fam_leaf_nw_cast1.png"
+  },
+  "fam_leaf_nw_hit": {
+   "url": "art/sprites/fam_leaf_nw_hit.png"
+  },
+  "fam_leaf_nw_idle0": {
+   "url": "art/sprites/fam_leaf_nw_idle0.png"
+  },
+  "fam_leaf_nw_idle1": {
+   "url": "art/sprites/fam_leaf_nw_idle1.png"
+  },
+  "fam_leaf_nw_walk0": {
+   "url": "art/sprites/fam_leaf_nw_walk0.png"
+  },
+  "fam_leaf_nw_walk1": {
+   "url": "art/sprites/fam_leaf_nw_walk1.png"
+  },
+  "fam_leaf_se_cast0": {
+   "url": "art/sprites/fam_leaf_se_cast0.png"
+  },
+  "fam_leaf_se_cast1": {
+   "url": "art/sprites/fam_leaf_se_cast1.png"
+  },
+  "fam_leaf_se_hit": {
+   "url": "art/sprites/fam_leaf_se_hit.png"
+  },
+  "fam_leaf_se_idle0": {
+   "url": "art/sprites/fam_leaf_se_idle0.png"
+  },
+  "fam_leaf_se_idle1": {
+   "url": "art/sprites/fam_leaf_se_idle1.png"
+  },
+  "fam_leaf_se_walk0": {
+   "url": "art/sprites/fam_leaf_se_walk0.png"
+  },
+  "fam_leaf_se_walk1": {
+   "url": "art/sprites/fam_leaf_se_walk1.png"
+  },
+  "fam_leaf_sw_cast0": {
+   "url": "art/sprites/fam_leaf_sw_cast0.png"
+  },
+  "fam_leaf_sw_cast1": {
+   "url": "art/sprites/fam_leaf_sw_cast1.png"
+  },
+  "fam_leaf_sw_hit": {
+   "url": "art/sprites/fam_leaf_sw_hit.png"
+  },
+  "fam_leaf_sw_idle0": {
+   "url": "art/sprites/fam_leaf_sw_idle0.png"
+  },
+  "fam_leaf_sw_idle1": {
+   "url": "art/sprites/fam_leaf_sw_idle1.png"
+  },
+  "fam_leaf_sw_walk0": {
+   "url": "art/sprites/fam_leaf_sw_walk0.png"
+  },
+  "fam_leaf_sw_walk1": {
+   "url": "art/sprites/fam_leaf_sw_walk1.png"
+  },
+  "flower0_0": {
+   "url": "art/props/flowers_0_0.png"
+  },
+  "flower0_1": {
+   "url": "art/props/flowers_0_1.png"
+  },
+  "flower1_0": {
+   "url": "art/props/flowers_1_0.png"
+  },
+  "flower1_1": {
+   "url": "art/props/flowers_1_1.png"
+  },
+  "flower2_0": {
+   "url": "art/props/flowers_2_0.png"
+  },
+  "flower2_1": {
+   "url": "art/props/flowers_2_1.png"
+  },
+  "fountain_basin": {
+   "url": "art/props/fountain_basin.png"
+  },
+  "lamp_0": {
+   "url": "art/props/lamp_0.png"
+  },
+  "side_stone": {
+   "url": "art/terrain/side_stone.png"
+  },
+  "signpost_0": {
+   "url": "art/props/signpost_0.png"
+  },
+  "splash_0": {
+   "url": "art/props/fountain_splash_0.png"
+  },
+  "splash_1": {
+   "url": "art/props/fountain_splash_1.png"
+  },
+  "splash_2": {
+   "url": "art/props/fountain_splash_2.png"
+  },
+  "step_top": {
+   "url": "art/terrain/step_top.png"
+  },
+  "stream_0_0": {
+   "url": "art/terrain/water_7_0_f0.png"
+  },
+  "stream_0_1": {
+   "url": "art/terrain/water_7_0_f1.png"
+  },
+  "stream_0_2": {
+   "url": "art/terrain/water_7_0_f2.png"
+  },
+  "stream_1_0": {
+   "url": "art/terrain/water_7_1_f0.png"
+  },
+  "stream_1_1": {
+   "url": "art/terrain/water_7_1_f1.png"
+  },
+  "stream_1_2": {
+   "url": "art/terrain/water_7_1_f2.png"
+  },
+  "stream_2_0": {
+   "url": "art/terrain/water_7_2_f0.png"
+  },
+  "stream_2_1": {
+   "url": "art/terrain/water_7_2_f1.png"
+  },
+  "stream_2_2": {
+   "url": "art/terrain/water_7_2_f2.png"
+  },
+  "stream_3_0": {
+   "url": "art/terrain/water_7_3_f0.png"
+  },
+  "stream_3_1": {
+   "url": "art/terrain/water_7_3_f1.png"
+  },
+  "stream_3_2": {
+   "url": "art/terrain/water_7_3_f2.png"
+  },
+  "stream_4_0": {
+   "url": "art/terrain/water_7_4_f0.png"
+  },
+  "stream_4_1": {
+   "url": "art/terrain/water_7_4_f1.png"
+  },
+  "stream_4_2": {
+   "url": "art/terrain/water_7_4_f2.png"
+  },
+  "stream_5_0": {
+   "url": "art/terrain/water_7_5_f0.png"
+  },
+  "stream_5_1": {
+   "url": "art/terrain/water_7_5_f1.png"
+  },
+  "stream_5_2": {
+   "url": "art/terrain/water_7_5_f2.png"
+  },
+  "stream_6_0": {
+   "url": "art/terrain/water_7_6_f0.png"
+  },
+  "stream_6_1": {
+   "url": "art/terrain/water_7_6_f1.png"
+  },
+  "stream_6_2": {
+   "url": "art/terrain/water_7_6_f2.png"
+  },
+  "tile_0_0": {
+   "url": "art/terrain/tile_0_0.png"
+  },
+  "tile_0_1": {
+   "url": "art/terrain/tile_0_1.png"
+  },
+  "tile_0_2": {
+   "url": "art/terrain/tile_0_2.png"
+  },
+  "tile_0_3": {
+   "url": "art/terrain/tile_0_3.png"
+  },
+  "tile_0_4": {
+   "url": "art/terrain/tile_0_4.png"
+  },
+  "tile_0_5": {
+   "url": "art/terrain/tile_0_5.png"
+  },
+  "tile_0_6": {
+   "url": "art/terrain/tile_0_6.png"
+  },
+  "tile_1_0": {
+   "url": "art/terrain/tile_1_0.png"
+  },
+  "tile_1_1": {
+   "url": "art/terrain/tile_1_1.png"
+  },
+  "tile_1_2": {
+   "url": "art/terrain/tile_1_2.png"
+  },
+  "tile_1_3": {
+   "url": "art/terrain/tile_1_3.png"
+  },
+  "tile_1_4": {
+   "url": "art/terrain/tile_1_4.png"
+  },
+  "tile_1_5": {
+   "url": "art/terrain/tile_1_5.png"
+  },
+  "tile_1_6": {
+   "url": "art/terrain/tile_1_6.png"
+  },
+  "tile_2_0": {
+   "url": "art/terrain/tile_2_0.png"
+  },
+  "tile_2_1": {
+   "url": "art/terrain/tile_2_1.png"
+  },
+  "tile_2_2": {
+   "url": "art/terrain/tile_2_2.png"
+  },
+  "tile_2_3": {
+   "url": "art/terrain/tile_2_3.png"
+  },
+  "tile_2_4": {
+   "url": "art/terrain/tile_2_4.png"
+  },
+  "tile_2_5": {
+   "url": "art/terrain/tile_2_5.png"
+  },
+  "tile_2_6": {
+   "url": "art/terrain/tile_2_6.png"
+  },
+  "tile_3_0": {
+   "url": "art/terrain/tile_3_0.png"
+  },
+  "tile_3_1": {
+   "url": "art/terrain/tile_3_1.png"
+  },
+  "tile_3_2": {
+   "url": "art/terrain/tile_3_2.png"
+  },
+  "tile_3_3": {
+   "url": "art/terrain/tile_3_3.png"
+  },
+  "tile_3_4": {
+   "url": "art/terrain/tile_3_4.png"
+  },
+  "tile_3_5": {
+   "url": "art/terrain/tile_3_5.png"
+  },
+  "tile_3_6": {
+   "url": "art/terrain/tile_3_6.png"
+  },
+  "tile_4_0": {
+   "url": "art/terrain/tile_4_0.png"
+  },
+  "tile_4_1": {
+   "url": "art/terrain/tile_4_1.png"
+  },
+  "tile_4_2": {
+   "url": "art/terrain/tile_4_2.png"
+  },
+  "tile_4_3": {
+   "url": "art/terrain/tile_4_3.png"
+  },
+  "tile_4_4": {
+   "url": "art/terrain/tile_4_4.png"
+  },
+  "tile_4_5": {
+   "url": "art/terrain/tile_4_5.png"
+  },
+  "tile_4_6": {
+   "url": "art/terrain/tile_4_6.png"
+  },
+  "tile_5_0": {
+   "url": "art/terrain/tile_5_0.png"
+  },
+  "tile_5_1": {
+   "url": "art/terrain/tile_5_1.png"
+  },
+  "tile_5_2": {
+   "url": "art/terrain/tile_5_2.png"
+  },
+  "tile_5_3": {
+   "url": "art/terrain/tile_5_3.png"
+  },
+  "tile_5_4": {
+   "url": "art/terrain/tile_5_4.png"
+  },
+  "tile_5_5": {
+   "url": "art/terrain/tile_5_5.png"
+  },
+  "tile_5_6": {
+   "url": "art/terrain/tile_5_6.png"
+  },
+  "tile_6_0": {
+   "url": "art/terrain/tile_6_0.png"
+  },
+  "tile_6_1": {
+   "url": "art/terrain/tile_6_1.png"
+  },
+  "tile_6_2": {
+   "url": "art/terrain/tile_6_2.png"
+  },
+  "tile_6_3": {
+   "url": "art/terrain/tile_6_3.png"
+  },
+  "tile_6_4": {
+   "url": "art/terrain/tile_6_4.png"
+  },
+  "tile_6_5": {
+   "url": "art/terrain/tile_6_5.png"
+  },
+  "tile_6_6": {
+   "url": "art/terrain/tile_6_6.png"
+  },
+  "tile_7_0": {
+   "url": "art/terrain/tile_7_0.png"
+  },
+  "tile_7_1": {
+   "url": "art/terrain/tile_7_1.png"
+  },
+  "tile_7_2": {
+   "url": "art/terrain/tile_7_2.png"
+  },
+  "tile_7_3": {
+   "url": "art/terrain/tile_7_3.png"
+  },
+  "tile_7_4": {
+   "url": "art/terrain/tile_7_4.png"
+  },
+  "tile_7_5": {
+   "url": "art/terrain/tile_7_5.png"
+  },
+  "tile_7_6": {
+   "url": "art/terrain/tile_7_6.png"
+  },
+  "tree_0": {
+   "url": "art/props/tree_0.png"
+  },
+  "tree_1": {
+   "url": "art/props/tree_1.png"
+  },
+  "witch_enemy_ne_cast0": {
+   "url": "art/sprites/witch_enemy_ne_cast0.png"
+  },
+  "witch_enemy_ne_cast1": {
+   "url": "art/sprites/witch_enemy_ne_cast1.png"
+  },
+  "witch_enemy_ne_hit": {
+   "url": "art/sprites/witch_enemy_ne_hit.png"
+  },
+  "witch_enemy_ne_idle0": {
+   "url": "art/sprites/witch_enemy_ne_idle0.png"
+  },
+  "witch_enemy_ne_idle1": {
+   "url": "art/sprites/witch_enemy_ne_idle1.png"
+  },
+  "witch_enemy_ne_walk0": {
+   "url": "art/sprites/witch_enemy_ne_walk0.png"
+  },
+  "witch_enemy_ne_walk1": {
+   "url": "art/sprites/witch_enemy_ne_walk1.png"
+  },
+  "witch_enemy_nw_cast0": {
+   "url": "art/sprites/witch_enemy_nw_cast0.png"
+  },
+  "witch_enemy_nw_cast1": {
+   "url": "art/sprites/witch_enemy_nw_cast1.png"
+  },
+  "witch_enemy_nw_hit": {
+   "url": "art/sprites/witch_enemy_nw_hit.png"
+  },
+  "witch_enemy_nw_idle0": {
+   "url": "art/sprites/witch_enemy_nw_idle0.png"
+  },
+  "witch_enemy_nw_idle1": {
+   "url": "art/sprites/witch_enemy_nw_idle1.png"
+  },
+  "witch_enemy_nw_walk0": {
+   "url": "art/sprites/witch_enemy_nw_walk0.png"
+  },
+  "witch_enemy_nw_walk1": {
+   "url": "art/sprites/witch_enemy_nw_walk1.png"
+  },
+  "witch_enemy_se_cast0": {
+   "url": "art/sprites/witch_enemy_se_cast0.png"
+  },
+  "witch_enemy_se_cast1": {
+   "url": "art/sprites/witch_enemy_se_cast1.png"
+  },
+  "witch_enemy_se_hit": {
+   "url": "art/sprites/witch_enemy_se_hit.png"
+  },
+  "witch_enemy_se_idle0": {
+   "url": "art/sprites/witch_enemy_se_idle0.png"
+  },
+  "witch_enemy_se_idle1": {
+   "url": "art/sprites/witch_enemy_se_idle1.png"
+  },
+  "witch_enemy_se_walk0": {
+   "url": "art/sprites/witch_enemy_se_walk0.png"
+  },
+  "witch_enemy_se_walk1": {
+   "url": "art/sprites/witch_enemy_se_walk1.png"
+  },
+  "witch_enemy_sw_cast0": {
+   "url": "art/sprites/witch_enemy_sw_cast0.png"
+  },
+  "witch_enemy_sw_cast1": {
+   "url": "art/sprites/witch_enemy_sw_cast1.png"
+  },
+  "witch_enemy_sw_hit": {
+   "url": "art/sprites/witch_enemy_sw_hit.png"
+  },
+  "witch_enemy_sw_idle0": {
+   "url": "art/sprites/witch_enemy_sw_idle0.png"
+  },
+  "witch_enemy_sw_idle1": {
+   "url": "art/sprites/witch_enemy_sw_idle1.png"
+  },
+  "witch_enemy_sw_walk0": {
+   "url": "art/sprites/witch_enemy_sw_walk0.png"
+  },
+  "witch_enemy_sw_walk1": {
+   "url": "art/sprites/witch_enemy_sw_walk1.png"
+  },
+  "witch_player_ne_cast0": {
+   "url": "art/sprites/witch_player_ne_cast0.png"
+  },
+  "witch_player_ne_cast1": {
+   "url": "art/sprites/witch_player_ne_cast1.png"
+  },
+  "witch_player_ne_hit": {
+   "url": "art/sprites/witch_player_ne_hit.png"
+  },
+  "witch_player_ne_idle0": {
+   "url": "art/sprites/witch_player_ne_idle0.png"
+  },
+  "witch_player_ne_idle1": {
+   "url": "art/sprites/witch_player_ne_idle1.png"
+  },
+  "witch_player_ne_walk0": {
+   "url": "art/sprites/witch_player_ne_walk0.png"
+  },
+  "witch_player_ne_walk1": {
+   "url": "art/sprites/witch_player_ne_walk1.png"
+  },
+  "witch_player_nw_cast0": {
+   "url": "art/sprites/witch_player_nw_cast0.png"
+  },
+  "witch_player_nw_cast1": {
+   "url": "art/sprites/witch_player_nw_cast1.png"
+  },
+  "witch_player_nw_hit": {
+   "url": "art/sprites/witch_player_nw_hit.png"
+  },
+  "witch_player_nw_idle0": {
+   "url": "art/sprites/witch_player_nw_idle0.png"
+  },
+  "witch_player_nw_idle1": {
+   "url": "art/sprites/witch_player_nw_idle1.png"
+  },
+  "witch_player_nw_walk0": {
+   "url": "art/sprites/witch_player_nw_walk0.png"
+  },
+  "witch_player_nw_walk1": {
+   "url": "art/sprites/witch_player_nw_walk1.png"
+  },
+  "witch_player_se_cast0": {
+   "url": "art/sprites/witch_player_se_cast0.png"
+  },
+  "witch_player_se_cast1": {
+   "url": "art/sprites/witch_player_se_cast1.png"
+  },
+  "witch_player_se_hit": {
+   "url": "art/sprites/witch_player_se_hit.png"
+  },
+  "witch_player_se_idle0": {
+   "url": "art/sprites/witch_player_se_idle0.png"
+  },
+  "witch_player_se_idle1": {
+   "url": "art/sprites/witch_player_se_idle1.png"
+  },
+  "witch_player_se_walk0": {
+   "url": "art/sprites/witch_player_se_walk0.png"
+  },
+  "witch_player_se_walk1": {
+   "url": "art/sprites/witch_player_se_walk1.png"
+  },
+  "witch_player_sw_cast0": {
+   "url": "art/sprites/witch_player_sw_cast0.png"
+  },
+  "witch_player_sw_cast1": {
+   "url": "art/sprites/witch_player_sw_cast1.png"
+  },
+  "witch_player_sw_hit": {
+   "url": "art/sprites/witch_player_sw_hit.png"
+  },
+  "witch_player_sw_idle0": {
+   "url": "art/sprites/witch_player_sw_idle0.png"
+  },
+  "witch_player_sw_idle1": {
+   "url": "art/sprites/witch_player_sw_idle1.png"
+  },
+  "witch_player_sw_walk0": {
+   "url": "art/sprites/witch_player_sw_walk0.png"
+  },
+  "witch_player_sw_walk1": {
+   "url": "art/sprites/witch_player_sw_walk1.png"
+  }
+ },
+ "textures": {
+  "bench_0": {
+   "image": "bench_0"
+  },
+  "bush_0": {
+   "image": "bush_0"
+  },
+  "bush_1": {
+   "image": "bush_1"
+  },
+  "crates_0": {
+   "image": "crates_0"
+  },
+  "dais_4_2": {
+   "image": "dais_4_2"
+  },
+  "dais_4_3": {
+   "image": "dais_4_3"
+  },
+  "dais_5_2": {
+   "image": "dais_5_2"
+  },
+  "dais_5_3": {
+   "image": "dais_5_3"
+  },
+  "fam_ember_ne_cast0": {
+   "image": "fam_ember_ne_cast0"
+  },
+  "fam_ember_ne_cast1": {
+   "image": "fam_ember_ne_cast1"
+  },
+  "fam_ember_ne_hit": {
+   "image": "fam_ember_ne_hit"
+  },
+  "fam_ember_ne_idle0": {
+   "image": "fam_ember_ne_idle0"
+  },
+  "fam_ember_ne_idle1": {
+   "image": "fam_ember_ne_idle1"
+  },
+  "fam_ember_ne_walk0": {
+   "image": "fam_ember_ne_walk0"
+  },
+  "fam_ember_ne_walk1": {
+   "image": "fam_ember_ne_walk1"
+  },
+  "fam_ember_nw_cast0": {
+   "image": "fam_ember_nw_cast0"
+  },
+  "fam_ember_nw_cast1": {
+   "image": "fam_ember_nw_cast1"
+  },
+  "fam_ember_nw_hit": {
+   "image": "fam_ember_nw_hit"
+  },
+  "fam_ember_nw_idle0": {
+   "image": "fam_ember_nw_idle0"
+  },
+  "fam_ember_nw_idle1": {
+   "image": "fam_ember_nw_idle1"
+  },
+  "fam_ember_nw_walk0": {
+   "image": "fam_ember_nw_walk0"
+  },
+  "fam_ember_nw_walk1": {
+   "image": "fam_ember_nw_walk1"
+  },
+  "fam_ember_se_cast0": {
+   "image": "fam_ember_se_cast0"
+  },
+  "fam_ember_se_cast1": {
+   "image": "fam_ember_se_cast1"
+  },
+  "fam_ember_se_hit": {
+   "image": "fam_ember_se_hit"
+  },
+  "fam_ember_se_idle0": {
+   "image": "fam_ember_se_idle0"
+  },
+  "fam_ember_se_idle1": {
+   "image": "fam_ember_se_idle1"
+  },
+  "fam_ember_se_walk0": {
+   "image": "fam_ember_se_walk0"
+  },
+  "fam_ember_se_walk1": {
+   "image": "fam_ember_se_walk1"
+  },
+  "fam_ember_sw_cast0": {
+   "image": "fam_ember_sw_cast0"
+  },
+  "fam_ember_sw_cast1": {
+   "image": "fam_ember_sw_cast1"
+  },
+  "fam_ember_sw_hit": {
+   "image": "fam_ember_sw_hit"
+  },
+  "fam_ember_sw_idle0": {
+   "image": "fam_ember_sw_idle0"
+  },
+  "fam_ember_sw_idle1": {
+   "image": "fam_ember_sw_idle1"
+  },
+  "fam_ember_sw_walk0": {
+   "image": "fam_ember_sw_walk0"
+  },
+  "fam_ember_sw_walk1": {
+   "image": "fam_ember_sw_walk1"
+  },
+  "fam_leaf_ne_cast0": {
+   "image": "fam_leaf_ne_cast0"
+  },
+  "fam_leaf_ne_cast1": {
+   "image": "fam_leaf_ne_cast1"
+  },
+  "fam_leaf_ne_hit": {
+   "image": "fam_leaf_ne_hit"
+  },
+  "fam_leaf_ne_idle0": {
+   "image": "fam_leaf_ne_idle0"
+  },
+  "fam_leaf_ne_idle1": {
+   "image": "fam_leaf_ne_idle1"
+  },
+  "fam_leaf_ne_walk0": {
+   "image": "fam_leaf_ne_walk0"
+  },
+  "fam_leaf_ne_walk1": {
+   "image": "fam_leaf_ne_walk1"
+  },
+  "fam_leaf_nw_cast0": {
+   "image": "fam_leaf_nw_cast0"
+  },
+  "fam_leaf_nw_cast1": {
+   "image": "fam_leaf_nw_cast1"
+  },
+  "fam_leaf_nw_hit": {
+   "image": "fam_leaf_nw_hit"
+  },
+  "fam_leaf_nw_idle0": {
+   "image": "fam_leaf_nw_idle0"
+  },
+  "fam_leaf_nw_idle1": {
+   "image": "fam_leaf_nw_idle1"
+  },
+  "fam_leaf_nw_walk0": {
+   "image": "fam_leaf_nw_walk0"
+  },
+  "fam_leaf_nw_walk1": {
+   "image": "fam_leaf_nw_walk1"
+  },
+  "fam_leaf_se_cast0": {
+   "image": "fam_leaf_se_cast0"
+  },
+  "fam_leaf_se_cast1": {
+   "image": "fam_leaf_se_cast1"
+  },
+  "fam_leaf_se_hit": {
+   "image": "fam_leaf_se_hit"
+  },
+  "fam_leaf_se_idle0": {
+   "image": "fam_leaf_se_idle0"
+  },
+  "fam_leaf_se_idle1": {
+   "image": "fam_leaf_se_idle1"
+  },
+  "fam_leaf_se_walk0": {
+   "image": "fam_leaf_se_walk0"
+  },
+  "fam_leaf_se_walk1": {
+   "image": "fam_leaf_se_walk1"
+  },
+  "fam_leaf_sw_cast0": {
+   "image": "fam_leaf_sw_cast0"
+  },
+  "fam_leaf_sw_cast1": {
+   "image": "fam_leaf_sw_cast1"
+  },
+  "fam_leaf_sw_hit": {
+   "image": "fam_leaf_sw_hit"
+  },
+  "fam_leaf_sw_idle0": {
+   "image": "fam_leaf_sw_idle0"
+  },
+  "fam_leaf_sw_idle1": {
+   "image": "fam_leaf_sw_idle1"
+  },
+  "fam_leaf_sw_walk0": {
+   "image": "fam_leaf_sw_walk0"
+  },
+  "fam_leaf_sw_walk1": {
+   "image": "fam_leaf_sw_walk1"
+  },
+  "flower0_0": {
+   "image": "flower0_0"
+  },
+  "flower0_1": {
+   "image": "flower0_1"
+  },
+  "flower1_0": {
+   "image": "flower1_0"
+  },
+  "flower1_1": {
+   "image": "flower1_1"
+  },
+  "flower2_0": {
+   "image": "flower2_0"
+  },
+  "flower2_1": {
+   "image": "flower2_1"
+  },
+  "fountain_basin": {
+   "image": "fountain_basin"
+  },
+  "lamp_0": {
+   "image": "lamp_0"
+  },
+  "side_stone": {
+   "image": "side_stone"
+  },
+  "signpost_0": {
+   "image": "signpost_0"
+  },
+  "splash_0": {
+   "image": "splash_0"
+  },
+  "splash_1": {
+   "image": "splash_1"
+  },
+  "splash_2": {
+   "image": "splash_2"
+  },
+  "step_top": {
+   "image": "step_top"
+  },
+  "stream_0_0": {
+   "image": "stream_0_0"
+  },
+  "stream_0_1": {
+   "image": "stream_0_1"
+  },
+  "stream_0_2": {
+   "image": "stream_0_2"
+  },
+  "stream_1_0": {
+   "image": "stream_1_0"
+  },
+  "stream_1_1": {
+   "image": "stream_1_1"
+  },
+  "stream_1_2": {
+   "image": "stream_1_2"
+  },
+  "stream_2_0": {
+   "image": "stream_2_0"
+  },
+  "stream_2_1": {
+   "image": "stream_2_1"
+  },
+  "stream_2_2": {
+   "image": "stream_2_2"
+  },
+  "stream_3_0": {
+   "image": "stream_3_0"
+  },
+  "stream_3_1": {
+   "image": "stream_3_1"
+  },
+  "stream_3_2": {
+   "image": "stream_3_2"
+  },
+  "stream_4_0": {
+   "image": "stream_4_0"
+  },
+  "stream_4_1": {
+   "image": "stream_4_1"
+  },
+  "stream_4_2": {
+   "image": "stream_4_2"
+  },
+  "stream_5_0": {
+   "image": "stream_5_0"
+  },
+  "stream_5_1": {
+   "image": "stream_5_1"
+  },
+  "stream_5_2": {
+   "image": "stream_5_2"
+  },
+  "stream_6_0": {
+   "image": "stream_6_0"
+  },
+  "stream_6_1": {
+   "image": "stream_6_1"
+  },
+  "stream_6_2": {
+   "image": "stream_6_2"
+  },
+  "tile_0_0": {
+   "image": "tile_0_0"
+  },
+  "tile_0_1": {
+   "image": "tile_0_1"
+  },
+  "tile_0_2": {
+   "image": "tile_0_2"
+  },
+  "tile_0_3": {
+   "image": "tile_0_3"
+  },
+  "tile_0_4": {
+   "image": "tile_0_4"
+  },
+  "tile_0_5": {
+   "image": "tile_0_5"
+  },
+  "tile_0_6": {
+   "image": "tile_0_6"
+  },
+  "tile_1_0": {
+   "image": "tile_1_0"
+  },
+  "tile_1_1": {
+   "image": "tile_1_1"
+  },
+  "tile_1_2": {
+   "image": "tile_1_2"
+  },
+  "tile_1_3": {
+   "image": "tile_1_3"
+  },
+  "tile_1_4": {
+   "image": "tile_1_4"
+  },
+  "tile_1_5": {
+   "image": "tile_1_5"
+  },
+  "tile_1_6": {
+   "image": "tile_1_6"
+  },
+  "tile_2_0": {
+   "image": "tile_2_0"
+  },
+  "tile_2_1": {
+   "image": "tile_2_1"
+  },
+  "tile_2_2": {
+   "image": "tile_2_2"
+  },
+  "tile_2_3": {
+   "image": "tile_2_3"
+  },
+  "tile_2_4": {
+   "image": "tile_2_4"
+  },
+  "tile_2_5": {
+   "image": "tile_2_5"
+  },
+  "tile_2_6": {
+   "image": "tile_2_6"
+  },
+  "tile_3_0": {
+   "image": "tile_3_0"
+  },
+  "tile_3_1": {
+   "image": "tile_3_1"
+  },
+  "tile_3_2": {
+   "image": "tile_3_2"
+  },
+  "tile_3_3": {
+   "image": "tile_3_3"
+  },
+  "tile_3_4": {
+   "image": "tile_3_4"
+  },
+  "tile_3_5": {
+   "image": "tile_3_5"
+  },
+  "tile_3_6": {
+   "image": "tile_3_6"
+  },
+  "tile_4_0": {
+   "image": "tile_4_0"
+  },
+  "tile_4_1": {
+   "image": "tile_4_1"
+  },
+  "tile_4_2": {
+   "image": "tile_4_2"
+  },
+  "tile_4_3": {
+   "image": "tile_4_3"
+  },
+  "tile_4_4": {
+   "image": "tile_4_4"
+  },
+  "tile_4_5": {
+   "image": "tile_4_5"
+  },
+  "tile_4_6": {
+   "image": "tile_4_6"
+  },
+  "tile_5_0": {
+   "image": "tile_5_0"
+  },
+  "tile_5_1": {
+   "image": "tile_5_1"
+  },
+  "tile_5_2": {
+   "image": "tile_5_2"
+  },
+  "tile_5_3": {
+   "image": "tile_5_3"
+  },
+  "tile_5_4": {
+   "image": "tile_5_4"
+  },
+  "tile_5_5": {
+   "image": "tile_5_5"
+  },
+  "tile_5_6": {
+   "image": "tile_5_6"
+  },
+  "tile_6_0": {
+   "image": "tile_6_0"
+  },
+  "tile_6_1": {
+   "image": "tile_6_1"
+  },
+  "tile_6_2": {
+   "image": "tile_6_2"
+  },
+  "tile_6_3": {
+   "image": "tile_6_3"
+  },
+  "tile_6_4": {
+   "image": "tile_6_4"
+  },
+  "tile_6_5": {
+   "image": "tile_6_5"
+  },
+  "tile_6_6": {
+   "image": "tile_6_6"
+  },
+  "tile_7_0": {
+   "image": "tile_7_0"
+  },
+  "tile_7_1": {
+   "image": "tile_7_1"
+  },
+  "tile_7_2": {
+   "image": "tile_7_2"
+  },
+  "tile_7_3": {
+   "image": "tile_7_3"
+  },
+  "tile_7_4": {
+   "image": "tile_7_4"
+  },
+  "tile_7_5": {
+   "image": "tile_7_5"
+  },
+  "tile_7_6": {
+   "image": "tile_7_6"
+  },
+  "tree_0": {
+   "image": "tree_0"
+  },
+  "tree_1": {
+   "image": "tree_1"
+  },
+  "witch_enemy_ne_cast0": {
+   "image": "witch_enemy_ne_cast0"
+  },
+  "witch_enemy_ne_cast1": {
+   "image": "witch_enemy_ne_cast1"
+  },
+  "witch_enemy_ne_hit": {
+   "image": "witch_enemy_ne_hit"
+  },
+  "witch_enemy_ne_idle0": {
+   "image": "witch_enemy_ne_idle0"
+  },
+  "witch_enemy_ne_idle1": {
+   "image": "witch_enemy_ne_idle1"
+  },
+  "witch_enemy_ne_walk0": {
+   "image": "witch_enemy_ne_walk0"
+  },
+  "witch_enemy_ne_walk1": {
+   "image": "witch_enemy_ne_walk1"
+  },
+  "witch_enemy_nw_cast0": {
+   "image": "witch_enemy_nw_cast0"
+  },
+  "witch_enemy_nw_cast1": {
+   "image": "witch_enemy_nw_cast1"
+  },
+  "witch_enemy_nw_hit": {
+   "image": "witch_enemy_nw_hit"
+  },
+  "witch_enemy_nw_idle0": {
+   "image": "witch_enemy_nw_idle0"
+  },
+  "witch_enemy_nw_idle1": {
+   "image": "witch_enemy_nw_idle1"
+  },
+  "witch_enemy_nw_walk0": {
+   "image": "witch_enemy_nw_walk0"
+  },
+  "witch_enemy_nw_walk1": {
+   "image": "witch_enemy_nw_walk1"
+  },
+  "witch_enemy_se_cast0": {
+   "image": "witch_enemy_se_cast0"
+  },
+  "witch_enemy_se_cast1": {
+   "image": "witch_enemy_se_cast1"
+  },
+  "witch_enemy_se_hit": {
+   "image": "witch_enemy_se_hit"
+  },
+  "witch_enemy_se_idle0": {
+   "image": "witch_enemy_se_idle0"
+  },
+  "witch_enemy_se_idle1": {
+   "image": "witch_enemy_se_idle1"
+  },
+  "witch_enemy_se_walk0": {
+   "image": "witch_enemy_se_walk0"
+  },
+  "witch_enemy_se_walk1": {
+   "image": "witch_enemy_se_walk1"
+  },
+  "witch_enemy_sw_cast0": {
+   "image": "witch_enemy_sw_cast0"
+  },
+  "witch_enemy_sw_cast1": {
+   "image": "witch_enemy_sw_cast1"
+  },
+  "witch_enemy_sw_hit": {
+   "image": "witch_enemy_sw_hit"
+  },
+  "witch_enemy_sw_idle0": {
+   "image": "witch_enemy_sw_idle0"
+  },
+  "witch_enemy_sw_idle1": {
+   "image": "witch_enemy_sw_idle1"
+  },
+  "witch_enemy_sw_walk0": {
+   "image": "witch_enemy_sw_walk0"
+  },
+  "witch_enemy_sw_walk1": {
+   "image": "witch_enemy_sw_walk1"
+  },
+  "witch_player_ne_cast0": {
+   "image": "witch_player_ne_cast0"
+  },
+  "witch_player_ne_cast1": {
+   "image": "witch_player_ne_cast1"
+  },
+  "witch_player_ne_hit": {
+   "image": "witch_player_ne_hit"
+  },
+  "witch_player_ne_idle0": {
+   "image": "witch_player_ne_idle0"
+  },
+  "witch_player_ne_idle1": {
+   "image": "witch_player_ne_idle1"
+  },
+  "witch_player_ne_walk0": {
+   "image": "witch_player_ne_walk0"
+  },
+  "witch_player_ne_walk1": {
+   "image": "witch_player_ne_walk1"
+  },
+  "witch_player_nw_cast0": {
+   "image": "witch_player_nw_cast0"
+  },
+  "witch_player_nw_cast1": {
+   "image": "witch_player_nw_cast1"
+  },
+  "witch_player_nw_hit": {
+   "image": "witch_player_nw_hit"
+  },
+  "witch_player_nw_idle0": {
+   "image": "witch_player_nw_idle0"
+  },
+  "witch_player_nw_idle1": {
+   "image": "witch_player_nw_idle1"
+  },
+  "witch_player_nw_walk0": {
+   "image": "witch_player_nw_walk0"
+  },
+  "witch_player_nw_walk1": {
+   "image": "witch_player_nw_walk1"
+  },
+  "witch_player_se_cast0": {
+   "image": "witch_player_se_cast0"
+  },
+  "witch_player_se_cast1": {
+   "image": "witch_player_se_cast1"
+  },
+  "witch_player_se_hit": {
+   "image": "witch_player_se_hit"
+  },
+  "witch_player_se_idle0": {
+   "image": "witch_player_se_idle0"
+  },
+  "witch_player_se_idle1": {
+   "image": "witch_player_se_idle1"
+  },
+  "witch_player_se_walk0": {
+   "image": "witch_player_se_walk0"
+  },
+  "witch_player_se_walk1": {
+   "image": "witch_player_se_walk1"
+  },
+  "witch_player_sw_cast0": {
+   "image": "witch_player_sw_cast0"
+  },
+  "witch_player_sw_cast1": {
+   "image": "witch_player_sw_cast1"
+  },
+  "witch_player_sw_hit": {
+   "image": "witch_player_sw_hit"
+  },
+  "witch_player_sw_idle0": {
+   "image": "witch_player_sw_idle0"
+  },
+  "witch_player_sw_idle1": {
+   "image": "witch_player_sw_idle1"
+  },
+  "witch_player_sw_walk0": {
+   "image": "witch_player_sw_walk0"
+  },
+  "witch_player_sw_walk1": {
+   "image": "witch_player_sw_walk1"
+  }
+ }
+}

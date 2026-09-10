@@ -1,0 +1,5 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "One isolated small traversable footbridge production sprite for a crisp outlined pixel-art isometric town, matching supplied user reference. Pale warm stone bridge with low open balustrade railings and a broad lightly arched paved deck, short steps at both ends. Bridge travels from UPPER LEFT to LOWER RIGHT of screen, along the isometric +r axis, length ground vector (96,48), cross-width vector (48,-24), true 2:1 ground projection. Footprint four cells long by two cells wide; entire deck readable and open for a 32-pixel character. Low rails, no roof. Warm upper-left lighting, flat clustered colors, dark thin outlines, consistent game pixels. Complete isolated bridge only, no water, bank, ground tile, landscape or shadow. Solid pure MAGENTA #FF00FF background, no checkerboard. Centered with generous margin. 1024x1024 canvas. Keep both access ends visible and usable. This is a reusable raster sprite, not a scene.",
+  "reference": "test-results/real-visual-session/user-target.jpg"
+}

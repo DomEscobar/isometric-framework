@@ -1,21 +1,37 @@
 """Authoring gates: inspect decoded packed art; freeze, snapshot and accept a world.
 
-Pillow is required only for inspect/accept with art checks. No runtime dependency.
+Pillow is required for decoded art and image comparisons. No runtime dependency.
 Evidence receipts establish coverage and freshness, not truthfulness or beauty.
 """
 import argparse
 import base64
 import hashlib
 import io
+import importlib.util
 import json
 import math
 from pathlib import Path
 import sys
+from types import SimpleNamespace
+
+
+def comparison_tools():
+    spec = importlib.util.spec_from_file_location("visual_compare", Path(__file__).with_name("visual_compare.py"))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def production_tools():
+    spec = importlib.util.spec_from_file_location("production_flow", Path(__file__).with_name("production_flow.py"))
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def digest(path):
@@ -67,7 +83,7 @@ def components(mask, width, minimum):
     return sorted(sizes, reverse=True)
 
 
-def inspect(spec_path):
+def inspect(spec_path, selected_groups=None):
     from PIL import Image
     spec_path = Path(spec_path).resolve()
     spec = read(spec_path)
@@ -77,6 +93,16 @@ def inspect(spec_path):
     assets = data.get("assets", data)
     groups = spec.get("groups")
     require(isinstance(groups, list) and groups, "Art checks need nonempty groups")
+    all_ids = [g["id"] for g in groups]
+    require(all(isinstance(gid, str) and gid for gid in all_ids)
+            and len(set(all_ids)) == len(all_ids), "Unique nonempty group IDs required")
+    if selected_groups is not None:
+        require(isinstance(selected_groups, list) and selected_groups
+                and len(set(selected_groups)) == len(selected_groups)
+                and set(selected_groups) <= set(all_ids), "Select existing unique calibration group IDs")
+        groups = [g for g in groups if g["id"] in selected_groups]
+    scope = {"mode": "full" if selected_groups is None else "calibration",
+             "groups": [g["id"] for g in groups], "plannedGroups": all_ids}
     textures, animations = assets["textures"], assets.get("animations", {})
     inputs = {str(spec_path): digest(spec_path), str(manifest_path): digest(manifest_path)}
     images, decoded, findings, previews, clips = {}, {}, [], {}, {}
@@ -125,8 +151,10 @@ def inspect(spec_path):
             frame = texture.get("frame", {"x": 0, "y": 0, "width": atlas.width, "height": atlas.height})
             x, y, w, h = (frame[k] for k in ("x", "y", "width", "height"))
             require(integer(x, 0, atlas.width) and integer(y, 0, atlas.height)
-                    and integer(w, 1, 1024) and integer(h, 1, 1024)
-                    and x + w <= atlas.width and y + h <= atlas.height, f"Invalid frame rectangle: {tid}")
+                    and integer(w, 1, 4096) and integer(h, 1, 4096)
+                    and w * h <= 1024 * 1024
+                    and x + w <= atlas.width and y + h <= atlas.height,
+                    f"Invalid frame rectangle: {tid}; stay inside the atlas, at most 4096 per side and 1048576 pixels")
             rgba = atlas.crop((x, y, x + w, y + h))
             alpha = rgba.getchannel("A").tobytes()
             mask = [a >= threshold for a in alpha]
@@ -150,7 +178,7 @@ def inspect(spec_path):
                 bounds = group.get("bounds")
                 if bounds is not None:
                     require(isinstance(bounds, list) and len(bounds) == 4
-                            and all(integer(n, 1, 1024) for n in bounds)
+                            and all(integer(n, 1, 4096) for n in bounds)
                             and bounds[0] <= bounds[2] and bounds[1] <= bounds[3], "bounds: minWidth,minHeight,maxWidth,maxHeight")
                     if not (bounds[0] <= right-left+1 <= bounds[2] and bounds[1] <= bottom-top+1 <= bounds[3]):
                         errors.append("visible bounds outside declared size range")
@@ -166,7 +194,7 @@ def inspect(spec_path):
             count = len({pixel_hashes[tid] for tid in animations[clip_id]["frames"]})
             if count < minimum:
                 findings.append({"group": gid, "clip": clip_id, "errors": [f"{count} distinct decoded frames; requires {minimum}"]})
-    return {"version": 1, "passed": not any(f["errors"] for f in findings), "inputs": inputs,
+    return {"version": 1, "passed": not any(f["errors"] for f in findings), "inputs": inputs, "scope": scope,
             "findings": findings, "textures": previews, "clips": clips, "images": images}
 
 
@@ -174,14 +202,16 @@ def preview(report, target):
     # Embed original files once; CSS/canvas only presents the exact manifest crops.
     payload = json.dumps(report).replace("<", "\\u003c")
     document = """<!doctype html><meta charset="utf-8"><title>Packed art inspection</title>
-<style>body{font:15px system-ui;background:#e8ebdf;color:#172b22;margin:24px}button,input{margin:8px}section{display:flex;flex-wrap:wrap;gap:12px}article{padding:12px;background:#fff;max-width:500px}canvas{image-rendering:pixelated;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0/16px 16px}.bad{color:#a00}.status{font-weight:bold}p{max-width:1000px}</style>
+<style>body{font:15px system-ui;background:#e8ebdf;color:#172b22;margin:24px}button,input{margin:8px}section{display:flex;flex-wrap:wrap;gap:12px}article{padding:12px;background:#fff;max-width:min(500px,100%);min-width:0;max-height:75vh;box-sizing:border-box;overflow:auto}canvas{display:block;image-rendering:pixelated;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0/16px 16px}.bad{color:#a00}.status{font-weight:bold}p{max-width:1000px}</style>
 <h1>Packed art inspection</h1><p id="status" class="status"></p>
+<p id="scope"></p>
 <p>Structural checks do not approve anatomy, facing, contacts or animation quality. Inspect every used clip and the real game. Red cross = declared anchor; blue outline = frame.</p>
 <label>Shared zoom <input id="zoom" type="range" min="1" max="6" value="3"></label>
 <button id="play">Pause clips</button><button id="replay">Replay clips</button><button id="background">Dark background</button><section id="frames"></section>
 <script>const data=PAYLOAD;const loaded={};const views=[];let playing=true,dark=false,t=0,last=performance.now();
 document.querySelector('#status').textContent=data.passed?'STRUCTURAL PASS - visual review still required':'STRUCTURAL FAIL - repair before acceptance';
 document.querySelector('#status').classList.toggle('bad',!data.passed);
+document.querySelector('#scope').textContent=data.scope?.mode==='calibration'?'CALIBRATION SUBSET: '+data.scope.groups.join(', ')+'. Full acceptance still requires all planned groups.':'Full planned art scope';
 function add(label,ids,fps=0,loop=true){const article=document.createElement('article'),title=document.createElement('h3'),canvas=document.createElement('canvas'),notes=document.createElement('p');title.textContent=label+(fps?' ('+fps+' fps, '+(loop?'loop':'once')+')':'');notes.textContent=data.findings.filter(f=>ids.includes(f.texture)||f.clip===label).flatMap(f=>f.errors).join('; ');notes.className='bad';article.append(title,canvas,notes);document.querySelector('#frames').append(article);views.push({canvas,ids,fps,loop});}
 for(const id of Object.keys(data.textures))add(id,[id]);for(const [id,c] of Object.entries(data.clips))add(id,c.frames,c.fps,c.loop);
 Promise.all(Object.entries(data.images).map(([id,url])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{loaded[id]=im;resolve()};im.onerror=reject;im.src=url}))).then(()=>{document.body.dataset.decoded='true';requestAnimationFrame(draw)}).catch(()=>{document.querySelector('#status').textContent='IMAGE DECODE FAILED'});
@@ -196,7 +226,7 @@ document.querySelector('#replay').onclick=()=>{t=0;last=performance.now()};
 def plan_state(plan_path):
     plan_path = Path(plan_path).resolve()
     plan = read(plan_path)
-    require(plan.get("version") == 1, "Plan version must be 1")
+    require(type(plan.get("version")) is int and plan["version"] in (1, 2, 3), "Plan version must be 1, 2 or 3")
     root = local(plan_path.parent, plan["root"])
     require(plan.get("reviewMode") in ("independent", "self"), "Declare independent or self review")
     requirements = plan.get("requirements")
@@ -210,13 +240,16 @@ def plan_state(plan_path):
         require(isinstance(req.get("views"), list) and req["views"] and all(isinstance(v, str) and v for v in req["views"]), "Requirement views required")
     require(isinstance(plan.get("inputRoots"), list) and plan["inputRoots"], "Explicit source inputRoots required")
     require(isinstance(plan.get("artChecks"), list), "Declare artChecks (empty only for work without packed art)")
+    if plan["version"] == 3 or "production" in plan:
+        production_tools().validate(plan, root)
     return plan_path, plan, root
 
 
 def freeze(plan_path, output):
     plan_path, plan, root = plan_state(plan_path)
     specs = {str(local(root, p)): digest(local(root, p)) for p in plan["artChecks"]}
-    write_new(output, {"version": 1, "plan": str(plan_path), "planSha256": digest(plan_path), "artSpecs": specs})
+    references = comparison_tools().definitions(plan, root)[1] if plan["version"] >= 2 or plan.get("comparisons") else {}
+    write_new(output, {"version": 1, "plan": str(plan_path), "planSha256": digest(plan_path), "artSpecs": specs, "references": references})
 
 
 def protected(baseline_path):
@@ -225,6 +258,8 @@ def protected(baseline_path):
     require(digest(plan_path) == baseline["planSha256"], "Protected plan changed; do not silently narrow requirements")
     for file, sha in baseline["artSpecs"].items():
         require(digest(file) == sha, f"Protected art thresholds/coverage changed: {file}")
+    for file, sha in baseline.get("references", {}).items():
+        require(digest(file) == sha, f"Protected visual reference changed: {file}")
     return baseline, plan, root
 
 
@@ -241,15 +276,23 @@ def source_hashes(plan, root):
     return result
 
 
-def snapshot(baseline_path, output):
+def snapshot(baseline_path, output, production_receipts=None):
     baseline, plan, root = protected(baseline_path)
+    if "production" in plan:
+        require(production_receipts, "Production receipts required for final candidate snapshot")
+        status = production_tools().collect(plan, root, digest(baseline_path), production_receipts)
+        require(status["nextStage"] in ("final", "complete"), "Production stage blocks snapshot: "+status["nextStage"])
     target = Path(output).resolve()
     require(all(not target.is_relative_to(local(root, p)) for p in plan["inputRoots"]), "Evidence outputs must be outside inputRoots")
     write_new(output, {"version": 1, "baselineSha256": digest(baseline_path), "inputs": source_hashes(plan, root)})
 
 
-def accept(baseline_path, candidate_path, review_path):
+def accept(baseline_path, candidate_path, review_path, production_receipts=None):
     baseline, plan, root = protected(baseline_path)
+    if "production" in plan:
+        require(production_receipts, "Production receipts required for acceptance")
+        status = production_tools().collect(plan, root, digest(baseline_path), production_receipts)
+        require(status["passed"], "Production stage blocks acceptance: "+status["nextStage"])
     candidate, review = read(candidate_path), read(review_path)
     require(candidate["baselineSha256"] == digest(baseline_path), "Candidate belongs to a different baseline")
     require(candidate["inputs"] == source_hashes(plan, root), "Candidate is stale: source files added, removed or changed")
@@ -281,32 +324,58 @@ def accept(baseline_path, candidate_path, review_path):
             if kind in permitted:
                 covered.add(item["view"])
         require(set(req["views"]) <= covered, f"Missing {req['domain']} evidence/views: {req['id']}")
+    comparison_count = 0
+    if plan.get("comparisons") or (plan["version"] >= 2 and any(r["domain"] == "visual" for r in plan["requirements"])):
+        comparison_count = comparison_tools().validate_acceptance(plan, root, baseline_path, candidate_path, review_path)
     # Detect mutations occurring during inspection rather than accepting the old snapshot.
+    protected(baseline_path)
     require(candidate["inputs"] == source_hashes(plan, root), "Inputs changed during acceptance")
     return {"passed": True, "reviewMode": review["reviewMode"], "requirements": len(by_id),
+            "visualComparisons": comparison_count,
             "limit": "Coverage and freshness verified; reviewer judgments are not authenticated or machine-proven."}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    p = sub.add_parser("inspect"); p.add_argument("spec"); p.add_argument("--out", required=True)
+    p = sub.add_parser("inspect"); p.add_argument("spec"); p.add_argument("--out", required=True); p.add_argument("--groups", nargs="+", help="Inspect only named calibration groups; accept always checks the full spec")
     p = sub.add_parser("freeze"); p.add_argument("plan"); p.add_argument("output")
-    p = sub.add_parser("snapshot"); p.add_argument("baseline"); p.add_argument("output")
-    p = sub.add_parser("accept"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("review")
+    p = sub.add_parser("snapshot"); p.add_argument("baseline"); p.add_argument("output"); p.add_argument("--production-receipts")
+    p = sub.add_parser("accept"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("review"); p.add_argument("--production-receipts")
+    p = sub.add_parser("production"); p.add_argument("action", choices=("begin", "finish", "status")); p.add_argument("baseline"); p.add_argument("--receipts", required=True); p.add_argument("--check"); p.add_argument("--ticket"); p.add_argument("--submission"); p.add_argument("--out"); p.add_argument("--strategy")
+    p = sub.add_parser("compare"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("captures"); p.add_argument("--out", required=True); p.add_argument("--previous"); p.add_argument("--rebaseline-note", help="Explain an art-check correction or added comparisons; retain all previous requirements, comparisons and targets")
     args = parser.parse_args()
     try:
         if args.command == "inspect":
-            report = inspect(args.spec)
+            report = inspect(args.spec, args.groups)
             output = Path(args.out)
             output.mkdir(parents=True, exist_ok=False)
             preview(report, output / "preview.html")
             write_new(output / "report.json", {k: v for k, v in report.items() if k != "images"})
-            print(json.dumps({"passed": report["passed"], "preview": str(output / "preview.html"), "findings": [f for f in report["findings"] if f["errors"]]}, indent=2))
+            print(json.dumps({"passed": report["passed"], "scope": report["scope"], "preview": str(output / "preview.html"), "findings": [f for f in report["findings"] if f["errors"]]}, indent=2))
             return 0 if report["passed"] else 1
         if args.command == "freeze": freeze(args.plan, args.output)
-        elif args.command == "snapshot": snapshot(args.baseline, args.output)
-        else: print(json.dumps(accept(args.baseline, args.candidate, args.review), indent=2))
+        elif args.command == "snapshot": snapshot(args.baseline, args.output, args.production_receipts)
+        elif args.command == "production":
+            flow = production_tools()
+            gate = SimpleNamespace(protected=protected, write_new=write_new)
+            if args.action == "begin":
+                require(args.check and args.out, "begin needs --check and --out")
+                flow.begin(gate, args.baseline, args.check, args.receipts, args.out, args.strategy)
+            elif args.action == "finish":
+                require(args.ticket and args.submission and args.out, "finish needs --ticket, --submission and --out")
+                result = flow.finish(gate, args.baseline, args.ticket, args.submission, args.receipts, args.out)
+                print(json.dumps(result, indent=2))
+                return 0 if result["status"] == "pass" else 1
+            else:
+                _, plan, root = protected(args.baseline)
+                result = flow.collect(plan, root, digest(args.baseline), args.receipts)
+                print(json.dumps(result, indent=2))
+                return 0 if result["passed"] else 1
+        elif args.command == "compare":
+            gate = SimpleNamespace(protected=protected, source_hashes=source_hashes, local=local)
+            print(json.dumps(comparison_tools().build(gate, args.baseline, args.candidate, args.captures, args.out, args.previous, args.rebaseline_note), indent=2))
+        else: print(json.dumps(accept(args.baseline, args.candidate, args.review, args.production_receipts), indent=2))
         return 0
     except (ValueError, OSError, KeyError, TypeError, ImportError) as error:
         print(f"verify-world: {error}", file=sys.stderr)

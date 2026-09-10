@@ -1,5 +1,86 @@
 # Runtime verification — 2026-09-10
 
+## Executed production-stage checks
+
+Acceptance-plan version 3 now requires six stages: preflight, layout, assembly,
+static world, motion and final review. `production begin/finish/status` records
+source-bound tickets and immutable receipts; missing/failed prerequisites block
+the next stage and version 3 candidate/acceptance commands. Versions 1/2 remain
+compatible and do not retroactively certify stage execution.
+
+- Python/Pillow suite passed **41/41**, including CLI version 3 final acceptance
+  with the existing comparison gate. Deliberate failures cover roots on paths,
+  blocked entrances/clearance, isolated routes, disconnected bridge support,
+  water over deck, incompatible rigid geometry, changed host bindings, missing
+  mobile evidence, removed scope, stale inputs/evidence and ticket reuse.
+- Unchanged check dependencies preserve their receipts. Final review covers all
+  source roots. Two failed attempts require a recorded strategy change; consumed
+  or superseded tickets cannot bypass it.
+- A fresh independent read-only agent reproduced four false passes during review
+  (old evidence, removed placement scope, isolated routes and ticket reuse).
+  After repairs it independently confirmed all four reject. Local probes remain
+  under `test-results/production-flow-audit/` and are not package content.
+- The existing art-integration suite passed **23/23**. `npm run check` passed
+  22 module boundaries and strict TypeScript. Skill metadata, neutral JSON
+  examples and 76 skill-local links were verified.
+- Runtime APIs and host gameplay are unchanged by this stage patch. No new game
+  generation or browser playtest was needed for this headless authoring change.
+  The prior generated world remains visually unaccepted and paused.
+
+Limits: spatial checks use declared discrete cells and host exports, not inferred
+sprite geometry or live renderer introspection. Rigid contracts are checked against
+exported host settings and the existing Node checker; truthful measurements and
+export correspondence still need visual review. Evidence mtimes enforce local
+ordering, not capture authenticity. Stage tooling cannot prevent unrelated agent
+tool calls. See the [operational schema](skills/isometric-visual-loop/references/production-flow.md).
+
+## Executed visual comparison workflow
+
+Version 2 authoring plans protect actual target images for every visual requirement
+and view. The new `compare` command copies reference/current/previous images into
+a self-contained board and review packet. Reviews record localized observations,
+concrete repairs and the fresh resolution of earlier open findings. Acceptance
+rejects incomplete or stale comparisons. Version 1 remains compatible and reports
+zero comparisons when none were required; that does not establish image review.
+
+- Python/Pillow regressions passed 23/23: existing packed-art gates plus target
+  coverage, source/reference freshness, decoded-image integrity, localized review,
+  previous findings, reviewer ordering, immutable outputs and layout dimensions.
+  The review packet retains protected requirement descriptions and rejects changes
+  to those criteria; the board displays them beside the relevant images.
+  A calibration-group regression also proves that a passing subset cannot bypass
+  missing clips in final acceptance. The art-integration suite passed 23/23.
+  Wide assemblies retain the previous per-frame pixel budget and crop-padding
+  checks. Explicit art-check baseline corrections preserve requirements, target
+  hashes, previous images and findings; changed criteria or targets are rejected.
+- Chromium passed both first-round and previous-round board probes: decoding,
+  shared zoom, source-pixel rectangle selection, clearing overlays, previous state,
+  mobile stacking/overflow and an injected decode failure. A mobile overflow found
+  during testing was repaired. Boards were also visually inspected.
+- The independent production session exposed a calibration problem: inspecting
+  the initial actor pack stopped at a planned creature clip that did not exist yet.
+  Added `inspect --groups` with an explicit calibration label, preserving the full
+  frozen spec and unconditional full inspection at acceptance. Its preview was
+  exercised in Chromium against the real generated actor atlas: decoding, subset
+  warning, pause, shared zoom, changing clip pixels and dark background passed.
+  These presentation checks do not approve pose quality or extraction fringes.
+- `npm run check` passed module boundaries and strict TypeScript. Skill metadata
+  validation passed, all 71 local skill links stay within `skills/`, and the JSON
+  examples parse. The npm dry run includes the comparison module, HTML and guide,
+  and excludes local evidence and Python caches.
+- Ownership is authoring tools and guides; runtime APIs are unchanged. The tool
+  validates coverage and freshness, not aesthetic truth, capture origin or reviewer
+  identity. It does not invoke a vision model. Actual image inspection remains a
+  required agent action; stills cannot approve motion or gameplay.
+- The neutral terrain fixture exercises mechanics only. It is not evidence for
+  generated-sprite world quality. A separately started Codex CLI session is testing
+  the workflow against the user's actual target with a new generated-art host;
+  that production evaluation is recorded in [the real trial](docs/PIXEL_BOROUGH_TRIAL.md).
+  Its first independent image review fails, and the reviewed repair is in progress;
+  no final world acceptance is claimed. The actual seven-comparison board passed
+  its browser controls probe. A separate 22-check keyboard/touch probe passed but
+  exposed a visible mobile Restart camera defect, retained for repair.
+
 ## Connected landscape authoring guidance
 
 The terrain workflow now starts with regions, material-pair boundaries and

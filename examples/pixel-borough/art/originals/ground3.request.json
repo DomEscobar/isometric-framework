@@ -1,0 +1,5 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Edit this generated ground-only town terrain for production. Preserve the terrain diamond, central continuous gray cobblestone plaza, main paved approach, upper dirt trail, stream course and two banks so existing buildings still fit. Repair the GRASS: remove the conspicuous repeated identical dark-green and lime-green clumps and diagonal rows. Replace them with calm broad irregular green color regions, sparse varied little blade clusters with plenty of quiet open grass; crisp pixel clusters at consistent size, no fine noise, no blur. Repair riverbank: remove the small gray stone deck stub near the middle; replace it with continuous natural earth bank and grass crown, without a gray protrusion into the river. Blue stream remains one continuous surface with sparse long broken light-blue ripples, no repeated panels, grid or tile boundaries. Keep overall bright outlined pixel-art style, no props, buildings, trees, characters, bridge or labels. Outside the diamond remains pure flat magenta. This exact image is the edit target. Return 1536x1024.",
+  "reference": "examples/pixel-borough/art/originals/ground2.png"
+}

@@ -1,0 +1,168 @@
+{
+  "version": 2,
+  "root": "../..",
+  "inputRoots": [
+    "examples/pixel-borough",
+    "src",
+    "package.json",
+    "vite.config.ts"
+  ],
+  "artChecks": [
+    "examples/pixel-borough/packed-art.json"
+  ],
+  "reviewMode": "independent",
+  "requirements": [
+    {
+      "id": "style",
+      "domain": "visual",
+      "description": "Crisp outlined sprites, shared pixel density, readable human/building scale and compact rich town/forest composition with varied roofs, tall grass and original identities.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "ground",
+      "domain": "visual",
+      "description": "Continuous paving and natural grass regions without repeated diamond stamping or mirrored motifs.",
+      "views": [
+        "ground-overview",
+        "ground-playing"
+      ]
+    },
+    {
+      "id": "boundaries",
+      "domain": "visual",
+      "description": "Coherent stream banks and interlocking grass/paving margins, readable bridge approaches and continuous material joins.",
+      "views": [
+        "transition",
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "actor",
+      "domain": "motion",
+      "description": "Correct visible idle and whole-body walking cycles in NE SE SW NW, stable feet and identity at wraps; input direction matches pose.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "water",
+      "domain": "motion",
+      "description": "Flow follows joined stream, fountain spray animates around fixed masonry; full cycles wrap coherently and pause freezes motion.",
+      "views": [
+        "desktop"
+      ]
+    },
+    {
+      "id": "creatures",
+      "domain": "motion",
+      "description": "Three original creatures have readable idle and greeting responses, no fragments or root drift.",
+      "views": [
+        "desktop"
+      ]
+    },
+    {
+      "id": "exploration",
+      "domain": "gameplay",
+      "description": "Click and held input explore meadow, town, forest and far bank; bridge crosses both ways and water/bridge sides block entry; focus loss releases motion.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "greeting",
+      "domain": "gameplay",
+      "description": "Approach and greet three creatures with observable response and clear progress; pause and restart behave coherently.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "timing",
+      "domain": "performance",
+      "description": "Record browser/renderer, median/p95 frame interval and blank baseline at desktop/mobile; assess smooth exploration.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "style-desktop",
+      "requirements": [
+        "style"
+      ],
+      "view": "desktop",
+      "reference": "test-results/real-visual-session/user-target.jpg",
+      "role": "style",
+      "focus": "Crisp outlined sprites, shared pixel density, readable human/building scale and compact rich town/forest composition with varied roofs, tall grass and original identities."
+    },
+    {
+      "id": "style-mobile",
+      "requirements": [
+        "style"
+      ],
+      "view": "mobile",
+      "reference": "test-results/real-visual-session/user-target.jpg",
+      "role": "style",
+      "focus": "Crisp outlined sprites, shared pixel density, readable human/building scale and compact rich town/forest composition with varied roofs, tall grass and original identities."
+    },
+    {
+      "id": "ground-ground-overview",
+      "requirements": [
+        "ground"
+      ],
+      "view": "ground-overview",
+      "reference": "test-results/real-visual-session/user-target.jpg",
+      "role": "style",
+      "focus": "Continuous paving and natural grass regions without repeated diamond stamping or mirrored motifs."
+    },
+    {
+      "id": "ground-ground-playing",
+      "requirements": [
+        "ground"
+      ],
+      "view": "ground-playing",
+      "reference": "test-results/real-visual-session/user-target.jpg",
+      "role": "style",
+      "focus": "Continuous paving and natural grass regions without repeated diamond stamping or mirrored motifs."
+    },
+    {
+      "id": "boundaries-transition",
+      "requirements": [
+        "boundaries"
+      ],
+      "view": "transition",
+      "reference": "test-results/real-visual-session/user-target.jpg",
+      "role": "style",
+      "focus": "Coherent stream banks and interlocking grass/paving margins, readable bridge approaches and continuous material joins."
+    },
+    {
+      "id": "boundaries-desktop",
+      "requirements": [
+        "boundaries"
+      ],
+      "view": "desktop",
+      "reference": "test-results/real-visual-session/user-target.jpg",
+      "role": "style",
+      "focus": "Coherent stream banks and interlocking grass/paving margins, readable bridge approaches and continuous material joins."
+    },
+    {
+      "id": "boundaries-mobile",
+      "requirements": [
+        "boundaries"
+      ],
+      "view": "mobile",
+      "reference": "test-results/real-visual-session/user-target.jpg",
+      "role": "style",
+      "focus": "Coherent stream banks and interlocking grass/paving margins, readable bridge approaches and continuous material joins."
+    }
+  ]
+}

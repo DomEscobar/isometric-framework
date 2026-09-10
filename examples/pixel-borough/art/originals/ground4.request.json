@@ -1,0 +1,5 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Edit this GROUND LAYER, changing ONLY the grass material. Preserve all exact paving, dirt trail, terrain corners, continuous stream, earth banks and magenta outside. Remove EVERY repeated three-pronged grass tuft and EVERY repeated zigzag dark/lime patch from the grassy areas. The grass must become a much calmer continuous lawn: three or four large unequal low-contrast green color regions across the WHOLE left meadow, plus a few sparse irregular tiny flecks. No recognizable repeated tuft symbols, no diagonal bands, no tile stamps, no evenly distributed noise, no sharp bright lime patches. Keep pixel art crisp, flat color clusters rather than blur. Do not add props or tall grass, trees, flowers, people or text. This empty base will receive separate generated meadow sprites. Preserve exact river and paving geometry. 1536x1024 output.",
+  "reference": "examples/pixel-borough/art/originals/ground3.png"
+}

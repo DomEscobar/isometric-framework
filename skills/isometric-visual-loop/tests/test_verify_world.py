@@ -70,6 +70,46 @@ class WorkflowTests(unittest.TestCase):
         self.receipt()
         self.assertTrue(gate.accept(self.baseline, self.candidate, self.review)["passed"])
 
+    def test_wide_assembly_keeps_pixel_budget_and_crop_padding(self):
+        atlas = Image.new("RGBA", (1152, 16))
+        ImageDraw.Draw(atlas).rectangle((2, 2, 1149, 13), fill=(30, 90, 120, 255))
+        atlas.save(self.image)
+        self.assets["textures"] = {"strip": {"image": "actor"}}
+        self.assets["animations"] = {}
+        self.check["groups"] = [{"id": "joined-strip", "kind": "cutout", "textures": ["strip"],
+                                 "margin": 1, "bounds": [1100, 10, 1152, 16]}]
+        self.save(self.manifest, self.assets)
+        self.save(self.art, self.check)
+        self.assertTrue(gate.inspect(self.art)["passed"])
+        # Wide assemblies do not waive protected transparent margins.
+        ImageDraw.Draw(atlas).rectangle((0, 2, 1149, 13), fill=(30, 90, 120, 255))
+        atlas.save(self.image)
+        self.assertFalse(gate.inspect(self.art)["passed"])
+        # The previous 1024-square pixel budget remains the upper bound.
+        Image.new("RGBA", (2048, 1024)).save(self.image)
+        with self.assertRaisesRegex(ValueError, "1048576 pixels"):
+            gate.inspect(self.art)
+        Image.new("RGBA", (4097, 2)).save(self.image)
+        with self.assertRaisesRegex(ValueError, "4096 per side"):
+            gate.inspect(self.art)
+
+    def test_calibration_subset_does_not_reduce_final_acceptance(self):
+        self.check["groups"].append({"id": "future-creature", "kind": "cutout", "clips": ["not-built-yet"]})
+        self.save(self.art, self.check)
+        self.receipt()
+        report = gate.inspect(self.art, ["actor"])
+        self.assertTrue(report["passed"])
+        self.assertEqual(report["scope"], {"mode": "calibration", "groups": ["actor"], "plannedGroups": ["actor", "future-creature"]})
+        for selected in ([], ["missing"], ["actor", "actor"]):
+            with self.subTest(selected=selected), self.assertRaisesRegex(ValueError, "calibration group"):
+                gate.inspect(self.art, selected)
+        with self.assertRaisesRegex(ValueError, "Missing required clip"):
+            gate.accept(self.baseline, self.candidate, self.review)
+        command = subprocess.run([sys.executable, str(SCRIPT), "inspect", str(self.art), "--groups", "actor", "--out", str(self.root / "calibration")], capture_output=True, text=True)
+        self.assertEqual(command.returncode, 0, command.stderr)
+        self.assertEqual(json.loads(command.stdout)["scope"]["mode"], "calibration")
+        self.assertIn("CALIBRATION SUBSET", (self.root / "calibration/preview.html").read_text())
+
     def test_neighbor_fragment_and_cut_edge_are_rejected(self):
         with Image.open(self.image) as source:
             image = source.copy()

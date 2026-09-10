@@ -1,0 +1,89 @@
+{
+    "version":  1,
+    "manifest":  "art/runtime.json",
+    "groups":  [
+                   {
+                       "id":  "explorer-idle",
+                       "kind":  "cutout",
+                       "clips":  [
+                                     "explorer.idle.ne",
+                                     "explorer.idle.se",
+                                     "explorer.idle.sw",
+                                     "explorer.idle.nw"
+                                 ],
+                       "margin":  1,
+                       "maxComponents":  1,
+                       "minComponentPixels":  2,
+                       "minDistinctFrames":  1,
+                       "bounds":  [
+                                      12,
+                                      24,
+                                      40,
+                                      40
+                                  ]
+                   },
+                   {
+                       "id":  "explorer-walk",
+                       "kind":  "cutout",
+                       "clips":  [
+                                     "explorer.walk.ne",
+                                     "explorer.walk.se",
+                                     "explorer.walk.sw",
+                                     "explorer.walk.nw"
+                                 ],
+                       "margin":  1,
+                       "maxComponents":  1,
+                       "minComponentPixels":  2,
+                       "minDistinctFrames":  2,
+                       "bounds":  [
+                                      12,
+                                      24,
+                                      40,
+                                      40
+                                  ]
+                   },
+                   {
+                       "id":  "creatures",
+                       "kind":  "cutout",
+                       "clips":  [
+                                     "nib.idle",
+                                     "nib.greet",
+                                     "bramble.idle",
+                                     "bramble.greet",
+                                     "pip.idle",
+                                     "pip.greet"
+                                 ],
+                       "margin":  1,
+                       "maxComponents":  3,
+                       "minComponentPixels":  2,
+                       "minDistinctFrames":  2
+                   },
+                   {
+                       "id":  "fountain",
+                       "kind":  "cutout",
+                       "clips":  [
+                                     "fountain.flow"
+                                 ],
+                       "margin":  1,
+                       "maxComponents":  12,
+                       "minDistinctFrames":  2
+                   },
+                   {
+                       "id":  "river-strip",
+                       "kind":  "cutout",
+                       "clips":  [
+                                     "river.flow"
+                                 ],
+                       "margin":  1,
+                       "maxComponents":  24,
+                       "minComponentPixels":  2,
+                       "minDistinctFrames":  2,
+                       "bounds":  [
+                                      500,
+                                      150,
+                                      1152,
+                                      576
+                                  ]
+                   }
+               ]
+}

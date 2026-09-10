@@ -4,8 +4,16 @@ Use these gates for a new world or substantial visual production. For a focused
 asset repair, scope the plan to the affected assets, clips and playable views.
 They are authoring tools; nothing is added to scene JSON or the runtime API.
 
+New complete worlds use acceptance-plan **version 3** with the
+[production stages](production-flow.md). Version 3 adds mandatory prerequisite,
+spatial-placement and rigid-binding checks to the image workflow below. The
+version 2 example here documents the compatible image-comparison format; add its
+protected `production` section and set `version` to 3 for a new world. Pass
+`--production-receipts DIR` to final `snapshot` and `accept`. Scene JSON versions
+are independent of authoring-plan versions.
+
 The script is `skills/isometric-visual-loop/scripts/verify-world.py`. Use Python
-3.10+; `inspect` and `accept` with art checks also need Pillow. With uv on Windows:
+3.10+; decoded art and visual-comparison commands also need Pillow. With uv on Windows:
 
 ```sh
 uv run --python 3.12 --with pillow python skills/isometric-visual-loop/scripts/verify-world.py --help
@@ -14,6 +22,12 @@ uv run --python 3.12 --with pillow python skills/isometric-visual-loop/scripts/v
 Below, `python` means that interpreter (or replace it with the uv prefix above).
 These files and the tool travel with the npm package. Use its absolute script path
 when running in a consumer's own application.
+
+An inspected frame may be up to 4096 pixels on a side and 1,048,576 pixels in
+area. This permits a wide joined assembly while bounding per-frame analysis.
+Cutouts still need transparent padding; pack an assembly's union bounds with
+padding and adjust its anchor instead of setting a zero crop margin. A whole
+strip must pass the same visible join and motion review as its smaller pieces.
 
 ## 1. Protect requirements and art checks before implementation
 
@@ -29,7 +43,7 @@ Example `game/acceptance-plan.json` (illustrative host; adapt IDs, roots and vie
 
 ```json
 {
-  "version": 1,
+  "version": 2,
   "root": "..",
   "inputRoots": ["game", "src"],
   "artChecks": ["game/packed-art.json"],
@@ -42,6 +56,15 @@ Example `game/acceptance-plan.json` (illustrative host; adapt IDs, roots and vie
     {"id":"river","domain":"motion","description":"Flow follows the channel, joins remain covered and pause freezes it","views":["desktop"]},
     {"id":"crossing","domain":"gameplay","description":"Walk across and back; reject rail and water entry","views":["desktop","mobile"]},
     {"id":"timing","domain":"performance","description":"Record median/p95, renderer and blank baseline; assess against the brief","views":["desktop"]}
+  ],
+  "comparisons": [
+    {"id":"style-desktop","requirements":["world-style"],"view":"desktop","reference":"game/art/target.png","role":"style","focus":"Shared pixel treatment, materials, hierarchy and player readability"},
+    {"id":"style-mobile","requirements":["world-style"],"view":"mobile","reference":"game/art/target.png","role":"style","focus":"Style and readability at the mobile playing scale"},
+    {"id":"ground-playing","requirements":["ground-composition"],"view":"ground-only-playing-zoom","reference":"game/art/ground-target.png","role":"style","focus":"Continuous ground without dominant tile stamps"},
+    {"id":"ground-overview","requirements":["ground-composition"],"view":"ground-only-overview","reference":"game/art/ground-target.png","role":"style","focus":"Variation across cells and coherent larger regions"},
+    {"id":"edges-close","requirements":["ground-transitions"],"view":"transition-closeup","reference":"game/art/edge-target.png","role":"style","focus":"Interlocking material edges with shared pixel density"},
+    {"id":"edges-desktop","requirements":["ground-transitions"],"view":"desktop","reference":"game/art/ground-target.png","role":"style","focus":"Continuous path and bank boundaries at playing zoom"},
+    {"id":"edges-mobile","requirements":["ground-transitions"],"view":"mobile","reference":"game/art/ground-target.png","role":"style","focus":"Readable transitions and paths at mobile scale"}
   ]
 }
 ```
@@ -58,6 +81,11 @@ The ground requirements illustrate a natural-landscape brief. Adapt them to actu
 material pairs and intended style; deliberate formal paving may use regular grids.
 Use the [terrain evidence rubric](../../consistent-tileset-authoring/references/landscape-composition.md#terrain-acceptance-evidence)
 for explicit observations. The tool enforces their records, not aesthetic judgment.
+Version 2 requires a protected image comparison for every visual requirement/view.
+Prepare the actual references before freezing; follow the
+[image comparison round](visual-comparison.md) for capture, review and repair.
+Version 1 plans remain readable for historical tasks and may have zero image
+comparisons; they do not establish completion of the new visual workflow.
 
 Example `packed-art.json`:
 
@@ -109,12 +137,20 @@ Freezing an already built host is retrospective verification; say so.
 
 ## 2. Inspect the packed result before expanding
 
+When later planned asset families do not exist yet, inspect named groups from
+the same protected spec with `--groups GROUP_ID [GROUP_ID ...]`. For example,
+select the actor's existing idle/walk groups during its initial calibration.
+The report and preview explicitly label this a calibration subset. Keep the
+complete plan and thresholds unchanged; `accept` always inspects every planned
+group and cannot accept a subset receipt. Add missing assets as production advances.
+
 ```sh
 python skills/isometric-visual-loop/scripts/verify-world.py inspect game/packed-art.json --out test-results/my-game/art-round-1
 ```
 
-Exit 1 means structural failure. The new output folder contains `report.json` and
-a self-contained `preview.html`, even for failed art. Open the preview in a browser:
+Exit 1 means structural failure. Decoded art checks produce `report.json` and
+a self-contained `preview.html`, including failed findings. Missing inputs or
+invalid specifications can stop before a preview is written. Open the preview in a browser:
 check decoding, every selected frame, the declared anchor, shared scale, and every
 clip. Playback respects fps and loop flags (runtime defaults: 8 fps, looping).
 Use Replay clips to restart one-shot actions; it also works while paused.
@@ -136,13 +172,17 @@ python skills/isometric-visual-loop/scripts/verify-world.py snapshot test-result
 ```
 
 Capture the candidate's relevant views, gameplay and complete motion cycles.
+Run `verify-world.py compare` with the current captures to create a comparison
+board and review template. After a repair, supply `--previous` with the preceding
+review so the next critic sees both images and all prior unresolved findings.
 Give the reviewer the original brief/reference role, protected requirements,
 packed preview, live captures and prior open defects. Preserve a complete defect
 list; selecting three repairs for a round does not limit what can fail. A reviewer
 must issue `pass`, `fail` or `unverified` for each requirement. LANDED only describes
 a repair; it cannot substitute for a fresh whole-scope verdict.
 
-Example review record (one verdict shown; include **every** protected requirement):
+Example verdict fragment (include **every** protected requirement in the generated
+review template, retaining its `comparison` section for version 2):
 
 ```json
 {

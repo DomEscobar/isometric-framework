@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Visual comparison</title>
+<style>
+body{margin:24px;background:#edf0e8;color:#203228;font:15px/1.5 system-ui}h1{margin-bottom:4px}p{max-width:1000px}
+header{position:sticky;top:0;background:#edf0e8;padding:8px 0;z-index:2}button,select{font:inherit;padding:5px;margin-right:12px}
+.panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.panels>section{min-width:0}article{background:white;padding:14px;margin-bottom:24px;overflow-wrap:anywhere}
+h2,h3{margin:4px 0 8px}.viewport{overflow:auto;max-height:65vh;background:#ddd}canvas{display:block;image-rendering:pixelated;touch-action:none;cursor:crosshair}
+.note{color:#506256}#coordinates{width:100%;box-sizing:border-box;height:55px;font:14px monospace}.prior{white-space:pre-wrap}
+@media(max-width:800px){.panels{grid-template-columns:1fr}header{position:static}body{margin:12px}}
+</style>
+<h1>Visual comparison</h1><p>Inspect every comparison. These are source images, not an automatic quality score. Drag on an image to locate an observation in original pixels. All panels use the same zoom without stretching.</p>
+<p id="baseline-change" hidden></p>
+<header><label>Shared zoom <select id="zoom"><option value="0.5" selected>50%</option><option value="1">100%</option><option value="2">200%</option></select></label>
+<button id="clear">Clear regions</button><span id="status">Loading images…</span><textarea id="coordinates" readonly aria-label="Selected image region"></textarea></header>
+<main id="comparisons"></main><h2>Previous open findings</h2><div id="prior" class="prior"></div>
+<script>
+const packet=__PACKET_DATA__,views=[];let failures=0;
+if(packet.baselineChange){const note=document.querySelector('#baseline-change');note.hidden=false;note.textContent='Explicit baseline correction: '+packet.baselineChange.reason+' Prior findings remain open until reinspected.';}
+const el=(tag,text)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;return node};
+const jobs=[];
+for(const item of packet.items){
+ const article=el('article');article.append(el('h2',item.definition.id+' · '+item.definition.view),el('p','Reference role: '+item.definition.role+' — '+item.definition.focus),el('p',item.captureNotes));
+ const criteria=el('ul');for(const req of packet.requirements.filter(r=>item.definition.requirements.includes(r.id)))criteria.append(el('li',req.id+': '+req.description));article.append(criteria);
+ const panels=el('div');panels.className='panels';article.append(panels);document.querySelector('#comparisons').append(article);
+ for(const kind of ['reference','previous','current']){
+  const panel=el('section');panel.append(el('h3',kind));panels.append(panel);
+  if(!item[kind]){panel.append(el('p','First round — no previous capture.'));continue}
+  const media=item[kind],viewport=el('div'),canvas=el('canvas');viewport.className='viewport';viewport.append(canvas);panel.append(el('p',media.width+' × '+media.height+' source pixels'),viewport);
+  canvas.width=media.width;canvas.height=media.height;canvas.dataset.kind=kind;canvas.dataset.comparison=item.definition.id;
+  const im=new Image(),view={canvas,im,region:null};views.push(view);
+  jobs.push(new Promise(resolve=>{im.onload=resolve;im.onerror=()=>{failures++;resolve()};im.src=media.url}));
+  let start=null;
+  const point=e=>{const r=canvas.getBoundingClientRect();return [Math.max(0,Math.min(canvas.width-1,Math.floor((e.clientX-r.left)*canvas.width/r.width))),Math.max(0,Math.min(canvas.height-1,Math.floor((e.clientY-r.top)*canvas.height/r.height)))];};
+  canvas.onpointerdown=e=>{start=point(e);canvas.setPointerCapture(e.pointerId)};
+  canvas.onpointerup=e=>{if(!start)return;const end=point(e),x=Math.min(start[0],end[0]),y=Math.min(start[1],end[1]);view.region=[x,y,Math.abs(end[0]-start[0])+1,Math.abs(end[1]-start[1])+1];start=null;document.querySelector('#coordinates').value=JSON.stringify({comparison:item.definition.id,image:kind,region:view.region});draw()};
+  canvas.onpointercancel=()=>{start=null};
+ }
+}
+function draw(){const zoom=Number(document.querySelector('#zoom').value);for(const v of views){const c=v.canvas,ctx=c.getContext('2d');c.style.width=c.width*zoom+'px';c.style.height=c.height*zoom+'px';ctx.clearRect(0,0,c.width,c.height);if(v.im.naturalWidth)ctx.drawImage(v.im,0,0);if(v.region){ctx.strokeStyle='#ff285d';ctx.lineWidth=2;ctx.strokeRect(...v.region)}}}
+document.querySelector('#zoom').onchange=draw;
+document.querySelector('#clear').onclick=()=>{for(const v of views)v.region=null;document.querySelector('#coordinates').value='';draw()};
+document.querySelector('#prior').textContent=packet.priorFindings.length?packet.priorFindings.map(f=>f.id+' ['+f.status+'] '+f.difference+'\nRepair: '+f.repair).join('\n\n'):'No previous open findings.';
+Promise.all(jobs).then(()=>{draw();document.querySelector('#status').textContent=failures?'IMAGE DECODE FAILED':'Images decoded — visual review required';document.body.dataset.decoded=failures?'false':'true'});
+</script></html>

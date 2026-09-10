@@ -1,0 +1,5 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Create THREE separate tall meadow-grass sprite variants in one horizontal row. Production pixel art matching the attached town reference: chunky crisp outlined blade clusters at the SAME perceived pixel scale as the buildings and people. Each patch has only 12 to 18 broad pointed blades, 3 or 4 green tones, dark muted green base, mid green blades, restrained light-green tips. NO tiny white/yellow highlight speckles, NO dithering, NO thin hairlike lines, NO hundreds of blades. The patches vary silhouette: low spreading patch, taller central clump, asymmetric leaning clump. 2:1 isometric ground contact, complete natural irregular roots, no square platform or soil tile, no shadow. Solid pure flat MAGENTA backdrop, no checkerboard and no magenta in foliage. Large empty gutters. Intended output sprites are 48-64 pixels wide and 25-35 pixels high, showing crisp readable shapes at that size. Enlarge those deliberately low-resolution pixels cleanly on a 1536x512 canvas. No scene, text or other objects.",
+  "reference": "test-results/real-visual-session/user-target.jpg"
+}

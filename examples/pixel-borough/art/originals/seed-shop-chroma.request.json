@@ -1,0 +1,7 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Create a NEW production sprite of a compact woodland seed shop in crisp outlined 2:1 isometric PIXEL ART, using the attached target for STYLE only. Cream plaster timber walls, orange terracotta gable roof, blue windows, simple acorn sign. Fixed upper-left light, flat clustered colors, no blur or gradients in the sprite. Ground edges exact 2:1 isometric, both diagonal axes +/-0.5 slope, vertical walls. Door tall enough for 32-pixel chibi human when entire shop is displayed 144 pixels wide. One complete building isolated and centered, generous margin. IMPORTANT background is SOLID FLAT PURE MAGENTA #FF00FF across every unoccupied pixel, including holes. No transparency checkerboard, no white/gray pattern, no shadows, no floor slab, no frame, no text. Magenta must not appear anywhere in the building. 1024x1024 canvas. This chroma background is deliberate for downstream sprite extraction.",
+  "reference": "test-results/real-visual-session/user-target.jpg",
+  "source": "C:\\Users\\dhuec\\.codex\\generated_images\\01a08b75-7e59-75e0-b868-3b05e51f359e\\exec-fe25d4de-154e-4f91-8706-304828f8efee.png",
+  "output": "seed-shop-chroma.png"
+}

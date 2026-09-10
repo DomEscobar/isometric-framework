@@ -189,6 +189,19 @@ Protect the approved requirements and packed-art checks before implementation;
 inspect the exact packed actor clips and joined animated overlays before expanding.
 Run `verify-world.py accept` against fresh source/capture hashes and complete
 visual, motion, gameplay and performance verdicts for the requested scope.
+New world production uses a version 3 acceptance plan with
+[executed stage gates](skills/isometric-visual-loop/references/production-flow.md):
+preflight, semantic layout, representative assembly, complete static world, motion,
+and final review. Begin a capture ticket before each check; failed or unverified
+prerequisites block expansion. Use one semantic layout for routes, planting,
+entrances and bridge support, and bind measured rigid art to actual host settings.
+Retain unchanged receipts; changed dependencies require fresh checks. After two
+failed attempts at a check, record a changed strategy before retrying.
+Version 3 retains protected target images and the
+[image comparison loop](skills/isometric-visual-loop/references/visual-comparison.md).
+Run `verify-world.py compare`, have its actual reference/current/previous images
+visually inspected, repair located defects and repeat. A written review without
+image inspection does not satisfy this workflow.
 Failed or unverified requirements remain open. Two repaired review comments, a
 passing build or changing frame IDs do not establish overall visual acceptance.
 For focused repairs, cover the affected assets/actions and playable views only.

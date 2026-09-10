@@ -1,0 +1,7 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Production game sprite sheet. Original small human explorer with short dark hair, teal jacket, cream scarf, brown trousers and boots, small tan backpack. Chibi proportions like the supplied style target, crisp dark outlined pixel clusters, flat palette, upper-left light, consistent body and camera. Four rows and four columns, 16 isolated complete full-body sprites with generous equal gutters, on flat solid pure magenta #FF00FF background, no magenta in the character. Rows are four actual directions: row 1 walking toward upper right, back and right profile visible; row 2 walking toward lower right, face and right profile visible; row 3 walking toward lower left, face and left profile visible; row 4 walking toward upper left, back and left profile visible. Each row is four sequential walk poses: left foot contact, passing, right foot contact, passing. Arms swing modestly, feet stay on same baseline, no jumping, no pose enlargement, no labels, no floor or shadow, NO checkerboard. Each sprite should read as a 24x32 pixel character at intended game size, enlarged on this sheet. 1024x1024 output. This is actual reusable sprite art, not a screenshot or mockup.",
+  "reference": "test-results/real-visual-session/user-target.jpg",
+  "source": "C:\\Users\\dhuec\\.codex\\generated_images\\01a08b75-7e59-75e0-b868-3b05e51f359e\\exec-703cadb2-1400-4a17-83fd-8e401bf5393a.png",
+  "output": "explorer.png"
+}

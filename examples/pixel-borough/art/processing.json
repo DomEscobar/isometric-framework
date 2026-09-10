@@ -1,0 +1,608 @@
+[
+  {
+    "source": "art\\originals\\explorer.png",
+    "sha256": "b8bda9881600f704600799f68dca9a3baeee8b52224095a16faf4d51478cbd4b",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration"
+  },
+  {
+    "source": "art\\originals\\seed-shop-chroma.png",
+    "sha256": "1ad4fb8a72af49012e711e014faae11bbc0f05253ce8584bf8aca8dfb8dc7c63",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "seed-shop",
+    "crop": [
+      207,
+      226,
+      1066,
+      1020
+    ],
+    "outputSize": [
+      154,
+      143
+    ],
+    "anchor": [
+      0.48,
+      0.85
+    ]
+  },
+  {
+    "source": "art\\originals\\plants.png",
+    "sha256": "e19ef46c1ecdf840229621e7a7c347472cdffd75b23a4ca00861895ac9451dd9",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "oak",
+    "crop": [
+      26,
+      29,
+      363,
+      422
+    ],
+    "outputSize": [
+      92,
+      107
+    ],
+    "anchor": [
+      0.5,
+      0.94
+    ]
+  },
+  {
+    "source": "art\\originals\\plants.png",
+    "sha256": "e19ef46c1ecdf840229621e7a7c347472cdffd75b23a4ca00861895ac9451dd9",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "fir",
+    "crop": [
+      27,
+      16,
+      308,
+      432
+    ],
+    "outputSize": [
+      72,
+      105
+    ],
+    "anchor": [
+      0.5,
+      0.94
+    ]
+  },
+  {
+    "source": "art\\originals\\plants.png",
+    "sha256": "e19ef46c1ecdf840229621e7a7c347472cdffd75b23a4ca00861895ac9451dd9",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "orchard",
+    "crop": [
+      16,
+      34,
+      346,
+      427
+    ],
+    "outputSize": [
+      88,
+      104
+    ],
+    "anchor": [
+      0.5,
+      0.94
+    ]
+  },
+  {
+    "source": "art\\originals\\plants.png",
+    "sha256": "e19ef46c1ecdf840229621e7a7c347472cdffd75b23a4ca00861895ac9451dd9",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "pine",
+    "crop": [
+      48,
+      30,
+      257,
+      335
+    ],
+    "outputSize": [
+      59,
+      84
+    ],
+    "anchor": [
+      0.5,
+      0.94
+    ]
+  },
+  {
+    "source": "art\\originals\\plants.png",
+    "sha256": "e19ef46c1ecdf840229621e7a7c347472cdffd75b23a4ca00861895ac9451dd9",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "tall-grass",
+    "crop": [
+      4,
+      25,
+      523,
+      336
+    ],
+    "outputSize": [
+      68,
+      42
+    ],
+    "anchor": [
+      0.5,
+      0.94
+    ]
+  },
+  {
+    "source": "art\\originals\\plants.png",
+    "sha256": "e19ef46c1ecdf840229621e7a7c347472cdffd75b23a4ca00861895ac9451dd9",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "flower-bush",
+    "crop": [
+      19,
+      77,
+      299,
+      313
+    ],
+    "outputSize": [
+      42,
+      36
+    ],
+    "anchor": [
+      0.5,
+      0.94
+    ]
+  },
+  {
+    "source": "art\\originals\\plants.png",
+    "sha256": "e19ef46c1ecdf840229621e7a7c347472cdffd75b23a4ca00861895ac9451dd9",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "berry",
+    "crop": [
+      26,
+      39,
+      341,
+      294
+    ],
+    "outputSize": [
+      44,
+      36
+    ],
+    "anchor": [
+      0.5,
+      0.94
+    ]
+  },
+  {
+    "source": "art\\originals\\plants.png",
+    "sha256": "e19ef46c1ecdf840229621e7a7c347472cdffd75b23a4ca00861895ac9451dd9",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "flowers",
+    "crop": [
+      29,
+      38,
+      353,
+      295
+    ],
+    "outputSize": [
+      29,
+      24
+    ],
+    "anchor": [
+      0.5,
+      0.94
+    ]
+  },
+  {
+    "source": "art\\originals\\plants.png",
+    "sha256": "e19ef46c1ecdf840229621e7a7c347472cdffd75b23a4ca00861895ac9451dd9",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "rock",
+    "crop": [
+      23,
+      37,
+      376,
+      312
+    ],
+    "outputSize": [
+      46,
+      37
+    ],
+    "anchor": [
+      0.5,
+      0.94
+    ]
+  },
+  {
+    "source": "art\\originals\\buildings.png",
+    "sha256": "36a3d98e79b9c557a6a8e5d29a6bac6a74fa30d53a50bbf80525fbf99858a25f",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "bakery",
+    "crop": [
+      26,
+      44,
+      575,
+      574
+    ],
+    "outputSize": [
+      162,
+      157
+    ],
+    "anchor": [
+      0.38,
+      0.87
+    ]
+  },
+  {
+    "source": "art\\originals\\buildings.png",
+    "sha256": "36a3d98e79b9c557a6a8e5d29a6bac6a74fa30d53a50bbf80525fbf99858a25f",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "station",
+    "crop": [
+      17,
+      53,
+      590,
+      534
+    ],
+    "outputSize": [
+      180,
+      152
+    ],
+    "anchor": [
+      0.5,
+      0.88
+    ]
+  },
+  {
+    "source": "art\\originals\\buildings.png",
+    "sha256": "36a3d98e79b9c557a6a8e5d29a6bac6a74fa30d53a50bbf80525fbf99858a25f",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "blue-house",
+    "crop": [
+      33,
+      27,
+      575,
+      558
+    ],
+    "outputSize": [
+      148,
+      145
+    ],
+    "anchor": [
+      0.36,
+      0.87
+    ]
+  },
+  {
+    "source": "art\\originals\\buildings.png",
+    "sha256": "36a3d98e79b9c557a6a8e5d29a6bac6a74fa30d53a50bbf80525fbf99858a25f",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "sage-house",
+    "crop": [
+      16,
+      33,
+      557,
+      565
+    ],
+    "outputSize": [
+      142,
+      140
+    ],
+    "anchor": [
+      0.6,
+      0.88
+    ]
+  },
+  {
+    "source": "art\\originals\\grass2.png",
+    "sha256": "331a69c432db019404cdbb61a1b6bcd4965f873c73ac4547fdc94cf6e9313ecc",
+    "decodedSize": [
+      2172,
+      724
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "meadow-0",
+    "crop": [
+      90,
+      173,
+      713,
+      453
+    ],
+    "outputSize": [
+      66,
+      32
+    ],
+    "anchor": [
+      0.5,
+      0.93
+    ]
+  },
+  {
+    "source": "art\\originals\\grass2.png",
+    "sha256": "331a69c432db019404cdbb61a1b6bcd4965f873c73ac4547fdc94cf6e9313ecc",
+    "decodedSize": [
+      2172,
+      724
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "meadow-1",
+    "crop": [
+      117,
+      59,
+      627,
+      453
+    ],
+    "outputSize": [
+      52,
+      41
+    ],
+    "anchor": [
+      0.5,
+      0.93
+    ]
+  },
+  {
+    "source": "art\\originals\\grass2.png",
+    "sha256": "331a69c432db019404cdbb61a1b6bcd4965f873c73ac4547fdc94cf6e9313ecc",
+    "decodedSize": [
+      2172,
+      724
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "meadow-2",
+    "crop": [
+      47,
+      79,
+      613,
+      456
+    ],
+    "outputSize": [
+      59,
+      41
+    ],
+    "anchor": [
+      0.5,
+      0.93
+    ]
+  },
+  {
+    "source": "art\\originals\\props.png",
+    "sha256": "dc11da560e5f1102c1dd360c73bf91cb3b10effaaf8cb06d362a523ed73284a5",
+    "decodedSize": [
+      1536,
+      1024
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "fruit-stall",
+    "crop": [
+      46,
+      37,
+      503,
+      467
+    ],
+    "outputSize": [
+      66,
+      62
+    ],
+    "anchor": [
+      0.5,
+      0.84
+    ]
+  },
+  {
+    "source": "art\\originals\\props.png",
+    "sha256": "dc11da560e5f1102c1dd360c73bf91cb3b10effaaf8cb06d362a523ed73284a5",
+    "decodedSize": [
+      1536,
+      1024
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "lamp",
+    "crop": [
+      61,
+      53,
+      179,
+      427
+    ],
+    "outputSize": [
+      22,
+      61
+    ],
+    "anchor": [
+      0.5,
+      0.97
+    ]
+  },
+  {
+    "source": "art\\originals\\props.png",
+    "sha256": "dc11da560e5f1102c1dd360c73bf91cb3b10effaaf8cb06d362a523ed73284a5",
+    "decodedSize": [
+      1536,
+      1024
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "fence-ne",
+    "crop": [
+      64,
+      84,
+      390,
+      354
+    ],
+    "outputSize": [
+      52,
+      44
+    ],
+    "anchor": [
+      0.5,
+      0.7
+    ]
+  },
+  {
+    "source": "art\\originals\\props.png",
+    "sha256": "dc11da560e5f1102c1dd360c73bf91cb3b10effaaf8cb06d362a523ed73284a5",
+    "decodedSize": [
+      1536,
+      1024
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "bread-stall",
+    "crop": [
+      47,
+      18,
+      491,
+      444
+    ],
+    "outputSize": [
+      66,
+      63
+    ],
+    "anchor": [
+      0.5,
+      0.84
+    ]
+  },
+  {
+    "source": "art\\originals\\props.png",
+    "sha256": "dc11da560e5f1102c1dd360c73bf91cb3b10effaaf8cb06d362a523ed73284a5",
+    "decodedSize": [
+      1536,
+      1024
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "bench",
+    "crop": [
+      33,
+      81,
+      335,
+      350
+    ],
+    "outputSize": [
+      46,
+      41
+    ],
+    "anchor": [
+      0.5,
+      0.85
+    ]
+  },
+  {
+    "source": "art\\originals\\props.png",
+    "sha256": "dc11da560e5f1102c1dd360c73bf91cb3b10effaaf8cb06d362a523ed73284a5",
+    "decodedSize": [
+      1536,
+      1024
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration",
+    "output": "fence-se",
+    "crop": [
+      80,
+      53,
+      403,
+      330
+    ],
+    "outputSize": [
+      52,
+      45
+    ],
+    "anchor": [
+      0.5,
+      0.7
+    ]
+  },
+  {
+    "source": "art\\originals\\creatures.png",
+    "sha256": "910f2a0ede1fd483616ea83fbb815a105107f3c8fcb2283eb3546d453b503a42",
+    "decodedSize": [
+      1536,
+      1024
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration"
+  },
+  {
+    "source": "art\\originals\\fountain.png",
+    "sha256": "29d4a54e8bae8d14698b4362488198e1fb9119b2252e32d0845ed1a60259cda6",
+    "decodedSize": [
+      2172,
+      724
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration"
+  },
+  {
+    "source": "art\\originals\\bridge.png",
+    "sha256": "b2075f79b03d2d572195d25934b1b45fe2a01ec4959960a8160b18dbac880fca",
+    "decodedSize": [
+      1254,
+      1254
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration"
+  },
+  {
+    "source": "art\\originals\\bridge-kit.png",
+    "sha256": "decea0ae3d3de7c47e29dee1aec2cf17413c3897e153bffb72b00bd7ac294311",
+    "decodedSize": [
+      2172,
+      724
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration"
+  },
+  {
+    "source": "art\\originals\\ground4.png",
+    "sha256": "da118340487438e047b36a7ff60e7424eeec78fc88c8b79cbbe04a80efec96d9",
+    "decodedSize": [
+      1536,
+      1024
+    ],
+    "processing": "magenta-only alpha extraction; nearest resampling; measured crop registration"
+  }
+]

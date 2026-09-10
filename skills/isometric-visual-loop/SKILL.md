@@ -38,6 +38,16 @@ user requirements from inferred supporting details. Update existing project
 plans rather than duplicating them. The brief is authoring data, not scene JSON.
 
 For world production, follow the [acceptance gate](references/acceptance.md).
+Use its version 3 plan, [executed production stages](references/production-flow.md),
+and [executed image comparison](references/visual-comparison.md):
+protect actual targets, assemble reference/previous/current images, have them
+visually inspected, repair the host and repeat with fresh captures. Recorded
+verdicts alone do not execute this loop.
+Begin each stage check before its evidence work. Do not expand beyond a failed or
+unverified prerequisite. Semantic layout owns paths, planting, entrances and
+supports; geometry checks bind rigid art to actual host settings. Reuse unchanged
+receipts and recapture affected dependencies. After two failed attempts at one
+check, record a changed strategy and a discriminating test before retrying.
 Freeze the approved requirements and art-check coverage before implementation.
 Keep every promised direction/action and visual quality criterion explicit; do
 not narrow them to what an initial generated sheet happens to contain. The gate
@@ -48,6 +58,10 @@ does not replace visual judgment. Focused repairs use a correspondingly small pl
 
 - Preserve the supplied reference. A generated concept may clarify implementation,
   but cannot silently replace the user's target or prove reference parity.
+- For each required visual view, protect a concrete reference and its role in the
+  plan. Use the supplied image or a project-specific target made within the agreed
+  technique and budget. If the image or vision access is unavailable, leave visual
+  acceptance unverified rather than judging the text description alone.
 - Establish whether the reference supplies a style, a layout to reproduce, or
   both. For a style reference, do not penalize a different bench/fence position
   as a failed replica. Without an image, use the brief and shared art direction;
@@ -130,6 +144,8 @@ Run the acceptance tool's `inspect` command on the actual runtime atlas and open
 its preview. Check all used frames at shared scale, clip playback, roots and
 silhouettes before requesting a full-world critique. Reject neighboring sprite
 fragments, cut-off bodies, wrong facings and rectangular overlay leakage first.
+During calibration, use `inspect --groups` for the asset families already built;
+retain the complete protected spec. This subset cannot replace full acceptance.
 Inspect the same actor and joined animated patch in the running game; a source
 sheet is not the delivered atlas and a preview is not in-game acceptance.
 
@@ -142,6 +158,10 @@ otherwise label the review as self-review. Give it the original brief, reference
 role, target, live captures and previous verdict after the first round, without
 the builder's preferred verdict. Assess composition/readability, style coherence,
 materials and visible defects; use clips or timed captures for animation.
+Run the comparison command to supply the actual images and review request. The
+critic must inspect them with vision, locate observations in both source images,
+and describe concrete differences and repairs. After changes, include the previous
+review and screenshot, account for every open finding and inspect for regressions.
 Require a verdict against every protected requirement: pass, fail or unverified.
 Motion needs observed playback, including all required actor directions/actions
 and complete environmental cycles. A still-image critic cannot approve it through

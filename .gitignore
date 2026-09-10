@@ -6,3 +6,4 @@ test-results/
 .world-build/
 .playwright-cli/
 __pycache__/
+/debug.log

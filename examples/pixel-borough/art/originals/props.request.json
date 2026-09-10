@@ -1,0 +1,5 @@
+{
+  "provider": "built-in image_gen",
+  "prompt": "Production isometric pixel-art town props sheet, six isolated complete sprites in 3 columns x 2 rows with generous gutters. Match supplied target crisp dark thin outlines, consistent clustered pixels, upper-left warm light, true 2:1 ground projection. Top row: wooden produce stall with blue/cream striped canopy and baskets of fruit; simple black iron lamppost with warm cream lantern; short white picket fence segment along upper-right axis (screen slope -0.5). Bottom row: wooden produce stall with yellow/cream striped canopy and bread baskets; small wooden park bench along upper-right axis; short white picket fence segment along lower-right axis (screen slope +0.5). No people, ground platform, shadows, text, franchise symbols, background scenery or checkerboard. Pure flat MAGENTA #FF00FF empty background, no magenta in props. Entire objects visible and separate. 1536x1024 canvas. Intended game scale lantern 50px tall, stall 62px wide, fence 48px wide, bench 42px wide. This is actual sprite artwork.",
+  "reference": "test-results/real-visual-session/user-target.jpg"
+}

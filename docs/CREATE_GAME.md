@@ -153,6 +153,10 @@ The rule uses only exported API. It compares floor-aware identity and checks rem
 
 For world production or a substantial visual change, follow the
 [world acceptance gate](../skills/isometric-visual-loop/references/acceptance.md).
+New worlds use its version 3 [production stages](../skills/isometric-visual-loop/references/production-flow.md).
+Define semantic routes, planting regions, entrances and supports before dressing
+the scene; complete the representative assembly before generating the remaining
+pack. Run the rigid geometry check against actual host scale/anchor bindings.
 Freeze the approved requirements and art-check coverage before implementation.
 Inspect the actual packed actor, all used clips and a joined animated patch before
 expanding; raw source sheets and numerical anchors are insufficient. After repairs,

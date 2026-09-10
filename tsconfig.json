@@ -12,5 +12,5 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["src", "demo", "examples/environment-lab", "examples/autotile-lab", "examples/willow-quay", "examples/autumn-crossing", "examples/mossbell", "vite*.ts", "tests"]
+  "include": ["src", "demo", "examples/environment-lab", "examples/autotile-lab", "examples/willow-quay", "examples/autumn-crossing", "examples/mossbell", "examples/pixel-borough", "vite*.ts", "tests"]
 }

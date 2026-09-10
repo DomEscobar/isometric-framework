@@ -42,10 +42,41 @@ Start with [the new-game guide](docs/CREATE_GAME.md). Put your map, artwork and
 rules in `examples/my-game/`, or replace `demo/` for a project with one game.
 Keep reusable engine code in `src/`.
 
-For a coding agent, start with [AGENTS.md](AGENTS.md). Then describe the world:
+### Copy this prompt into your coding agent
 
-> Create a lively autumn village with shops, a winding river, an old stone bridge
-> and a large fountain. Make it explorable on desktop and mobile.
+Attach a style-reference image with the prompt, or let the agent help you choose
+a direction. Change the world idea below to suit your game.
+
+```text
+Use https://github.com/DomEscobar/isometric-framework to create a beautiful,
+playable isometric pixel-art game. Read its AGENTS.md, new-game guide and relevant
+bundled skills first.
+
+Let's decide what to build together before coding or generating assets.
+My idea: two tiny connected worlds, a little town and a forest where I can
+encounter, catch and battle original Pokémon-like monsters. Make both places
+feel alive, with expressive creatures, animated foliage, flowing water where
+appropriate, and readable movement and battle actions. Keep the maps compact
+and thoughtfully detailed, with a clear route between them.
+
+Use my attached image as the pixel-art style reference, not a layout to copy.
+If no image is attached, help me choose the style before producing art. Create
+this game's own identity and assets; don't inherit bundled example artwork.
+
+Start with a short concept and a manageable exploration/catching/battle loop.
+Ask up to three important questions at a time, offering concrete choices and
+recommendations. Help me choose the pixel style, environment detail, asset
+technique and provider (Retro Diffusion MCP, WaveSpeed, or another available
+option), including a generation budget. Reuse decisions I've already supplied.
+Draft a short project contract for me to confirm; don't make me write it.
+Wait for agreement before implementation or paid generation.
+
+Once agreed, record the contract in the new host and follow it. Calibrate a small
+scene with our own actor, terrain, prop and animation, then finish both worlds
+and the agreed gameplay. Playtest in the browser, inspect actual sprite clips
+and environmental motion, and repair visual defects before calling it done.
+Use the framework's acceptance checks and report any unverified requirements.
+```
 
 The bundled [world-production skill](skills/isometric-visual-loop/SKILL.md)
 coordinates layout, consistent art, complex structures, animation and visual

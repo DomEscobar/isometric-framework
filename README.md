@@ -59,6 +59,11 @@ feel alive, with expressive creatures, animated foliage, flowing water where
 appropriate, and readable movement and battle actions. Keep the maps compact
 and thoughtfully detailed, with a clear route between them.
 
+Compose the ground as a continuous landscape: naturally worn paths blending into
+grass, coherent stream banks, and material variation spanning several tiles.
+Avoid obvious repeating diamonds, mirrored texture stamps and mismatched pixel
+styles. Review a connected ground patch before adding decorative props.
+
 Use my attached image as the pixel-art style reference, not a layout to copy.
 If no image is attached, help me choose the style before producing art. Create
 this game's own identity and assets; don't inherit bundled example artwork.

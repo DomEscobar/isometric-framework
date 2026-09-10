@@ -1,6 +1,6 @@
 ---
 name: consistent-tileset-authoring
-description: Prepare compatible isometric tilesets from shared generated materials or master parts, with fixed geometry, neighbor masks, inner corners, and rendered join checks. Use for connected beds, paths, walls, or water; includes a concrete 47-variant raised-bed assembler.
+description: Compose connected isometric terrain with consistent material transitions, shared boundaries and controlled variation, then prepare compatible tiles. Use for natural paths, grass and stream banks as well as constructed borders; the included raised-bed helper handles rigid bed geometry only.
 ---
 
 # Consistent tileset authoring
@@ -10,14 +10,23 @@ edge position. Autotiling selects artwork; it cannot correct incompatible artwor
 Use the [neutral runtime binding example](references/runtime-binding.md) for
 neighbor masks and host-owned catalogs.
 
+For natural paths, grass or stream banks, start with
+[landscape composition](references/landscape-composition.md). Establish regions,
+material-pair transitions and variation across cells before selecting tile masks.
+The ground must read as one landscape at playing zoom. A valid connected catalog
+can still fail through hard fringes, mirrored motifs and inconsistent pixel style.
+
 ## Set the contract before generating
 
-- Choose grid projection, tile dimensions, surface height, rim thickness, contact
+- Choose grid projection, tile dimensions, surface height, transition or rim width, contact
   anchor, pixel density and lighting once for the family. Measure these in world
   units alongside the player. A padded sprite frame is not a footprint.
 - Choose topology: `cardinal16` for four-neighbor connections, `blob47` when
   diagonal occupancy must distinguish concave corners and holes. Both operate on
   the runtime's c/r axes. Mask numbers are not sequential atlas positions.
+- For natural ground, record actual material adjacencies and their edge treatment.
+  Require separate terrain-composition and transition verdicts; approve a mixed
+  patch with optional props hidden before expanding and decorating the world.
 - Keep structural parts separate from flowers, furniture and other decoration.
   A generated bed with flowers, soil and wall baked together is a composite prop,
   not automatically a reusable border tile. Do not hide failed joins with flowers.
@@ -42,7 +51,9 @@ fill a missing direction: its projection and shading may cease to match.
 
 ## Raised-bed preparation helper
 
-Use [the recipe reference](references/bed-recipe.md) for the included tool:
+Use this tool only for the raised beds or rigid borders it represents. It is not
+the default production path for grass, natural trails or stream banks. Use
+[the recipe reference](references/bed-recipe.md) when that geometry is required:
 
 ```sh
 node --experimental-strip-types skills/consistent-tileset-authoring/scripts/prepare-bed-tileset.mjs recipe.json output-art
@@ -71,12 +82,15 @@ water transparency, or baked checkerboards. Preserve the original either way.
 1. Resolve host-owned cells with the public API. Treat missing variants as an
    incomplete catalog; do not substitute a straight or filled tile silently.
    Derive both rendered beds and blocking cells from the same edited cell set.
-2. Inspect a strip, L, filled patch, hollow ring and diagonal-only pair in the
-   renderer. Check cap width, inner corners, double walls, gaps and scale against
-   the actor. A valid atlas or 47 distinct images is not visual acceptance.
-3. Run one affected desktop/mobile journey: closed ring blocks walking; removing
-   one edge permits walking inside; repainting updates neighboring corners;
-   the actor's occupied tile stays protected. Inspect touch controls in play mode.
+2. Inspect a strip, L, filled patch, hollow ring and diagonal-only pair for the
+   applicable topology. For natural ground, also inspect a mixed-material bend
+   and junction at playing zoom, close-up and overview, with optional props hidden.
+   Check edge continuity, pixel treatment and repeated motifs. Restore props for
+   final readability. A valid atlas or 47 distinct images is not visual acceptance.
+3. Run the affected desktop/mobile journey using the host's collision policy:
+   paths remain traversable and dry banks readable; water blocks entry when intended.
+   For blocking beds, a closed ring blocks entry and an opening permits it. When
+   editing is part of the host, verify neighbor updates and actor-cell protection.
 4. Record source/recipe, geometry, missing variants, rendered evidence and limits.
    Expand to new families after this small assembly works. For water animation,
    keep the approved boundary geometry and contact fixed across frames; pair with

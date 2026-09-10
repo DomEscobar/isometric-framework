@@ -83,6 +83,11 @@ moving scenery, even when the prompt describes the experience rather than clips.
 - Build connected paths, banks, walls and water from shared boundaries. Derive
   art placements and collision reservations from the same assembly data. Keep
   density and asymmetry intentional without breaking joints or route clearance.
+- For natural ground, establish [landscape composition](../consistent-tileset-authoring/references/landscape-composition.md)
+  before tile production: material regions, path/grass and bank transitions, and
+  variation spanning cells. Inspect the ground without optional props before
+  decoration. A connected mask or shared palette does not approve a repetitive
+  diamond pattern, uniformly hard natural edge or mismatched pixel treatment.
 - Resolve capability gaps before detailed asset production. Check actual public
   APIs; do not invent thin-edge colliders, tile-animation fields or phase controls.
   Prefer a valid host assembly. If the intended form needs a reusable engine
@@ -142,6 +147,9 @@ Motion needs observed playback, including all required actor directions/actions
 and complete environmental cycles. A still-image critic cannot approve it through
 separate frame-counter tests. For style references, judge pixel treatment, terrain
 edges, density, layering and player readability as well as palette and object types.
+For natural landscapes, issue separate terrain-composition and material-transition
+verdicts from ground-only and dressed views. Identify the strongest repeated motif
+and worst boundary; reject visible grid stamping even if the landmarks look good.
 Report layout similarity separately when exact replication was not requested.
 For an explicit replica, use the gated similarity rubric below;
 its numeric cap is not a universal beauty score.

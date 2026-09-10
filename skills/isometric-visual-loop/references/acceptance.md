@@ -36,6 +36,8 @@ Example `game/acceptance-plan.json` (illustrative host; adapt IDs, roots and vie
   "reviewMode": "independent",
   "requirements": [
     {"id":"world-style","domain":"visual","description":"Brief's palette, terrain treatment, density and player readability at game scale","views":["desktop","mobile"]},
+    {"id":"ground-composition","domain":"visual","description":"Natural ground reads as continuous regions; no dominant repeated diamonds, mirrored motifs or per-cell color checkerboard","views":["ground-only-playing-zoom","ground-only-overview"]},
+    {"id":"ground-transitions","domain":"visual","description":"Path/grass and bank boundaries remain continuous through bends and junctions with consistent pixel treatment and readable traversal","views":["transition-closeup","desktop","mobile"]},
     {"id":"ranger-walk","domain":"motion","description":"Whole silhouette, stable root and correct facing throughout all four walking cycles and their wraps","views":["desktop","mobile"]},
     {"id":"river","domain":"motion","description":"Flow follows the channel, joins remain covered and pause freezes it","views":["desktop"]},
     {"id":"crossing","domain":"gameplay","description":"Walk across and back; reject rail and water entry","views":["desktop","mobile"]},
@@ -51,6 +53,11 @@ inputs that affect the delivered view. Avoid unrelated examples and dependencies
 Keep evidence outputs outside these roots. `artChecks: []` is only appropriate
 when the task has no packed raster art. Select `reviewMode: "self"` only when an
 independent reviewer is unavailable; disclose it instead of inventing independence.
+
+The ground requirements illustrate a natural-landscape brief. Adapt them to actual
+material pairs and intended style; deliberate formal paving may use regular grids.
+Use the [terrain evidence rubric](../../consistent-tileset-authoring/references/landscape-composition.md#terrain-acceptance-evidence)
+for explicit observations. The tool enforces their records, not aesthetic judgment.
 
 Example `packed-art.json`:
 

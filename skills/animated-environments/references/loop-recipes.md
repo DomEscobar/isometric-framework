@@ -13,6 +13,12 @@ can be sufficient. Select rate/count for the requested look, not from a universa
 preset. Surface shimmer and downstream flow need different visual criteria;
 changing frames alone establishes neither.
 
+For streams, define water/bank and bank/ground transitions using the
+[landscape composition](../../consistent-tileset-authoring/references/landscape-composition.md)
+before producing motion. All frames preserve that shared boundary through bends;
+flow detail follows the channel rather than restarting its pattern at each cell.
+Inspect the whole bend without optional props and again with the final scenery.
+
 A final frame need not duplicate the first: that often creates a pause. Inspect
 last-to-first at playback speed and in a contact sheet. If a large fountain must
 occlude an actor differently across its front/back, split rigid and effect layers

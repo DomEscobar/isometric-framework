@@ -1,5 +1,25 @@
 # Runtime verification — 2026-09-10
 
+## Connected landscape authoring guidance
+
+The terrain workflow now starts with regions, material-pair boundaries and
+variation across cells for natural ground. The rigid raised-bed helper is
+explicitly scoped to its supported geometry. Added a neutral landscape reference,
+variant-array binding example, ground-only review views and separate terrain
+requirements in the acceptance example and README starter prompt.
+
+- Three affected skill entrypoints passed metadata validation; all 68 local skill
+  links resolve within `skills/`. Markdown fences and the acceptance JSON parse.
+  The single-variant and alternative-array examples compile against public core.
+- A separate agent's read-only planning probe selected shared ground patches and
+  material-pair transitions, rejected the bed helper for natural banks, and kept
+  missing reference fidelity unverified. Its response placed acceptance setup too
+  late in the numbered plan; the landscape reference now explicitly puts protected
+  requirements before implementation. This probe is workflow evidence only.
+- No terrain compositor or engine feature was added. No art was generated and no
+  rendered landscape was accepted. Runtime/browser suites were not rerun for these
+  documentation-only edits; a real host build is still needed to assess results.
+
 ## Retro Diffusion provider option
 
 Added a provider-specific reference within the generation skill and exposed Retro

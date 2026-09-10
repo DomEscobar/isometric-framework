@@ -10,6 +10,10 @@ particular filename is required.
   working pixel scale, palette/light, player-relative scale and visual hierarchy.
 - **World layout:** regions, landmarks, connecting routes and views. Note which
   buildings need only exteriors and which require traversable interiors/passages.
+- **Ground composition:** material adjacencies, path and bank contours, transition
+  treatment, shared pixel density and variation across cells. For natural terrain,
+  use the [landscape contract](../../consistent-tileset-authoring/references/landscape-composition.md)
+  and record ground-only acceptance before optional props hide the surface.
 - **Assemblies:** common origins, surfaces, solids, openings, joins and access.
   Identify API gaps before generating detailed parts; link existing assembly plans.
 - **Motion:** fitting moving regions, fixed landmarks, flow direction, shared or

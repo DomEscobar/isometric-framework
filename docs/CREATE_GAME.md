@@ -10,6 +10,17 @@ Start with [AGENTS.md](../AGENTS.md) and [ARCHITECTURE.md](./ARCHITECTURE.md). I
 
 ## 1. Choose the host location
 
+Set the game's art direction from the user brief and supplied references first.
+Existing demo and example sprites, palettes, characters and layouts are not a
+starter pack. Consult a specific example's implementation only when needed for a
+capability; do not browse or copy its artwork into a new host by default, including
+as generation references or fallback textures. Reuse is appropriate when requested
+or when extending that existing example; preserve and record its provenance.
+Keep new manifests and artwork local to the new host, without imports or asset URLs
+pointing into another example. Use the neutral built-in graphics below to calibrate
+while preparing the new game's own art. See the
+[example-content boundary](../AGENTS.md#keep-example-content-out-of-new-games-by-default).
+
 For a separate game, copy this repository without `.git/`, `node_modules/`, `dist/`,
 `demo-dist/`, `.world-build/` or `test-results/`. Keep the lockfile, use Node.js
 22.18 or newer, run `npm ci`, and replace `demo/` with your host code. The existing

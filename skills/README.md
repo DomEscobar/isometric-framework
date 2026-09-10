@@ -6,6 +6,12 @@ then read their `SKILL.md` files before starting. These seven main workflows are
 bundled with the source folder and npm package; no global installation is required.
 Individual authoring tools may require additional dependencies or provider setup.
 
+Choose visual direction from the current brief and supplied references. Bundled
+example sprites and themes are not default inputs for these skills, including
+generation references. Consult example implementations only for a specific need;
+follow the [example-content boundary](../AGENTS.md#keep-example-content-out-of-new-games-by-default)
+before reusing their content.
+
 ## Choose by task
 
 | Requested work | Skill | Responsibility |

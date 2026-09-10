@@ -31,7 +31,31 @@ An installed package contains built exports, guides, and the skills, not this de
 checkout. Consumers use the public API in their own application; engine changes
 and the development commands below require the source folder.
 
+## Keep example content out of new games by default
+
+`demo/` and existing `examples/` hosts are optional implementation references,
+not a default asset library or art direction. Establish the new game's visual
+identity from the user's brief and supplied references before choosing artwork.
+Do not inherit example sprites, atlases, palettes, characters, names, maps or
+story content merely because they are available locally. This includes using
+example images as generation references or fallback artwork.
+
+Start with public API docs and the relevant skills. Inspect only the example
+code needed to answer a concrete implementation question; do not bulk-read
+example art directories or provenance records for an unrelated new game.
+Transfer API patterns, not another host's imports, asset URLs or content defaults.
+Keep the new host's manifests and artwork self-contained.
+
+Reuse example content when the user requests that example, its style or its
+assets, or when modifying that existing host. Record intentional asset reuse and
+preserve provenance; do not describe reused sprites as newly generated artwork.
+For a new game's technical calibration, use neutral built-in graphics until its
+own artwork is ready. Preserve unrelated examples in the framework checkout.
+
 ## Art workflows and example guidance
+
+Consult the example records below only for the relevant capability or trial.
+Their artwork and visual decisions are not defaults for the current task.
 
 For a new game, follow `docs/CREATE_GAME.md`. Calibrate with one small playable
 assembly, then complete the scope requested by the user. A rich environment

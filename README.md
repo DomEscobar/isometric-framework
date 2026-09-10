@@ -33,6 +33,11 @@ use the mouse wheel or available controls to zoom.
 
 ## Make your own game
 
+Bundled examples demonstrate capabilities; their sprites and visual themes are
+not defaults for your game. Agents should follow your brief and supplied references,
+consult example code only as needed, and reuse example artwork only when requested.
+See [the example-content boundary](AGENTS.md#keep-example-content-out-of-new-games-by-default).
+
 Start with [the new-game guide](docs/CREATE_GAME.md). Put your map, artwork and
 rules in `examples/my-game/`, or replace `demo/` for a project with one game.
 Keep reusable engine code in `src/`.

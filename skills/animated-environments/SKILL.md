@@ -5,7 +5,7 @@ description: Author and integrate looping isometric environments such as rivers,
 
 # Animated environments
 
-When the requested trial is about **generated assets**, perform actual generation
+When the request calls for **generated assets**, perform actual generation
 and integrate those outputs. An authored SVG fixture can isolate geometry, but
 cannot substitute for the requested provider/source/animation workflow. Keep
 original outputs and exact prompts, including rejected candidates.
@@ -69,6 +69,14 @@ entities over terrain whose `walkable` setting owns water traversal. Do not inve
 a tile animation field, shader API or wall-clock timer. Sprite loops advance with
 runtime simulation and freeze with pause.
 
+Terrain diamond clipping does not apply to entity sprites. A tile-sized animated
+overlay must carry its own diamond alpha (or use an explicitly measured host
+composition). An opaque rectangular material suitable for a static terrain tile
+is not automatically a valid overlay frame. Preserve clipping when replacing
+procedural artwork and inspect the channel boundary, bends and map edge. Use the
+[packed-art inspector](../isometric-visual-loop/references/acceptance.md)'s
+`diamond-overlay` check for overlays intended to occupy one tile diamond.
+
 Place joined modules together with compatible frame sequences/FPS. The runtime
 has no public phase-seek API; do not promise seamless phase after independently
 adding or restarting pieces. A single strip or phase-authored clips may suit the
@@ -83,13 +91,13 @@ the rigid base against the grid, and the actor beside/behind the asset. Combine
 this with the assembly skill's relevant walking and jump route rather than
 creating dozens of unrelated checks. Separate verdicts for frame metadata,
 visible alignment/loop quality, and gameplay; report anything not observed.
+Changing frame IDs, nonidentical pixels and printed wrap differences do not approve
+motion quality. Observe playback and record an explicit verdict on the complete
+cycle, rigid landmarks, joins and pause; still-image review leaves motion unverified.
 This representative check does not cap a larger world's content. Integrate the
 planned motion families across the full scene and inspect their joins, phases
 and occlusion there before marking the host's animation work complete.
 
-The bundled [shared challenge](references/challenge.md) and
-[SVG/source measurements](assets/challenge-sources.json) are repeatable geometric
-fixtures, not a production-art style target. Three experimental workflows and
-their limits are documented in [the comparison](../../docs/ENVIRONMENT_SKILL_COMPARISON.md).
-The follow-up [generated-asset trial](../../docs/GENERATED_ENVIRONMENT_TRIAL.md)
-records measured frame drift, failed transparency edits and the layered result.
+For a neutral worked example of registration and motion acceptance, use
+[the loop recipes](references/loop-recipes.md#registration-example). Apply the
+method to the current host's own art and measurements.

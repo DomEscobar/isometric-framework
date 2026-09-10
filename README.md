@@ -49,8 +49,11 @@ For a coding agent, start with [AGENTS.md](AGENTS.md). Then describe the world:
 
 The bundled [world-production skill](skills/isometric-visual-loop/SKILL.md)
 coordinates layout, consistent art, complex structures, animation and visual
-checks. Asset generation uses an available provider; it is separate from running
-the game. Small calibration scenes are milestones, not a limit on the final world.
+checks. Choose an asset production path with the agent: Retro Diffusion MCP,
+WaveSpeed Seedream, another available provider, or authored/supplied assets.
+The [generation skill](skills/game-asset-generation/SKILL.md) documents these
+options; generation is separate from running the game. Small calibration scenes
+are milestones, not a limit on the final world.
 
 ## Choose an agent skill
 
@@ -63,7 +66,13 @@ for a focused task. Agents should infer relevant skills from your request.
 Open the linked `SKILL.md` files even if your agent does not discover them
 automatically. No global skill installation is required. Authoring dependencies
 and provider setup are described in each skill; they are separate from running
-the game. Historical trial variants are listed separately in the catalog.
+the game. Skill references use neutral examples owned by their workflow.
+
+World production includes a [visual acceptance gate](skills/isometric-visual-loop/references/acceptance.md):
+decoded atlas checks, a browser preview, protected requirements, and separate
+visual/motion/gameplay/performance reviews tied to the current files. It rejects
+missing or stale evidence; artistic quality still requires actual review. A passing
+build alone does not mean a world's visuals are accepted.
 
 ## What's included
 

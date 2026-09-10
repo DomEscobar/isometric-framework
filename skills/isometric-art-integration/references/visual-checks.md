@@ -61,14 +61,14 @@ does not measure every walking pose or jump shadow. An interrupted browser run
 remains incomplete until its outstanding checks finish and its evidence is
 validated. Choose the host's ignored output directory before starting capture.
 
-## Known case to avoid repeating
+## Neutral scale mismatch example
 
-The first Sunflower courtyard used generated rectangular planters at width 82
-with 1×1 footprints and independently sized gardener/furniture images. It passed
-image-bound and collision checks but
-showed protruding stone borders and implausible player/furniture proportions.
-That version is a failure example, not a calibrated reference pack. A pleasing
-full-map screenshot did not establish correct joins or physical scale.
+Suppose a rigid prop is assigned a 1×1 footprint while its measured base spans
+1.4 tile widths at the chosen render scale. The atlas bounds and collision checks
+can both pass: neither measures that visible spill. Compare the base contacts to
+the projected footprint and resize or reauthor the rigid geometry. Independently
+check actor and furniture landmarks at the same scale; a correct base fit alone
+does not establish plausible proportions or clearance.
 
 Do not repair that class of problem by clipping the entire sprite to its tile:
 valid foliage, umbrellas, and tall objects need overhang. Measure and correct the

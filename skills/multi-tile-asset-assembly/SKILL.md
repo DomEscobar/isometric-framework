@@ -50,9 +50,9 @@ bridge/arch and building/doorway patterns and current renderer limits.
 
 Apply [isometric-art-integration](../isometric-art-integration/SKILL.md) for shared
 player/prop scale and source measurements. Use actual geometry/decoded pixels. Its PNG
-checker does not validate SVG; for the bundled SVG fixture use measured contacts
+checker does not validate SVG; for vector artwork use measured contacts
 in the assembly sidecar and inspect browser rendering. Do not claim PNG-tool
-acceptance for that fixture. Measure at least three noncollinear
+acceptance for vector sources. Measure at least three noncollinear
 rigid contacts, not the padded image center. For a frame-local point `p`, compare
 `(p - anchor * frameSize) * scale + offset` with the expected projection relative
 to the entity origin. Here scale includes `visual.width / frame.width` and
@@ -98,5 +98,3 @@ entry/exit and front/behind behavior. If jumping is enabled, include the relevan
 raised solid or ceiling in that journey. Do not move a probe or weaken a blocked
 cell expectation just to get green. Report physical, visual and animation
 acceptance separately, including conservative collision or depth limitations.
-See the [generated-asset trial](../../docs/GENERATED_ENVIRONMENT_TRIAL.md) for
-observed source contacts, rejected rail perspective and remaining approximations.

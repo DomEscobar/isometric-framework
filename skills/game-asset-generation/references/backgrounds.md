@@ -101,12 +101,3 @@ Replace placeholders from the job/inspection records, retain the actual request
 file, and update verdicts only after their checks. For remote removal, replace the
 processing entry with its provider/model/prediction ID. This is host provenance,
 not a runtime manifest extension; no provider URLs or keys are needed in it.
-
-## Courtyard precedent
-
-The first Sunflower repair did not successfully remove its checkerboard with a
-tool. Two generated RGB candidates were rejected, including an attempted
-regeneration edit asking for alpha; a fresh generation finally returned valid
-RGBA foliage. No rembg or WaveSpeed removal produced the shipped courtyard PNG.
-This skill adds an explicit removal path so future agents need not depend on that
-particular generator succeeding at transparency.

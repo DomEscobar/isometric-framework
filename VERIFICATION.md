@@ -1,5 +1,66 @@
 # Runtime verification — 2026-09-10
 
+## Retro Diffusion provider option
+
+Added a provider-specific reference within the generation skill and exposed Retro
+Diffusion MCP alongside WaveSpeed and other project-selected techniques. Removed
+the blanket Seedream preference. Guidance follows the provider's current MCP and
+compatibility documentation; no remote generation, installation or authentication
+was performed, and generated quality has not been benchmarked here.
+
+The generation skill passed metadata validation; all 62 local skill links remain
+inside `skills/`. This is a documentation change with no runtime API impact. A
+larger guided project-contract workflow remains a proposal under discussion.
+
+## Self-contained skill references
+
+Production skills now use neutral, skill-owned examples instead of named trial
+reports, game captures or inherited asset measurements. Runtime binding examples
+for art, autotiles and timed gestures live beside their owning skills. Historical
+comparison instructions, their challenge and synthetic artwork moved unchanged to
+`docs/history/environment-workflows/`; the existing lab and evaluator use that path.
+
+- All seven production skills passed the skill metadata validator. All 57 local
+  skill links resolve inside `skills/`; 111 local links across skills and changed
+  guides resolve. No named example hosts or trial-report links remain in skills.
+- Three new TypeScript examples passed strict compilation against public source
+  exports, with their stated host prerequisites supplied by temporary declarations.
+- `npm run check`, all 23 art-skill tests and the demo Vite build passed. The build
+  retains its existing large-chunk warning. Runtime APIs and artwork are unchanged.
+- The accepted environment fixture passed assembly, negative probes, animated
+  pixel/pause/wrap, crossing, underpass and stone-collision checks. The lab's desktop
+  and mobile journeys passed with no page errors. These used an explicitly started
+  server on 4187 because another checkout owned 4175; the temporary server was stopped.
+- Package inspection finds exactly seven `SKILL.md` entries, the new references,
+  and no historical challenge assets, comparison variants or Python caches under
+  `skills/`. All seven archived files retain their prior contents.
+
+## Authoring acceptance gates
+
+Added `skills/isometric-visual-loop/scripts/verify-world.py` and its workflow
+reference. Ownership is authoring tools and guides; there is no runtime API change.
+The workflow protects requirements and art thresholds, inspects decoded runtime
+crops, and requires complete reviews with current source/evidence hashes.
+
+- Python/Pillow regressions passed 12/12, including CLI failure/acceptance exit
+  codes, neighbor fragments, crop margins, opaque overlays, repeated-pixel clips,
+  stale inputs/evidence, omitted verdicts/views and altered protected requirements.
+- The generated preview passed 12 Chromium checks: image decoding, frame/clip
+  display, actual animated pixels, pause, shared zoom, anchor/frame overlays,
+  backgrounds, failure labels, real failing art, one-shot stop/hold and replay.
+  Rendered captures were self-inspected. Local evidence and the browser probe are
+  under ignored `test-results/visual-gate-qa/`; no independent art verdict claimed.
+- A read-only check of the external Fernwild atlas found neighbor components in
+  12 ranger frames and pixels outside the diamond in all 12 inspected water frames.
+  The source artwork was neither changed nor added to this package or its tests.
+- `npm run test:art-skill` passed 23/23; `npm run check` passed boundaries for 22
+  source modules and strict TypeScript. The npm dry run includes the portable tool
+  and reference, and excludes Python caches and local test-results evidence.
+- Full runtime/game suites were not rerun for this authoring-only change. The
+  gate verifies structural checks, declared coverage and freshness; it cannot
+  authenticate reviewers, understand attached media or certify artistic quality.
+  Existing game verification below is historical, not retroactively gate-approved.
+
 ## Mossbell and Bellshade example
 
 Added a host-owned two-world twilight example at `examples/mossbell/`. The complete

@@ -30,9 +30,15 @@ verified until the relevant observation exists. Inferred supporting details can
 change for a better result; explicit user requirements cannot silently disappear.
 The table helps preserve scope across turns and workers; it does not prove beauty.
 
+For world production, turn the approved outcomes into the protected requirements
+in the [acceptance plan](acceptance.md). Keep separate visual, motion, gameplay and
+performance verdicts, with the exact required views and actor direction/action
+coverage. Track the full defect list across rounds; a small repair list does not
+replace the completion table. Changed art or code requires fresh candidate evidence.
+
 ## Effort and interpretation examples
 
-- "A lively autumn witch village with a river, stone bridge and small shops":
+- "A lively village with a river, bridge and small shops":
   plan the complete village composition, shared terrain, distinct shop exteriors,
   traversable crossing and fitting environmental motion. Select reasonable sizes
   and defaults. A one-bridge calibration is a milestone, not the delivered village.

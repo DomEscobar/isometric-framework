@@ -10,14 +10,14 @@
 
 For one calibrated pixel-art loop, four or eight intentionally authored frames
 can be sufficient. Select rate/count for the requested look, not from a universal
-preset. The challenge uses four frames at four FPS merely for fast comparison.
-Its river is surface shimmer, not a tested directional-flow field.
+preset. Surface shimmer and downstream flow need different visual criteria;
+changing frames alone establishes neither.
 
 A final frame need not duplicate the first: that often creates a pause. Inspect
 last-to-first at playback speed and in a contact sheet. If a large fountain must
 occlude an actor differently across its front/back, split rigid and effect layers
-at useful depth anchors. This runtime sorts entities by grid origin within each
-floor, so arbitrarily overlapping transparent overlays are not a depth solution.
+at useful depth anchors. This runtime uses spatial footprints and height intervals
+for depth ordering; arbitrarily overlapping transparent overlays are not a depth solution.
 
 Minimal current binding (image and named frames must also exist in the manifest):
 
@@ -32,6 +32,21 @@ entityTypes.waterEffect = {
 ```
 
 Use each frame's calibrated anchor. Here `width: 64` is only appropriate for the
-64-pixel fixture; never copy that number onto unrelated source art. Omit an
+64-pixel illustrative frame; measure the current host's art before setting it. Omit an
 irrelevant body height for decoration instead of specifying zero: explicit
 `bodyHeight` values must be positive.
+
+## Registration example
+
+Suppose four 96×96 candidate frames show the same rigid basin. The measured basin
+contact is `(48,72)` in three frames and `(50,73)` in the fourth. That last frame
+has drifted two pixels right and one down. Register it by `(-2,-1)` on the shared
+canvas, preserving scale and sufficient transparent margins. Recheck several
+rigid corners: if they still disagree, translation cannot repair the changed
+shape or perspective. Replace the candidate or isolate motion over a fixed base.
+
+Pack the corrected pixels, then inspect the actual clip at game scale. The basin
+must remain still across every frame and the wrap. Inspect water separately:
+if only its brightness changes, the result may be shimmer, but it has not met a
+directional-flow requirement. Capture playback of adjacent modules and pause;
+neither a contact measurement nor a still image approves the moving result.

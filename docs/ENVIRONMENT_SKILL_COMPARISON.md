@@ -8,7 +8,7 @@ The lab now defaults to generated art and retains these older fixtures separatel
 
 The requested three variants were implemented as three authoring workflows,
 each applied by an independent agent to the same river + fountain + bridge brief.
-Each received the [raw challenge](../skills/animated-environments/references/challenge.md),
+Each received the [raw challenge](history/environment-workflows/challenge.md),
 the same authored atlas/source measurements, public runtime documentation and
 only its assigned experimental skill. Agents had separate outputs and did not
 read sibling results. Existing art-integration guidance was available to all.
@@ -16,9 +16,9 @@ No engine edits or image-provider calls were part of the trial.
 
 | Variant | Instruction emphasis | Observed result |
 | --- | --- | --- |
-| [A: animation first](../skills/animated-environments/references/variants/environment-animation-first/SKILL.md) | Play a loop, then compose | First validation rejected explicit `bodyHeight: 0` on water; agent corrected it. Final scene aligned. Conservative 86px body covers the whole basin. Agent did not perform the requested early browser playback. |
-| [B: contract first](../skills/animated-environments/references/variants/environment-contract-first/SKILL.md) | Source contacts, scale and footprint | First submitted scene valid; exact fountain contacts and correct bridge layout. Models only the 12px basin body. |
-| [C: topology first](../skills/animated-environments/references/variants/environment-topology-first/SKILL.md) | Solid cells, surfaces, openings and parts | First submitted scene valid; independent bridge/underpass and exact contacts. Also models only the 12px basin body. |
+| [A: animation first](history/environment-workflows/animation-first.md) | Play a loop, then compose | First validation rejected explicit `bodyHeight: 0` on water; agent corrected it. Final scene aligned. Conservative 86px body covers the whole basin. Agent did not perform the requested early browser playback. |
+| [B: contract first](history/environment-workflows/contract-first.md) | Source contacts, scale and footprint | First submitted scene valid; exact fountain contacts and correct bridge layout. Models only the 12px basin body. |
+| [C: topology first](history/environment-workflows/topology-first.md) | Solid cells, surfaces, openings and parts | First submitted scene valid; independent bridge/underpass and exact contacts. Also models only the 12px basin body. |
 
 Original final scenes remain in `examples/environment-lab/variants/a.json`,
 `b.json`, `c.json`, selectable in the lab. The refined `accepted.json` derives

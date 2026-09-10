@@ -1,6 +1,6 @@
 ---
 name: game-asset-generation
-description: Create game sprite and texture candidates using WaveSpeed Seedream or an available image provider, remove backgrounds with WaveSpeed or local rembg, and inspect decoded alpha before art integration. Use when a game needs new raster assets or transparent cutouts; no GPT ImageGen dependency.
+description: Create game sprite and texture candidates using the project's chosen Retro Diffusion MCP, WaveSpeed Seedream, or other available provider; prepare transparent cutouts and inspect decoded alpha before art integration. Use for new raster assets or cutouts, not unrelated runtime work.
 ---
 
 # Game asset generation
@@ -12,23 +12,37 @@ projection, scale, placement, and acceptance inside a game.
 For turnarounds, walk/jump/attack phases, and sheet assembly, use
 [directional sprite authoring](../directional-sprite-authoring/SKILL.md).
 
-## Choose the available path
+## Use the project's chosen production path
 
-| Need | Recommended starting path | Alternative |
+Read the host's existing brief or contract first. Preserve its chosen provider,
+technique, style and spending limits. If these decisions are missing, present
+relevant options and ask only for consequential choices before paid generation.
+The user can delegate the choice; record the selected approach and its reason.
+An available tool is not automatically the project's preferred art pipeline.
+
+| Need | Option | Other supported approach |
 | --- | --- | --- |
-| New artwork | WaveSpeed `bytedance/seedream-v5.0-pro` | An already available image provider, local generator, or supplied/licensed art |
-| Reference-guided variants | Seedream Pro Edit with an accepted reference | Available provider's image-edit workflow |
+| Pixel sprites, animation or tileset candidates | [Retro Diffusion MCP](references/retro-diffusion.md), with a compatible selected style | Another project-approved provider or authored/supplied assets |
+| General raster artwork | WaveSpeed `bytedance/seedream-v5.0-pro` | An already available image provider, local generator, or supplied/licensed art |
+| Reference-guided variants | Selected provider's reference workflow, such as Seedream Pro Edit | Authored edits preserving the approved identity |
 | Transparent prop/actor | Preserve valid existing alpha; otherwise WaveSpeed `wavespeed-ai/image-background-remover` | Local CPU `rembg` |
 | Exact modular stone/terrain geometry | Code/vector-authored geometry matching the host projection | Measured compatible sourced or generated art |
 
-Seedream is the recommended provider path here, not a claim that it has been
-benchmarked best for pixel art. Generated PNGs need not contain alpha. Background
+Neither provider is a universal default or benchmarked winner in this framework.
+Generated PNGs need not contain usable alpha. Background
 removal is a separate operation and cannot fix an incorrect perspective.
 
 Read [WaveSpeed usage](references/wavespeed.md) for API requests, resumable jobs,
 reference editing, and downloads. Read [local removal and alpha review](references/backgrounds.md)
 for the CPU fallback, its installation/model requirements, and inspection commands.
-No provider tool, global skill installation, or runtime dependency is required.
+The Retro Diffusion path requires its MCP connection; the included WaveSpeed
+client uses HTTP directly. These are authoring dependencies, not runtime services.
+
+Provider choice and technique are separate decisions. A project may explicitly
+choose generated materials with deterministic tile assembly and separately
+authored character frames. Record which technique owns each asset family. Do not
+silently change providers, mix styles or substitute example artwork after failure;
+use an agreed fallback or raise the specific decision that needs changing.
 
 ## Generate a representative candidate first
 

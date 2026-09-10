@@ -30,9 +30,9 @@ Avoid invented `zIndex`, collision polygon or crop-mask fields. Visible parapets
 occupying a thin edge still reserve whole cells with current blockers: document
 that margin or create a scoped engine change only if precision is required.
 
-The bundled lab demonstrates a pier-and-deck bridge, **not** an illustrated arch
-or curved underside collision. The user's ornate bridge reference calls for new
-layered artwork and a fresh visible occlusion check when made into production art.
+If the brief calls for an ornate arch, a plain pier-and-deck assembly proves only
+its supported traversal. Create the required layered artwork and check the arch's
+visible opening separately before accepting its appearance.
 
 ## Shop or building spanning several tiles
 
@@ -53,11 +53,10 @@ and door scale must be compared against the same player in the rendered scene.
 Keep placement and collider derivation alongside the source contacts so another
 agent can replace artwork without rediscovering or silently changing the layout.
 
-The [Weidenkai trial](../../../docs/WILLOW_QUAY.md) reproduced approach-dependent
-occlusion in front of a 3×3 house. Check the same final actor cell from both tile
-axes: one successful approach does not prove stable sorting. The renderer now
-resolves compact/large footprint depth ties and foreground stair actors against
-raised decks. Inspect the actor **standing idle on each access step**, on the
+For a building spanning several cells, check the same final actor cell from both
+tile axes: one successful approach does not prove stable sorting. Include
+compact/large footprint depth ties and foreground actors beside raised surfaces.
+Inspect the actor **standing idle on each access step**, on the
 deck, and below it; a successful crossing alone misses arrival-time clipping.
 Verify the exact cell, floor and feet height after the route ends and after
 camera changes. Seeing a coordinate briefly during travel does not prove arrival:
@@ -68,10 +67,13 @@ invalid), while a parapet uses its actual vertical extent. Sprite rectangle
 height includes projection and is not a valid surface height. Unsplit canopy
 overhangs still require a fresh visible check and potentially separate pieces.
 
-The near-bank wall exposed a separate data error: at 64×32, offset `(-32,-16)`
-equals one row backward. An entity on row9 therefore displayed its wall on row8
-while keeping its depth footprint on row9, across the actor. Place that wall on
-row8 with no offset and its true 16px height. The artwork stays in the same screen
-position. Increasing its height to include the image offset does not repair the
-world-space anchor. Add representative repeated-edge contacts to the assembly
-plan as well as landmarks for large buildings.
+## Neutral offset example
+
+For tile dimensions `W×H`, a sprite offset `(-W/2,-H/2)` equals one row backward
+in this projection. A rigid part declared at `(c,r)` would appear at `(c,r-1)`
+while its depth/occupancy footprint remains at `(c,r)`. If its measured contacts
+belong to the latter visible cell, place the part at `(c,r-1)` and remove that
+offset: the artwork stays in the same screen position and its spatial metadata
+now agrees. Preserve its measured physical height; adding image-offset distance
+to `bodyHeight` does not repair an incorrect world origin. Include representative
+repeated-edge contacts in the assembly plan, not just large-building landmarks.

@@ -15,7 +15,7 @@ rewriting assets, and a skill invocation does not authorize paid services.
 - To generate candidates or remove backgrounds without a GPT-specific tool, use
   [game asset generation](../game-asset-generation/SKILL.md).
 - For this runtime's manifest, rendering, and coordinate rules, read
-  [the art pipeline](../../docs/ART_PIPELINE.md).
+  [the neutral runtime binding example](references/runtime-binding.md).
 - Before measuring a pack, read [the calibration contract](references/contract.md).
 - Before accepting or repairing its appearance, use
   [the visual checks](references/visual-checks.md).
@@ -50,6 +50,14 @@ measuring. Anchors translate art; they cannot correct a wrong perspective or
 footprint shape. Do not squeeze a whole prop to hide a base mismatch.
 
 ## Calibrate a small set first
+
+For packed raster actors and animated tile overlays, run the
+[decoded packed-art inspector](../isometric-visual-loop/references/acceptance.md)
+and inspect its preview before accepting a larger pack. Unlike this skill's PNG
+metadata checker, it decodes frame pixels and can flag crop-edge contact,
+unexpected alpha components, static motion clips and diamond-overlay leakage.
+Neither checker proves visual quality; validate measured contacts and in-game
+appearance separately. A raw sheet can look correct while the runtime crops fail.
 
 Use one exposed tile, actor, and representative prop, adding a chair/table when
 human proportions matter. Mark measured source contacts, projected ground

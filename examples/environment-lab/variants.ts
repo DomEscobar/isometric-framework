@@ -2,7 +2,7 @@ import a from './variants/a.json';
 import b from './variants/b.json';
 import c from './variants/c.json';
 import accepted from './variants/accepted.json';
-import atlasUrl from '../../skills/animated-environments/assets/challenge-atlas.svg?url';
+import atlasUrl from '../../docs/history/environment-workflows/assets/challenge-atlas.svg?url';
 import type { Scene } from '../../src/index';
 import fountainUrl from './art/generated/fountain-source.png?url';
 import riverUrl from './art/generated/river-source.png?url';

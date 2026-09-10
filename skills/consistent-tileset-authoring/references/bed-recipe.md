@@ -18,19 +18,21 @@ workspace so the helper can resolve it. No provider key is used by preparation.
   "materialResolution": 32,
   "alphaMode": "require-opaque",
   "materials": {
-    "soil": [16, 16, 590, 590],
-    "cap": [644, 16, 590, 590],
-    "wall": [16, 644, 590, 590],
-    "grass": [644, 644, 590, 590]
+    "soil": [8, 8, 240, 240],
+    "cap": [264, 8, 240, 240],
+    "wall": [8, 264, 240, 240],
+    "grass": [264, 264, 240, 240]
   }
 }
 ```
 
-These crop coordinates fit the lab's actual 1254×1254 source. Measure your own
-decoded image; do not assume a provider returned requested dimensions.
+This illustrative recipe assumes a 512×512 sheet with four equal material
+quadrants and 8-pixel crop margins. It references no bundled artwork. Measure
+your own decoded image and replace the rectangles; do not assume a provider
+returned requested dimensions or evenly positioned swatches.
 `source` resolves relative to the recipe. Rectangles are `[x,y,width,height]` in
 source pixels. All crop pixels must be opaque unless the explicit material-only
-alpha policy in the skill applies; the lab uses that policy for its source.
+alpha policy in the skill applies.
 
 - Tile width: integer 32–256, multiple of four. Tile height: exactly width/2.
 - Wall height: integer 1–tileHeight in the same world pixels as actors.

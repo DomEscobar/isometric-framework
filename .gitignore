@@ -5,3 +5,4 @@ test-results/
 *.tgz
 .world-build/
 .playwright-cli/
+__pycache__/

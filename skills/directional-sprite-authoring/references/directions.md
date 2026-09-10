@@ -103,7 +103,7 @@ it; a `loop: false` clip holds its last frame until the host clears/replaces it.
 Hit timing, reach, collision, and targeting remain host game rules.
 
 For an approach-and-interact action, the reusable
-[interaction controller](../../../docs/INTERACTIONS.md) supplies adjacent routing,
+[interaction binding](interaction-binding.md) supplies adjacent routing,
 facing, preparation/recovery phases, cancellation, and one synchronous host effect.
 Supply the generated `customActions` direction maps as `clips`/`recoveryClips`.
 Its simulation timing still needs to match the visible poses; a passing effect

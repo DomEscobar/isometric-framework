@@ -22,8 +22,8 @@ Example `test-results/poses/walk-ne-01.request.json` (replace URLs and design):
 
 ```json
 {
-  "prompt": "Create one walking pose of the SAME gardener. Image 1 fixes identity, clothing, palette and body proportions. Image 2 fixes the approved NE view and camera: the character travels toward the upper-right of the screen, showing its back and a rightward silhouette; torso, feet and head follow that direction. Preserve the backpack, hat, and tool in the character's original hand. Walking contact phase: left foot forward and planted, opposite arm forward, right foot trailing. Keep camera elevation, upper-left lighting, body scale, canvas composition and ground root consistent with image 2. Full silhouette with margins on a uniform contrasting backdrop. No labels, arrows, checkerboard, scenery or cast shadow. One pose only.",
-  "images": ["https://your-image-host.example/gardener-master.png", "https://your-image-host.example/gardener-idle-ne.png"],
+  "prompt": "Create one walking pose of the SAME character. Image 1 fixes identity, clothing, palette and body proportions. Image 2 fixes the approved NE view and camera: the character travels toward the upper-right of the screen, showing its back and a rightward silhouette; torso, feet and head follow that direction. Preserve established accessories and equipment hands from the references. Walking contact phase: left foot forward and planted, opposite arm forward, right foot trailing. Keep camera elevation, lighting, body scale, canvas composition and ground root consistent with image 2. Full silhouette with margins on a uniform contrasting backdrop. No labels, arrows, checkerboard, scenery or cast shadow. One pose only.",
+  "images": ["https://your-image-host.example/character-master.png", "https://your-image-host.example/character-idle-ne.png"],
   "aspect_ratio": "1:1",
   "resolution": "1k",
   "output_format": "png",

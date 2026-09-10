@@ -18,7 +18,7 @@ required. The skill ID remains `isometric-visual-loop` for existing integrations
 
 A short prompt can request a rich finished world. Infer effort from the desired
 experience and references, not prompt length or whether the user knows technical
-terms. "A lively autumn village with shops, a river and an old bridge" warrants a
+terms. "A lively village with shops, a river and a bridge" warrants a
 composed, animated, traversable environment. "A quick bridge collision test"
 warrants a small functional fixture. A carefully finished courtyard can require
 high effort without a large map.
@@ -36,6 +36,13 @@ before calibrating: regions/landmarks, visual hierarchy, traversal, complex
 assemblies, appropriate motion and observable completion evidence. Distinguish
 user requirements from inferred supporting details. Update existing project
 plans rather than duplicating them. The brief is authoring data, not scene JSON.
+
+For world production, follow the [acceptance gate](references/acceptance.md).
+Freeze the approved requirements and art-check coverage before implementation.
+Keep every promised direction/action and visual quality criterion explicit; do
+not narrow them to what an initial generated sheet happens to contain. The gate
+checks packed pixels, requirement coverage and evidence freshness. Its exit code
+does not replace visual judgment. Focused repairs use a correspondingly small plan.
 
 ## Establish the target and calibrate
 
@@ -90,8 +97,11 @@ moving scenery, even when the prompt describes the experience rather than clips.
   and deduplicate identical frames instead of multiplying every mask/phase blindly.
 - Record whether a source is orthographic material or already projected art.
   Projecting already-isometric water stones again creates stretched diagonal bands.
-- Let one stage own the diamond silhouette. Opaque rectangular material frames
-  plus the runtime diamond clip avoid two slightly different alpha boundaries.
+- Let one stage own the diamond silhouette. Static terrain material frames may
+  be opaque rectangles because the terrain renderer draws a diamond. Entity
+  sprites, including animated water overlays, receive no terrain clipping: their
+  pixels must already have the intended transparent silhouette, or a measured
+  host composition must provide it. Verify this when replacing procedural art.
   Inspect underlying debug/procedural strokes before blaming the generator.
 - Split large artwork at meaningful depth planes. Rectify each vertical face
   while preserving vertical posts; a whole-image shear changes physical appearance.
@@ -111,6 +121,13 @@ flowing river, or count static water as complete animated scenery.
 
 ## Critique and repair
 
+Run the acceptance tool's `inspect` command on the actual runtime atlas and open
+its preview. Check all used frames at shared scale, clip playback, roots and
+silhouettes before requesting a full-world critique. Reject neighboring sprite
+fragments, cut-off bodies, wrong facings and rectangular overlay leakage first.
+Inspect the same actor and joined animated patch in the running game; a source
+sheet is not the delivered atlas and a preview is not in-game acceptance.
+
 Self-inspect a live capture first. Fix obvious loading, missing textures and
 misplaced landmarks before paying for a critic. Never judge an asset sheet as
 evidence that the playable scene is correct.
@@ -120,6 +137,11 @@ otherwise label the review as self-review. Give it the original brief, reference
 role, target, live captures and previous verdict after the first round, without
 the builder's preferred verdict. Assess composition/readability, style coherence,
 materials and visible defects; use clips or timed captures for animation.
+Require a verdict against every protected requirement: pass, fail or unverified.
+Motion needs observed playback, including all required actor directions/actions
+and complete environmental cycles. A still-image critic cannot approve it through
+separate frame-counter tests. For style references, judge pixel treatment, terrain
+edges, density, layering and player readability as well as palette and object types.
 Report layout similarity separately when exact replication was not requested.
 For an explicit replica, use the gated similarity rubric below;
 its numeric cap is not a universal beauty score.
@@ -134,6 +156,9 @@ its numeric cap is not a universal beauty score.
 
 The next critic marks each prior directive LANDED, PARTIAL or NOT DONE. Select
 at most three concrete corrections for a round and state how each will be visible.
+Keep the complete defect list open; the three-correction limit schedules repairs,
+not acceptance scope. LANDED confirms one repair only. After repairs, capture a
+new candidate and rerun the complete relevant acceptance scope before declaring done.
 Fix major shape blockers before decorative polish. Do not submit another material
 iteration against an unchanged bridge-width blocker. If two rounds repeat a
 major defect, change the composition, geometry or asset strategy and verify that
@@ -150,7 +175,7 @@ wrap, joined pieces and pause; sample distinct motion families without testing
 every decorative leaf separately. For explicitly static work, verify that scope
 instead of adding animation to satisfy a generic checklist.
 
-Keep three verdicts separate: visual quality, gameplay, performance. A score of 8+
+Keep four verdicts separate: visual quality, motion quality, gameplay, performance. A score of 8+
 does not validate routes, and passing collision tests does not establish beauty.
 For bridges, a focused walk both ways, blocked rail/water attempt, idle overlap
 capture and mobile control check normally suffice. Run broader checks only when
@@ -163,14 +188,16 @@ processes owned by this task/project. Native GPU and SwiftShader results are not
 interchangeable; concurrent software-rendered tests can invalidate both timings.
 Retain a finally/cleanup path in browser scripts.
 An isolated asset repair or simple collision fixture needs its affected checks;
-do not turn it into an unrelated full-world benchmark or environment-lab rerun.
+do not turn it into an unrelated full-world benchmark or broad regression rerun.
 
 Deliver the playable result, live capture/animation evidence, completed brief
 coverage, checks and material limits. Explicitly identify any missing requirement.
+Run the [acceptance command](references/acceptance.md) on the final candidate.
+Missing, failed, unverified or stale requirements block completion; report them
+as open work. Neither a passing build nor an unaudited review JSON proves quality.
 Accept a replica against this rubric only at 8+ with acceptable observed
 performance. For original worlds, accept against the brief and observed quality,
 not invented positional similarity to a generated concept. A bounded experiment
 may demonstrate a failed strategy; it does not satisfy a finished-world request.
 
-See [the autumn trial](../../docs/AUTUMN_CROSSING.md) for measured examples.
 License notices: [NOTICE.txt](NOTICE.txt).

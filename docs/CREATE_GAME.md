@@ -45,6 +45,11 @@ then `npm install ../isometric-framework` from its own project, adjusting the pa
 Package examples below use its public root import. When writing inside `demo/`,
 use `../src/index` for the same exports. Use a bundler to resolve `pixi.js`.
 
+For world production, now freeze the requirements and art-check coverage using
+the [acceptance plan](../skills/isometric-visual-loop/references/acceptance.md),
+before implementing the host or generating its full pack. Step 5 completes that
+same plan after calibration, production and repairs.
+
 ## 2. Define a three-by-three scene
 
 Keep this in a host scene module. All art below uses built-in graphics, so the first slice has no external asset dependency.
@@ -145,6 +150,15 @@ The rule uses only exported API. It compares floor-aware identity and checks rem
 - Saves: `serializeScene()` preserves remaining entities and committed positions. Store host progress separately; it does not serialize a complete game session. Catch and display invalid-import errors without discarding the current game.
 
 ## 5. Validate the slice and report evidence
+
+For world production or a substantial visual change, follow the
+[world acceptance gate](../skills/isometric-visual-loop/references/acceptance.md).
+Freeze the approved requirements and art-check coverage before implementation.
+Inspect the actual packed actor, all used clips and a joined animated patch before
+expanding; raw source sheets and numerical anchors are insufficient. After repairs,
+capture a new candidate and obtain complete separate visual, motion, gameplay and
+performance verdicts for the applicable scope. The acceptance command rejects stale
+or missing evidence. It cannot establish beauty or authenticate reviewer judgment.
 
 From the repository root, `npm run dev` serves `http://127.0.0.1:4175`. Validate a new host at its configured local URL. This standalone package does not require the legacy Client/Server application, a VPS, login, deployment or an agent provider.
 

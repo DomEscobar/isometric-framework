@@ -6,7 +6,7 @@ import { createGeneratedScene, generatedSources } from '../examples/environment-
 
 const output = resolve('test-results/environment-skill-comparison');
 await mkdir(output, { recursive: true });
-const source = await readFile('skills/animated-environments/assets/challenge-atlas.svg', 'utf8');
+const source = await readFile('docs/history/environment-workflows/assets/challenge-atlas.svg', 'utf8');
 const variants = process.argv.slice(2).length ? process.argv.slice(2) : ['a', 'b', 'c'];
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1280, height: 900 } });

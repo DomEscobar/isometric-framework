@@ -54,6 +54,12 @@ own artwork is ready. Preserve unrelated examples in the framework checkout.
 
 ## Art workflows and example guidance
 
+Keep skill instructions and supporting references independent of named games and
+historical trials. Put needed generalized examples inside the owning skill, with
+illustrative inputs explicitly identified. Extract reusable technical lessons;
+do not send a production agent to trial reports, screenshots or example artwork.
+Historical comparison instructions belong under documentation, outside `skills/`.
+
 Consult the example records below only for the relevant capability or trial.
 Their artwork and visual decisions are not defaults for the current task.
 
@@ -66,8 +72,10 @@ effort, plan the whole environment and coordinate art, assemblies and animation.
 For sprites, textures, or a new visual theme, read `docs/ART_PIPELINE.md` and
 apply [isometric-art-integration](skills/isometric-art-integration/SKILL.md).
 To generate raster assets or prepare transparent cutouts, use
-[game-asset-generation](skills/game-asset-generation/SKILL.md): WaveSpeed
-Seedream/removal or an available provider, with local rembg as an alternative.
+[game-asset-generation](skills/game-asset-generation/SKILL.md): the project's
+chosen Retro Diffusion MCP, WaveSpeed Seedream, or other available provider,
+with a compatible removal workflow where needed. Preserve existing provider,
+technique and spending decisions; tool availability does not select art direction.
 This does not require a GPT ImageGen skill or put provider keys in the game.
 For directional character frames and action poses, apply
 [directional-sprite-authoring](skills/directional-sprite-authoring/SKILL.md).
@@ -174,6 +182,18 @@ of unrelated changes.
   reservations intact when changing movement.
 
 ## Work and verification
+
+For new worlds and substantial visual production, completion requires the
+[world acceptance gate](skills/isometric-visual-loop/references/acceptance.md).
+Protect the approved requirements and packed-art checks before implementation;
+inspect the exact packed actor clips and joined animated overlays before expanding.
+Run `verify-world.py accept` against fresh source/capture hashes and complete
+visual, motion, gameplay and performance verdicts for the requested scope.
+Failed or unverified requirements remain open. Two repaired review comments, a
+passing build or changing frame IDs do not establish overall visual acceptance.
+For focused repairs, cover the affected assets/actions and playable views only.
+These authoring checks enforce coverage and freshness, not subjective quality or
+the truthfulness of a reviewer; report self-review when independence is unavailable.
 
 State the observable behavior and module ownership before a substantial change.
 Inspect neighboring code and existing tests; preserve unrelated work. If tasks

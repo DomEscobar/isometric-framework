@@ -54,6 +54,12 @@ in-between motion. Expand frames only when the intended playback needs them.
 
 ## Normalize and assemble accepted frames
 
+Measure crop windows on the decoded source. A requested equal grid does not prove
+the returned sheet has equal pose spacing. Reject windows that cut through bodies
+or include neighboring boots, hands or heads. Alpha-bounds cropping after a bad
+grid split cannot recover discarded pixels or distinguish a neighboring subject.
+Do not derive the character's scale/root from a contaminated crop bounding box.
+
 Preserve original candidates. Remove backgrounds and review masks separately.
 Normalize approved frames to a common canvas and root using measured landmarks;
 never auto-fit each silhouette. A raised sword, extended leg, or crouch must not
@@ -74,6 +80,13 @@ cell boundaries/order must be measured and visually classified rather than
 inferred from a requested row layout.
 
 ## Verify the matrix and play it
+
+Use the [decoded packed-art inspector](../isometric-visual-loop/references/acceptance.md)
+on the actual runtime manifest, including every used idle, movement and custom
+action clip. Inspect its shared-scale preview and animate the packed frames, not
+only the raw sheet. Component/margin checks catch common crop failures; they do
+not establish anatomy or true foot contact. Missing directional motion remains
+open work; a static fallback does not satisfy a promised walking cycle.
 
 Compare each clip at native scale and the host's intended display size. Inspect
 every frame and the loop seam for facing changes, identity drift, swapped hands,

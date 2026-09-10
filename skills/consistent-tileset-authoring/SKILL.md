@@ -7,7 +7,8 @@ description: Prepare compatible isometric tilesets from shared generated materia
 
 Use this when independently generated tiles disagree in perspective, scale or
 edge position. Autotiling selects artwork; it cannot correct incompatible artwork.
-The runtime API is documented in [AUTOTILING.md](../../docs/AUTOTILING.md).
+Use the [neutral runtime binding example](references/runtime-binding.md) for
+neighbor masks and host-owned catalogs.
 
 ## Set the contract before generating
 
@@ -55,7 +56,7 @@ the [multi-tile assembly workflow](../multi-tile-asset-assembly/SKILL.md).
 
 The helper checks source dimensions/crops and alpha, prefilters all materials to
 one resolution, then uses integer samples and mirrored repetition. Directly
-sampling a large source sparsely caused speckled aliasing in the first trial.
+sampling a large source sparsely can cause speckled aliasing.
 Mirrored repetition matches boundary samples but can reveal repetitive motifs;
 it does not guarantee natural-looking stonework or grass. Inspect at game scale.
 
@@ -80,7 +81,3 @@ water transparency, or baked checkerboards. Preserve the original either way.
    Expand to new families after this small assembly works. For water animation,
    keep the approved boundary geometry and contact fixed across frames; pair with
    [animated-environments](../animated-environments/SKILL.md).
-
-The source checkout's `examples/autotile-lab/` demonstrates this workflow. Its
-materials are generated, its actor is a built-in scale marker, and its renderer
-still draws terrain outlines. Do not present the lab as finished production art.

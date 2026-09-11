@@ -1,0 +1,14 @@
+{
+    "requestOrdinal":  5,
+    "provider":  "built-in image_gen",
+    "sourceBasename": "exec-02f4dd88-68f0-4fa7-a169-6aa9279a35de.png",
+    "rawBasename": "traveler-raw.png",
+    "sha256":  "de0aaffba65b747355fbaab084a59b44ab238a31300beaffc1144c9b1cff1163",
+    "prompt": "generation-5-prompt.txt",
+    "references":  [
+                       "reference/style.jpg",
+                       "examples/new-village/art/registered-ground-v3/ground.png"
+                   ],
+    "remainingRequests":  4,
+    "status": "Historical identity and facing source for the final traveler; its raw matrix was not used unchanged."
+}

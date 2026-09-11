@@ -1,0 +1,1 @@
+{"images":{"ground":{"height":464,"sampling":"nearest","sha256":"9eda2bc044ddf75a4a51ff0d1a8dd279a6a8224e003f0882bad8a9446ac00926","url":"ground.png","width":928}},"placements":{"ground":{"x":-32,"y":-256}},"textures":{"ground":{"anchor":{"x":0,"y":0},"frame":{"height":464,"width":928,"x":0,"y":0},"image":"ground"}},"version":1}

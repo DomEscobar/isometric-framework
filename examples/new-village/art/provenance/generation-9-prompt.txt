@@ -1,0 +1,12 @@
+Create ONE eight-sprite pixel-art walking contact sheet for this exact original traveler, using ONLY the attached neutral character reference for identity and four facings. This is a production animation sheet, not variations of one pose.
+
+Layout: four equal columns, two equal rows, one complete character per cell, uniform pure #ff00ff magenta background, generous clear padding, no labels. Columns keep the reference's four body orientations exactly: NE/back-right, SE/front-right, SW/front-left, NW/back-left. Never rotate torso between rows. Preserve auburn hair, green jacket, cream shirt/backpack, red neckerchief, dark trousers, compact 3-head proportions, consistent scale and coarse pixel clusters.
+
+Use a clear animation pose constraint: the character wears ONE LIGHT TAN BOOT ON THE ANATOMICAL LEFT FOOT and ONE DARK BROWN BOOT ON THE ANATOMICAL RIGHT FOOT, consistently in every image. Both boots retain thick normal anatomy; this color cue must follow the same anatomical foot, never switch boots between legs.
+
+TOP ROW: LIGHT TAN left boot leads forward along the column's travel direction, heel down ahead of the body; DARK BROWN right boot trails behind with toe on ground. Right arm forward, left arm back.
+BOTTOM ROW: DARK BROWN right boot now leads forward along the SAME travel direction, heel down ahead of the body; LIGHT TAN left boot trails behind with toe on ground. Left arm forward, right arm back.
+
+The viewer must plainly see the lead boot changing from light tan in the top row to dark brown in the bottom row. For the two front views, the forward boot is visibly nearer the viewer/lower on screen; therefore the lowest forward boot is TAN on top row and DARK BROWN on bottom row. For the two back views the forward foot extends away along upper-right or upper-left; the trailing closer boot swaps from DARK BROWN on top row to TAN on bottom row. Maintain correct near/far leg overlap rather than reflecting the whole body. Show both knees, thick connected calves and complete boots. Moderate natural stride, pelvis/head same height, no running leap, collapsed feet, noodle legs, detached toes, stretched limbs or body mirroring. Upper-left lighting fixed.
+
+Exactly eight clean full sprites. Before completion, check every vertical pair: same face/backpack and torso direction; the two differently colored anatomical boots exchange forward/back positions. These must be two OPPOSITE walking contacts, not two drawings with the same boot in front.

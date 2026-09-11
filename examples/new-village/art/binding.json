@@ -1,0 +1,89 @@
+{
+  "projection": {
+    "tileWidth": 64,
+    "tileHeight": 32,
+    "heightPixelsPerUnit": 32
+  },
+  "assets": {
+    "clay-hall": {
+      "image": "examples/new-village/art/cottage/cottage.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 143,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.278483302263027,
+        "y": 0.7518773466833543
+      },
+      "render": {
+        "width": 143
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      }
+    },
+    "ferry-kitchen": {
+      "image": "examples/new-village/art/workshop/workshop.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 142,
+        "height": 116
+      },
+      "anchor": {
+        "x": 0.279550722053842,
+        "y": 0.7340802172753285
+      },
+      "render": {
+        "width": 142
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      }
+    },
+    "loom-house": {
+      "image": "examples/new-village/art/cottage/loom-cottage.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 143,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.278483302263027,
+        "y": 0.7518773466833543
+      },
+      "render": {
+        "width": 143
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      }
+    },
+    "orchard-house": {
+      "image": "examples/new-village/art/workshop/orchard-workshop.png",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 142,
+        "height": 116
+      },
+      "anchor": {
+        "x": 0.279550722053842,
+        "y": 0.7340802172753285
+      },
+      "render": {
+        "width": 142
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      }
+    }
+  }
+}

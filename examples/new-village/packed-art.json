@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "manifest": "art/runtime-manifest.json",
+  "groups": [
+    {
+      "id": "traveler-walk",
+      "kind": "cutout",
+      "clips": [
+        "traveler.walk.ne",
+        "traveler.walk.se",
+        "traveler.walk.sw",
+        "traveler.walk.nw"
+      ],
+      "margin": 1,
+      "maxComponents": 1,
+      "minComponentPixels": 2,
+      "minDistinctFrames": 2,
+      "bounds": [
+        18,
+        34,
+        54,
+        56
+      ]
+    },
+    {
+      "id": "stream-flow",
+      "kind": "cutout",
+      "clips": [
+        "streamFlow"
+      ],
+      "minDistinctFrames": 4,
+      "margin": 1,
+      "maxComponents": 2,
+      "minComponentPixels": 2
+    },
+    {
+      "id": "wind-leaves",
+      "kind": "cutout",
+      "clips": [
+        "tree.leaves.wind"
+      ],
+      "margin": 1,
+      "maxComponents": 3,
+      "minComponentPixels": 2,
+      "minDistinctFrames": 2,
+      "bounds": [
+        24,
+        24,
+        128,
+        160
+      ]
+    }
+  ]
+}

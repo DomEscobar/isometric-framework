@@ -1,0 +1,4201 @@
+{
+  "version": 1,
+  "projectionModule": "src/core.ts",
+  "inputs": {
+    "scene": {
+      "file": "C:\\Users\\dhuec\\repos\\isometric-framework\\test-results\\independent-village-20260911-133351\\workspace\\examples\\new-village\\scene.json",
+      "sha256": "0e6eca3fddf102a8a3b3ad0e030d9b103aaf24e33f0fc50c106b258b680ee5e3"
+    },
+    "packedArt": {
+      "file": "C:\\Users\\dhuec\\repos\\isometric-framework\\test-results\\independent-village-20260911-133351\\workspace\\examples\\new-village\\art\\registered-ground-v5\\packed-art.json",
+      "sha256": "a081b7a63122a0cd0aeb1d9ea7030b2150989819dcb2b248020a78692089babb"
+    },
+    "image": {
+      "file": "C:\\Users\\dhuec\\repos\\isometric-framework\\test-results\\independent-village-20260911-133351\\workspace\\examples\\new-village\\art\\registered-ground-v5\\ground.png",
+      "sha256": "9eda2bc044ddf75a4a51ff0d1a8dd279a6a8224e003f0882bad8a9446ac00926"
+    },
+    "tool": {
+      "file": "bind-ground.mjs",
+      "sha256": "6ad381d830a83767fe49d3035bcd16cb722e3d394f6426d49ff5073554638da1"
+    },
+    "preparer": {
+      "file": "provenance.json",
+      "sha256": "f130d26f6342893c9ce0d6585a50cc8c0955cd982a2003bf074d192d639fa417",
+      "imageSha256": "9eda2bc044ddf75a4a51ff0d1a8dd279a6a8224e003f0882bad8a9446ac00926"
+    }
+  },
+  "image": {
+    "url": "/examples/new-village/art/registered-ground-v5/ground.png",
+    "reference": "ground.png",
+    "dimensions": {
+      "width": 928,
+      "height": 464
+    },
+    "origin": {
+      "x": -32,
+      "y": -256
+    }
+  },
+  "cells": [
+    {
+      "cell": {
+        "c": 0,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 0,
+        "y": 0
+      },
+      "frame": {
+        "x": 0,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-0",
+      "texture": "ground-binding-texture-0-0"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 32,
+        "y": -16
+      },
+      "frame": {
+        "x": 32,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-0",
+      "texture": "ground-binding-texture-1-0"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 64,
+        "y": -32
+      },
+      "frame": {
+        "x": 64,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-2-0",
+      "texture": "ground-binding-texture-2-0"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 96,
+        "y": -48
+      },
+      "frame": {
+        "x": 96,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-0",
+      "texture": "ground-binding-texture-3-0"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 128,
+        "y": -64
+      },
+      "frame": {
+        "x": 128,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-0",
+      "texture": "ground-binding-texture-4-0"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 160,
+        "y": -80
+      },
+      "frame": {
+        "x": 160,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-0",
+      "texture": "ground-binding-texture-5-0"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 192,
+        "y": -96
+      },
+      "frame": {
+        "x": 192,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-0",
+      "texture": "ground-binding-texture-6-0"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 224,
+        "y": -112
+      },
+      "frame": {
+        "x": 224,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-7-0",
+      "texture": "ground-binding-texture-7-0"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 256,
+        "y": -128
+      },
+      "frame": {
+        "x": 256,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-8-0",
+      "texture": "ground-binding-texture-8-0"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": -144
+      },
+      "frame": {
+        "x": 288,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-0",
+      "texture": "ground-binding-texture-9-0"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": -160
+      },
+      "frame": {
+        "x": 320,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-0",
+      "texture": "ground-binding-texture-10-0"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": -176
+      },
+      "frame": {
+        "x": 352,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-0",
+      "texture": "ground-binding-texture-11-0"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": -192
+      },
+      "frame": {
+        "x": 384,
+        "y": 48,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-0",
+      "texture": "ground-binding-texture-12-0"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": -208
+      },
+      "frame": {
+        "x": 416,
+        "y": 32,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-0",
+      "texture": "ground-binding-texture-13-0"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": -224
+      },
+      "frame": {
+        "x": 448,
+        "y": 16,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-0",
+      "texture": "ground-binding-texture-14-0"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 0,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": -240
+      },
+      "frame": {
+        "x": 480,
+        "y": 0,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-0",
+      "texture": "ground-binding-texture-15-0"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 32,
+        "y": 16
+      },
+      "frame": {
+        "x": 32,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-1",
+      "texture": "ground-binding-texture-0-1"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 64,
+        "y": 0
+      },
+      "frame": {
+        "x": 64,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-1",
+      "texture": "ground-binding-texture-1-1"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 96,
+        "y": -16
+      },
+      "frame": {
+        "x": 96,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-2-1",
+      "texture": "ground-binding-texture-2-1"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 128,
+        "y": -32
+      },
+      "frame": {
+        "x": 128,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-1",
+      "texture": "ground-binding-texture-3-1"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 160,
+        "y": -48
+      },
+      "frame": {
+        "x": 160,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-1",
+      "texture": "ground-binding-texture-4-1"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 192,
+        "y": -64
+      },
+      "frame": {
+        "x": 192,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-1",
+      "texture": "ground-binding-texture-5-1"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 224,
+        "y": -80
+      },
+      "frame": {
+        "x": 224,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-1",
+      "texture": "ground-binding-texture-6-1"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 256,
+        "y": -96
+      },
+      "frame": {
+        "x": 256,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-7-1",
+      "texture": "ground-binding-texture-7-1"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": -112
+      },
+      "frame": {
+        "x": 288,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-8-1",
+      "texture": "ground-binding-texture-8-1"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": -128
+      },
+      "frame": {
+        "x": 320,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-1",
+      "texture": "ground-binding-texture-9-1"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": -144
+      },
+      "frame": {
+        "x": 352,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-1",
+      "texture": "ground-binding-texture-10-1"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": -160
+      },
+      "frame": {
+        "x": 384,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-1",
+      "texture": "ground-binding-texture-11-1"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": -176
+      },
+      "frame": {
+        "x": 416,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-1",
+      "texture": "ground-binding-texture-12-1"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": -192
+      },
+      "frame": {
+        "x": 448,
+        "y": 48,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-1",
+      "texture": "ground-binding-texture-13-1"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": -208
+      },
+      "frame": {
+        "x": 480,
+        "y": 32,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-1",
+      "texture": "ground-binding-texture-14-1"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 1,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": -224
+      },
+      "frame": {
+        "x": 512,
+        "y": 16,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-1",
+      "texture": "ground-binding-texture-15-1"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 64,
+        "y": 32
+      },
+      "frame": {
+        "x": 64,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-2",
+      "texture": "ground-binding-texture-0-2"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 96,
+        "y": 16
+      },
+      "frame": {
+        "x": 96,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-2",
+      "texture": "ground-binding-texture-1-2"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 128,
+        "y": 0
+      },
+      "frame": {
+        "x": 128,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-2-2",
+      "texture": "ground-binding-texture-2-2"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 160,
+        "y": -16
+      },
+      "frame": {
+        "x": 160,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-2",
+      "texture": "ground-binding-texture-3-2"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 192,
+        "y": -32
+      },
+      "frame": {
+        "x": 192,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-2",
+      "texture": "ground-binding-texture-4-2"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 224,
+        "y": -48
+      },
+      "frame": {
+        "x": 224,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-2",
+      "texture": "ground-binding-texture-5-2"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 256,
+        "y": -64
+      },
+      "frame": {
+        "x": 256,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-2",
+      "texture": "ground-binding-texture-6-2"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": -80
+      },
+      "frame": {
+        "x": 288,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-7-2",
+      "texture": "ground-binding-texture-7-2"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": -96
+      },
+      "frame": {
+        "x": 320,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-8-2",
+      "texture": "ground-binding-texture-8-2"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": -112
+      },
+      "frame": {
+        "x": 352,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-2",
+      "texture": "ground-binding-texture-9-2"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": -128
+      },
+      "frame": {
+        "x": 384,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-2",
+      "texture": "ground-binding-texture-10-2"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": -144
+      },
+      "frame": {
+        "x": 416,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-2",
+      "texture": "ground-binding-texture-11-2"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": -160
+      },
+      "frame": {
+        "x": 448,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-2",
+      "texture": "ground-binding-texture-12-2"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": -176
+      },
+      "frame": {
+        "x": 480,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-2",
+      "texture": "ground-binding-texture-13-2"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": -192
+      },
+      "frame": {
+        "x": 512,
+        "y": 48,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-2",
+      "texture": "ground-binding-texture-14-2"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 2,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": -208
+      },
+      "frame": {
+        "x": 544,
+        "y": 32,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-2",
+      "texture": "ground-binding-texture-15-2"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 96,
+        "y": 48
+      },
+      "frame": {
+        "x": 96,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-3",
+      "texture": "ground-binding-texture-0-3"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 128,
+        "y": 32
+      },
+      "frame": {
+        "x": 128,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-3",
+      "texture": "ground-binding-texture-1-3"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 160,
+        "y": 16
+      },
+      "frame": {
+        "x": 160,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-2-3",
+      "texture": "ground-binding-texture-2-3"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 192,
+        "y": 0
+      },
+      "frame": {
+        "x": 192,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-3",
+      "texture": "ground-binding-texture-3-3"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 224,
+        "y": -16
+      },
+      "frame": {
+        "x": 224,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-3",
+      "texture": "ground-binding-texture-4-3"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 256,
+        "y": -32
+      },
+      "frame": {
+        "x": 256,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-3",
+      "texture": "ground-binding-texture-5-3"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": -48
+      },
+      "frame": {
+        "x": 288,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-3",
+      "texture": "ground-binding-texture-6-3"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": -64
+      },
+      "frame": {
+        "x": 320,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-7-3",
+      "texture": "ground-binding-texture-7-3"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": -80
+      },
+      "frame": {
+        "x": 352,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-8-3",
+      "texture": "ground-binding-texture-8-3"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": -96
+      },
+      "frame": {
+        "x": 384,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-3",
+      "texture": "ground-binding-texture-9-3"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": -112
+      },
+      "frame": {
+        "x": 416,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-3",
+      "texture": "ground-binding-texture-10-3"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": -128
+      },
+      "frame": {
+        "x": 448,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-3",
+      "texture": "ground-binding-texture-11-3"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": -144
+      },
+      "frame": {
+        "x": 480,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-3",
+      "texture": "ground-binding-texture-12-3"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": -160
+      },
+      "frame": {
+        "x": 512,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-3",
+      "texture": "ground-binding-texture-13-3"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": -176
+      },
+      "frame": {
+        "x": 544,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-3",
+      "texture": "ground-binding-texture-14-3"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 3,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": -192
+      },
+      "frame": {
+        "x": 576,
+        "y": 48,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-3",
+      "texture": "ground-binding-texture-15-3"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 128,
+        "y": 64
+      },
+      "frame": {
+        "x": 128,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-4",
+      "texture": "ground-binding-texture-0-4"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 160,
+        "y": 48
+      },
+      "frame": {
+        "x": 160,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-4",
+      "texture": "ground-binding-texture-1-4"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 192,
+        "y": 32
+      },
+      "frame": {
+        "x": 192,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-2-4",
+      "texture": "ground-binding-texture-2-4"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 224,
+        "y": 16
+      },
+      "frame": {
+        "x": 224,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-4",
+      "texture": "ground-binding-texture-3-4"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 256,
+        "y": 0
+      },
+      "frame": {
+        "x": 256,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-4",
+      "texture": "ground-binding-texture-4-4"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": -16
+      },
+      "frame": {
+        "x": 288,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-4",
+      "texture": "ground-binding-texture-5-4"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": -32
+      },
+      "frame": {
+        "x": 320,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-4",
+      "texture": "ground-binding-texture-6-4"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": -48
+      },
+      "frame": {
+        "x": 352,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-7-4",
+      "texture": "ground-binding-texture-7-4"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": -64
+      },
+      "frame": {
+        "x": 384,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-8-4",
+      "texture": "ground-binding-texture-8-4"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": -80
+      },
+      "frame": {
+        "x": 416,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-4",
+      "texture": "ground-binding-texture-9-4"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": -96
+      },
+      "frame": {
+        "x": 448,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-10-4",
+      "texture": "ground-binding-texture-10-4"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": -112
+      },
+      "frame": {
+        "x": 480,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-4",
+      "texture": "ground-binding-texture-11-4"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": -128
+      },
+      "frame": {
+        "x": 512,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-4",
+      "texture": "ground-binding-texture-12-4"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": -144
+      },
+      "frame": {
+        "x": 544,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-4",
+      "texture": "ground-binding-texture-13-4"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": -160
+      },
+      "frame": {
+        "x": 576,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-4",
+      "texture": "ground-binding-texture-14-4"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 4,
+        "level": "ground"
+      },
+      "world": {
+        "x": 608,
+        "y": -176
+      },
+      "frame": {
+        "x": 608,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-4",
+      "texture": "ground-binding-texture-15-4"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 160,
+        "y": 80
+      },
+      "frame": {
+        "x": 160,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-5",
+      "texture": "ground-binding-texture-0-5"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 192,
+        "y": 64
+      },
+      "frame": {
+        "x": 192,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-5",
+      "texture": "ground-binding-texture-1-5"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 224,
+        "y": 48
+      },
+      "frame": {
+        "x": 224,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-2-5",
+      "texture": "ground-binding-texture-2-5"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 256,
+        "y": 32
+      },
+      "frame": {
+        "x": 256,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-5",
+      "texture": "ground-binding-texture-3-5"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": 16
+      },
+      "frame": {
+        "x": 288,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-5",
+      "texture": "ground-binding-texture-4-5"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": 0
+      },
+      "frame": {
+        "x": 320,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-5",
+      "texture": "ground-binding-texture-5-5"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": -16
+      },
+      "frame": {
+        "x": 352,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-5",
+      "texture": "ground-binding-texture-6-5"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": -32
+      },
+      "frame": {
+        "x": 384,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-7-5",
+      "texture": "ground-binding-texture-7-5"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": -48
+      },
+      "frame": {
+        "x": 416,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-8-5",
+      "texture": "ground-binding-texture-8-5"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": -64
+      },
+      "frame": {
+        "x": 448,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-5",
+      "texture": "ground-binding-texture-9-5"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": -80
+      },
+      "frame": {
+        "x": 480,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-10-5",
+      "texture": "ground-binding-texture-10-5"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": -96
+      },
+      "frame": {
+        "x": 512,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-5",
+      "texture": "ground-binding-texture-11-5"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": -112
+      },
+      "frame": {
+        "x": 544,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-5",
+      "texture": "ground-binding-texture-12-5"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": -128
+      },
+      "frame": {
+        "x": 576,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-5",
+      "texture": "ground-binding-texture-13-5"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 608,
+        "y": -144
+      },
+      "frame": {
+        "x": 608,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-5",
+      "texture": "ground-binding-texture-14-5"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 5,
+        "level": "ground"
+      },
+      "world": {
+        "x": 640,
+        "y": -160
+      },
+      "frame": {
+        "x": 640,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-5",
+      "texture": "ground-binding-texture-15-5"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 192,
+        "y": 96
+      },
+      "frame": {
+        "x": 192,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-0-6",
+      "texture": "ground-binding-texture-0-6"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 224,
+        "y": 80
+      },
+      "frame": {
+        "x": 224,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-1-6",
+      "texture": "ground-binding-texture-1-6"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 256,
+        "y": 64
+      },
+      "frame": {
+        "x": 256,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-2-6",
+      "texture": "ground-binding-texture-2-6"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": 48
+      },
+      "frame": {
+        "x": 288,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-3-6",
+      "texture": "ground-binding-texture-3-6"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": 32
+      },
+      "frame": {
+        "x": 320,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-4-6",
+      "texture": "ground-binding-texture-4-6"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": 16
+      },
+      "frame": {
+        "x": 352,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-5-6",
+      "texture": "ground-binding-texture-5-6"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": 0
+      },
+      "frame": {
+        "x": 384,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-6-6",
+      "texture": "ground-binding-texture-6-6"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": -16
+      },
+      "frame": {
+        "x": 416,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "deck",
+      "newTile": "ground-binding-tile-7-6",
+      "texture": "ground-binding-texture-7-6"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": -32
+      },
+      "frame": {
+        "x": 448,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "deck",
+      "newTile": "ground-binding-tile-8-6",
+      "texture": "ground-binding-texture-8-6"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": -48
+      },
+      "frame": {
+        "x": 480,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "deck",
+      "newTile": "ground-binding-tile-9-6",
+      "texture": "ground-binding-texture-9-6"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": -64
+      },
+      "frame": {
+        "x": 512,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-10-6",
+      "texture": "ground-binding-texture-10-6"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": -80
+      },
+      "frame": {
+        "x": 544,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-11-6",
+      "texture": "ground-binding-texture-11-6"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": -96
+      },
+      "frame": {
+        "x": 576,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-12-6",
+      "texture": "ground-binding-texture-12-6"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 608,
+        "y": -112
+      },
+      "frame": {
+        "x": 608,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-13-6",
+      "texture": "ground-binding-texture-13-6"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 640,
+        "y": -128
+      },
+      "frame": {
+        "x": 640,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-14-6",
+      "texture": "ground-binding-texture-14-6"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 6,
+        "level": "ground"
+      },
+      "world": {
+        "x": 672,
+        "y": -144
+      },
+      "frame": {
+        "x": 672,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-15-6",
+      "texture": "ground-binding-texture-15-6"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 224,
+        "y": 112
+      },
+      "frame": {
+        "x": 224,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-7",
+      "texture": "ground-binding-texture-0-7"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 256,
+        "y": 96
+      },
+      "frame": {
+        "x": 256,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-7",
+      "texture": "ground-binding-texture-1-7"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": 80
+      },
+      "frame": {
+        "x": 288,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-2-7",
+      "texture": "ground-binding-texture-2-7"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": 64
+      },
+      "frame": {
+        "x": 320,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-7",
+      "texture": "ground-binding-texture-3-7"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": 48
+      },
+      "frame": {
+        "x": 352,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-4-7",
+      "texture": "ground-binding-texture-4-7"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": 32
+      },
+      "frame": {
+        "x": 384,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-7",
+      "texture": "ground-binding-texture-5-7"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": 16
+      },
+      "frame": {
+        "x": 416,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-7",
+      "texture": "ground-binding-texture-6-7"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": 0
+      },
+      "frame": {
+        "x": 448,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-7-7",
+      "texture": "ground-binding-texture-7-7"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": -16
+      },
+      "frame": {
+        "x": 480,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-8-7",
+      "texture": "ground-binding-texture-8-7"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": -32
+      },
+      "frame": {
+        "x": 512,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-7",
+      "texture": "ground-binding-texture-9-7"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": -48
+      },
+      "frame": {
+        "x": 544,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-7",
+      "texture": "ground-binding-texture-10-7"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": -64
+      },
+      "frame": {
+        "x": 576,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-7",
+      "texture": "ground-binding-texture-11-7"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 608,
+        "y": -80
+      },
+      "frame": {
+        "x": 608,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-12-7",
+      "texture": "ground-binding-texture-12-7"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 640,
+        "y": -96
+      },
+      "frame": {
+        "x": 640,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-7",
+      "texture": "ground-binding-texture-13-7"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 672,
+        "y": -112
+      },
+      "frame": {
+        "x": 672,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-7",
+      "texture": "ground-binding-texture-14-7"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 7,
+        "level": "ground"
+      },
+      "world": {
+        "x": 704,
+        "y": -128
+      },
+      "frame": {
+        "x": 704,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-7",
+      "texture": "ground-binding-texture-15-7"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 256,
+        "y": 128
+      },
+      "frame": {
+        "x": 256,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-8",
+      "texture": "ground-binding-texture-0-8"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": 112
+      },
+      "frame": {
+        "x": 288,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-8",
+      "texture": "ground-binding-texture-1-8"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": 96
+      },
+      "frame": {
+        "x": 320,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-2-8",
+      "texture": "ground-binding-texture-2-8"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": 80
+      },
+      "frame": {
+        "x": 352,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-8",
+      "texture": "ground-binding-texture-3-8"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": 64
+      },
+      "frame": {
+        "x": 384,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-4-8",
+      "texture": "ground-binding-texture-4-8"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": 48
+      },
+      "frame": {
+        "x": 416,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-8",
+      "texture": "ground-binding-texture-5-8"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": 32
+      },
+      "frame": {
+        "x": 448,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-8",
+      "texture": "ground-binding-texture-6-8"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": 16
+      },
+      "frame": {
+        "x": 480,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-7-8",
+      "texture": "ground-binding-texture-7-8"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": 0
+      },
+      "frame": {
+        "x": 512,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-8-8",
+      "texture": "ground-binding-texture-8-8"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": -16
+      },
+      "frame": {
+        "x": 544,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-8",
+      "texture": "ground-binding-texture-9-8"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": -32
+      },
+      "frame": {
+        "x": 576,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-8",
+      "texture": "ground-binding-texture-10-8"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 608,
+        "y": -48
+      },
+      "frame": {
+        "x": 608,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-8",
+      "texture": "ground-binding-texture-11-8"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 640,
+        "y": -64
+      },
+      "frame": {
+        "x": 640,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "path",
+      "newTile": "ground-binding-tile-12-8",
+      "texture": "ground-binding-texture-12-8"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 672,
+        "y": -80
+      },
+      "frame": {
+        "x": 672,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-8",
+      "texture": "ground-binding-texture-13-8"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 704,
+        "y": -96
+      },
+      "frame": {
+        "x": 704,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-8",
+      "texture": "ground-binding-texture-14-8"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 8,
+        "level": "ground"
+      },
+      "world": {
+        "x": 736,
+        "y": -112
+      },
+      "frame": {
+        "x": 736,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-8",
+      "texture": "ground-binding-texture-15-8"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 288,
+        "y": 144
+      },
+      "frame": {
+        "x": 288,
+        "y": 384,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-9",
+      "texture": "ground-binding-texture-0-9"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": 128
+      },
+      "frame": {
+        "x": 320,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-9",
+      "texture": "ground-binding-texture-1-9"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": 112
+      },
+      "frame": {
+        "x": 352,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-2-9",
+      "texture": "ground-binding-texture-2-9"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": 96
+      },
+      "frame": {
+        "x": 384,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-9",
+      "texture": "ground-binding-texture-3-9"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": 80
+      },
+      "frame": {
+        "x": 416,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-9",
+      "texture": "ground-binding-texture-4-9"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": 64
+      },
+      "frame": {
+        "x": 448,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-9",
+      "texture": "ground-binding-texture-5-9"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": 48
+      },
+      "frame": {
+        "x": 480,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-9",
+      "texture": "ground-binding-texture-6-9"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": 32
+      },
+      "frame": {
+        "x": 512,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-7-9",
+      "texture": "ground-binding-texture-7-9"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": 16
+      },
+      "frame": {
+        "x": 544,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-8-9",
+      "texture": "ground-binding-texture-8-9"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": 0
+      },
+      "frame": {
+        "x": 576,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-9",
+      "texture": "ground-binding-texture-9-9"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 608,
+        "y": -16
+      },
+      "frame": {
+        "x": 608,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-9",
+      "texture": "ground-binding-texture-10-9"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 640,
+        "y": -32
+      },
+      "frame": {
+        "x": 640,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-9",
+      "texture": "ground-binding-texture-11-9"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 672,
+        "y": -48
+      },
+      "frame": {
+        "x": 672,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-9",
+      "texture": "ground-binding-texture-12-9"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 704,
+        "y": -64
+      },
+      "frame": {
+        "x": 704,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-9",
+      "texture": "ground-binding-texture-13-9"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 736,
+        "y": -80
+      },
+      "frame": {
+        "x": 736,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-9",
+      "texture": "ground-binding-texture-14-9"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 9,
+        "level": "ground"
+      },
+      "world": {
+        "x": 768,
+        "y": -96
+      },
+      "frame": {
+        "x": 768,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-9",
+      "texture": "ground-binding-texture-15-9"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 320,
+        "y": 160
+      },
+      "frame": {
+        "x": 320,
+        "y": 400,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-10",
+      "texture": "ground-binding-texture-0-10"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": 144
+      },
+      "frame": {
+        "x": 352,
+        "y": 384,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-10",
+      "texture": "ground-binding-texture-1-10"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": 128
+      },
+      "frame": {
+        "x": 384,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-2-10",
+      "texture": "ground-binding-texture-2-10"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": 112
+      },
+      "frame": {
+        "x": 416,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-10",
+      "texture": "ground-binding-texture-3-10"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": 96
+      },
+      "frame": {
+        "x": 448,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-10",
+      "texture": "ground-binding-texture-4-10"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": 80
+      },
+      "frame": {
+        "x": 480,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-10",
+      "texture": "ground-binding-texture-5-10"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": 64
+      },
+      "frame": {
+        "x": 512,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-10",
+      "texture": "ground-binding-texture-6-10"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": 48
+      },
+      "frame": {
+        "x": 544,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-7-10",
+      "texture": "ground-binding-texture-7-10"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": 32
+      },
+      "frame": {
+        "x": 576,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-8-10",
+      "texture": "ground-binding-texture-8-10"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 608,
+        "y": 16
+      },
+      "frame": {
+        "x": 608,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-10",
+      "texture": "ground-binding-texture-9-10"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 640,
+        "y": 0
+      },
+      "frame": {
+        "x": 640,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-10",
+      "texture": "ground-binding-texture-10-10"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 672,
+        "y": -16
+      },
+      "frame": {
+        "x": 672,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-10",
+      "texture": "ground-binding-texture-11-10"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 704,
+        "y": -32
+      },
+      "frame": {
+        "x": 704,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-10",
+      "texture": "ground-binding-texture-12-10"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 736,
+        "y": -48
+      },
+      "frame": {
+        "x": 736,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-10",
+      "texture": "ground-binding-texture-13-10"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 768,
+        "y": -64
+      },
+      "frame": {
+        "x": 768,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-10",
+      "texture": "ground-binding-texture-14-10"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 10,
+        "level": "ground"
+      },
+      "world": {
+        "x": 800,
+        "y": -80
+      },
+      "frame": {
+        "x": 800,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-10",
+      "texture": "ground-binding-texture-15-10"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 352,
+        "y": 176
+      },
+      "frame": {
+        "x": 352,
+        "y": 416,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-11",
+      "texture": "ground-binding-texture-0-11"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": 160
+      },
+      "frame": {
+        "x": 384,
+        "y": 400,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-11",
+      "texture": "ground-binding-texture-1-11"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": 144
+      },
+      "frame": {
+        "x": 416,
+        "y": 384,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-2-11",
+      "texture": "ground-binding-texture-2-11"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": 128
+      },
+      "frame": {
+        "x": 448,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-11",
+      "texture": "ground-binding-texture-3-11"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": 112
+      },
+      "frame": {
+        "x": 480,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-11",
+      "texture": "ground-binding-texture-4-11"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": 96
+      },
+      "frame": {
+        "x": 512,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-11",
+      "texture": "ground-binding-texture-5-11"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": 80
+      },
+      "frame": {
+        "x": 544,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-11",
+      "texture": "ground-binding-texture-6-11"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": 64
+      },
+      "frame": {
+        "x": 576,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-7-11",
+      "texture": "ground-binding-texture-7-11"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 608,
+        "y": 48
+      },
+      "frame": {
+        "x": 608,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-8-11",
+      "texture": "ground-binding-texture-8-11"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 640,
+        "y": 32
+      },
+      "frame": {
+        "x": 640,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-11",
+      "texture": "ground-binding-texture-9-11"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 672,
+        "y": 16
+      },
+      "frame": {
+        "x": 672,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-11",
+      "texture": "ground-binding-texture-10-11"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 704,
+        "y": 0
+      },
+      "frame": {
+        "x": 704,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-11",
+      "texture": "ground-binding-texture-11-11"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 736,
+        "y": -16
+      },
+      "frame": {
+        "x": 736,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-11",
+      "texture": "ground-binding-texture-12-11"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 768,
+        "y": -32
+      },
+      "frame": {
+        "x": 768,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-11",
+      "texture": "ground-binding-texture-13-11"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 800,
+        "y": -48
+      },
+      "frame": {
+        "x": 800,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-11",
+      "texture": "ground-binding-texture-14-11"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 11,
+        "level": "ground"
+      },
+      "world": {
+        "x": 832,
+        "y": -64
+      },
+      "frame": {
+        "x": 832,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-11",
+      "texture": "ground-binding-texture-15-11"
+    },
+    {
+      "cell": {
+        "c": 0,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 384,
+        "y": 192
+      },
+      "frame": {
+        "x": 384,
+        "y": 432,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-0-12",
+      "texture": "ground-binding-texture-0-12"
+    },
+    {
+      "cell": {
+        "c": 1,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 416,
+        "y": 176
+      },
+      "frame": {
+        "x": 416,
+        "y": 416,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-1-12",
+      "texture": "ground-binding-texture-1-12"
+    },
+    {
+      "cell": {
+        "c": 2,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 448,
+        "y": 160
+      },
+      "frame": {
+        "x": 448,
+        "y": 400,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-2-12",
+      "texture": "ground-binding-texture-2-12"
+    },
+    {
+      "cell": {
+        "c": 3,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 480,
+        "y": 144
+      },
+      "frame": {
+        "x": 480,
+        "y": 384,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-3-12",
+      "texture": "ground-binding-texture-3-12"
+    },
+    {
+      "cell": {
+        "c": 4,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 512,
+        "y": 128
+      },
+      "frame": {
+        "x": 512,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-4-12",
+      "texture": "ground-binding-texture-4-12"
+    },
+    {
+      "cell": {
+        "c": 5,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 544,
+        "y": 112
+      },
+      "frame": {
+        "x": 544,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-5-12",
+      "texture": "ground-binding-texture-5-12"
+    },
+    {
+      "cell": {
+        "c": 6,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 576,
+        "y": 96
+      },
+      "frame": {
+        "x": 576,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-6-12",
+      "texture": "ground-binding-texture-6-12"
+    },
+    {
+      "cell": {
+        "c": 7,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 608,
+        "y": 80
+      },
+      "frame": {
+        "x": 608,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "water",
+      "newTile": "ground-binding-tile-7-12",
+      "texture": "ground-binding-texture-7-12"
+    },
+    {
+      "cell": {
+        "c": 8,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 640,
+        "y": 64
+      },
+      "frame": {
+        "x": 640,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-8-12",
+      "texture": "ground-binding-texture-8-12"
+    },
+    {
+      "cell": {
+        "c": 9,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 672,
+        "y": 48
+      },
+      "frame": {
+        "x": 672,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-9-12",
+      "texture": "ground-binding-texture-9-12"
+    },
+    {
+      "cell": {
+        "c": 10,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 704,
+        "y": 32
+      },
+      "frame": {
+        "x": 704,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-10-12",
+      "texture": "ground-binding-texture-10-12"
+    },
+    {
+      "cell": {
+        "c": 11,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 736,
+        "y": 16
+      },
+      "frame": {
+        "x": 736,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-11-12",
+      "texture": "ground-binding-texture-11-12"
+    },
+    {
+      "cell": {
+        "c": 12,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 768,
+        "y": 0
+      },
+      "frame": {
+        "x": 768,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-12-12",
+      "texture": "ground-binding-texture-12-12"
+    },
+    {
+      "cell": {
+        "c": 13,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 800,
+        "y": -16
+      },
+      "frame": {
+        "x": 800,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-13-12",
+      "texture": "ground-binding-texture-13-12"
+    },
+    {
+      "cell": {
+        "c": 14,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 832,
+        "y": -32
+      },
+      "frame": {
+        "x": 832,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-14-12",
+      "texture": "ground-binding-texture-14-12"
+    },
+    {
+      "cell": {
+        "c": 15,
+        "r": 12,
+        "level": "ground"
+      },
+      "world": {
+        "x": 864,
+        "y": -48
+      },
+      "frame": {
+        "x": 864,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      },
+      "originalTile": "grass",
+      "newTile": "ground-binding-tile-15-12",
+      "texture": "ground-binding-texture-15-12"
+    }
+  ]
+}

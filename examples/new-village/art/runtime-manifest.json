@@ -1,0 +1,2560 @@
+{
+  "images": {
+    "ground-binding-image": {
+      "url": "registered-ground-v5/ground.png",
+      "sampling": "nearest"
+    },
+    "waterFlow": {
+      "url": "water-flow-v3.png",
+      "sampling": "nearest"
+    },
+    "cottage": {
+      "url": "cottage/cottage.png",
+      "sampling": "nearest"
+    },
+    "loomCottage": {
+      "url": "cottage/loom-cottage.png",
+      "sampling": "nearest"
+    },
+    "workshop": {
+      "url": "workshop/workshop.png",
+      "sampling": "nearest"
+    },
+    "orchardWorkshop": {
+      "url": "workshop/orchard-workshop.png",
+      "sampling": "nearest"
+    },
+    "elm": {
+      "url": "elm/elm-wind.png",
+      "sampling": "nearest"
+    },
+    "traveler": {
+      "url": "traveler-final/traveler.png",
+      "sampling": "nearest"
+    }
+  },
+  "textures": {
+    "ground-binding-texture-0-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 0,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 32,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 64,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 96,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 128,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 160,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 192,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 224,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 256,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 48,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 32,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 16,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-0": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 0,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 32,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 64,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 96,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 128,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 160,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 192,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 224,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 256,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 48,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 32,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-1": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 16,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 64,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 96,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 128,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 160,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 192,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 224,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 256,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 48,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-2": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 32,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 96,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 128,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 160,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 192,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 224,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 256,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-3": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 48,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 128,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 160,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 192,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 224,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 256,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-4": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 608,
+        "y": 64,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 160,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 192,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 224,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 256,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 608,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-5": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 640,
+        "y": 80,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 192,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 224,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 256,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 608,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 640,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-6": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 672,
+        "y": 96,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 224,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 256,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 608,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 640,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 672,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-7": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 704,
+        "y": 112,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 256,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 608,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 640,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 672,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 704,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-8": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 736,
+        "y": 128,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 288,
+        "y": 384,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 608,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 640,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 672,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 704,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 736,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-9": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 768,
+        "y": 144,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 320,
+        "y": 400,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 384,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 608,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 640,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 672,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 704,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 736,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 768,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-10": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 800,
+        "y": 160,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 352,
+        "y": 416,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 400,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 384,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 608,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 640,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 672,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 704,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 736,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 768,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 800,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-11": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 832,
+        "y": 176,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-0-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 384,
+        "y": 432,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-1-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 416,
+        "y": 416,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-2-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 448,
+        "y": 400,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-3-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 480,
+        "y": 384,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-4-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 512,
+        "y": 368,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-5-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 544,
+        "y": 352,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-6-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 576,
+        "y": 336,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-7-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 608,
+        "y": 320,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-8-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 640,
+        "y": 304,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-9-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 672,
+        "y": 288,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-10-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 704,
+        "y": 272,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-11-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 736,
+        "y": 256,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-12-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 768,
+        "y": 240,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-13-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 800,
+        "y": 224,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-14-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 832,
+        "y": 208,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "ground-binding-texture-15-12": {
+      "image": "ground-binding-image",
+      "frame": {
+        "x": 864,
+        "y": 192,
+        "width": 64,
+        "height": 32
+      }
+    },
+    "flow-0": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-1": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 928,
+        "y": 0,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-2": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 1856,
+        "y": 0,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-3": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 2784,
+        "y": 0,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-4": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 0,
+        "y": 464,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-5": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 928,
+        "y": 464,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-6": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 1856,
+        "y": 464,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-7": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 2784,
+        "y": 464,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-8": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 0,
+        "y": 928,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-9": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 928,
+        "y": 928,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-10": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 1856,
+        "y": 928,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-11": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 2784,
+        "y": 928,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-12": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 0,
+        "y": 1392,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-13": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 928,
+        "y": 1392,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-14": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 1856,
+        "y": 1392,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "flow-15": {
+      "image": "waterFlow",
+      "frame": {
+        "x": 2784,
+        "y": 1392,
+        "width": 928,
+        "height": 464
+      },
+      "anchor": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "cottage": {
+      "image": "cottage",
+      "anchor": {
+        "x": 0.278483302263027,
+        "y": 0.7518773466833543
+      }
+    },
+    "loomCottage": {
+      "image": "loomCottage",
+      "anchor": {
+        "x": 0.278483302263027,
+        "y": 0.7518773466833543
+      }
+    },
+    "workshop": {
+      "image": "workshop",
+      "anchor": {
+        "x": 0.279550722053842,
+        "y": 0.7340802172753285
+      }
+    },
+    "orchardWorkshop": {
+      "image": "orchardWorkshop",
+      "anchor": {
+        "x": 0.279550722053842,
+        "y": 0.7340802172753285
+      }
+    },
+    "elm-0": {
+      "image": "elm",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 128,
+        "height": 144
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8888888888888888
+      }
+    },
+    "elm-1": {
+      "image": "elm",
+      "frame": {
+        "x": 128,
+        "y": 0,
+        "width": 128,
+        "height": 144
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8888888888888888
+      }
+    },
+    "elm-2": {
+      "image": "elm",
+      "frame": {
+        "x": 256,
+        "y": 0,
+        "width": 128,
+        "height": 144
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8888888888888888
+      }
+    },
+    "elm-3": {
+      "image": "elm",
+      "frame": {
+        "x": 384,
+        "y": 0,
+        "width": 128,
+        "height": 144
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8888888888888888
+      }
+    },
+    "traveler-ne-0": {
+      "image": "traveler",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-ne-1": {
+      "image": "traveler",
+      "frame": {
+        "x": 48,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-ne-2": {
+      "image": "traveler",
+      "frame": {
+        "x": 96,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-ne-3": {
+      "image": "traveler",
+      "frame": {
+        "x": 144,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-ne-4": {
+      "image": "traveler",
+      "frame": {
+        "x": 192,
+        "y": 0,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-se-0": {
+      "image": "traveler",
+      "frame": {
+        "x": 0,
+        "y": 56,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-se-1": {
+      "image": "traveler",
+      "frame": {
+        "x": 48,
+        "y": 56,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-se-2": {
+      "image": "traveler",
+      "frame": {
+        "x": 96,
+        "y": 56,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-se-3": {
+      "image": "traveler",
+      "frame": {
+        "x": 144,
+        "y": 56,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-se-4": {
+      "image": "traveler",
+      "frame": {
+        "x": 192,
+        "y": 56,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-sw-0": {
+      "image": "traveler",
+      "frame": {
+        "x": 0,
+        "y": 112,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-sw-1": {
+      "image": "traveler",
+      "frame": {
+        "x": 48,
+        "y": 112,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-sw-2": {
+      "image": "traveler",
+      "frame": {
+        "x": 96,
+        "y": 112,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-sw-3": {
+      "image": "traveler",
+      "frame": {
+        "x": 144,
+        "y": 112,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-sw-4": {
+      "image": "traveler",
+      "frame": {
+        "x": 192,
+        "y": 112,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-nw-0": {
+      "image": "traveler",
+      "frame": {
+        "x": 0,
+        "y": 168,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-nw-1": {
+      "image": "traveler",
+      "frame": {
+        "x": 48,
+        "y": 168,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-nw-2": {
+      "image": "traveler",
+      "frame": {
+        "x": 96,
+        "y": 168,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-nw-3": {
+      "image": "traveler",
+      "frame": {
+        "x": 144,
+        "y": 168,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    },
+    "traveler-nw-4": {
+      "image": "traveler",
+      "frame": {
+        "x": 192,
+        "y": 168,
+        "width": 48,
+        "height": 56
+      },
+      "anchor": {
+        "x": 0.5,
+        "y": 0.8571428571428571
+      }
+    }
+  },
+  "animations": {
+    "streamFlow": {
+      "frames": [
+        "flow-0",
+        "flow-1",
+        "flow-2",
+        "flow-3",
+        "flow-4",
+        "flow-5",
+        "flow-6",
+        "flow-7",
+        "flow-8",
+        "flow-9",
+        "flow-10",
+        "flow-11",
+        "flow-12",
+        "flow-13",
+        "flow-14",
+        "flow-15"
+      ],
+      "fps": 6,
+      "loop": true
+    },
+    "tree.leaves.wind": {
+      "frames": [
+        "elm-0",
+        "elm-1",
+        "elm-2",
+        "elm-3"
+      ],
+      "fps": 2,
+      "loop": true
+    },
+    "traveler.idle.ne": {
+      "frames": [
+        "traveler-ne-0"
+      ],
+      "fps": 1,
+      "loop": true
+    },
+    "traveler.walk.ne": {
+      "frames": [
+        "traveler-ne-1",
+        "traveler-ne-2",
+        "traveler-ne-3",
+        "traveler-ne-4"
+      ],
+      "fps": 8,
+      "loop": true
+    },
+    "traveler.idle.se": {
+      "frames": [
+        "traveler-se-0"
+      ],
+      "fps": 1,
+      "loop": true
+    },
+    "traveler.walk.se": {
+      "frames": [
+        "traveler-se-1",
+        "traveler-se-2",
+        "traveler-se-3",
+        "traveler-se-4"
+      ],
+      "fps": 8,
+      "loop": true
+    },
+    "traveler.idle.sw": {
+      "frames": [
+        "traveler-sw-0"
+      ],
+      "fps": 1,
+      "loop": true
+    },
+    "traveler.walk.sw": {
+      "frames": [
+        "traveler-sw-1",
+        "traveler-sw-2",
+        "traveler-sw-3",
+        "traveler-sw-4"
+      ],
+      "fps": 8,
+      "loop": true
+    },
+    "traveler.idle.nw": {
+      "frames": [
+        "traveler-nw-0"
+      ],
+      "fps": 1,
+      "loop": true
+    },
+    "traveler.walk.nw": {
+      "frames": [
+        "traveler-nw-1",
+        "traveler-nw-2",
+        "traveler-nw-3",
+        "traveler-nw-4"
+      ],
+      "fps": 8,
+      "loop": true
+    }
+  }
+}

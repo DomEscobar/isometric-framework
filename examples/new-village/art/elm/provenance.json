@@ -1,0 +1,24 @@
+{
+  "source": "test-results/new-village/generation-7/elm-raw.png",
+  "sourceSha256": "74246921b72d0fe6fe2f71132837d1ccce682ffad10bbd4721e042889ca70bbe",
+  "sourceBounds": [
+    50,
+    106,
+    1127,
+    1218
+  ],
+  "uniformScale": 0.09285051067780872,
+  "frameSize": [
+    128,
+    144
+  ],
+  "anchor": [
+    0.5,
+    0.8888888888888888
+  ],
+  "renderWidth": 128,
+  "rigidRoot": "Root pixels stay fixed; collision is one64x32 cell around trunk. Roots wider than prompt24px but contained by intended cell; canopy overhang is decorative.",
+  "motion": "Four phases0,+1,0,-1; move only green upper-canopy pixels by up to1 game pixel; bark, branches, lower trunk, root grass and ground contacts unchanged.",
+  "fixedRows": "y>=100 byte-identical across frames",
+  "status": "Prepared, pending contextual motion and occlusion review"
+}

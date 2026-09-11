@@ -1,0 +1,38 @@
+{
+  "source": "test-results\\new-village\\generation-9\\traveler-contacts-raw.png",
+  "sha256": "a9825fa5854356765c060dd042824b210c71ced7110273c052c78b6bb7070e20",
+  "identity": "Accepted original generation5 top-row idle views; original upper body remains pixel-identical across each facing cycle.",
+  "poses": "Generated generation9 first row supplies complete pants/boot clusters with opposite near/far leg overlap for right-facing NE/SE pair and left-facing SW/NW pair. No lower row from generation9 is used.",
+  "sourceUniformScale": 0.112,
+  "sourceCells": [
+    384,
+    512
+  ],
+  "sourceFootBaseline": 452,
+  "sourceCenters": [
+    200,
+    572,
+    956,
+    1340
+  ],
+  "contactMapping": {
+    "ne": [
+      0,
+      1
+    ],
+    "se": [
+      1,
+      0
+    ],
+    "sw": [
+      2,
+      3
+    ],
+    "nw": [
+      3,
+      2
+    ]
+  },
+  "authoredTransform": "Uniform nearest scale and fixed registration only; lower-pants/boot crop y35+ transferred beneath original torso. Diagnostic tan boot source colors y41+ multiplied.6; no limb stretching, reflection or deformation.",
+  "status": "Bound source-derived four-facing set. Independent review and acceptance records are external under test-results/new-village; structural pass is not temporal acceptance."
+}

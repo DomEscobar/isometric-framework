@@ -1,0 +1,1 @@
+{"groups":[{"composition":{"origin":[-32,-256],"reference":"ground.png"},"coverageMask":"coverage.png","id":"ground","kind":"surface","textures":["ground"]}],"manifest":"manifest.json","version":1}

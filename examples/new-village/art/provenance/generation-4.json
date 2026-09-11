@@ -1,0 +1,14 @@
+{
+    "requestOrdinal":  4,
+    "provider":  "built-in image_gen",
+    "sourceBasename": "exec-cb4b298f-9aa7-45f4-b931-1386ad3ca0f7.png",
+    "rawBasename": "cottage-raw.png",
+    "sha256":  "960193bb722e88170442ebd5212174ce4f1173d189056f0cc5f721c8d0435c1d",
+    "prompt": "generation-4-prompt.txt",
+    "references":  [
+                       "reference/style.jpg",
+                       "examples/new-village/art/registered-ground-v3/ground.png"
+                   ],
+    "remainingRequests":  5,
+    "status": "Historical source candidate; its selected local cutout supports the final cottage family."
+}

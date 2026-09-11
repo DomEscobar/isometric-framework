@@ -1,0 +1,14 @@
+{
+  "source": "registered-ground-v5/ground.png",
+  "movingMask": "water-mask-v3.png",
+  "clip": "streamFlow",
+  "frames": 16,
+  "fps": 6,
+  "periodSeconds": 2.6666666666666665,
+  "pixelPatternRepeatsEveryFrames": 8,
+  "pixelPatternRepeatSeconds": 1.3333333333333333,
+  "exportedFrom": "test-results/new-village/final-binding-export-v1/4212-scene.json",
+  "direction": "r+1 with c-axis bends from semantic centerline",
+  "method": "Two phase-offset downstream translations of generated source pixels with periodic dissolve; eroded mask keeps banks and deck fixed. Sixteen packed frames contain two identical eight-frame visual cycles.",
+  "scope": "Actual host clip exported. Temporal smoothness requires contextual motion review."
+}

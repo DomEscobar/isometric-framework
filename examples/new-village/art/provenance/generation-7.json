@@ -1,0 +1,13 @@
+{
+    "requestOrdinal":  7,
+    "provider":  "built-in image_gen",
+    "rawBasename": "elm-raw.png",
+    "sha256":  "74246921b72d0fe6fe2f71132837d1ccce682ffad10bbd4721e042889ca70bbe",
+    "prompt": "generation-7-prompt.txt",
+    "references":  [
+                       "reference/style.jpg",
+                       "examples/new-village/art/registered-ground-v4/ground.png"
+                   ],
+    "remainingRequests":  2,
+    "status": "Historical source candidate; the final elm keeps its measured fixed-root and local wind treatment."
+}

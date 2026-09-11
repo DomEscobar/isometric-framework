@@ -1,0 +1,222 @@
+{
+  "version": 1,
+  "projection": {
+    "tileWidth": 64,
+    "tileHeight": 32,
+    "heightPixelsPerUnit": 32
+  },
+  "assemblies": [
+    {
+      "id": "larkspur-bridge",
+      "origin": [
+        7,
+        6,
+        "ground"
+      ],
+      "parts": [
+        {
+          "id": "west-landing",
+          "cell": [
+            7,
+            6,
+            "ground"
+          ],
+          "role": "walkable-surface",
+          "solid": false,
+          "height": 0
+        },
+        {
+          "id": "deck",
+          "cell": [
+            8,
+            6,
+            "ground"
+          ],
+          "role": "walkable-surface",
+          "solid": false,
+          "height": 0
+        },
+        {
+          "id": "east-landing",
+          "cell": [
+            9,
+            6,
+            "ground"
+          ],
+          "role": "walkable-surface",
+          "solid": false,
+          "height": 0
+        }
+      ],
+      "requiredRoute": [
+        [
+          6,
+          6,
+          "ground"
+        ],
+        [
+          7,
+          6,
+          "ground"
+        ],
+        [
+          8,
+          6,
+          "ground"
+        ],
+        [
+          9,
+          6,
+          "ground"
+        ],
+        [
+          10,
+          6,
+          "ground"
+        ]
+      ],
+      "forbidden": [
+        [
+          8,
+          5,
+          "ground"
+        ],
+        [
+          8,
+          7,
+          "ground"
+        ]
+      ],
+      "notes": "Existing generated flush wooden deck remains within the registered ground surface. Semantic deck cells supply native walking support; stream-water mask excludes deck and fixed banks. Verify actual near-bank, all three deck cells, far-bank in both directions, denied adjacent water, visible feet and fixed banks. No invented rails or elevated bank colliders."
+    },
+    {
+      "id": "buildings",
+      "parts": [
+        {
+          "id": "clay-hall",
+          "footprint": [
+            [
+              1,
+              1,
+              "ground"
+            ],
+            [
+              2,
+              1,
+              "ground"
+            ],
+            [
+              1,
+              2,
+              "ground"
+            ],
+            [
+              2,
+              2,
+              "ground"
+            ]
+          ],
+          "approach": [
+            1,
+            3,
+            "ground"
+          ],
+          "role": "solid"
+        },
+        {
+          "id": "ferry-kitchen",
+          "footprint": [
+            [
+              4,
+              9,
+              "ground"
+            ],
+            [
+              5,
+              9,
+              "ground"
+            ],
+            [
+              4,
+              10,
+              "ground"
+            ],
+            [
+              5,
+              10,
+              "ground"
+            ]
+          ],
+          "approach": [
+            3,
+            9,
+            "ground"
+          ],
+          "role": "solid"
+        },
+        {
+          "id": "loom-house",
+          "footprint": [
+            [
+              10,
+              2,
+              "ground"
+            ],
+            [
+              11,
+              2,
+              "ground"
+            ],
+            [
+              10,
+              3,
+              "ground"
+            ],
+            [
+              11,
+              3,
+              "ground"
+            ]
+          ],
+          "approach": [
+            10,
+            4,
+            "ground"
+          ],
+          "role": "solid"
+        },
+        {
+          "id": "orchard-house",
+          "footprint": [
+            [
+              12,
+              9,
+              "ground"
+            ],
+            [
+              13,
+              9,
+              "ground"
+            ],
+            [
+              12,
+              10,
+              "ground"
+            ],
+            [
+              13,
+              10,
+              "ground"
+            ]
+          ],
+          "approach": [
+            11,
+            9,
+            "ground"
+          ],
+          "role": "solid"
+        }
+      ]
+    }
+  ]
+}

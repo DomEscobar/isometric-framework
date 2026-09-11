@@ -21,6 +21,7 @@ If that port is busy, use `npm run dev -- --port 4177` and open port 4177 instea
 | Example | Address after starting the server |
 | --- | --- |
 | Generated-sprite town and visual comparison trial | [Pixel Borough](http://127.0.0.1:4175/examples/pixel-borough/) |
+| Generated village with connected ground, brook and crossing (final acceptance open) | [Larkspur Crossing](http://127.0.0.1:4175/examples/new-village/) |
 | Sunflower courtyard and small gameplay demos | [Main demo](http://127.0.0.1:4175/) |
 | Twilight town and connected enchanted forest | [Mossbell](http://127.0.0.1:4175/examples/mossbell/) |
 | Autumn river and stone bridge | [Goldlaub](http://127.0.0.1:4175/examples/autumn-crossing/) |

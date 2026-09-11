@@ -1,0 +1,14 @@
+{
+    "requestOrdinal":  6,
+    "provider":  "built-in image_gen",
+    "rawBasename": "workshop-raw.png",
+    "sha256":  "3b60c37a609a395fe950ec37e19265a32e600dc207725ceea381c2a4740ec8a3",
+    "prompt": "generation-6-prompt.txt",
+    "references":  [
+                       "reference/style.jpg",
+                       "examples/new-village/art/registered-ground-v3/ground.png",
+                       "examples/new-village/art/cottage/cottage.png"
+                   ],
+    "remainingRequests":  3,
+    "status": "Historical source candidate; its selected local cutout supports the final workshop family."
+}

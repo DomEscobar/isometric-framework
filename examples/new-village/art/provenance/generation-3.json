@@ -1,0 +1,9 @@
+{
+  "requestNumber": 3,
+  "provider": "built-in image_gen tool",
+  "candidateBasename": "ground-candidate-3.png",
+  "sha256": "3d5efaf9e1060dfe58a4a103e46f5cdfe7ef79e61923e6b570a87459f3f750ff",
+  "prompt": "generation-3-prompt.txt",
+  "historicalReferences": ["runtime projection attempt 3 layout", "reference/style.jpg"],
+  "status": "Historical source plate used in later registered-ground derivation; the raw candidate is not shipped."
+}

@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "pack": "larkspur-crossing-original",
+  "projection": {
+    "tileWidth": 64,
+    "tileHeight": 32,
+    "heightPixelsPerUnit": 32
+  },
+  "tolerances": {
+    "groundErrorPx": 5,
+    "heightErrorPx": 2
+  },
+  "heightReferences": {
+    "doorway": 1.1875
+  },
+  "assets": [
+    {
+      "id": "clay-hall",
+      "kind": "prop",
+      "image": "cottage/cottage.png",
+      "sha256": "dcdf0ef7dfe7d848f801eff5f2861bdac7df131e35545dd2b2be9fc8e4fda03d",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 143,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.278483302263027,
+        "y": 0.7518773466833543
+      },
+      "render": {
+        "width": 143
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 6.888610763454318,
+            "y": 94.99874843554443
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 73.69211514392991,
+            "y": 125.75719649561952
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 1.5
+          }
+        },
+        {
+          "source": {
+            "x": 134.88861076345432,
+            "y": 99.96495619524406
+          },
+          "grid": {
+            "c": 1.5,
+            "r": 1.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "doorway",
+          "base": {
+            "x": 102.04755944931165,
+            "y": 115.18397997496871
+          },
+          "top": {
+            "x": 102.04755944931165,
+            "y": 77.05632040050062
+          }
+        }
+      ],
+      "allowedOverhang": "Roof eaves and small attached ornaments extend beyond the rigid foundation; doorway and actor visibility require actual host review."
+    },
+    {
+      "id": "ferry-kitchen",
+      "kind": "prop",
+      "image": "workshop/workshop.png",
+      "sha256": "1c36ce570254d598f43a07ce8f3501674a7e0f882ae6c45db3d70e2ecc46ec4a",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 142,
+        "height": 116
+      },
+      "anchor": {
+        "x": 0.279550722053842,
+        "y": 0.7340802172753285
+      },
+      "render": {
+        "width": 142
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 7.966244725738396,
+            "y": 85.73839662447257
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 71.1561181434599,
+            "y": 114.36286919831223
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 1.5
+          }
+        },
+        {
+          "source": {
+            "x": 135.9662447257384,
+            "y": 87.35864978902953
+          },
+          "grid": {
+            "c": 1.5,
+            "r": 1.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "doorway",
+          "base": {
+            "x": 29.839662447257382,
+            "y": 95.86497890295358
+          },
+          "top": {
+            "x": 29.839662447257382,
+            "y": 57.78902953586498
+          }
+        }
+      ],
+      "allowedOverhang": "Roof eaves and small attached ornaments extend beyond the rigid foundation; doorway and actor visibility require actual host review."
+    },
+    {
+      "id": "loom-house",
+      "kind": "prop",
+      "image": "cottage/loom-cottage.png",
+      "sha256": "625832d605f4f06ea63bf699651acbbd2480a2efb6d201856ff077c2e1ea5843",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 143,
+        "height": 128
+      },
+      "anchor": {
+        "x": 0.278483302263027,
+        "y": 0.7518773466833543
+      },
+      "render": {
+        "width": 143
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 6.888610763454318,
+            "y": 94.99874843554443
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 73.69211514392991,
+            "y": 125.75719649561952
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 1.5
+          }
+        },
+        {
+          "source": {
+            "x": 134.88861076345432,
+            "y": 99.96495619524406
+          },
+          "grid": {
+            "c": 1.5,
+            "r": 1.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "doorway",
+          "base": {
+            "x": 102.04755944931165,
+            "y": 115.18397997496871
+          },
+          "top": {
+            "x": 102.04755944931165,
+            "y": 77.05632040050062
+          }
+        }
+      ],
+      "allowedOverhang": "Roof eaves and small attached ornaments extend beyond the rigid foundation; doorway and actor visibility require actual host review."
+    },
+    {
+      "id": "orchard-house",
+      "kind": "prop",
+      "image": "workshop/orchard-workshop.png",
+      "sha256": "aad2a185a0a96996de762976675402ecf401f7b7e52f454cbe2047774aad7939",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 142,
+        "height": 116
+      },
+      "anchor": {
+        "x": 0.279550722053842,
+        "y": 0.7340802172753285
+      },
+      "render": {
+        "width": 142
+      },
+      "footprint": {
+        "columns": 2,
+        "rows": 2
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 7.966244725738396,
+            "y": 85.73839662447257
+          },
+          "grid": {
+            "c": -0.5,
+            "r": -0.5
+          }
+        },
+        {
+          "source": {
+            "x": 71.1561181434599,
+            "y": 114.36286919831223
+          },
+          "grid": {
+            "c": -0.5,
+            "r": 1.5
+          }
+        },
+        {
+          "source": {
+            "x": 135.9662447257384,
+            "y": 87.35864978902953
+          },
+          "grid": {
+            "c": 1.5,
+            "r": 1.5
+          }
+        }
+      ],
+      "heights": [
+        {
+          "reference": "doorway",
+          "base": {
+            "x": 29.839662447257382,
+            "y": 95.86497890295358
+          },
+          "top": {
+            "x": 29.839662447257382,
+            "y": 57.78902953586498
+          }
+        }
+      ],
+      "allowedOverhang": "Roof eaves and small attached ornaments extend beyond the rigid foundation; doorway and actor visibility require actual host review."
+    }
+  ]
+}

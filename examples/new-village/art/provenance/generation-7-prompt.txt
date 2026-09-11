@@ -1,0 +1,10 @@
+Use case: stylized-concept
+Asset type: ONE original rooted isometric pixel-art tree assembly for Larkspur Crossing.
+Reference image1 is ONLY the user's style for crisp clustered foliage, trunk/root treatment, outlines and upper-left warm light. Do not copy its tree exactly or its characters, terrain, signs or layout.
+Reference image2 is ONLY our own existing registered ground for palette, material contact and actual 2:1 projection.
+
+Create one welcoming small village elm, with a thick but compact slightly leaning brown trunk, two readable short branches, and a generous rounded crown formed from three overlapping hand-drawn clusters of deep forest green, fresh mid-green and small yellow-green sunlit leaf groups. A natural silhouette, asymmetric branch tips, purposeful low-resolution square pixel clusters, not noise. Warm upper-left sunlight with consistent shaded lower-right foliage. Trunk and roots visibly meet one flat 2:1 ground plane. Roots spread modestly with a few tiny grass blades between roots and a small low dark-green leafy sprig at the right root; no large dirt oval or raised planter. Keep this contact small enough to blend into existing grass.
+
+Designed to be rendered approximately100px wide by115px tall at game scale, with a roughly24x12px rigid root contact footprint and clear25px trunk below the canopy. Think of a112x128 low-resolution game sprite enlarged by an integer factor, with crisp hard pixels, no blur, gradients, anti-aliasing or microtexture. Keep the outer canopy, roots and every branch wholly within the image, generous padding. NO floating leaves outside the tree: foliage movement will later be authored from the actual canopy while the trunk/roots remain fixed.
+
+One complete centered tree ONLY on perfectly uniform bright MAGENTA (#ff00ff), absent from tree colors, for deterministic local cutout processing. No checkerboard, background scene, floor tile, path, cliff, water, fence, other tree, text, labels, arrows, guides, grid, watermark or broad cast shadow.

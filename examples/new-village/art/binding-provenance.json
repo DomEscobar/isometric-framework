@@ -1,0 +1,12 @@
+{
+  "scene": "test-results/new-village/final-binding-export-v1/4212-scene.json",
+  "sceneSha256": "3d1d872c9a2f1df65b8dbc396ff9383d9eb3190a7c53f8a0708b4781eaa49249",
+  "exporter": "examples/new-village/tools/export-final-art.mjs",
+  "method": "Resolved each actual entity type visual to its actual texture, image, frame, anchor, render width and occupied footprint. Image SHA-256 binds measured contract to local served source.",
+  "coverage": [
+    "clay-hall",
+    "ferry-kitchen",
+    "loom-house",
+    "orchard-house"
+  ]
+}

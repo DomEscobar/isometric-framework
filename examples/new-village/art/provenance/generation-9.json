@@ -1,0 +1,12 @@
+{
+  "provider": "built-in image_gen",
+  "callNumber": 9,
+  "totalAuthorized": 9,
+  "remaining": 0,
+  "rawBasename": "traveler-contacts-raw.png",
+  "sha256": "a9825fa5854356765c060dd042824b210c71ced7110273c052c78b6bb7070e20",
+  "prompt": "generation-9-prompt.txt",
+  "promptSha256": "b1addcce61808afbf3982e0d0af3d5b30a1334a060bbdf442d9e70596f039df2",
+  "historicalReference": {"basename": "neutral-only-reference.png", "sha256": "4b9419c0cc11addf9c33659b86b852ee9f42e593983f9319f4c6fd835cccee0c"},
+  "status": "The source sheet was rejected as a complete contact matrix. The final traveler retains the generation-5 identity and derives selected contact limbs from this source; see ../traveler-final/provenance.json."
+}

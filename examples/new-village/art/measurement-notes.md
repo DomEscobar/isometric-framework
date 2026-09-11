@@ -1,0 +1,9 @@
+# Measured original building family
+
+The four visible buildings use two original generated masters, with explicitly authored roof hue variants for Loom House and Orchard House. Their source prompts and provider/hash records are retained in `provenance/`; raw images, masks and trial records are deliberately not part of this runnable host. No bundled example art is used.
+
+The contract uses three independently observed opaque foundation corners from each master, paired with the predeclared 2 by 2 footprint corners. These are source observations, not inverse-derived grid contacts. Cottage residuals are 1.55, 3.11 and 3.84 world pixels; workshop residuals are 0.64, 2.84 and 2.22. A 5 pixel tolerance allows the observed stone-cluster/contact-edge ambiguity and raster scaling; it is not exact camera proof. The unobserved rear corner and all overhanging roof pixels remain outside this three-point measurement claim. Actual host doorway and ground views must also pass independent review.
+
+The initial actor height target was 34–46 visible world pixels. The prepared traveler is approximately 40 pixels high and is rendered at uniform source scale .16; it is not enlarged to satisfy a speculative sheet-width target. Both measured doorway clearances are approximately 38.1 pixels. The doorway reference of 38 pixels is a measured regression value, not independent proof of human architectural proportions or an implemented interior transition. This village exposes reachable exterior thresholds only.
+
+The checker contract is populated after source observation and is retrospective. The binding records the actual serialized host entities through texture/image/anchor/render/footprint settings. The old provisional targets, protected acceptance baseline, rejected sources, and narrow calibration evidence are intentionally outside this host; none establishes final acceptance.

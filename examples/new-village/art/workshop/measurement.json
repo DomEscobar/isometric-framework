@@ -1,0 +1,86 @@
+{
+  "source": "test-results/new-village/generation-6/workshop-raw.png",
+  "crop": [
+    244,
+    88,
+    1296,
+    948
+  ],
+  "scale": 0.1350210970464135,
+  "frameSize": [
+    142,
+    116
+  ],
+  "anchor": {
+    "x": 0.279550722053842,
+    "y": 0.7340802172753285
+  },
+  "renderWidth": 142,
+  "footprint": {
+    "columns": 2,
+    "rows": 2
+  },
+  "groundContacts": [
+    {
+      "source": [
+        303,
+        723
+      ],
+      "expected": [
+        -32,
+        0
+      ],
+      "actual": [
+        -31.72995780590717,
+        0.5850914205344636
+      ],
+      "error": 0.6444026357592795
+    },
+    {
+      "source": [
+        771,
+        935
+      ],
+      "expected": [
+        32,
+        32
+      ],
+      "actual": [
+        31.459915611814342,
+        29.209563994374122
+      ],
+      "error": 2.8422217098346114
+    },
+    {
+      "source": [
+        1251,
+        735
+      ],
+      "expected": [
+        96,
+        0
+      ],
+      "actual": [
+        96.27004219409282,
+        2.2053445850914253
+      ],
+      "error": 2.221816267287315
+    }
+  ],
+  "door": {
+    "sourceBottom": [
+      465,
+      798
+    ],
+    "sourceTop": [
+      465,
+      516
+    ],
+    "worldBottom": [
+      -9.856540084388184,
+      10.711673699015476
+    ],
+    "height": 38.075949367088604
+  },
+  "overhang": "Small roof and hanging kettle sign extend beyond rigid foundation; door clearance checked in host."
+}

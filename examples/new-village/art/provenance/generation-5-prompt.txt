@@ -1,0 +1,18 @@
+Use case: stylized-concept
+Asset type: ONE pixel-art turnaround/walk spritesheet for ONE original controllable village traveler.
+Input image 1 is ONLY a pixel cluster, outline, material and scale reference. Do not copy any character, creature, costume, logo, sign or layout. Input image 2 is ONLY the actual Larkspur Crossing ground for camera/projection and game-scale palette.
+
+One original friendly adult traveler, short auburn hair, small moss-green jacket over a cream shirt, russet neckerchief, dark brown trousers and sturdy boots, a small cream canvas backpack worn on the back. No hat, weapon, staff or loose floating items. Consistent compact roughly 3-head-tall proportions, readable at 40 pixels tall in the game. The camera looks down from the same 2:1 isometric angle as the ground reference. Crisp purposeful pixel clusters equivalent to a 32x48-pixel sprite enlarged by an integer factor, no anti-aliasing, painterly noise or blurry shading. Warm top-left light stays consistent for every view.
+
+Create a precisely spaced 4-COLUMN by 3-ROW spritesheet on one flat perfectly uniform bright MAGENTA (#ff00ff) background, absent from the character. No checkerboard or alpha imitation. Each equal cell contains the full identical character at exactly the same scale and same center-foot baseline; abundant padding between cells, no overlap or shared limbs.
+The columns must depict these ACTUAL bodily facings:
+Column 1: walking toward screen UPPER RIGHT (northeast), three-quarter BACK view, backpack visible, face mostly hidden, nose points right.
+Column 2: walking toward screen LOWER RIGHT (southeast), three-quarter FRONT view, face and cream shirt visible, nose points right.
+Column 3: walking toward screen LOWER LEFT (southwest), three-quarter FRONT view, face and cream shirt visible, nose points left.
+Column 4: walking toward screen UPPER LEFT (northwest), three-quarter BACK view, backpack visible, face mostly hidden, nose points left.
+Keep each torso and both feet aligned with its actual column direction; do not merely turn the head.
+Row 1: neutral standing, feet planted close together.
+Row 2: first WALK CONTACT, left foot forward, right foot back, opposite arm swing.
+Row 3: opposite WALK CONTACT, right foot forward, left foot back, opposite arm swing.
+The two walk rows must have clearly different leg/boot positions in every column but preserve identity, clothing details, scale, head height, camera and the shared ground origin. The row1 idle can serve as passing pose in the eventual authored loop.
+No text, numbers, arrows, labels, ground shadows, floor, scenery, extra poses or characters. Exactly twelve separated complete sprites of the same traveler.

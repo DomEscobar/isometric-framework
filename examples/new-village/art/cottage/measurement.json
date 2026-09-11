@@ -1,0 +1,84 @@
+{
+  "source": "test-results\\new-village\\generation-4\\cottage-raw.png",
+  "sourceSha256": "960193bb722e88170442ebd5212174ce4f1173d189056f0cc5f721c8d0435c1d",
+  "maskMethod": "outside-connected near-neutral pale background, source-specific thresholds; enclosed pale material preserved",
+  "sourceCrop": [
+    326,
+    100,
+    1218,
+    900
+  ],
+  "sourceToWorldScale": 0.16020025031289112,
+  "frameSize": [
+    143,
+    128
+  ],
+  "anchor": {
+    "x": 0.278483302263027,
+    "y": 0.7518773466833543
+  },
+  "renderWidth": 143,
+  "footprint": {
+    "columns": 2,
+    "rows": 2
+  },
+  "groundContacts": [
+    {
+      "source": [
+        369,
+        693
+      ],
+      "expected": [
+        -32,
+        0
+      ],
+      "actual": [
+        -32.934501460158536,
+        -1.2415519399249062
+      ],
+      "error": 1.5539447218513707
+    },
+    {
+      "source": [
+        786,
+        885
+      ],
+      "expected": [
+        32,
+        32
+      ],
+      "actual": [
+        33.86900292031706,
+        29.51689612015019
+      ],
+      "error": 3.1078894437027316
+    },
+    {
+      "source": [
+        1168,
+        724
+      ],
+      "expected": [
+        96,
+        0
+      ],
+      "actual": [
+        95.06549853984147,
+        3.7246558197747186
+      ],
+      "error": 3.8400981699456724
+    }
+  ],
+  "doorSource": {
+    "bottom": [
+      963,
+      819
+    ],
+    "top": [
+      963,
+      581
+    ]
+  },
+  "doorHeightWorldPx": 38.12765957446808,
+  "scope": "Measured candidate; visual mask/contact and actual doorway acceptance pending"
+}

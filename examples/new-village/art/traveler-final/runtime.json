@@ -1,0 +1,381 @@
+{
+  "assets": {
+    "images": {
+      "traveler": {
+        "url": "traveler.png",
+        "sampling": "nearest"
+      }
+    },
+    "textures": {
+      "traveler-ne-0": {
+        "image": "traveler",
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-ne-1": {
+        "image": "traveler",
+        "frame": {
+          "x": 48,
+          "y": 0,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-ne-2": {
+        "image": "traveler",
+        "frame": {
+          "x": 96,
+          "y": 0,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-ne-3": {
+        "image": "traveler",
+        "frame": {
+          "x": 144,
+          "y": 0,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-ne-4": {
+        "image": "traveler",
+        "frame": {
+          "x": 192,
+          "y": 0,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-se-0": {
+        "image": "traveler",
+        "frame": {
+          "x": 0,
+          "y": 56,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-se-1": {
+        "image": "traveler",
+        "frame": {
+          "x": 48,
+          "y": 56,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-se-2": {
+        "image": "traveler",
+        "frame": {
+          "x": 96,
+          "y": 56,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-se-3": {
+        "image": "traveler",
+        "frame": {
+          "x": 144,
+          "y": 56,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-se-4": {
+        "image": "traveler",
+        "frame": {
+          "x": 192,
+          "y": 56,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-sw-0": {
+        "image": "traveler",
+        "frame": {
+          "x": 0,
+          "y": 112,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-sw-1": {
+        "image": "traveler",
+        "frame": {
+          "x": 48,
+          "y": 112,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-sw-2": {
+        "image": "traveler",
+        "frame": {
+          "x": 96,
+          "y": 112,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-sw-3": {
+        "image": "traveler",
+        "frame": {
+          "x": 144,
+          "y": 112,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-sw-4": {
+        "image": "traveler",
+        "frame": {
+          "x": 192,
+          "y": 112,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-nw-0": {
+        "image": "traveler",
+        "frame": {
+          "x": 0,
+          "y": 168,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-nw-1": {
+        "image": "traveler",
+        "frame": {
+          "x": 48,
+          "y": 168,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-nw-2": {
+        "image": "traveler",
+        "frame": {
+          "x": 96,
+          "y": 168,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-nw-3": {
+        "image": "traveler",
+        "frame": {
+          "x": 144,
+          "y": 168,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      },
+      "traveler-nw-4": {
+        "image": "traveler",
+        "frame": {
+          "x": 192,
+          "y": 168,
+          "width": 48,
+          "height": 56
+        },
+        "anchor": {
+          "x": 0.5,
+          "y": 0.8571428571428571
+        }
+      }
+    },
+    "animations": {
+      "traveler.idle.ne": {
+        "frames": [
+          "traveler-ne-0"
+        ],
+        "fps": 1,
+        "loop": true
+      },
+      "traveler.walk.ne": {
+        "frames": [
+          "traveler-ne-1",
+          "traveler-ne-2",
+          "traveler-ne-3",
+          "traveler-ne-4"
+        ],
+        "fps": 8,
+        "loop": true
+      },
+      "traveler.idle.se": {
+        "frames": [
+          "traveler-se-0"
+        ],
+        "fps": 1,
+        "loop": true
+      },
+      "traveler.walk.se": {
+        "frames": [
+          "traveler-se-1",
+          "traveler-se-2",
+          "traveler-se-3",
+          "traveler-se-4"
+        ],
+        "fps": 8,
+        "loop": true
+      },
+      "traveler.idle.sw": {
+        "frames": [
+          "traveler-sw-0"
+        ],
+        "fps": 1,
+        "loop": true
+      },
+      "traveler.walk.sw": {
+        "frames": [
+          "traveler-sw-1",
+          "traveler-sw-2",
+          "traveler-sw-3",
+          "traveler-sw-4"
+        ],
+        "fps": 8,
+        "loop": true
+      },
+      "traveler.idle.nw": {
+        "frames": [
+          "traveler-nw-0"
+        ],
+        "fps": 1,
+        "loop": true
+      },
+      "traveler.walk.nw": {
+        "frames": [
+          "traveler-nw-1",
+          "traveler-nw-2",
+          "traveler-nw-3",
+          "traveler-nw-4"
+        ],
+        "fps": 8,
+        "loop": true
+      }
+    }
+  },
+  "visualAnimations": {
+    "idle": "traveler.idle.se",
+    "walk": "traveler.walk.se",
+    "directions": {
+      "ne": {
+        "idle": "traveler.idle.ne",
+        "walk": "traveler.walk.ne"
+      },
+      "se": {
+        "idle": "traveler.idle.se",
+        "walk": "traveler.walk.se"
+      },
+      "sw": {
+        "idle": "traveler.idle.sw",
+        "walk": "traveler.walk.sw"
+      },
+      "nw": {
+        "idle": "traveler.idle.nw",
+        "walk": "traveler.walk.nw"
+      },
+      "n": {
+        "idle": "traveler.idle.ne",
+        "walk": "traveler.walk.ne"
+      },
+      "e": {
+        "idle": "traveler.idle.se",
+        "walk": "traveler.walk.se"
+      },
+      "s": {
+        "idle": "traveler.idle.sw",
+        "walk": "traveler.walk.sw"
+      },
+      "w": {
+        "idle": "traveler.idle.nw",
+        "walk": "traveler.walk.nw"
+      }
+    }
+  },
+  "width": 48
+}

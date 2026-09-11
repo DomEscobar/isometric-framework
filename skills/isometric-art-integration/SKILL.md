@@ -19,6 +19,9 @@ rewriting assets, and a skill invocation does not authorize paid services.
 - Before measuring a pack, read [the calibration contract](references/contract.md).
 - Before accepting or repairing its appearance, use
   [the visual checks](references/visual-checks.md).
+- For scenery that must blend into the terrain, use
+  [grounded assemblies](references/grounded-assemblies.md): compose the object,
+  its contact zone and the actor together before expanding the pack.
 
 ## Establish the contract before composing a world
 
@@ -59,8 +62,9 @@ unexpected alpha components, static motion clips and diamond-overlay leakage.
 Neither checker proves visual quality; validate measured contacts and in-game
 appearance separately. A raw sheet can look correct while the runtime crops fail.
 
-Use one exposed tile, actor, and representative prop, adding a chair/table when
-human proportions matter. Mark measured source contacts, projected ground
+Use one composed ground patch, actor and representative prop with its intended
+root/threshold/bank connection. Add furniture only when its proportions matter.
+Mark measured source contacts, projected ground
 corners, collision footprints, and vertical reference landmarks. Keep animation
 frames at a stable scale and check contact drift in every authored facing.
 

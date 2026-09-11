@@ -171,32 +171,58 @@ def automatic(check, root, snapshot):
 def collect(plan, root, baseline_hash, directory):
     checks = validate(plan, root)
     latest = {}
+    histories = {}
     for path in sorted(Path(directory).glob("*.json")):
         value = read(path)
         if value.get("kind") != "production-receipt" or value.get("baselineSha256") != baseline_hash:
             continue
         cid = value.get("check")
         require(cid in checks, "Receipt names unknown check")
+        histories.setdefault(cid, []).append((value, path))
         if cid not in latest or value["completedAt"] > latest[cid][0]["completedAt"]:
             latest[cid] = (value, path)
     statuses = {}
     for cid, check in checks.items():
+        history = sorted(histories.get(cid, []), key=lambda r: r[0]["completedAt"], reverse=True)
+        strategy_required = repeated_failure(history)
+        base = {"stage": check["stage"], "views": check["views"],
+                "evidenceKind": check["evidenceKind"], "declaredInputs": check["inputs"],
+                "strategyRequired": strategy_required}
+        try:
+            current_inputs = inputs(root, check["inputs"])
+        except (ValueError, OSError) as error:
+            statuses[cid] = {**base, "status": "unverified", "reason": str(error),
+                             "inputIssue": str(error)}
+            continue
         if cid not in latest:
-            statuses[cid] = {"status": "unverified", "reason": "No receipt"}
+            statuses[cid] = {**base, "status": "unverified", "reason": "No receipt"}
             continue
         receipt, path = latest[cid]
         try:
-            require(receipt["inputs"] == inputs(root, check["inputs"]), "Source dependencies changed")
+            require(receipt["inputs"] == current_inputs, "Source dependencies changed")
             evidence(root, receipt["evidence"], check["views"], check["evidenceKind"])
             require(receipt["status"] in ("pass", "fail", "unverified"), "Invalid receipt status")
             report = automatic(check, root, receipt["inputs"])
             status = "fail" if report and not report["passed"] else receipt["status"]
-            statuses[cid] = {"status": status, "receipt": str(path), "reason": receipt["observed"]}
+            statuses[cid] = {**base, "status": status, "receipt": str(path), "reason": receipt["observed"]}
         except (ValueError, OSError, KeyError) as error:
-            statuses[cid] = {"status": "unverified", "reason": str(error)}
+            statuses[cid] = {**base, "status": "unverified", "reason": str(error)}
     stages = {s: all(statuses[c["id"]]["status"] == "pass" for c in checks.values() if c["stage"] == s) for s in STAGES}
-    return {"passed": all(stages.values()), "nextStage": next((s for s in STAGES if not stages[s]), "complete"),
-            "stages": stages, "checks": statuses}
+    next_stage = next((s for s in STAGES if not stages[s]), "complete")
+    for cid, check in checks.items():
+        previous = STAGES[:STAGES.index(check["stage"])]
+        blockers = []
+        if not all(stages[stage] for stage in previous):
+            blockers.append("Earlier stage not accepted: " + next_stage)
+        if statuses[cid]["strategyRequired"]:
+            blockers.append("Two failed attempts: supply --strategy with a new hypothesis and discriminating test")
+        if statuses[cid].get("inputIssue"):
+            blockers.append(statuses[cid]["inputIssue"])
+        if statuses[cid]["status"] == "pass":
+            blockers.append("Current receipt already passes; preserve it while inputs remain unchanged")
+        statuses[cid]["eligible"] = not blockers
+        statuses[cid]["blockers"] = blockers
+    return {"passed": all(stages.values()), "nextStage": next_stage, "stages": stages, "checks": statuses}
 
 
 def prerequisites(plan, root, baseline_hash, directory, check):
@@ -214,6 +240,10 @@ def attempts(baseline_hash, directory, cid):
     return sorted(history, key=lambda r: r[0]["completedAt"], reverse=True)
 
 
+def repeated_failure(history):
+    return len(history) >= 2 and all(record[0]["status"] == "fail" for record in history[:2])
+
+
 def begin(gate, baseline, cid, directory, output, strategy=None):
     _, plan, root = gate.protected(baseline)
     checks = validate(plan, root)
@@ -222,7 +252,7 @@ def begin(gate, baseline, cid, directory, output, strategy=None):
     prerequisites(plan, root, sha(baseline), directory, check)
     history = attempts(sha(baseline), directory, cid)
     strategy_record = None
-    if len(history) >= 2 and all(r[0]["status"] == "fail" for r in history[:2]):
+    if repeated_failure(history):
         require(strategy, "Two failed attempts: supply --strategy with a new hypothesis and discriminating test")
         change = read(strategy)
         require(change.get("check") == cid and change.get("previousReceiptSha256") == sha(history[0][1])
@@ -237,6 +267,32 @@ def begin(gate, baseline, cid, directory, output, strategy=None):
                            "startedAt": datetime.now(timezone.utc).isoformat()})
 
 
+def draft(gate, baseline, ticket_path, mapping_path, output):
+    """Write a review template only after validating the proposed evidence."""
+    _, plan, root = gate.protected(baseline)
+    ticket, mapping = read(ticket_path), read(mapping_path)
+    require(ticket.get("kind") == "production-ticket" and ticket.get("baselineSha256") == sha(baseline),
+            "Ticket baseline mismatch")
+    check = validate(plan, root).get(ticket.get("check"))
+    require(check is not None, "Ticket names unknown production check")
+    require(ticket.get("inputs") == inputs(root, check["inputs"]),
+            "Inputs changed since begin; make a new ticket before recapturing")
+    values = mapping.get("evidence") if isinstance(mapping, dict) else None
+    require(isinstance(values, list), "Evidence mapping needs an evidence array")
+    prepared = []
+    for item in values:
+        require(isinstance(item, dict) and set(item) == {"path", "view"},
+                "Evidence mapping entries need only path and view")
+        path = local(root, item["path"])
+        prepared.append({"path": item["path"], "sha256": sha(path), "view": item["view"]})
+    evidence(root, prepared, check["views"], check["evidenceKind"], Path(ticket_path).stat().st_mtime_ns)
+    target = Path(output).resolve()
+    require(all(not target.is_relative_to(local(root, p)) for p in plan["inputRoots"]),
+            "Drafts must be outside source inputRoots")
+    gate.write_new(output, {"ticketSha256": sha(ticket_path), "status": "unverified",
+                            "reviewer": "", "observed": "", "evidence": prepared})
+
+
 def finish(gate, baseline, ticket_path, submission_path, directory, output):
     _, plan, root = gate.protected(baseline)
     ticket, submission = read(ticket_path), read(submission_path)
@@ -246,7 +302,7 @@ def finish(gate, baseline, ticket_path, submission_path, directory, output):
     require(not any(r[0].get("ticketSha256") == sha(ticket_path) for r in history), "Ticket already consumed")
     require(ticket.get("previousReceiptSha256") == (sha(history[0][1]) if history else None),
             "Ticket superseded by another attempt; begin again")
-    if len(history) >= 2 and all(r[0]["status"] == "fail" for r in history[:2]):
+    if repeated_failure(history):
         change = (ticket.get("strategy") or {}).get("change", {})
         require(change.get("previousReceiptSha256") == sha(history[0][1]) and change.get("check") == check["id"]
                 and all(isinstance(change.get(k), str) and change[k].strip() for k in ("hypothesis", "test")),

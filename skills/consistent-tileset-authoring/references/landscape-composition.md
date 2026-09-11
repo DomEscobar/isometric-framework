@@ -56,6 +56,9 @@ an implementation that fits the host:
   structures separate so their depth and collisions remain correct.
 
 Both approaches can use generated material sources if that is the agreed technique.
+The optional [composed-ground tool](composed-ground.md) prepares an existing image
+as a plate or positioned chunks without a browser. It accepts declared masks and
+transforms; it does not infer routes or turn map pieces into interchangeable tiles.
 Do not generate every whole tile independently and expect matching edges. The
 raised-bed helper supplies rigid rims and walls; it does not implement natural
 path fringes, bank transitions or a general terrain compositor. If the host lacks

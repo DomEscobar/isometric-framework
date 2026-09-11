@@ -212,6 +212,13 @@ State the observable behavior and module ownership before a substantial change.
 Inspect neighboring code and existing tests; preserve unrelated work. If tasks
 are delegated, give each worker disjoint ownership and integrate their results.
 
+The builder owns implementation and required evidence; the reviewer owns observed
+findings and verdicts. For an explicitly independent framework trial, the supervisor
+may patch reusable framework gaps but must record host implementation help as an
+intervention. Do not claim independent execution after supplying the solution.
+The optional [trial recorder](docs/FRAMEWORK_TRIALS.md) belongs to framework testing,
+not the normal game-production checklist.
+
 For incremental additions, keep verification proportional: type/build checks,
 a few meaningful tests of the changed module, and the affected playable journey.
 Do not repeat unrelated input/rendering/physics matrices or expand every assertion

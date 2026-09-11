@@ -10,6 +10,7 @@ import io
 import importlib.util
 import json
 import math
+import os
 from pathlib import Path
 import sys
 from types import SimpleNamespace
@@ -83,6 +84,92 @@ def components(mask, width, minimum):
     return sorted(sizes, reverse=True)
 
 
+def surface_composition(group, textures, placements, decoded, manifest_path, inputs):
+    """Validate an exact, gutter-free reconstruction of a bounded surface."""
+    from PIL import Image
+    composition = group.get("composition")
+    mask_name = group.get("coverageMask")
+    require(composition is not None or mask_name is None,
+            "coverageMask requires a surface composition")
+    if composition is None:
+        return None
+    require(isinstance(composition, dict) and isinstance(composition.get("reference"), str),
+            "Surface composition needs a local reference PNG")
+    origin = composition.get("origin")
+    require(isinstance(origin, list) and len(origin) == 2 and all(type(n) is int for n in origin),
+            "Surface composition origin must be [x,y]")
+    reference_file = local(manifest_path.parent, composition["reference"])
+    require(reference_file.stat().st_size <= 64 * 1024 * 1024, "Surface composition reference PNG exceeds 64 MiB")
+    raw = reference_file.read_bytes()
+    with Image.open(io.BytesIO(raw)) as source:
+        require(source.format == "PNG" and getattr(source, "n_frames", 1) == 1,
+                "Surface composition reference must be a static PNG")
+        require(source.width <= 8192 and source.height <= 8192 and source.width * source.height <= 16_000_000,
+                "Surface composition reference exceeds 8192 pixels per side or 16000000 pixels")
+        reference = source.convert("RGBA")
+    inputs[str(reference_file)] = hashlib.sha256(raw).hexdigest()
+    selected = group.get("textures")
+    require(isinstance(selected, list) and selected and len(selected) == len(set(selected)),
+            "Surface composition needs unique selected textures")
+    require(isinstance(placements, dict), "Surface composition needs placements by texture ID")
+    require(set(selected) <= set(placements), "Surface composition is missing selected texture placements")
+    # Other packed-art groups may share a manifest; only this group's frames compose this reference.
+    placements = {tid: placements[tid] for tid in selected}
+    errors = []
+    canvas = Image.new("RGBA", reference.size)
+    occupied = bytearray(reference.width * reference.height)
+    for tid in selected:
+        require(tid in textures, f"Surface composition missing selected texture: {tid}")
+        require(tid in placements, f"Surface composition missing placement: {tid}")
+        place = placements[tid]
+        require(isinstance(place, dict) and integer(place.get("x"), -1_000_000, 1_000_000) and integer(place.get("y"), -1_000_000, 1_000_000),
+                f"Surface composition invalid placement: {tid}")
+        texture = textures[tid]
+        require("frame" in texture, f"Surface frame must explicitly exclude gutters: {tid}")
+        anchor = texture.get("anchor")
+        require(anchor == {"x": 0, "y": 0}, f"Surface texture anchor must be {{x:0,y:0}}: {tid}")
+        image_id = texture["image"]
+        frame = texture["frame"]
+        atlas = decoded[image_id]
+        x, y, w, h = (frame[k] for k in ("x", "y", "width", "height"))
+        dx, dy = place["x"] - origin[0], place["y"] - origin[1]
+        if dx < 0 or dy < 0 or dx + w > reference.width or dy + h > reference.height:
+            errors.append(f"{tid}: placement is outside reference bounds")
+            continue
+        for row in range(dy, dy + h):
+            offset = row * reference.width + dx
+            if any(occupied[offset:offset + w]):
+                errors.append(f"{tid}: placement overlaps another surface patch")
+                break
+            occupied[offset:offset + w] = b"\x01" * w
+        canvas.paste(atlas.crop((x, y, x + w, y + h)), (dx, dy))
+    if any(pixel == 0 for pixel in occupied):
+        errors.append("surface patches leave holes in the reference")
+    if canvas.tobytes() != reference.tobytes():
+        errors.append("surface reconstruction differs from reference RGBA pixels")
+    mask_report = None
+    if mask_name is not None:
+        mask_file = local(manifest_path.parent, mask_name)
+        require(mask_file.stat().st_size <= 64 * 1024 * 1024, "Surface coverage mask PNG exceeds 64 MiB")
+        mask_raw = mask_file.read_bytes()
+        with Image.open(io.BytesIO(mask_raw)) as source:
+            require(source.format == "PNG" and source.mode in ("1", "L") and getattr(source, "n_frames", 1) == 1,
+                    "Surface coverage mask must be a static grayscale PNG")
+            require(source.width <= 8192 and source.height <= 8192 and source.width * source.height <= 16_000_000,
+                    "Surface coverage mask exceeds 8192 pixels per side or 16000000 pixels")
+            mask = source.convert("L")
+        inputs[str(mask_file)] = hashlib.sha256(mask_raw).hexdigest()
+        if mask.size != reference.size:
+            errors.append("coverage mask dimensions differ from reference")
+        else:
+            if mask.tobytes() != reference.getchannel("A").tobytes():
+                errors.append("coverage mask luminance differs from reference alpha")
+        mask_report = {"image": "data:image/png;base64," + base64.b64encode(mask_raw).decode("ascii"), "origin": origin}
+    return {"reference": "data:image/png;base64," + base64.b64encode(raw).decode("ascii"),
+            "origin": origin, "textures": selected, "placements": placements,
+            "errors": errors, "mask": mask_report}
+
+
 def inspect(spec_path, selected_groups=None):
     from PIL import Image
     spec_path = Path(spec_path).resolve()
@@ -105,18 +192,19 @@ def inspect(spec_path, selected_groups=None):
              "groups": [g["id"] for g in groups], "plannedGroups": all_ids}
     textures, animations = assets["textures"], assets.get("animations", {})
     inputs = {str(spec_path): digest(spec_path), str(manifest_path): digest(manifest_path)}
-    images, decoded, findings, previews, clips = {}, {}, [], {}, {}
+    images, decoded, findings, previews, clips, surfaces = {}, {}, [], {}, {}, {}
     group_ids = set()
     for group in groups:
         gid = group["id"]
         require(isinstance(gid, str) and gid and gid not in group_ids, "Unique nonempty group IDs required")
         group_ids.add(gid)
         kind = group["kind"]
-        require(kind in ("cutout", "diamond-overlay"), "Unknown art check kind")
+        require(kind in ("cutout", "diamond-overlay", "surface"), "Unknown art check kind")
         threshold = group.get("alphaThreshold", 16)
         require(integer(threshold, 1, 255), "alphaThreshold must be 1..255")
         selected = list(group.get("textures", []))
         group_clips = group.get("clips", [])
+        require(kind != "surface" or not group_clips, "Surface groups use explicit textures, not clips")
         minimum = group.get("minDistinctFrames", 1)
         require(integer(minimum, 1, 256), "minDistinctFrames must be 1..256")
         for clip_id in group_clips:
@@ -131,6 +219,7 @@ def inspect(spec_path, selected_groups=None):
             clips[clip_id] = {**clip, "fps": fps, "loop": clip.get("loop", True)}
             selected.extend(clip["frames"])
         require(selected and len(selected) <= 4096, f"Group {gid} needs bounded texture/clip coverage")
+        require(kind != "surface" or len(selected) == len(set(selected)), "Surface groups need unique selected textures")
         pixel_hashes = {}
         for tid in dict.fromkeys(selected):
             require(tid in textures, f"Missing required texture: {tid}")
@@ -150,17 +239,20 @@ def inspect(spec_path, selected_groups=None):
             atlas = decoded[image_id]
             frame = texture.get("frame", {"x": 0, "y": 0, "width": atlas.width, "height": atlas.height})
             x, y, w, h = (frame[k] for k in ("x", "y", "width", "height"))
+            limit, area = (8192, 16_000_000) if kind == "surface" else (4096, 1_048_576)
             require(integer(x, 0, atlas.width) and integer(y, 0, atlas.height)
-                    and integer(w, 1, 4096) and integer(h, 1, 4096)
-                    and w * h <= 1024 * 1024
+                    and integer(w, 1, limit) and integer(h, 1, limit)
+                    and w * h <= area
                     and x + w <= atlas.width and y + h <= atlas.height,
-                    f"Invalid frame rectangle: {tid}; stay inside the atlas, at most 4096 per side and 1048576 pixels")
+                    f"Invalid frame rectangle: {tid}; stay inside the atlas, at most {limit} per side and {area} pixels")
             rgba = atlas.crop((x, y, x + w, y + h))
-            alpha = rgba.getchannel("A").tobytes()
-            mask = [a >= threshold for a in alpha]
-            pixels = [(i % w, i // w) for i, visible in enumerate(mask) if visible]
+            mask = pixels = None
+            if kind != "surface":
+                alpha = rgba.getchannel("A").tobytes()
+                mask = [a >= threshold for a in alpha]
+                pixels = [(i % w, i // w) for i, visible in enumerate(mask) if visible]
             errors = []
-            if not pixels:
+            if kind != "surface" and not pixels:
                 errors.append("empty frame")
             elif kind == "cutout":
                 margin = group.get("margin", 1)
@@ -182,42 +274,84 @@ def inspect(spec_path, selected_groups=None):
                             and bounds[0] <= bounds[2] and bounds[1] <= bounds[3], "bounds: minWidth,minHeight,maxWidth,maxHeight")
                     if not (bounds[0] <= right-left+1 <= bounds[2] and bounds[1] <= bottom-top+1 <= bounds[3]):
                         errors.append("visible bounds outside declared size range")
-            elif any(abs((px+.5-w/2)/(w/2)) + abs((py+.5-h/2)/(h/2)) > 1.000001 for px, py in pixels):
+            elif kind == "diamond-overlay" and any(abs((px+.5-w/2)/(w/2)) + abs((py+.5-h/2)/(h/2)) > 1.000001 for px, py in pixels):
                 errors.append("opaque pixels outside tile diamond; entity sprites are not terrain-clipped")
             pixel_hashes[tid] = hashlib.sha256(rgba.tobytes()).hexdigest()
             anchor = texture.get("anchor", {"x": .5, "y": 1})
             require(isinstance(anchor, dict) and all(type(anchor.get(axis)) in (int, float)
                     and math.isfinite(anchor[axis]) for axis in ("x", "y")), f"Invalid anchor: {tid}")
+            require(kind != "surface" or anchor == {"x": 0, "y": 0},
+                    f"Surface texture anchor must be {{x:0,y:0}}: {tid}")
             previews[tid] = {"image": image_id, "frame": frame, "anchor": anchor}
             findings.append({"group": gid, "texture": tid, "errors": errors})
+        if kind == "surface":
+            composition = surface_composition(group, textures, assets.get("placements"), decoded, manifest_path, inputs)
+            if composition is not None:
+                surfaces[gid] = composition
+                findings.append({"group": gid, "surface": gid, "errors": composition["errors"]})
         for clip_id in group_clips:
             count = len({pixel_hashes[tid] for tid in animations[clip_id]["frames"]})
             if count < minimum:
                 findings.append({"group": gid, "clip": clip_id, "errors": [f"{count} distinct decoded frames; requires {minimum}"]})
     return {"version": 1, "passed": not any(f["errors"] for f in findings), "inputs": inputs, "scope": scope,
-            "findings": findings, "textures": previews, "clips": clips, "images": images}
+            "findings": findings, "textures": previews, "clips": clips, "images": images, "surfaces": surfaces}
 
 
 def preview(report, target):
     # Embed original files once; CSS/canvas only presents the exact manifest crops.
     payload = json.dumps(report).replace("<", "\\u003c")
-    document = """<!doctype html><meta charset="utf-8"><title>Packed art inspection</title>
+    document = """<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Packed art inspection</title>
 <style>body{font:15px system-ui;background:#e8ebdf;color:#172b22;margin:24px}button,input{margin:8px}section{display:flex;flex-wrap:wrap;gap:12px}article{padding:12px;background:#fff;max-width:min(500px,100%);min-width:0;max-height:75vh;box-sizing:border-box;overflow:auto}canvas{display:block;image-rendering:pixelated;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0/16px 16px}.bad{color:#a00}.status{font-weight:bold}p{max-width:1000px}</style>
 <h1>Packed art inspection</h1><p id="status" class="status"></p>
 <p id="scope"></p>
 <p>Structural checks do not approve anatomy, facing, contacts or animation quality. Inspect every used clip and the real game. Red cross = declared anchor; blue outline = frame.</p>
 <label>Shared zoom <input id="zoom" type="range" min="1" max="6" value="3"></label>
-<button id="play">Pause clips</button><button id="replay">Replay clips</button><button id="background">Dark background</button><section id="frames"></section>
-<script>const data=PAYLOAD;const loaded={};const views=[];let playing=true,dark=false,t=0,last=performance.now();
+<button id="play">Pause clips</button><button id="replay">Replay clips</button><button id="background">Dark background</button><button id="surface-mask">Show surface mask</button><button id="surface-reference">Show surface reference</button><section id="frames"></section>
+<script>const data=PAYLOAD;const loaded={};const views=[];let playing=true,dark=false,showMask=false,showReference=false,t=0,last=performance.now();
 document.querySelector('#status').textContent=data.passed?'STRUCTURAL PASS - visual review still required':'STRUCTURAL FAIL - repair before acceptance';
 document.querySelector('#status').classList.toggle('bad',!data.passed);
 document.querySelector('#scope').textContent=data.scope?.mode==='calibration'?'CALIBRATION SUBSET: '+data.scope.groups.join(', ')+'. Full acceptance still requires all planned groups.':'Full planned art scope';
 function add(label,ids,fps=0,loop=true){const article=document.createElement('article'),title=document.createElement('h3'),canvas=document.createElement('canvas'),notes=document.createElement('p');title.textContent=label+(fps?' ('+fps+' fps, '+(loop?'loop':'once')+')':'');notes.textContent=data.findings.filter(f=>ids.includes(f.texture)||f.clip===label).flatMap(f=>f.errors).join('; ');notes.className='bad';article.append(title,canvas,notes);document.querySelector('#frames').append(article);views.push({canvas,ids,fps,loop});}
 for(const id of Object.keys(data.textures))add(id,[id]);for(const [id,c] of Object.entries(data.clips))add(id,c.frames,c.fps,c.loop);
-Promise.all(Object.entries(data.images).map(([id,url])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{loaded[id]=im;resolve()};im.onerror=reject;im.src=url}))).then(()=>{document.body.dataset.decoded='true';requestAnimationFrame(draw)}).catch(()=>{document.querySelector('#status').textContent='IMAGE DECODE FAILED'});
-function draw(now){if(playing)t+=(now-last)/1000;last=now;const zoom=Number(document.querySelector('#zoom').value);for(const v of views){const index=Math.floor(t*v.fps),tex=data.textures[v.ids[v.loop?index%v.ids.length:Math.min(index,v.ids.length-1)]],f=tex.frame,c=v.canvas;c.width=f.width;c.height=f.height;c.style.width=f.width*zoom+'px';c.style.height=f.height*zoom+'px';c.style.background=dark?'#17232d':'';const ctx=c.getContext('2d');ctx.drawImage(loaded[tex.image],f.x,f.y,f.width,f.height,0,0,f.width,f.height);ctx.strokeStyle='#3584e4';ctx.lineWidth=.5;ctx.strokeRect(.25,.25,f.width-.5,f.height-.5);ctx.strokeStyle='#f44';const x=tex.anchor.x*f.width,y=tex.anchor.y*f.height;ctx.beginPath();ctx.moveTo(x-3,y);ctx.lineTo(x+3,y);ctx.moveTo(x,y-3);ctx.lineTo(x,y+3);ctx.stroke();}requestAnimationFrame(draw)}
+for(const [id,s] of Object.entries(data.surfaces||{})){const a=document.createElement('article'),h=document.createElement('h3'),c=document.createElement('canvas'),n=document.createElement('p');a.dataset.surface=id;h.textContent='COMPOSED '+id+' (source origin '+s.origin.join(', ')+')';n.textContent=s.errors.join('; ')+(s.mask?' Coverage mask included.':'');n.className=s.errors.length?'bad':'';a.append(h,c,n);document.querySelector('#frames').prepend(a);views.push({canvas:c,surface:id});}
+for(const id of ['#surface-mask','#surface-reference'])document.querySelector(id).hidden=!Object.keys(data.surfaces||{}).length;
+const sources=[...Object.entries(data.images),...Object.entries(data.surfaces||{}).flatMap(([id,s])=>[['surface:'+id,s.reference],...(s.mask?[['mask:'+id,s.mask.image]]:[])])];Promise.all(sources.map(([id,url])=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>{loaded[id]=im;resolve()};im.onerror=reject;im.src=url}))).then(()=>{document.body.dataset.decoded='true';requestAnimationFrame(draw)}).catch(()=>{document.body.dataset.decoded='false';document.querySelector('#status').textContent='IMAGE DECODE FAILED'});
+function draw(now){
+ if(playing)t+=(now-last)/1000;last=now;
+ const zoom=Number(document.querySelector('#zoom').value);
+ for(const v of views){
+  const c=v.canvas,ctx=c.getContext('2d');
+  if(v.surface){
+   const s=data.surfaces[v.surface],ref=loaded['surface:'+v.surface];
+   c.style.width=ref.width*zoom+'px';c.style.height=ref.height*zoom+'px';
+   c.style.background=dark?'#17232d':'';
+   const key=showMask+':'+showReference;
+   if(v.surfaceKey===key)continue;
+   c.width=ref.width;c.height=ref.height;
+   if(showReference)ctx.drawImage(ref,0,0);
+   else for(const id of s.textures){
+    const tex=data.textures[id],f=tex.frame,p=s.placements[id];
+    ctx.drawImage(loaded[tex.image],f.x,f.y,f.width,f.height,p.x-s.origin[0],p.y-s.origin[1],f.width,f.height);
+   }
+   const mask=loaded['mask:'+v.surface];
+   if(showMask&&mask){ctx.globalAlpha=.3;ctx.drawImage(mask,0,0);ctx.globalAlpha=1;}
+   ctx.strokeStyle='#f44';ctx.beginPath();ctx.moveTo(-4,0);ctx.lineTo(4,0);ctx.moveTo(0,-4);ctx.lineTo(0,4);ctx.stroke();
+   v.surfaceKey=key;continue;
+  }
+  const index=Math.floor(t*v.fps),tex=data.textures[v.ids[v.loop?index%v.ids.length:Math.min(index,v.ids.length-1)]],f=tex.frame;
+  c.style.width=f.width*zoom+'px';c.style.height=f.height*zoom+'px';c.style.background=dark?'#17232d':'';
+  if(v.textureKey===tex)continue;
+  c.width=f.width;c.height=f.height;
+  ctx.drawImage(loaded[tex.image],f.x,f.y,f.width,f.height,0,0,f.width,f.height);
+  ctx.strokeStyle='#3584e4';ctx.lineWidth=.5;ctx.strokeRect(.25,.25,f.width-.5,f.height-.5);
+  ctx.strokeStyle='#f44';const x=tex.anchor.x*f.width,y=tex.anchor.y*f.height;
+  ctx.beginPath();ctx.moveTo(x-3,y);ctx.lineTo(x+3,y);ctx.moveTo(x,y-3);ctx.lineTo(x,y+3);ctx.stroke();v.textureKey=tex;
+ }
+ requestAnimationFrame(draw);
+}
 document.querySelector('#play').onclick=e=>{playing=!playing;e.target.textContent=playing?'Pause clips':'Play clips'};document.querySelector('#background').onclick=e=>{dark=!dark;e.target.textContent=dark?'Checker background':'Dark background'};
 document.querySelector('#replay').onclick=()=>{t=0;last=performance.now()};
+document.querySelector('#surface-mask').onclick=e=>{showMask=!showMask;e.target.textContent=showMask?'Hide surface mask':'Show surface mask'};document.querySelector('#surface-reference').onclick=e=>{showReference=!showReference;e.target.textContent=showReference?'Show assembled patches':'Show surface reference'};
 </script>""".replace("PAYLOAD", payload)
     with Path(target).open("x", encoding="utf-8") as stream:
         stream.write(document)
@@ -287,6 +421,54 @@ def snapshot(baseline_path, output, production_receipts=None):
     write_new(output, {"version": 1, "baselineSha256": digest(baseline_path), "inputs": source_hashes(plan, root)})
 
 
+def infer_evidence(path):
+    suffix = path.suffix.lower()
+    kinds = {".png": "image", ".jpg": "image", ".jpeg": "image", ".webp": "image",
+             ".webm": "motion", ".mp4": "motion", ".gif": "motion", ".json": "measurement", ".txt": "measurement"}
+    require(suffix in kinds, f"Unsupported evidence extension: {path}")
+    require(path.is_file() and path.stat().st_size > 0, f"Evidence file missing or empty: {path}")
+    if kinds[suffix] == "image":
+        from PIL import Image
+        with Image.open(path) as image:
+            image.load()
+    elif suffix == ".gif":
+        from PIL import Image
+        with Image.open(path) as image:
+            require(getattr(image, "n_frames", 1) >= 1, f"Undecodable GIF evidence: {path}")
+            image.seek(0)
+            image.convert("RGBA")
+    elif suffix == ".json":
+        json.loads(path.read_text(encoding="utf-8-sig"))
+    return kinds[suffix]
+
+
+def attach_evidence(baseline_path, candidate_path, review_path, requirement_id, view, evidence_path, output):
+    _, plan, _ = protected(baseline_path)
+    requirement = next((r for r in plan["requirements"] if r["id"] == requirement_id), None)
+    require(requirement is not None, f"Unknown protected requirement: {requirement_id}")
+    require(view in requirement["views"], f"Unknown protected view for {requirement_id}: {view}")
+    review_path, candidate_path, output, evidence_path = Path(review_path).resolve(), Path(candidate_path).resolve(), Path(output).resolve(), Path(evidence_path).resolve()
+    require(output != review_path, "attach-evidence needs a new --out review path")
+    require(output.parent == review_path.parent, "attach-evidence --out must be beside the input review so evidence paths remain stable")
+    kind = infer_evidence(evidence_path)
+    review = read(review_path)
+    candidate = read(candidate_path)
+    require(candidate.get("baselineSha256") == digest(baseline_path), "Candidate belongs to a different baseline")
+    require(review.get("candidateSha256") == digest(candidate_path), "Review belongs to a different candidate")
+    verdicts = review.get("verdicts")
+    require(isinstance(verdicts, list), "Review verdicts required")
+    verdict = next((item for item in verdicts if item.get("id") == requirement_id), None)
+    require(verdict is not None, f"Review has no verdict for requirement: {requirement_id}")
+    relative = Path(os.path.relpath(evidence_path, output.parent)).as_posix()
+    item = {"path": relative, "sha256": digest(evidence_path), "kind": kind, "view": view}
+    old = verdict.get("evidence", [])
+    require(isinstance(old, list), f"Invalid evidence list for requirement: {requirement_id}")
+    verdict["evidence"] = [entry for entry in old if not (entry.get("path") == relative and entry.get("view") == view)] + [item]
+    verdict["status"] = "unverified"
+    write_new(output, review)
+    return {"requirement": requirement_id, "view": view, "kind": kind, "sha256": item["sha256"], "status": "unverified"}
+
+
 def accept(baseline_path, candidate_path, review_path, production_receipts=None):
     baseline, plan, root = protected(baseline_path)
     if "production" in plan:
@@ -316,10 +498,15 @@ def accept(baseline_path, candidate_path, review_path, production_receipts=None)
         require(isinstance(evidence, list) and evidence, "Evidence required")
         covered = set()
         for item in evidence:
-            file = local(Path(review_path).resolve().parent, item["path"])
-            kind = item["kind"]
-            require(kind in extensions and file.suffix.lower() in extensions[kind], "Evidence kind/extension mismatch")
-            require(file.stat().st_size > 0 and digest(file) == item["sha256"], "Missing, empty or changed evidence")
+            path = item.get("path")
+            view = item.get("view")
+            try:
+                file = local(Path(review_path).resolve().parent, path)
+                kind = item["kind"]
+                require(kind in extensions and file.suffix.lower() in extensions[kind], "Evidence kind/extension mismatch")
+                require(file.stat().st_size > 0 and digest(file) == item["sha256"], "Missing, empty or changed evidence")
+            except (ValueError, KeyError, OSError) as error:
+                raise ValueError(f"Evidence invalid for requirement {req['id']} view {view!r} path {path!r}: {error}") from error
             permitted = {"visual": {"image", "motion"}, "motion": {"motion"}, "gameplay": {"image", "motion", "measurement"}, "performance": {"measurement"}}[req["domain"]]
             if kind in permitted:
                 covered.add(item["view"])
@@ -342,7 +529,8 @@ def main():
     p = sub.add_parser("freeze"); p.add_argument("plan"); p.add_argument("output")
     p = sub.add_parser("snapshot"); p.add_argument("baseline"); p.add_argument("output"); p.add_argument("--production-receipts")
     p = sub.add_parser("accept"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("review"); p.add_argument("--production-receipts")
-    p = sub.add_parser("production"); p.add_argument("action", choices=("begin", "finish", "status")); p.add_argument("baseline"); p.add_argument("--receipts", required=True); p.add_argument("--check"); p.add_argument("--ticket"); p.add_argument("--submission"); p.add_argument("--out"); p.add_argument("--strategy")
+    p = sub.add_parser("attach-evidence"); p.add_argument("review"); p.add_argument("--baseline", required=True); p.add_argument("--candidate", required=True); p.add_argument("--requirement", required=True); p.add_argument("--view", required=True); p.add_argument("--file", required=True); p.add_argument("--out", required=True)
+    p = sub.add_parser("production"); p.add_argument("action", choices=("begin", "draft", "finish", "status")); p.add_argument("baseline"); p.add_argument("--receipts", required=True); p.add_argument("--check"); p.add_argument("--ticket"); p.add_argument("--submission"); p.add_argument("--evidence-mapping"); p.add_argument("--out"); p.add_argument("--strategy")
     p = sub.add_parser("compare"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("captures"); p.add_argument("--out", required=True); p.add_argument("--previous"); p.add_argument("--rebaseline-note", help="Explain an art-check correction or added comparisons; retain all previous requirements, comparisons and targets")
     args = parser.parse_args()
     try:
@@ -362,6 +550,9 @@ def main():
             if args.action == "begin":
                 require(args.check and args.out, "begin needs --check and --out")
                 flow.begin(gate, args.baseline, args.check, args.receipts, args.out, args.strategy)
+            elif args.action == "draft":
+                require(args.ticket and args.evidence_mapping and args.out, "draft needs --ticket, --evidence-mapping and --out")
+                flow.draft(gate, args.baseline, args.ticket, args.evidence_mapping, args.out)
             elif args.action == "finish":
                 require(args.ticket and args.submission and args.out, "finish needs --ticket, --submission and --out")
                 result = flow.finish(gate, args.baseline, args.ticket, args.submission, args.receipts, args.out)
@@ -375,6 +566,8 @@ def main():
         elif args.command == "compare":
             gate = SimpleNamespace(protected=protected, source_hashes=source_hashes, local=local)
             print(json.dumps(comparison_tools().build(gate, args.baseline, args.candidate, args.captures, args.out, args.previous, args.rebaseline_note), indent=2))
+        elif args.command == "attach-evidence":
+            print(json.dumps(attach_evidence(args.baseline, args.candidate, args.review, args.requirement, args.view, args.file, args.out), indent=2))
         else: print(json.dumps(accept(args.baseline, args.candidate, args.review, args.production_receipts), indent=2))
         return 0
     except (ValueError, OSError, KeyError, TypeError, ImportError) as error:

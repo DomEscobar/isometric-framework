@@ -13,6 +13,10 @@ SCRIPT = Path(__file__).resolve().parents[1] / "scripts/verify-world.py"
 SPEC = importlib.util.spec_from_file_location("verify_world", SCRIPT)
 gate = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(gate)
+PREPARER = SCRIPT.parents[2] / "consistent-tileset-authoring" / "scripts" / "prepare-ground.py"
+PREPARER_SPEC = importlib.util.spec_from_file_location("prepare_ground", PREPARER)
+preparer = importlib.util.module_from_spec(PREPARER_SPEC)
+PREPARER_SPEC.loader.exec_module(preparer)
 
 
 class WorkflowTests(unittest.TestCase):
@@ -92,6 +96,74 @@ class WorkflowTests(unittest.TestCase):
         Image.new("RGBA", (4097, 2)).save(self.image)
         with self.assertRaisesRegex(ValueError, "4096 per side"):
             gate.inspect(self.art)
+
+    def test_surface_reconstructs_exact_rgba_and_keeps_cutout_rules(self):
+        reference = Image.new("RGBA", (8, 4), (12, 34, 56, 0))
+        for y in range(4):
+            for x in range(8): reference.putpixel((x, y), (x * 20, y * 40, 90, 255 if x != 3 else 0))
+        reference.save(self.game / "ground.png")
+        reference.crop((0, 0, 4, 4)).save(self.image)
+        reference.crop((4, 0, 8, 4)).save(self.game / "right.png")
+        self.assets = {"images": {"left": {"url": "sheet.png"}, "right": {"url": "right.png"}},
+                       "textures": {"left": {"image": "left", "frame": {"x": 0, "y": 0, "width": 4, "height": 4}, "anchor": {"x": 0, "y": 0}},
+                                    "right": {"image": "right", "frame": {"x": 0, "y": 0, "width": 4, "height": 4}, "anchor": {"x": 0, "y": 0}}},
+                       "placements": {"left": {"x": 11, "y": -4}, "right": {"x": 15, "y": -4}}}
+        self.check["groups"] = [{"id": "ground", "kind": "surface", "textures": ["left", "right"], "composition": {"reference": "ground.png", "origin": [11, -4]}}]
+        self.save(self.manifest, self.assets); self.save(self.art, self.check)
+        report = gate.inspect(self.art)
+        self.assertTrue(report["passed"]); self.assertIn(str((self.game / "ground.png").resolve()), report["inputs"])
+        self.assets["placements"]["another-group"] = {"x": 100, "y": 100}
+        self.save(self.manifest, self.assets)
+        other_group_report = gate.inspect(self.art)
+        self.assertTrue(other_group_report["passed"])
+        self.assertNotIn("another-group", other_group_report["surfaces"]["ground"]["placements"])
+        self.check["groups"][0]["composition"]["origin"] = [21, 9]
+        self.assets["placements"] = {"left": {"x": 21, "y": 9}, "right": {"x": 25, "y": 9}}
+        self.save(self.manifest, self.assets); self.save(self.art, self.check)
+        self.assertTrue(gate.inspect(self.art)["passed"])
+        mask = Image.frombytes("L", reference.size, reference.getchannel("A").tobytes()); mask.putpixel((3, 0), 255); mask.save(self.game / "coverage.png")
+        self.check["groups"][0]["coverageMask"] = "coverage.png"; self.save(self.art, self.check)
+        self.assertIn("luminance", str(gate.inspect(self.art)["findings"]))
+        self.check["groups"][0].pop("coverageMask"); self.save(self.art, self.check)
+        self.assets["placements"]["right"]["x"] = 24; self.save(self.manifest, self.assets)
+        self.assertIn("overlaps", str(gate.inspect(self.art)["findings"]))
+        self.assets["placements"]["right"]["x"] = 25; self.save(self.manifest, self.assets)
+        with Image.open(self.game / "right.png") as im: corrupted = im.copy()
+        corrupted.putpixel((0, 0), (9, 8, 7, 0)); corrupted.save(self.game / "right.png")
+        self.assertIn("RGBA", str(gate.inspect(self.art)["findings"]))
+        # Surface edge opacity is intentional; this must not relax a cutout's margin check.
+        self.check["groups"] = [{"id": "actor", "kind": "cutout", "textures": ["left"], "margin": 1}]; self.save(self.art, self.check)
+        self.assertFalse(gate.inspect(self.art)["passed"])
+
+    def test_surface_inspects_prepare_ground_chunk_manifest(self):
+        source = Image.new("RGBA", (5, 3), (20, 40, 60, 255)); source.putpixel((2, 1), (1, 2, 3, 0)); source.save(self.root / "source.png")
+        Image.frombytes("L", source.size, source.getchannel("A").tobytes()).save(self.root / "coverage.png")
+        recipe = {"version": 1, "source": "source.png", "coverageMask": "coverage.png",
+                  "output": {"mode": "chunks", "chunkSize": [3, 2], "gutter": 1, "origin": [-7, 5]}}
+        recipe_path = self.root / "recipe.json"; self.save(recipe_path, recipe)
+        output = self.root / "prepared"; preparer.run(recipe_path, output)
+        report = gate.inspect(output / "packed-art.json")
+        self.assertTrue(report["passed"], report["findings"])
+
+    def test_surface_mask_failure_and_evidence_attachment_resets_verdict(self):
+        self.receipt()
+        mask = Image.new("RGBA", (32, 16), (10, 10, 10, 255)); mask.save(self.root / "mask.png")
+        self.assets["textures"]["pose-0"]["anchor"] = {"x": 0, "y": 0}; self.save(self.manifest, self.assets)
+        self.check["groups"].append({"id": "surface", "kind": "surface", "textures": ["pose-0"], "coverageMask": "mask.png"})
+        self.save(self.art, self.check)
+        with self.assertRaisesRegex(ValueError, "coverageMask requires"):
+            gate.inspect(self.art)
+        self.check["groups"].pop(); self.save(self.art, self.check)
+        Image.new("RGBA", (2, 2), (1, 2, 3, 255)).save(self.root / "desktop.png")
+        attached = self.root / "review-attached.json"
+        result = gate.attach_evidence(self.baseline, self.candidate, self.review, "appearance", "desktop", self.root / "desktop.png", attached)
+        self.assertEqual(result["kind"], "image")
+        changed = gate.read(attached)
+        self.assertEqual(changed["verdicts"][0]["status"], "unverified")
+        self.assertEqual(changed["verdicts"][0]["evidence"][-1]["sha256"], gate.digest(self.root / "desktop.png"))
+        self.assertEqual(changed["candidateSha256"], self.review_data["candidateSha256"])
+        with self.assertRaisesRegex(ValueError, "Unknown protected view"):
+            gate.attach_evidence(self.baseline, self.candidate, self.review, "appearance", "missing", self.root / "desktop.png", self.root / "bad.json")
 
     def test_calibration_subset_does_not_reduce_final_acceptance(self):
         self.check["groups"].append({"id": "future-creature", "kind": "cutout", "clips": ["not-built-yet"]})

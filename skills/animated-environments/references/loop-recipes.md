@@ -56,3 +56,18 @@ must remain still across every frame and the wrap. Inspect water separately:
 if only its brightness changes, the result may be shimmer, but it has not met a
 directional-flow requirement. Capture playback of adjacent modules and pause;
 neither a contact measurement nor a still image approves the moving result.
+
+## Moving material inside a fixed region
+
+A host may animate a prepared material strip inside its declared water surface,
+keeping banks and contact shadows in a fixed layer. The source can be generated,
+authored or supplied. Choose an explicit flow mapping and shared phase; arbitrary
+river branches need their own mapping and joins. A scrolling strip is not a
+general solution for waterfalls or independently branching currents.
+
+Use source pixels from the moving interior; do not drag bank or foliage pixels
+through the channel. Inspect the visible bend, both banks and an actor crossing.
+Timed captures with fixed/moving masks can be measured with the optional
+[offline helper](motion-measurements.md). Its exact endpoint comparison concerns
+captures at time zero and one period, not an instruction to duplicate an animation's
+first frame as its final sprite. Inspect the transition at playback speed too.

@@ -81,6 +81,15 @@ after the solid and traversal contracts are established.
 
 ## Check the actual scene
 
+For a flat crossing, put the deck material on authoritative terrain surfaces or
+split it into correctly supported depth parts. A single positive-height,
+nonblocking sprite at the actor's feet can still cover the actor; nonblocking is
+not a draw-below flag. Inspect full legs and feet at near, middle and far deck
+positions and both landings. Raised decks require actual support height as above.
+For an interaction, check arrival from relevant approach sides, including a route
+from another landmark. A valid nearest adjacent cell may be behind opaque art.
+Use an explicit visible interaction approach or appropriate layers when needed.
+
 Write the relevant expectations in an [assembly plan](references/assembly-plan.md)
 beside the host scene, then run:
 

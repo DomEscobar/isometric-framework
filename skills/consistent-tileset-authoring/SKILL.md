@@ -21,12 +21,21 @@ can still fail through hard fringes, mirrored motifs and inconsistent pixel styl
 - Choose grid projection, tile dimensions, surface height, transition or rim width, contact
   anchor, pixel density and lighting once for the family. Measure these in world
   units alongside the player. A padded sprite frame is not a footprint.
-- Choose topology: `cardinal16` for four-neighbor connections, `blob47` when
+- When producing a reusable neighbor-driven tile family, choose topology:
+  `cardinal16` for four-neighbor connections, `blob47` when
   diagonal occupancy must distinguish concave corners and holes. Both operate on
   the runtime's c/r axes. Mask numbers are not sequential atlas positions.
+  A composed ground patch can instead export measured crops without building a
+  generic 47-mask family.
+  For an already composed image, use the optional offline
+  [ground preparer](references/composed-ground.md): one plate or positioned chunks,
+  with explicit masks and image transforms. Authored, supplied and generated inputs
+  are equally supported; this does not replace reusable transition tiles.
 - For natural ground, record actual material adjacencies and their edge treatment.
   Require separate terrain-composition and transition verdicts; approve a mixed
-  patch with optional props hidden before expanding and decorating the world.
+  patch with upright/optional props hidden before expanding the world. Retain
+  ground-owned root beds, wear and contact shadows, then inspect the dressed
+  [object-ground connection](../isometric-art-integration/references/grounded-assemblies.md).
 - Keep structural parts separate from flowers, furniture and other decoration.
   A generated bed with flowers, soil and wall baked together is a composite prop,
   not automatically a reusable border tile. Do not hide failed joins with flowers.

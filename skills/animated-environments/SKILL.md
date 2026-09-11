@@ -59,6 +59,10 @@ baked into that base remain static. Do not call this a fully animated water jet.
 
 Use [loop recipes](references/loop-recipes.md) for river joins, fountain masks and
 other environmental motion. Do not regenerate unrelated scene artwork.
+For supplied timed captures, the optional
+[motion measurement helper](references/motion-measurements.md) reports exact and
+thresholded changes, fixed-region drift and sample gaps. It prepares evidence;
+it neither captures the game nor approves visible flow or playback quality.
 
 ## Bind to this runtime
 

@@ -15,13 +15,16 @@ particular filename is required.
   use the [landscape contract](../../consistent-tileset-authoring/references/landscape-composition.md)
   and record ground-only acceptance before optional props hide the surface.
 - **Assemblies:** common origins, surfaces, solids, openings, joins and access.
+  Include how roots, foundations and thresholds meet their surrounding material.
   Identify API gaps before generating detailed parts; link existing assembly plans.
 - **Motion:** fitting moving regions, fixed landmarks, flow direction, shared or
   deliberately varied timing, pause behavior. Explain static-only scope if requested.
 - **Production order:** risky calibration first, then full content, motion and
   integrated review. Name the work remaining after calibration explicitly.
 
-Maintain a compact completion table, updating it with observed evidence:
+Maintain one current completion contract, updating it with observed evidence.
+Receipt and review files keep the attempt history; do not duplicate that history
+or a second manual status ledger in the brief:
 
 | Required outcome / inferred supporting detail | Host owner or resource | Evidence to collect | Status / remaining gap |
 | --- | --- | --- | --- |
@@ -29,10 +32,10 @@ Maintain a compact completion table, updating it with observed evidence:
 | Each relevant moving family | Clip/overlay binding | Motion, wrap, joins and pause | Same status vocabulary |
 | Shared style and readable player | Art manifest/captures | Actual scene at intended zoom | Same status vocabulary |
 
-Replace these example rows with the real prompt's content. A built asset is not
-verified until the relevant observation exists. Inferred supporting details can
-change for a better result; explicit user requirements cannot silently disappear.
-The table helps preserve scope across turns and workers; it does not prove beauty.
+Replace these example rows with the real prompt's current contract. A built asset
+is not verified until the relevant observation exists. Inferred supporting details
+can change for a better result; explicit user requirements cannot silently disappear.
+The contract preserves scope across turns and workers; it does not prove beauty.
 
 For world production, turn the approved outcomes into the protected requirements
 in the [acceptance plan](acceptance.md). Keep separate visual, motion, gameplay and

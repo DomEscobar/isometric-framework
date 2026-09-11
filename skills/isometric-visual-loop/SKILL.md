@@ -1,231 +1,157 @@
 ---
 name: isometric-visual-loop
-description: Build or refine complete isometric environments from ordinary user prompts or references, matching intended scope and quality through generated art, complex assemblies, environmental animation and independent visual review.
+description: Build or refine complete isometric environments from a brief or visual reference through composed terrain, grounded scenery, appropriate animation and independent review of the playable result.
 ---
 
-# Isometric World Production
+# Isometric world production
 
-Use for creating a composed environment from a normal user prompt, substantial
-visual refinement, or an explicitly requested visual workflow trial. A local bug
-fix still belongs to its existing module; it does not require rebuilding a world.
-This is the Runtime's world-production workflow: interpret intent, calibrate,
-build the complete environment, animate it and verify the actual playable result.
-Keep the user's chosen art style, tools and task scope. All operational guidance
-is maintained here with the bundled specialist skills; no external workflow is
-required. The skill ID remains `isometric-visual-loop` for existing integrations.
+Use for a complete environment or substantial visual refinement. A focused repair
+keeps its affected scope; an unrelated engine/gameplay fix does not need this loop.
+Honor the user's style, provider, budget and intended deliverable. A short prompt
+can request a rich world; calibration is an internal checkpoint, not a smaller
+replacement for the finished scene. Atmosphere alone does not authorize new
+combat, quests or NPC simulation.
 
-## Translate intent into the deliverable
+## Define the result once
 
-A short prompt can request a rich finished world. Infer effort from the desired
-experience and references, not prompt length or whether the user knows technical
-terms. "A lively village with shops, a river and a bridge" warrants a
-composed, animated, traversable environment. "A quick bridge collision test"
-warrants a small functional fixture. A carefully finished courtyard can require
-high effort without a large map.
+Use the host's existing brief with [this short outline](references/production-brief.md).
+Record the reference's role (style, layout or both), landmarks, routes, material
+relationships, actor proportions and required motion. Infer supporting details
+from the supplied image; ask only about consequential missing choices.
 
-Choose reasonable art, layout and implementation defaults from the prompt and
-existing project; briefly state consequential assumptions and proceed. The user
-need not order autotiles, depth planes, colliders or animation clips separately.
-Ask only for missing information that materially changes the intended outcome.
-Explicit constraints on assets, style, motion, time or provider spending prevail.
-Atmosphere does not by itself authorize new quest, combat or NPC simulation systems.
+Protect the actual reference. A generated concept may clarify a design but cannot
+replace the user's target. For a style reference, compare its pixel clusters,
+outlines, light, material treatment, proportions and spatial hierarchy; do not
+score a different layout as an inaccurate replica. Exact layout reproduction
+additionally needs protected framing, landmark positions and scale.
 
-Keep one short host-owned production brief using
-[this outline](references/production-brief.md). Record the full intended outcome
-before calibrating: regions/landmarks, visual hierarchy, traversal, complex
-assemblies, appropriate motion and observable completion evidence. Distinguish
-user requirements from inferred supporting details. Update existing project
-plans rather than duplicating them. The brief is authoring data, not scene JSON.
+For full world production, use the version 3 [acceptance plan](references/acceptance.md)
+and [executed stages](references/production-flow.md): preflight, semantic layout,
+representative assembly, complete static scene, motion and final review.
+Begin each check before collecting evidence. Failed or unverified prerequisites
+block expansion; unchanged dependencies retain their receipts. After two failed
+attempts, record a changed strategy and a discriminating test. Scope dependencies
+to what the check actually measures; do not make a grass edit invalidate an
+unrelated building's geometry. Final review still covers the complete deliverable.
+Focused repairs use the acceptance tool's focused scope and relevant views rather
+than reconstructing unrelated production stages. Do not narrow promised quality
+or action coverage to fit the first generated output.
 
-For world production, follow the [acceptance gate](references/acceptance.md).
-Use its version 3 plan, [executed production stages](references/production-flow.md),
-and [executed image comparison](references/visual-comparison.md):
-protect actual targets, assemble reference/previous/current images, have them
-visually inspected, repair the host and repeat with fresh captures. Recorded
-verdicts alone do not execute this loop.
-Begin each stage check before its evidence work. Do not expand beyond a failed or
-unverified prerequisite. Semantic layout owns paths, planting, entrances and
-supports; geometry checks bind rigid art to actual host settings. Reuse unchanged
-receipts and recapture affected dependencies. After two failed attempts at one
-check, record a changed strategy and a discriminating test before retrying.
-Freeze the approved requirements and art-check coverage before implementation.
-Keep every promised direction/action and visual quality criterion explicit; do
-not narrow them to what an initial generated sheet happens to contain. The gate
-checks packed pixels, requirement coverage and evidence freshness. Its exit code
-does not replace visual judgment. Focused repairs use a correspondingly small plan.
+Before proposing a framework patch, classify the failed production step: missing
+tool, conflicting instruction, ignored rule, unsuitable generation, or bad review.
+Repair the identified cause in the host or workflow first. Change the framework
+only when the evidence shows its public behavior prevents the required result.
 
-## Establish the target and calibrate
+## Calibrate a composed patch
 
-- Preserve the supplied reference. A generated concept may clarify implementation,
-  but cannot silently replace the user's target or prove reference parity.
-- For each required visual view, protect a concrete reference and its role in the
-  plan. Use the supplied image or a project-specific target made within the agreed
-  technique and budget. If the image or vision access is unavailable, leave visual
-  acceptance unverified rather than judging the text description alone.
-- Establish whether the reference supplies a style, a layout to reproduce, or
-  both. For a style reference, do not penalize a different bench/fence position
-  as a failed replica. Without an image, use the brief and shared art direction;
-  a concept is useful when it resolves uncertainty, not a mandatory approval step.
-- Record camera, output size, shared pixel density, palette, player scale and
-  major landmark positions. Compare actual game captures at the target aspect.
-- Block out the overall layout, then prove the riskiest assembly with the actor
-  and one representative material/loop. Check width, clearances, contacts and
-  intended views before producing the full asset set. Reuse already validated
-  calibration when appropriate. Simple diagnostic shapes are internal fixtures
-  unless the user explicitly requests a diagnostic fixture as the final result.
-- Calibration is a checkpoint, never a reduced final deliverable. After it passes,
-  continue directly into the complete planned environment. Do not pause to ask
-  whether to continue work already requested by the user.
-- An explicitly requested experiment may have a stated bounded round budget.
-  Do not assign a three-round cap to a finished-world request, or retroactively
-  rename an unfinished build a trial. Respect actual user budgets, carry pending
-  work across continuations, and report concrete blockers without declaring success.
+The unit of visual production is an object with its terrain connection, not an
+isolated sprite followed by late decoration. Use
+[grounded assemblies](../isometric-art-integration/references/grounded-assemblies.md)
+for roots, foundations, worn approaches and banks. Record contact treatment in
+the existing brief; no additional schema is needed.
 
-## Build the complete environment
+1. Block out the whole intended scene from one semantic layout: routes, planting,
+   entrances, water and walking support. Resolve public API limitations before art.
+   Render generation guides with the runtime's public `project` function. Use the
+   [layout renderer](references/production-flow.md#render-the-layout-in-the-runtime-projection)
+   or an equivalent host export; a generic isometric formula can rotate the map.
+   Check each water body's continuity as well as walking routes; point-touching
+   cells can block a route while failing to form a flowing channel. The layout
+   schema supports explicit water hidden beneath bridge decks.
+2. Choose the riskiest representative patch with the actor, an object, its ground
+   transition and any relevant motion. Match playing zoom, pixel density and
+   stylized proportions to the reference.
+3. Inspect both physical support and visible integration. The same coordinates
+   can hold incompatible art; an attractive shadow cannot repair unsupported land.
+4. Review the ground with upright/optional props hidden, retaining its contact
+   beds, wear and bank lips. Then inspect the dressed patch and actual arrival
+   poses. A bare ground test and an isolated sprite sheet are insufficient alone.
+5. Expand directly into the complete requested scope when this patch works.
+   Reuse valid existing calibration; do not create new approval ceremonies.
 
-Use [consistent-tileset-authoring](../consistent-tileset-authoring/SKILL.md) for
-shared materials/edges and [multi-tile-asset-assembly](../multi-tile-asset-assembly/SKILL.md)
-for bridges and buildings. Use [game-asset-generation](../game-asset-generation/SKILL.md)
-with an available provider. A generated-asset task needs actual generated media.
-Use [animated-environments](../animated-environments/SKILL.md) for the scene's
-moving scenery, even when the prompt describes the experience rather than clips.
+An explicitly bounded experiment may have a round budget. Do not impose an
+arbitrary round cap on a finished-world request or relabel unfinished work a trial.
 
-- Expand the calibrated assembly into the brief's full layout: all requested
-  landmarks, connected terrain, readable approaches, supporting vegetation and
-  required views. Spend extra effort on dominant structures and weak assets;
-  additional tiles or generation attempts alone do not establish higher quality.
-- Build connected paths, banks, walls and water from shared boundaries. Derive
-  art placements and collision reservations from the same assembly data. Keep
-  density and asymmetry intentional without breaking joints or route clearance.
-- For natural ground, establish [landscape composition](../consistent-tileset-authoring/references/landscape-composition.md)
-  before tile production: material regions, path/grass and bank transitions, and
-  variation spanning cells. Inspect the ground without optional props before
-  decoration. A connected mask or shared palette does not approve a repetitive
-  diamond pattern, uniformly hard natural edge or mismatched pixel treatment.
-- Resolve capability gaps before detailed asset production. Check actual public
-  APIs; do not invent thin-edge colliders, tile-animation fields or phase controls.
-  Prefer a valid host assembly. If the intended form needs a reusable engine
-  extension, implement a scoped module change and its meaningful checks when
-  authorized. Never silently widen a bridge or fill its passage to fit the API.
-- Generate coherent material families and a few hero assets. Derive tile geometry,
-  neighbor masks and world-space phase deterministically; independent full-tile
-  generation does not establish seamless connections.
-- Inspect a joined material patch for repeats as well as seams. Mirroring can
-  create unnatural symmetric motifs. Keep large rocks and other recognizable
-  objects separate from quiet base textures where appropriate. Pack used variants
-  and deduplicate identical frames instead of multiplying every mask/phase blindly.
-- Record whether a source is orthographic material or already projected art.
-  Projecting already-isometric water stones again creates stretched diagonal bands.
-- Let one stage own the diamond silhouette. Static terrain material frames may
-  be opaque rectangles because the terrain renderer draws a diamond. Entity
-  sprites, including animated water overlays, receive no terrain clipping: their
-  pixels must already have the intended transparent silhouette, or a measured
-  host composition must provide it. Verify this when replacing procedural art.
-  Inspect underlying debug/procedural strokes before blaming the generator.
-- Split large artwork at meaningful depth planes. Rectify each vertical face
-  while preserving vertical posts; a whole-image shear changes physical appearance.
-- Close visible gaps with declared terrain/support geometry. A painted band over
-  a gap is not a bridge support. Keep walkable surfaces, underside clearance and
-  sprite contacts consistent after every elevation change.
+## Use specialists where they change the work
 
-For a lively environment, choose motion that explains the scene: water flowing
-through bends, localized fountain spray, foliage around fixed roots, occasional
-leaves or other fitting accents. Record each loop's rigid base, moving region,
-direction, timing and join dependencies. Connected water requires coherent joins;
-separate plants can use varied authored phases/cadences rather than move in unison.
-Use supported clips and simulation timing. Current terrain textures are static;
-water motion uses nonblocking sprite layers over authoritative terrain. The runtime
-has no phase-seek API. Do not substitute unrelated ambient sparkles for a requested
-flowing river, or count static water as complete animated scenery.
-
-## Critique and repair
-
-Run the acceptance tool's `inspect` command on the actual runtime atlas and open
-its preview. Check all used frames at shared scale, clip playback, roots and
-silhouettes before requesting a full-world critique. Reject neighboring sprite
-fragments, cut-off bodies, wrong facings and rectangular overlay leakage first.
-During calibration, use `inspect --groups` for the asset families already built;
-retain the complete protected spec. This subset cannot replace full acceptance.
-Inspect the same actor and joined animated patch in the running game; a source
-sheet is not the delivered atlas and a preview is not in-game acceptance.
-
-Self-inspect a live capture first. Fix obvious loading, missing textures and
-misplaced landmarks before paying for a critic. Never judge an asset sheet as
-evidence that the playable scene is correct.
-
-Use a fresh independent agent when available and authorized by the workflow;
-otherwise label the review as self-review. Give it the original brief, reference
-role, target, live captures and previous verdict after the first round, without
-the builder's preferred verdict. Assess composition/readability, style coherence,
-materials and visible defects; use clips or timed captures for animation.
-Run the comparison command to supply the actual images and review request. The
-critic must inspect them with vision, locate observations in both source images,
-and describe concrete differences and repairs. After changes, include the previous
-review and screenshot, account for every open finding and inspect for regressions.
-Require a verdict against every protected requirement: pass, fail or unverified.
-Motion needs observed playback, including all required actor directions/actions
-and complete environmental cycles. A still-image critic cannot approve it through
-separate frame-counter tests. For style references, judge pixel treatment, terrain
-edges, density, layering and player readability as well as palette and object types.
-For natural landscapes, issue separate terrain-composition and material-transition
-verdicts from ground-only and dressed views. Identify the strongest repeated motif
-and worst boundary; reject visible grid stamping even if the landmarks look good.
-Report layout similarity separately when exact replication was not requested.
-For an explicit replica, use the gated similarity rubric below;
-its numeric cap is not a universal beauty score.
-
-| Gate | Cap until satisfied |
+| Need | Owner |
 | --- | --- |
-| Shape: camera and all major forms present, within about 10% frame position and 25% scale | 3 |
-| Overall light, palette, contrast and atmosphere | 5 |
-| Every important surface reads as its intended material | 7 |
-| Fine detail and consistent treatment | 9 |
-| Side-by-side indistinguishability | 10 |
+| Shared style, physical measurements and object-ground connections | [Art integration](../isometric-art-integration/SKILL.md) |
+| Connected regions, natural edges and material variation | [Tileset authoring](../consistent-tileset-authoring/SKILL.md), starting with its landscape composition reference |
+| New raster candidates or layered contact artwork | [Asset generation](../game-asset-generation/SKILL.md), using the chosen provider |
+| Walkable decks, rigid structures, openings and depth parts | [Multi-tile assemblies](../multi-tile-asset-assembly/SKILL.md) |
+| Character facings and action poses | [Directional sprites](../directional-sprite-authoring/SKILL.md) |
+| Joined water or anchored foliage motion | [Animated environments](../animated-environments/SKILL.md) |
 
-The next critic marks each prior directive LANDED, PARTIAL or NOT DONE. Select
-at most three concrete corrections for a round and state how each will be visible.
-Keep the complete defect list open; the three-correction limit schedules repairs,
-not acceptance scope. LANDED confirms one repair only. After repairs, capture a
-new candidate and rerun the complete relevant acceptance scope before declaring done.
-Fix major shape blockers before decorative polish. Do not submit another material
-iteration against an unchanged bridge-width blocker. If two rounds repeat a
-major defect, change the composition, geometry or asset strategy and verify that
-change first. In replica mode, a stalled one-point gain is an additional signal.
-An infeasible directive needs a concrete capability finding, not silent omission.
+Read the selected specialist's relevant recipe, not every provider or fixture.
+Generated-art requests require actual generated outputs and honest provenance.
+Example hosts are not default art libraries.
 
-## Independent acceptance evidence
+Compose terrain boundaries once in world space and use them for both appearance
+and navigation. Quiet areas, dense planting and worn circulation have different
+roles; more noise or more sprites do not establish richness. Preserve deliberate
+formal geometry where the brief calls for it. Inspect the worst material boundary
+and strongest repeated motif at playing zoom.
 
-Check the complete brief before declaring done; a finished calibration assembly
-does not stand in for missing regions, structures or animation. Capture the whole
-scene and the meaningful traversal/occlusion views, not only a favorable opening
-frame. Where motion is part of the brief, check one full environmental cycle, its
-wrap, joined pieces and pause; sample distinct motion families without testing
-every decorative leaf separately. For explicitly static work, verify that scope
-instead of adding animation to satisfy a generic checklist.
+Separate visual layers where support, depth or movement requires it. Walkable
+surfaces need actual floor support and an actor that draws correctly on top.
+Grounded roots and stationary banks stay fixed while nearby leaves or water move.
+Choose scene-relevant motion; do not animate everything or substitute ambient
+sparkles for requested flowing water. The specialists own runtime-specific
+clipping, phase and assembly constraints.
 
-Keep four verdicts separate: visual quality, motion quality, gameplay, performance. A score of 8+
-does not validate routes, and passing collision tests does not establish beauty.
-For bridges, a focused walk both ways, blocked rail/water attempt, idle overlap
-capture and mobile control check normally suffice. Run broader checks only when
-engine changes justify them.
+## Compare, repair, and verify
 
-For a full environment's performance acceptance or a performance investigation,
-record median/p95 frame intervals, viewport, browser channel and actual renderer.
-Compare an idle blank page and close only positively identified stale test
-processes owned by this task/project. Native GPU and SwiftShader results are not
-interchangeable; concurrent software-rendered tests can invalidate both timings.
-Retain a finally/cleanup path in browser scripts.
-An isolated asset repair or simple collision fixture needs its affected checks;
-do not turn it into an unrelated full-world benchmark or broad regression rerun.
+Run the packed-art `inspect` command on the actual runtime manifest when sprites
+or overlays change. Open its preview and inspect the affected clips at shared
+scale before a scene review. During calibration, `--groups` may inspect built
+families; it cannot replace full protected coverage at delivery. A structural
+pass establishes neither anatomy nor in-game depth.
 
-Deliver the playable result, live capture/animation evidence, completed brief
-coverage, checks and material limits. Explicitly identify any missing requirement.
+Capture the actual playable host, then run the
+[image comparison loop](references/visual-comparison.md). Supply original
+reference, current and previous images. Self-inspect obvious loading/crop errors
+before requesting an independent critic.
+
+Use a fresh independent agent when available under this workflow; otherwise
+label self-review. Give it the brief, reference role and actual images without
+the builder's preferred verdict. The critic must inspect pixels, locate defects,
+and issue pass/fail/unverified against every protected requirement. Keep physical
+support, terrain/material connection, style/readability and motion distinct.
+Never infer visual acceptance from a receipt, frame counter or effect count.
+
+Inspect functional poses as pictures: actor feet on the near/middle/far crossing,
+both landings, and actual interaction endpoints from relevant approaches. Include
+a route from another landmark to the interaction. A hidden actor or feet drawn
+behind a walking surface fails even if navigation and rewards work.
+
+Prioritize a few concrete defects per repair round while retaining the entire
+open list. After a repair, inspect fresh captures, account for prior findings and
+check affected views for regressions. Two rounds repeating a major defect call
+for a changed asset, geometry or composition strategy. More detail cannot repair
+a failed primary form or contact.
+
+Motion requires observed playback or a sufficient timed image sequence covering
+the actual full cycle and wrap, joined parts and pause. Isolated stills and changing
+frame IDs are insufficient. For focused work, cover only affected motion families
+and retain valid evidence for unchanged art.
+
+## Deliver with honest limits
+
+Keep visual, motion, gameplay and performance verdicts separate. Test the relevant
+desktop/mobile journey with real input. For crossings and interactions, cover
+their actual arrival/idle poses as well as route success. Broaden regression
+checks only for shared-engine changes or actual failures.
+
+For full-world performance acceptance, record median/p95 frame intervals, viewport,
+browser and actual renderer against a blank baseline. Native GPU and SwiftShader
+results are not interchangeable; avoid concurrent software-rendered timings.
+A focused visual repair does not require an unrelated performance investigation.
+
 Run the [acceptance command](references/acceptance.md) on the final candidate.
-Missing, failed, unverified or stale requirements block completion; report them
-as open work. Neither a passing build nor an unaudited review JSON proves quality.
-Accept a replica against this rubric only at 8+ with acceptable observed
-performance. For original worlds, accept against the brief and observed quality,
-not invented positional similarity to a generated concept. A bounded experiment
-may demonstrate a failed strategy; it does not satisfy a finished-world request.
+Report open, failed, unverified or stale requirements as such. Passing local
+validation does not authenticate a critic's judgment or guarantee reference quality.
+Deliver the runnable host, relevant before/after and motion evidence, executed
+checks, provenance and remaining limitations.
 
 License notices: [NOTICE.txt](NOTICE.txt).

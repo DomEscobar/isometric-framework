@@ -13,6 +13,16 @@ The resolver chooses masks; the skill prepares compatible geometry and generated
 materials. Test concave corners and holes before adding flowers or other props.
 Independent full-tile generation is not a reliable shared-edge contract.
 
+Choose ground assembly separately from its artwork source: reusable transition
+tiles suit recombinable maps; composed plates or positioned chunks suit fixed
+landscapes. Either can use authored, supplied, procedural or generated material.
+The optional [offline ground preparer](../skills/consistent-tileset-authoring/references/composed-ground.md)
+handles explicit image transforms, masks and extraction for the composed route.
+Record the choice in the existing host brief; it adds no runtime API or provider.
+For the public runtime on a flat ground plane, the recipe's `bind-ground.mjs`
+adapter maps one registered plate to existing per-cell texture frames. Prepared
+`placements` alone are not a runtime scene or a plate-placement interface.
+
 For animated rivers, fountains or vegetation, apply
 [animated-environments](../skills/animated-environments/SKILL.md). Pair it with
 [multi-tile-asset-assembly](../skills/multi-tile-asset-assembly/SKILL.md) for large

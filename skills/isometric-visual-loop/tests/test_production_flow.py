@@ -29,6 +29,71 @@ def layout():
 
 
 class SpatialTests(unittest.TestCase):
+    def test_water_requires_axis_connected_cells(self):
+        data = layout()
+        water = next(region for region in data["regions"] if region["id"] == "water")
+        water["cells"] = [[5, 0, "ground"], [6, 1, "ground"]]
+        land = next(region for region in data["regions"] if region["id"] == "land")
+        land["cells"].remove([6, 1, "ground"])
+        land["cells"].append([5, 2, "ground"])
+        self.assertIn("water-connectivity:water", [f["id"] for f in spatial.inspect(data)["findings"]])
+
+    def test_water_axis_bend_and_separate_pond_ids_pass(self):
+        data = layout()
+        water = next(region for region in data["regions"] if region["id"] == "water")
+        water["cells"] = [[5, 0, "ground"], [5, 1, "ground"], [6, 1, "ground"]]
+        land = next(region for region in data["regions"] if region["id"] == "land")
+        land["cells"].remove([6, 1, "ground"])
+        land["cells"].append([5, 2, "ground"])
+        self.assertTrue(spatial.inspect(data)["passed"])
+        data["regions"].append({"id": "pond", "kind": "water", "cells": [[20, 20, "ground"]]})
+        self.assertTrue(spatial.inspect(data)["passed"])
+
+    def test_water_topology_regression_rejects_diagonal_bends_across_bridge(self):
+        data = layout()
+        water = next(region for region in data["regions"] if region["id"] == "water")
+        water["cells"] = ([[7, row, "ground"] for row in range(4)]
+                          + [[8, row, "ground"] for row in range(4, 6)]
+                          + [[8, row, "ground"] for row in range(7, 9)]
+                          + [[7, row, "ground"] for row in range(9, 13)])
+        land = next(region for region in data["regions"] if region["id"] == "land")
+        land["cells"] = [point for point in land["cells"] if point not in water["cells"]]
+        land["cells"] += [[7, 6, "ground"], [8, 6, "ground"], [9, 6, "ground"]]
+        data["bridges"].append({"id": "wide", "deck": [[7, 6, "ground"], [8, 6, "ground"], [9, 6, "ground"]],
+                                "landings": [[7, 6, "ground"], [9, 6, "ground"]], "waterOverlayCells": []})
+        water["underBridgeCells"] = [[8, 6, "ground"]]
+        self.assertIn("water-connectivity:water", [f["id"] for f in spatial.inspect(data)["findings"]])
+
+    def test_water_can_connect_under_a_declared_bridge_deck(self):
+        data = layout()
+        water = next(region for region in data["regions"] if region["id"] == "water")
+        water["cells"] = [[5, 1, "ground"], [5, 3, "ground"]]
+        water["underBridgeCells"] = [[5, 2, "ground"]]
+        land = next(region for region in data["regions"] if region["id"] == "land")
+        land["cells"].append([5, 2, "ground"])
+        self.assertTrue(spatial.inspect(data)["passed"])
+
+    def test_water_under_bridge_cells_must_be_valid_declared_decks(self):
+        for value, expected in (([[4, 2, "ground"], [4, 2, "ground"]], "Duplicate cells"),
+                                ([[5, 1, "ground"]], "declared bridge deck"),
+                                ("not-a-list", "underBridgeCells must be a list")):
+            data = layout()
+            water = next(region for region in data["regions"] if region["id"] == "water")
+            water["underBridgeCells"] = value
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, expected):
+                spatial.inspect(data)
+        data = layout()
+        land = next(region for region in data["regions"] if region["id"] == "land")
+        land["underBridgeCells"] = []
+        with self.assertRaisesRegex(ValueError, "only applies to water"):
+            spatial.inspect(data)
+
+    def test_water_on_different_floors_is_not_connected(self):
+        data = layout()
+        water = next(region for region in data["regions"] if region["id"] == "water")
+        water["cells"] = [[5, 1, "ground"], [5, 2, "roof"]]
+        self.assertIn("water-connectivity:water", [f["id"] for f in spatial.inspect(data)["findings"]])
+
     def test_connected_scene_and_independent_floors(self):
         data = layout()
         self.assertTrue(spatial.inspect(data)["passed"])
@@ -178,6 +243,61 @@ class ProductionTests(unittest.TestCase):
         (self.root / receipt["evidence"][0]["path"]).write_text("changed")
         self.assertEqual(flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)["checks"]["composition"]["status"], "unverified")
 
+    def test_status_explains_check_eligibility_and_declared_evidence_contract(self):
+        result = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        boot = result["checks"]["boot"]
+        self.assertTrue(boot["eligible"])
+        self.assertEqual(boot["views"], ["desktop"])
+        self.assertEqual(boot["evidenceKind"], "measurement")
+        self.assertEqual(boot["declaredInputs"], ["game/boot.json"])
+        self.assertFalse(boot["strategyRequired"])
+        self.assertTrue(result["checks"]["assembly"]["blockers"])
+        self.complete("boot")
+        completed = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)["checks"]["boot"]
+        self.assertFalse(completed["eligible"])
+        self.assertIn("Current receipt already passes", completed["blockers"][0])
+
+    def test_status_does_not_offer_a_check_with_missing_inputs(self):
+        (self.game / "boot.json").unlink()
+        boot = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)["checks"]["boot"]
+        self.assertFalse(boot["eligible"])
+        self.assertTrue(any("Missing production input" in item for item in boot["blockers"]))
+
+    def test_draft_hashes_only_valid_fresh_complete_evidence_and_leaves_review_fields_blank(self):
+        self.through_assembly()
+        self.complete("placement")
+        check = next(c for c in self.plan["production"]["checks"] if c["id"] == "composition")
+        stale = self.root / "stale.png"
+        Image.new("RGB", (8, 8), "green").save(stale)
+        stale_ticket = self.start("composition")
+        stale_mapping = self.save("stale-mapping.json", {"evidence": [{"path": stale.name, "view": view} for view in check["views"]]})
+        with self.assertRaisesRegex(ValueError, "predates capture ticket"):
+            flow.draft(self.adapter, self.baseline, stale_ticket, stale_mapping, self.root / "stale-draft.json")
+        ticket = self.start("composition")
+        proof = self.root / "fresh.png"
+        Image.new("RGB", (8, 8), "green").save(proof)
+        incomplete = self.save("incomplete-mapping.json", {"evidence": [{"path": proof.name, "view": "desktop"}]})
+        with self.assertRaisesRegex(ValueError, "Missing required view"):
+            flow.draft(self.adapter, self.baseline, ticket, incomplete, self.root / "incomplete-draft.json")
+        wrong = self.save("wrong-kind.json", {"evidence": [{"path": "wrong-kind.json", "view": view} for view in check["views"]]})
+        with self.assertRaisesRegex(ValueError, "format does not match"):
+            flow.draft(self.adapter, self.baseline, ticket, wrong, self.root / "wrong-draft.json")
+        mapping = self.save("mapping.json", {"evidence": [{"path": proof.name, "view": view} for view in check["views"]]})
+        with self.assertRaisesRegex(ValueError, "Drafts must be outside"):
+            flow.draft(self.adapter, self.baseline, ticket, mapping, self.game / "unsafe-draft.json")
+        output = self.root / "composition-draft.json"
+        command = [sys.executable, str(fixtures.SCRIPT), "production", "draft", str(self.baseline),
+                   "--ticket", str(ticket), "--evidence-mapping", str(mapping), "--receipts", str(self.receipts),
+                   "--out", str(output)]
+        result = subprocess.run(command, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        draft = gate.read(output)
+        self.assertEqual(draft["status"], "unverified")
+        self.assertEqual(draft["reviewer"], "")
+        self.assertEqual(draft["observed"], "")
+        self.assertEqual(draft["ticketSha256"], gate.digest(ticket))
+        self.assertTrue(all(item["sha256"] == gate.digest(proof) for item in draft["evidence"]))
+
     def test_layout_failure_overrides_claimed_pass_and_later_failure_supersedes_pass(self):
         self.complete("boot")
         data = layout()
@@ -219,6 +339,7 @@ class ProductionTests(unittest.TestCase):
     def test_two_failed_attempts_require_strategy_change(self):
         self.complete("boot", "fail")
         self.complete("boot", "fail")
+        self.assertTrue(flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)["checks"]["boot"]["strategyRequired"])
         with self.assertRaisesRegex(ValueError, "Two failed attempts"):
             self.start("boot")
         latest = sorted(self.receipts.glob("*.json"))[-1]

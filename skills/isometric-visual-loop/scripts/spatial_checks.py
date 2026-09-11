@@ -21,10 +21,18 @@ def cells(values):
     return result
 
 
+def optional_cells(values, message):
+    require(isinstance(values, list), message)
+    result = {cell(v) for v in values}
+    require(len(result) == len(values), "Duplicate cells")
+    return result
+
+
 def indexed(values):
     require(isinstance(values, list), "Expected object list")
     result = {}
     for value in values:
+        require(isinstance(value, dict), "Expected object list")
         ident = value.get("id")
         require(isinstance(ident, str) and ident and ident not in result, "Unique nonempty IDs required")
         result[ident] = value
@@ -48,6 +56,7 @@ def reachable(start, allowed):
 
 
 def inspect(layout):
+    require(isinstance(layout, dict), "Spatial layout must be an object")
     require(layout.get("version") == 1, "Spatial layout version must be 1")
     regions = indexed(layout["regions"])
     require(regions, "Semantic regions required")
@@ -59,14 +68,22 @@ def inspect(layout):
     def fail(code, ident, message):
         findings.append({"id": code+":"+ident, "instance": ident, "difference": message})
 
+    water_under_bridges = {}
     for ident, region in regions.items():
         require(region.get("kind") in ("planting", "paving", "grass", "soil", "water", "deck"), "Unknown surface kind")
         by_region[ident] = cells(region["cells"])
+        if region["kind"] == "water":
+            water_under_bridges[ident] = optional_cells(region.get("underBridgeCells", []),
+                                                        "underBridgeCells must be a list")
+        else:
+            require("underBridgeCells" not in region, "underBridgeCells only applies to water regions")
         require(not set(surfaces) & by_region[ident], "Base regions must not overlap; deck is a bridge overlay")
         surfaces.update({p: region["kind"] for p in by_region[ident]})
     walkable = {p for p, kind in surfaces.items() if kind != "water"}
+    bridge_decks = set()
     for ident, bridge in bridges.items():
         deck = cells(bridge["deck"])
+        bridge_decks |= deck
         landings = [cell(p) for p in bridge["landings"]]
         require(len(landings) == 2 and landings[0] != landings[1], "Bridge needs two distinct landings")
         if not set(landings) <= walkable:
@@ -79,6 +96,13 @@ def inspect(layout):
         if not deck <= set(surfaces):
             fail("deck-outside-map", ident, "Deck extends outside declared terrain")
         walkable |= deck
+    for ident, under_bridge in water_under_bridges.items():
+        require(under_bridge <= bridge_decks,
+                "Water underBridgeCells must be declared bridge deck cells")
+        water = by_region[ident] | under_bridge
+        if water != reachable(next(iter(water)), water):
+            fail("water-connectivity", ident,
+                 "Water region has disconnected or point-only bends; use separate region IDs for distinct ponds")
     solid, roots = set(), {}
     for ident, instance in instances.items():
         footprint = cells(instance["footprint"])

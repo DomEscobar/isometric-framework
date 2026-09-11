@@ -26,15 +26,15 @@ An available tool is not automatically the project's preferred art pipeline.
 | General raster artwork | WaveSpeed `bytedance/seedream-v5.0-pro` | An already available image provider, local generator, or supplied/licensed art |
 | Reference-guided variants | Selected provider's reference workflow, such as Seedream Pro Edit | Authored edits preserving the approved identity |
 | Transparent prop/actor | Preserve valid existing alpha; otherwise WaveSpeed `wavespeed-ai/image-background-remover` | Local CPU `rembg` |
-| Exact modular stone/terrain geometry | Code/vector-authored geometry matching the host projection | Measured compatible sourced or generated art |
+| Exact modular stone/terrain geometry | Host geometry and measured contact edges | Compatible authored, supplied or generated appearance on that geometry |
 
 Neither provider is a universal default or benchmarked winner in this framework.
 Generated PNGs need not contain usable alpha. Background
 removal is a separate operation and cannot fix an incorrect perspective.
 
-Read [WaveSpeed usage](references/wavespeed.md) for API requests, resumable jobs,
-reference editing, and downloads. Read [local removal and alpha review](references/backgrounds.md)
-for the CPU fallback, its installation/model requirements, and inspection commands.
+Read only the selected provider's recipe: [WaveSpeed usage](references/wavespeed.md)
+for its API jobs, or the Retro Diffusion reference above for its MCP tools. Read
+[local removal and alpha review](references/backgrounds.md) when removal is needed.
 The Retro Diffusion path requires its MCP connection; the included WaveSpeed
 client uses HTTP directly. These are authoring dependencies, not runtime services.
 
@@ -44,6 +44,34 @@ authored character frames. Record which technique owns each asset family. Do not
 silently change providers, mix styles or substitute example artwork after failure;
 use an agreed fallback or raise the specific decision that needs changing.
 
+Exact geometry does not require code-painted ground. When the selected technique
+is a composed generated landscape, supply the host layout and style reference,
+then measure alignment before using the optional
+[ground preparer](../consistent-tileset-authoring/references/composed-ground.md).
+Prompts do not guarantee matching banks or paths; topology and collision remain
+host-owned. This is an alternative to modular tiles, not a provider default.
+
+For a composed ground request, translate the scene reference into the requested
+layer's materials. "Terrain only" is ambiguous when the same prompt asks for
+dense vegetation: specify low grass/soil/contact details versus separate upright
+trees, rocks and structures. Keep the host's elevation and doorway levels explicit;
+a flat footprint must not become a raised building plot merely because the style
+reference has cliffs. Supply a clean layout image with declared reference roles,
+using explicit ordered image inputs when the provider supports them. Record actual
+submitted inputs as well as the prompt; intended references alone are not provenance.
+
+Illustrative ground-layer request: "Use the layout for positions and heights;
+use the style image for pixel clusters, earth, grass and water treatment. Paths
+and future building sites share one walking level with flush approaches. Keep
+only low ground cover and contact detail in this layer. Upright trees, large
+rocks and buildings will be separate assets. Show bank faces only where the
+layout declares a drop." Adapt heights and layer ownership to the actual project.
+
+Inspect raw candidates for invented elevation, blocked approaches and baked
+upright objects before registration or another generation. If one fails, preserve
+it and revise the specific conflicting constraint. Do not repaint a convincing
+but unsupported ledge as a walkable path or assume slicing fixes layer ownership.
+
 ## Generate a representative candidate first
 
 Use the host's established projection, palette, light direction, target actor/prop
@@ -51,7 +79,14 @@ proportions, and intended source pixel density. Create one asset before a large
 pack. Favor separate assets or small controlled sets over an atlas whose exact
 cell layout exists only in the prompt. Measure actual output dimensions.
 
-For a cutout, request one isolated object with complete silhouette, generous
+Choose the asset's role before requesting a cutout. Rooted scenery may need a
+small composed contact patch: roots, exposed soil, low grass and contact shadow
+designed together. Follow [grounded assemblies](../isometric-art-integration/references/grounded-assemblies.md)
+to separate ground/upright layers where depth or motion requires it. Removing
+all ground context is not a universal quality rule. Preserve the material edge
+needed to join a patch to its surroundings; avoid a repeated opaque dirt oval.
+
+For a portable isolated cutout, request the object with complete silhouette, generous
 margin, and a flat contrasting background color absent from the subject. Avoid
 checkerboards, gradients, scenery, labels, and baked ground shadows. Do not choose
 green behind foliage or white behind white petals. This is preparation for
@@ -65,9 +100,24 @@ contrasting backdrop. No text or checkerboard. Match the host's approved palette
 Replace the subject and palette with the actual game brief; a text-to-image
 endpoint cannot see an unprovided reference.
 
+For a grounded patch, an illustrative brief is: "A rooted shrub with exposed
+earth between its stems, sparse grass entering the outer soil edge and a compact
+upper-left-lit contact shadow. Match the supplied game's pixel clusters and
+grass palette; irregular perimeter, no rectangular base or surrounding scene."
+Use the current host's reference and intended layer split. A material swatch,
+portable cutout and rooted patch solve different tasks.
+
 For repeated characters, use an accepted reference and explicit pose/facing
 instructions. Keep common canvas and contact origins across frames; do not
 independently auto-trim poses. Generation does not guarantee animation continuity.
+
+When a provider needs multiple exact references, prepare a reviewable input bundle
+with the offline [request preparation helper](references/request-preparation.md).
+It separates style, layout and explicitly approved identity crops, preserves their
+source hashes and cannot send a generation request. Do not feed rejected identity
+crops into a later request. For a directional action matrix, first review one
+direction/action and record its self-reported calibration receipt; ordinary
+multiasset generation does not require that receipt.
 
 ## Prepare, inspect, then integrate
 

@@ -23,7 +23,7 @@ Below, `python` means that interpreter (or replace it with the uv prefix above).
 These files and the tool travel with the npm package. Use its absolute script path
 when running in a consumer's own application.
 
-An inspected frame may be up to 4096 pixels on a side and 1,048,576 pixels in
+An inspected cutout or diamond frame may be up to 4096 pixels on a side and 1,048,576 pixels in
 area. This permits a wide joined assembly while bounding per-frame analysis.
 Cutouts still need transparent padding; pack an assembly's union bounds with
 padding and adjust its anchor instead of setting a zero crop margin. A whole
@@ -123,6 +123,23 @@ Terrain materials are clipped by the terrain renderer and may remain rectangular
 Strip overlays, waterfall faces and intentionally overhanging effects need their
 own measured geometry and rendered acceptance; do not mislabel them as diamonds.
 
+`surface` is for an intentionally edge-opaque terrain plate or its bounded chunks.
+Its frames may be up to 8192 pixels per side and 16,000,000 pixels. Surface frames
+use explicit content-only `frame` rectangles and `{"x":0,"y":0}` anchors; no
+transparent crop margin is required. A composed surface declares unique `textures`,
+and `composition` with a local RGBA PNG `reference` and displayed `[x,y]` source
+`origin`; its texture placements come from the manifest's `placements` dictionary,
+keyed by texture ID. Placements are signed reference content coordinates, including
+the origin, so the checker subtracts `origin` before fitting chunks to the reference.
+Each group selects its own pieces; other groups may share the manifest. The
+checker rejects missing or duplicate selected chunks, holes, overlap, out-of-bounds
+placements, and every RGBA reconstruction mismatch, including RGB under transparent
+pixels. An optional static PNG grayscale (`L`/`1`) `coverageMask` is allowed only with
+a composition and its luminance bytes must match the reference alpha exactly; it is a
+diagnostic, not collision topology.
+The reference and mask are protected inputs. Preview inspection shows both individual
+chunks and the composed result with origin and mask/failure notes.
+
 Freeze the plan and art thresholds before generating the full pack. Referenced
 manifests/images may be produced later; the plan and art-check spec must exist.
 
@@ -204,6 +221,20 @@ cannot approve a motion requirement. Review notes must describe actually observe
 quality; attaching an unwatched video is not a review. Performance needs measurements.
 Hash files with Python `hashlib.sha256(Path(path).read_bytes()).hexdigest()` or an
 equivalent local SHA-256 tool. Include all required views in every relevant verdict.
+
+To attach a newly captured receipt without editing an existing review, use:
+
+```sh
+python skills/isometric-visual-loop/scripts/verify-world.py attach-evidence review-1.json --baseline test-results/my-game/baseline.json --candidate test-results/my-game/candidate-1.json --requirement ranger-walk --view desktop --file ranger-desktop.webm --out review-1-with-evidence.json
+```
+
+The command checks the protected requirement/view, infers `image`, `motion`, or
+`measurement` from a supported file extension, decodes images (and GIFs) or parses
+JSON measurements, hashes the actual file, verifies that the candidate and review bind
+to that baseline, and writes a new review only beside the original review (so existing
+relative evidence paths remain stable). It preserves
+comparison fields and other verdicts, replaces the matching path/view evidence, and
+sets the affected verdict to `unverified`; it never creates a pass or recaptures media.
 
 ```sh
 python skills/isometric-visual-loop/scripts/verify-world.py accept test-results/my-game/baseline.json test-results/my-game/candidate-1.json test-results/my-game/review-1.json

@@ -36,16 +36,28 @@ not counted as an independently drawn direction.
 
 ## Generate poses against approved references
 
-The text-to-image Seedream endpoint can establish a design. For repeated poses,
-prefer its reference-guided Edit endpoint; see the
-[pose recipe](references/poses.md) for a runnable request. The provider supports
-reference editing, but that is not proof of animation coherence or exact facing.
+Use the project's selected provider and its reference workflow for repeated poses.
+The [Seedream pose recipe](references/poses.md) is one optional implementation,
+not a provider selection rule. Reference editing does not prove animation
+coherence or exact facing.
 Check one action in one direction before requesting a whole matrix.
+
+When passing exact crops to a provider, use the offline request bundle described
+by [game asset generation](../game-asset-generation/references/request-preparation.md).
+For a directional action matrix, its calibration receipt ties the reviewed probe
+to the currently selected approved identity source hashes. It records a
+self-reported judgement and does not prove visible facing or animation quality.
 
 Derive each direction's action poses from its approved neutral view and the same
 master identity. Avoid chains where each unreviewed generation becomes the next
 reference: errors in scale, anatomy, and equipment accumulate. Keep the camera,
 lighting, body proportions, and root stable while changing the pose.
+
+When approved and rejected poses share a sheet, supply only the approved crops
+as identity references. For example, if the neutral row passed but the walk rows
+repeat one leading foot, isolate the neutral views before requesting new contacts;
+do not send the failed rows with an instruction to ignore them. Keep rejected
+frames in the review record, outside the reference inputs for the next attempt.
 
 Define action phases before generating: walk contact/pass/opposite contact/pass;
 attack anticipation/strike/recovery; jump pose appropriate to the current runtime.
@@ -93,7 +105,8 @@ every frame and the loop seam for facing changes, identity drift, swapped hands,
 foot/root drift, halo damage, and apparent scale changes. Frame-by-frame review
 and playback catch different defects; preserve both forms of evidence.
 
-In a tiny host scene, move along all required axes, release to idle, and jump.
+In the host scene, move along all required axes and release to idle. Test jumping
+only when it is supported and included in the requested action coverage.
 Check movement vector, visible facing, selected clip, and stable contact together.
 For eight-way play, test combined directions as well as WASD. Show front/behind
 occlusion and an asymmetric prop to make accidental mirroring visible.

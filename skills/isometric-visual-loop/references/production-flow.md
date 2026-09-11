@@ -14,8 +14,8 @@ the check, and expand only after all prior stages pass.
 | Stage | Required work before expansion |
 | --- | --- |
 | preflight | One actual asset decodes and loads in dev and production; provider, projection and pixel scale established |
-| layout | Semantic regions, reserved routes, supports, entrances and camera blockout |
-| assembly | Measured rigid contact/scale binding plus live actor, materials and riskiest structure |
+| layout | Semantic regions, reserved routes, supports, entrances and blockout in the runtime's actual projection |
+| assembly | Actual selected artwork, measured rigid contact/scale binding, controllable actor, materials and riskiest structure in the live host |
 | static | All placed instances checked; complete ground-only/dressed composition and required mobile regions |
 | motion | Complete requested cycles, occlusion, interactions, input and contextual timing |
 | final | Current whole-image judgment against the original target, followed by prior findings and full acceptance |
@@ -76,6 +76,12 @@ integer cells `[column, row, floorId]`; different floors are different cells.
 - `spawn`: starting cell for global reachability.
 - `regions`: unique `id`, `kind` (planting/paving/grass/soil/water/deck), nonempty
   `cells`. Base regions must not overlap; bridges supply deck overlays.
+  Each water region describes one axis-connected body. Separate ponds use separate
+  IDs; diagonal corner contact does not connect a channel. If deck cells replace
+  underlying water in the base regions, declare the water region's optional
+  `underBridgeCells`: water cells hidden under declared bridge decks. These cells
+  participate only in channel connectivity, not rendered overlays or walking support.
+  Omit them when the water base region already continues beneath a deck overlay.
 - `instances`: unique `id`, `kind` (tree/prop/building), nonempty `footprint`,
   `support` region ID, boolean `solid`, and `approaches` cells. Buildings require
   at least one approach; every approach must adjoin the footprint and a reachable
@@ -97,7 +103,43 @@ not simulate slopes, cross-floor portals, subcell polygons or rendered alpha mas
 Use host-specific checks and actual views for those capabilities. Do not flatten
 an intended multi-floor game to satisfy this check.
 
+For example, water at `[2,0,"ground"]` and `[2,2,"ground"]` can connect through
+`underBridgeCells: [[2,1,"ground"]]` only if that cell belongs to a declared bridge
+deck. Water at `[2,0,"ground"]` and `[3,1,"ground"]` alone is disconnected. These
+illustrative cells establish topology, not a preferred map design. Inspect the
+rendered channel at bends and crossings as well: axis connectivity guarantees
+shared cell edges, not sufficient pixel width after banks and masks are applied.
+
 ## Run one check
+
+Before generating from a layout, compare its spawn, distant entrance and both
+bridge landings with the neutral runtime view under the same camera transform.
+Equal cell IDs do not prove equal image positions. If the host converts coordinates,
+apply that conversion to all regions, routes, footprints and landmarks before
+export; preserve one authority for collision and appearance.
+
+### Render the layout in the runtime projection
+
+The framework's public `project` maps increasing columns upper-right and increasing
+rows lower-right. Do not substitute another commonly used isometric axis convention
+when drawing a generation guide. The optional renderer imports that public function:
+
+```sh
+node --experimental-strip-types skills/isometric-visual-loop/scripts/render-layout.mjs host/layout.json --out review/layout-1 --tile-width 64 --tile-height 32 --png
+```
+
+The dimensions are illustrative; use the actual host settings. The new output
+folder contains a clean `layout.svg`, a labeled `layout-debug.svg`, and
+`projection.json` with projected landmarks and output origin. `--png` adds browser
+captures using authoring-only Playwright/Chromium; omit it for SVG/JSON export
+without browser dependencies. Supply the clean image to generation; diagnostic
+labels and cell borders are evidence, not intended artwork. Compare the exported
+landmarks with the host before spending on appearance. This utility does not
+register a generated image, infer elevation, or prove rendered material alignment.
+It exports one flat plane; for elevated or multiple-floor scenes, use a host export
+with actual floor heights instead of flattening the intended environment.
+
+### Execute a stage check
 
 Python/Pillow and Node are the existing authoring dependencies. Keep tickets,
 submissions and receipt directories outside all source `inputRoots`.
@@ -107,15 +149,30 @@ python skills/isometric-visual-loop/scripts/verify-world.py freeze host/acceptan
 python skills/isometric-visual-loop/scripts/verify-world.py production begin review/baseline.json --check preflight --receipts review/receipts --out review/preflight-ticket.json
 ```
 
-Run the scoped check/capture after `begin`. Write a submission with the actual
-ticket hash, `status` (pass/fail/unverified), `reviewer`, `observed` and evidence:
+Run the scoped check/capture after `begin`. Make an evidence mapping containing
+only local `path` and required `view` entries, then create the exact submission
+template. `draft` reuses the finish-time evidence checks: each file must be fresh,
+the declared kind, and cover every required view. It writes `unverified` with blank
+reviewer and observations; fill those fields from the actual review and never turn
+the template into an automatic pass.
+
+For example, `preflight-evidence.json` contains
+`{"evidence":[{"path":"review/dev-and-production.json","view":"desktop"}]}`.
+Add an entry for each required view; multiple files may describe the same view.
+
+```sh
+python skills/isometric-visual-loop/scripts/verify-world.py production draft review/baseline.json --ticket review/preflight-ticket.json --evidence-mapping review/preflight-evidence.json --receipts review/receipts --out review/preflight-review.json
+```
+
+The resulting submission has the actual ticket and evidence hashes, plus `status`
+(pass/fail/unverified), `reviewer`, `observed` and evidence:
 
 ```json
 {
   "ticketSha256": "<actual ticket SHA-256>",
-  "status": "pass",
-  "reviewer": "reviewer identity",
-  "observed": "Describe the actual observed result and remaining limits.",
+  "status": "unverified",
+  "reviewer": "",
+  "observed": "",
   "evidence": [
     {"path": "review/dev-and-production.json", "sha256": "<actual file SHA-256>", "view": "desktop"}
   ]
@@ -127,7 +184,7 @@ python skills/isometric-visual-loop/scripts/verify-world.py production finish re
 python skills/isometric-visual-loop/scripts/verify-world.py production status review/baseline.json --receipts review/receipts
 ```
 
-`finish` reruns automatic geometry/layout checks and rejects a claimed pass when
+`finish` is the only command that writes a receipt. It reruns automatic geometry/layout checks and rejects a claimed pass when
 they fail. Image evidence must decode; every required view must be covered. Evidence
 must be written after the ticket, and sources must still match the ticket. Receipt
 files are immutable outputs. A ticket is single-use and cannot finish after a newer
@@ -135,7 +192,8 @@ attempt for that check. Serialize attempts for the same check; parallel work on
 different eligible checks is possible when input ownership is disjoint.
 
 The latest receipt wins, including failures. `status` reports the earliest open
-stage and stale/missing checks. Unchanged checks can reuse their existing receipts;
+stage and, for every check, its eligible flag, concrete blockers, required views,
+evidence kind, declared inputs and whether a strategy is required. Unchanged checks can reuse their existing receipts;
 changed inputs invalidate only declared dependents. Do not recapture everything
 automatically. Missing dependencies, altered file timestamps, copied images or
 forged records are outside this local tool's capture/authentication trust boundary.

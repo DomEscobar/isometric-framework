@@ -21,7 +21,7 @@ can use the same checks with a smaller requirement scope.
 | Requested work | Skill | Responsibility |
 | --- | --- | --- |
 | Create a complete world from a prompt or reference, or substantially refine an environment | [isometric-visual-loop](isometric-visual-loop/SKILL.md) | Overall scope, production brief, calibration, specialist coordination and playable visual review |
-| Add an art pack or theme; fix proportions, anchors, seams or occlusion | [isometric-art-integration](isometric-art-integration/SKILL.md) | Shared projection, physical scale, contact measurements and in-game art acceptance |
+| Add an art pack or theme; fix pasted-on scenery, proportions, seams or occlusion | [isometric-art-integration](isometric-art-integration/SKILL.md) | Object-ground connections, shared scale, contact measurements and in-game acceptance |
 | Generate raster sprites or textures; prepare transparent cutouts | [game-asset-generation](game-asset-generation/SKILL.md) | Project-selected Retro Diffusion MCP, WaveSpeed or other provider; background removal, decoded alpha and provenance |
 | Create or repair character facings, walk/jump/attack poses or spritesheets | [directional-sprite-authoring](directional-sprite-authoring/SKILL.md) | Visible facing approval, coherent poses, stable frame contacts and explicit clip mapping |
 | Animate rivers, fountains, waterfalls or wind-driven plants | [animated-environments](animated-environments/SKILL.md) | Stable scenery loops, matching joins and simulation timing |
@@ -41,6 +41,10 @@ can use the same checks with a smaller requirement scope.
   generation only if new artwork is needed and art integration for scale checks.
 - **Connected river:** combine `consistent-tileset-authoring` for banks and joins
   with `animated-environments` for flowing water; add generation if requested.
+- **Composed ground image:** use the optional
+  [ground preparer](consistent-tileset-authoring/references/composed-ground.md)
+  for a plate or positioned chunks from authored, supplied or generated artwork.
+  Choose generation only when agreed; reusable transition tiles remain another path.
 
 A focused task can start directly with its specialist. Unrelated gameplay or
 engine fixes follow the project's module ownership

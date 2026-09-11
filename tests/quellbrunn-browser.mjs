@@ -1,4 +1,4 @@
-﻿import assert from 'node:assert/strict';
+import assert from 'node:assert/strict';
 import {chromium} from 'playwright';
 import {mkdir,writeFile} from 'node:fs/promises';
 const url=process.env.QUELLBRUNN_URL??'http://127.0.0.1:4203/',out='test-results/quellbrunn/browser';
@@ -31,6 +31,3 @@ try{
   await writeFile(`${out}/${name}.json`,JSON.stringify({url,viewport,environment,baseline,timing,errors,checks},null,2));const video=page.video();await context.close();await video.saveAs(`${out}/${name}.webm`);console.log(JSON.stringify({name,checks:checks.length,timing,baseline}));
  }
 }finally{await browser.close()}
-
-
-

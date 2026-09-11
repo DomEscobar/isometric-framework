@@ -1,4 +1,4 @@
-﻿import {project,riverCenter,riverHalf,houses} from './world.ts';
+import {project,riverCenter,riverHalf,houses} from './world.ts';
 import binding from './art/binding.json';
 const noise=(x:number,y:number)=>{let n=Math.imul(x,374761393)^Math.imul(y,668265263);n=Math.imul(n^(n>>>13),1274126177);return((n^(n>>>16))>>>0)/4294967295};
 export function createEnvironment(){
@@ -29,4 +29,3 @@ export function createEnvironment(){
  }
  return{water,wheel,smoke,period:8};
 }
-

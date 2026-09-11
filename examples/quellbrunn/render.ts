@@ -1,4 +1,4 @@
-﻿import {loadImage} from './asset-loader.ts';
+import {loadImage} from './asset-loader.ts';
 import manifest from './art/manifest.json';
 import binding from './art/binding.json';
 import {project,unproject,riverCenter,riverHalf,roadDistance,bridges,houses,trees,gardens,insideRect,WIDTH,HEIGHT,type Point,type Screen} from './world.ts';
@@ -77,4 +77,3 @@ export async function createView(canvas:HTMLCanvasElement){
  }
  return{draw,resize,overview,focus,screen,world,setGroundOnly(value:boolean){groundOnly=value},setTerrain(value?:HTMLCanvasElement){activeTerrain=value??terrain},pan(dx:number,dy:number){camera.x-=dx/zoom;camera.y-=dy/zoom;clamp()},zoom(f:number){zoom=Math.max(.4,Math.min(2.5,zoom*f))},get scale(){return zoom},get terrain(){return terrain},get sprites(){return sprites}};
 }
-

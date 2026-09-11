@@ -1,0 +1,1 @@
+{"version":1,"manifest":"manifest.json","groups":[{"id":"village","kind":"cutout","textures":["cottage","oak","pine","shrub"],"margin":2,"maxComponents":80,"minComponentPixels":3}]}

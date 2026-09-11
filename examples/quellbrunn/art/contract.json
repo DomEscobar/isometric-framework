@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "pack": "quellbrunn-generated",
+  "projection": {
+    "tileWidth": 32,
+    "tileHeight": 16,
+    "heightPixelsPerUnit": 20
+  },
+  "tolerances": {
+    "groundErrorPx": 4,
+    "heightErrorPx": 3
+  },
+  "heightReferences": {
+    "standing": 1.8,
+    "seat": 0.45,
+    "tabletop": 0.75
+  },
+  "assets": [
+    {
+      "id": "cottage",
+      "kind": "prop",
+      "image": "cottage.png",
+      "sha256": "51cd6ca4264f184b7fb0775ebe9fac2ae8ec055f6067d743727154f158266d17",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 486,
+        "height": 536
+      },
+      "anchor": {
+        "x": 0.09465020576131687,
+        "y": 0.7779850746268657
+      },
+      "render": {
+        "width": 174.95999999999998,
+        "offset": {
+          "x": -13.6,
+          "y": 0.4
+        }
+      },
+      "footprint": {
+        "columns": 5,
+        "rows": 5
+      },
+      "groundPoints": [
+        {
+          "source": {
+            "x": 46,
+            "y": 417
+          },
+          "grid": {
+            "c": -0.45,
+            "r": -0.4
+          }
+        },
+        {
+          "source": {
+            "x": 263,
+            "y": 519
+          },
+          "grid": {
+            "c": -0.45,
+            "r": 4.45
+          }
+        },
+        {
+          "source": {
+            "x": 450,
+            "y": 430
+          },
+          "grid": {
+            "c": 3.75,
+            "r": 4.45
+          }
+        }
+      ],
+      "heights": [],
+      "allowedOverhang": "Roof eaves and front threshold overhang the rigid wall base. Five-by-five envelope is conservative; visible base approximately4.2 by4.85 cells."
+    }
+  ]
+}

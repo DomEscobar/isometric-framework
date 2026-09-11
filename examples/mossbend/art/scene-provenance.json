@@ -1,0 +1,11 @@
+{
+  "provider": "Retro Diffusion MCP",
+  "requestId": "b42ed8bb-9e2d-4f4e-bce3-5c3107350c29",
+  "model": "rd_pro",
+  "promptStyle": "rd_pro__edit",
+  "balanceCostUSD": 0.18,
+  "elapsedMs": 107151,
+  "createdAt": 1789111118,
+  "request": "scene-request.json",
+  "userUploadApproval": "User explicitly answered 'ja' to uploading the engine layout and forest reference to Retro Diffusion."
+}

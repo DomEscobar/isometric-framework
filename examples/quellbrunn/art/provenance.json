@@ -1,0 +1,53 @@
+{
+  "provider": "built-in ImageGen",
+  "sourceSha256": "b71c343889486bc8e61d565b41f6fe8b09f9d0e0bc2de04f2509a6c7a45e977c",
+  "prompt": "prompt.txt",
+  "referenceRole": "user forest style only",
+  "processing": "Measured per-object windows, not assumed equal cells; alpha below32 removed as near-transparent fringe; source RGB unchanged; tight crop plus4px transparent padding",
+  "sourceSize": [
+    1292,
+    1218
+  ],
+  "sprites": {
+    "cottage": {
+      "sourceCrop": [
+        95,
+        66,
+        478,
+        528
+      ],
+      "width": 486,
+      "height": 536
+    },
+    "oak": {
+      "sourceCrop": [
+        678,
+        58,
+        565,
+        562
+      ],
+      "width": 573,
+      "height": 570
+    },
+    "pine": {
+      "sourceCrop": [
+        148,
+        623,
+        399,
+        559
+      ],
+      "width": 407,
+      "height": 567
+    },
+    "shrub": {
+      "sourceCrop": [
+        795,
+        842,
+        327,
+        280
+      ],
+      "width": 335,
+      "height": 288
+    }
+  }
+}

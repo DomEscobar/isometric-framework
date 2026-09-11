@@ -1,0 +1,59 @@
+{
+  "model": "facebook/sam3",
+  "model_revision": "3c879f39826c281e95690f02c7821c4de09afae7",
+  "text": "tree",
+  "boxes": [
+    [
+      3,
+      25,
+      88,
+      130
+    ]
+  ],
+  "box_labels": [
+    1
+  ],
+  "confidence_threshold": 0.5,
+  "mask_threshold": 0.5,
+  "inference_seconds": 1.8366837450303137,
+  "request_id": "ad511b725a9a4f0e99d5d72d887adf6f",
+  "source_rgb_sha256": "e6d3d0e99e46c60a1ddcf0c38d9c4fc093606e4d404684c4325eeae24a40fbd2",
+  "width": 256,
+  "height": 224,
+  "processing": "Native binary masks; original RGB; no cleanup or resizing",
+  "visual_acceptance": "unverified",
+  "candidates": [
+    {
+      "index": 0,
+      "score": 0.97265625,
+      "pixels": 3100,
+      "mask": "mask-00.png",
+      "cutout": "cutout-00.png",
+      "mask_sha256": "f8706bea4f255333eb76fa96f719baf6131e6f3851d2cfed515dce7aa3f88b55"
+    },
+    {
+      "index": 1,
+      "score": 0.94921875,
+      "pixels": 4470,
+      "mask": "mask-01.png",
+      "cutout": "cutout-01.png",
+      "mask_sha256": "5fc1c75eda92f6966eab6bc8a9425bffb776d5b828b3f694522542cf6959800d"
+    },
+    {
+      "index": 2,
+      "score": 0.93359375,
+      "pixels": 2463,
+      "mask": "mask-02.png",
+      "cutout": "cutout-02.png",
+      "mask_sha256": "e0e1b7750ef45a2868b2182c423170b75cad450270ccb373b5904ac0e4c85f82"
+    },
+    {
+      "index": 3,
+      "score": 0.93359375,
+      "pixels": 2865,
+      "mask": "mask-03.png",
+      "cutout": "cutout-03.png",
+      "mask_sha256": "3b5e2a639e450133e769daf6ac94d96742b4bf25b29f2079d14adf1d593f0190"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "outsideTreeMasksUnchanged": true,
+  "manualPolygonCount": 4,
+  "originalTreeImages": 4,
+  "placedTrees": 6,
+  "reusedTreeInstances": [
+    "oak-mid",
+    "tree-front"
+  ],
+  "resizedInstances": {
+    "oak-mid": 0.46,
+    "tree-front": 0.34
+  },
+  "water": "12-frame fixed-mask code-authored surface shimmer at 6fps; banks stationary",
+  "sourceHashes": {
+    "scene-second.png": "5671478b113b4e33c852c43ba48958ab7125d802475d4634b180a3dab98a1c24",
+    "ground-raw.png": "ce3fabebd02c5880890cde2c664ec8faa8abbf8719b5a3df186549c434f5a695",
+    "ground-edit-mask.png": "8fc94f5018e5663d7eb71ca0ce3e743536642d36ba3f5df40f538ce4b9600dd4"
+  }
+}

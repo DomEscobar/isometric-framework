@@ -1,0 +1,44 @@
+{
+  "totalChargedUSD": 0.72,
+  "paidCalls": 4,
+  "operations": [
+    {
+      "requestId": "b42ed8bb-9e2d-4f4e-bce3-5c3107350c29",
+      "kind": "scene-edit",
+      "costUSD": 0.18,
+      "result": "5 visible trees and geometry drift"
+    },
+    {
+      "requestId": "6dbed386-b689-40cf-bbb4-e755fa9bfc94",
+      "kind": "scene-edit",
+      "costUSD": 0.18,
+      "result": "Coherent illustration, 4 of 6 trees, changed deck width"
+    },
+    {
+      "requestId": "inf_E2y4XLkzm3Vr6w72geeQlb9WDaYJvB87",
+      "kind": "masked-inpainting",
+      "costUSD": 0.18,
+      "prompt": "Add exactly one rooted oak tree in EACH of the two masked regions. In the upper-left smaller region the visible trunk root must meet ground at image pixel (78,110), with a small green rounded canopy above it. In the lower-front region the visible trunk root must meet ground at image pixel (138,170), with a broad rounded green canopy above it. Match the existing trees' clustered leaves, warm bark, clean outlines and upper-left light. Trees remain upright with visible short trunks, roots and small dark soil contact. Preserve the unmasked scene exactly. These are additional trees, do not remove any existing trees.",
+      "input": "scene-second.png",
+      "mask": "missing-trees-mask.png",
+      "result": "Rejected: red/black artifacts. Not used in runtime."
+    },
+    {
+      "requestId": "inf_xOWydmMa3jEPVq4ZgXEwY7JnoRe45Z2l",
+      "kind": "image-edit-clean-plate",
+      "costUSD": 0.18,
+      "prompt": "Remove all four tall trees, including their trunks and leafy canopies. Reconstruct the hidden ground beneath them: continuous low grass and a little dark root soil where each trunk stood. Where the removed crowns extend beyond the diamond land, replace them with the identical flat dark teal background. Keep the camera, land outline, path network, wooden bridge, blue river, all banks, rocks, flowers, little ferns and ground shadows precisely in place. Do not add any new trees, structures, objects or text. The result is the same scene's clean background plate with only the tall trees absent. Keep the original image dimensions and composition.",
+      "input": "scene-second.png",
+      "result": "Used only within expanded tree extraction masks; original pixels restored outside."
+    }
+  ],
+  "manualWork": [
+    "Four traced tree masks and measured root anchors",
+    "Two resized instances reused from the current host's own generated trees",
+    "Expanded background repair mask to clear canopy fragments",
+    "Corrected author's invalid initial oak-mid placement from water at (5,1) to clear planting at (1,3)",
+    "Public-API terrain/sprite binding and code-authored masked water shimmer"
+  ],
+  "firstRequestUTC": "2026-09-11T07:18:38.000Z",
+  "note": "No full-game or one-shot quality certification. Initial authoring guide itself had one invalid tree location; do not attribute that error to the provider."
+}

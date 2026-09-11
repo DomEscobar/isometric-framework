@@ -1,0 +1,17 @@
+{
+  "provider": "Retro Diffusion MCP",
+  "inputImage": "layout-guide-trees.png",
+  "referenceImage": "../../../test-results/mossbend/target.jpg",
+  "parameters": {
+    "width": 256,
+    "height": 224,
+    "prompt_style": "rd_pro__edit",
+    "num_images": 1,
+    "strength": 0.35,
+    "bypass_prompt_expansion": true,
+    "prompt": "Restyle this small playable forest layout while keeping the image geometry unchanged. Preserve the exact six existing tree trunk bases, path centerlines, blue stream location, brown flat bridge location, camera and land outline. Six trees remain at the same positions, with no trees added or removed. The land's four corners stay at image pixels (8,130), (128,70), (248,130), (128,190). The scene must NOT be moved down, enlarged, cropped, tilted or reframed. Replace the simple tree silhouettes with rich rounded leafy oak canopies, brown trunks and small roots. Replace flat materials with natural meadow grass, warm ochre dirt, a wooden plank crossing, dark wet earthen bank edges and blue water. All roots blend into shared ground with tiny ferns, tufts and contact shadows. Eliminate the tile grid lines. Keep path centers clear. The style reference supplies colors and clustered foliage rendering only, NOT its layout or scale. Warm upper-left light. Refine edges into organic clusters without changing major boundaries. Flat dark teal remains outside the existing diamond. No characters, signs, UI, extra trees, buildings or stone ruins. Preserve empty margin below the land. Stay very close to the provided source layout.",
+    "seed": 48330
+  },
+  "reason": "First generation shifted roots, land outline and omitted one tree. Second guide replaces abstract columns with visible tree silhouettes and reduces strength.",
+  "estimatedUSD": 0.18
+}

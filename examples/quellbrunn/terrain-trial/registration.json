@@ -1,0 +1,1235 @@
+{
+  "inputs": {
+    "original": "examples/quellbrunn/terrain-trial/layout-input.png",
+    "generated": "examples/quellbrunn/terrain-trial/source-v1.png",
+    "original_size": [
+      1536,
+      1024
+    ],
+    "generated_size": [
+      1536,
+      1024
+    ]
+  },
+  "method": {
+    "foreground": "perimeter median dark-green RGB background; Euclidean RGB distance >48 plus brightness/blue guard",
+    "diamond": "axis extrema (top, right, bottom, left), median within 2px",
+    "water": "B>R+30, G>R+30, B>105, G>90; enclosed texture holes filled before boundary extraction",
+    "registration": "least-squares affine fit of four outer diamond vertices, generated to original",
+    "bank_distance": "one-pixel 4-neighbor external mask boundaries after hole fill; nearest-point Euclidean distance"
+  },
+  "background_rgb_median": {
+    "original": [
+      36,
+      77,
+      57
+    ],
+    "generated": [
+      37,
+      78,
+      58
+    ]
+  },
+  "foreground_pixels": {
+    "original": 485907,
+    "generated": 527365
+  },
+  "outer_diamond_corners_xy": {
+    "original": [
+      [
+        833.0,
+        206.0
+      ],
+      [
+        1472.0,
+        526.5
+      ],
+      [
+        704.5,
+        909.0
+      ],
+      [
+        65.0,
+        590.5
+      ]
+    ],
+    "generated": [
+      [
+        811.0,
+        159.0
+      ],
+      [
+        1498.0,
+        532.5
+      ],
+      [
+        723.5,
+        933.5
+      ],
+      [
+        46.0,
+        575.0
+      ]
+    ],
+    "order": [
+      "top",
+      "right",
+      "bottom",
+      "left"
+    ]
+  },
+  "generated_to_original_affine_3x3": [
+    [
+      0.9673238867690007,
+      -0.05674192941637708,
+      55.35641482441148
+    ],
+    [
+      -0.017602182122997943,
+      0.9055478856785353,
+      73.49574229321286
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "original_to_generated_affine_3x3": [
+    [
+      1.0349599877068145,
+      0.0648509344453175,
+      -62.057941971633326
+    ],
+    [
+      0.020117714901383137,
+      1.1055644144194414,
+      -82.36792186211827
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "outer_boundary_corner_residual_px": {
+    "per_corner": [
+      3.5379538573712206,
+      3.58147017639139,
+      3.6808265611961186,
+      3.6373102421509467
+    ],
+    "mean": 3.609390209277419,
+    "max": 3.6808265611961186
+  },
+  "river_blue_mask_pixels": {
+    "original": 62776,
+    "generated": 73674
+  },
+  "river_bank_boundary_residual_after_affine_px": {
+    "generated_bank_to_original_bank": {
+      "mean_px": 3.476486063690667,
+      "median_px": 3.4242652113732994,
+      "p90_px": 5.8791412125307945,
+      "p95_px": 6.3558623387029005,
+      "max_px": 9.112496261369396,
+      "count": 1815
+    },
+    "original_bank_to_generated_bank_inverse": {
+      "mean_px": 3.83926838141202,
+      "median_px": 3.7219960573465594,
+      "p90_px": 6.559295647039577,
+      "p95_px": 7.0845229037916715,
+      "max_px": 9.00928582476479,
+      "count": 1873
+    }
+  },
+  "warped_generated_water_vs_original": {
+    "overlap_px": 60114,
+    "generated_water_on_original_land_px": 1631,
+    "generated_water_on_original_land_fraction_of_warped": 0.025300550686418986,
+    "original_water_missing_from_warped_px": 2662,
+    "original_water_missing_fraction": 0.04240474066522238,
+    "contamination_bbox_xyxy": [
+      508,
+      424,
+      1269,
+      815
+    ]
+  },
+  "source_banks_in_authoritative_world_r": {
+    "sample_step_c": 0.5,
+    "scan_step_r": 0.025,
+    "projection": "x=64+(c+r)*16; y=590+(r-c)*8, including the export plate +140 y offset",
+    "samples": [
+      {
+        "c": 0.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.1,
+        "source_south_bank_r": 28.175,
+        "authoritative_north_bank_r": 22.4,
+        "authoritative_south_bank_r": 27.6,
+        "north_delta_r": 0.7,
+        "south_delta_r": 0.575
+      },
+      {
+        "c": 0.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.200000000000003,
+        "source_south_bank_r": 28.3,
+        "authoritative_north_bank_r": 22.5476,
+        "authoritative_south_bank_r": 27.7476,
+        "north_delta_r": 0.6524,
+        "south_delta_r": 0.5524
+      },
+      {
+        "c": 1.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.35,
+        "source_south_bank_r": 28.425,
+        "authoritative_north_bank_r": 22.693,
+        "authoritative_south_bank_r": 27.893,
+        "north_delta_r": 0.657,
+        "south_delta_r": 0.532
+      },
+      {
+        "c": 1.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.450000000000003,
+        "source_south_bank_r": 28.525000000000002,
+        "authoritative_north_bank_r": 22.8341,
+        "authoritative_south_bank_r": 28.0341,
+        "north_delta_r": 0.6159,
+        "south_delta_r": 0.4909
+      },
+      {
+        "c": 2.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.575000000000003,
+        "source_south_bank_r": 28.55,
+        "authoritative_north_bank_r": 22.969,
+        "authoritative_south_bank_r": 28.169,
+        "north_delta_r": 0.606,
+        "south_delta_r": 0.381
+      },
+      {
+        "c": 2.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.700000000000003,
+        "source_south_bank_r": 28.8,
+        "authoritative_north_bank_r": 23.0957,
+        "authoritative_south_bank_r": 28.2957,
+        "north_delta_r": 0.6043,
+        "south_delta_r": 0.5043
+      },
+      {
+        "c": 3.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.8,
+        "source_south_bank_r": 28.900000000000002,
+        "authoritative_north_bank_r": 23.2127,
+        "authoritative_south_bank_r": 28.4127,
+        "north_delta_r": 0.5873,
+        "south_delta_r": 0.4873
+      },
+      {
+        "c": 3.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.825000000000003,
+        "source_south_bank_r": 28.925,
+        "authoritative_north_bank_r": 23.3186,
+        "authoritative_south_bank_r": 28.5186,
+        "north_delta_r": 0.5064,
+        "south_delta_r": 0.4064
+      },
+      {
+        "c": 4.0,
+        "valid": true,
+        "water_run_coverage": 0.9952,
+        "source_north_bank_r": 23.85,
+        "source_south_bank_r": 29.025000000000002,
+        "authoritative_north_bank_r": 23.412,
+        "authoritative_south_bank_r": 28.612,
+        "north_delta_r": 0.438,
+        "south_delta_r": 0.413
+      },
+      {
+        "c": 4.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.950000000000003,
+        "source_south_bank_r": 29.05,
+        "authoritative_north_bank_r": 23.4923,
+        "authoritative_south_bank_r": 28.6923,
+        "north_delta_r": 0.4577,
+        "south_delta_r": 0.3577
+      },
+      {
+        "c": 5.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.950000000000003,
+        "source_south_bank_r": 29.05,
+        "authoritative_north_bank_r": 23.5588,
+        "authoritative_south_bank_r": 28.7588,
+        "north_delta_r": 0.3912,
+        "south_delta_r": 0.2912
+      },
+      {
+        "c": 5.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 24.075000000000003,
+        "source_south_bank_r": 29.175,
+        "authoritative_north_bank_r": 23.6113,
+        "authoritative_south_bank_r": 28.8113,
+        "north_delta_r": 0.4637,
+        "south_delta_r": 0.3637
+      },
+      {
+        "c": 6.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 24.075000000000003,
+        "source_south_bank_r": 29.175,
+        "authoritative_north_bank_r": 23.6498,
+        "authoritative_south_bank_r": 28.8498,
+        "north_delta_r": 0.4252,
+        "south_delta_r": 0.3252
+      },
+      {
+        "c": 6.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 24.075000000000003,
+        "source_south_bank_r": 29.175,
+        "authoritative_north_bank_r": 23.6749,
+        "authoritative_south_bank_r": 28.8749,
+        "north_delta_r": 0.4001,
+        "south_delta_r": 0.3001
+      },
+      {
+        "c": 7.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 24.05,
+        "source_south_bank_r": 29.075000000000003,
+        "authoritative_north_bank_r": 23.687,
+        "authoritative_south_bank_r": 28.887,
+        "north_delta_r": 0.363,
+        "south_delta_r": 0.188
+      },
+      {
+        "c": 7.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 24.05,
+        "source_south_bank_r": 29.175,
+        "authoritative_north_bank_r": 23.6873,
+        "authoritative_south_bank_r": 28.8873,
+        "north_delta_r": 0.3627,
+        "south_delta_r": 0.2877
+      },
+      {
+        "c": 8.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.950000000000003,
+        "source_south_bank_r": 29.075000000000003,
+        "authoritative_north_bank_r": 23.6768,
+        "authoritative_south_bank_r": 28.8768,
+        "north_delta_r": 0.2732,
+        "south_delta_r": 0.1982
+      },
+      {
+        "c": 8.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.950000000000003,
+        "source_south_bank_r": 29.05,
+        "authoritative_north_bank_r": 23.657,
+        "authoritative_south_bank_r": 28.857,
+        "north_delta_r": 0.293,
+        "south_delta_r": 0.193
+      },
+      {
+        "c": 9.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.925,
+        "source_south_bank_r": 29.05,
+        "authoritative_north_bank_r": 23.6294,
+        "authoritative_south_bank_r": 28.8294,
+        "north_delta_r": 0.2956,
+        "south_delta_r": 0.2206
+      },
+      {
+        "c": 9.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.825000000000003,
+        "source_south_bank_r": 29.025000000000002,
+        "authoritative_north_bank_r": 23.5956,
+        "authoritative_south_bank_r": 28.7956,
+        "north_delta_r": 0.2294,
+        "south_delta_r": 0.2294
+      },
+      {
+        "c": 10.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.725,
+        "source_south_bank_r": 28.925,
+        "authoritative_north_bank_r": 23.5575,
+        "authoritative_south_bank_r": 28.7575,
+        "north_delta_r": 0.1675,
+        "south_delta_r": 0.1675
+      },
+      {
+        "c": 10.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.700000000000003,
+        "source_south_bank_r": 28.925,
+        "authoritative_north_bank_r": 23.5166,
+        "authoritative_south_bank_r": 28.7166,
+        "north_delta_r": 0.1834,
+        "south_delta_r": 0.2084
+      },
+      {
+        "c": 11.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.6,
+        "source_south_bank_r": 28.825000000000003,
+        "authoritative_north_bank_r": 23.4747,
+        "authoritative_south_bank_r": 28.6747,
+        "north_delta_r": 0.1253,
+        "south_delta_r": 0.1503
+      },
+      {
+        "c": 11.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.575000000000003,
+        "source_south_bank_r": 28.8,
+        "authoritative_north_bank_r": 23.4333,
+        "authoritative_south_bank_r": 28.6333,
+        "north_delta_r": 0.1417,
+        "south_delta_r": 0.1667
+      },
+      {
+        "c": 12.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.450000000000003,
+        "source_south_bank_r": 28.775000000000002,
+        "authoritative_north_bank_r": 23.394,
+        "authoritative_south_bank_r": 28.594,
+        "north_delta_r": 0.056,
+        "south_delta_r": 0.181
+      },
+      {
+        "c": 12.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.450000000000003,
+        "source_south_bank_r": 28.675,
+        "authoritative_north_bank_r": 23.3581,
+        "authoritative_south_bank_r": 28.5581,
+        "north_delta_r": 0.0919,
+        "south_delta_r": 0.1169
+      },
+      {
+        "c": 13.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.35,
+        "source_south_bank_r": 28.650000000000002,
+        "authoritative_north_bank_r": 23.3265,
+        "authoritative_south_bank_r": 28.5265,
+        "north_delta_r": 0.0235,
+        "south_delta_r": 0.1235
+      },
+      {
+        "c": 13.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.450000000000003,
+        "source_south_bank_r": 28.55,
+        "authoritative_north_bank_r": 23.3001,
+        "authoritative_south_bank_r": 28.5001,
+        "north_delta_r": 0.1499,
+        "south_delta_r": 0.0499
+      },
+      {
+        "c": 14.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.35,
+        "source_south_bank_r": 28.575000000000003,
+        "authoritative_north_bank_r": 23.2796,
+        "authoritative_south_bank_r": 28.4796,
+        "north_delta_r": 0.0704,
+        "south_delta_r": 0.0954
+      },
+      {
+        "c": 14.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.425,
+        "source_south_bank_r": 28.55,
+        "authoritative_north_bank_r": 23.2651,
+        "authoritative_south_bank_r": 28.4651,
+        "north_delta_r": 0.1599,
+        "south_delta_r": 0.0849
+      },
+      {
+        "c": 15.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.35,
+        "source_south_bank_r": 28.55,
+        "authoritative_north_bank_r": 23.2567,
+        "authoritative_south_bank_r": 28.4567,
+        "north_delta_r": 0.0933,
+        "south_delta_r": 0.0933
+      },
+      {
+        "c": 15.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.425,
+        "source_south_bank_r": 28.575000000000003,
+        "authoritative_north_bank_r": 23.2541,
+        "authoritative_south_bank_r": 28.4541,
+        "north_delta_r": 0.1709,
+        "south_delta_r": 0.1209
+      },
+      {
+        "c": 16.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.450000000000003,
+        "source_south_bank_r": 28.575000000000003,
+        "authoritative_north_bank_r": 23.2568,
+        "authoritative_south_bank_r": 28.4568,
+        "north_delta_r": 0.1932,
+        "south_delta_r": 0.1182
+      },
+      {
+        "c": 16.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.450000000000003,
+        "source_south_bank_r": 28.575000000000003,
+        "authoritative_north_bank_r": 23.2638,
+        "authoritative_south_bank_r": 28.4638,
+        "north_delta_r": 0.1862,
+        "south_delta_r": 0.1112
+      },
+      {
+        "c": 17.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.425,
+        "source_south_bank_r": 28.650000000000002,
+        "authoritative_north_bank_r": 23.2741,
+        "authoritative_south_bank_r": 28.4741,
+        "north_delta_r": 0.1509,
+        "south_delta_r": 0.1759
+      },
+      {
+        "c": 17.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.475,
+        "source_south_bank_r": 28.675,
+        "authoritative_north_bank_r": 23.2866,
+        "authoritative_south_bank_r": 28.4866,
+        "north_delta_r": 0.1884,
+        "south_delta_r": 0.1884
+      },
+      {
+        "c": 18.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.475,
+        "source_south_bank_r": 28.775000000000002,
+        "authoritative_north_bank_r": 23.2997,
+        "authoritative_south_bank_r": 28.4997,
+        "north_delta_r": 0.1753,
+        "south_delta_r": 0.2753
+      },
+      {
+        "c": 18.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.55,
+        "source_south_bank_r": 28.700000000000003,
+        "authoritative_north_bank_r": 23.312,
+        "authoritative_south_bank_r": 28.512,
+        "north_delta_r": 0.238,
+        "south_delta_r": 0.188
+      },
+      {
+        "c": 19.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.55,
+        "source_south_bank_r": 28.775000000000002,
+        "authoritative_north_bank_r": 23.3218,
+        "authoritative_south_bank_r": 28.5218,
+        "north_delta_r": 0.2282,
+        "south_delta_r": 0.2532
+      },
+      {
+        "c": 19.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.575000000000003,
+        "source_south_bank_r": 28.775000000000002,
+        "authoritative_north_bank_r": 23.3276,
+        "authoritative_south_bank_r": 28.5276,
+        "north_delta_r": 0.2474,
+        "south_delta_r": 0.2474
+      },
+      {
+        "c": 20.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.575000000000003,
+        "source_south_bank_r": 28.8,
+        "authoritative_north_bank_r": 23.3277,
+        "authoritative_south_bank_r": 28.5277,
+        "north_delta_r": 0.2473,
+        "south_delta_r": 0.2723
+      },
+      {
+        "c": 20.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.55,
+        "source_south_bank_r": 28.775000000000002,
+        "authoritative_north_bank_r": 23.3206,
+        "authoritative_south_bank_r": 28.5206,
+        "north_delta_r": 0.2294,
+        "south_delta_r": 0.2544
+      },
+      {
+        "c": 21.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.55,
+        "source_south_bank_r": 28.8,
+        "authoritative_north_bank_r": 23.3049,
+        "authoritative_south_bank_r": 28.5049,
+        "north_delta_r": 0.2451,
+        "south_delta_r": 0.2951
+      },
+      {
+        "c": 21.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.575000000000003,
+        "source_south_bank_r": 28.775000000000002,
+        "authoritative_north_bank_r": 23.2794,
+        "authoritative_south_bank_r": 28.4794,
+        "north_delta_r": 0.2956,
+        "south_delta_r": 0.2956
+      },
+      {
+        "c": 22.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.475,
+        "source_south_bank_r": 28.775000000000002,
+        "authoritative_north_bank_r": 23.2432,
+        "authoritative_south_bank_r": 28.4432,
+        "north_delta_r": 0.2318,
+        "south_delta_r": 0.3318
+      },
+      {
+        "c": 22.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.425,
+        "source_south_bank_r": 28.675,
+        "authoritative_north_bank_r": 23.1953,
+        "authoritative_south_bank_r": 28.3953,
+        "north_delta_r": 0.2297,
+        "south_delta_r": 0.2797
+      },
+      {
+        "c": 23.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.450000000000003,
+        "source_south_bank_r": 28.650000000000002,
+        "authoritative_north_bank_r": 23.1355,
+        "authoritative_south_bank_r": 28.3355,
+        "north_delta_r": 0.3145,
+        "south_delta_r": 0.3145
+      },
+      {
+        "c": 23.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.325000000000003,
+        "source_south_bank_r": 28.55,
+        "authoritative_north_bank_r": 23.0634,
+        "authoritative_south_bank_r": 28.2634,
+        "north_delta_r": 0.2616,
+        "south_delta_r": 0.2866
+      },
+      {
+        "c": 24.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.200000000000003,
+        "source_south_bank_r": 28.450000000000003,
+        "authoritative_north_bank_r": 22.9792,
+        "authoritative_south_bank_r": 28.1792,
+        "north_delta_r": 0.2208,
+        "south_delta_r": 0.2708
+      },
+      {
+        "c": 24.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 23.1,
+        "source_south_bank_r": 28.400000000000002,
+        "authoritative_north_bank_r": 22.8833,
+        "authoritative_south_bank_r": 28.0833,
+        "north_delta_r": 0.2167,
+        "south_delta_r": 0.3167
+      },
+      {
+        "c": 25.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.975,
+        "source_south_bank_r": 28.275000000000002,
+        "authoritative_north_bank_r": 22.7765,
+        "authoritative_south_bank_r": 27.9765,
+        "north_delta_r": 0.1985,
+        "south_delta_r": 0.2985
+      },
+      {
+        "c": 25.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.825000000000003,
+        "source_south_bank_r": 28.075000000000003,
+        "authoritative_north_bank_r": 22.6597,
+        "authoritative_south_bank_r": 27.8597,
+        "north_delta_r": 0.1653,
+        "south_delta_r": 0.2153
+      },
+      {
+        "c": 26.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.6,
+        "source_south_bank_r": 27.950000000000003,
+        "authoritative_north_bank_r": 22.5344,
+        "authoritative_south_bank_r": 27.7344,
+        "north_delta_r": 0.0656,
+        "south_delta_r": 0.2156
+      },
+      {
+        "c": 26.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.450000000000003,
+        "source_south_bank_r": 27.8,
+        "authoritative_north_bank_r": 22.4019,
+        "authoritative_south_bank_r": 27.6019,
+        "north_delta_r": 0.0481,
+        "south_delta_r": 0.1981
+      },
+      {
+        "c": 27.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.35,
+        "source_south_bank_r": 27.675,
+        "authoritative_north_bank_r": 22.2642,
+        "authoritative_south_bank_r": 27.4642,
+        "north_delta_r": 0.0858,
+        "south_delta_r": 0.2108
+      },
+      {
+        "c": 27.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.175,
+        "source_south_bank_r": 27.55,
+        "authoritative_north_bank_r": 22.123,
+        "authoritative_south_bank_r": 27.323,
+        "north_delta_r": 0.052,
+        "south_delta_r": 0.227
+      },
+      {
+        "c": 28.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.975,
+        "source_south_bank_r": 27.400000000000002,
+        "authoritative_north_bank_r": 21.9805,
+        "authoritative_south_bank_r": 27.1805,
+        "north_delta_r": -0.0055,
+        "south_delta_r": 0.2195
+      },
+      {
+        "c": 28.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.825000000000003,
+        "source_south_bank_r": 27.175,
+        "authoritative_north_bank_r": 21.8388,
+        "authoritative_south_bank_r": 27.0388,
+        "north_delta_r": -0.0138,
+        "south_delta_r": 0.1362
+      },
+      {
+        "c": 29.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.700000000000003,
+        "source_south_bank_r": 27.05,
+        "authoritative_north_bank_r": 21.6999,
+        "authoritative_south_bank_r": 26.8999,
+        "north_delta_r": 0.0001,
+        "south_delta_r": 0.1501
+      },
+      {
+        "c": 29.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.575000000000003,
+        "source_south_bank_r": 26.900000000000002,
+        "authoritative_north_bank_r": 21.5661,
+        "authoritative_south_bank_r": 26.7661,
+        "north_delta_r": 0.0089,
+        "south_delta_r": 0.1339
+      },
+      {
+        "c": 30.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.450000000000003,
+        "source_south_bank_r": 26.775000000000002,
+        "authoritative_north_bank_r": 21.4394,
+        "authoritative_south_bank_r": 26.6394,
+        "north_delta_r": 0.0106,
+        "south_delta_r": 0.1356
+      },
+      {
+        "c": 30.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.35,
+        "source_south_bank_r": 26.650000000000002,
+        "authoritative_north_bank_r": 21.3215,
+        "authoritative_south_bank_r": 26.5215,
+        "north_delta_r": 0.0285,
+        "south_delta_r": 0.1285
+      },
+      {
+        "c": 31.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.200000000000003,
+        "source_south_bank_r": 26.450000000000003,
+        "authoritative_north_bank_r": 21.2143,
+        "authoritative_south_bank_r": 26.4143,
+        "north_delta_r": -0.0143,
+        "south_delta_r": 0.0357
+      },
+      {
+        "c": 31.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.200000000000003,
+        "source_south_bank_r": 26.325000000000003,
+        "authoritative_north_bank_r": 21.1193,
+        "authoritative_south_bank_r": 26.3193,
+        "north_delta_r": 0.0807,
+        "south_delta_r": 0.0057
+      },
+      {
+        "c": 32.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.1,
+        "source_south_bank_r": 26.3,
+        "authoritative_north_bank_r": 21.0376,
+        "authoritative_south_bank_r": 26.2376,
+        "north_delta_r": 0.0624,
+        "south_delta_r": 0.0624
+      },
+      {
+        "c": 32.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.075000000000003,
+        "source_south_bank_r": 26.175,
+        "authoritative_north_bank_r": 20.9703,
+        "authoritative_south_bank_r": 26.1703,
+        "north_delta_r": 0.1047,
+        "south_delta_r": 0.0047
+      },
+      {
+        "c": 33.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.075000000000003,
+        "source_south_bank_r": 26.175,
+        "authoritative_north_bank_r": 20.9179,
+        "authoritative_south_bank_r": 26.1179,
+        "north_delta_r": 0.1571,
+        "south_delta_r": 0.0571
+      },
+      {
+        "c": 33.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.075000000000003,
+        "source_south_bank_r": 26.175,
+        "authoritative_north_bank_r": 20.8808,
+        "authoritative_south_bank_r": 26.0808,
+        "north_delta_r": 0.1942,
+        "south_delta_r": 0.0942
+      },
+      {
+        "c": 34.0,
+        "valid": true,
+        "water_run_coverage": 0.9951,
+        "source_north_bank_r": 21.05,
+        "source_south_bank_r": 26.175,
+        "authoritative_north_bank_r": 20.8591,
+        "authoritative_south_bank_r": 26.0591,
+        "north_delta_r": 0.1909,
+        "south_delta_r": 0.1159
+      },
+      {
+        "c": 34.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.075000000000003,
+        "source_south_bank_r": 26.150000000000002,
+        "authoritative_north_bank_r": 20.8524,
+        "authoritative_south_bank_r": 26.0524,
+        "north_delta_r": 0.2226,
+        "south_delta_r": 0.0976
+      },
+      {
+        "c": 35.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.1,
+        "source_south_bank_r": 26.175,
+        "authoritative_north_bank_r": 20.86,
+        "authoritative_south_bank_r": 26.06,
+        "north_delta_r": 0.24,
+        "south_delta_r": 0.115
+      },
+      {
+        "c": 35.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.200000000000003,
+        "source_south_bank_r": 26.175,
+        "authoritative_north_bank_r": 20.8812,
+        "authoritative_south_bank_r": 26.0812,
+        "north_delta_r": 0.3188,
+        "south_delta_r": 0.0938
+      },
+      {
+        "c": 36.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.200000000000003,
+        "source_south_bank_r": 26.3,
+        "authoritative_north_bank_r": 20.9146,
+        "authoritative_south_bank_r": 26.1146,
+        "north_delta_r": 0.2854,
+        "south_delta_r": 0.1854
+      },
+      {
+        "c": 36.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.325000000000003,
+        "source_south_bank_r": 26.275000000000002,
+        "authoritative_north_bank_r": 20.9589,
+        "authoritative_south_bank_r": 26.1589,
+        "north_delta_r": 0.3661,
+        "south_delta_r": 0.1161
+      },
+      {
+        "c": 37.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.35,
+        "source_south_bank_r": 26.400000000000002,
+        "authoritative_north_bank_r": 21.0126,
+        "authoritative_south_bank_r": 26.2126,
+        "north_delta_r": 0.3374,
+        "south_delta_r": 0.1874
+      },
+      {
+        "c": 37.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.35,
+        "source_south_bank_r": 26.450000000000003,
+        "authoritative_north_bank_r": 21.0739,
+        "authoritative_south_bank_r": 26.2739,
+        "north_delta_r": 0.2761,
+        "south_delta_r": 0.1761
+      },
+      {
+        "c": 38.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.475,
+        "source_south_bank_r": 26.575000000000003,
+        "authoritative_north_bank_r": 21.141,
+        "authoritative_south_bank_r": 26.341,
+        "north_delta_r": 0.334,
+        "south_delta_r": 0.234
+      },
+      {
+        "c": 38.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.700000000000003,
+        "source_south_bank_r": 26.675,
+        "authoritative_north_bank_r": 21.212,
+        "authoritative_south_bank_r": 26.412,
+        "north_delta_r": 0.488,
+        "south_delta_r": 0.263
+      },
+      {
+        "c": 39.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.725,
+        "source_south_bank_r": 26.675,
+        "authoritative_north_bank_r": 21.2852,
+        "authoritative_south_bank_r": 26.4852,
+        "north_delta_r": 0.4398,
+        "south_delta_r": 0.1898
+      },
+      {
+        "c": 39.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.825000000000003,
+        "source_south_bank_r": 26.825000000000003,
+        "authoritative_north_bank_r": 21.3588,
+        "authoritative_south_bank_r": 26.5588,
+        "north_delta_r": 0.4662,
+        "south_delta_r": 0.2662
+      },
+      {
+        "c": 40.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.8,
+        "source_south_bank_r": 26.925,
+        "authoritative_north_bank_r": 21.431,
+        "authoritative_south_bank_r": 26.631,
+        "north_delta_r": 0.369,
+        "south_delta_r": 0.294
+      },
+      {
+        "c": 40.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 21.85,
+        "source_south_bank_r": 26.950000000000003,
+        "authoritative_north_bank_r": 21.5004,
+        "authoritative_south_bank_r": 26.7004,
+        "north_delta_r": 0.3496,
+        "south_delta_r": 0.2496
+      },
+      {
+        "c": 41.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.05,
+        "source_south_bank_r": 27.175,
+        "authoritative_north_bank_r": 21.5656,
+        "authoritative_south_bank_r": 26.7656,
+        "north_delta_r": 0.4844,
+        "south_delta_r": 0.4094
+      },
+      {
+        "c": 41.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.05,
+        "source_south_bank_r": 27.200000000000003,
+        "authoritative_north_bank_r": 21.6257,
+        "authoritative_south_bank_r": 26.8257,
+        "north_delta_r": 0.4243,
+        "south_delta_r": 0.3743
+      },
+      {
+        "c": 42.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.1,
+        "source_south_bank_r": 27.275000000000002,
+        "authoritative_north_bank_r": 21.6796,
+        "authoritative_south_bank_r": 26.8796,
+        "north_delta_r": 0.4204,
+        "south_delta_r": 0.3954
+      },
+      {
+        "c": 42.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.175,
+        "source_south_bank_r": 27.3,
+        "authoritative_north_bank_r": 21.727,
+        "authoritative_south_bank_r": 26.927,
+        "north_delta_r": 0.448,
+        "south_delta_r": 0.373
+      },
+      {
+        "c": 43.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.1,
+        "source_south_bank_r": 27.325000000000003,
+        "authoritative_north_bank_r": 21.7674,
+        "authoritative_south_bank_r": 26.9674,
+        "north_delta_r": 0.3326,
+        "south_delta_r": 0.3576
+      },
+      {
+        "c": 43.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.225,
+        "source_south_bank_r": 27.425,
+        "authoritative_north_bank_r": 21.801,
+        "authoritative_south_bank_r": 27.001,
+        "north_delta_r": 0.424,
+        "south_delta_r": 0.424
+      },
+      {
+        "c": 44.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.200000000000003,
+        "source_south_bank_r": 27.425,
+        "authoritative_north_bank_r": 21.828,
+        "authoritative_south_bank_r": 27.028,
+        "north_delta_r": 0.372,
+        "south_delta_r": 0.397
+      },
+      {
+        "c": 44.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.225,
+        "source_south_bank_r": 27.425,
+        "authoritative_north_bank_r": 21.8491,
+        "authoritative_south_bank_r": 27.0491,
+        "north_delta_r": 0.3759,
+        "south_delta_r": 0.3759
+      },
+      {
+        "c": 45.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.200000000000003,
+        "source_south_bank_r": 27.425,
+        "authoritative_north_bank_r": 21.8649,
+        "authoritative_south_bank_r": 27.0649,
+        "north_delta_r": 0.3351,
+        "south_delta_r": 0.3601
+      },
+      {
+        "c": 45.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.3,
+        "source_south_bank_r": 27.450000000000003,
+        "authoritative_north_bank_r": 21.8767,
+        "authoritative_south_bank_r": 27.0767,
+        "north_delta_r": 0.4233,
+        "south_delta_r": 0.3733
+      },
+      {
+        "c": 46.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.325000000000003,
+        "source_south_bank_r": 27.425,
+        "authoritative_north_bank_r": 21.8856,
+        "authoritative_south_bank_r": 27.0856,
+        "north_delta_r": 0.4394,
+        "south_delta_r": 0.3394
+      },
+      {
+        "c": 46.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.325000000000003,
+        "source_south_bank_r": 27.425,
+        "authoritative_north_bank_r": 21.893,
+        "authoritative_south_bank_r": 27.093,
+        "north_delta_r": 0.432,
+        "south_delta_r": 0.332
+      },
+      {
+        "c": 47.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.35,
+        "source_south_bank_r": 27.400000000000002,
+        "authoritative_north_bank_r": 21.9005,
+        "authoritative_south_bank_r": 27.1005,
+        "north_delta_r": 0.4495,
+        "south_delta_r": 0.2995
+      },
+      {
+        "c": 47.5,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.35,
+        "source_south_bank_r": 27.425,
+        "authoritative_north_bank_r": 21.9095,
+        "authoritative_south_bank_r": 27.1095,
+        "north_delta_r": 0.4405,
+        "south_delta_r": 0.3155
+      },
+      {
+        "c": 48.0,
+        "valid": true,
+        "water_run_coverage": 1.0,
+        "source_north_bank_r": 22.35,
+        "source_south_bank_r": 27.400000000000002,
+        "authoritative_north_bank_r": 21.9216,
+        "authoritative_south_bank_r": 27.1216,
+        "north_delta_r": 0.4284,
+        "south_delta_r": 0.2784
+      }
+    ]
+  },
+  "conclusion": "Global outer-diamond affine fit is insufficient for placing the generated source as terrain under the authoritative river: it produces measured river-on-land contamination. Use a piecewise registration/deformation anchored to both visible riverbanks (at least upstream, bend, downstream control pairs), then remeasure; do not accept the global transform for final slicing."
+}

@@ -1,0 +1,21 @@
+{
+  "space": "neridonk/sam3-scene-masks",
+  "source_sha256": "5671478b113b4e33c852c43ba48958ab7125d802475d4634b180a3dab98a1c24",
+  "text": "tree",
+  "boxes": [
+    [
+      3,
+      25,
+      88,
+      130,
+      1
+    ]
+  ],
+  "confidence": 0.5,
+  "mask_threshold": 0.5,
+  "state": "completed",
+  "event_id": "aa0673695a894e4184380ea32ad8b848",
+  "elapsed_seconds": 15.674919099999897,
+  "candidates": 4,
+  "request_id": "ad511b725a9a4f0e99d5d72d887adf6f"
+}

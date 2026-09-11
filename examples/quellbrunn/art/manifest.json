@@ -1,0 +1,100 @@
+{
+  "images": {
+    "cottage": {
+      "url": "cottage.png",
+      "sampling": "nearest"
+    },
+    "oak": {
+      "url": "oak.png",
+      "sampling": "nearest"
+    },
+    "pine": {
+      "url": "pine.png",
+      "sampling": "nearest"
+    },
+    "shrub": {
+      "url": "shrub.png",
+      "sampling": "nearest"
+    }
+  },
+  "textures": {
+    "cottage": {
+      "image": "cottage",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 486,
+        "height": 536
+      }
+    },
+    "oak": {
+      "image": "oak",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 573,
+        "height": 570
+      }
+    },
+    "pine": {
+      "image": "pine",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 407,
+        "height": 567
+      }
+    },
+    "shrub": {
+      "image": "shrub",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 335,
+        "height": 288
+      }
+    }
+  },
+  "sprites": {
+    "cottage": {
+      "sourceCrop": [
+        95,
+        66,
+        478,
+        528
+      ],
+      "width": 486,
+      "height": 536
+    },
+    "oak": {
+      "sourceCrop": [
+        678,
+        58,
+        565,
+        562
+      ],
+      "width": 573,
+      "height": 570
+    },
+    "pine": {
+      "sourceCrop": [
+        148,
+        623,
+        399,
+        559
+      ],
+      "width": 407,
+      "height": 567
+    },
+    "shrub": {
+      "sourceCrop": [
+        795,
+        842,
+        327,
+        280
+      ],
+      "width": 335,
+      "height": 288
+    }
+  }
+}

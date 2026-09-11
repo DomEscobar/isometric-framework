@@ -1,0 +1,286 @@
+{
+  "version": 3,
+  "root": "../..",
+  "inputRoots": [
+    "examples/quellbrunn",
+    "src/core.ts",
+    "src/pathfinding.ts"
+  ],
+  "artChecks": [
+    "examples/quellbrunn/art/packed-art.json"
+  ],
+  "reviewMode": "independent",
+  "requirements": [
+    {
+      "id": "village",
+      "domain": "visual",
+      "description": "Complete cohesive pixel-art village: five cottages, two bridge crossings, broad natural paths, gardens, grounded trees, readable actors. Match material integration and deliberate pixel clusters of original style reference.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "walk",
+      "domain": "gameplay",
+      "description": "Full visible path widths and open dry ground usable through pointer/touch and keyboard, both bridges and all doors accessible; actual solids and water blocked. Independent geometric and visible-area samples beyond preset destinations.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "life",
+      "domain": "motion",
+      "description": "Clearly visible flowing water surface and foam at default zoom, turning mill wheel, anchored foliage movement, smoke and three walking villagers. Stable actor facings, contacts, loops and exact pause.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "timing",
+      "domain": "performance",
+      "description": "Real browser timing recorded with renderer/browser and blank baseline, p95 below40ms after load at both viewports.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "desktop",
+      "requirements": [
+        "village"
+      ],
+      "view": "desktop",
+      "reference": "test-results/quellbrunn/reference.jpg",
+      "role": "style",
+      "focus": "Connected landscape and natural edges, consistent pixel treatment, full village composition and readable actors; original layout."
+    },
+    {
+      "id": "mobile",
+      "requirements": [
+        "village"
+      ],
+      "view": "mobile",
+      "reference": "test-results/quellbrunn/reference.jpg",
+      "role": "style",
+      "focus": "Connected landscape and natural edges, consistent pixel treatment, full village composition and readable actors; original layout."
+    }
+  ],
+  "production": {
+    "version": 1,
+    "rigidAssets": [
+      "cottage"
+    ],
+    "checks": [
+      {
+        "id": "preflight",
+        "stage": "preflight",
+        "method": "review",
+        "requirements": [
+          "village"
+        ],
+        "views": [
+          "desktop"
+        ],
+        "inputs": [
+          "examples/quellbrunn/asset-loader.ts",
+          "examples/quellbrunn/art/source.png",
+          "examples/quellbrunn/vite.config.ts"
+        ],
+        "evidenceKind": "measurement"
+      },
+      {
+        "id": "layout",
+        "stage": "layout",
+        "method": "layout",
+        "requirements": [
+          "walk"
+        ],
+        "views": [
+          "desktop"
+        ],
+        "inputs": [
+          "examples/quellbrunn/world.ts",
+          "examples/quellbrunn/layout.json"
+        ],
+        "evidenceKind": "measurement",
+        "source": "examples/quellbrunn/layout.json",
+        "requiredScope": {
+          "regions": [
+            "land",
+            "water",
+            "planting"
+          ],
+          "instances": [
+            "house-1",
+            "house-2",
+            "house-3",
+            "house-4",
+            "house-5"
+          ],
+          "routes": [
+            "village-ground"
+          ],
+          "bridges": [
+            "west-bridge",
+            "east-bridge"
+          ]
+        }
+      },
+      {
+        "id": "geometry",
+        "stage": "assembly",
+        "method": "art",
+        "requirements": [
+          "village"
+        ],
+        "views": [
+          "desktop"
+        ],
+        "inputs": [
+          "examples/quellbrunn/art",
+          "examples/quellbrunn/world.ts"
+        ],
+        "evidenceKind": "measurement",
+        "source": "examples/quellbrunn/art/contract.json",
+        "binding": "examples/quellbrunn/art/binding.json",
+        "assets": [
+          "cottage"
+        ]
+      },
+      {
+        "id": "assembly",
+        "stage": "assembly",
+        "method": "review",
+        "requirements": [
+          "village"
+        ],
+        "views": [
+          "desktop"
+        ],
+        "inputs": [
+          "examples/quellbrunn/art",
+          "examples/quellbrunn/world.ts",
+          "examples/quellbrunn/render.ts"
+        ],
+        "evidenceKind": "image"
+      },
+      {
+        "id": "placement",
+        "stage": "static",
+        "method": "layout",
+        "requirements": [
+          "village"
+        ],
+        "views": [
+          "desktop"
+        ],
+        "inputs": [
+          "examples/quellbrunn/world.ts",
+          "examples/quellbrunn/layout.json"
+        ],
+        "evidenceKind": "measurement",
+        "source": "examples/quellbrunn/layout.json",
+        "requiredScope": {
+          "regions": [
+            "land",
+            "water",
+            "planting"
+          ],
+          "instances": [
+            "house-1",
+            "house-2",
+            "house-3",
+            "house-4",
+            "house-5"
+          ],
+          "routes": [
+            "village-ground"
+          ],
+          "bridges": [
+            "west-bridge",
+            "east-bridge"
+          ]
+        }
+      },
+      {
+        "id": "composition",
+        "stage": "static",
+        "method": "review",
+        "requirements": [
+          "village"
+        ],
+        "views": [
+          "desktop",
+          "mobile"
+        ],
+        "inputs": [
+          "examples/quellbrunn/art",
+          "examples/quellbrunn/world.ts",
+          "examples/quellbrunn/render.ts",
+          "examples/quellbrunn/style.css"
+        ],
+        "evidenceKind": "image"
+      },
+      {
+        "id": "life",
+        "stage": "motion",
+        "method": "review",
+        "requirements": [
+          "life"
+        ],
+        "views": [
+          "desktop",
+          "mobile"
+        ],
+        "inputs": [
+          "examples/quellbrunn",
+          "src/core.ts",
+          "src/pathfinding.ts"
+        ],
+        "evidenceKind": "motion"
+      },
+      {
+        "id": "journey",
+        "stage": "motion",
+        "method": "review",
+        "requirements": [
+          "walk",
+          "timing"
+        ],
+        "views": [
+          "desktop",
+          "mobile"
+        ],
+        "inputs": [
+          "examples/quellbrunn",
+          "src/core.ts",
+          "src/pathfinding.ts"
+        ],
+        "evidenceKind": "measurement"
+      },
+      {
+        "id": "final",
+        "stage": "final",
+        "method": "review",
+        "requirements": [
+          "village"
+        ],
+        "views": [
+          "desktop",
+          "mobile"
+        ],
+        "inputs": [
+          "examples/quellbrunn",
+          "src/core.ts",
+          "src/pathfinding.ts"
+        ],
+        "evidenceKind": "image"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "provider": "built-in ImageGen",
+  "prompt": "prompt.txt",
+  "source": "source-v1.png",
+  "sourceSha256": "d38b4f51396ca18353cc66ef83d7a317eee3f315187bf7fc896dd5321373751e",
+  "registered": "registered-v1.png",
+  "registeredSha256": "2b62977c26a23e262dff687e5e73ca9724bb5e30d439b287b6855e99e3a9302c",
+  "referenceRoles": {
+    "layout": "actual host ground-only native1536x1024",
+    "style": "original user forest image",
+    "context": "existing Quellbrunn village"
+  },
+  "processing": "Inverse outer affine followed by continuous world-r material registration to both riverbanks; nearest pixel sampling, original geometry unchanged.",
+  "slicing": "24 adjacent256x256 crops with1px transparent padding; runtime draws full258px images at shared origin minus1px, then original terrain alpha clips land support. Crops are positioned map patches, not a universal tileset.",
+  "water": "Unwrapped generated centre72percent of channel;64px head/tail crossfade creates704px periodic current. No procedural water pixels in generated mode."
+}

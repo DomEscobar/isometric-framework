@@ -1,0 +1,7 @@
+import {readFile,writeFile} from 'node:fs/promises';import {createHash} from 'node:crypto';
+import {projection} from './world.ts';
+const image='cottage.png',manifest=JSON.parse(await readFile(new URL('./art/manifest.json',import.meta.url),'utf8')),frame=manifest.textures.cottage.frame;
+const asset={id:'cottage',kind:'prop',image,sha256:createHash('sha256').update(await readFile(new URL('./art/cottage.png',import.meta.url))).digest('hex'),frame,anchor:{x:46/frame.width,y:417/frame.height},render:{width:frame.width*.36,offset:{x:-13.6,y:.4}},footprint:{columns:5,rows:5},groundPoints:[{source:{x:46,y:417},grid:{c:-.45,r:-.4}},{source:{x:263,y:519},grid:{c:-.45,r:4.45}},{source:{x:450,y:430},grid:{c:3.75,r:4.45}}],heights:[],allowedOverhang:'Roof eaves and front threshold overhang the rigid wall base. Five-by-five envelope is conservative; visible base approximately4.2 by4.85 cells.'};
+const contract={version:1,pack:'quellbrunn-generated',projection,tolerances:{groundErrorPx:4,heightErrorPx:3},heightReferences:{standing:1.8,seat:.45,tabletop:.75},assets:[asset]};
+await writeFile(new URL('./art/contract.json',import.meta.url),JSON.stringify(contract,null,2));
+await writeFile(new URL('./art/binding.json',import.meta.url),JSON.stringify({projection,assets:{cottage:{image:'examples/quellbrunn/art/cottage.png',frame:asset.frame,anchor:asset.anchor,render:asset.render,footprint:asset.footprint}}},null,2));

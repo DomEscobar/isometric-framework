@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "root": "../../..",
+  "inputRoots": [
+    "examples/quellbrunn",
+    "src/core.ts",
+    "src/pathfinding.ts"
+  ],
+  "artChecks": [
+    "examples/quellbrunn/art/packed-art.json",
+    "examples/quellbrunn/terrain-trial/packed-slices.json"
+  ],
+  "reviewMode": "independent",
+  "requirements": [
+    {
+      "id": "ground-style",
+      "domain": "visual",
+      "description": "Generated grass, earth and bank transitions have coherent clustered pixel treatment alongside existing generated cottage/tree sprites, materially closer to original user reference than procedural ground. Inspect dominant repetition and worst material join.",
+      "views": [
+        "desktop",
+        "mobile",
+        "ground-only"
+      ]
+    },
+    {
+      "id": "registration",
+      "domain": "gameplay",
+      "description": "Shared source crops reconstruct without seams; generated channel follows authoritative water/land boundary, dry-looking ground remains usable and both bridge approaches work. Report source warp and residual drift honestly; no silent navigation changes.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "water",
+      "domain": "motion",
+      "description": "If using generated water, full surface travels continuously within stationary banks with no grass scrolling in channel; inspect complete loop and exact pause on both viewports.",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "desktop",
+      "requirements": [
+        "ground-style"
+      ],
+      "view": "desktop",
+      "reference": "test-results/quellbrunn/reference.jpg",
+      "role": "style",
+      "focus": "Ground material clusters, natural path/grass/bank integration, coherent object/ground appearance. Original village layout, not a forest layout copy."
+    },
+    {
+      "id": "mobile",
+      "requirements": [
+        "ground-style"
+      ],
+      "view": "mobile",
+      "reference": "test-results/quellbrunn/reference.jpg",
+      "role": "style",
+      "focus": "Ground material clusters, natural path/grass/bank integration, coherent object/ground appearance. Original village layout, not a forest layout copy."
+    },
+    {
+      "id": "ground-only",
+      "requirements": [
+        "ground-style"
+      ],
+      "view": "ground-only",
+      "reference": "test-results/quellbrunn/reference.jpg",
+      "role": "style",
+      "focus": "Ground material clusters, natural path/grass/bank integration, coherent object/ground appearance. Original village layout, not a forest layout copy."
+    }
+  ]
+}

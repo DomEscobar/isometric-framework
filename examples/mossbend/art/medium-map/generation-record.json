@@ -1,0 +1,27 @@
+{
+  "provider": "Built-in ImageGen",
+  "artifact": "exec-7cd51005-ed17-4044-9f11-8507d39f37aa.png",
+  "prompt": "prompt.txt",
+  "width": 1536,
+  "height": 1024,
+  "sha256": "7b97919469867d472b7725d88d57cd892cf51a770ad5cb7ec5294b868408502d",
+  "generationCalls": 1,
+  "referenceRole": "User forest illustration: style and material relationships only; original layout",
+  "postprocessing": "None; original output copied unchanged",
+  "scope": "Medium environment image candidate; not a playable game",
+  "acceptance": {
+    "visualRichness": "pass, independent image review",
+    "terrainIntegration": "pass, independent image review",
+    "referencePixelTreatment": "fail: softer and finer",
+    "pixelGrid": "unverified",
+    "routeLoop": "fail: return crossing not established",
+    "gameplay": "unverified",
+    "motion": "unverified"
+  },
+  "notes": [
+    "No Retro Diffusion call charged for this image",
+    "Larger raster is not proof of a uniform native pixel grid",
+    "Separate from the existing one-tree SAM 3 calibration"
+  ],
+  "review": "REVIEW.md"
+}

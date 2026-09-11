@@ -1,0 +1,20 @@
+{
+  "status": "executed-after-explicit-user-upload-approval",
+  "provider": "Retro Diffusion MCP",
+  "operation": "create_inference",
+  "estimatedUSD": 0.18,
+  "inputImage": "layout-guide.png",
+  "referenceImage": "../../../test-results/mossbend/target.jpg",
+  "referenceSource": "User-supplied forest reference; explicit upload approval requested after automatic review rejection.",
+  "parameters": {
+    "width": 256,
+    "height": 224,
+    "prompt_style": "rd_pro__edit",
+    "num_images": 1,
+    "strength": 0.65,
+    "bypass_prompt_expansion": true,
+    "prompt": "Transform the input engine blockout into one beautiful finished overhead isometric woodland game environment. The second image is ONLY a style reference: match its rich clustered leafy oak foliage, warm earth paths, dark clean outlines, sunlit grass lips and natural rooted ground contacts. The FIRST image is the exact layout to paint over. Preserve its camera, diamond land outline and exact positions of the six vertical green markers: replace each marker with one full broad oak tree rooted at the marker's foot, with visible brown trunk and rounded green canopy, roots blending into shaded soil and small ferns. Preserve the sandy paths and their crossing at center. Preserve the continuous bent blue stream in its exact location. The brown strip across it is a flat wooden plank crossing without tall rails: retain its position and clear walking surface. Make banks organically scalloped with a grass lip, dark wet soil and a few small stones, keeping the clear water course and path centerlines. Add restrained flowers and low shrubs beside roots and route edges, quiet short grass in clearings. Warm upper-left sunlight, deep green shadows. The empty space outside the land stays solid dark teal. No people, creatures, text, icons, frame or UI. No square columns remain. Crisp readable small pixel clusters at the supplied native resolution. All scenery and ground are a single harmonious composition; no isolated sticker objects, no tile grid lines.",
+    "seed": 48329
+  },
+  "automaticReviewReason": "The experiment was authorized but automatic review requires explicit permission to send the engine layout and the user's desktop reference image to Retro Diffusion."
+}

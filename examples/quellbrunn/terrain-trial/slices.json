@@ -1,0 +1,512 @@
+{
+  "images": {
+    "slice-0": {
+      "url": "slices/slice-0.png",
+      "sampling": "nearest"
+    },
+    "slice-1": {
+      "url": "slices/slice-1.png",
+      "sampling": "nearest"
+    },
+    "slice-2": {
+      "url": "slices/slice-2.png",
+      "sampling": "nearest"
+    },
+    "slice-3": {
+      "url": "slices/slice-3.png",
+      "sampling": "nearest"
+    },
+    "slice-4": {
+      "url": "slices/slice-4.png",
+      "sampling": "nearest"
+    },
+    "slice-5": {
+      "url": "slices/slice-5.png",
+      "sampling": "nearest"
+    },
+    "slice-6": {
+      "url": "slices/slice-6.png",
+      "sampling": "nearest"
+    },
+    "slice-7": {
+      "url": "slices/slice-7.png",
+      "sampling": "nearest"
+    },
+    "slice-8": {
+      "url": "slices/slice-8.png",
+      "sampling": "nearest"
+    },
+    "slice-9": {
+      "url": "slices/slice-9.png",
+      "sampling": "nearest"
+    },
+    "slice-10": {
+      "url": "slices/slice-10.png",
+      "sampling": "nearest"
+    },
+    "slice-11": {
+      "url": "slices/slice-11.png",
+      "sampling": "nearest"
+    },
+    "slice-12": {
+      "url": "slices/slice-12.png",
+      "sampling": "nearest"
+    },
+    "slice-13": {
+      "url": "slices/slice-13.png",
+      "sampling": "nearest"
+    },
+    "slice-14": {
+      "url": "slices/slice-14.png",
+      "sampling": "nearest"
+    },
+    "slice-15": {
+      "url": "slices/slice-15.png",
+      "sampling": "nearest"
+    },
+    "slice-16": {
+      "url": "slices/slice-16.png",
+      "sampling": "nearest"
+    },
+    "slice-17": {
+      "url": "slices/slice-17.png",
+      "sampling": "nearest"
+    },
+    "slice-18": {
+      "url": "slices/slice-18.png",
+      "sampling": "nearest"
+    },
+    "slice-19": {
+      "url": "slices/slice-19.png",
+      "sampling": "nearest"
+    },
+    "slice-20": {
+      "url": "slices/slice-20.png",
+      "sampling": "nearest"
+    },
+    "slice-21": {
+      "url": "slices/slice-21.png",
+      "sampling": "nearest"
+    },
+    "slice-22": {
+      "url": "slices/slice-22.png",
+      "sampling": "nearest"
+    },
+    "slice-23": {
+      "url": "slices/slice-23.png",
+      "sampling": "nearest"
+    }
+  },
+  "textures": {
+    "slice-0": {
+      "image": "slice-0",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-1": {
+      "image": "slice-1",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-2": {
+      "image": "slice-2",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-3": {
+      "image": "slice-3",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-4": {
+      "image": "slice-4",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-5": {
+      "image": "slice-5",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-6": {
+      "image": "slice-6",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-7": {
+      "image": "slice-7",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-8": {
+      "image": "slice-8",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-9": {
+      "image": "slice-9",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-10": {
+      "image": "slice-10",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-11": {
+      "image": "slice-11",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-12": {
+      "image": "slice-12",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-13": {
+      "image": "slice-13",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-14": {
+      "image": "slice-14",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-15": {
+      "image": "slice-15",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-16": {
+      "image": "slice-16",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-17": {
+      "image": "slice-17",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-18": {
+      "image": "slice-18",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-19": {
+      "image": "slice-19",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-20": {
+      "image": "slice-20",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-21": {
+      "image": "slice-21",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-22": {
+      "image": "slice-22",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    },
+    "slice-23": {
+      "image": "slice-23",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 258,
+        "height": 258
+      },
+      "anchor": {
+        "x": 0.003875968992248062,
+        "y": 0.003875968992248062
+      }
+    }
+  },
+  "placements": {
+    "slice-0": {
+      "x": 0,
+      "y": 0
+    },
+    "slice-1": {
+      "x": 256,
+      "y": 0
+    },
+    "slice-2": {
+      "x": 512,
+      "y": 0
+    },
+    "slice-3": {
+      "x": 768,
+      "y": 0
+    },
+    "slice-4": {
+      "x": 1024,
+      "y": 0
+    },
+    "slice-5": {
+      "x": 1280,
+      "y": 0
+    },
+    "slice-6": {
+      "x": 0,
+      "y": 256
+    },
+    "slice-7": {
+      "x": 256,
+      "y": 256
+    },
+    "slice-8": {
+      "x": 512,
+      "y": 256
+    },
+    "slice-9": {
+      "x": 768,
+      "y": 256
+    },
+    "slice-10": {
+      "x": 1024,
+      "y": 256
+    },
+    "slice-11": {
+      "x": 1280,
+      "y": 256
+    },
+    "slice-12": {
+      "x": 0,
+      "y": 512
+    },
+    "slice-13": {
+      "x": 256,
+      "y": 512
+    },
+    "slice-14": {
+      "x": 512,
+      "y": 512
+    },
+    "slice-15": {
+      "x": 768,
+      "y": 512
+    },
+    "slice-16": {
+      "x": 1024,
+      "y": 512
+    },
+    "slice-17": {
+      "x": 1280,
+      "y": 512
+    },
+    "slice-18": {
+      "x": 0,
+      "y": 768
+    },
+    "slice-19": {
+      "x": 256,
+      "y": 768
+    },
+    "slice-20": {
+      "x": 512,
+      "y": 768
+    },
+    "slice-21": {
+      "x": 768,
+      "y": 768
+    },
+    "slice-22": {
+      "x": 1024,
+      "y": 768
+    },
+    "slice-23": {
+      "x": 1280,
+      "y": 768
+    }
+  }
+}

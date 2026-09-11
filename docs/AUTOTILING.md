@@ -63,31 +63,13 @@ a walkable textured terrain tile. Art selection must not silently change either
 policy. Different elevation or floor families need their own geometry and scene
 placement, not just different neighbor bits.
 
-Sunflower's existing bed loop now calls `analyzeAutotiles(..., { mode:
-'cardinal16' })`, preserving its textures and entity ordering. New corner-aware
-art lives in the separate lab, so the original garden's art is not replaced.
+## Preparing compatible artwork
 
-## Generated material example
-
-Open **http://127.0.0.1:4175/examples/autotile-lab/** after `npm run dev`.
-Select straight, L, filled rectangle, hollow ring or diagonal pair. Paint tiles
-adds/removes beds and updates their neighbors; Finish painting restores walking.
-The traveler cannot be painted over. Inspect footprints shows the cell layout;
-the readout shows the selected mask. Mobile provides the bottom-right D-pad.
-
-The lab's material sheet is genuinely image-generated. The
-[consistent-tileset-authoring skill](../skills/consistent-tileset-authoring/SKILL.md)
-and its preparation tool assemble 47 variants using fixed 2:1 geometry. Original
-prompt/source, measured crop recipe, atlas and source hash are retained in
-`examples/autotile-lab/art/`. The assembler needs authoring-only Playwright/Chromium;
-the runtime and generic resolver do not.
-
-```sh
-node --experimental-strip-types skills/consistent-tileset-authoring/scripts/prepare-bed-tileset.mjs examples/autotile-lab/art/recipe.json examples/autotile-lab/art
-node --experimental-strip-types --test tests/autotiling.test.ts
-# Against an explicitly started local standalone server:
-node tests/autotile-browser.mjs
-```
+Use [consistent-tileset-authoring](../skills/consistent-tileset-authoring/SKILL.md)
+for shared edges and rendered joins. Its optional raised-bed recipe produces
+rigid borders from shared materials; it is not required for natural trails or
+composed ground artwork. Test the chosen topology with a strip, bend and hollow
+patch before expanding. The resolver itself remains headless.
 
 ## Scope and visible limits
 
@@ -96,9 +78,7 @@ terrain Wang transition solver. Paths, walls and water can use the resolver but
 still need compatible catalogs and their own geometry/collision choices. The
 included assembler creates raised beds only; it cannot make a curved arch bridge.
 
-Generated material is prefiltered to a shared density and mirrored to match
-opposite samples. Repetition is visible, terrain outlines come from the existing
-renderer, and the actor is a built-in scale marker. The lab deliberately exposes
-soil to make joins visible. It demonstrates consistent assembly, not finished
-Witchbrook-quality art. More natural material variants must preserve the same
-edge contract; independently regenerated complete tiles would reintroduce drift.
+Shared material samples can preserve edge continuity yet reveal mirrored motifs.
+Inspect repetition and transitions at playing scale. More natural variants must
+preserve the same edge contract; independently regenerating complete tiles can
+reintroduce drift.

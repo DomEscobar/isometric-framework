@@ -48,7 +48,6 @@ actions.destroy();
 and `runtime.moveTo` to the clicked ground cell. This disables only automatic
 click movement; picking, panning, zooming, and keyboard input remain available.
 Without this option the runtime's default move would replace the action's route.
-`demo/main.ts` is the complete Sunflower integration.
 
 ## Timing and cancellation contract
 
@@ -91,7 +90,5 @@ Legacy sprites can retain direction metadata but need named directional clips to
 visibly turn. Do not reach into renderer internals to set direction.
 
 Apply the bundled [directional sprite skill](../skills/directional-sprite-authoring/SKILL.md)
-when authoring poses. The Sunflower demo reuses existing grounded gardener frames
-as a short gesture and reverse recovery. It does **not** contain newly drawn
-hand-to-flower picking poses. Dedicated action artwork can replace those clips
-without changing the controller or inventory rule.
+when authoring poses. Map only actual approved clips for this host. Reusing a
+generic gesture does not establish a dedicated picking or attack animation.

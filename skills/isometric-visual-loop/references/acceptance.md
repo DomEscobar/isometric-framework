@@ -6,9 +6,7 @@ They are authoring tools; nothing is added to scene JSON or the runtime API.
 
 New complete worlds use acceptance-plan **version 3** with the
 [production stages](production-flow.md). Version 3 adds mandatory prerequisite,
-spatial-placement and rigid-binding checks to the image workflow below. The
-version 2 example here documents the compatible image-comparison format; add its
-protected `production` section and set `version` to 3 for a new world. Pass
+spatial-placement and rigid-binding checks to the image workflow below. Use the complete example below and pass
 `--production-receipts DIR` to final `snapshot` and `accept`. Scene JSON versions
 are independent of authoring-plan versions.
 
@@ -31,43 +29,29 @@ strip must pass the same visible join and motion review as its smaller pieces.
 
 ## 1. Protect requirements and art checks before implementation
 
-Keep `acceptance-plan.json` and `packed-art.json` beside the new host. Derive the
-requirements from the user's brief and the approved proposal. Separate visual,
+The agent prepares `acceptance-plan.json` beside the new host, deriving its
+requirements from the one approved project contract. Add `packed-art.json` only
+when raster assets are in scope; no second brief or manual completion ledger is needed. Separate visual,
 motion, gameplay and performance requirements. Give concrete criteria: whole
 silhouettes, stable feet in every used facing/action, joined flowing water,
 readable player views and requested atmosphere. Do not reduce this to asset counts.
 Keep motion requirements for every promised direction/action; static fallbacks
 remain incomplete unless the user explicitly changes the scope.
 
-Example `game/acceptance-plan.json` (illustrative host; adapt IDs, roots and views):
+Start from the complete [version 3 example](acceptance-plan.example.json). It
+already includes all six production stages; do not splice together incompatible
+version examples. The example IDs and values are illustrative, not requirements
+for a new game. The agent derives descriptions, views, comparisons, layout scope
+and rigid checks from the approved project contract and chosen technique. Remove
+absent features and add every promised outcome before freezing.
 
-```json
-{
-  "version": 2,
-  "root": "..",
-  "inputRoots": ["game", "src"],
-  "artChecks": ["game/packed-art.json"],
-  "reviewMode": "independent",
-  "requirements": [
-    {"id":"world-style","domain":"visual","description":"Brief's palette, terrain treatment, density and player readability at game scale","views":["desktop","mobile"]},
-    {"id":"ground-composition","domain":"visual","description":"Natural ground reads as continuous regions; no dominant repeated diamonds, mirrored motifs or per-cell color checkerboard","views":["ground-only-playing-zoom","ground-only-overview"]},
-    {"id":"ground-transitions","domain":"visual","description":"Path/grass and bank boundaries remain continuous through bends and junctions with consistent pixel treatment and readable traversal","views":["transition-closeup","desktop","mobile"]},
-    {"id":"ranger-walk","domain":"motion","description":"Whole silhouette, stable root and correct facing throughout all four walking cycles and their wraps","views":["desktop","mobile"]},
-    {"id":"river","domain":"motion","description":"Flow follows the channel, joins remain covered and pause freezes it","views":["desktop"]},
-    {"id":"crossing","domain":"gameplay","description":"Walk across and back; reject rail and water entry","views":["desktop","mobile"]},
-    {"id":"timing","domain":"performance","description":"Record median/p95, renderer and blank baseline; assess against the brief","views":["desktop"]}
-  ],
-  "comparisons": [
-    {"id":"style-desktop","requirements":["world-style"],"view":"desktop","reference":"game/art/target.png","role":"style","focus":"Shared pixel treatment, materials, hierarchy and player readability"},
-    {"id":"style-mobile","requirements":["world-style"],"view":"mobile","reference":"game/art/target.png","role":"style","focus":"Style and readability at the mobile playing scale"},
-    {"id":"ground-playing","requirements":["ground-composition"],"view":"ground-only-playing-zoom","reference":"game/art/ground-target.png","role":"style","focus":"Continuous ground without dominant tile stamps"},
-    {"id":"ground-overview","requirements":["ground-composition"],"view":"ground-only-overview","reference":"game/art/ground-target.png","role":"style","focus":"Variation across cells and coherent larger regions"},
-    {"id":"edges-close","requirements":["ground-transitions"],"view":"transition-closeup","reference":"game/art/edge-target.png","role":"style","focus":"Interlocking material edges with shared pixel density"},
-    {"id":"edges-desktop","requirements":["ground-transitions"],"view":"desktop","reference":"game/art/ground-target.png","role":"style","focus":"Continuous path and bank boundaries at playing zoom"},
-    {"id":"edges-mobile","requirements":["ground-transitions"],"view":"mobile","reference":"game/art/ground-target.png","role":"style","focus":"Readable transitions and paths at mobile scale"}
-  ]
-}
-```
+Set `contract` to the project-relative approved brief (normally
+`PROJECT_CONTRACT.md`). Freeze protects its bytes alongside the plan, art specs
+and target images. This prevents using an old plan after the contract changes;
+it does not understand prose or prove the agent translated every requirement.
+Review that mapping once before implementation. Existing plans without this
+optional field remain readable. Keep ongoing progress in receipts, not in the
+frozen contract.
 
 `root` resolves relative to the plan. `inputRoots` are paths inside that project
 root; every file under them is hashed, including added/removed files. Include host
@@ -77,8 +61,8 @@ Keep evidence outputs outside these roots. `artChecks: []` is only appropriate
 when the task has no packed raster art. Select `reviewMode: "self"` only when an
 independent reviewer is unavailable; disclose it instead of inventing independence.
 
-The ground requirements illustrate a natural-landscape brief. Adapt them to actual
-material pairs and intended style; deliberate formal paving may use regular grids.
+For natural landscapes, include ground composition and transition criteria
+for the actual material pairs; deliberate formal paving may use regular grids.
 Use the [terrain evidence rubric](../../consistent-tileset-authoring/references/landscape-composition.md#terrain-acceptance-evidence)
 for explicit observations. The tool enforces their records, not aesthetic judgment.
 Version 2 requires a protected image comparison for every visual requirement/view.

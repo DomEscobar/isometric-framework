@@ -3,8 +3,9 @@
 Use acceptance-plan **version 3** for new world production. It retains version 2's
 protected images and adds a required `production` object. Versions 1/2 remain
 compatible for historical/focused work; they do not prove these stage gates ran.
-Use the existing requirements, not a second artistic brief. Copy and adapt the
-[illustrative production section](production.example.json) into the plan.
+Use the existing requirements, not a second artistic brief. Adapt the `production` object in the complete
+[version 3 plan example](acceptance-plan.example.json); its neutral feature IDs
+are illustrative. The agent prepares technical checks from the approved contract.
 
 The tool controls its own tickets, receipts, candidate snapshot and acceptance.
 It cannot prevent an arbitrary agent from editing files or calling a generator
@@ -13,7 +14,7 @@ the check, and expand only after all prior stages pass.
 
 | Stage | Required work before expansion |
 | --- | --- |
-| preflight | One actual asset decodes and loads in dev and production; provider, projection and pixel scale established |
+| preflight | One selected asset decodes and loads in dev and production; projection and pixel scale established; provider only when generation is selected |
 | layout | Semantic regions, reserved routes, supports, entrances and blockout in the runtime's actual projection |
 | assembly | Actual selected artwork, measured rigid contact/scale binding, controllable actor, materials and riskiest structure in the live host |
 | static | All placed instances checked; complete ground-only/dressed composition and required mobile regions |

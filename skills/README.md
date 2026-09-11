@@ -28,7 +28,23 @@ can use the same checks with a smaller requirement scope.
 | Build large or multipart props, buildings, bridges or raised passages | [multi-tile-asset-assembly](multi-tile-asset-assembly/SKILL.md) | Solid volumes, walkable surfaces, openings, sprite contacts and depth parts |
 | Build connected beds, paths, walls or water with compatible edges | [consistent-tileset-authoring](consistent-tileset-authoring/SKILL.md) | Shared material geometry, neighbor variants, inner corners and rendered join checks |
 
-## Combine only what the task needs
+## Choose the art technique
+
+Select this from the approved project contract before reading provider recipes.
+Different asset families may use different agreed techniques with a shared style.
+
+| Technique | Read first | Conditional work |
+| --- | --- | --- |
+| Supplied or authored pack | Art integration | Directional sprites or animation only for missing/changed frames; no generation setup |
+| Reusable modular terrain | Tileset authoring: landscape composition and runtime binding | Generate shared materials if chosen; raised-bed recipe only for raised beds |
+| Composed ground plus separate actors/props | Tileset authoring: composed ground; art integration: grounded assemblies | Register/slice artwork, bind to semantic layout; no generic tile-family requirement |
+| Layered scene artwork | Art integration and multi-tile assemblies for support/depth | Separate occluders and moving regions; reject geometry that cannot support traversal |
+
+Add asset generation only when new generated artwork is part of the chosen path.
+Read one provider recipe when needed. The same visual, traversal and promised
+motion outcomes apply to all techniques; tools do not select the art direction.
+
+## Common combinations
 
 - **Complete village:** start with `isometric-visual-loop`; select specialists for
   its buildings, terrain, characters and motion. Calibration is a milestone toward

@@ -1,8 +1,8 @@
 # One production brief from the user's prompt
 
-Use this outline in the host's existing plan or art directory. Keep it short;
-it is an execution aid, not a form the user must complete. No runtime schema or
-particular filename is required.
+Use this outline to fill gaps in PROJECT_CONTRACT.md or the existing approved
+brief. The agent drafts it for discussion; the user need not complete a technical
+form. Preserve prior decisions and do not create another contract.
 
 - **Intent and scope:** requested experience, explicit constraints, intended
   completeness and effort. Separate a finished environment from a technical trial.
@@ -22,26 +22,19 @@ particular filename is required.
 - **Production order:** risky calibration first, then full content, motion and
   integrated review. Name the work remaining after calibration explicitly.
 
-Maintain one current completion contract, updating it with observed evidence.
-Receipt and review files keep the attempt history; do not duplicate that history
-or a second manual status ledger in the brief:
+Keep approved outcomes here, with stable requirement IDs where helpful. The
+acceptance plan translates those outcomes into checks and reference/view coverage;
+it is technical execution data, not a separately negotiated artistic brief.
+Do not put frequently changing task status, attempts or review verdicts in this
+contract. Use production receipts and the acceptance report for current status.
+The plan's optional `contract` path binds this document at freeze time. Changing
+approved scope requires reconciling the plan and creating a new baseline; a
+build failure or an inconvenient asset does not authorize narrowing it.
 
-| Required outcome / inferred supporting detail | Host owner or resource | Evidence to collect | Status / remaining gap |
-| --- | --- | --- | --- |
-| Each requested landmark and its connecting route | Scene/assembly data | Overview plus traversal | Planned / built / verified / blocked |
-| Each relevant moving family | Clip/overlay binding | Motion, wrap, joins and pause | Same status vocabulary |
-| Shared style and readable player | Art manifest/captures | Actual scene at intended zoom | Same status vocabulary |
-
-Replace these example rows with the real prompt's current contract. A built asset
-is not verified until the relevant observation exists. Inferred supporting details
-can change for a better result; explicit user requirements cannot silently disappear.
-The contract preserves scope across turns and workers; it does not prove beauty.
-
-For world production, turn the approved outcomes into the protected requirements
-in the [acceptance plan](acceptance.md). Keep separate visual, motion, gameplay and
-performance verdicts, with the exact required views and actor direction/action
-coverage. Track the full defect list across rounds; a small repair list does not
-replace the completion table. Changed art or code requires fresh candidate evidence.
+Keep measured layout, contact/anchor bindings and packed manifests as their
+authoritative technical data. Link them rather than copying their values here.
+Inferred supporting details may evolve; explicit user requirements must remain
+covered. Evidence, not a completion table, establishes the observed result.
 
 ## Effort and interpretation examples
 

@@ -14,7 +14,9 @@ combat, quests or NPC simulation.
 
 ## Define the result once
 
-Use the host's existing brief with [this short outline](references/production-brief.md).
+Use `PROJECT_CONTRACT.md` (or the host's existing approved brief) as the one source
+of user requirements. Use [this outline](references/production-brief.md) only for
+missing decisions; do not create a second artistic brief or manual status table.
 Record the reference's role (style, layout or both), landmarks, routes, material
 relationships, actor proportions and required motion. Infer supporting details
 from the supplied image; ask only about consequential missing choices.
@@ -25,6 +27,8 @@ outlines, light, material treatment, proportions and spatial hierarchy; do not
 score a different layout as an inaccurate replica. Exact layout reproduction
 additionally needs protected framing, landmark positions and scale.
 
+Derive technical checks from that contract; the agent prepares them, not the user.
+Link the contract with the plan's `contract` field so freezing also protects it.
 For full world production, use the version 3 [acceptance plan](references/acceptance.md)
 and [executed stages](references/production-flow.md): preflight, semantic layout,
 representative assembly, complete static scene, motion and final review.
@@ -84,6 +88,12 @@ arbitrary round cap on a finished-world request or relabel unfinished work a tri
 | Joined water or anchored foliage motion | [Animated environments](../animated-environments/SKILL.md) |
 
 Read the selected specialist's relevant recipe, not every provider or fixture.
+Choose the art technique before a generation provider: supplied/authored packs,
+modular materials, composed ground with separate props, or layered scene artwork
+are different production paths. Use the catalog's
+[technique routing](../README.md#choose-the-art-technique) to select the minimum
+useful recipes. Composed ground needs contact and traversal checks, but does not
+need a 47-mask tileset. Supplied art does not need a generation request.
 Generated-art requests require actual generated outputs and honest provenance.
 Example hosts are not default art libraries.
 
@@ -149,6 +159,10 @@ results are not interchangeable; avoid concurrent software-rendered timings.
 A focused visual repair does not require an unrelated performance investigation.
 
 Run the [acceptance command](references/acceptance.md) on the final candidate.
+Use `production status` to find the next eligible check and `production draft`
+to prepare hash-bound submissions; do not hand-copy evidence hashes or maintain
+another progress ledger. Trial/session recording is framework evaluation tooling,
+not a prerequisite for making a user's game.
 Report open, failed, unverified or stale requirements as such. Passing local
 validation does not authenticate a critic's judgment or guarantee reference quality.
 Deliver the runnable host, relevant before/after and motion evidence, executed

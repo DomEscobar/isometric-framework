@@ -11,6 +11,8 @@ async function fixture(t) {
   const framework = path.join(root, 'framework');
   for (const [name, text] of Object.entries({ 'package.json': '{}', 'AGENTS.md': 'rules',
     'src/index.ts': 'export {};', 'skills/README.md': 'catalog',
+    'CONTRIBUTING.md': 'maintainer routing', 'scripts/create-game.mjs': 'starter',
+    'templates/game/src/main.ts': 'neutral host',
     'examples/old/art.png': 'EXCLUDED', 'docs/OLD_TRIAL.md': 'EXCLUDED',
     'docs/evidence/old.png': 'EXCLUDED', 'skills/demo/__pycache__/old.pyc': 'EXCLUDED' })) {
     const file = path.join(framework, name); await mkdir(path.dirname(file), { recursive: true }); await writeFile(file, text);
@@ -24,6 +26,7 @@ test('snapshot excludes hosts/history/cache, preserves inputs and refuses overwr
   const options = await fixture(t), result = await prepareTrial(options);
   assert.equal(await readFile(path.join(result.workspace, 'PROJECT_CONTRACT.md'), 'utf8'), 'Original scope');
   assert.equal(await readFile(path.join(result.workspace, result.references[0]), 'utf8'), 'reference bytes');
+  for (const name of ['CONTRIBUTING.md', 'scripts/create-game.mjs', 'templates/game/src/main.ts']) await access(path.join(result.workspace, name));
   for (const name of ['examples', 'docs/OLD_TRIAL.md', 'docs/evidence', 'skills/demo/__pycache__']) await assert.rejects(access(path.join(result.workspace, name)));
   assert.equal((await trialStatus(options.out)).mode, 'awaiting-builder-session');
   await assert.rejects(prepareTrial(options), /EEXIST/);
@@ -65,7 +68,7 @@ test('event edits invalidate subsequent hash links', async t => {
 
 test('ignored trial output inside checkout is allowed, copied source trees are not', async t => {
   const options = await fixture(t);
-  for (const tree of ['src', 'skills', 'docs', 'scripts']) {
+  for (const tree of ['src', 'skills', 'docs', 'scripts', 'templates']) {
     await assert.rejects(prepareTrial({ ...options, out: path.join(options.framework, tree, 'trial') }), /outside copied/);
   }
   const out = path.join(options.framework, 'test-results', 'trial');

@@ -1,154 +1,76 @@
 # Isometric Framework
 
-Build isometric games with TypeScript. Includes a standalone runtime, playable
-examples, local artwork and skills that help coding agents create complete worlds.
-No backend or account is needed to run the examples.
+Build an isometric game in TypeScript with a portable runtime, browser controls,
+and agent workflows for original worlds. The framework ships with playable
+references for learning and maintenance; a new game starts as its own project.
 
-## Start
+## Create a clean game project
 
-Install **Node.js 22.18 or newer**, then run from this folder:
+Use Node.js 22.18 or newer. From this framework checkout, build the local package
+and scaffold a separate destination:
 
 ```sh
 npm ci
-npm run dev
+npm run build:package
+node scripts/create-game.mjs <destination>
 ```
 
-Open **[localhost:4175](http://127.0.0.1:4175)**.
-If that port is busy, use `npm run dev -- --port 4177` and open port 4177 instead.
+The scaffold vendors this local package; it does not assume a package has been
+published to a registry. Its generated README contains its own `npm install`,
+`npm run dev`, `npm run check`, and `npm run build` commands. Follow
+[the new-game guide](docs/CREATE_GAME.md) after scaffolding.
 
-## Try the examples
+Keep your maps, rules, assets, and UI in that project. Use the framework through
+its public API. Do not copy `demo/` or an `examples/` host into a new game unless
+you intentionally want to extend that specific work and record its provenance.
 
-| Example | Address after starting the server |
-| --- | --- |
-| Generated-sprite town and visual comparison trial | [Pixel Borough](http://127.0.0.1:4175/examples/pixel-borough/) |
-| Generated village with connected ground, brook and crossing (final acceptance open) | [Larkspur Crossing](http://127.0.0.1:4175/examples/new-village/) |
-| Sunflower courtyard and small gameplay demos | [Main demo](http://127.0.0.1:4175/) |
-| Twilight town and connected enchanted forest | [Mossbell](http://127.0.0.1:4175/examples/mossbell/) |
-| Autumn river and stone bridge | [Goldlaub](http://127.0.0.1:4175/examples/autumn-crossing/) |
-| Shops and canal crossing | [Weidenkai](http://127.0.0.1:4175/examples/willow-quay/) |
-| Animated scenery and multipart structures | [Environment lab](http://127.0.0.1:4175/examples/environment-lab/) |
-| Connected terrain and borders | [Autotile lab](http://127.0.0.1:4175/examples/autotile-lab/) |
-
-Click or tap to walk. **W ↗ · D ↘ · S ↙ · A ↖** follows the tile axes.
-**Space** jumps. Mobile examples provide a directional pad. Drag to pan;
-use the mouse wheel or available controls to zoom.
-
-## Make your own game
-
-Bundled examples demonstrate capabilities; their sprites and visual themes are
-not defaults for your game. Agents should follow your brief and supplied references,
-consult example code only as needed, and reuse example artwork only when requested.
-See [the example-content boundary](AGENTS.md#keep-example-content-out-of-new-games-by-default).
-
-Start with [the new-game guide](docs/CREATE_GAME.md). Put your map, artwork and
-rules in `examples/my-game/`, or replace `demo/` for a project with one game.
-Keep reusable engine code in `src/`.
-
-### Copy this prompt into your coding agent
-
-Attach a style-reference image with the prompt, or let the agent help you choose
-a direction. Change the world idea below to suit your game.
+## Copy this prompt into your coding agent
 
 ```text
-Use https://github.com/DomEscobar/isometric-framework to create a beautiful,
-playable isometric pixel-art game. Read its AGENTS.md, new-game guide and relevant
-bundled skills first.
+Use https://github.com/DomEscobar/isometric-framework and its new-game guide
+to build a standalone game. Read the relevant bundled skills before implementation.
 
-Let's decide what to build together before coding or generating assets.
-My idea: two tiny connected worlds, a little town and a forest where I can
-encounter, catch and battle original Pokémon-like monsters. Make both places
-feel alive, with expressive creatures, animated foliage, flowing water where
-appropriate, and readable movement and battle actions. Keep the maps compact
-and thoughtfully detailed, with a clear route between them.
+I want an original playable isometric pixel-art game: a lively connected town
+and forest with creature encounters, catching, and battles. Make the route
+between both places clear, with expressive creatures, animated foliage and water,
+and readable movement and battle actions.
 
-Compose the ground as a continuous landscape: naturally worn paths blending into
-grass, coherent stream banks, and material variation spanning several tiles.
-Avoid obvious repeating diamonds, mirrored texture stamps and mismatched pixel
-styles. Review a connected ground patch before adding decorative props.
+Treat any attached image as a style reference by default, not a layout to copy.
+If I explicitly request layout reference or both style and layout, follow that
+request. Create this game's own identity and assets; do not reuse framework
+examples.
 
-Use my attached image as the pixel-art style reference, not a layout to copy.
-If no image is attached, help me choose the style before producing art. Create
-this game's own identity and assets; don't inherit bundled example artwork.
+Help me choose the concept before coding or paid asset generation. Ask no more
+than three important questions at a time, then draft one PROJECT_CONTRACT.md for
+me to approve. If I have already approved a contract, preserve it and continue;
+do not request repeated approval. That contract is the source of truth for the
+player experience, scope, style, asset approach, and acceptance requirements.
+Derive technical plans from it; do not create a competing art brief. Once it is
+approved, use the standalone starter and new-game guide to implement the game.
 
-Start with a short concept and a manageable exploration/catching/battle loop.
-Ask up to three important questions at a time, offering concrete choices and
-recommendations. Help me choose the pixel style, environment detail, asset
-technique and provider (Retro Diffusion MCP, WaveSpeed, or another available
-option), including a generation budget. Reuse decisions I've already supplied.
-Draft a short project contract for me to confirm; don't make me write it.
-Wait for agreement before implementation or paid generation.
-
-Once agreed, record the contract in the new host and follow it. Calibrate a small
-scene with our own actor, terrain, prop and animation, then finish both worlds
-and the agreed gameplay. Playtest in the browser, inspect actual sprite clips
-and environmental motion, and repair visual defects before calling it done.
-Use the framework's acceptance checks and report any unverified requirements.
-Compare our visual target with actual game screenshots after each repair; include
-the previous version and require concrete, image-located feedback.
+I may use existing, authored, generated, composed, or layered assets. Preserve
+choices I have already made. Ask about provider and budget only when generation is
+needed. Calibrate a small playable assembly, then complete the whole agreed world;
+do not shrink a rich request to the calibration scene. Playtest the real game and
+review visuals, motion, gameplay, and performance separately before declaring it
+complete.
 ```
 
-The bundled [world-production skill](skills/isometric-visual-loop/SKILL.md)
-coordinates layout, consistent art, complex structures, animation and visual
-checks. Choose an asset production path with the agent: Retro Diffusion MCP,
-WaveSpeed Seedream, another available provider, or authored/supplied assets.
-The [generation skill](skills/game-asset-generation/SKILL.md) documents these
-options; generation is separate from running the game. Small calibration scenes
-are milestones, not a limit on the final world.
+## Use the skills
 
-## Choose an agent skill
+Read [the skill catalog](skills/README.md) and select only the workflows the game
+needs. For a complete world or substantial visual work, start with
+[isometric-visual-loop](skills/isometric-visual-loop/SKILL.md); it coordinates
+layout, asset integration, animation, and acceptance. Use specialist skills for
+focused tasks. Treat references as style-only unless the user requests layout or both.
 
-The [skill catalog](skills/README.md) lists all seven bundled workflows with task
-triggers and combinations: world production, art integration, asset generation,
-directional sprites, animated scenery, multi-tile assemblies and connected tilesets.
-Start with world production for a complete environment; use a specialist directly
-for a focused task. Agents should infer relevant skills from your request.
+## Maintain the framework
 
-Open the linked `SKILL.md` files even if your agent does not discover them
-automatically. No global skill installation is required. Authoring dependencies
-and provider setup are described in each skill; they are separate from running
-the game. Skill references use neutral examples owned by their workflow.
+This checkout also contains the runtime and historical reference hosts. For engine
+development, package work, examples, and framework verification, read
+[the contributor guide](https://github.com/DomEscobar/isometric-framework/blob/main/CONTRIBUTING.md). Public API usage is in
+[docs/RUNTIME_API.md](docs/RUNTIME_API.md).
 
-World production includes a [visual acceptance gate](skills/isometric-visual-loop/references/acceptance.md):
-decoded atlas checks, a browser preview, protected requirements, and separate
-visual/motion/gameplay/performance reviews tied to the current files. It rejects
-missing or stale evidence; artistic quality still requires actual review. A passing
-build alone does not mean a world's visuals are accepted.
-The [image comparison loop](skills/isometric-visual-loop/references/visual-comparison.md)
-assembles target, previous and current captures for actual visual review, then
-checks that located defects were revisited after repairs. It does not score beauty.
-New worlds use [six production stages](skills/isometric-visual-loop/references/production-flow.md):
-technical preflight, spatial layout, representative assembly, complete scene,
-motion and final review. Failed prerequisites block the tool's next stage; placement
-checks catch roots on paths, blocked entrances and broken bridge support.
+## License and notices
 
-## What's included
-
-- Tile-axis movement, click paths, jumping, stacked floors and collision.
-- Sprites, animation clips, terrain connections and depth ordering.
-- Optional interactions, inventory, saves and debug tools.
-- Source artwork, authoring scripts, agent skills and tests.
-
-| Folder | Contents |
-| --- | --- |
-| `src/` | Reusable engine |
-| `demo/`, `examples/` | Games, scene data and artwork |
-| `skills/` | Agent workflows and asset tools |
-| `docs/` | API, guides and recorded limitations |
-| `scripts/`, `tests/` | Development tools and checks |
-
-## Useful commands
-
-```sh
-npm run check   # TypeScript and module boundaries
-npm test        # Headless tests
-npm run build  # Library + all browser examples
-npm run preview
-```
-
-For browser tests, install Chromium once with `npx playwright install chromium`,
-then run `npm run test:browser`.
-
-This is an evolving 2.5D framework, not a full editor or 3D physics engine.
-Art examples are experiments; they do not promise finished production quality.
-See [API usage](docs/RUNTIME_API.md), [architecture](docs/ARCHITECTURE.md),
-[example controls](APP_GUIDE.md) and [source/license notices](PROVENANCE.md).
+See [PROVENANCE.md](PROVENANCE.md).

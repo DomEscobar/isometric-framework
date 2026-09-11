@@ -374,6 +374,10 @@ def plan_state(plan_path):
         require(isinstance(req.get("views"), list) and req["views"] and all(isinstance(v, str) and v for v in req["views"]), "Requirement views required")
     require(isinstance(plan.get("inputRoots"), list) and plan["inputRoots"], "Explicit source inputRoots required")
     require(isinstance(plan.get("artChecks"), list), "Declare artChecks (empty only for work without packed art)")
+    if "contract" in plan:
+        contract = local(root, plan["contract"])
+        require(contract.is_relative_to(root) and contract.is_file() and not contract.is_symlink(),
+                "Contract must be an existing ordinary file inside the project")
     if plan["version"] == 3 or "production" in plan:
         production_tools().validate(plan, root)
     return plan_path, plan, root
@@ -383,7 +387,8 @@ def freeze(plan_path, output):
     plan_path, plan, root = plan_state(plan_path)
     specs = {str(local(root, p)): digest(local(root, p)) for p in plan["artChecks"]}
     references = comparison_tools().definitions(plan, root)[1] if plan["version"] >= 2 or plan.get("comparisons") else {}
-    write_new(output, {"version": 1, "plan": str(plan_path), "planSha256": digest(plan_path), "artSpecs": specs, "references": references})
+    contract = {str(local(root, plan["contract"])): digest(local(root, plan["contract"]))} if "contract" in plan else {}
+    write_new(output, {"version": 1, "plan": str(plan_path), "planSha256": digest(plan_path), "artSpecs": specs, "references": references, "contract": contract})
 
 
 def protected(baseline_path):
@@ -394,6 +399,8 @@ def protected(baseline_path):
         require(digest(file) == sha, f"Protected art thresholds/coverage changed: {file}")
     for file, sha in baseline.get("references", {}).items():
         require(digest(file) == sha, f"Protected visual reference changed: {file}")
+    for file, sha in baseline.get("contract", {}).items():
+        require(digest(file) == sha, f"Protected project contract changed; reconcile requirements and create a new baseline: {file}")
     return baseline, plan, root
 
 

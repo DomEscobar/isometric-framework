@@ -29,8 +29,8 @@ For animated rivers, fountains or vegetation, apply
 props, buildings and bridges. The latter includes an executable assembly-plan
 checker for contact placement, occupancy, solid heights, paths and slab clearance.
 It complements the art calibration tools; neither static checker proves visible
-quality or swept jump collision. The [workflow comparison](ENVIRONMENT_SKILL_COMPARISON.md)
-records why a walking-only test missed two fountain collisions.
+quality or swept jump collision. If jumping is in scope, check solid height and
+clearance as well as ground-level routes; walking alone cannot establish either.
 
 For new raster artwork or background removal, start with the portable
 [game-asset-generation skill](../skills/game-asset-generation/SKILL.md).
@@ -206,37 +206,23 @@ Overrides apply to named-asset sprites; built-in and legacy URL/frame visuals re
 
 ## Agent workflow and evidence
 
-1. Establish the small art contract above and keep source/usage records.
+1. Record art decisions in the existing project contract; keep measured bindings and provenance beside the host assets.
 2. Add one tile, one prop, and one actor first; validate their manifest and scene.
 3. Check the character's feet and scale at rest, during all movement directions,
-   and when jumping. Check foreground occlusion and floor cutaways.
+   and during requested actions. Check foreground occlusion and any relevant floor cutaways.
 4. Add clips and terrain variants only after placement is correct. Keep naming
    consistent; missing references should fail validation rather than render blank.
-5. Play at desktop and mobile widths. Check pause, restart, art-scene export/import,
-   failed asset loading, and another runtime instance surviving destruction.
+5. Play the requested desktop/mobile journeys. Check pause, restart and implemented
+   persistence or scene transitions. Engine lifecycle matrices belong to framework maintenance.
 6. Build the host and verify local asset URLs in its production output. A dev-only
    path is not a portable asset pack.
-
-`demo/art-pack.ts` and the Woodland atelier scene provide a local SVG example.
-`demo/pixel-cafe.ts` and Sunflower courtyard provide a richer bitmap example:
-four local PNG atlases, 48 named textures, 12 directional clips, and a 9 × 9
-map assembled from separate terrain and props. Prompts and source notes live in
-`demo/art/pixel-cafe/README.md`. No engine changes were needed for that theme.
-The initial courtyard's border-alignment and proportion failures are preserved in
-`demo/art/pixel-cafe/art-contract.before.json`. The revision separates exact
-code-authored stone bases from generated foliage and calibrates furniture using
-seat/tabletop landmarks. Its measured contract and uncertainty notes sit beside
-the assets; **07 — Art calibration** exposes joins and props for real playtests.
-See `VERIFICATION.md` for the distinct metadata, visual, and gameplay verdicts.
 
 Generated atlases need inspection: requested dimensions and equal grid spacing
 are not guarantees. Measure the decoded image and each object's visible bounds.
 Use consistently sized padded character frames so walking does not resize the
 actor; put feet at explicit contact anchors. Terrain frames should tightly bound
 their diamond because the renderer fits them to a cell. Set physical footprints
-separately: the grouped café table/chairs occupy 2 × 2 cells even though they use
-one sprite. Check the resulting ground contact and occlusion in the actual game.
+separately: a two-cell-wide prop still needs an explicit physical footprint.
 
-Keep new themes in host-owned packs; extend `src/art.ts` for reusable data contracts,
-`src/assets.ts` for image ownership, and `src/sprites.ts` for sprite presentation.
-`SceneView` composes those pieces; game rules do not belong in those modules.
+Keep themes, manifests and rules in the host. Integrate through public scene data
+and runtime APIs; engine source changes are framework maintenance.

@@ -2,30 +2,16 @@
 
 ## Use it in another game
 
-Sunflower now demonstrates the reusable [interaction module](./INTERACTIONS.md):
-click a small path flower to approach, face it, play a short gesture, and put one
-flower in the basket. Pause freezes the action; Escape or Cancel stops it.
-The gesture reuses grounded gardener frames; dedicated picking artwork is still
-an asset-authoring task. Walking onto a flower alone no longer collects it.
+Start with the standalone project in [CREATE_GAME.md](CREATE_GAME.md). It installs
+the built framework as a local package and provides its own Vite entry, source,
+controls and build commands. Existing applications can install a built framework
+tarball and import the same public APIs.
 
-The optional **Debug overlay** toggle shows tile coordinates, blocking footprints,
-the selected actor's route, sprite origin/bounds, and actual clip/frame/facing.
-See [DEBUGGING.md](./DEBUGGING.md) for integration in other hosts.
-
-Copy the framework repository, install its dependencies, and replace `demo/` with your own application. Alternatively build it and install the package by local path in another project:
-
-When copying sources, omit `.git/`, `.world-build/`, and the generated `node_modules/`, `dist/`, `demo-dist/`, and `test-results/` folders. Keep `package-lock.json` and use `npm ci` for the recorded dependency versions.
-
-```sh
-# In the framework repository:
-npm ci
-npm run build
-
-# In your game's project (adjust the path):
-npm install ../isometric-framework
-```
-
-The library output is `dist/runtime.js`, its declarations are in `dist/types/`, and the renderer-independent helpers are available through `isometric-framework/core`. The library keeps Pixi.js as an external dependency; use a bundler such as Vite to resolve the installed `pixi.js` package. `demo-dist/` is the separate browser demo build and can be served by a static HTTP server.
+The library output is `dist/runtime.js`; declarations are in `dist/types/`.
+Renderer-independent helpers are exported through `isometric-framework/core`.
+Use a bundler such as Vite to resolve the external `pixi.js` dependency.
+For optional approach/action timing see [INTERACTIONS.md](INTERACTIONS.md);
+for public diagnostic overlays see [DEBUGGING.md](DEBUGGING.md).
 
 ```ts
 import { createRuntime, type Scene } from 'isometric-framework';
@@ -135,7 +121,7 @@ The directional pad uses the same tile axes as WASD. It supports holding two dir
 
 ### Scene data and assets
 
-`Scene` accepts version 1 and version 2; see `src/types.ts` for the full typed contract and `demo/scenes.ts` for complete examples. Existing version-1 scenes remain supported as a single ground floor. The map is row-major: `map[r][c]`. Tile definitions specify color, walkability, and optional elevation in screen pixels. Entity types specify a visual, blocking behavior, and a rectangular footprint extending toward positive columns and rows.
+`Scene` accepts version 1 and version 2; use the exported `Scene` type and installed `dist/types/types.d.ts` for the full typed contract. Existing version-1 scenes remain supported as a single ground floor. The map is row-major: `map[r][c]`. Tile definitions specify color, walkability, and optional elevation in screen pixels. Entity types specify a visual, blocking behavior, and a rectangular footprint extending toward positive columns and rows.
 
 Version 2 adds independent stacked floors and explicit connections. Each upper map has the ground map's dimensions, with `null` where that floor does not exist. Floor IDs must be unique; `ground` is reserved for the base map. Entity collision, pathfinding, picking, and gameplay lookups distinguish floor IDs, so a rock below a bridge does not obstruct an actor above it.
 
@@ -175,4 +161,4 @@ This is a cleaned and reworked source-derived core, not a byte-compatible copy o
 
 The runtime provides stacked 2.5D floors, stair connections, tile elevation, pathfinding, keyboard/touch movement, bounded jumps, and straight projectile traps. It does not model full 3D physics, navigation meshes, or an editor. Multiplayer, authentication, uploads, application UI, chat, undo/redo, and `eval`-based scripts are excluded. The examples demonstrate runtime composition, not a complete game-maker authoring tool.
 
-See [PROVENANCE.md](../PROVENANCE.md) for source lineage, [APP_GUIDE.md](../APP_GUIDE.md) for observable demo checks, and [VERIFICATION.md](../VERIFICATION.md) for executed checks, retained evidence, and limitations.
+See [PROVENANCE.md](../PROVENANCE.md) for source lineage. Validate your own host against its approved contract; framework test results do not certify a new game.

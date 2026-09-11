@@ -4,10 +4,11 @@ import { copyFile, lstat, mkdir, readFile, readdir, realpath, writeFile } from '
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-const ROOT_FILES = ['package.json', 'package-lock.json', 'AGENTS.md', 'README.md',
-  'PROVENANCE.md', 'tsconfig.json', 'tsconfig.build.json', 'vite.config.ts', 'scripts/check-boundaries.mjs'];
+const ROOT_FILES = ['package.json', 'package-lock.json', 'AGENTS.md', 'README.md', 'CONTRIBUTING.md',
+  'PROVENANCE.md', 'tsconfig.json', 'tsconfig.build.json', 'vite.config.ts',
+  'scripts/check-boundaries.mjs', 'scripts/create-game.mjs'];
 const GUIDES = ['RUNTIME_API', 'ARCHITECTURE', 'CREATE_GAME', 'ART_PIPELINE', 'AUTOTILING',
-  'DEBUGGING', 'INTERACTIONS', 'INVENTORY_AND_SAVES', 'WORLD_PRODUCTION_FLOW'];
+  'DEBUGGING', 'INTERACTIONS', 'INVENTORY_AND_SAVES'];
 const omit = new Set(['node_modules', '__pycache__', '.git', 'test-results', '.world-build']);
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const json = file => readFile(file, 'utf8').then(JSON.parse);
@@ -33,7 +34,7 @@ async function frameworkFiles(root) {
       }
     } else { await regular(file); result.push(portable(name)); }
   }
-  for (const name of [...ROOT_FILES, ...GUIDES.map(n => `docs/${n}.md`), 'src', 'skills']) {
+  for (const name of [...ROOT_FILES, ...GUIDES.map(n => `docs/${n}.md`), 'src', 'skills', 'templates/game']) {
     try { await visit(name); } catch (error) { if (error.code !== 'ENOENT') throw error; }
   }
   for (const name of ['package.json', 'AGENTS.md', 'src/index.ts', 'skills/README.md']) {
@@ -57,7 +58,7 @@ async function hashes(root, names) {
 export async function prepareTrial({ framework, contract, references = [], out }) {
   framework = await realpath(path.resolve(framework)); out = path.resolve(out);
   require(out !== framework && !inside(out, framework), 'Output cannot contain the source framework');
-  for (const name of ['src', 'skills', 'docs', 'scripts']) {
+  for (const name of ['src', 'skills', 'docs', 'scripts', 'templates']) {
     const tree = path.join(framework, name);
     require(out !== tree && !inside(tree, out), 'Output must be outside copied framework trees');
   }

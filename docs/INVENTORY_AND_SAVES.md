@@ -29,8 +29,7 @@ Quantities must be positive safe integers. Empty items are omitted from snapshot
 unknown items, duplicate entries, bad versions, and excess capacity are rejected.
 Snapshots are detached. Equipment, item instances, crafting, and UI are not supplied.
 
-Claim a world pickup before awarding its item, after checking `canAdd`, as in
-`demo/main.ts`. Keep that effect synchronous. Separate inventories do not provide
+Claim a world pickup before awarding its item, after checking `canAdd`. Keep that effect synchronous. Separate inventories do not provide
 a shared transaction or multiplayer lock.
 
 ## A scene plus host state
@@ -78,17 +77,13 @@ unfinished action must not grant its reward. Store camera, quests, or other host
 state explicitly if your game needs them. Await successful scene loading before
 applying the already-validated inventory, so asset failures keep current progress.
 
-## Sunflower reference
+## Host checkpoint policy
 
-`demo/garden-progress.ts` supplies the flower definition, save schema and basket /
-remaining-flower consistency check. Sunflower saves on completed steps, landings,
-and flower effects, and offers **Save garden** / **Continue garden**. Reload
-automatically resumes a valid local save. Restart resets the original map and
-basket and replaces the checkpoint. Other scene presets keep their existing rules
-and do not overwrite the Sunflower slot. Plain scene export remains separate from
-a game checkpoint and does not contain inventory.
+Give each game its own storage key and `gameId`. Define item IDs, host schema
+and consistency checks in the application. Checkpoint at committed actions,
+steps or landings appropriate to the game; define explicitly whether restart
+clears progress. Plain scene export does not include inventory or other host state.
 
-The storage key is `little-worlds.sunflower.v1`. This is one save per browser
-origin, without cloud sync or multiple slots in the demo UI. Save failures are
-shown without stopping play. A failed read leaves both the current game and the
-stored record intact. Changing games should use a different key and `gameId`.
+Report save errors without discarding current progress. A failed read should
+leave both the current game and stored record intact. Cloud sync and multiple
+slots require host implementation.

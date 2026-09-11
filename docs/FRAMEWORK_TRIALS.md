@@ -7,7 +7,11 @@ can build from the framework. Ordinary game production does not require a trial.
 node scripts/framework-trial.mjs prepare --framework . --contract path/to/approved-contract.md --reference path/to/style.png --out test-results/trial-01
 ```
 
-This copies source, skills and selected API/production guides into `workspace/`.
+This copies source, the neutral starter, skills and selected API guides into
+`workspace/`. The builder can build its local package and use the standalone
+starter there; no example host is preselected. Maintainer routing remains available
+for explicit framework repairs. Runtime tests and historical documentation are
+not copied; run maintenance suites in the source checkout when they are needed.
 Existing games, example artwork, historical trial reports, dependency folders and
 capture archives are omitted. The approved contract becomes `PROJECT_CONTRACT.md`;
 explicit references go into `reference/`. The tool prints their actual paths.

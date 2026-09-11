@@ -74,6 +74,34 @@ class WorkflowTests(unittest.TestCase):
         self.receipt()
         self.assertTrue(gate.accept(self.baseline, self.candidate, self.review)["passed"])
 
+    def test_contract_change_blocks_existing_baseline(self):
+        contract = self.root / "PROJECT_CONTRACT.md"
+        contract.write_text("A complete playable world", encoding="utf-8")
+        self.plan_data["contract"] = "PROJECT_CONTRACT.md"
+        self.save(self.plan, self.plan_data)
+        gate.freeze(self.plan, self.baseline)
+        gate.protected(self.baseline)
+        contract.write_text("Only one decorative scene", encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "Protected project contract changed"):
+            gate.protected(self.baseline)
+
+    def test_missing_contract_rejected_before_freeze(self):
+        self.plan_data["contract"] = "missing.md"
+        self.save(self.plan, self.plan_data)
+        with self.assertRaisesRegex(ValueError, "Contract must be"):
+            gate.freeze(self.plan, self.baseline)
+        self.assertFalse(self.baseline.exists())
+
+    def test_complete_documented_plan_has_valid_production_coverage(self):
+        example = SCRIPT.parent.parent / "references/acceptance-plan.example.json"
+        plan = gate.read(example)
+        (self.root / "PROJECT_CONTRACT.md").write_text("Illustrative test scope", encoding="utf-8")
+        self.save(self.plan, plan)
+        _, validated, _ = gate.plan_state(self.plan)
+        self.assertEqual(validated["version"], 3)
+        self.assertEqual(set(c["stage"] for c in validated["production"]["checks"]),
+                         set(gate.production_tools().STAGES))
+
     def test_wide_assembly_keeps_pixel_budget_and_crop_padding(self):
         atlas = Image.new("RGBA", (1152, 16))
         ImageDraw.Draw(atlas).rectangle((2, 2, 1149, 13), fill=(30, 90, 120, 255))

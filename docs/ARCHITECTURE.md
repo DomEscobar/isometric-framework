@@ -49,7 +49,7 @@ tile-click routing while the runtime retains picking and camera input.
 | Persistence or networking | Host adapters. Save scene data and host state explicitly; no backend is required by this package. |
 | Reusable missing collision, floor, movement or rendering behavior | A scoped engine change in the owning module, with public types/validation/exports and regression evidence as needed. |
 
-Keep a new game's rules outside `src/`. In a copied framework repository, replace `demo/` with that game's host. In the framework checkout, additional games belong in `examples/<game-id>/` with their own entry, scene and rules plus required host configuration. That directory and a multi-example launcher are not scaffolded today. Do not imply that adding a folder automatically builds or serves it.
+New consumer games use a separate project as described in [CREATE_GAME.md](CREATE_GAME.md). Keep their rules outside the engine. Framework contributors may add an opt-in host under `examples/<game-id>/`; register its entry/build configuration explicitly and follow [CONTRIBUTING.md](../CONTRIBUTING.md).
 
 ## Coordinate contract
 

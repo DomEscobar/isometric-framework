@@ -86,13 +86,13 @@ a flat footprint must not become a raised building plot merely because the style
 reference has cliffs. Supply a clean layout image with declared reference roles,
 using explicit ordered image inputs when the provider supports them. Record actual
 submitted inputs as well as the prompt; intended references alone are not provenance.
+Validate the guide's supported routes before spending, and inspect the callable
+tool schema before declaring references unavailable. A missing mask/control field
+does not imply missing image input; omitting the guide changes the tested technique.
 
-Illustrative ground-layer request: "Use the layout for positions and heights;
-use the style image for pixel clusters, earth, grass and water treatment. Paths
-and future building sites share one walking level with flush approaches. Keep
-only low ground cover and contact detail in this layer. Upright trees, large
-rocks and buildings will be separate assets. Show bank faces only where the
-layout declares a drop." Adapt heights and layer ownership to the actual project.
+For worked prompts for fixed-layout ground, a text-only concept and a targeted
+repair, use [the composed-ground examples](references/composed-ground-prompts.md).
+They are prompt patterns with explicit input roles, not guaranteed model outputs.
 
 Inspect raw candidates for invented elevation, blocked approaches and baked
 upright objects before registration or another generation. If one fails, preserve
@@ -127,12 +127,10 @@ contrasting backdrop. No text or checkerboard. Match the host's approved palette
 Replace the subject and palette with the actual game brief; a text-to-image
 endpoint cannot see an unprovided reference.
 
-For a grounded patch, an illustrative brief is: "A rooted shrub with exposed
-earth between its stems, sparse grass entering the outer soil edge and a compact
-upper-left-lit contact shadow. Match the supplied game's pixel clusters and
-grass palette; irregular perimeter, no rectangular base or surrounding scene."
-Use the current host's reference and intended layer split. A material swatch,
-portable cutout and rooted patch solve different tasks.
+For a grounded object with measured contact and a targeted repair, adapt the
+[grounded prop prompt patterns](references/grounded-prop-prompts.md). These
+unvalidated examples preserve the distinction between a material swatch,
+portable cutout and rooted patch; use the current host's intended layer split.
 
 For repeated characters, use an accepted reference and explicit pose/facing
 instructions. Keep common canvas and contact origins across frames; do not

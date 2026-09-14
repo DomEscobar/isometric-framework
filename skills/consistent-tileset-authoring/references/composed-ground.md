@@ -25,6 +25,10 @@ emits an annotated board and residual measurements, not detected geometry or an
 automatic visual pass. A failed path/doorway/crossing needs an art or layout repair
 within the approved constraints before extraction; changing the tolerance to fit
 the candidate is not a repair. Record the chosen tolerance at playing pixel scale.
+If a semantic point has no identifiable visual counterpart, use a predeclared
+[route-support evaluation](ground-support.md) for traversability instead of
+inventing an observed center. It checks image-derived support and planned support
+separately; it cannot replace an explicit exact-layout requirement.
 
 ```json
 {
@@ -53,6 +57,11 @@ input/output hashes in `provenance.json`. A chunk's frame excludes its transpare
 Placements are content top-left coordinates including the declared origin. The new output
 directory is never overwritten; `manifest.json` is written last.
 
+For an image with an exterior backdrop, derive coverage from its actual registered
+silhouette and inspect the edge against the host background. A planned diamond
+mask can retain backdrop pixels where the artwork ends inside that diamond.
+Removing those pixels does not repair walking support; recheck affected routes.
+
 All numbers and files above are illustrative. Inputs must be static PNGs inside
 the recipe directory; masks must be target-sized grayscale PNGs (L or 1).
 Limits are 8192 pixels per axis, 16 million pixels per image, 64 MiB per PNG and
@@ -66,10 +75,14 @@ frame at that content origin, excluding gutters. A `surface` packed-art group
 compares those pieces with `ground.png` and checks final coverage. These tests
 verify extraction, not style, registration, movement, or interchangeable tile edges.
 
-Choose a plate when the host displays one fixed image; choose positioned chunks
-when its loading or composition needs them. Slicing alone does not save runtime
-work. An editable/recombinable map may instead need compatible transition tiles.
-Keep upright objects and moving overlays separate when depth or motion requires it.
+For a largely fixed layout, compose material transitions together and keep upright
+objects and moving overlays separate where behavior requires it. There is no need
+to derive an interchangeable tileset just because the runtime renders cells.
+Choose a plate for one fixed image or positioned chunks for loading/composition
+needs; slicing alone does not save runtime work or make pieces interchangeable.
+Editable/recombinable terrain may instead need compatible transition tiles.
+Acceptance of the ground establishes neither object placement nor animation quality;
+evaluate failures in those layers separately before changing the ground technique.
 
 ## Bind registered ground to the public runtime
 
@@ -94,8 +107,8 @@ remain those of the input scene. The adapter changes neither source pixels nor
 entity art. It rejects unaligned/out-of-image rectangles and unsupported elevated
 or multiple-floor layouts rather than silently fitting them.
 
-Register the source in projected world pixels before binding. Confirm interior
-path, entrance and bridge landmarks, then inspect the actual host for seams,
+Register the source in projected world pixels before binding. Confirm identifiable
+interior features or the predeclared route-support requirements, then inspect the actual host for seams,
 occlusion and traversal. A valid frame map proves sampling geometry, not that the
 generator placed the path correctly. A positioned rectangle or oversized entity
 sprite is not an equivalent substitute for ground depth and support. Animate only

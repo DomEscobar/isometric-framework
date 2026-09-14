@@ -37,7 +37,7 @@ when generation is needed. Text-to-image alone does not choose a world architect
 | World assembly | Read first | Support and remaining work |
 | --- | --- | --- |
 | Reusable modular terrain | Tileset authoring | Suitable for editable/recombined maps. Neighbor selection exists; organic material-pair transitions need a compatible catalog or scoped host assembler. The raised-bed helper is not that assembler. |
-| Composed ground plus separate actors/props | Tileset authoring: composed ground; art integration | Suitable for a fixed composition. Image preparation and flat-plane binding exist; registration and masks must be supplied and checked. |
+| Composed ground plus separate actors/props | Tileset authoring: composed ground; art integration | Suitable when the ground layout is largely fixed and material transitions should be composed together. Flat-plane preparation/binding exist; crops remain position-specific. Registration, object contacts and motion need their own checks. |
 | Layered scene artwork | Art integration; multi-tile assemblies | Suitable when selected occluders and moving regions can be separated. Extraction, hidden surfaces and depth bindings require host work. |
 | Hybrid by region/family | Visual loop and relevant specialists | Declare the boundaries and shared coordinates; verify a representative join before expansion. |
 

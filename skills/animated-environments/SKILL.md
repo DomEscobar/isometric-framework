@@ -75,7 +75,9 @@ runtime simulation and freeze with pause.
 
 Terrain diamond clipping does not apply to entity sprites. A tile-sized animated
 overlay must carry its own diamond alpha (or use an explicitly measured host
-composition). An opaque rectangular material suitable for a static terrain tile
+composition). When slicing a world-space moving mask into per-cell overlays,
+intersect each crop with that cell's diamond; synchronized rectangular crops do
+not supply this clipping. An opaque rectangular material suitable for a static terrain tile
 is not automatically a valid overlay frame. Preserve clipping when replacing
 procedural artwork and inspect the channel boundary, bends and map edge. Use the
 [packed-art inspector](../isometric-visual-loop/references/acceptance.md)'s

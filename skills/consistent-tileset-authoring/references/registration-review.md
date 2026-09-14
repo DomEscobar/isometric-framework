@@ -2,7 +2,11 @@
 
 Use this offline Pillow helper when a layout guide and a candidate PNG are already
 in the same capture coordinate system. It measures only landmarks a reviewer
-supplies; it neither discovers them nor moves either image.
+supplies; it neither discovers them nor moves either image. A semantic point in
+featureless soil is not automatically an observable landmark. For traversability,
+the [ground-support checker](ground-support.md) can instead compare reviewed
+visible/semantic support masks along the route. Decide the required evidence before
+review; a support pass does not certify exact layout reproduction.
 
 ```sh
 python skills/consistent-tileset-authoring/scripts/inspect-registration.py registration.json --out review/registration-1

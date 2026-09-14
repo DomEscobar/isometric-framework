@@ -35,6 +35,10 @@ can still fail through hard fringes, mirrored motifs and inconsistent pixel styl
   [landmark inspector](references/registration-review.md). Supply independently
   observed interior landmarks and a project-specific tolerance; matching corners
   alone does not prove path or entrance alignment.
+  For traversability across natural surfaces without identifiable feature centers,
+  use the [ground-support check](references/ground-support.md): review image-derived
+  dry-ground masks and compare the full actor footprint along projected routes.
+  Choose the observable check before evaluation; support is not exact layout identity.
 - For natural ground, record actual material adjacencies and their edge treatment.
   Require separate terrain-composition and transition verdicts; approve a mixed
   patch with upright/optional props hidden before expanding the world. Retain
@@ -51,6 +55,9 @@ available provider; [game-asset-generation](../game-asset-generation/SKILL.md)
 provides a portable route. Preserve the source, prompt and provider record.
 Prefer one shared material sheet or a few reference-guided master parts over
 47 independent text-to-image requests. Prompts alone cannot enforce pixel geometry.
+For a small guide-driven family and a targeted edge correction, adapt the
+[modular terrain prompt patterns](references/modular-terrain-prompts.md).
+These unvalidated examples do not supply an assembler or guarantee shared edges.
 
 For flat material workflows, generate orthographic material swatches with no
 camera perspective, objects, cast shadows, labels or baked tile borders. Assign

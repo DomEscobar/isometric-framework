@@ -234,6 +234,22 @@ class ProductionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Inputs changed since begin"):
             flow.finish(self.adapter, self.baseline, ticket, submission, self.receipts, self.receipts / "x.json")
 
+    def test_world_expansion_retains_scoped_calibration_but_stales_full_review(self):
+        self.through_assembly()
+        for cid in ["placement", "composition", "motion", "final"]:
+            self.complete(cid)
+        # New unrelated family is outside the patch's inputs, inside final scope.
+        self.save("game/new-building.json", {"texture": "new-family"})
+        result = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        for cid in ["boot", "layout", "rigid", "assembly"]:
+            self.assertEqual(result["checks"][cid]["status"], "pass", cid)
+        self.assertEqual(result["checks"]["final"]["status"], "unverified")
+        # Shared actor behavior really affects the patch; it must invalidate it.
+        self.save("game/actor.json", {"clip": "changed-shared-behavior"})
+        result = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        self.assertEqual(result["checks"]["assembly"]["status"], "unverified")
+        self.assertFalse(result["checks"]["final"]["eligible"])
+
     def test_missing_mobile_and_changed_evidence_rejected(self):
         self.through_assembly()
         self.complete("placement")

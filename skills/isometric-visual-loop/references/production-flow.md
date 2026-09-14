@@ -9,8 +9,19 @@ are illustrative. The agent prepares technical checks from the approved contract
 
 The tool controls its own tickets, receipts, candidate snapshot and acceptance.
 It cannot prevent an arbitrary agent from editing files or calling a generator
-outside this workflow. Agents must call `begin` **before** the work/evidence for
-the check, and expand only after all prior stages pass.
+outside this workflow. Implement eligible work first; call `begin` when that
+candidate is stable, immediately before executing its check/capture. `begin`
+hashes existing inputs: it opens an evidence attempt, not an implementation task.
+Expand only after prior stages pass. A changed candidate needs a new ticket and
+fresh evidence; keep the failed attempt's observations when repairing it.
+
+Before this stage sequence, use the approved contract to resolve any missing
+concept and rough composition within authorized scope/budget. Fixed layout
+constraints guide the art; a flexible concept can propose geometry which the host
+then derives and validates. Select initial visual references before freezing.
+Store selection/provenance in host production data, not routine edits to the
+contract. This preparation does not require a production ticket or authorize a
+full pack. Acceptance remains frozen before calibration implementation/expansion.
 
 | Stage | Required work before expansion |
 | --- | --- |
@@ -39,6 +50,16 @@ renderer, layout and packed art wherever they can change its observed behavior.
 Final-stage checks must cover every plan `inputRoot`; local receipt reuse cannot
 replace a fresh overall review after any source change. Adapt example requirement
 IDs (`style`, `motion`, `play`, `timing`) and paths to your existing protected plan.
+
+Keep calibration inputs scoped to the real modules, art families and shared
+dependencies that render that patch. The example separates startup, calibration
+modules and selected art from later content; these paths must be actual host
+dependencies, not copies of a disconnected demonstration. Include layout, camera,
+renderer and export code when they affect the observation. Adding an unrelated
+asset must not stale a rigid contact check; changing its renderer or footprint
+must. Static/motion/final checks still cover the complete requested world. The
+tool invalidates declared dependencies, so broad directory inputs will legitimately
+repeat earlier stages; fix the dependency design rather than skipping validation.
 
 `layout` also requires `source` and `requiredScope` with region/instance/route/bridge
 ID lists. Every protected ID must remain present; extra instances are checked too.
@@ -147,10 +168,16 @@ submissions and receipt directories outside all source `inputRoots`.
 
 ```sh
 python skills/isometric-visual-loop/scripts/verify-world.py freeze host/acceptance.json review/baseline.json
+```
+
+Implement the eligible candidate and ensure its input files exist. Then:
+
+```sh
 python skills/isometric-visual-loop/scripts/verify-world.py production begin review/baseline.json --check preflight --receipts review/receipts --out review/preflight-ticket.json
 ```
 
-Run the scoped check/capture after `begin`. Make an evidence mapping containing
+Run the scoped check/capture after `begin`, keeping candidate inputs unchanged.
+Make an evidence mapping containing
 only local `path` and required `view` entries, then create the exact submission
 template. `draft` reuses the finish-time evidence checks: each file must be fresh,
 the declared kind, and cover every required view. It writes `unverified` with blank

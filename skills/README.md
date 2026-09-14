@@ -30,24 +30,30 @@ can use the same checks with a smaller requirement scope.
 
 ## Choose the art technique
 
-Select this from the approved project contract before reading provider recipes.
-Different asset families may use different agreed techniques with a shared style.
+Make two separate decisions from the approved project contract: how the world is
+assembled, then where each asset family's pixels come from. Select a provider only
+when generation is needed. Text-to-image alone does not choose a world architecture.
 
-| Technique | Read first | Conditional work |
+| World assembly | Read first | Support and remaining work |
 | --- | --- | --- |
-| Supplied or authored pack | Art integration | Directional sprites or animation only for missing/changed frames; no generation setup |
-| Text-to-image foundation | Visual loop, then asset generation | Generate a small set of coherent scene or asset-family candidates; select one as visual authority before deriving further assets |
-| Image-to-image adaptation | Asset generation and art integration | Preserve an approved layout, identity or material treatment; use masks only for bounded repairs |
-| Reusable modular terrain | Tileset authoring: landscape composition and runtime binding | Generate shared materials if chosen; raised-bed recipe only for raised beds |
-| Composed ground plus separate actors/props | Tileset authoring: composed ground; art integration: grounded assemblies | Register/slice artwork, bind to semantic layout; no generic tile-family requirement |
-| Layered scene artwork | Art integration and multi-tile assemblies for support/depth | Separate occluders and moving regions; reject geometry that cannot support traversal |
-| Hybrid by asset family | Visual loop plus the relevant specialists | Record which families are generated, adapted, authored or supplied; keep one shared visual authority |
+| Reusable modular terrain | Tileset authoring | Suitable for editable/recombined maps. Neighbor selection exists; organic material-pair transitions need a compatible catalog or scoped host assembler. The raised-bed helper is not that assembler. |
+| Composed ground plus separate actors/props | Tileset authoring: composed ground; art integration | Suitable for a fixed composition. Image preparation and flat-plane binding exist; registration and masks must be supplied and checked. |
+| Layered scene artwork | Art integration; multi-tile assemblies | Suitable when selected occluders and moving regions can be separated. Extraction, hidden surfaces and depth bindings require host work. |
+| Hybrid by region/family | Visual loop and relevant specialists | Declare the boundaries and shared coordinates; verify a representative join before expansion. |
+
+For each family choose **supplied/licensed, authored, text-to-image, image-to-image,
+or a combination**. All can feed the assembly choices above. Text-to-image can
+establish a scene or material/asset family; image-to-image can preserve selected
+reference properties. Neither guarantees registration, usable layers or animation.
+Elevated/multiple-floor compositions and branching water require scoped host
+integration beyond the flat-ground adapter and sprite clip support. Prove the
+needed capability during calibration before producing a full pack.
 
 Add asset generation only when new generated artwork is part of the chosen path.
 Read one provider recipe when needed. The same visual, traversal and promised
 motion outcomes apply to all techniques; tools do not select the art direction.
 Text-to-image does not require an existing reference image. Once a candidate is
-accepted, use it with the contract as the visual authority for palette, projection,
+accepted, record it in host production data and use it with the contract as the visual authority for palette, projection,
 scale, lighting and pixel treatment. Do not regenerate every family from unrelated
 text prompts. Image-to-image is a control option for later consistency or repair,
 not a prerequisite for generated art.

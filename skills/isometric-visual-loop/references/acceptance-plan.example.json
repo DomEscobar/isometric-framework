@@ -89,7 +89,8 @@
         "inputs": [
           "host/startup.ts",
           "host/asset-smoke.json",
-          "host/art/calibration.png"
+          "host/art/calibration/source.png",
+          "host/art-direction.json"
         ],
         "evidenceKind": "measurement"
       },
@@ -137,15 +138,17 @@
           "desktop"
         ],
         "inputs": [
-          "host/art",
-          "host/binding.json"
+          "host/art/market",
+          "host/bindings/market.json",
+          "host/src/calibration/market.ts",
+          "host/src/shared/projection.ts"
         ],
         "evidenceKind": "measurement",
-        "source": "host/art/contacts.json",
+        "source": "host/art/market/contacts.json",
         "assets": [
           "market"
         ],
-        "binding": "host/binding.json"
+        "binding": "host/bindings/market.json"
       },
       {
         "id": "assembly-view",
@@ -158,8 +161,12 @@
           "desktop"
         ],
         "inputs": [
-          "host/src",
-          "host/art",
+          "host/startup.ts",
+          "host/src/calibration",
+          "host/src/shared",
+          "host/art/calibration",
+          "host/art/market",
+          "host/art-direction.json",
           "host/layout.json"
         ],
         "evidenceKind": "image"

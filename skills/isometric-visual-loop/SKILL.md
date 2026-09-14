@@ -21,14 +21,25 @@ Record the reference's role (style, layout or both), landmarks, routes, material
 relationships, actor proportions and required motion. Infer supporting details
 from the supplied image; ask only about consequential missing choices.
 
-Record the production technique separately from the provider. Supported choices
-include supplied/authored work, text-to-image foundation, image-to-image adaptation,
-modular generation, composed or layered scenes, and hybrids by asset family.
-Text-to-image is valid when no reference image exists. In that route, select one
-approved candidate as the visual authority before expanding the pack. Image-to-image
-is optional and becomes useful when layout, identity or material treatment must be
-held stable. Do not turn a consistency recommendation into a mandatory provider
-feature.
+Choose world assembly first: reusable modular terrain, composed ground, layered
+scene artwork, or a hybrid. Then choose supplied/authored/text-to-image/image-to-image
+sources per asset family and any needed provider. Use the catalog's support limits
+to identify the host work each assembly route needs before commissioning its art.
+
+With an approved contract, resolve missing visual direction through bounded concept
+exploration before freezing acceptance. Existing spending/reference permissions still
+apply. Record the selected image, role and provenance in host production data such
+as `art-direction.json`; protect the actual image through plan comparisons and include
+the record in relevant check inputs. Do not insert routine production selections or
+attempts into a frozen contract. An explicit change to user requirements still needs
+agreement and a reconciled baseline.
+
+For fixed gameplay/layout constraints, establish rough geometry first and fit art
+to it. For a flexible composition, a text-to-image concept may propose the layout;
+derive and check semantic routes/supports before treating it as playable geometry.
+Reconcile composition and rough layout, then freeze acceptance before calibration
+implementation or full-pack generation. Concept preparation is not world expansion.
+Image-to-image remains optional in both routes.
 
 Protect the actual reference. A generated concept may clarify a design but cannot
 replace the user's target. For a style reference, compare its pixel clusters,
@@ -41,7 +52,9 @@ Link the contract with the plan's `contract` field so freezing also protects it.
 For full world production, use the version 3 [acceptance plan](references/acceptance.md)
 and [executed stages](references/production-flow.md): preflight, semantic layout,
 representative assembly, complete static scene, motion and final review.
-Begin each check before collecting evidence. Failed or unverified prerequisites
+Implement eligible work, then begin its check immediately before capturing/reviewing
+the stable candidate. A ticket freezes check inputs; edits require a new ticket and
+fresh evidence. Failed or unverified prerequisites
 block expansion; unchanged dependencies retain their receipts. After two failed
 attempts, record a changed strategy and a discriminating test. Scope dependencies
 to what the check actually measures; do not make a grass edit invalidate an
@@ -97,10 +110,7 @@ arbitrary round cap on a finished-world request or relabel unfinished work a tri
 | Joined water or anchored foliage motion | [Animated environments](../animated-environments/SKILL.md) |
 
 Read the selected specialist's relevant recipe, not every provider or fixture.
-Choose the art technique before a generation provider: supplied/authored packs,
-text-to-image foundations, image-to-image adaptations, modular materials, composed
-ground with separate props, layered scene artwork or hybrids by asset family are
-different production paths. Use the catalog's
+Choose world assembly and then image sources before a generation provider. Use the catalog's
 [technique routing](../README.md#choose-the-art-technique) to select the minimum
 useful recipes. Composed ground needs contact and traversal checks, but does not
 need a 47-mask tileset. Supplied art does not need a generation request.

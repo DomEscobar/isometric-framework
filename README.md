@@ -48,13 +48,14 @@ player experience, scope, style, asset approach, and acceptance requirements.
 Derive technical plans from it; do not create a competing art brief. Once it is
 approved, use the standalone starter and new-game guide to implement the game.
 
-I may use existing, authored, generated, composed, or layered assets. Text-to-image
-is allowed to establish the first coherent scene or asset family; image-to-image is
-optional for preserving an approved layout, identity, or material treatment. Help
-me choose the technique before the provider. Once I approve a generated candidate,
-use it as the visual authority for later assets so projection, palette, scale,
-lighting, and pixel treatment stay consistent. Preserve choices I have already
-made. Ask about provider and budget only when generation is needed. Calibrate a
+Help me choose how the world is assembled: modular terrain, composed ground,
+layered scene, or a hybrid. Separately choose image sources for each asset family:
+supplied, authored, text-to-image, or image-to-image. Image-to-image is optional.
+Within the approved contract, resolve any missing concept and rough layout before
+freezing acceptance. Record the selected visual reference in production data so
+later assets share its projection, palette, scale, light and pixel treatment.
+Preserve existing decisions. Ask about provider and budget only when generation
+is needed. Calibrate a
 small playable assembly, then complete the whole agreed world;
 do not shrink a rich request to the calibration scene. Playtest the real game and
 review visuals, motion, gameplay, and performance separately before declaring it

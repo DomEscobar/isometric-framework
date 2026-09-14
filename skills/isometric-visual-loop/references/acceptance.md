@@ -27,7 +27,7 @@ Cutouts still need transparent padding; pack an assembly's union bounds with
 padding and adjust its anchor instead of setting a zero crop margin. A whole
 strip must pass the same visible join and motion review as its smaller pieces.
 
-## 1. Protect requirements and art checks before implementation
+## 1. Resolve visual direction, then protect calibration and production
 
 The agent prepares `acceptance-plan.json` beside the new host, deriving its
 requirements from the one approved project contract. Add `packed-art.json` only
@@ -45,11 +45,20 @@ for a new game. The agent derives descriptions, views, comparisons, layout scope
 and rigid checks from the approved project contract and chosen technique. Remove
 absent features and add every promised outcome before freezing.
 
+If no visual reference exists, resolve the initial concept under the approved
+contract and any existing generation budget before freezing this plan. A concept
+may propose a flexible composition; check it against required routes/supports and
+reconcile rough layout first. Supplied suitable references need no new generation.
+Record the selected image/role/provenance in a host production file (for example
+`host/art-direction.json`), add that file to relevant check inputs, and protect the
+selected image with the existing `comparisons.reference` fields. No new plan field
+is required. Freeze before playable calibration implementation or full-pack expansion.
+
 Set `contract` to the project-relative approved brief (normally
 `PROJECT_CONTRACT.md`). Freeze protects its bytes alongside the plan, art specs
 and target images. This prevents using an old plan after the contract changes;
 it does not understand prose or prove the agent translated every requirement.
-Review that mapping once before implementation. Existing plans without this
+Review that mapping once before calibration implementation. Existing plans without this
 optional field remain readable. Keep ongoing progress in receipts, not in the
 frozen contract.
 

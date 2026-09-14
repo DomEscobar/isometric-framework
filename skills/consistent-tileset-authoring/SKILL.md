@@ -31,6 +31,10 @@ can still fail through hard fringes, mirrored motifs and inconsistent pixel styl
   [ground preparer](references/composed-ground.md): one plate or positioned chunks,
   with explicit masks and image transforms. Authored, supplied and generated inputs
   are equally supported; this does not replace reusable transition tiles.
+  Before binding, compare the registered layout and candidate with the optional
+  [landmark inspector](references/registration-review.md). Supply independently
+  observed interior landmarks and a project-specific tolerance; matching corners
+  alone does not prove path or entrance alignment.
 - For natural ground, record actual material adjacencies and their edge treatment.
   Require separate terrain-composition and transition verdicts; approve a mixed
   patch with upright/optional props hidden before expanding the world. Retain

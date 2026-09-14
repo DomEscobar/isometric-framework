@@ -44,7 +44,8 @@ All reference paths resolve from the plan's project root. Use static PNG/JPEG/We
 the tool decodes them and freezes their hashes with the plan. Camera, dimensions,
 state and reference role must be intentional, not chosen to hide a defect.
 
-Run `verify-world.py freeze PLAN BASELINE` before implementation, using the
+Resolve missing concept direction under the approved contract first. Run
+`verify-world.py freeze PLAN BASELINE` before calibration implementation, using the
 commands in [acceptance](acceptance.md). Keep outputs outside `inputRoots`.
 
 ## Capture, assemble, actually inspect

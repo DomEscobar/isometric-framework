@@ -19,6 +19,13 @@ The transform operates on output pixel centres `(x+0.5,y+0.5)`. It changes sampl
 art, not host coordinates or collision. A bad interior boundary cannot be certified
 by fitting the outer corners; local deformation or mask inference is not implemented.
 
+Before binding, use the optional [registration inspector](registration-review.md)
+to compare declared interior landmarks on a same-size guide and candidate. It
+emits an annotated board and residual measurements, not detected geometry or an
+automatic visual pass. A failed path/doorway/crossing needs an art or layout repair
+within the approved constraints before extraction; changing the tolerance to fit
+the candidate is not a repair. Record the chosen tolerance at playing pixel scale.
+
 ```json
 {
   "version": 1,

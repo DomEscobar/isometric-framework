@@ -38,17 +38,23 @@ for its API jobs, or the Retro Diffusion reference above for its MCP tools. Read
 The Retro Diffusion path requires its MCP connection; the included WaveSpeed
 client uses HTTP directly. These are authoring dependencies, not runtime services.
 
-Provider choice and technique are separate decisions. A project may explicitly
+World assembly, image source and provider are separate decisions. Select modular
+terrain, composed ground, layered artwork or a hybrid with the visual loop first.
+A project may explicitly
 choose generated materials with deterministic tile assembly and separately
 authored character frames. Record which technique owns each asset family. Do not
 silently change providers, mix styles or substitute example artwork after failure;
 use an agreed fallback or raise the specific decision that needs changing.
 
-Text-to-image is a supported independent production technique when no approved visual source
-exists. Use it to establish a complete scene foundation or a coordinated asset
+Text-to-image is an independent image source, with or without supplied style guidance.
+Use it to establish a complete scene foundation or a coordinated asset
 family, not as a sequence of unrelated one-off prompts. Generate a small candidate
 set under the same projection, palette, light direction, pixel density and scale;
-select one candidate in the project contract as the visual authority. Subsequent
+select one candidate as the visual authority in host production data, with its
+path, reference role and provenance. Resolve this initial choice before acceptance
+freeze; the approved contract authorizes the concept scope and any spending.
+Protect the selected image through acceptance comparisons and the production record
+through check inputs. Routine candidate attempts do not edit the frozen contract. Subsequent
 text-to-image requests must repeat those constraints and compare against that
 authority. An accepted output may be used directly, sliced or layered without an
 image-to-image pass. A model endpoint that cannot accept images can still be used,
@@ -63,10 +69,14 @@ reference and mask.
 
 Exact geometry does not require code-painted ground. When the selected technique
 is a composed generated landscape, supply the host layout and style reference,
-then measure alignment before using the optional
+then measure interior path, doorway and crossing alignment before using the optional
 [ground preparer](../consistent-tileset-authoring/references/composed-ground.md).
 Prompts do not guarantee matching banks or paths; topology and collision remain
-host-owned. This is an alternative to modular tiles, not a provider default.
+host-owned. If composition is flexible, a text-only concept may instead propose
+the layout before freeze; explicitly derive/check geometry from it. A text-only
+endpoint cannot consume a layout image. Select a compatible control method or
+measure/reject mismatches; slicing is not registration. This is an alternative to
+modular tiles, not a provider default.
 
 For a composed ground request, translate the scene reference into the requested
 layer's materials. "Terrain only" is ambiguous when the same prompt asks for

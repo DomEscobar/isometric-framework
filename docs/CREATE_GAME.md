@@ -44,13 +44,18 @@ the intended destination; the starter carries it forward without replacing it.
 If scaffolding first for a setup check, its pending contract and neutral graphics
 are placeholders, not approved product choices.
 
-Use existing, authored, generated, composed, or layered work according to the
-contract. Preserve decisions already made. Ask about a provider and generation
-budget only when generation is needed. Text-to-image and image-to-image are both
-supported: text-to-image can establish the first coherent visual foundation, while
-image-to-image can preserve an approved layout, identity or material treatment.
-Choose the technique before the provider. Once a generated candidate is approved,
-record it as the visual authority and use it to prevent later asset-family drift.
+Choose world assembly (modular terrain, composed ground, layered scene or hybrid)
+separately from image sources per family (supplied, authored, text-to-image or
+image-to-image). Preserve existing decisions; ask about provider/budget only when
+generation is needed. Image-to-image remains optional.
+
+Under the approved contract, resolve missing visual direction and rough layout
+before freezing acceptance. Fixed gameplay geometry constrains art; a flexible
+text-to-image concept may propose composition from which the host derives and checks
+routes/supports. Record the selected image, role and provenance in host production
+data; protect the image in acceptance comparisons. Do not edit a frozen contract
+for routine asset attempts. Freeze before playable calibration implementation or
+full-pack production. This bounded preparation still respects spending approval.
 
 ## 3. Select the relevant skills
 

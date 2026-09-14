@@ -8,11 +8,14 @@ form. Preserve prior decisions and do not create another contract.
   completeness and effort. Separate a finished environment from a technical trial.
 - **Art direction:** original reference and its role (style/layout/both), projection,
   working pixel scale, palette/light, player-relative scale and visual hierarchy.
-- **Production technique:** supplied/authored, text-to-image foundation,
-  image-to-image adaptation, modular generation, composed/layered artwork, or a
-  hybrid split by asset family. For text-to-image, define how one accepted candidate
-  becomes the visual authority. For image-to-image, identify exactly which reference
-  properties must remain stable. Record a provider only when generation is selected.
+- **World assembly:** reusable modular terrain, composed ground, layered scene or
+  hybrid. Choose based on map editing/reuse, height, occlusion and motion needs;
+  identify missing host tooling before producing the full pack.
+- **Image sources per family:** supplied/licensed, authored, text-to-image,
+  image-to-image or a combination, sharing the agreed style. Record a provider only
+  when generation is selected. Define any initial concept scope/budget and whether
+  layout is fixed or may be derived from the concept. Selection/provenance belongs
+  in host production data; choose initial visual references before acceptance freeze.
 - **World layout:** regions, landmarks, connecting routes and views. Note which
   buildings need only exteriors and which require traversable interiors/passages.
 - **Ground composition:** material adjacencies, path and bank contours, transition
@@ -24,7 +27,8 @@ form. Preserve prior decisions and do not create another contract.
   Identify API gaps before generating detailed parts; link existing assembly plans.
 - **Motion:** fitting moving regions, fixed landmarks, flow direction, shared or
   deliberately varied timing, pause behavior. Explain static-only scope if requested.
-- **Production order:** risky calibration first, then full content, motion and
+- **Production order:** resolve missing concept and rough layout, freeze acceptance,
+  then risky playable calibration, full content, motion and
   integrated review. Name the work remaining after calibration explicitly.
 
 Keep approved outcomes here, with stable requirement IDs where helpful. The

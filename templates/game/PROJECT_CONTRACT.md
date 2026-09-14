@@ -9,10 +9,12 @@ Unapproved neutral calibration scaffold. Production requirements have not been s
 - World and player goal: pending
 - Art direction and references: pending
 - Scope, platforms, accessibility, and performance: pending
-- Asset technique by family: pending — choose supplied/authored, text-to-image
-  foundation, image-to-image adaptation, modular generation, composed/layered
-  artwork, or a hybrid
-- Visual authority after a generated candidate is approved: pending
+- World assembly: pending — reusable modular terrain, composed ground, layered
+  scene artwork, or a hybrid; identify height, editing and motion needs
+- Image sources by family: pending — supplied/licensed, authored, text-to-image,
+  image-to-image, or a combination
+- Concept scope and fixed/flexible layout constraints: pending; select initial
+  references before acceptance freeze and record provenance in host production data
 - Generation provider and budget, only if generation is selected: pending
 - Acceptance evidence: pending
 

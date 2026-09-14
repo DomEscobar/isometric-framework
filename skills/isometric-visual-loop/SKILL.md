@@ -21,6 +21,15 @@ Record the reference's role (style, layout or both), landmarks, routes, material
 relationships, actor proportions and required motion. Infer supporting details
 from the supplied image; ask only about consequential missing choices.
 
+Record the production technique separately from the provider. Supported choices
+include supplied/authored work, text-to-image foundation, image-to-image adaptation,
+modular generation, composed or layered scenes, and hybrids by asset family.
+Text-to-image is valid when no reference image exists. In that route, select one
+approved candidate as the visual authority before expanding the pack. Image-to-image
+is optional and becomes useful when layout, identity or material treatment must be
+held stable. Do not turn a consistency recommendation into a mandatory provider
+feature.
+
 Protect the actual reference. A generated concept may clarify a design but cannot
 replace the user's target. For a style reference, compare its pixel clusters,
 outlines, light, material treatment, proportions and spatial hierarchy; do not
@@ -89,8 +98,9 @@ arbitrary round cap on a finished-world request or relabel unfinished work a tri
 
 Read the selected specialist's relevant recipe, not every provider or fixture.
 Choose the art technique before a generation provider: supplied/authored packs,
-modular materials, composed ground with separate props, or layered scene artwork
-are different production paths. Use the catalog's
+text-to-image foundations, image-to-image adaptations, modular materials, composed
+ground with separate props, layered scene artwork or hybrids by asset family are
+different production paths. Use the catalog's
 [technique routing](../README.md#choose-the-art-technique) to select the minimum
 useful recipes. Composed ground needs contact and traversal checks, but does not
 need a 47-mask tileset. Supplied art does not need a generation request.

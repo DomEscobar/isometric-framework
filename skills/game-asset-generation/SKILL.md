@@ -44,6 +44,23 @@ authored character frames. Record which technique owns each asset family. Do not
 silently change providers, mix styles or substitute example artwork after failure;
 use an agreed fallback or raise the specific decision that needs changing.
 
+Text-to-image is a supported independent production technique when no approved visual source
+exists. Use it to establish a complete scene foundation or a coordinated asset
+family, not as a sequence of unrelated one-off prompts. Generate a small candidate
+set under the same projection, palette, light direction, pixel density and scale;
+select one candidate in the project contract as the visual authority. Subsequent
+text-to-image requests must repeat those constraints and compare against that
+authority. An accepted output may be used directly, sliced or layered without an
+image-to-image pass. A model endpoint that cannot accept images can still be used,
+but the agent must expect more rejection and authored normalization work.
+
+Image-to-image is optional. Use it when an approved image must constrain layout,
+identity, materials or composition, and use masked editing for bounded repairs.
+Do not introduce an image-to-image step merely because a text-to-image result was
+generated. Prefer it when repeated text-only attempts drift in projection, palette,
+object scale or terrain language. Preserve the original and record every submitted
+reference and mask.
+
 Exact geometry does not require code-painted ground. When the selected technique
 is a composed generated landscape, supply the host layout and style reference,
 then measure alignment before using the optional

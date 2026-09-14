@@ -46,7 +46,11 @@ are placeholders, not approved product choices.
 
 Use existing, authored, generated, composed, or layered work according to the
 contract. Preserve decisions already made. Ask about a provider and generation
-budget only when generation is needed.
+budget only when generation is needed. Text-to-image and image-to-image are both
+supported: text-to-image can establish the first coherent visual foundation, while
+image-to-image can preserve an approved layout, identity or material treatment.
+Choose the technique before the provider. Once a generated candidate is approved,
+record it as the visual authority and use it to prevent later asset-family drift.
 
 ## 3. Select the relevant skills
 

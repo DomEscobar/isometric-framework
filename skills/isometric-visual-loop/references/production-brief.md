@@ -8,6 +8,11 @@ form. Preserve prior decisions and do not create another contract.
   completeness and effort. Separate a finished environment from a technical trial.
 - **Art direction:** original reference and its role (style/layout/both), projection,
   working pixel scale, palette/light, player-relative scale and visual hierarchy.
+- **Production technique:** supplied/authored, text-to-image foundation,
+  image-to-image adaptation, modular generation, composed/layered artwork, or a
+  hybrid split by asset family. For text-to-image, define how one accepted candidate
+  becomes the visual authority. For image-to-image, identify exactly which reference
+  properties must remain stable. Record a provider only when generation is selected.
 - **World layout:** regions, landmarks, connecting routes and views. Note which
   buildings need only exteriors and which require traversable interiors/passages.
 - **Ground composition:** material adjacencies, path and bank contours, transition

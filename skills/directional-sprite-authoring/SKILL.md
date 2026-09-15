@@ -1,6 +1,6 @@
 ---
 name: directional-sprite-authoring
-description: Author directionally consistent character poses and action spritesheets from reference images, map them to this isometric runtime, and verify facing, frame contacts, and action playback. Use for turnarounds, walk/jump/attack poses, or incorrectly facing animated characters.
+description: Author directional character poses and animation frames from images or video, map them to this isometric runtime, and verify facing, frame contacts, and playback. Use for turnarounds, walk/jump/attack sprites, video-to-sprite extraction, or incorrectly facing characters.
 ---
 
 # Directional sprite authoring
@@ -24,7 +24,12 @@ directions are intentionally excluded or explicitly mapped as visual compromises
 
 Choose an approved character reference: proportions, clothing, palette, equipment
 hand, asymmetric details, lighting, camera elevation, canvas, and display scale.
-Generate and review neutral NE/SE/SW/NW views first. Identify front/back from
+For generated character walks, approve a neutral character view in each requested
+direction before animating it. A mannequin supplies poses, not character identity.
+For the two-template SE/NE workflow, establish SE, derive and review NE from that
+approved character, then pair each view with its matching mannequin as described
+in [walk templates](references/walk-templates.md#establish-the-character-before-animation).
+Reuse existing approved views instead of regenerating them. Identify front/back from
 face/chest versus back/pack, and left/right from the nose, torso, and feet together.
 An arrow or filename is a label, not evidence. Reject or relabel a misfacing
 candidate based on what it visibly depicts; never rotate the controls to fit it.
@@ -36,11 +41,22 @@ not counted as an independently drawn direction.
 
 ## Generate poses against approved references
 
-Use the project's selected provider and its reference workflow for repeated poses.
-The [Seedream pose recipe](references/poses.md) is one optional implementation,
-not a provider selection rule. Reference editing does not prove animation
-coherence or exact facing.
+Use the project's selected production route: authored frames, generated strips,
+individual poses, or [video-derived frames](references/video-to-sprites.md).
+For generated animation, start with the approved character view; use a matching
+pose or motion reference when that route calls for one. Generate one directional
+animation candidate, visually inspect its frames and playback, repair diagnosed
+defects, and recheck before acceptance. Reuse existing approved frames or a supplied
+video instead of generating again. A motion-reference video is optional, and does
+not guarantee exact output poses or timestamps.
+Do not plan around getting a finished walking sheet in one request. Generating
+frames separately also requires checking consistency across the assembled clip.
 Check one action in one direction before requesting a whole matrix.
+
+For a four-frame walk animation, the optional bundled
+[NE and SE mannequin templates](references/walk-templates.md) provide isolated
+pose references. Use them when their proportions and camera fit the character;
+they are guidance, not proof that generated frames animate correctly.
 
 When passing exact crops to a provider, use the offline request bundle described
 by [game asset generation](../game-asset-generation/references/request-preparation.md).
@@ -57,10 +73,12 @@ When approved and rejected poses share a sheet, supply only the approved crops
 as identity references. For example, if the neutral row passed but the walk rows
 repeat one leading foot, isolate the neutral views before requesting new contacts;
 do not send the failed rows with an instruction to ignore them. Keep rejected
-frames in the review record, outside the reference inputs for the next attempt.
+frames in the review record. Include them in a repair request only as explicitly
+identified edit targets, alongside the approved pose and identity references.
 
-Define action phases before generating: walk contact/pass/opposite contact/pass;
-attack anticipation/strike/recovery; jump pose appropriate to the current runtime.
+Define [action phases](references/poses.md) before generating: walk
+contact/pass/opposite contact/pass; attack anticipation/strike/recovery; jump pose
+appropriate to the current runtime.
 These are phase plans, not claims that isolated generated images form smooth
 in-between motion. Expand frames only when the intended playback needs them.
 
@@ -91,6 +109,11 @@ creates missing poses. A generated full sheet can also be used, but its actual
 cell boundaries/order must be measured and visually classified rather than
 inferred from a requested row layout.
 
+For video, the [extraction helper](references/video-to-sprites.md#prepare-and-export)
+records actual decoded timestamps and applies one explicit crop and mask across
+selected frames. Cycle suggestions and filenames are not facing or gait evidence.
+Keep extraction settings in its recipe and derive the packer input from that recipe.
+
 ## Verify the matrix and play it
 
 Use the [decoded packed-art inspector](../isometric-visual-loop/references/acceptance.md)
@@ -104,6 +127,30 @@ Compare each clip at native scale and the host's intended display size. Inspect
 every frame and the loop seam for facing changes, identity drift, swapped hands,
 foot/root drift, halo damage, and apparent scale changes. Frame-by-frame review
 and playback catch different defects; preserve both forms of evidence.
+
+Visual review is an acceptance gate, not an optional report. Open the actual
+reference/candidate comparison and observe at least two complete playback cycles
+at the intended speed, including the loop seam. If playback cannot be inspected,
+mark motion unverified; do not certify it from a contact sheet or script results.
+
+A smaller multimodal reviewer can inspect numbered reference/frame comparisons
+for bounded checks such as facing or obvious mask damage. Require frame IDs,
+visible evidence, and `pass`, `fail`, or `uncertain`; do not replace visual playback
+with confidence scores or a general "looks good" judgement. Route ambiguous gait,
+anatomy and seam findings to further review. Technical checks and reviewer verdicts
+remain separate; neither automatically establishes the other's result.
+
+For each failure, record the affected frames, visible defect, and intended
+correction. Repair the smallest affected region or frames against the approved
+pose and identity references, preserving accepted pixels where possible. A failed
+candidate may be the edit target, but must not become the new pose/identity
+authority. Reassemble and recheck the whole clip after every repair or cleanup,
+including previously accepted frames and transitions. Keep before/after images
+and playback evidence. Stop within the agreed repair budget; a repeated defect
+without a new diagnosis requires revising the approach, not another blind retry.
+Unresolved facing, anatomy or gait failures block acceptance and further matrix
+expansion. Template-specific checks are in the
+[walk-template review loop](references/walk-templates.md#visual-check-and-repair).
 
 In the host scene, move along all required axes and release to idle. Test jumping
 only when it is supported and included in the requested action coverage.

@@ -1,6 +1,6 @@
 ---
 name: game-asset-generation
-description: Create game sprite and texture candidates using the project's chosen Retro Diffusion MCP, WaveSpeed Seedream, or other available provider; prepare transparent cutouts and inspect decoded alpha before art integration. Use for new raster assets or cutouts, not unrelated runtime work.
+description: Create game sprite and texture candidates using the project's selected image or video provider; prepare transparent cutouts and inspect decoded alpha before art integration. Use for new raster assets or cutouts, not unrelated runtime work.
 ---
 
 # Game asset generation
@@ -22,25 +22,24 @@ An available tool is not automatically the project's preferred art pipeline.
 
 | Need | Option | Other supported approach |
 | --- | --- | --- |
-| Pixel sprites, animation or tileset candidates | [Retro Diffusion MCP](references/retro-diffusion.md), with a compatible selected style | Another project-approved provider or authored/supplied assets |
+| Character animation candidates | [Directional sprite workflow](../directional-sprite-authoring/SKILL.md) using the project's selected image or video provider | Authored or supplied animation frames |
 | General raster artwork | WaveSpeed `bytedance/seedream-v5.0-pro` | An already available image provider, local generator, or supplied/licensed art |
 | Reference-guided variants | Selected provider's reference workflow, such as Seedream Pro Edit | Authored edits preserving the approved identity |
 | Transparent prop/actor | Preserve valid existing alpha; otherwise WaveSpeed `wavespeed-ai/image-background-remover` | Local CPU `rembg` |
 | Exact modular stone/terrain geometry | Host geometry and measured contact edges | Compatible authored, supplied or generated appearance on that geometry |
 
-Neither provider is a universal default or benchmarked winner in this framework.
+No provider is a universal default or benchmarked winner in this framework.
 Generated PNGs need not contain usable alpha. Background
 removal is a separate operation and cannot fix an incorrect perspective.
 
-Read only the selected provider's recipe: [WaveSpeed usage](references/wavespeed.md)
-for its API jobs, or the Retro Diffusion reference above for its MCP tools. Read
+Read [WaveSpeed usage](references/wavespeed.md) when that provider is selected. Read
 [local removal and alpha review](references/backgrounds.md) when removal is needed.
-The Retro Diffusion path requires its MCP connection; the included WaveSpeed
-client uses HTTP directly. These are authoring dependencies, not runtime services.
+The included WaveSpeed image client uses HTTP directly. Generation tools are
+authoring dependencies, not runtime services.
 
 World assembly, image source and provider are separate decisions. Select modular
-terrain, composed ground, layered artwork or a hybrid with the visual loop first.
-A project may explicitly
+terrain, composed ground, layered artwork or a hybrid with the
+[visual loop](../isometric-visual-loop/SKILL.md) first. A project may explicitly
 choose generated materials with deterministic tile assembly and separately
 authored character frames. Record which technique owns each asset family. Do not
 silently change providers, mix styles or substitute example artwork after failure;
@@ -99,12 +98,17 @@ upright objects before registration or another generation. If one fails, preserv
 it and revise the specific conflicting constraint. Do not repaint a convincing
 but unsupported ledge as a walkable path or assume slicing fixes layer ownership.
 
-## Generate a representative candidate first
+## Test a candidate, then its connected area
 
 Use the host's established projection, palette, light direction, target actor/prop
 proportions, and intended source pixel density. Create one asset before a large
-pack. Favor separate assets or small controlled sets over an atlas whose exact
-cell layout exists only in the prompt. Measure actual output dimensions.
+pack to test the image route. For environment production, derive this candidate
+and the needed family variants from the [planned areas](../isometric-visual-loop/references/environment-composition.md).
+A successful isolated asset does not approve the family or scene: assemble its
+related surfaces and neighboring objects in the host before expansion. Separate
+generation requests may serve one jointly designed area; no single-image or atlas
+output is required. Favor controlled sets over an atlas whose exact cell layout
+exists only in the prompt. Measure actual output dimensions.
 
 Choose the asset's role before requesting a cutout. Rooted scenery may need a
 small composed contact patch: roots, exposed soil, low grass and contact shadow
@@ -120,12 +124,14 @@ green behind foliage or white behind white petals. This is preparation for
 segmentation, not a promise of perfect color-key removal. Terrain intended to fill
 a tile does not need foreground segmentation; it can destroy the tile's edges.
 
-Example brief: "One compact orange marigold clump for a 2:1 isometric pixel-art
+Portable-cutout example only: "One compact orange marigold clump for a 2:1 isometric pixel-art
 garden. Warm upper-left lighting, crisp clustered pixels, complete fine stems and
 leaves, no pot, soil or cast shadow. Centered with generous margins on a uniform
 contrasting backdrop. No text or checkerboard. Match the host's approved palette."
 Replace the subject and palette with the actual game brief; a text-to-image
-endpoint cannot see an unprovided reference.
+endpoint cannot see an unprovided reference. Its no-soil instruction is unsuitable
+for a rooted contact patch; use the connected-area and grounded-object guidance
+for scenery that must join its surroundings.
 
 For a grounded object with measured contact and a targeted repair, adapt the
 [grounded prop prompt patterns](references/grounded-prop-prompts.md). These
@@ -163,7 +169,9 @@ multiasset generation does not require that receipt.
    Keep unresolved defects visible in the handoff.
 5. Save accepted files beside the host's art, hash them, then apply the integration
    skill. Keep original and processed hashes, exact prompt/request, provider/model,
-   prediction ID, processing version/model, and any crop or canvas changes.
+   prediction ID, processing version/model, and any crop or canvas changes. Once the
+   outputs are bound to the host manifest, run the
+   [packed-art and acceptance checks](../isometric-visual-loop/references/acceptance.md).
 
 Run remote work within the user's existing provider and spending authorization;
 do not ask again when it already covers the action. Creating this skill alone

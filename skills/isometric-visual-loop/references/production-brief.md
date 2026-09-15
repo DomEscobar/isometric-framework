@@ -18,6 +18,11 @@ form. Preserve prior decisions and do not create another contract.
   in host production data; choose initial visual references before acceptance freeze.
 - **World layout:** regions, landmarks, connecting routes and views. Note which
   buildings need only exteriors and which require traversable interiors/passages.
+- **Environment composition:** focal areas, scale relationships, dense/quiet
+  space and the intended connections between adjoining areas. Derive related
+  asset families and deliberate repetition/variation from those uses, following
+  [environment composition](environment-composition.md). Keep concrete family
+  selections in host production data; avoid object-count quality targets.
 - **Ground composition:** material adjacencies, path and bank contours, transition
   treatment, shared pixel density and variation across cells. For natural terrain,
   use the [landscape contract](../../consistent-tileset-authoring/references/landscape-composition.md)

@@ -84,8 +84,14 @@ source control. Preserve provenance and notices.
 
 Changes to the art checker or preview require `npm run test:art-skill`; open a
 generated preview and verify decoding, shared scale, overlays, playback and failure
-labels after preview changes. Run the relevant Python tests when changing visual
-acceptance or production helpers. Starter/distribution changes require
+labels after preview changes. Changes to the assembly checker require
+`npm run test:assembly-skill`, which loads the engine's own core through
+`--experimental-strip-types`. Run the relevant Python tests when changing visual
+acceptance or production helpers. For directional sprite tools, run
+`uv run --python 3.12 --with "Pillow==11.3.0" python -B -m unittest discover -s skills/directional-sprite-authoring/tests`.
+Video fixtures require `ffmpeg` and `ffprobe` on PATH; report skipped fixtures as
+unverified, and inspect a generated extraction preview after changing it.
+Starter/distribution changes require
 `npm run build:package`, `npm run test:starter`, and a fresh generated project's
 install, check, build and desktop/touch browser journey. Verify packed paths too;
 a source-checkout pass does not establish a working consumer package.

@@ -26,9 +26,9 @@ full pack. Acceptance remains frozen before calibration implementation/expansion
 | Stage | Required work before expansion |
 | --- | --- |
 | preflight | One selected asset decodes and loads in dev and production; projection and pixel scale established; provider only when generation is selected |
-| layout | Semantic regions, reserved routes, supports, entrances and blockout in the runtime's actual projection |
-| assembly | Actual selected artwork, measured rigid contact/scale binding, controllable actor, materials and riskiest structure in the live host |
-| static | All placed instances checked; complete ground-only/dressed composition and required mobile regions |
+| layout | Semantic regions, reserved routes, supports and entrances; inspect whole-scene grouping, open space and hierarchy in the runtime-projected blockout |
+| assembly | A representative connected area in the live host: related objects/surfaces, measured rigid bindings, usable approaches and controllable actor |
+| static | All placed instances checked; separate composition, relationships/variation, connections and style reviews across ground-only/dressed views and required mobile regions |
 | motion | Complete requested cycles, occlusion, interactions, input and contextual timing |
 | final | Current whole-image judgment against the original target, followed by prior findings and full acceptance |
 
@@ -36,6 +36,18 @@ All configured checks block their next stage until passed. Whole-scene visual
 requirements need static review coverage; nonvisual requirements need motion-stage
 review coverage, including every protected view. Rigid assets require an assembly
 geometry check. A passing alpha/animation inspection is not a geometry check.
+
+Apply [environment composition](environment-composition.md) within these existing
+stages. Plan areas before deriving asset families; inspect different area types
+and their boundaries during expansion. Reuse images for multiple review criteria,
+but retain separate outcomes so good style cannot waive a failed relationship or
+contact. Focused repairs keep their affected scope; intentional regularity and
+quiet space do not require additional variants or decoration.
+
+For an unchanged candidate, begin the independent checks in the same stage before
+capturing their shared images; then submit each criterion's own observations.
+Evidence must postdate every ticket using it. This permits one capture session
+without repeating the browser journey for each visual criterion.
 
 ## Protected check schema
 

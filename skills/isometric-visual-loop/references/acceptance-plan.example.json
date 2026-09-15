@@ -14,10 +14,39 @@
     {
       "id": "style",
       "domain": "visual",
-      "description": "Approved style, terrain contacts and player readability across the complete requested scene",
+      "description": "Approved pixel treatment, palette, light and player readability across the complete requested scene",
       "views": [
         "desktop",
         "mobile"
+      ]
+    },
+    {
+      "id": "composition",
+      "domain": "visual",
+      "description": "Whole-scene spatial hierarchy gives routes, open ground, landmarks and dense areas deliberate readable roles",
+      "views": [
+        "desktop",
+        "mobile",
+        "ground-only"
+      ]
+    },
+    {
+      "id": "relationships",
+      "domain": "visual",
+      "description": "Region and object families remain coherent, with intentional repeated motifs across all scenery in scope",
+      "views": [
+        "desktop",
+        "mobile"
+      ]
+    },
+    {
+      "id": "connections",
+      "domain": "visual",
+      "description": "Objects visibly join their supporting ground and adjacent materials through deliberate roots, foundations, banks, paths and entrances",
+      "views": [
+        "desktop",
+        "mobile",
+        "contact-detail"
       ]
     },
     {
@@ -57,7 +86,7 @@
       "view": "desktop",
       "reference": "host/art/target.png",
       "role": "style",
-      "focus": "Approved pixel treatment, material connections, hierarchy and readable traversal; layout need not copy a style-only reference"
+      "focus": "Approved pixel treatment, palette, light and readable player scale; a style-only reference does not require copied positions"
     },
     {
       "id": "style-mobile",
@@ -67,7 +96,87 @@
       "view": "mobile",
       "reference": "host/art/target.png",
       "role": "style",
-      "focus": "Approved pixel treatment, material connections, hierarchy and readable traversal; layout need not copy a style-only reference"
+      "focus": "Approved pixel treatment, palette, light and readable player scale at the mobile viewport; a style-only reference does not require copied positions"
+    },
+    {
+      "id": "composition-desktop",
+      "requirements": [
+        "composition"
+      ],
+      "view": "desktop",
+      "reference": "host/art/target.png",
+      "role": "style",
+      "focus": "Whole-scene hierarchy: landmarks, routes, open ground and dense areas have readable intentional roles; a style-only reference does not prescribe exact placement"
+    },
+    {
+      "id": "composition-mobile",
+      "requirements": [
+        "composition"
+      ],
+      "view": "mobile",
+      "reference": "host/art/target.png",
+      "role": "style",
+      "focus": "Whole-scene hierarchy remains readable at mobile scale, including route and landmark priority; a style-only reference does not prescribe exact placement"
+    },
+    {
+      "id": "composition-ground-only",
+      "requirements": [
+        "composition"
+      ],
+      "view": "ground-only",
+      "reference": "host/art/target.png",
+      "role": "style",
+      "focus": "Ground-only composition exposes continuous region shapes, circulation wear, bank lips and intentional quiet versus dense areas without upright props"
+    },
+    {
+      "id": "relationships-desktop",
+      "requirements": [
+        "relationships"
+      ],
+      "view": "desktop",
+      "reference": "host/art/target.png",
+      "role": "style",
+      "focus": "Coherent region and object families, including the strongest repeated motif across all scenery in scope; a style-only reference does not prescribe exact placement"
+    },
+    {
+      "id": "relationships-mobile",
+      "requirements": [
+        "relationships"
+      ],
+      "view": "mobile",
+      "reference": "host/art/target.png",
+      "role": "style",
+      "focus": "Coherent region and object families remain legible at mobile scale, including intentional repetition across all scenery in scope"
+    },
+    {
+      "id": "connections-desktop",
+      "requirements": [
+        "connections"
+      ],
+      "view": "desktop",
+      "reference": "host/art/target.png",
+      "role": "style",
+      "focus": "Visible object and material joins at roots, foundations, banks, paths and entrances; a style-only reference does not prescribe exact placement"
+    },
+    {
+      "id": "connections-mobile",
+      "requirements": [
+        "connections"
+      ],
+      "view": "mobile",
+      "reference": "host/art/target.png",
+      "role": "style",
+      "focus": "Visible object and material joins remain legible at mobile scale, especially active paths and entrances"
+    },
+    {
+      "id": "connections-contact-detail",
+      "requirements": [
+        "connections"
+      ],
+      "view": "contact-detail",
+      "reference": "host/art/target.png",
+      "role": "style",
+      "focus": "Close contact detail shows roots, foundations, banks, paths or entrances joined to their support without floating seams or pasted-on edges"
     }
   ],
   "production": {
@@ -155,7 +264,10 @@
         "stage": "assembly",
         "method": "review",
         "requirements": [
-          "style"
+          "style",
+          "composition",
+          "relationships",
+          "connections"
         ],
         "views": [
           "desktop"
@@ -205,7 +317,7 @@
         }
       },
       {
-        "id": "composition",
+        "id": "style-readability",
         "stage": "static",
         "method": "review",
         "requirements": [
@@ -214,6 +326,62 @@
         "views": [
           "desktop",
           "mobile"
+        ],
+        "inputs": [
+          "host/src",
+          "host/art",
+          "host/layout.json"
+        ],
+        "evidenceKind": "image"
+      },
+      {
+        "id": "composition",
+        "stage": "static",
+        "method": "review",
+        "requirements": [
+          "composition"
+        ],
+        "views": [
+          "desktop",
+          "mobile",
+          "ground-only"
+        ],
+        "inputs": [
+          "host/src",
+          "host/art",
+          "host/layout.json"
+        ],
+        "evidenceKind": "image"
+      },
+      {
+        "id": "scenery-relationships",
+        "stage": "static",
+        "method": "review",
+        "requirements": [
+          "relationships"
+        ],
+        "views": [
+          "desktop",
+          "mobile"
+        ],
+        "inputs": [
+          "host/src",
+          "host/art",
+          "host/layout.json"
+        ],
+        "evidenceKind": "image"
+      },
+      {
+        "id": "material-connections",
+        "stage": "static",
+        "method": "review",
+        "requirements": [
+          "connections"
+        ],
+        "views": [
+          "desktop",
+          "mobile",
+          "contact-detail"
         ],
         "inputs": [
           "host/src",
@@ -281,7 +449,10 @@
         "stage": "final",
         "method": "review",
         "requirements": [
-          "style"
+          "style",
+          "composition",
+          "relationships",
+          "connections"
         ],
         "views": [
           "desktop",

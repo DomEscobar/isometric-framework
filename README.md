@@ -55,8 +55,9 @@ Within the approved contract, resolve any missing concept and rough layout befor
 freezing acceptance. Record the selected visual reference in production data so
 later assets share its projection, palette, scale, light and pixel treatment.
 Preserve existing decisions. Ask about provider and budget only when generation
-is needed. Calibrate a
-small playable assembly, then complete the whole agreed world;
+is needed. Plan the whole composition before its asset list; derive families and
+deliberate variation from the areas they serve. Calibrate a connected area with
+related objects, useful open space and ground connections. Then complete the whole agreed world;
 do not shrink a rich request to the calibration scene. Playtest the real game and
 review visuals, motion, gameplay, and performance separately before declaring it
 complete.

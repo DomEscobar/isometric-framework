@@ -16,8 +16,11 @@ Record the relevant treatment in the existing brief, not another contract:
 | Building beside a trail | Foundation and doorway meet their reserved ground | Foundation shadow, sparse growth at the base and worn approach connect to the threshold. |
 | Stream with a crossing | Shared banks bound the water; deck has actual walking support | Wet edge, exposed bank and grass lip form a continuous cross-section; deck meets both landings. |
 
-Choose one representative assembly with the actor. Compose its quiet ground,
-transition and object before producing a whole family. Match pixel cluster size,
+Choose one representative area with the actor and related objects/surfaces, using
+the [environment plan](../../isometric-visual-loop/references/environment-composition.md).
+Compose its useful open space, transitions and objects before expanding families.
+A good single root or threshold does not establish the area's composition or its
+connection to adjacent areas. Match pixel cluster size,
 outline weight, palette/light and stylized proportions at actual playing zoom.
 Different materials need different treatment; uniform speckles are not variety.
 
@@ -46,6 +49,12 @@ Join patches to the surrounding material with irregular, deliberate cluster
 boundaries and a shared world origin. Avoid identical oval dirt pads under every
 tree, double shadows, rectangular patch seams and repeated border stamps. Keep
 the usable route clear; visual fringe must not promise unsupported walkable land.
+
+Adapt the join to its actual neighbor: foundation on paving, foundation on soil,
+rock in dry ground and rock beside water need different edge treatment when those
+contexts exist. Reuse compatible contacts; add a treatment only for a real missing
+context. Designing the join together does not require baking all parts into one
+PNG, nor does separate export justify dropping the connection.
 
 ## Approve the connection in the game
 

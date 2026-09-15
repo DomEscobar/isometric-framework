@@ -6,6 +6,11 @@ integration work.
 
 ## Output and input roles
 
+Derive the object from its planned area: neighboring material, reachable approach,
+role in the grouping and required family differences. Use the accepted area/material
+reference when available. A one-object request below tests that component; only its
+integration with adjoining surfaces establishes a successful environment section.
+
 Request one grounded static object with a complete silhouette, real alpha or a
 declared removable backdrop, generous margin, a measured contact origin and the
 host's projection, scale, pixel density, palette and light. Input image 1 may be
@@ -32,14 +37,22 @@ authority: preserve its declared contact origin, supported surface height and
 scale relative to the actor; do not copy unrelated layout.
 
 Show the complete upright silhouette with a clear base contact and generous
-margin. Keep low root and shadow details visually separable for later extraction;
-do not include a lawn tile around the shrub. Keep the surrounding route clear.
+margin. Its roots meet the ground material declared by input image 2; keep the
+low root, earth/grass edge and restrained shadow details needed for that join
+visually separable for later extraction. End the contact patch in irregular crisp
+clusters compatible with the surrounding ground, without a rectangular lawn tile
+or opaque oval pad. Keep the surrounding route clear.
 Use genuine transparency outside the silhouette (or a flat contrasting
 background suitable for removal). No checkerboard, text, labels, scenery,
 duplicate objects, cast shadow detached from the contact, or baked collision.
 ```
 
 ## Targeted correction example
+
+Use this example only after host inspection confirms the placement, projection
+and contact origin are correct and the defect is missing source contact pixels.
+An incorrect anchor or host position needs its own measured integration repair;
+do not repaint the asset around it.
 
 ```text
 Edit input image 1, the prop candidate, using input image 2 as the original
@@ -53,6 +66,11 @@ text, a second object or directional animation frames.
 ```
 
 ## Downstream checks
+
+When another instance needs a variant, specify its actual role: for example a low,
+wide grouping at a courtyard edge versus an upright accent by an entrance. Preserve
+the approved material treatment and scale. Do not request arbitrary variations,
+recolor duplicates or remove useful empty space merely to grow the asset count.
 
 Decode alpha and inspect a light/dark/magenta board; verify holes, thin parts,
 halos and lost pixels at native and playing scale. Measure the contact origin,

@@ -40,8 +40,10 @@ uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite
 
 Input paths resolve relative to the spec. Use a new output directory. Every PNG
 must already match `cell` dimensions and contain both transparent and foreground
-pixels. Do not remove backgrounds by deleting the same color from every frame;
-apply the generation skill's cutout inspection instead. Unknown fields, duplicate
+pixels. A shared color-key mask is appropriate only when that background color is
+absent from the character and the resulting masks have been visually checked.
+Do not delete a subject color to obtain transparency. Apply the generation skill's
+cutout inspection before packing. Unknown fields, duplicate
 action/direction pairs, incomplete required matrices, invalid sizes and excessive
 allocations fail rather than silently creating a partial sheet.
 
@@ -62,6 +64,11 @@ The first supplied clip for each native action becomes its general fallback.
 An undeclared direction may therefore show that facing. The required matrix
 checks only the actions/directions you explicitly requested; it does not certify
 eight-way support for a four-view pack.
+
+For [video-derived frames](video-to-sprites.md), the extraction tool emits
+`sprite-pack.json` from the saved selection, playback rate, direction and measured
+anchor. Run this packer on that file; do not maintain a second hand-written list of
+frame indices or infer directions from the source filename.
 
 Keep `sprite-pack.json` and input source records with the host pack. Copy accepted
 output to its maintained art directory and update the image URL through the host

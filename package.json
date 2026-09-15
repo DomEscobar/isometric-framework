@@ -37,6 +37,7 @@
     "skills/consistent-tileset-authoring/references",
     "skills/consistent-tileset-authoring/scripts",
     "skills/directional-sprite-authoring/SKILL.md",
+    "skills/directional-sprite-authoring/assets/walk-templates",
     "skills/directional-sprite-authoring/references",
     "skills/directional-sprite-authoring/scripts",
     "skills/game-asset-generation/SKILL.md",
@@ -65,6 +66,7 @@
     "preview": "vite preview --outDir demo-dist --host 127.0.0.1 --port 4175 --strictPort",
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "test:art-skill": "node --test skills/isometric-art-integration/tests/*.test.mjs",
+    "test:assembly-skill": "node --experimental-strip-types --test skills/multi-tile-asset-assembly/tests/*.test.mjs",
     "test:asset-generation": "node --test skills/game-asset-generation/tests/*.test.mjs",
     "test:browser": "node tests/run-browser.mjs",
     "test:starter": "node --test tests/create-game.test.mjs"

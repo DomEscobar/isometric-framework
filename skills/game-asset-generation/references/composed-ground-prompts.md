@@ -21,6 +21,12 @@ normally need separate layers when depth or motion requires it. A quiet future
 building site is ground at the declared height, not permission to invent a cliff.
 Inspect ground-only while retaining those owned contact details.
 
+Derive these surfaces from the [planned environment areas](../../isometric-visual-loop/references/environment-composition.md),
+including their intended neighboring objects. Before separate ground/prop requests,
+agree which doorway approach, base material and contact zone each supplies. A
+ground-only output is one layer of that design, not an independently styled blank
+surface to decorate later. Carry the same decisions into later prop requests.
+
 For fixed layout, provide the clean runtime-projected guide with named material
 roles. Keep diagnostic grid/labels in a separate review image. A reference-capable
 request can receive the guide; a text-only endpoint cannot. Do not invent image
@@ -63,6 +69,11 @@ widens at the junction and meets the future doorway approach flush at the same
 walking height. Grass enters the path edge in irregular clumps; the centre stays
 readable and open. Use broad quiet material patches and sparse wear, without a
 texture pattern restarting at every cell.
+
+Treat the reserved entrance approach as part of its adjoining area: concentrate
+wear along the intended access and carry the paving/earth material up to the
+declared future foundation contact. Preserve useful open space and the guide's
+footprint; do not invent an upright object or an unrelated garden for that site.
 
 The brook is one continuous channel following the guide. Grass, exposed wet earth
 and water meet along joined banks; do not add terraces, retaining walls or raised

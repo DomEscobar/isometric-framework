@@ -66,6 +66,9 @@ test('packed consumer archive contains only consumer docs and skill tooling', ()
   assert.ok(files.includes('package/templates/game/PROJECT_CONTRACT.md'));
   assert.ok(files.includes('package/skills/isometric-visual-loop/SKILL.md'));
   assert.ok(files.includes('package/skills/isometric-visual-loop/scripts/verify-world.py'));
+  assert.ok(files.includes('package/skills/directional-sprite-authoring/scripts/extract-video.py'));
+  assert.ok(files.includes('package/skills/directional-sprite-authoring/scripts/pack-sprites.py'));
+  assert.ok(files.includes('package/skills/directional-sprite-authoring/references/video-to-sprites.md'));
   assert.ok(!files.some(file => /(^|\/)(tests|__pycache__)(\/|$)/.test(file)));
   assert.ok(!files.some(file => file.includes('examples/') || file.includes('demo/')));
   assert.ok(!files.includes('package/AGENTS.md'));

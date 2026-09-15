@@ -13,7 +13,12 @@ The source areas informing the extraction include these locations in the origina
 | `Client/engine/move-handler.js`, `handlePress`, around line 152 | Original control orientation retained: W increases columns (northeast), D increases rows (southeast), S decreases columns (southwest), A decreases rows (northwest). Keyboard and mobile directional pad share this mapping. |
 | `Client/components/panels/builder/` and application engine integration | Evidence of editor/application coupling; these UI modules are not dependencies of this package. |
 
-The extraction introduces per-instance ownership, explicit destruction, a versioned JSON format, validation, and event-based gameplay integration. The demo's garden data, generated visual shapes, page, and collection rule are separate application examples. No existing bitmap asset pack is copied into this folder.
+The extraction introduces per-instance ownership, explicit destruction, a versioned JSON format, validation, and event-based gameplay integration. The demo's garden data, generated visual shapes, page, and collection rule are separate application examples.
+
+The directional sprite skill includes two user-supplied mannequin pose templates.
+Their source, crop rectangles, hashes and rights status are recorded in
+[template provenance](skills/directional-sprite-authoring/assets/walk-templates/provenance.json).
+They are pose guidance, not a bundled character art pack.
 
 ## Licensing
 

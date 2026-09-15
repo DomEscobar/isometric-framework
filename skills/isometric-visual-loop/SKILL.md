@@ -21,6 +21,10 @@ Record the reference's role (style, layout or both), landmarks, routes, material
 relationships, actor proportions and required motion. Infer supporting details
 from the supplied image; ask only about consequential missing choices.
 
+For complete environments, read [environment composition](references/environment-composition.md)
+before deriving the asset list. Plan the whole scene, connected areas and their
+contacts; choose families and meaningful variants from those relationships.
+
 Choose world assembly first: reusable modular terrain, composed ground, layered
 scene artwork, or a hybrid. Then choose supplied/authored/text-to-image/image-to-image
 sources per asset family and any needed provider. Use the catalog's support limits
@@ -70,8 +74,9 @@ only when the evidence shows its public behavior prevents the required result.
 
 ## Calibrate a composed patch
 
-The unit of visual production is an object with its terrain connection, not an
-isolated sprite followed by late decoration. Use
+The unit of visual production is a connected area: related objects, useful open
+space and adjoining surfaces. An isolated asset tests technical feasibility; the
+area tests composition and relationships. Use
 [grounded assemblies](../isometric-art-integration/references/grounded-assemblies.md)
 for roots, foundations, worn approaches and banks. Record contact treatment in
 the existing brief; no additional schema is needed.
@@ -84,16 +89,18 @@ the existing brief; no additional schema is needed.
    Check each water body's continuity as well as walking routes; point-touching
    cells can block a route while failing to form a flowing channel. The layout
    schema supports explicit water hidden beneath bridge decks.
-2. Choose the riskiest representative patch with the actor, an object, its ground
-   transition and any relevant motion. Match playing zoom, pixel density and
-   stylized proportions to the reference.
+2. Inspect the rough whole-scene arrangement, then choose a representative area
+   exposing the important object/surface relationships, the actor and relevant
+   motion. Match playing zoom, pixel density and proportions to the reference.
 3. Inspect both physical support and visible integration. The same coordinates
    can hold incompatible art; an attractive shadow cannot repair unsupported land.
 4. Review the ground with upright/optional props hidden, retaining its contact
    beds, wear and bank lips. Then inspect the dressed patch and actual arrival
    poses. A bare ground test and an isolated sprite sheet are insufficient alone.
-5. Expand directly into the complete requested scope when this patch works.
-   Reuse valid existing calibration; do not create new approval ceremonies.
+5. Expand into the complete scope using its planned families and related areas.
+   Check other area types and their shared boundaries as they appear; then review
+   the complete scene again. Reuse valid calibration and captures; do not create
+   new approval ceremonies or treat a successful area as whole-world acceptance.
 
 An explicitly bounded experiment may have a round budget. Do not impose an
 arbitrary round cap on a finished-world request or relabel unfinished work a trial.
@@ -146,8 +153,9 @@ before requesting an independent critic.
 Use a fresh independent agent when available under this workflow; otherwise
 label self-review. Give it the brief, reference role and actual images without
 the builder's preferred verdict. The critic must inspect pixels, locate defects,
-and issue pass/fail/unverified against every protected requirement. Keep physical
-support, terrain/material connection, style/readability and motion distinct.
+and issue pass/fail/unverified against every protected requirement. For complete
+environments keep composition, relationships/variation, connections and shared
+image treatment distinct; retain separate physical support and motion checks.
 Never infer visual acceptance from a receipt, frame counter or effect count.
 
 Inspect functional poses as pictures: actor feet on the near/middle/far crossing,

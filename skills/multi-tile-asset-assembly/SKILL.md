@@ -105,5 +105,9 @@ The plan is authoring evidence, not a new engine schema or a pixel/physics test.
 Finish with one rendered overlay and an actual traversal covering the requested
 entry/exit and front/behind behavior. If jumping is enabled, include the relevant
 raised solid or ceiling in that journey. Do not move a probe or weaken a blocked
-cell expectation just to get green. Report physical, visual and animation
-acceptance separately, including conservative collision or depth limitations.
+cell expectation just to get green. When the assembly carries packed sprite clips
+or tile overlays, also run the
+[decoded packed-art inspector](../isometric-visual-loop/references/acceptance.md)
+on the runtime manifest; the assembly checker reads scene bindings, not frame
+pixels. Report physical, visual and animation acceptance separately, including
+conservative collision or depth limitations.

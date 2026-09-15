@@ -104,10 +104,40 @@ generation settings. The client supports 1–10 public HTTPS reference URLs and
 leaves the provider's aspect-ratio default intact when that field is omitted.
 Embedded base64 references are outside this helper's supported inputs. References
 do not belong in the text-to-image request, whose schema has no image field.
-For a complete directional action-pose request, use
-[the pose recipe](../../directional-sprite-authoring/references/poses.md).
+For character motion, follow
+[directional sprite authoring](../../directional-sprite-authoring/SKILL.md):
+generate a candidate, visually inspect frames and playback, then repair and
+recheck. Reference support does not establish animation quality.
+
+## Optional video-to-sprite input
+
+For video-derived animation, use the selected video endpoint through the available
+WaveSpeed MCP or its documented API. The bundled `wavespeed.mjs` image client does
+not support video submissions. Read the current model schema and quote the actual
+request before spending; do not reuse an image-edit payload for video generation.
+
+One available reference-video route is
+[`google/gemini-omni-1.1-flash/reference-to-video`](https://wavespeed.ai/models/google/gemini-omni-1.1-flash/reference-to-video).
+Its schema accepts `images` for character references and optional `reference_videos`
+for motion guidance, plus `prompt`, `duration`, `resolution` and `aspect_ratio`.
+Recheck current media limits and price. Image-only animation is also valid; a motion
+guide is not mandatory and does not provide exact per-frame pose control.
+
+Supply the approved character view in the required direction. Assign each input's
+role in the prompt; a reference's facing can outweigh conflicting direction text.
+Choose a flat key color absent from the subject if transparent output is unavailable.
+Keep source videos local after completion, record job IDs and input hashes, and
+resume an existing prediction after a timeout instead of submitting again.
+
+Use [video-to-sprite extraction](../../directional-sprite-authoring/references/video-to-sprites.md)
+for deterministic preparation, selected frames and review. Inspect actual alpha,
+facing and playback; successful video generation is not accepted animation.
 
 If another provider is already available, use its supported generation/edit
 interface and retain the same source, alpha, and calibration gates. Do not switch
 providers merely to satisfy this skill. Seedream availability is not a dependency
 of a generated game's runtime.
+
+Run the [packed-art and acceptance checks](../../isometric-visual-loop/references/acceptance.md)
+on the host manifest after binding accepted outputs. A completed prediction leaves
+visual and motion acceptance open until observed.

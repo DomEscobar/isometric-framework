@@ -275,8 +275,9 @@ def build(gate, baseline_path, candidate_path, captures_path, output, previous=N
     (output / "review-request.md").write_text(
         "# Review the actual images\n\nOpen board.html in a browser or inspect its bundled source images directly. "
         "Read the protected focus and reference role for every comparison. Inspect reference, current, and previous images. "
-        "For style references compare pixel treatment, materials, density and readability, not exact object positions. "
-        "For layout/both compare camera and composition too. Locate each observation in both original images using "
+        "For style references compare pixel treatment, materials, density, composition quality, object relationships, repeated motifs across all scenery in scope and readability; "
+        "exact positions apply only to layout/both references. Focused repair scope and intentional regularity are valid when protected by the plan. "
+        "For layout/both compare camera and exact composition too. Locate each observation in both original images using "
         "[x,y,width,height] pixels. Name the actual agreement or difference and a concrete repair for every failure. "
         "Inspect the worst transition and strongest repeated motif when terrain is in scope. "
         "Reinspect all prior open findings with their same IDs; keep the complete scope open, including regressions. "

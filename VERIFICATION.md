@@ -1,5 +1,31 @@
 # Runtime verification — 2026-09-10
 
+## Environment composition workflow — 2026-09-15
+
+World production now plans the full scene, connected areas and contacts before
+deriving asset families. The shared reference distinguishes useful variation from
+deliberate regularity and preserves the selected assembly technique. Prompt
+examples carry adjoining materials into separate ground/prop requests; a floating
+base needs diagnosis before choosing image, anchor or placement repair.
+
+- The acceptance example separates style, composition, relationships and
+  connections, with overview, ground-only and contact evidence. The existing
+  schema and runtime APIs are unchanged. Review requests apply composition
+  judgment to style references without requiring copied layouts.
+- The visual-loop Python suite passed 59 tests, including independent criterion
+  failures despite passing style and coverage of the shipped acceptance example.
+  Three changed skill entrypoints validate; 207 local Markdown links resolve.
+- Package build and five starter tests passed. A fresh consumer installed, checked
+  and built; real keyboard and CDP touch journeys passed with no browser errors.
+  Arrival screenshots were inspected. Its build retains the large-chunk warning.
+- An independent text-only planning probe used connected areas and accepted formal
+  repetition. It also reopened an already chosen technique and assumed a pixel
+  repair without diagnosis; those two decision points received explicit guidance.
+  A follow-up loading-yard scenario preserved supplied modular art, diagnosed the
+  floating base first and respected the absence of generation permission.
+  This is workflow/distribution evidence, not proof of improved generated art or
+  acceptance of a finished environment. No artwork was generated for this patch.
+
 ## Executed production-stage checks
 
 Acceptance-plan version 3 now requires six stages: preflight, layout, assembly,
@@ -100,18 +126,6 @@ requirements in the acceptance example and README starter prompt.
 - No terrain compositor or engine feature was added. No art was generated and no
   rendered landscape was accepted. Runtime/browser suites were not rerun for these
   documentation-only edits; a real host build is still needed to assess results.
-
-## Retro Diffusion provider option
-
-Added a provider-specific reference within the generation skill and exposed Retro
-Diffusion MCP alongside WaveSpeed and other project-selected techniques. Removed
-the blanket Seedream preference. Guidance follows the provider's current MCP and
-compatibility documentation; no remote generation, installation or authentication
-was performed, and generated quality has not been benchmarked here.
-
-The generation skill passed metadata validation; all 62 local skill links remain
-inside `skills/`. This is a documentation change with no runtime API impact. A
-larger guided project-contract workflow remains a proposal under discussion.
 
 ## Self-contained skill references
 

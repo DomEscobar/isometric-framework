@@ -71,6 +71,46 @@ class ComparisonTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Every visual"):
             gate.freeze(self.f.plan, self.f.baseline)
 
+    def test_independent_environment_criteria_block_acceptance_when_style_passes(self):
+        f = self.f
+        ids = ("style", "composition", "relationships", "connections")
+        f.plan_data["requirements"] = [
+            {"id": rid, "domain": "visual", "views": ["desktop"],
+             "description": f"Protected {rid} criterion"}
+            for rid in ids
+        ]
+        f.plan_data["comparisons"] = [
+            {"id": rid + "-desktop", "requirements": [rid], "view": "desktop",
+             "role": "style", "reference": "reference.png", "focus": f"Inspect protected {rid}"}
+            for rid in ids
+        ]
+        f.save(f.plan, f.plan_data)
+        f.save(self.captures, {rid + "-desktop": {"path": "capture.png", "captureNotes": "Fixed camera, neutral test state"}
+                               for rid in ids})
+        template = self.build()
+        passing = gate.read(self.reviewed(template))
+        self.assertTrue(gate.accept(f.baseline, f.candidate, template.with_name("review.json"))["passed"])
+
+        omitted = copy.deepcopy(passing)
+        omitted["comparison"]["assessments"] = omitted["comparison"]["assessments"][:-1]
+        f.save(template.with_name("review.json"), omitted)
+        with self.assertRaisesRegex(ValueError, "Review every comparison"):
+            gate.accept(f.baseline, f.candidate, template.with_name("review.json"))
+
+        unverified = copy.deepcopy(passing)
+        next(v for v in unverified["verdicts"] if v["id"] == "composition")["status"] = "unverified"
+        f.save(template.with_name("review.json"), unverified)
+        with self.assertRaisesRegex(ValueError, "Requirement not accepted: composition"):
+            gate.accept(f.baseline, f.candidate, template.with_name("review.json"))
+
+        failed = copy.deepcopy(passing)
+        assessment = next(a for a in failed["comparison"]["assessments"] if a["id"] == "connections-desktop")
+        assessment["status"] = "fail"
+        assessment["observations"][0].update(status="fail", difference="Foundation visibly floats above its support", repair="Add a shared foundation contact bed")
+        f.save(template.with_name("review.json"), failed)
+        with self.assertRaisesRegex(ValueError, "Visual differences"):
+            gate.accept(f.baseline, f.candidate, template.with_name("review.json"))
+
     def test_review_packet_cannot_weaken_protected_criteria(self):
         template = self.build()
         review = self.reviewed(template)

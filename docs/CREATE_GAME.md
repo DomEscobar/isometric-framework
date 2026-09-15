@@ -78,9 +78,12 @@ the specialists the contract requires:
 
 ## 4. Calibrate, then build the agreed world
 
-Build one small playable assembly with the game's own actor, terrain, prop, and
-required motion. Use it to check proportions, contacts, routes, clips, and an
-observable rule. It is a technical milestone, not the final scope. A request for
+Plan the whole scene and its connected areas before deriving the asset list; use
+[environment composition](../skills/isometric-visual-loop/references/environment-composition.md).
+Build one representative playable area with related objects, adjoining surfaces,
+useful open space, the game's actor and required motion. Check proportions,
+relationships, contacts, routes, clips and an observable rule. It is a technical
+milestone, not the final scope. A request for
 a lively connected town and forest, for example, still requires the full agreed
 regions, traversal, atmosphere, animation, and creature loop.
 

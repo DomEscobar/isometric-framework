@@ -112,6 +112,9 @@ water transparency, or baked checkerboards. Preserve the original either way.
    For blocking beds, a closed ring blocks entry and an opening permits it. When
    editing is part of the host, verify neighbor updates and actor-cell protection.
 4. Record source/recipe, geometry, missing variants, rendered evidence and limits.
+   For world production, submit the terrain-composition and transition verdicts
+   through the [acceptance gates](../isometric-visual-loop/references/acceptance.md);
+   a focused tile repair uses the same checks with a smaller requirement scope.
    Expand to new families after this small assembly works. For water animation,
    keep the approved boundary geometry and contact fixed across frames; pair with
    [animated-environments](../animated-environments/SKILL.md).

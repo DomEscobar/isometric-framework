@@ -11,6 +11,10 @@ generation references. Each skill's supporting references use neutral examples
 and measurements; replace illustrative values with the current host's own data.
 Do not route production work through historical trial reports or example art.
 
+The optional mannequins bundled with `directional-sprite-authoring` are pose
+templates, not character identities or style references. Use them only when their
+camera and gait fit the current character.
+
 For world production, use the [packed-art and acceptance gates](isometric-visual-loop/references/acceptance.md)
 inside `isometric-visual-loop`. They check the delivered atlas, required reviews
 and evidence freshness; they do not replace visual judgment. Focused art repairs
@@ -20,10 +24,10 @@ can use the same checks with a smaller requirement scope.
 
 | Requested work | Skill | Responsibility |
 | --- | --- | --- |
-| Create a complete world from a prompt or reference, or substantially refine an environment | [isometric-visual-loop](isometric-visual-loop/SKILL.md) | Overall scope, production brief, calibration, specialist coordination and playable visual review |
+| Create a complete world from a prompt or reference, or substantially refine an environment | [isometric-visual-loop](isometric-visual-loop/SKILL.md) | Whole-scene composition, connected areas and asset families, calibration, specialist coordination and playable visual review |
 | Add an art pack or theme; fix pasted-on scenery, proportions, seams or occlusion | [isometric-art-integration](isometric-art-integration/SKILL.md) | Object-ground connections, shared scale, contact measurements and in-game acceptance |
-| Generate raster sprites or textures; prepare transparent cutouts | [game-asset-generation](game-asset-generation/SKILL.md) | Project-selected Retro Diffusion MCP, WaveSpeed or other provider; background removal, decoded alpha and provenance |
-| Create or repair character facings, walk/jump/attack poses or spritesheets | [directional-sprite-authoring](directional-sprite-authoring/SKILL.md) | Visible facing approval, coherent poses, stable frame contacts and explicit clip mapping |
+| Generate raster sprites or textures; prepare transparent cutouts | [game-asset-generation](game-asset-generation/SKILL.md) | Project-selected image or video provider; background removal, decoded alpha and provenance |
+| Create or repair character facings, action spritesheets or video-derived frames | [directional-sprite-authoring](directional-sprite-authoring/SKILL.md) | Visible facing approval, coherent poses, stable frame contacts and explicit clip mapping |
 | Animate rivers, fountains, waterfalls or wind-driven plants | [animated-environments](animated-environments/SKILL.md) | Stable scenery loops, matching joins and simulation timing |
 | Build large or multipart props, buildings, bridges or raised passages | [multi-tile-asset-assembly](multi-tile-asset-assembly/SKILL.md) | Solid volumes, walkable surfaces, openings, sprite contacts and depth parts |
 | Build connected beds, paths, walls or water with compatible edges | [consistent-tileset-authoring](consistent-tileset-authoring/SKILL.md) | Shared material geometry, neighbor variants, inner corners and rendered join checks |

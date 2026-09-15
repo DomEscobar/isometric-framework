@@ -352,6 +352,35 @@ class ProductionTests(unittest.TestCase):
             with self.subTest(defect=defect), self.assertRaises(ValueError):
                 flow.validate(plan, self.root)
 
+    def test_shipped_example_covers_each_environment_dimension_with_static_evidence(self):
+        example_path = Path(__file__).resolve().parents[1] / "references" / "acceptance-plan.example.json"
+        example = gate.read(example_path)
+        flow.validate(example, example_path.parent.parent)
+        expected_views = {
+            "style": {"desktop", "mobile"},
+            "composition": {"desktop", "mobile", "ground-only"},
+            "relationships": {"desktop", "mobile"},
+            "connections": {"desktop", "mobile", "contact-detail"},
+        }
+        visual = {r["id"]: set(r["views"]) for r in example["requirements"] if r["domain"] == "visual"}
+        self.assertEqual({rid: visual[rid] for rid in expected_views}, expected_views)
+        comparison_coverage = {(rid, spec["view"])
+                               for spec in example["comparisons"] for rid in spec["requirements"]}
+        self.assertTrue(all((rid, view) in comparison_coverage
+                            for rid, views in expected_views.items() for view in views))
+        static_checks = [check for check in example["production"]["checks"]
+                         if check["stage"] == "static" and check["method"] == "review"]
+        static_coverage = {(rid, view) for check in static_checks
+                           for rid in check["requirements"] for view in check["views"]}
+        self.assertTrue(all((rid, view) in static_coverage
+                            for rid, views in expected_views.items() for view in views))
+        self.assertTrue(all(len(check["requirements"]) == 1 for check in static_checks))
+        for stage in ("assembly", "final"):
+            covered = {rid for check in example["production"]["checks"]
+                       if check["stage"] == stage and check["method"] == "review"
+                       for rid in check["requirements"]}
+            self.assertTrue(set(expected_views) <= covered, stage)
+
     def test_two_failed_attempts_require_strategy_change(self):
         self.complete("boot", "fail")
         self.complete("boot", "fail")

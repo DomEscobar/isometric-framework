@@ -70,10 +70,13 @@ Keep evidence outputs outside these roots. `artChecks: []` is only appropriate
 when the task has no packed raster art. Select `reviewMode: "self"` only when an
 independent reviewer is unavailable; disclose it instead of inventing independence.
 
-For natural landscapes, include ground composition and transition criteria
-for the actual material pairs; deliberate formal paving may use regular grids.
-Use the [terrain evidence rubric](../../consistent-tileset-authoring/references/landscape-composition.md#terrain-acceptance-evidence)
-for explicit observations. The tool enforces their records, not aesthetic judgment.
+Use [environment composition](environment-composition.md) as the central visual
+acceptance guide. It requires separate style, whole-scene composition, scenery
+relationships and object/material connection criteria when they are in scope;
+include ground-only and contact-detail views where those criteria need them.
+For natural landscapes, use the [terrain evidence rubric](../../consistent-tileset-authoring/references/landscape-composition.md#terrain-acceptance-evidence)
+for explicit observations; deliberate formal paving may use regular grids. The
+tool enforces complete records, not aesthetic judgment.
 Version 2 requires a protected image comparison for every visual requirement/view.
 Prepare the actual references before freezing; follow the
 [image comparison round](visual-comparison.md) for capture, review and repair.

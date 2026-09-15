@@ -5,6 +5,10 @@ description: Compose connected isometric terrain with consistent material transi
 
 # Consistent tileset authoring
 
+Follow the [production asset policy](../isometric-visual-loop/references/asset-policy.md):
+generate the visible materials/artwork, then assemble them with the chosen terrain
+technique. Geometry, masks and diagnostic overlays do not require generation.
+
 Use this when independently generated tiles disagree in perspective, scale or
 edge position. Autotiling selects artwork; it cannot correct incompatible artwork.
 Use the [neutral runtime binding example](references/runtime-binding.md) for
@@ -29,8 +33,9 @@ can still fail through hard fringes, mirrored motifs and inconsistent pixel styl
   generic 47-mask family.
   For an already composed image, use the optional offline
   [ground preparer](references/composed-ground.md): one plate or positioned chunks,
-  with explicit masks and image transforms. Authored, supplied and generated inputs
-  are equally supported; this does not replace reusable transition tiles.
+  with explicit masks and image transforms. The helper accepts multiple input
+  sources, but finished-world art must satisfy the [generated asset policy](../isometric-visual-loop/references/asset-policy.md).
+  This does not replace reusable transition tiles.
   Before binding, compare the registered layout and candidate with the optional
   [landmark inspector](references/registration-review.md). Supply independently
   observed interior landmarks and a project-specific tolerance; matching corners
@@ -65,7 +70,7 @@ each swatch a measured crop inside its useful area. Then map those materials ont
 fixed geometry. Disclose this as **generated materials with deterministic assembly**;
 do not claim the provider generated every finished sprite.
 
-For artist-authored master parts, preserve shared contact edges when composing
+For master parts prepared from generated material, preserve shared contact edges when composing
 variants. Do not mirror a lit prop or rotate a whole isometric sprite merely to
 fill a missing direction: its projection and shading may cease to match.
 

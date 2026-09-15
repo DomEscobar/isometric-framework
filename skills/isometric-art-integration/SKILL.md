@@ -5,7 +5,8 @@ description: Calibrate and integrate isometric game sprites and terrain against 
 
 # Isometric art integration
 
-Treat generated and sourced art as candidates until their geometry and proportions
+Follow the [production asset policy](../isometric-visual-loop/references/asset-policy.md)
+for new worlds. Treat generated art and reused generated sources as candidates until their geometry and proportions
 work together in the game. A valid atlas or passing collision test is not visual
 acceptance. Respect the requested scope: an analysis request does not authorize
 rewriting assets, and a skill invocation does not authorize paid services.

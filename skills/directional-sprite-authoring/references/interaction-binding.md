@@ -2,7 +2,8 @@
 
 Use `createInteractions` when the host needs approach, facing, a preparation
 gesture, one synchronous effect and recovery. The example assumes an existing
-runtime, target and actor, plus host-authored clips with the declared IDs.
+runtime, target and actor, plus accepted generated character-motion clips with the
+declared IDs.
 
 ```ts
 import { createInteractions, type InteractionAction } from 'isometric-framework';

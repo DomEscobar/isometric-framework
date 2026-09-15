@@ -1,7 +1,7 @@
 # Execute an image comparison round
 
 The image comparison format starts with acceptance-plan version 2. New complete
-worlds use [version 3 production stages](production-flow.md), retaining this image
+worlds use [version 4 production stages](production-flow.md), retaining this image
 format and adding prerequisite checks. The comparison format extends the
 existing plan and review files; do not create a competing project contract.
 Version 1 remains readable for older tasks, but its acceptance result may report

@@ -52,7 +52,7 @@ movement can change it; do not call internal renderer methods from a host game.
 
 For a four-view pack used with eight-way movement, choose explicit nearest-view
 aliases only as a documented compromise and test their appearance. The packer
-does not invent aliases. Do not count aliases as eight distinct authored views.
+does not invent aliases. Do not count aliases as eight distinct generated views.
 
 ## Automatic and custom actions
 

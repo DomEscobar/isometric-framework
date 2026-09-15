@@ -132,8 +132,9 @@ Do not add a building, steps, cliff face, path obstruction or extra scenery.
 
 If a mask is supported, limit it to the observed defect and enough adjoining ground
 to rebuild the join. A mask is not automatically inferred by this recipe. If the
-route cannot make local edits, choose the already agreed authored repair/fallback
-or report the specific capability gap. Do not silently call a different provider.
+route cannot make local edits, use a compatible approved repair of the generated
+material or report the capability gap. Do not replace generated art with an
+authored substitute or silently call a different provider.
 
 ## Inspect before cutting or expanding
 

@@ -44,10 +44,15 @@ the intended destination; the starter carries it forward without replacing it.
 If scaffolding first for a setup check, its pending contract and neutral graphics
 are placeholders, not approved product choices.
 
-Choose world assembly (modular terrain, composed ground, layered scene or hybrid)
-separately from image sources per family (supplied, authored, text-to-image or
-image-to-image). Preserve existing decisions; ask about provider/budget only when
-generation is needed. Image-to-image remains optional.
+Choose world assembly (modular terrain, composed ground, layered scene or hybrid).
+New visible world and character art must be generated through text-to-image or
+image-to-image; accepted generated art may be reused with provenance. Character
+animation must follow approved generated facing image -> image-to-video ->
+reviewed extraction -> packing -> runtime review. Scenery/object animation may
+use image-to-video or another fitting method on generated material. UI, collision,
+masks and technical blockouts are exempt. Follow the [asset policy](../skills/isometric-visual-loop/references/asset-policy.md).
+Preserve existing decisions and budget approvals. Missing access or budget blocks
+generation; do not replace required generated art with handmade substitutes.
 
 Under the approved contract, resolve missing visual direction and rough layout
 before freezing acceptance. Fixed gameplay geometry constrains art; a flexible
@@ -97,7 +102,11 @@ interactions, saves, and diagnostics. See [RUNTIME_API.md](RUNTIME_API.md),
 
 Use the visual loop's [acceptance gate](../skills/isometric-visual-loop/references/acceptance.md)
 and [production stages](../skills/isometric-visual-loop/references/production-flow.md)
-for world production. Preserve the contract requirements, inspect current packed
+with plan version 4 for world production. `production next` reports the next
+allowed stage, pending checks and missing inputs. A layout needs both spatial
+checks and actual blockout image review. Production acceptance verifies asset
+provenance against the runtime export as well as completed stage evidence;
+`npm run build` remains a separate technical check. Preserve the contract requirements, inspect current packed
 actor clips and animated overlays, compare target/previous/current captures after
 repairs, and keep visual, motion, gameplay, and performance verdicts separate.
 

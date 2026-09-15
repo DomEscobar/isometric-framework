@@ -22,9 +22,13 @@ Start with the player's desired experience. Ask up to three consequential
 questions, draft one `PROJECT_CONTRACT.md`, and wait for approval before
 implementation or paid generation. The contract is the sole source for user
 requirements; technical plans derive from it and must not become a competing art
-brief. Preserve decisions already supplied. Choose existing, authored, generated,
-composed, or layered assets as appropriate; ask for provider and budget only if
-generation is actually needed. Once the contract is already approved, continue
+brief. Preserve decisions already supplied. New visible world and character art
+must be generated; reuse accepted generated art with its provenance. Character
+animation must use image-to-video, reviewed extraction and packing. Scenery/object
+animation may use image-to-video or another suitable technique on generated art.
+Blockout geometry, UI, masks and diagnostics are exempt. Use version 4 production
+gates; missing provider access or budget blocks generation, not a silent fallback.
+Once the contract is already approved, continue
 from it without asking for approval again.
 
 Read [the skill catalog](skills/README.md), then the selected `SKILL.md` files.

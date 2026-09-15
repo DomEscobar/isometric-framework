@@ -5,10 +5,10 @@ description: Author and integrate looping isometric environments such as rivers,
 
 # Animated environments
 
-When the request calls for **generated assets**, perform actual generation
-and integrate those outputs. An authored SVG fixture can isolate geometry, but
-cannot substitute for the requested provider/source/animation workflow. Keep
-original outputs and exact prompts, including rejected candidates.
+Follow the central [production asset policy](../isometric-visual-loop/references/asset-policy.md).
+New visible production world art must be generated. Existing assets and tool
+fixtures may serve only as generic technical tests. Keep original outputs and
+actual requests, including rejected candidates; do not fabricate provider fields.
 
 Use this for scenery loops. Character facings and action poses belong to
 [directional-sprite-authoring](../directional-sprite-authoring/SKILL.md).
@@ -46,11 +46,14 @@ existing content without repainting it; they cannot fix perspective or texture
 flicker. Changes to scale per frame are not registration.
 Frame count and motion step must make the last-to-first transition intentional.
 
-Use existing art, authored graphics or the provider-neutral
-[asset generation workflow](../game-asset-generation/SKILL.md). A generated sheet
-is a candidate, not proof of temporal consistency. Reference the same approved
-base and constrain changes to the moving region; repair or composite drifting
-stonework. Background removal can erase pale water, spray and translucent edges:
+Use the provider-neutral [asset generation workflow](../game-asset-generation/SKILL.md).
+Choose a fitting scenery route: image-to-video when an approved capable tool is
+available, deterministic animation of approved generated source materials, or a
+generated fixed base with generated moving layers. A generated sheet is a candidate,
+not proof of temporal consistency. Reference the same approved generated base and
+constrain changes to the moving region; repair or composite drifting stonework.
+Do not imply that the character video extractor can process arbitrary scenery.
+Background removal can erase pale water, spray and translucent edges:
 review decoded alpha on light and dark backgrounds before packing.
 If extraction repeatedly paints a checkerboard instead of alpha, reject those
 outputs and change the approach. Small independently generated splash/ripple

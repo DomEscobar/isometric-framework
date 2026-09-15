@@ -4,9 +4,11 @@ Use these gates for a new world or substantial visual production. For a focused
 asset repair, scope the plan to the affected assets, clips and playable views.
 They are authoring tools; nothing is added to scene JSON or the runtime API.
 
-New complete worlds use acceptance-plan **version 3** with the
-[production stages](production-flow.md). Version 3 adds mandatory prerequisite,
-spatial-placement and rigid-binding checks to the image workflow below. Use the complete example below and pass
+New complete worlds use acceptance-plan **version 4** with the
+[production stages](production-flow.md) and mandatory [asset policy](asset-policy.md).
+It adds generated-source and character video-chain coverage plus actual blockout
+image review to the existing prerequisite, spatial-placement and rigid-binding
+checks. Versions 1–3 remain readable but do not certify this standard. Use the complete example below and pass
 `--production-receipts DIR` to final `snapshot` and `accept`. Scene JSON versions
 are independent of authoring-plan versions.
 
@@ -38,12 +40,14 @@ readable player views and requested atmosphere. Do not reduce this to asset coun
 Keep motion requirements for every promised direction/action; static fallbacks
 remain incomplete unless the user explicitly changes the scope.
 
-Start from the complete [version 3 example](acceptance-plan.example.json). It
+Start from the complete [version 4 example](acceptance-plan.example.json). It
 already includes all six production stages; do not splice together incompatible
 version examples. The example IDs and values are illustrative, not requirements
 for a new game. The agent derives descriptions, views, comparisons, layout scope
 and rigid checks from the approved project contract and chosen technique. Remove
 absent features and add every promised outcome before freezing.
+Declare the version 4 asset policy and runtime provenance paths before freeze;
+the full production inventory can be created during the appropriate stages.
 
 If no visual reference exists, resolve the initial concept under the approved
 contract and any existing generation budget before freezing this plan. A concept

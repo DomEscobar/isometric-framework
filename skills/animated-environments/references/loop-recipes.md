@@ -8,10 +8,11 @@
 | Wind in plants | Trunk/root and rigid planter | Move leaves around the fixed root; preserve nearby path clearance. Random phases suit separate plants, coherent phase suits connected geometry. |
 | Steam or lanterns | Pot/lamp contact and body | Loop wisps or glow without shifting the fixture. Local alpha blending is visual; no built-in lighting simulation is implied. |
 
-For one calibrated pixel-art loop, four or eight intentionally authored frames
-can be sufficient. Select rate/count for the requested look, not from a universal
-preset. Surface shimmer and downstream flow need different visual criteria;
-changing frames alone establishes neither.
+For one calibrated pixel-art loop, four or eight generated frames, or deterministic
+animation of an approved generated source material, can be sufficient. Select
+rate/count for the requested look, not from a universal preset. Surface shimmer
+and downstream flow need different visual criteria; changing frames alone
+establishes neither.
 
 For streams, define water/bank and bank/ground transitions using the
 [landscape composition](../../consistent-tileset-authoring/references/landscape-composition.md)
@@ -60,8 +61,8 @@ neither a contact measurement nor a still image approves the moving result.
 ## Moving material inside a fixed region
 
 A host may animate a prepared material strip inside its declared water surface,
-keeping banks and contact shadows in a fixed layer. The source can be generated,
-authored or supplied. Choose an explicit flow mapping and shared phase; arbitrary
+keeping banks and contact shadows in a fixed layer. The source must be approved
+generated production material. Choose an explicit flow mapping and shared phase; arbitrary
 river branches need their own mapping and joins. A scrolling strip is not a
 general solution for waterfalls or independently branching currents.
 

@@ -35,6 +35,13 @@ def production_tools():
     return module
 
 
+def asset_provenance_tools():
+    spec = importlib.util.spec_from_file_location("asset_provenance", Path(__file__).with_name("asset_provenance.py"))
+    loaded = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(loaded)
+    return loaded
+
+
 def digest(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
@@ -360,7 +367,7 @@ document.querySelector('#surface-mask').onclick=e=>{showMask=!showMask;e.target.
 def plan_state(plan_path):
     plan_path = Path(plan_path).resolve()
     plan = read(plan_path)
-    require(type(plan.get("version")) is int and plan["version"] in (1, 2, 3), "Plan version must be 1, 2 or 3")
+    require(type(plan.get("version")) is int and plan["version"] in (1, 2, 3, 4), "Plan version must be 1, 2, 3 or 4")
     root = local(plan_path.parent, plan["root"])
     require(plan.get("reviewMode") in ("independent", "self"), "Declare independent or self review")
     requirements = plan.get("requirements")
@@ -378,7 +385,9 @@ def plan_state(plan_path):
         contract = local(root, plan["contract"])
         require(contract.is_relative_to(root) and contract.is_file() and not contract.is_symlink(),
                 "Contract must be an existing ordinary file inside the project")
-    if plan["version"] == 3 or "production" in plan:
+    if plan["version"] == 4:
+        asset_provenance_tools().validate_policy(plan, root, require_files=False)
+    if plan["version"] >= 3 or "production" in plan:
         production_tools().validate(plan, root)
     return plan_path, plan, root
 
@@ -423,6 +432,8 @@ def snapshot(baseline_path, output, production_receipts=None):
         require(production_receipts, "Production receipts required for final candidate snapshot")
         status = production_tools().collect(plan, root, digest(baseline_path), production_receipts)
         require(status["nextStage"] in ("final", "complete"), "Production stage blocks snapshot: "+status["nextStage"])
+    if plan["version"] == 4:
+        asset_provenance_tools().verify(plan, root)
     target = Path(output).resolve()
     require(all(not target.is_relative_to(local(root, p)) for p in plan["inputRoots"]), "Evidence outputs must be outside inputRoots")
     write_new(output, {"version": 1, "baselineSha256": digest(baseline_path), "inputs": source_hashes(plan, root)})
@@ -482,6 +493,7 @@ def accept(baseline_path, candidate_path, review_path, production_receipts=None)
         require(production_receipts, "Production receipts required for acceptance")
         status = production_tools().collect(plan, root, digest(baseline_path), production_receipts)
         require(status["passed"], "Production stage blocks acceptance: "+status["nextStage"])
+    provenance = asset_provenance_tools().verify(plan, root) if plan["version"] == 4 else {"enforced": False, "version": "legacy-v1-v3"}
     candidate, review = read(candidate_path), read(review_path)
     require(candidate["baselineSha256"] == digest(baseline_path), "Candidate belongs to a different baseline")
     require(candidate["inputs"] == source_hashes(plan, root), "Candidate is stale: source files added, removed or changed")
@@ -526,7 +538,8 @@ def accept(baseline_path, candidate_path, review_path, production_receipts=None)
     require(candidate["inputs"] == source_hashes(plan, root), "Inputs changed during acceptance")
     return {"passed": True, "reviewMode": review["reviewMode"], "requirements": len(by_id),
             "visualComparisons": comparison_count,
-            "limit": "Coverage and freshness verified; reviewer judgments are not authenticated or machine-proven."}
+            "provenance": provenance,
+            "limit": "Coverage and freshness verified; reviewer judgments, remote provider and renderer authenticity are not authenticated or machine-proven."}
 
 
 def main():
@@ -537,7 +550,7 @@ def main():
     p = sub.add_parser("snapshot"); p.add_argument("baseline"); p.add_argument("output"); p.add_argument("--production-receipts")
     p = sub.add_parser("accept"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("review"); p.add_argument("--production-receipts")
     p = sub.add_parser("attach-evidence"); p.add_argument("review"); p.add_argument("--baseline", required=True); p.add_argument("--candidate", required=True); p.add_argument("--requirement", required=True); p.add_argument("--view", required=True); p.add_argument("--file", required=True); p.add_argument("--out", required=True)
-    p = sub.add_parser("production"); p.add_argument("action", choices=("begin", "draft", "finish", "status")); p.add_argument("baseline"); p.add_argument("--receipts", required=True); p.add_argument("--check"); p.add_argument("--ticket"); p.add_argument("--submission"); p.add_argument("--evidence-mapping"); p.add_argument("--out"); p.add_argument("--strategy")
+    p = sub.add_parser("production"); p.add_argument("action", choices=("begin", "draft", "finish", "status", "next")); p.add_argument("baseline"); p.add_argument("--receipts", required=True); p.add_argument("--check"); p.add_argument("--ticket"); p.add_argument("--submission"); p.add_argument("--evidence-mapping"); p.add_argument("--out"); p.add_argument("--strategy")
     p = sub.add_parser("compare"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("captures"); p.add_argument("--out", required=True); p.add_argument("--previous"); p.add_argument("--rebaseline-note", help="Explain an art-check correction or added comparisons; retain all previous requirements, comparisons and targets")
     args = parser.parse_args()
     try:
@@ -568,8 +581,10 @@ def main():
             else:
                 _, plan, root = protected(args.baseline)
                 result = flow.collect(plan, root, digest(args.baseline), args.receipts)
+                if args.action == "next":
+                    result = flow.next_work(result)
                 print(json.dumps(result, indent=2))
-                return 0 if result["passed"] else 1
+                return 0 if (result.get("readyToWork") or result.get("passed")) else 1
         elif args.command == "compare":
             gate = SimpleNamespace(protected=protected, source_hashes=source_hashes, local=local)
             print(json.dumps(comparison_tools().build(gate, args.baseline, args.candidate, args.captures, args.out, args.previous, args.rebaseline_note), indent=2))

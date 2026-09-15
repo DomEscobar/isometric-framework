@@ -11,11 +11,16 @@ Unapproved neutral calibration scaffold. Production requirements have not been s
 - Scope, platforms, accessibility, and performance: pending
 - World assembly: pending — reusable modular terrain, composed ground, layered
   scene artwork, or a hybrid; identify height, editing and motion needs
-- Image sources by family: pending — supplied/licensed, authored, text-to-image,
-  image-to-image, or a combination
+- New world/character art: generated through text-to-image or image-to-image;
+  accepted generated art may be reused with provenance
+- Character animation: approved generated facing image -> image-to-video ->
+  reviewed extraction -> packing -> runtime playback review
+- Scenery/object animation: choose image-to-video or another fitting method on
+  generated art; UI, collision, masks and blockout diagnostics are exempt
 - Concept scope and fixed/flexible layout constraints: pending; select initial
   references before acceptance freeze and record provenance in host production data
-- Generation provider and budget, only if generation is selected: pending
-- Acceptance evidence: pending
+- Generation provider/access and bounded budget: pending; no paid calls before approval
+- Acceptance evidence: version 4 production stages, actual runtime provenance,
+  separate visual/motion/gameplay/performance review
 
 Record approved decisions here before implementation or paid asset generation. This file is the human requirements source; technical notes belong with the code.

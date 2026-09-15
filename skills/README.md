@@ -11,9 +11,9 @@ generation references. Each skill's supporting references use neutral examples
 and measurements; replace illustrative values with the current host's own data.
 Do not route production work through historical trial reports or example art.
 
-The optional mannequins bundled with `directional-sprite-authoring` are pose
-templates, not character identities or style references. Use them only when their
-camera and gait fit the current character.
+The [production asset policy](isometric-visual-loop/references/asset-policy.md) is
+mandatory for new worlds: generate visible world/character art; character motion
+uses image-to-video and reviewed extraction. UI and technical blockouts are exempt.
 
 For world production, use the [packed-art and acceptance gates](isometric-visual-loop/references/acceptance.md)
 inside `isometric-visual-loop`. They check the delivered atlas, required reviews
@@ -34,9 +34,9 @@ can use the same checks with a smaller requirement scope.
 
 ## Choose the art technique
 
-Make two separate decisions from the approved project contract: how the world is
-assembled, then where each asset family's pixels come from. Select a provider only
-when generation is needed. Text-to-image alone does not choose a world architecture.
+Choose how the world is assembled, then the generation route for each family.
+Static artwork can use text-to-image or image-to-image; reuse accepted generated
+art with its source chain. Text-to-image alone does not choose a world architecture.
 
 | World assembly | Read first | Support and remaining work |
 | --- | --- | --- |
@@ -45,16 +45,19 @@ when generation is needed. Text-to-image alone does not choose a world architect
 | Layered scene artwork | Art integration; multi-tile assemblies | Suitable when selected occluders and moving regions can be separated. Extraction, hidden surfaces and depth bindings require host work. |
 | Hybrid by region/family | Visual loop and relevant specialists | Declare the boundaries and shared coordinates; verify a representative join before expansion. |
 
-For each family choose **supplied/licensed, authored, text-to-image, image-to-image,
-or a combination**. All can feed the assembly choices above. Text-to-image can
+For static families choose **text-to-image, image-to-image or accepted generated
+art with provenance**. All can feed the assembly choices above. Text-to-image can
 establish a scene or material/asset family; image-to-image can preserve selected
 reference properties. Neither guarantees registration, usable layers or animation.
 Elevated/multiple-floor compositions and branching water require scoped host
 integration beyond the flat-ground adapter and sprite clip support. Prove the
 needed capability during calibration before producing a full pack.
 
-Add asset generation only when new generated artwork is part of the chosen path.
-Read one provider recipe when needed. The same visual, traversal and promised
+Character animation uses approved generated facing image -> image-to-video ->
+reviewed extraction -> packing -> runtime review. Scenery/object animation may
+use image-to-video or another suitable method on generated material. Missing
+access or budget blocks new generation, not a silent authored fallback.
+Read the selected provider recipe when needed. The same visual, traversal and promised
 motion outcomes apply to all techniques; tools do not select the art direction.
 Text-to-image does not require an existing reference image. Once a candidate is
 accepted, record it in host production data and use it with the contract as the visual authority for palette, projection,
@@ -73,12 +76,12 @@ not a prerequisite for generated art.
   `animated-environments`.
 - **Character facing repair:** start with `directional-sprite-authoring`; use
   generation only if new artwork is needed and art integration for scale checks.
-- **Connected river:** combine `consistent-tileset-authoring` for banks and joins
-  with `animated-environments` for flowing water; add generation if requested.
+- **Connected river:** combine `consistent-tileset-authoring` for generated banks
+  and joins with `animated-environments` for flowing water using a fitting technique.
 - **Composed ground image:** use the optional
   [ground preparer](consistent-tileset-authoring/references/composed-ground.md)
-  for a plate or positioned chunks from authored, supplied or generated artwork.
-  Choose generation only when agreed; reusable transition tiles remain another path.
+  for a plate or positioned chunks from generated artwork with provenance;
+  reusable generated transition tiles remain another path.
 
 A focused task can start directly with its specialist. Unrelated gameplay or
 engine fixes follow the project's module ownership

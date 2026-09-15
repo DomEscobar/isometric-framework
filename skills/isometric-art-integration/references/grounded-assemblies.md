@@ -34,7 +34,8 @@ Different materials need different treatment; uniform speckles are not variety.
   planted base fixed.
 
 A generated contact patch or small composed assembly can supply these layers.
-An isolated portable prop may instead use a separately authored ground treatment.
+An isolated portable prop may use a separate contact treatment composed from
+the accepted generated ground material.
 Do not trim away intended root/earth pixels merely to obtain a pristine cutout.
 Do not bake walkable decks or foreground structures into a single ordinary sprite
 and assume a nonblocking flag will make actors draw above it.

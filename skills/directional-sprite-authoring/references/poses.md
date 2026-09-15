@@ -1,9 +1,8 @@
 # Action phases and pose consistency
 
-Define the motion before requesting images. A strip or individual pose is a
-candidate: neither a detailed prompt nor separate frame generation establishes
-correct facing, consistent anatomy or smooth playback. For template-guided walks,
-use the [visual check and repair loop](walk-templates.md#visual-check-and-repair).
+Define the motion before requesting image-to-video. The approved facing image and
+the returned video are candidates: neither a detailed prompt nor a completed job
+establishes correct facing, consistent anatomy or smooth playback.
 
 ## Phase plans
 
@@ -18,8 +17,8 @@ use the [visual check and repair loop](walk-templates.md#visual-check-and-repair
 For opposite walk contacts, track anatomical limbs rather than changing colors:
 the leading and trailing legs exchange roles while camera and travel direction
 stay fixed. Preserve character identity, equipment hands and body scale through
-the passing poses. Use accepted references as the authority for repairs; do not
-let an incorrect generated pose redefine the motion.
+the passing poses. Use the approved facing image as the authority for an I2V
+replacement; do not let an incorrect generated video frame redefine the motion.
 
 Reuse or repeat an approved frame for timing holds instead of regenerating an
 identical pose. Runtime clips use one FPS value; repeated frame IDs can lengthen

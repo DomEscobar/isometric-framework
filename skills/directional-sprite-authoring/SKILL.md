@@ -1,6 +1,6 @@
 ---
 name: directional-sprite-authoring
-description: Author directional character poses and animation frames from images or video, map them to this isometric runtime, and verify facing, frame contacts, and playback. Use for turnarounds, walk/jump/attack sprites, video-to-sprite extraction, or incorrectly facing characters.
+description: Generate character facings and derive character animation through image-to-video, reviewed frame extraction and packing. Map clips to this isometric runtime and verify facing, contacts and playback. Use for turnarounds, walk/jump/attack clips, or incorrectly facing characters.
 ---
 
 # Directional sprite authoring
@@ -9,6 +9,7 @@ A spritesheet stores pixels; the manifest selects their meaning. Correct labels
 and complete clips cannot establish that the drawn character actually faces the
 declared direction. Approve both the visible pose and its runtime mapping.
 
+Follow the central [production asset policy](../isometric-visual-loop/references/asset-policy.md).
 Use [game asset generation](../game-asset-generation/SKILL.md) for provider jobs,
 background removal, alpha inspection, and provenance. Use
 [isometric art integration](../isometric-art-integration/SKILL.md) for projection,
@@ -24,12 +25,13 @@ directions are intentionally excluded or explicitly mapped as visual compromises
 
 Choose an approved character reference: proportions, clothing, palette, equipment
 hand, asymmetric details, lighting, camera elevation, canvas, and display scale.
-For generated character walks, approve a neutral character view in each requested
-direction before animating it. A mannequin supplies poses, not character identity.
-For the two-template SE/NE workflow, establish SE, derive and review NE from that
-approved character, then pair each view with its matching mannequin as described
-in [walk templates](references/walk-templates.md#establish-the-character-before-animation).
-Reuse existing approved views instead of regenerating them. Identify front/back from
+For a static idle, a generated neutral view in each required direction is enough
+when no animated idle was promised. For any character motion, first approve a
+generated T2I or I2I character-facing image for that direction. Record the actual
+local source, provider job or request ID, submitted references and its approval;
+never fabricate provider parameters or replace that record with a description.
+Reuse accepted generated views with their provenance instead of regenerating them.
+Identify front/back from
 face/chest versus back/pack, and left/right from the nose, torso, and feet together.
 An arrow or filename is a label, not evidence. Reject or relabel a misfacing
 candidate based on what it visibly depicts; never rotate the controls to fit it.
@@ -39,24 +41,27 @@ sprite in 2D to synthesize a new camera view. Mirroring also changes light direc
 Any intentional reuse must preserve the art contract and be recorded as reuse,
 not counted as an independently drawn direction.
 
-## Generate poses against approved references
+## Produce character motion from an approved facing image
 
-Use the project's selected production route: authored frames, generated strips,
-individual poses, or [video-derived frames](references/video-to-sprites.md).
-For generated animation, start with the approved character view; use a matching
-pose or motion reference when that route calls for one. Generate one directional
-animation candidate, visually inspect its frames and playback, repair diagnosed
-defects, and recheck before acceptance. Reuse existing approved frames or a supplied
-video instead of generating again. A motion-reference video is optional, and does
-not guarantee exact output poses or timestamps.
-Do not plan around getting a finished walking sheet in one request. Generating
-frames separately also requires checking consistency across the assembled clip.
-Check one action in one direction before requesting a whole matrix.
+Character motion has one production route: approved generated character-facing
+image (T2I or I2I), then image-to-video, review of the actual video, deterministic
+[video extraction](references/video-to-sprites.md), deterministic packing, and
+runtime review. Direct generated sheets, individual generated gait/action frames,
+and authored character-animation frames are not production alternatives. Editing
+masks or crops is allowed; synthesizing replacement motion poses is not.
 
-For a four-frame walk animation, the optional bundled
-[NE and SE mannequin templates](references/walk-templates.md) provide isolated
-pose references. Use them when their proportions and camera fit the character;
-they are guidance, not proof that generated frames animate correctly.
+Before spending, confirm that an approved image-to-video tool can actually submit
+the proposed input. If budget, access, or a capable approved tool is missing, stop
+and record the blocker. Do not pretend that an image client can submit video.
+Use the approved facing image as the identity input and record the actual image
+file/hash and provider request details. A motion guide is optional and must have
+its role and provenance recorded. Keep camera, lighting, body proportions, and
+root stable. Check one action in one direction before requesting a whole matrix.
+
+Review the actual returned video before extraction for facing, identity, anatomy,
+stationary root, alternating contacts, stable camera, and a usable loop interval.
+Treat phase plans as requested motion semantics, not evidence that a clip contains
+those phases. Reuse an accepted generated video only with its source provenance.
 
 When passing exact crops to a provider, use the offline request bundle described
 by [game asset generation](../game-asset-generation/references/request-preparation.md).
@@ -64,31 +69,23 @@ For a directional action matrix, its calibration receipt ties the reviewed probe
 to the currently selected approved identity source hashes. It records a
 self-reported judgement and does not prove visible facing or animation quality.
 
-Derive each direction's action poses from its approved neutral view and the same
+Generate each direction's action video from its approved neutral view and the same
 master identity. Avoid chains where each unreviewed generation becomes the next
 reference: errors in scale, anatomy, and equipment accumulate. Keep the camera,
-lighting, body proportions, and root stable while changing the pose.
-
-When approved and rejected poses share a sheet, supply only the approved crops
-as identity references. For example, if the neutral row passed but the walk rows
-repeat one leading foot, isolate the neutral views before requesting new contacts;
-do not send the failed rows with an instruction to ignore them. Keep rejected
-frames in the review record. Include them in a repair request only as explicitly
-identified edit targets, alongside the approved pose and identity references.
+lighting, body proportions, and root stable throughout the motion.
 
 Define [action phases](references/poses.md) before generating: walk
 contact/pass/opposite contact/pass; attack anticipation/strike/recovery; jump pose
 appropriate to the current runtime.
-These are phase plans, not claims that isolated generated images form smooth
-in-between motion. Expand frames only when the intended playback needs them.
+These are phase plans for the I2V request and review, not claims that a request
+will produce smooth motion. Expand frames only through a newly reviewed video.
 
 ## Normalize and assemble accepted frames
 
-Measure crop windows on the decoded source. A requested equal grid does not prove
-the returned sheet has equal pose spacing. Reject windows that cut through bodies
-or include neighboring boots, hands or heads. Alpha-bounds cropping after a bad
-grid split cannot recover discarded pixels or distinguish a neighboring subject.
-Do not derive the character's scale/root from a contaminated crop bounding box.
+Measure one shared crop window across the decoded video frames. Reject windows
+that cut through the body or include other subjects. Alpha-bounds cropping cannot
+recover discarded pixels or separate overlapping subjects. Do not derive the
+character's scale/root independently from each changing silhouette.
 
 Preserve original candidates. Remove backgrounds and review masks separately.
 Normalize approved frames to a common canvas and root using measured landmarks;
@@ -102,12 +99,10 @@ retain the coherent body/root relationship. Do not re-anchor each airborne frame
 to its lowest painted foot. Runtime jump elevation already supplies flight, so
 do not also bake a full upward flight path into frame positions.
 
-For already normalized frames, use the deterministic
+For already normalized extracted frames, use the deterministic
 [sheet packer](references/packing.md). It copies pixels into equal cells and emits
 explicit clips; it never resizes, trims, rotates, mirrors, guesses directions, or
-creates missing poses. A generated full sheet can also be used, but its actual
-cell boundaries/order must be measured and visually classified rather than
-inferred from a requested row layout.
+creates missing poses.
 
 For video, the [extraction helper](references/video-to-sprites.md#prepare-and-export)
 records actual decoded timestamps and applies one explicit crop and mask across
@@ -141,16 +136,16 @@ anatomy and seam findings to further review. Technical checks and reviewer verdi
 remain separate; neither automatically establishes the other's result.
 
 For each failure, record the affected frames, visible defect, and intended
-correction. Repair the smallest affected region or frames against the approved
-pose and identity references, preserving accepted pixels where possible. A failed
-candidate may be the edit target, but must not become the new pose/identity
-authority. Reassemble and recheck the whole clip after every repair or cleanup,
-including previously accepted frames and transitions. Keep before/after images
-and playback evidence. Stop within the agreed repair budget; a repeated defect
-without a new diagnosis requires revising the approach, not another blind retry.
+correction. Mask and crop cleanup may repair the smallest affected extraction
+region while preserving accepted pixels. Do not synthesize new motion poses in
+extracted frames: a facing, anatomy, gait or phase defect requires a newly reviewed
+I2V candidate from the approved facing image. Reassemble and recheck the whole clip
+after every cleanup, including previously accepted frames and transitions. Keep
+before/after images and playback evidence. Stop within the agreed repair budget; a
+repeated defect without a new diagnosis requires revising the approach, not another
+blind retry.
 Unresolved facing, anatomy or gait failures block acceptance and further matrix
-expansion. Template-specific checks are in the
-[walk-template review loop](references/walk-templates.md#visual-check-and-repair).
+expansion.
 
 In the host scene, move along all required axes and release to idle. Test jumping
 only when it is supported and included in the requested action coverage.

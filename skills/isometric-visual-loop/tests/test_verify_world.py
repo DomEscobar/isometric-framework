@@ -92,13 +92,20 @@ class WorkflowTests(unittest.TestCase):
             gate.freeze(self.plan, self.baseline)
         self.assertFalse(self.baseline.exists())
 
+    def test_v4_cannot_freeze_without_a_policy(self):
+        self.plan_data["version"] = 4
+        self.save(self.plan, self.plan_data)
+        with self.assertRaisesRegex(ValueError, "require assetPolicy"):
+            gate.freeze(self.plan, self.baseline)
+        self.assertFalse(self.baseline.exists())
+
     def test_complete_documented_plan_has_valid_production_coverage(self):
         example = SCRIPT.parent.parent / "references/acceptance-plan.example.json"
         plan = gate.read(example)
         (self.root / "PROJECT_CONTRACT.md").write_text("Illustrative test scope", encoding="utf-8")
         self.save(self.plan, plan)
         _, validated, _ = gate.plan_state(self.plan)
-        self.assertEqual(validated["version"], 3)
+        self.assertEqual(validated["version"], 4)
         self.assertEqual(set(c["stage"] for c in validated["production"]["checks"]),
                          set(gate.production_tools().STAGES))
 

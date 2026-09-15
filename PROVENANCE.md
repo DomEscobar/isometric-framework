@@ -15,11 +15,6 @@ The source areas informing the extraction include these locations in the origina
 
 The extraction introduces per-instance ownership, explicit destruction, a versioned JSON format, validation, and event-based gameplay integration. The demo's garden data, generated visual shapes, page, and collection rule are separate application examples.
 
-The directional sprite skill includes two user-supplied mannequin pose templates.
-Their source, crop rectangles, hashes and rights status are recorded in
-[template provenance](skills/directional-sprite-authoring/assets/walk-templates/provenance.json).
-They are pose guidance, not a bundled character art pack.
-
 ## Licensing
 
 Example artwork remains in the source checkout with its own provenance records;

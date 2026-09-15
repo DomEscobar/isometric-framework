@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "root": "..",
   "contract": "PROJECT_CONTRACT.md",
   "inputRoots": [
@@ -10,6 +10,23 @@
     "host/packed-art.json"
   ],
   "reviewMode": "independent",
+  "assetPolicy": {
+    "version": 1,
+    "sources": {
+      "world": "generated",
+      "character": "generated",
+      "environment": "generated"
+    },
+    "characterAnimation": {
+      "animated": "image-to-video-extract-pack",
+      "staticIdle": "generated-facing"
+    },
+    "coverageLedger": "host/art/provenance-ledger.json",
+    "runtime": {
+      "manifest": "host/art/runtime.json",
+      "binding": "host/art/used-assets.json"
+    }
+  },
   "requirements": [
     {
       "id": "style",
@@ -208,15 +225,17 @@
         "stage": "layout",
         "method": "layout",
         "requirements": [
-          "style"
+          "composition"
         ],
         "views": [
           "desktop"
         ],
         "inputs": [
-          "host/layout.json"
+          "host/layout.json",
+          "host/src/shared/projection.ts",
+          "host/src/blockout.ts"
         ],
-        "evidenceKind": "measurement",
+        "evidenceKind": "image",
         "source": "host/layout.json",
         "requiredScope": {
           "regions": [
@@ -294,7 +313,8 @@
           "desktop"
         ],
         "inputs": [
-          "host/layout.json"
+          "host/layout.json",
+          "host/art"
         ],
         "evidenceKind": "measurement",
         "source": "host/layout.json",

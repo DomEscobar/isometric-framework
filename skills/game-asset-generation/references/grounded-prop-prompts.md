@@ -18,8 +18,8 @@ style-only; input image 2 may be a placement or ground guide. Name each role and
 do not let a style image silently determine layout. Split ground/contact patch
 from the upright object when depth, actor passage or motion requires it. Keep
 roots, soil and low contact detail with the ground layer when they belong there.
-Directional actors and action sheets use their separate skill; generation gives
-no sheet-perfection guarantee.
+Directional actors use their separate skill: generate approved facing images,
+then derive animation through image-to-video and reviewed frame extraction.
 
 ## Initial prompt example
 

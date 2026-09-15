@@ -105,29 +105,25 @@ leaves the provider's aspect-ratio default intact when that field is omitted.
 Embedded base64 references are outside this helper's supported inputs. References
 do not belong in the text-to-image request, whose schema has no image field.
 For character motion, follow
-[directional sprite authoring](../../directional-sprite-authoring/SKILL.md):
-generate a candidate, visually inspect frames and playback, then repair and
-recheck. Reference support does not establish animation quality.
+[directional sprite authoring](../../directional-sprite-authoring/SKILL.md): use
+an approved generated facing image with an approved capable I2V tool, review the
+actual video, then extract, pack and verify runtime playback. Reference support
+does not establish animation quality.
 
 ## Optional video-to-sprite input
 
-For video-derived animation, use the selected video endpoint through the available
-WaveSpeed MCP or its documented API. The bundled `wavespeed.mjs` image client does
-not support video submissions. Read the current model schema and quote the actual
-request before spending; do not reuse an image-edit payload for video generation.
+The bundled `wavespeed.mjs` image client does **not** submit video jobs. Do not
+reuse an image-edit payload, name a hypothetical WaveSpeed video route, or claim
+that this client submitted an I2V request. Use another approved, capable tool only
+after checking its current schema and actual callable access. If it is unavailable,
+or budget/access is missing, record the blocker and stop before generation.
 
-One available reference-video route is
-[`google/gemini-omni-1.1-flash/reference-to-video`](https://wavespeed.ai/models/google/gemini-omni-1.1-flash/reference-to-video).
-Its schema accepts `images` for character references and optional `reference_videos`
-for motion guidance, plus `prompt`, `duration`, `resolution` and `aspect_ratio`.
-Recheck current media limits and price. Image-only animation is also valid; a motion
-guide is not mandatory and does not provide exact per-frame pose control.
-
-Supply the approved character view in the required direction. Assign each input's
-role in the prompt; a reference's facing can outweigh conflicting direction text.
-Choose a flat key color absent from the subject if transparent output is unavailable.
-Keep source videos local after completion, record job IDs and input hashes, and
-resume an existing prediction after a timeout instead of submitting again.
+For a capable tool, supply the approved generated character view in the required
+direction and record the actual submitted image, input roles, request/job ID and
+returned local video hash. A reference's facing can outweigh conflicting direction
+text. Choose a flat key color absent from the subject if transparent output is
+unavailable. Keep source videos local after completion and resume an existing job
+after interruption rather than resubmitting.
 
 Use [video-to-sprite extraction](../../directional-sprite-authoring/references/video-to-sprites.md)
 for deterministic preparation, selected frames and review. Inspect actual alpha,

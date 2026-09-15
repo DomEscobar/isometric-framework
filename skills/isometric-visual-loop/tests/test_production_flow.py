@@ -279,6 +279,38 @@ class ProductionTests(unittest.TestCase):
         self.assertFalse(boot["eligible"])
         self.assertTrue(any("Missing production input" in item for item in boot["blockers"]))
 
+    def test_next_is_read_only_and_distinguishes_ready_from_incomplete(self):
+        status = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        next_item = flow.next_work(status)
+        self.assertEqual(next_item["state"], "ready-to-work")
+        self.assertTrue(next_item["readyToWork"])
+        self.assertEqual(next_item["eligibleChecks"][0]["id"], "boot")
+        self.assertEqual(next_item["eligibleChecks"][0]["expectedEvidence"], {"kind": "measurement", "views": ["desktop"]})
+        (self.game / "boot.json").unlink()
+        broken = flow.next_work(flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts))
+        self.assertEqual(broken["state"], "incomplete")
+        self.assertFalse(broken["readyToWork"])
+        self.assertTrue(broken["missingInputs"])
+
+    def test_v4_cannot_skip_stages_and_records_static_provenance_failure(self):
+        self.plan["version"] = 4
+        self.plan["assetPolicy"] = {"version": 1, "sources": {"world": "generated", "character": "generated", "environment": "generated"},
+                                    "characterAnimation": {"animated": "image-to-video-extract-pack", "staticIdle": "generated-facing"},
+                                    "coverageLedger": "game/ledger.json", "runtime": {"manifest": "game/runtime.json", "binding": "game/binding-export.json"}}
+        self.save("game/ledger.json", {}); self.save("game/runtime.json", {}); self.save("game/binding-export.json", {})
+        for check in self.plan["production"]["checks"]:
+            if check["stage"] == "layout": check["evidenceKind"] = "image"
+            if flow.STAGES.index(check["stage"]) >= flow.STAGES.index("static"):
+                check["inputs"] += ["game/ledger.json", "game/runtime.json", "game/binding-export.json"]
+        self.plan_path = self.save("game/plan.json", self.plan); self.baseline = self.root / "v4-baseline.json"; gate.freeze(self.plan_path, self.baseline)
+        with self.assertRaisesRegex(ValueError, "Earlier stage"):
+            self.start("placement")
+        self.through_assembly()
+        value = self.complete("placement")
+        self.assertEqual(value["status"], "fail")
+        self.assertFalse(value["automatic"]["provenance"]["passed"])
+        self.assertIn("Runtime manifest", value["automatic"]["provenance"]["error"])
+
     def test_draft_hashes_only_valid_fresh_complete_evidence_and_leaves_review_fields_blank(self):
         self.through_assembly()
         self.complete("placement")
@@ -418,6 +450,50 @@ class ProductionTests(unittest.TestCase):
             flow.finish(self.adapter, self.baseline, consumed, submission, self.receipts, self.receipts / "y.json")
 
     def test_v3_cli_and_existing_comparison_acceptance_work_together(self):
+        self.assertFalse(self.assert_cli_acceptance()["provenance"]["enforced"])
+
+    def test_v4_cli_acceptance_and_valid_rechain_stales_previous_reviews(self):
+        self.plan["version"] = 4
+        self.plan["assetPolicy"] = {
+            "version": 1,
+            "sources": {"world": "generated", "character": "generated", "environment": "generated"},
+            "characterAnimation": {"animated": "image-to-video-extract-pack", "staticIdle": "generated-facing"},
+            "coverageLedger": "game/ledger.json",
+            "runtime": {"manifest": "game/runtime.json", "binding": "game/used.json"}}
+        self.save("game/generation.json", {"localJobId": "synthetic-test-not-generated-art", "outputSha256": gate.digest(self.game / "asset.png")})
+        def proof(name):
+            return {"path": "game/" + name, "sha256": gate.digest(self.game / name)}
+        ledger = {"version": 1, "clips": {}, "images": {
+            "ground": {"origin": {"kind": "generated", "record": proof("generation.json"), "output": proof("asset.png")},
+                       "transforms": [proof("asset.png")]}}}
+        self.save("game/ledger.json", ledger)
+        self.save("game/runtime.json", {"assets": {"images": {"ground": {"url": "asset.png"}}, "textures": {}, "animations": {}}})
+        self.save("game/used.json", {"version": 1, "used": {
+            category: {"images": ["ground"] if category == "world" else [], "textures": [], "animations": []}
+            for category in ("world", "character", "environment", "ui", "debug")}})
+        for check in self.plan["production"]["checks"]:
+            if check["stage"] == "layout":
+                check["evidenceKind"] = "image"
+            if flow.STAGES.index(check["stage"]) >= flow.STAGES.index("static"):
+                check["inputs"] += ["game/ledger.json", "game/runtime.json", "game/used.json"]
+        self.save("game/plan.json", self.plan)
+        self.baseline = self.root / "v4-baseline.json"
+        gate.freeze(self.plan_path, self.baseline)
+        self.assertTrue(self.assert_cli_acceptance()["provenance"]["enforced"])
+        command = [sys.executable, str(fixtures.SCRIPT), "production", "next", str(self.baseline), "--receipts", str(self.receipts)]
+        result = subprocess.run(command, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout)["state"], "complete")
+        # Valid replacement evidence is still a new candidate, not reusable review.
+        self.save("game/generation.json", {"localJobId": "replacement-synthetic-record", "outputSha256": gate.digest(self.game / "asset.png")})
+        ledger["images"]["ground"]["origin"]["record"] = proof("generation.json")
+        self.save("game/ledger.json", ledger)
+        self.assertTrue(gate.asset_provenance_tools().verify(self.plan, self.root)["enforced"])
+        status = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        self.assertEqual(status["nextStage"], "static")
+        self.assertEqual(status["checks"]["composition"]["status"], "unverified")
+
+    def assert_cli_acceptance(self):
         command = [sys.executable, str(fixtures.SCRIPT)]
         blocked = subprocess.run(command + ["production", "begin", str(self.baseline), "--check", "final", "--receipts", str(self.receipts), "--out", str(self.root / "blocked.json")], capture_output=True, text=True)
         self.assertEqual(blocked.returncode, 1)
@@ -444,6 +520,7 @@ class ProductionTests(unittest.TestCase):
         accepted = subprocess.run(command + ["accept", str(self.baseline), str(candidate), str(review_path), "--production-receipts", str(self.receipts)], capture_output=True, text=True)
         self.assertEqual(accepted.returncode, 0, accepted.stderr)
         self.assertTrue(json.loads(accepted.stdout)["passed"])
+        return json.loads(accepted.stdout)
 
 
 if __name__ == "__main__":

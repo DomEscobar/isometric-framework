@@ -1,10 +1,12 @@
 # Executed production stages
 
-Use acceptance-plan **version 3** for new world production. It retains version 2's
-protected images and adds a required `production` object. Versions 1/2 remain
-compatible for historical/focused work; they do not prove these stage gates ran.
+Use acceptance-plan **version 4** for new world production. It retains protected
+images and the required `production` object, and adds the mandatory generated-art
+[asset policy](asset-policy.md), character video provenance and actual blockout
+image review. Versions 1–3 remain readable for historical/focused work; they do
+not establish compliance with the version 4 policy.
 Use the existing requirements, not a second artistic brief. Adapt the `production` object in the complete
-[version 3 plan example](acceptance-plan.example.json); its neutral feature IDs
+[version 4 plan example](acceptance-plan.example.json); its neutral feature IDs
 are illustrative. The agent prepares technical checks from the approved contract.
 
 The tool controls its own tickets, receipts, candidate snapshot and acceptance.
@@ -25,10 +27,10 @@ full pack. Acceptance remains frozen before calibration implementation/expansion
 
 | Stage | Required work before expansion |
 | --- | --- |
-| preflight | One selected asset decodes and loads in dev and production; projection and pixel scale established; provider only when generation is selected |
-| layout | Semantic regions, reserved routes, supports and entrances; inspect whole-scene grouping, open space and hierarchy in the runtime-projected blockout |
+| preflight | One selected generated asset decodes and loads in dev and production; projection, pixel scale and approved generation access/budget established |
+| layout | Semantic regions, reserved routes, supports and entrances; spatial check plus actual blockout image review of grouping, open space and hierarchy |
 | assembly | A representative connected area in the live host: related objects/surfaces, measured rigid bindings, usable approaches and controllable actor |
-| static | All placed instances checked; separate composition, relationships/variation, connections and style reviews across ground-only/dressed views and required mobile regions |
+| static | All placed instances and full generated-asset provenance checked; separate composition, relationships/variation, connections and style reviews across ground-only/dressed views and required mobile regions |
 | motion | Complete requested cycles, occlusion, interactions, input and contextual timing |
 | final | Current whole-image judgment against the original target, followed by prior findings and full acceptance |
 
@@ -50,6 +52,23 @@ Evidence must postdate every ticket using it. This permits one capture session
 without repeating the browser journey for each visual criterion.
 
 ## Protected check schema
+
+Version 4 also requires the fixed `assetPolicy` shown in the complete example:
+generated world/character/environment sources, image-to-video character animation,
+a coverage ledger and actual runtime manifest/binding paths. All paths must be
+inside `inputRoots`; they need not yet exist at freeze. Record the schema and source
+chain as described in [asset policy](asset-policy.md). The full production inventory
+must exist and validate by static-stage submission and remain valid through final
+acceptance. Every static/motion/final check must include the ledger, runtime
+manifest and binding in its source dependencies (directly or through a parent
+directory). This makes a valid replacement chain invalidate prior observations,
+even when the replacement itself passes provenance.
+
+For version 4, a `layout` check in the layout stage uses `evidenceKind: "image"`:
+its `source` still supplies spatial measurements, while the reviewer inspects the
+actual blockout image and records the observed grouping/readability. A JSON-only
+layout report cannot satisfy it. Hash the actual blockout host and projection
+alongside the layout export so changes invalidate this evidence.
 
 `production` has `version: 1`, `rigidAssets: string[]`, and `checks: object[]`.
 Each check has a unique `id`, `stage`, `method` (`review`, `layout`, `art`),
@@ -145,6 +164,19 @@ rendered channel at bends and crossings as well: axis connectivity guarantees
 shared cell edges, not sufficient pixel width after banks and masks are applied.
 
 ## Run one check
+
+Ask for the next eligible work before opening a capture ticket:
+
+```sh
+python skills/isometric-visual-loop/scripts/verify-world.py production next review/baseline.json --receipts review/receipts
+```
+
+The JSON reports `nextStage`, `eligibleChecks`, expected evidence/views, missing
+inputs and blockers. `state: "ready-to-work"` means a check can begin; it is not
+production acceptance. `state: "complete"` means the configured production
+receipts pass; final snapshot/comparison/acceptance are still separate commands.
+Exit 0 means work is eligible or these receipts are complete; exit 1 means blocked
+or invalid. The command creates no tickets, evidence or verdicts.
 
 Before generating from a layout, compare its spawn, distant entrance and both
 bridge landings with the neutral runtime view under the same camera transform.
@@ -257,9 +289,12 @@ the overall image before closing old findings; file counts are not a quality sco
 
 After stages through motion pass, snapshot with `--production-receipts review/receipts`,
 capture current whole-world views, execute the existing `compare` loop and complete
-the final-stage check. Run `accept` with the same receipt-directory option. Version 3
+the final-stage check. Run `accept` with the same receipt-directory option. Version 4
 blocks a candidate before prerequisite stages pass and blocks acceptance until all
 stages and the existing complete visual/motion/gameplay/performance gates pass.
+Generated-source and character-video provenance are checked against the actual
+runtime inventory as part of this acceptance. A valid legacy plan is reported as
+legacy, never as version 4 provenance acceptance.
 
 Version 2 comparison baseline corrections do not silently migrate production
 receipts: receipts bind to the frozen baseline. An explicit new production baseline

@@ -5,6 +5,7 @@ description: Create game sprite and texture candidates using the project's selec
 
 # Game asset generation
 
+Follow the central [production asset policy](../isometric-visual-loop/references/asset-policy.md).
 Produce local, reusable asset files with source provenance. This skill covers
 generation and cutout preparation; the sibling
 [isometric-art-integration skill](../isometric-art-integration/SKILL.md) covers
@@ -22,11 +23,11 @@ An available tool is not automatically the project's preferred art pipeline.
 
 | Need | Option | Other supported approach |
 | --- | --- | --- |
-| Character animation candidates | [Directional sprite workflow](../directional-sprite-authoring/SKILL.md) using the project's selected image or video provider | Authored or supplied animation frames |
-| General raster artwork | WaveSpeed `bytedance/seedream-v5.0-pro` | An already available image provider, local generator, or supplied/licensed art |
-| Reference-guided variants | Selected provider's reference workflow, such as Seedream Pro Edit | Authored edits preserving the approved identity |
-| Transparent prop/actor | Preserve valid existing alpha; otherwise WaveSpeed `wavespeed-ai/image-background-remover` | Local CPU `rembg` |
-| Exact modular stone/terrain geometry | Host geometry and measured contact edges | Compatible authored, supplied or generated appearance on that geometry |
+| Character motion | [Directional sprite workflow](../directional-sprite-authoring/SKILL.md): approved generated facing image, approved capable I2V tool, actual-video review, extraction and packing | No alternate production route |
+| General production raster artwork | Approved T2I/I2I provider, such as WaveSpeed `bytedance/seedream-v5.0-pro` | No non-generated production route |
+| Reference-guided production variants | Selected I2I provider workflow, such as Seedream Pro Edit | Masked I2I repair of approved generated art |
+| Transparent generated prop/actor | Preserve valid generated alpha; otherwise WaveSpeed `wavespeed-ai/image-background-remover` | Local CPU `rembg` |
+| Exact modular stone/terrain geometry | Host geometry and measured contact edges | Compatible generated materials assembled on that geometry |
 
 No provider is a universal default or benchmarked winner in this framework.
 Generated PNGs need not contain usable alpha. Background
@@ -40,8 +41,10 @@ authoring dependencies, not runtime services.
 World assembly, image source and provider are separate decisions. Select modular
 terrain, composed ground, layered artwork or a hybrid with the
 [visual loop](../isometric-visual-loop/SKILL.md) first. A project may explicitly
-choose generated materials with deterministic tile assembly and separately
-authored character frames. Record which technique owns each asset family. Do not
+choose generated materials with deterministic tile assembly. Record which technique
+owns each asset family. Character motion follows the directional I2V route; direct
+generated sheets, individual gait frames and authored character animation are not
+production alternatives. Do not
 silently change providers, mix styles or substitute example artwork after failure;
 use an agreed fallback or raise the specific decision that needs changing.
 
@@ -138,9 +141,10 @@ For a grounded object with measured contact and a targeted repair, adapt the
 unvalidated examples preserve the distinction between a material swatch,
 portable cutout and rooted patch; use the current host's intended layer split.
 
-For repeated characters, use an accepted reference and explicit pose/facing
-instructions. Keep common canvas and contact origins across frames; do not
-independently auto-trim poses. Generation does not guarantee animation continuity.
+For static character views, use an accepted generated reference and explicit
+facing instructions. Keep common canvas and contact origins across directions;
+do not independently auto-trim them. Animated character motion requires the
+directional I2V workflow, not generated pose frames.
 
 When a provider needs multiple exact references, prepare a reviewable input bundle
 with the offline [request preparation helper](references/request-preparation.md).

@@ -11,9 +11,11 @@ form. Preserve prior decisions and do not create another contract.
 - **World assembly:** reusable modular terrain, composed ground, layered scene or
   hybrid. Choose based on map editing/reuse, height, occlusion and motion needs;
   identify missing host tooling before producing the full pack.
-- **Image sources per family:** supplied/licensed, authored, text-to-image,
-  image-to-image or a combination, sharing the agreed style. Record a provider only
-  when generation is selected. Define any initial concept scope/budget and whether
+- **Image sources per family:** text-to-image, image-to-image or accepted generated
+  art with provenance, sharing the agreed style. Character animation uses generated
+  facing images and image-to-video/extraction; scenery animation can use another
+  appropriate method on generated material. Apply the [asset policy](asset-policy.md).
+  Record the selected provider/access and approved budget. Define whether
   layout is fixed or may be derived from the concept. Selection/provenance belongs
   in host production data; choose initial visual references before acceptance freeze.
 - **World layout:** regions, landmarks, connecting routes and views. Note which

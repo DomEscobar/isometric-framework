@@ -26,7 +26,43 @@ base needs diagnosis before choosing image, anchor or placement repair.
   This is workflow/distribution evidence, not proof of improved generated art or
   acceptance of a finished environment. No artwork was generated for this patch.
 
-## Executed production-stage checks
+## Generated production assets and acceptance v4 (2026-09-15)
+
+New world production uses generated artwork, with character motion restricted to
+approved generated facing images, image-to-video, reviewed extraction, packing
+and runtime playback review. Scenery retains technique choice. The package no
+longer includes mannequin sheet templates or direct-sheet character recipes.
+README, starter and all seven skill entrypoints share the central policy.
+
+- The visual-production suite passed 74 tests. It covers mandatory v4 policy,
+  actual blockout image evidence, stage skipping, a complete v4 CLI acceptance,
+  persisted failed provenance receipts and stale reviews after a valid rechain.
+- Synthetic FFV1 fixtures exercise source video, decoded timestamps, masks/crops,
+  frame pixels, FPS, anchors and actual bound atlas textures. Rehashed fabricated
+  frames and changed source/runtime data fail. Static generated idle and both
+  environment animation routes pass; one-frame walks and all-debug finished-world
+  inventories fail. Prepared facing images retain and replay raw image/mask/crop.
+- Existing directional extraction/packing tests passed 17/17; runtime tests
+  passed 76/76; package/starter tests passed 5/5. All seven skill metadata checks
+  passed and 218 local Markdown links resolve.
+- Package build, fresh consumer install/type-check/build and real desktop keyboard
+  and CDP touch journeys passed. Arrival screenshots were inspected, with no
+  browser errors or clipped controls. Evidence: `test-results/v4-consumer-01/`.
+  The final installed package additionally passed 12 provenance/CLI tests; its
+  runtime bytes match the browser-tested build. Vite retains its bundle-size advisory.
+- An independent agent followed four production scenarios: missing character I2V
+  access blocks motion, scenery keeps technique choice, JSON-only layout evidence
+  blocks expansion, and unrelated runtime sheets do not establish video provenance.
+
+No paid or remote generation was performed. Fixtures prove local gate behavior,
+not attractive generated art, a finished game's quality or genuine provider origin.
+Generation receipts and host inventory exports remain declared evidence: the tools
+cannot authenticate the provider or prove an export describes a different renderer.
+Actual images, movement, full-world coverage and playback still require review.
+Legacy plans remain readable and explicitly report provenance as unenforced.
+The runtime API is unchanged; technical builds do not imply production acceptance.
+
+## Historical: executed production-stage checks
 
 Acceptance-plan version 3 now requires six stages: preflight, layout, assembly,
 static world, motion and final review. `production begin/finish/status` records

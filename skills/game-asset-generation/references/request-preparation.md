@@ -28,6 +28,13 @@ An identity reference must be explicitly `approved`; rejected identity crops are
 refused rather than carried forward. This is an operator declaration, not visual
 approval by the tool.
 
+For character image-to-video, the approved facing image must appear as an actual
+`identity` input in the saved bundle. Keep its local path, source and selected-pixel
+hashes, the original T2I/I2I request or job ID, and the approval record beside the
+video request record. This helper does not submit I2V jobs and cannot validate an
+unrecorded provider parameter. Do not invent tool fields or claim a bundle was
+submitted when no approved capable tool was available.
+
 For a multi-direction action matrix, create and review one direction/action
 first, then place a nearby version 2 receipt such as:
 

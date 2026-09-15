@@ -5,6 +5,11 @@ not generate art or infer root positions. Review actual facing and scale before
 assigning direction labels. A common declared anchor is an instruction to the
 renderer, not a measurement that the painted roots agree.
 
+Production character motion inputs must come from the reviewed
+[video extraction workflow](video-to-sprites.md). This generic packer does not
+itself enforce source provenance; version 4 production acceptance does. Single
+generated facing images may supply static idle clips only.
+
 Save `sprite-pack.json` next to the input frames. Example for the initial four-view
 idle review, with 96×128 canvases and a root at source pixel `(48,112)`:
 
@@ -26,10 +31,9 @@ idle review, with 96×128 canvases and a root at source pixel `(48,112)`:
 ```
 
 Replace dimensions, anchor and filenames with actual approved measurements.
-For walking, add `walk` to `requiredActions` and four corresponding clips with
-their accepted phase filenames in playback order. For example, a clip can use
-`["walk-ne-contact-a.png", "walk-ne-pass-a.png", "walk-ne-contact-b.png", "walk-ne-pass-b.png"]`
-at a chosen FPS. Repeated paths are allowed for holds. Custom actions such as
+For walking, use the extraction helper's emitted spec and recorded selected video
+frames in playback order. Preserve its chosen FPS and measured anchor through
+packing. Repeated paths are allowed for holds. Custom actions such as
 `attack` use the same clip fields; use `loop: false` when they should play once.
 
 From the repository root:

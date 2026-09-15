@@ -26,8 +26,11 @@ before deriving the asset list. Plan the whole scene, connected areas and their
 contacts; choose families and meaningful variants from those relationships.
 
 Choose world assembly first: reusable modular terrain, composed ground, layered
-scene artwork, or a hybrid. Then choose supplied/authored/text-to-image/image-to-image
-sources per asset family and any needed provider. Use the catalog's support limits
+scene artwork, or a hybrid. Follow the mandatory [asset policy](references/asset-policy.md):
+new world/character art is generated, and character animation uses image-to-video
+with reviewed extraction. Choose text-to-image/image-to-image for static families
+or reuse accepted generated art with provenance. Scenery/object animation may use
+image-to-video or another fitting technique. Use the catalog's support limits
 to identify the host work each assembly route needs before commissioning its art.
 
 With an approved contract, resolve missing visual direction through bounded concept
@@ -53,7 +56,7 @@ additionally needs protected framing, landmark positions and scale.
 
 Derive technical checks from that contract; the agent prepares them, not the user.
 Link the contract with the plan's `contract` field so freezing also protects it.
-For full world production, use the version 3 [acceptance plan](references/acceptance.md)
+For full world production, use the version 4 [acceptance plan](references/acceptance.md)
 and [executed stages](references/production-flow.md): preflight, semantic layout,
 representative assembly, complete static scene, motion and final review.
 Implement eligible work, then begin its check immediately before capturing/reviewing
@@ -120,7 +123,9 @@ Read the selected specialist's relevant recipe, not every provider or fixture.
 Choose world assembly and then image sources before a generation provider. Use the catalog's
 [technique routing](../README.md#choose-the-art-technique) to select the minimum
 useful recipes. Composed ground needs contact and traversal checks, but does not
-need a 47-mask tileset. Supplied art does not need a generation request.
+need a 47-mask tileset. Reusing accepted generated art with provenance does not
+need another generation request. Missing provider access or approved budget is a
+blocker; technical placeholders cannot satisfy production acceptance.
 Generated-art requests require actual generated outputs and honest provenance.
 Example hosts are not default art libraries.
 

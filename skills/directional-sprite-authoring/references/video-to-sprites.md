@@ -1,14 +1,17 @@
 # Video-derived sprite frames
 
-Use this optional route when an existing or generated video supplies useful
-directional motion. Authored poses and generated sheets remain alternatives.
+Use this required production route for character motion. Start with an approved
+generated character-facing image, submit it to an approved image-to-video tool,
+review the actual returned video, then extract and pack selected frames.
 Extraction is repeatable; it cannot make incorrect anatomy or movement correct.
 
 ## Choose inputs that simplify extraction
 
-Start with an approved character image in the required facing. A rear walk needs
-a rear-facing reference; a direction word does not reliably override a conflicting
-image. Reuse existing views. For generation and provider inputs, follow
+Start with an approved generated T2I or I2I character image in the required facing.
+A rear walk needs a rear-facing reference; a direction word does not reliably
+override a conflicting image. Record the actual local input file/hash, its original
+generation request or job ID, and all submitted image/video inputs. Do not invent
+provider fields, request values, or a video submission. For generation and provider inputs, follow
 [game asset generation](../../game-asset-generation/SKILL.md).
 
 Prefer one full-body character, fixed camera, stable scale and a stationary root.
@@ -33,9 +36,11 @@ Example motion prompt, adapted to the character and selected key color:
 > with no ground shadow or other objects. Begin already walking and maintain the
 > same pace throughout.
 
-When supplying a motion video, add its role and intended rhythm. Inspect the output
-instead of treating requests as guarantees. Check cost before generation; preserve
-the prediction ID and resume existing jobs after interruption, without resubmitting.
+When supplying a motion video, add its role and intended rhythm. Inspect the actual
+output before extraction instead of treating requests as guarantees. Check cost
+before generation; preserve the prediction ID and resume existing jobs after
+interruption, without resubmitting. If budget, access, or an approved capable I2V
+tool is unavailable, record that blocker and do not generate.
 
 ## Prepare and export
 

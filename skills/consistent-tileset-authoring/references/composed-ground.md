@@ -2,7 +2,9 @@
 
 Use this optional Pillow helper after a host exports a source image and any target-sized
 masks. It prepares pixels only: it does not infer terrain topology, collision, or material
-boundaries. The source may be authored, supplied, procedural, or generated.
+boundaries. Its input support includes technical fixtures and legacy images;
+new production worlds must use generated art with provenance under the
+[asset policy](../../isometric-visual-loop/references/asset-policy.md).
 Use Python 3.10+ with Pillow; `uv run --with Pillow python` can replace `python`
 below when needed. No browser, provider connection or example assets are required.
 

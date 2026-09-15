@@ -5,6 +5,10 @@ description: Place large or multipart isometric assets with measured sprite cont
 
 # Multi-tile asset assembly
 
+New world artwork follows the [production asset policy](../isometric-visual-loop/references/asset-policy.md).
+This skill measures and assembles generated assets; collision and support geometry
+remain deterministic host data.
+
 For a world requested in ordinary language, the
 [visual production workflow](../isometric-visual-loop/SKILL.md) owns overall scope.
 Infer the structural parts needed for its buildings, bridges and large scenery;

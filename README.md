@@ -49,18 +49,26 @@ Derive technical plans from it; do not create a competing art brief. Once it is
 approved, use the standalone starter and new-game guide to implement the game.
 
 Help me choose how the world is assembled: modular terrain, composed ground,
-layered scene, or a hybrid. Separately choose image sources for each asset family:
-supplied, authored, text-to-image, or image-to-image. Image-to-image is optional.
+layered scene, or a hybrid. Generate new visible world and character art using
+text-to-image or image-to-image; reuse accepted generated assets with provenance.
+Character animation must use an approved generated facing image, image-to-video,
+reviewed frame extraction and deterministic packing. Do not substitute generated
+sheets, individual movement poses or hand-drawn character animation. For scenery
+and other objects, choose image-to-video or another suitable animation technique.
+Blockout placeholders, UI, collision geometry and masks are exempt from generation.
 Within the approved contract, resolve any missing concept and rough layout before
 freezing acceptance. Record the selected visual reference in production data so
 later assets share its projection, palette, scale, light and pixel treatment.
-Preserve existing decisions. Ask about provider and budget only when generation
-is needed. Plan the whole composition before its asset list; derive families and
+Preserve existing decisions and spending permissions; missing access or budget is
+a blocker, not permission to substitute art. Plan the whole composition before its asset list; derive families and
 deliberate variation from the areas they serve. Calibrate a connected area with
 related objects, useful open space and ground connections. Then complete the whole agreed world;
 do not shrink a rich request to the calibration scene. Playtest the real game and
 review visuals, motion, gameplay, and performance separately before declaring it
-complete.
+complete. Use version 4 acceptance and production next to follow preflight,
+layout with blockout review, connected area, complete static world, motion and
+final review. Keep asset provenance bound to the actual runtime images and clips;
+a passing build is not production acceptance.
 ```
 
 ## Use the skills

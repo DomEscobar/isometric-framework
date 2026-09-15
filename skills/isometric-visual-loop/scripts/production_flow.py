@@ -89,12 +89,24 @@ def validate(plan, root):
             require(isinstance(source, str) and any(local(root, source) == local(root, p)
                     or local(root, source).is_relative_to(local(root, p)) for p in check["inputs"]),
                     "Checker source must be a declared dependency")
+        if plan.get("version") == 4 and STAGES.index(check["stage"]) >= STAGES.index("static"):
+            policy = plan["assetPolicy"]
+            protected = [policy["coverageLedger"], policy["runtime"]["manifest"], policy["runtime"]["binding"]]
+            for target in protected:
+                target_path = local(root, target)
+                require(any(target_path == local(root, dependency) or target_path.is_relative_to(local(root, dependency))
+                            for dependency in check["inputs"]),
+                        "V4 static and later checks must hash provenance ledger, manifest and binding dependencies")
         if check["method"] == "layout":
             scope = check.get("requiredScope")
             require(isinstance(scope, dict) and set(scope) == {"regions", "instances", "routes", "bridges"}
                     and all(isinstance(v, list) and len(v) == len(set(v)) and all(isinstance(i, str) and i for i in v) for v in scope.values()),
                     "Protect required layout region/instance/route/bridge IDs")
             require(scope["regions"] and scope["routes"], "Layout needs protected regions and traversal routes")
+            if plan.get("version") == 4 and check["stage"] == "layout":
+                require(check["evidenceKind"] == "image", "V4 layout requires a blockout image review")
+        if plan.get("version") == 4 and check["stage"] == "layout" and check["method"] == "review":
+            require(check["evidenceKind"] == "image", "V4 layout review requires blockout images")
         for rid in check["requirements"]:
             if check["method"] == "review" and check["stage"] == ("static" if requirements[rid]["domain"] == "visual" else "motion"):
                 coverage.update((rid, view) for view in check["views"])
@@ -172,6 +184,7 @@ def collect(plan, root, baseline_hash, directory):
     checks = validate(plan, root)
     latest = {}
     histories = {}
+    provenance_checked = False
     for path in sorted(Path(directory).glob("*.json")):
         value = read(path)
         if value.get("kind") != "production-receipt" or value.get("baselineSha256") != baseline_hash:
@@ -203,6 +216,10 @@ def collect(plan, root, baseline_hash, directory):
             evidence(root, receipt["evidence"], check["views"], check["evidenceKind"])
             require(receipt["status"] in ("pass", "fail", "unverified"), "Invalid receipt status")
             report = automatic(check, root, receipt["inputs"])
+            if (plan.get("version") == 4 and not provenance_checked
+                    and STAGES.index(check["stage"]) >= STAGES.index("static")):
+                module("asset_provenance").verify(plan, root)
+                provenance_checked = True
             status = "fail" if report and not report["passed"] else receipt["status"]
             statuses[cid] = {**base, "status": status, "receipt": str(path), "reason": receipt["observed"]}
         except (ValueError, OSError, KeyError) as error:
@@ -223,6 +240,22 @@ def collect(plan, root, baseline_hash, directory):
         statuses[cid]["eligible"] = not blockers
         statuses[cid]["blockers"] = blockers
     return {"passed": all(stages.values()), "nextStage": next_stage, "stages": stages, "checks": statuses}
+
+
+def next_work(status):
+    """A non-mutating, actionable view of status; incomplete is never success."""
+    candidates = [{"id": cid, "stage": value["stage"], "views": value["views"],
+                   "evidenceKind": value["evidenceKind"], "inputs": value["declaredInputs"],
+                   "expectedEvidence": {"kind": value["evidenceKind"], "views": value["views"]}}
+                  for cid, value in status["checks"].items() if value["eligible"]]
+    blockers = {cid: value["blockers"] for cid, value in status["checks"].items()
+                if value["stage"] == status["nextStage"] and value["blockers"]}
+    if status["passed"]:
+        return {**status, "state": "complete", "readyToWork": False, "eligibleChecks": [],
+                "missingInputs": [], "blockers": []}
+    missing = [value.get("inputIssue") for value in status["checks"].values() if value.get("inputIssue")]
+    return {**status, "state": "ready-to-work" if candidates else "incomplete", "readyToWork": bool(candidates),
+            "eligibleChecks": candidates, "missingInputs": missing, "blockers": blockers}
 
 
 def prerequisites(plan, root, baseline_hash, directory, check):
@@ -314,7 +347,16 @@ def finish(gate, baseline, ticket_path, submission_path, directory, output):
     require(all(isinstance(submission.get(k), str) and submission[k].strip() for k in ("reviewer", "observed")), "Reviewer and observations required")
     evidence(root, submission.get("evidence"), check["views"], check["evidenceKind"], Path(ticket_path).stat().st_mtime_ns)
     report = automatic(check, root, ticket["inputs"])
-    status = "fail" if report and not report["passed"] else submission["status"]
+    automatic_passed = report is None or report["passed"]
+    if plan.get("version") == 4 and STAGES.index(check["stage"]) >= STAGES.index("static"):
+        try:
+            provenance = module("asset_provenance").verify(plan, root)
+            report = {"provenance": provenance, **({"automatic": report} if report else {})}
+        except (ValueError, OSError, KeyError) as error:
+            automatic_passed = False
+            report = {"provenance": {"passed": False, "error": str(error)},
+                      **({"automatic": report} if report else {})}
+    status = "fail" if not automatic_passed else submission["status"]
     target = Path(output).resolve()
     require(target.parent == Path(directory).resolve(), "Receipt output must be directly in its receipt directory")
     require(all(not target.is_relative_to(local(root, p)) for p in plan["inputRoots"]), "Receipts must be outside source inputRoots")

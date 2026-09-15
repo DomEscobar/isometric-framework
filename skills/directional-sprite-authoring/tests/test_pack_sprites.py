@@ -1,6 +1,7 @@
 """Offline authoring checks; no provider calls or live game changes."""
 
 import copy
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -24,7 +25,7 @@ class PackSpritesTests(unittest.TestCase):
         self.source.putpixel((1, 1), (200, 40, 100, 128))
         self.source.putpixel((2, 3), (90, 80, 70, 255))
         self.source.save(self.base / "pose.png")
-        self.spec = {"version": 1, "imageId": "hero", "cell": {"width": 4, "height": 5},
+        self.spec = {"version": 2, "origin": {"kind": "video-extraction", "provenance": "provenance.json"}, "imageId": "hero", "cell": {"width": 4, "height": 5},
                      "anchor": {"x": 0.5, "y": 0.8},
                      "requiredDirections": ["ne", "se", "sw", "nw"], "requiredActions": ["idle", "walk"],
                      "clips": [{"action": action, "direction": direction, "fps": 8, "loop": True,
@@ -33,7 +34,14 @@ class PackSpritesTests(unittest.TestCase):
 
     def run_pack(self, spec=None, name="out"):
         path = self.base / "spec.json"
-        path.write_text(json.dumps(self.spec if spec is None else spec), encoding="utf-8")
+        value = self.spec if spec is None else spec
+        path.write_text(json.dumps(value), encoding="utf-8")
+        if isinstance(value, dict) and value.get("origin", {}).get("kind") == "video-extraction":
+            frames = sorted({frame for clip in value.get("clips", []) for frame in clip.get("frames", [])})
+            provenance = {"version": 2, "spritePackSha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                          "exportedFrames": [{"file": frame, "sha256": hashlib.sha256((self.base / frame).read_bytes()).hexdigest()
+                                              if (self.base / frame).is_file() else "0" * 64} for frame in frames]}
+            (self.base / "provenance.json").write_text(json.dumps(provenance), encoding="utf-8")
         return packer.pack(path, self.base / name)
 
     def test_pixel_preservation_gutters_order_hashes_and_determinism(self):
@@ -76,6 +84,46 @@ class PackSpritesTests(unittest.TestCase):
         palette.save(self.base / "pose.png", transparency=0)
         self.run_pack()
 
+    def test_static_facing_allows_only_one_idle_frame(self):
+        spec = copy.deepcopy(self.spec)
+        spec["origin"] = {"kind": "static-facing"}
+        spec["requiredDirections"] = ["ne"]
+        spec["requiredActions"] = ["idle"]
+        spec["clips"] = [{"action": "idle", "direction": "ne", "fps": 1, "loop": True, "frames": ["pose.png"]}]
+        self.run_pack(spec)
+        spec["clips"][0]["frames"].append("pose.png")
+        with self.assertRaisesRegex(ValueError, "one-frame idle"):
+            self.run_pack(spec, "animated-static")
+
+    def test_video_provenance_binds_spec_and_frames(self):
+        path = self.base / "spec.json"
+        path.write_text(json.dumps(self.spec), encoding="utf-8")
+        provenance = {"version": 2, "spritePackSha256": "0" * 64,
+                      "exportedFrames": [{"file": "pose.png", "sha256": hashlib.sha256((self.base / "pose.png").read_bytes()).hexdigest()}]}
+        (self.base / "provenance.json").write_text(json.dumps(provenance), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "version 2 export"):
+            packer.pack(path, self.base / "bad-provenance")
+
+    def test_mirrored_extraction_requires_kind_and_binds_frames(self):
+        spec = copy.deepcopy(self.spec)
+        spec["origin"] = {"kind": "mirrored-extraction", "provenance": "provenance.json"}
+        spec["requiredDirections"] = ["nw"]
+        spec["requiredActions"] = ["walk"]
+        spec["clips"] = [{"action": "walk", "direction": "nw", "fps": 8, "loop": True, "frames": ["pose.png"]}]
+        path = self.base / "spec.json"
+        raw = json.dumps(spec)
+        path.write_text(raw, encoding="utf-8", newline="\n")
+        digest = hashlib.sha256((self.base / "pose.png").read_bytes()).hexdigest()
+        provenance = {"version": 2, "spritePackSha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+                      "exportedFrames": [{"file": "pose.png", "sha256": digest}]}
+        (self.base / "provenance.json").write_text(json.dumps(provenance), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "mirrored extraction provenance"):
+            packer.pack(path, self.base / "missing-kind")
+        provenance["kind"] = "mirrored-extraction"
+        (self.base / "provenance.json").write_text(json.dumps(provenance), encoding="utf-8")
+        result = packer.pack(path, self.base / "mirrored")
+        self.assertEqual(result["visualAnimations"]["directions"]["nw"]["walk"], "hero.walk.nw")
+
     def test_rejects_false_or_missing_cutout_alpha(self):
         for mode, color in (("RGB", (1, 2, 3)), ("RGBA", (1, 2, 3, 255)),
                             ("RGBA", (1, 2, 3, 0)), ("RGBA", (1, 2, 3, 128))):
@@ -103,7 +151,7 @@ class PackSpritesTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "bit depth"):
             self.run_pack()
 
-    def test_rejects_matrix_and_duplicate_pairs(self):
+    def test_rejects_missing_and_duplicate_pairs(self):
         spec = copy.deepcopy(self.spec)
         spec["clips"].pop()
         with self.assertRaisesRegex(ValueError, "missing required"):
@@ -145,7 +193,7 @@ class PackSpritesTests(unittest.TestCase):
 
     def test_duplicate_json_keys_and_nonfinite_values(self):
         path = self.base / "spec.json"
-        for raw in ('{"version":1,"version":1}', '{"fps":NaN}'):
+        for raw in ('{"version":2,"version":2}', '{"fps":NaN}'):
             path.write_text(raw, encoding="utf-8")
             with self.assertRaises(ValueError):
                 packer.pack(path, self.base / "out")

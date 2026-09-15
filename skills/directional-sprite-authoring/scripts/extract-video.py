@@ -14,6 +14,7 @@ import json
 import math
 import os
 from pathlib import Path, PurePosixPath
+import re
 import shutil
 import subprocess
 from uuid import uuid4
@@ -361,16 +362,21 @@ def load_recipe(recipe_path):
         fail("recipe.crop is outside the source bounds")
     if crop["width"] > 1024 or crop["height"] > 1024:
         fail("recipe.crop exceeds the packer cell limit of 1024 pixels")
-    if not isinstance(recipe["mask"], dict) or recipe["mask"].get("mode") not in ("none", "colorkey"):
-        fail("recipe.mask.mode must be none or colorkey")
+    if not isinstance(recipe["mask"], dict) or recipe["mask"].get("mode") not in ("none", "colorkey", "background-remover"):
+        fail("recipe.mask.mode must be none, colorkey, or background-remover")
     if recipe["mask"]["mode"] == "none":
         exact(recipe["mask"], ("mode",), "recipe.mask")
         key, tolerance = None, 0
-    else:
+    elif recipe["mask"]["mode"] == "colorkey":
         exact(recipe["mask"], ("mode", "color", "tolerance"), "recipe.mask")
         key = parse_key(recipe["mask"]["color"])
         tolerance = recipe["mask"]["tolerance"]
         finite(tolerance, 0, 255, "recipe.mask.tolerance", integer=True)
+    else:
+        exact(recipe["mask"], ("mode", "manifest", "sha256"), "recipe.mask")
+        if not isinstance(recipe["mask"]["sha256"], str) or not re.fullmatch(r"[0-9a-f]{64}", recipe["mask"]["sha256"]):
+            fail("recipe.mask.sha256 must be a lowercase SHA-256")
+        key, tolerance = None, 0
     frames = preparation["decodedFrames"]
     if not isinstance(frames, list) or not 1 <= len(frames) <= MAX_FRAMES:
         fail("preparation.decodedFrames is invalid")
@@ -385,6 +391,64 @@ def load_recipe(recipe_path):
             fail(f"decoded frame hash does not match: {index}")
         paths.append(path); times.append(entry["timeSeconds"])
     return recipe, recipe_raw, preparation, paths, times, key, tolerance, base
+
+
+def removal_frames(recipe, selected, base, crop, source_paths):
+    """Validate a one-result-per-selected-frame WaveSpeed removal manifest."""
+    manifest_path = relative(base, recipe["mask"]["manifest"], ".json")
+    manifest, raw = read_json(manifest_path)
+    manifest_hash = hashlib.sha256(raw).hexdigest()
+    if manifest_hash != recipe["mask"]["sha256"]:
+        fail("removal manifest hash does not match recipe")
+    exact(manifest, ("version", "kind", "frames"), "removal manifest")
+    if manifest["version"] != 1 or manifest["kind"] != "wavespeed-background-remover" or not isinstance(manifest["frames"], list):
+        fail("removal manifest must be wavespeed-background-remover version 1")
+    expected = set(selected)
+    found = {}
+    for item in manifest["frames"]:
+        exact(item, ("sourceIndex", "input", "inputSha256", "job", "jobSha256", "predictionId", "result", "resultSha256"), "removal manifest frame")
+        index = item["sourceIndex"]
+        finite(index, 0, MAX_FRAMES - 1, "removal manifest sourceIndex", integer=True)
+        if index not in expected or index in found:
+            fail("removal manifest must contain exactly one result for each selected frame")
+        if not all(isinstance(item[name], str) and re.fullmatch(r"[0-9a-f]{64}", item[name])
+                   for name in ("inputSha256", "jobSha256", "resultSha256")) or not isinstance(item["predictionId"], str):
+            fail("removal manifest contains invalid hashes or prediction ID")
+        input_path = relative(base, item["input"], ".png")
+        job_path = relative(base, item["job"], ".json")
+        result = relative(base, item["result"], ".png")
+        if not input_path.is_file() or sha256(input_path) != item["inputSha256"]:
+            fail("removal input hash does not match")
+        rectangle = (crop["x"], crop["y"], crop["x"] + crop["width"], crop["y"] + crop["height"])
+        with Image.open(source_paths[index]) as source, Image.open(input_path) as submitted:
+            expected_pixels = source.convert("RGBA").crop(rectangle)
+            actual = submitted.convert("RGBA")
+            pixels_match = actual.size == expected_pixels.size and ImageChops.difference(actual, expected_pixels).getbbox() is None
+            expected_pixels.close(); actual.close()
+        if not pixels_match:
+            fail("removal input is not the selected unkeyed source crop")
+        if not job_path.is_file() or sha256(job_path) != item["jobSha256"]:
+            fail("removal job hash does not match")
+        job, _ = read_json(job_path)
+        exact(job, ("version", "model", "createdAt", "requestHash", "sourceHash", "id", "status", "outputs"), "removal job")
+        if (job["version"] != 1 or job["model"] != "wavespeed-ai/image-background-remover"
+                or job["sourceHash"] != item["inputSha256"] or job["id"] != item["predictionId"]
+                or job["status"] != "completed" or not isinstance(job["outputs"], list) or not job["outputs"]):
+            fail("removal job does not bind a completed result to its input")
+        if not result.is_file() or sha256(result) != item["resultSha256"]:
+            fail("removal result hash does not match")
+        with Image.open(result) as image:
+            if image.size != (crop["width"], crop["height"]):
+                fail("removal result dimensions do not equal the shared crop")
+            rgba = image.convert("RGBA")
+            minimum, maximum = rgba.getchannel("A").getextrema()
+            rgba.close()
+        if minimum != 0 or maximum == 0:
+            fail("removal result needs both transparent and visible pixels")
+        found[index] = (result, item)
+    if set(found) != expected:
+        fail("removal manifest is incomplete")
+    return found, manifest_hash
 
 
 def validate_author_choices(recipe, frame_count):
@@ -416,9 +480,12 @@ def export(recipe_path, output):
     # omit startup/outlier poses after reviewing the full preparation board.
     rectangle = (crop["x"], crop["y"], crop["x"] + crop["width"], crop["y"] + crop["height"])
     selected = recipe["selection"]["indices"]
+    removed, removal_hash = ({}, None)
+    if recipe["mask"]["mode"] == "background-remover":
+        removed, removal_hash = removal_frames(recipe, selected, base, crop, paths)
     for index in selected:
         path = paths[index]
-        bounds = alpha_bounds(path, key, tolerance)
+        bounds = alpha_bounds(path, key, tolerance) if not removed else rectangle
         if not bounds:
             fail("mask leaves an empty frame")
         if bounds[0] < rectangle[0] or bounds[1] < rectangle[1] or bounds[2] > rectangle[2] or bounds[3] > rectangle[3]:
@@ -428,8 +495,12 @@ def export(recipe_path, output):
         frames_dir = staging / "frames"; frames_dir.mkdir()
         output_files = []
         for order, index in enumerate(selected):
-            with Image.open(paths[index]) as image:
-                rgba = mask(image, key, tolerance).crop(rectangle)
+            if removed:
+                with Image.open(removed[index][0]) as image:
+                    rgba = image.convert("RGBA")
+            else:
+                with Image.open(paths[index]) as image:
+                    rgba = mask(image, key, tolerance).crop(rectangle)
             minimum, maximum = rgba.getchannel("A").getextrema()
             if minimum != 0 or maximum == 0:
                 fail("each selected frame must have both visible and transparent pixels after masking")
@@ -438,13 +509,18 @@ def export(recipe_path, output):
             rgba.close()
             output_files.append(f"frames/{name}")
         clip = recipe["clip"]
-        spec = {"version": 1, "imageId": clip["imageId"], "cell": {"width": crop["width"], "height": crop["height"]},
+        spec = {"version": 2, "origin": {"kind": "video-extraction", "provenance": "provenance.json"}, "imageId": clip["imageId"], "cell": {"width": crop["width"], "height": crop["height"]},
                 "anchor": clip["anchor"], "requiredDirections": [clip["direction"]], "requiredActions": [clip["action"]],
                 "clips": [{"action": clip["action"], "direction": clip["direction"], "fps": recipe["selection"]["fps"], "loop": clip["loop"], "frames": output_files}]}
-        (staging / "sprite-pack.json").write_text(json.dumps(spec, indent=2, allow_nan=False) + "\n", encoding="utf-8", newline="\n")
-        provenance = {"version": 1, "source": prep["source"], "preparationSha256": recipe["preparation"]["sha256"],
-                      "recipeSha256": hashlib.sha256(recipe_raw).hexdigest(), "selected": [{"sourceIndex": index, "timeSeconds": times[index], "decodedFrameSha256": sha256(paths[index])} for index in selected],
-                      "crop": crop, "mask": recipe["mask"]}
+        spec_path = staging / "sprite-pack.json"
+        spec_path.write_text(json.dumps(spec, indent=2, allow_nan=False) + "\n", encoding="utf-8", newline="\n")
+        provenance = {"version": 2, "source": prep["source"], "preparationSha256": recipe["preparation"]["sha256"],
+                      "recipeSha256": hashlib.sha256(recipe_raw).hexdigest(), "spritePackSha256": sha256(spec_path),
+                      "selected": [{"sourceIndex": index, "timeSeconds": times[index], "decodedFrameSha256": sha256(paths[index])} for index in selected],
+                      "crop": crop, "mask": recipe["mask"], "removalManifestSha256": removal_hash,
+                      "exportedFrames": []}
+        for path in [staging / item for item in output_files]:
+            provenance["exportedFrames"].append({"file": str(path.relative_to(staging)).replace("\\", "/"), "sha256": sha256(path)})
         (staging / "provenance.json").write_text(json.dumps(provenance, indent=2, allow_nan=False) + "\n", encoding="utf-8", newline="\n")
         final_paths = [staging / item for item in output_files]
         alpha = board(final_paths, None, 0, backgrounds=True)
@@ -458,6 +534,31 @@ def export(recipe_path, output):
         raise
 
 
+def export_removal_inputs(recipe_path, output):
+    recipe, _, prep, paths, times, key, tolerance, _ = load_recipe(recipe_path)
+    if recipe["mask"]["mode"] == "background-remover":
+        fail("set a temporary none/colorkey mask before exporting raw removal inputs")
+    validate_author_choices(recipe, len(paths))
+    crop = recipe["crop"]; selected = recipe["selection"]["indices"]
+    rectangle = (crop["x"], crop["y"], crop["x"] + crop["width"], crop["y"] + crop["height"])
+    output, staging = fresh_output(output)
+    try:
+        frames = staging / "frames"; frames.mkdir()
+        entries = []
+        for order, index in enumerate(selected):
+            with Image.open(paths[index]) as image:
+                raw = image.convert("RGBA").crop(rectangle)
+            filename = f"frame-{order:04d}.png"; target = frames / filename
+            raw.save(target, format="PNG"); raw.close()
+            entries.append({"sourceIndex": index, "timeSeconds": times[index], "file": f"frames/{filename}", "sha256": sha256(target)})
+        manifest = {"version": 1, "kind": "background-remover-inputs", "source": prep["source"], "crop": crop, "frames": entries}
+        (staging / "removal-inputs.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8", newline="\n")
+        publish(staging, output)
+        return manifest
+    except Exception:
+        shutil.rmtree(staging, ignore_errors=True); raise
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -469,14 +570,20 @@ def main():
     export_parser = commands.add_parser("export")
     export_parser.add_argument("recipe", type=Path)
     export_parser.add_argument("--out", type=Path, required=True)
+    removal_parser = commands.add_parser("export-removal-inputs")
+    removal_parser.add_argument("recipe", type=Path)
+    removal_parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     try:
         if args.command == "prepare":
             result = prepare(args.source, args.out, args.key, args.tolerance)
             print(f"Prepared review bundle; fill selection and clip in {args.out / 'extraction.json'}")
-        else:
+        elif args.command == "export":
             result = export(args.recipe, args.out)
             print(f"Exported {len(result['clips'][0]['frames'])} selected frames to {args.out}")
+        else:
+            result = export_removal_inputs(args.recipe, args.out)
+            print(f"Exported {len(result['frames'])} raw removal inputs to {args.out}")
     except (ValueError, OSError, Image.DecompressionBombError) as error:
         print(f"extract-video: {error}", file=os.sys.stderr)
         return 1

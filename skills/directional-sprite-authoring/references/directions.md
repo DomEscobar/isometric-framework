@@ -21,6 +21,20 @@ on a 2:1 ground plane is not the same as a character turning its head upward.
 Describe facing with screen travel, torso orientation, and visible surfaces in
 the generation prompt. Camera orientation stays fixed.
 
+Horizontal flips change screen-left/right, not front/back:
+
+| Independently drawn facing | Derived facing |
+| --- | --- |
+| `se` front three-quarter | `sw` |
+| `sw` front three-quarter | `se` |
+| `ne` rear three-quarter | `nw` |
+| `nw` rear three-quarter | `ne` |
+| `e` right profile | `w` |
+| `w` left profile | `e` |
+
+`n` and `s` have no horizontal pair. Count only independently drawn facings as
+generated views; a derived clip is reuse of its source clip.
+
 Built-in demos use `diagonal: false` for click/tap paths, so their routed walking
 steps select NE/SE/SW/NW. Combined held input remains a separate capability and
 can request the other four directions. Do not enable diagonal click paths merely
@@ -40,11 +54,11 @@ assets.textures[textureID].frame -> explicit rectangle in the sheet PNG
 
 For example, a host may map `walk.ne` to row 3 or row 0; both work if that row
 visibly contains NE frames and the rectangles match the image. Do not rename a
-front-facing row to NE just to complete the matrix.
+front-facing row to NE just to complete declared coverage.
 
 The automatic resolver checks directional state, then general state, directional
 idle, general idle, and the base animation. Missing directional clips can therefore
-silently show another facing or idle art. Declare the required matrix and check
+silently show another facing or idle art. Declare the required clip coverage and check
 it explicitly rather than treating absence of a runtime error as success.
 The initial facing is SE and facing persists after movement stops. Use the public
 `runtime.setFacing(id, direction)` to face a target without movement. Subsequent

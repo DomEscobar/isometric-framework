@@ -58,10 +58,12 @@ It creates numbered boards, an inspection preview and `extraction.json`. Crop an
 cycle suggestions need review; no cycle or direction is automatically approved.
 Omit `--key` to preserve real alpha; an opaque source still needs a reviewed mask.
 
-Inspect masks over contrasting backgrounds, including enclosed gaps and equipment.
-The key tolerance is a per-channel RGB distance, not semantic segmentation. Wider
-tolerance can erase subject colors. If colors overlap or the background is complex,
-use a separately reviewed cutout workflow rather than hiding damage with tolerance.
+Inspect masks over contrasting backgrounds, including enclosed gaps and equipment,
+and play the candidate through at least two cycles. The key tolerance is a
+per-channel RGB distance, not semantic segmentation. Make one controlled color-key
+candidate. Halos, enclosed background, erased subject colors, flickering contours,
+or an `uncertain` verdict end key-tolerance tuning and require the WaveSpeed
+background remover on the selected unkeyed source frames.
 
 Edit the generated recipe, keeping its preparation hashes intact. Set the shared
 `crop`, reviewed `mask`, explicit `selection`, and `clip` fields. For example,
@@ -87,9 +89,60 @@ selections require deliberate retiming or repeated frame holds. Check resulting
 duration and seam. Similarity may favor repeated/near-static poses: inspect actual
 opposite contacts and transitions before selecting an interval.
 
+## Background-remover fallback
+
+After choosing timestamps and a shared crop, export raw inputs before applying the
+failed color key:
+
+```sh
+uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite-authoring/scripts/extract-video.py export-removal-inputs art/walk-review/extraction.json --out art/walk-review/removal-inputs
+```
+
+The output hashes each selected, unkeyed crop. With already approved WaveSpeed
+access and budget, submit every listed frame exactly once:
+
+```sh
+node skills/game-asset-generation/scripts/wavespeed.mjs remove-local art/walk-review/removal-inputs/frames/frame-0000.png art/walk-review/removal-jobs/frame-0000.json
+```
+
+`remove-local` validates the PNG, reserves the job file, requests a direct upload
+ticket, uploads using only the ticket's method and headers, and submits the
+background remover once. Resume a prediction after polling interruption with its
+existing job file. Never resubmit an ambiguous job. Download each completed PNG
+to a fresh local path and inspect it; a completed provider job is not mask approval.
+
+Create one manifest beside the review bundle. Every selected source index must
+have exactly one entry:
+
+```json
+{
+  "version": 1,
+  "kind": "wavespeed-background-remover",
+  "frames": [{
+    "sourceIndex": 0,
+    "input": "removal-inputs/frames/frame-0000.png",
+    "inputSha256": "SHA256",
+    "job": "removal-jobs/frame-0000.json",
+    "jobSha256": "SHA256",
+    "predictionId": "ACTUAL_ID",
+    "result": "removal-results/frame-0000.png",
+    "resultSha256": "SHA256"
+  }]
+}
+```
+
+Set the extraction recipe mask to `{"mode":"background-remover",
+"manifest":"removal-manifest.json","sha256":"SHA256"}`. Export then
+checks the manifest hash, original unkeyed crop pixels, completed job identity,
+result hash, canvas size, and real alpha. Missing WaveSpeed access or budget leaves
+character cutout acceptance blocked after failed color key; local `rembg` is not a
+silent substitute for this route.
+
 ```sh
 uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite-authoring/scripts/extract-video.py export art/walk-review/extraction.json --out art/walk-frames
+uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite-authoring/scripts/mirror-frames.py art/walk-frames/sprite-pack.json --to nw --out art/walk-frames-nw
 uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite-authoring/scripts/pack-sprites.py art/walk-frames/sprite-pack.json --out art/walk-packed
+uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite-authoring/scripts/pack-sprites.py art/walk-frames-nw/sprite-pack.json --out art/walk-packed-nw
 ```
 
 Export applies one saved crop and mask across selected frames, preserving pixel
@@ -99,11 +152,26 @@ Outputs include PNGs, provenance, a fresh preview and the existing packer's inpu
 It does not recenter, stabilize roots, infer facing or repair limbs. If source
 pixels change, prepare a new review rather than replacing hashes to bypass checks.
 
+## Derive the opposite facing
+
+After a reviewed export, derive the other member of a horizontal pair instead of
+running a second video. `--to` must be that pair: `ne`/`nw`, `se`/`sw`, or `e`/`w`.
+The helper flips each bound PNG, writes `1 - anchor.x`, and emits a new
+`sprite-pack.json` whose origin is `mirrored-extraction`. It does not invent N/S
+views, chain one mirror into another, or judge whether the flipped lighting and
+equipment still read correctly. Inspect the packed mirrored clip the same way as
+the source clip. Record it as reuse of the source extraction, not as a second
+generated direction.
+
+The example above derives NW from a NE export. Pack the source and the derived
+spec separately; merge their runtime maps in the host. The packer still does not
+flip pixels.
+
 ## Review, repair and handoff
 
 Inspect exported cutouts as well as the source. Changes to mask or crop require
 renewed review; preserve evidence and use a new export directory for revisions.
-Follow the skill's [frame, playback and runtime gates](../SKILL.md#verify-the-matrix-and-play-it).
+Follow the skill's [frame, playback and runtime gates](../SKILL.md#verify-the-clips-and-play-them).
 Observe at least two playback cycles including the seam. Instrumented frame
 advancement cannot certify motion; unavailable playback means unverified.
 

@@ -3,6 +3,7 @@
 import copy
 import importlib.util
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -132,6 +133,52 @@ class ExtractVideoTests(unittest.TestCase):
         prep.write_text("{}", encoding="utf-8")
         with self.assertRaisesRegex(ValueError, "preparation hash"):
             extractor.export(recipe, self.base / "stale-preparation")
+
+    def test_background_remover_manifest_binds_raw_inputs_jobs_and_cutouts(self):
+        recipe = self.recipe()
+        review_dir = self.base / "review"
+        inputs_dir = review_dir / "removal-inputs"
+        inputs = extractor.export_removal_inputs(recipe, inputs_dir)
+        jobs_dir = review_dir / "removal-jobs"; jobs_dir.mkdir()
+        results_dir = review_dir / "removal-results"; results_dir.mkdir()
+        manifest_frames = []
+        for order, entry in enumerate(inputs["frames"]):
+            input_path = inputs_dir / entry["file"]
+            with Image.open(input_path) as image:
+                result = image.convert("RGBA")
+            result.putalpha(result.convert("RGB").point(lambda value: 255 if value < 245 else 0).split()[0])
+            # Guarantee both transparent and visible pixels without changing the shared canvas.
+            result.putpixel((0, 0), (*result.getpixel((0, 0))[:3], 0))
+            result_path = results_dir / f"frame-{order:04d}.png"
+            result.save(result_path); result.close()
+            prediction_id = f"remove_{order}"
+            job = {"version": 1, "model": "wavespeed-ai/image-background-remover", "createdAt": "2026-09-15T00:00:00.000Z",
+                   "requestHash": "1" * 64, "sourceHash": entry["sha256"], "id": prediction_id,
+                   "status": "completed", "outputs": [f"https://cdn.example.com/{order}.png"]}
+            job_path = jobs_dir / f"frame-{order:04d}.json"
+            job_path.write_text(json.dumps(job), encoding="utf-8")
+            rel = lambda path: os.path.relpath(path, review_dir).replace("\\", "/")
+            manifest_frames.append({"sourceIndex": entry["sourceIndex"], "input": rel(input_path), "inputSha256": entry["sha256"],
+                                    "job": rel(job_path), "jobSha256": extractor.sha256(job_path), "predictionId": prediction_id,
+                                    "result": rel(result_path), "resultSha256": extractor.sha256(result_path)})
+        manifest = {"version": 1, "kind": "wavespeed-background-remover", "frames": manifest_frames}
+        manifest_path = review_dir / "removal-manifest.json"
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+        value = json.loads(recipe.read_text(encoding="utf-8"))
+        value["mask"] = {"mode": "background-remover", "manifest": "removal-manifest.json", "sha256": extractor.sha256(manifest_path)}
+        recipe.write_text(json.dumps(value), encoding="utf-8")
+        spec = extractor.export(recipe, self.base / "removed-export")
+        self.assertEqual(spec["origin"], {"kind": "video-extraction", "provenance": "provenance.json"})
+        provenance = json.loads((self.base / "removed-export/provenance.json").read_text(encoding="utf-8"))
+        self.assertEqual(provenance["removalManifestSha256"], extractor.sha256(manifest_path))
+        self.assertEqual(provenance["spritePackSha256"], extractor.sha256(self.base / "removed-export/sprite-pack.json"))
+
+        manifest["frames"][0]["predictionId"] = "wrong"
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+        value["mask"]["sha256"] = extractor.sha256(manifest_path)
+        recipe.write_text(json.dumps(value), encoding="utf-8")
+        with self.assertRaisesRegex(ValueError, "completed result"):
+            extractor.export(recipe, self.base / "bad-removal-job")
 
 
 class ValidationTests(unittest.TestCase):

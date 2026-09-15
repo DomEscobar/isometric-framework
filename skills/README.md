@@ -27,7 +27,7 @@ can use the same checks with a smaller requirement scope.
 | Create a complete world from a prompt or reference, or substantially refine an environment | [isometric-visual-loop](isometric-visual-loop/SKILL.md) | Whole-scene composition, connected areas and asset families, calibration, specialist coordination and playable visual review |
 | Add an art pack or theme; fix pasted-on scenery, proportions, seams or occlusion | [isometric-art-integration](isometric-art-integration/SKILL.md) | Object-ground connections, shared scale, contact measurements and in-game acceptance |
 | Generate raster sprites or textures; prepare transparent cutouts | [game-asset-generation](game-asset-generation/SKILL.md) | Project-selected image or video provider; background removal, decoded alpha and provenance |
-| Create or repair character facings, action spritesheets or video-derived frames | [directional-sprite-authoring](directional-sprite-authoring/SKILL.md) | Visible facing approval, coherent poses, stable frame contacts and explicit clip mapping |
+| Create character facings or turn approved I2V clips into runtime animation | [directional-sprite-authoring](directional-sprite-authoring/SKILL.md) | Facing approval, video review, cutout fallback, timestamped extraction and explicit clip mapping |
 | Animate rivers, fountains, waterfalls or wind-driven plants | [animated-environments](animated-environments/SKILL.md) | Stable scenery loops, matching joins and simulation timing |
 | Build large or multipart props, buildings, bridges or raised passages | [multi-tile-asset-assembly](multi-tile-asset-assembly/SKILL.md) | Solid volumes, walkable surfaces, openings, sprite contacts and depth parts |
 | Build connected beds, paths, walls or water with compatible edges | [consistent-tileset-authoring](consistent-tileset-authoring/SKILL.md) | Shared material geometry, neighbor variants, inner corners and rendered join checks |
@@ -54,7 +54,9 @@ integration beyond the flat-ground adapter and sprite clip support. Prove the
 needed capability during calibration before producing a full pack.
 
 Character animation uses approved generated facing image -> image-to-video ->
-reviewed extraction -> packing -> runtime review. Scenery/object animation may
+reviewed extraction -> alpha review -> packing -> runtime review. Preserve usable
+alpha; otherwise inspect one color-key candidate. Visible edge damage or uncertainty
+requires the approved background remover on selected unkeyed frames. Scenery/object animation may
 use image-to-video or another suitable method on generated material. Missing
 access or budget blocks new generation, not a silent authored fallback.
 Read the selected provider recipe when needed. The same visual, traversal and promised
@@ -76,6 +78,8 @@ not a prerequisite for generated art.
   `animated-environments`.
 - **Character facing repair:** start with `directional-sprite-authoring`; use
   generation only if new artwork is needed and art integration for scale checks.
+  A four-view walk needs two independently drawn facings plus horizontal
+  derivation, not four videos.
 - **Connected river:** combine `consistent-tileset-authoring` for generated banks
   and joins with `animated-environments` for flowing water using a fitting technique.
 - **Composed ground image:** use the optional

@@ -94,10 +94,29 @@ def frame_path(base, value):
     return resolved
 
 
-def validate(spec, base):
-    object_keys(spec, ("version", "imageId", "cell", "anchor", "requiredDirections", "requiredActions", "clips"), "spec")
-    if type(spec["version"]) is not int or spec["version"] != 1:
-        fail("version must be 1")
+def json_path(base, value):
+    if not isinstance(value, str) or not value.endswith(".json"):
+        fail("origin.provenance must be a relative JSON path")
+    return frame_path(base, value[:-5] + ".png").with_suffix(".json")
+
+
+def bind_export_provenance(manifest, spec_sha256, kind):
+    label = "video extraction" if kind == "video-extraction" else "mirrored extraction"
+    if (not isinstance(manifest, dict) or manifest.get("version") != 2
+            or manifest.get("spritePackSha256") != spec_sha256
+            or not isinstance(manifest.get("exportedFrames"), list)):
+        fail(f"{label} provenance is not a version 2 export")
+    if kind == "mirrored-extraction" and manifest.get("kind") != "mirrored-extraction":
+        fail("mirrored extraction provenance is not a version 2 export")
+    return manifest
+
+
+def validate(spec, base, spec_sha256):
+    object_keys(spec, ("version", "origin", "imageId", "cell", "anchor", "requiredDirections", "requiredActions", "clips"), "spec")
+    if type(spec["version"]) is not int or spec["version"] != 2:
+        fail("version must be 2; direct character sheets are retired")
+    if not isinstance(spec["origin"], dict) or spec["origin"].get("kind") not in ("video-extraction", "static-facing", "mirrored-extraction"):
+        fail("origin.kind must be video-extraction, static-facing, or mirrored-extraction")
     identifier(spec["imageId"], "imageId")
     object_keys(spec["cell"], ("width", "height"), "cell")
     for key in ("width", "height"):
@@ -134,6 +153,30 @@ def validate(spec, base):
             frame_path(base, frame)
     if total > MAX_TOTAL_FRAMES:
         fail(f"total frames exceeds {MAX_TOTAL_FRAMES}")
+    origin = spec["origin"]
+    if origin["kind"] == "static-facing":
+        object_keys(origin, ("kind",), "origin")
+        if total != 1 or len(clips) != 1 or clips[0]["action"] != "idle":
+            fail("static-facing origin is only valid for one-frame idle clips")
+        provenance_hash = None
+    else:
+        object_keys(origin, ("kind", "provenance"), "origin")
+        provenance = json_path(base, origin["provenance"])
+        if not provenance.is_file():
+            fail("video extraction provenance is missing")
+        provenance_raw = read_bounded(provenance, MAX_SPEC_BYTES)
+        try:
+            manifest = json.loads(provenance_raw, object_pairs_hook=no_duplicate_keys)
+        except json.JSONDecodeError:
+            fail("video extraction provenance is invalid JSON")
+        bound = bind_export_provenance(manifest, spec_sha256, origin["kind"])
+        expected = {item.get("file"): item.get("sha256") for item in bound["exportedFrames"] if isinstance(item, dict)}
+        for clip in clips:
+            for frame in clip["frames"]:
+                candidate = frame_path(base, frame)
+                if expected.get(frame) != hashlib.sha256(read_bounded(candidate, MAX_INPUT_BYTES)).hexdigest():
+                    fail(f"{origin['kind']} provenance does not bind frame: {frame}")
+        provenance_hash = hashlib.sha256(provenance_raw).hexdigest()
     required = {(action, direction) for action in spec["requiredActions"] for direction in spec["requiredDirections"]}
     missing = required - pairs
     if missing:
@@ -142,7 +185,7 @@ def validate(spec, base):
     height = len(clips) * (spec["cell"]["height"] + GUTTER) + GUTTER
     if width > MAX_AXIS or height > MAX_AXIS or width * height > MAX_PIXELS:
         fail(f"sheet exceeds allocation limits ({MAX_AXIS} per axis, {MAX_PIXELS} pixels)")
-    return width, height
+    return width, height, provenance_hash
 
 
 def load_cutout(path, size):
@@ -172,7 +215,8 @@ def pack(spec_path, output):
     raw = read_bounded(spec_path, MAX_SPEC_BYTES)
     spec = json.loads(raw, object_pairs_hook=no_duplicate_keys,
                       parse_constant=lambda value: fail(f"invalid JSON number: {value}"))
-    width, height = validate(spec, spec_path.parent)
+    spec_hash = hashlib.sha256(raw).hexdigest()
+    width, height, provenance_hash = validate(spec, spec_path.parent, spec_hash)
     cell = spec["cell"]
     image_id = spec["imageId"]
     sheet = Image.new("RGBA", (width, height), (0, 0, 0, 0))
@@ -206,7 +250,7 @@ def pack(spec_path, output):
                    "textures": textures, "animations": animations},
         "visualAnimations": visual,
         "customActions": custom,
-        "sourceHashes": {"spec": hashlib.sha256(raw).hexdigest(), "frames": hashes},
+        "sourceHashes": {"spec": spec_hash, "provenance": provenance_hash, "frames": hashes},
         "packing": {"width": width, "height": height, "cell": cell,
                     "anchor": spec["anchor"], "gutter": GUTTER, "rows": rows},
     }
@@ -223,7 +267,7 @@ def pack(spec_path, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("spec", type=Path, help="version 1 JSON; frame paths resolve against its directory")
+    parser.add_argument("spec", type=Path, help="version 2 JSON; frame paths resolve against its directory")
     parser.add_argument("--out", type=Path, required=True, help="new output directory (must not exist)")
     args = parser.parse_args()
     try:

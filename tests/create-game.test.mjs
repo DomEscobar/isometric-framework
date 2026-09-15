@@ -74,7 +74,7 @@ test('source checkout exposes only the I2V character-animation production route'
   assert.match(characterSkill, /one production route:[\s\S]*image-to-video/);
   assert.match(characterSkill, /background remover on the[\s\S]*unkeyed source frames/);
   const packer = await readFile(join(root, 'skills/directional-sprite-authoring/scripts/pack-sprites.py'), 'utf8');
-  assert.match(packer, /origin\.kind must be video-extraction, static-facing, or mirrored-extraction/);
+  assert.match(packer, /origin\.kind must be video-extraction or static-facing/);
   assert.match(packer, /static-facing origin is only valid for one-frame idle clips/);
 });
 

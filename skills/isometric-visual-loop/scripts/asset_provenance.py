@@ -175,37 +175,6 @@ def _origin(root, plan, item, label):
     return output
 
 
-HORIZONTAL_PAIRS = {"ne": "nw", "nw": "ne", "se": "sw", "sw": "se", "e": "w", "w": "e"}
-
-
-def clip_prefix(clip_id, direction):
-    suffix = "." + direction
-    if not isinstance(clip_id, str) or not clip_id.endswith(suffix) or len(clip_id) <= len(suffix):
-        fail("Clip ID does not match declared direction: " + str(clip_id))
-    return clip_id[:-len(suffix)]
-
-
-def _assert_packed_clip(assets, root, plan, manifest_path, clip_id, spec, packed_runtime, packed_dir, direction):
-    if len(spec["clips"][0]["frames"]) < 2:
-        fail("Animated character clip needs at least two extracted frames: " + clip_id)
-    expected_clip = spec["imageId"] + "." + spec["clips"][0]["action"] + "." + direction
-    if expected_clip != clip_id or assets["animations"].get(clip_id) != packed_runtime["assets"]["animations"].get(clip_id):
-        fail("Packed clip does not match runtime binding: " + clip_id)
-    actual_frames = assets["animations"][clip_id]["frames"]
-    expected_frames = packed_runtime["assets"]["animations"][clip_id]["frames"]
-    for actual_id, expected_id in zip(actual_frames, expected_frames):
-        actual, expected = assets["textures"][actual_id], packed_runtime["assets"]["textures"][expected_id]
-        if actual.get("anchor") != expected.get("anchor") or actual.get("frame", {}).get("width") != expected["frame"]["width"] or actual.get("frame", {}).get("height") != expected["frame"]["height"]:
-            fail("Runtime texture rectangle or anchor differs from extracted frame: " + clip_id)
-        runtime_sheet = runtime_file(root, manifest_path.parent, assets["images"][actual["image"]]["url"], plan["inputRoots"])
-        with Image.open(runtime_sheet) as sheet, Image.open(packed_dir / "sheet.png") as rebuilt:
-            af, ef = actual["frame"], expected["frame"]
-            left = sheet.crop((af["x"], af["y"], af["x"] + af["width"], af["y"] + af["height"]))
-            right = rebuilt.crop((ef["x"], ef["y"], ef["x"] + ef["width"], ef["y"] + ef["height"]))
-            if left.convert("RGBA").tobytes() != right.convert("RGBA").tobytes():
-                fail("Packed frame pixels do not match runtime texture: " + clip_id)
-
-
 def verify(plan, root):
     checked = validate_policy(plan, root, require_files=True)
     if not checked["enforced"]:
@@ -249,8 +218,6 @@ def verify(plan, root):
         fail("Provenance ledger must cover exactly character runtime animated clips")
     extractor = load_script("v4_extract_video", Path(__file__).resolve().parents[2] / "directional-sprite-authoring/scripts/extract-video.py")
     packer = load_script("v4_pack_sprites", Path(__file__).resolve().parents[2] / "directional-sprite-authoring/scripts/pack-sprites.py")
-    mirrorer = load_script("v4_mirror_frames", Path(__file__).resolve().parents[2] / "directional-sprite-authoring/scripts/mirror-frames.py")
-    extract_clips, mirrored_clips = [], []
     for clip_id in character_clips:
         item = clips[clip_id]
         static = len(assets["animations"][clip_id].get("frames", [])) == 1
@@ -266,13 +233,10 @@ def verify(plan, root):
                 if source.size != crop.size or source.convert("RGBA").tobytes() != crop.convert("RGBA").tobytes():
                     fail("Static generated facing pixels do not match runtime texture: " + clip_id)
             continue
-        if not isinstance(item, dict) or item.get("mode") not in ("image-to-video-extract-pack", "mirrored-frames"):
+        if not isinstance(item, dict) or set(item) != {"mode", "selectedImage", "videoJob", "recipe"}:
             fail("Character clip ledger needs mode, selectedImage, videoJob and recipe: " + clip_id)
-        if item["mode"] == "mirrored-frames":
-            mirrored_clips.append(clip_id)
-            continue
-        if set(item) != {"mode", "selectedImage", "videoJob", "recipe"}:
-            fail("Character clip ledger needs mode, selectedImage, videoJob and recipe: " + clip_id)
+        if item["mode"] != "image-to-video-extract-pack":
+            fail("Animated character clip must use image-to-video-extract-pack: " + clip_id)
         selected = _origin(root, plan, item["selectedImage"], "Selected generated image " + clip_id)
         job = read(_evidence(root, plan, item["videoJob"], "Video job " + clip_id))
         if (not isinstance(job, dict) or job.get("selectedImageSha256") != sha(selected)
@@ -280,6 +244,9 @@ def verify(plan, root):
                 or not any(isinstance(job.get(key), str) and job[key].strip() for key in ("requestId", "jobId", "localJobId"))):
             fail("Video job record must pin the selected image passed to the job: " + clip_id)
         recipe_path = _evidence(root, plan, item["recipe"], "Extraction recipe " + clip_id)
+        # Re-export and re-pack from the recorded source/preparation/recipe.
+        # This verifies decoded frames, crop/mask pixels, selected frames and packing
+        # without trusting the provenance file written by the first export.
         recipe, _, prep, old_frames, _, _, _, recipe_base = extractor.load_recipe(recipe_path)
         source_video = recipe_base / Path(prep["source"]["file"])
         if not under_roots(root, source_video.resolve(), plan["inputRoots"]):
@@ -291,14 +258,14 @@ def verify(plan, root):
             fail("Video job record does not match extraction source video: " + clip_id)
         if recipe.get("clip") is None:
             fail("Extraction recipe must define a clip: " + clip_id)
-        extract_clips.append((clip_id, recipe_path, recipe, prep, old_frames, source_video, recipe["selection"]["indices"]))
-
-    for clip_id, recipe_path, recipe, prep, old_frames, source_video, indices in extract_clips:
+        # Decode the video again and compare selected decoded pixels, so a ledger
+        # cannot substitute fabricated frames while recomputing its preparation hashes.
         with tempfile.TemporaryDirectory(prefix="v4-provenance-") as temp:
             exported = Path(temp) / "extract"; packed = Path(temp) / "pack"
             replay = Path(temp) / "replay"
             extractor.prepare(source_video, replay)
             replay_prep = read(replay / "preparation.json")
+            indices = recipe["selection"]["indices"]
             if len(replay_prep["decodedFrames"]) != len(prep["decodedFrames"]):
                 fail("Re-decoded video frame count differs from recorded preparation: " + clip_id)
             if [item["timeSeconds"] for item in replay_prep["decodedFrames"]] != [item["timeSeconds"] for item in prep["decodedFrames"]]:
@@ -308,30 +275,24 @@ def verify(plan, root):
                     if old.size != fresh.size or old.convert("RGBA").tobytes() != fresh.convert("RGBA").tobytes():
                         fail("Re-decoded video pixels differ from recorded selected frame: " + clip_id)
             spec = extractor.export(recipe_path, exported)
-            _assert_packed_clip(assets, root, plan, manifest_path, clip_id, spec, packer.pack(exported / "sprite-pack.json", packed), packed, spec["clips"][0]["direction"])
-    for clip_id in mirrored_clips:
-        item = clips[clip_id]
-        if set(item) != {"mode", "sourceClip", "mirror"}:
-            fail("Mirrored character clip needs mode, sourceClip and mirror: " + clip_id)
-        source_id = item["sourceClip"]
-        if source_id not in {entry[0] for entry in extract_clips}:
-            fail("Mirrored clip source must be an extracted character clip: " + clip_id)
-        mirror = item["mirror"]
-        if not isinstance(mirror, dict) or set(mirror) != {"sourceDirection", "direction"}:
-            fail("Mirror plan needs sourceDirection and direction: " + clip_id)
-        source_dir, dest_dir = mirror["sourceDirection"], mirror["direction"]
-        if HORIZONTAL_PAIRS.get(source_dir) != dest_dir:
-            fail("Mirror pair is not a horizontal facing: " + clip_id)
-        if clip_prefix(source_id, source_dir) != clip_prefix(clip_id, dest_dir):
-            fail("Mirrored clip must keep the source image and action: " + clip_id)
-        recipe_path = _evidence(root, plan, clips[source_id]["recipe"], "Extraction recipe " + clip_id)
-        with tempfile.TemporaryDirectory(prefix="v4-mirror-") as temp:
-            exported = Path(temp) / "extract"; mirrored = Path(temp) / "mirror"; packed = Path(temp) / "pack"
-            spec = extractor.export(recipe_path, exported)
-            if spec["clips"][0]["direction"] != source_dir:
-                fail("Source recipe direction does not match mirror sourceDirection: " + clip_id)
-            mirrored_spec = mirrorer.mirror(exported / "sprite-pack.json", mirrored, dest_dir)
-            packed_runtime = packer.pack(mirrored / "sprite-pack.json", packed)
-            _assert_packed_clip(assets, root, plan, manifest_path, clip_id, mirrored_spec, packed_runtime, packed, dest_dir)
+            if len(spec["clips"][0]["frames"]) < 2:
+                fail("Animated character clip needs at least two extracted frames: " + clip_id)
+            packed_runtime = packer.pack(exported / "sprite-pack.json", packed)
+            expected_clip = spec["imageId"] + "." + spec["clips"][0]["action"] + "." + spec["clips"][0]["direction"]
+            if expected_clip != clip_id or assets["animations"].get(clip_id) != packed_runtime["assets"]["animations"].get(clip_id):
+                fail("Packed clip does not match runtime binding: " + clip_id)
+            actual_frames = assets["animations"][clip_id]["frames"]
+            expected_frames = packed_runtime["assets"]["animations"][clip_id]["frames"]
+            for actual_id, expected_id in zip(actual_frames, expected_frames):
+                actual, expected = assets["textures"][actual_id], packed_runtime["assets"]["textures"][expected_id]
+                if actual.get("anchor") != expected.get("anchor") or actual.get("frame", {}).get("width") != expected["frame"]["width"] or actual.get("frame", {}).get("height") != expected["frame"]["height"]:
+                    fail("Runtime texture rectangle or anchor differs from extracted frame: " + clip_id)
+                runtime_sheet = runtime_file(root, manifest_path.parent, assets["images"][actual["image"]]["url"], plan["inputRoots"])
+                with Image.open(runtime_sheet) as sheet, Image.open(packed / "sheet.png") as rebuilt:
+                    af, ef = actual["frame"], expected["frame"]
+                    left = sheet.crop((af["x"], af["y"], af["x"] + af["width"], af["y"] + af["height"]))
+                    right = rebuilt.crop((ef["x"], ef["y"], ef["x"] + ef["width"], ef["y"] + ef["height"]))
+                    if left.convert("RGBA").tobytes() != right.convert("RGBA").tobytes():
+                        fail("Packed frame pixels do not match runtime texture: " + clip_id)
     return {"enforced": True, "version": "v4", "images": len(required_images), "characterClips": len(character_clips),
             "limit": "Local hashes and deterministic transforms verified; remote provider and renderer authenticity are not authenticated."}

@@ -173,10 +173,38 @@ class ExtractVideoTests(unittest.TestCase):
         self.assertEqual(provenance["removalManifestSha256"], extractor.sha256(manifest_path))
         self.assertEqual(provenance["spritePackSha256"], extractor.sha256(self.base / "removed-export/sprite-pack.json"))
 
-        manifest["frames"][0]["predictionId"] = "wrong"
-        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
-        value["mask"]["sha256"] = extractor.sha256(manifest_path)
-        recipe.write_text(json.dumps(value), encoding="utf-8")
+        valid_frames = copy.deepcopy(manifest_frames)
+        def set_frames(frames):
+            manifest["frames"] = frames
+            manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+            value["mask"]["sha256"] = extractor.sha256(manifest_path)
+            recipe.write_text(json.dumps(value), encoding="utf-8")
+
+        set_frames(valid_frames[:-1])
+        with self.assertRaisesRegex(ValueError, "incomplete"):
+            extractor.export(recipe, self.base / "incomplete-removal")
+
+        wrong_size = results_dir / "wrong-size.png"
+        Image.new("RGBA", (2, 2), (20, 30, 40, 0)).save(wrong_size)
+        wrong_frames = copy.deepcopy(valid_frames)
+        wrong_frames[0]["result"] = os.path.relpath(wrong_size, review_dir).replace("\\", "/")
+        wrong_frames[0]["resultSha256"] = extractor.sha256(wrong_size)
+        set_frames(wrong_frames)
+        with self.assertRaisesRegex(ValueError, "dimensions"):
+            extractor.export(recipe, self.base / "wrong-size-removal")
+
+        opaque = results_dir / "opaque.png"
+        Image.new("RGBA", (48, 40), (20, 30, 40, 255)).crop((0, 0, value["crop"]["width"], value["crop"]["height"])).save(opaque)
+        opaque_frames = copy.deepcopy(valid_frames)
+        opaque_frames[0]["result"] = os.path.relpath(opaque, review_dir).replace("\\", "/")
+        opaque_frames[0]["resultSha256"] = extractor.sha256(opaque)
+        set_frames(opaque_frames)
+        with self.assertRaisesRegex(ValueError, "transparent"):
+            extractor.export(recipe, self.base / "opaque-removal")
+
+        bad_job_frames = copy.deepcopy(valid_frames)
+        bad_job_frames[0]["predictionId"] = "wrong"
+        set_frames(bad_job_frames)
         with self.assertRaisesRegex(ValueError, "completed result"):
             extractor.export(recipe, self.base / "bad-removal-job")
 

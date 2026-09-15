@@ -51,9 +51,8 @@ Use one provenance ledger for the declared runtime inventory. For static imagery
 retain local generation records, raw outputs and the transformations ending at
 the used runtime image. For character clips, retain the generated facing record,
 actual video request/receipt, local video, extraction preparation/recipe and packed
-bindings. A horizontally derived facing reuses that source clip; record it as
-`mirrored-frames` rather than as a second video. Record files and their hashes, not
-only provider names or intended prompts.
+bindings. Every animated direction needs its own approved facing and I2V chain.
+Record files and their hashes, not only provider names or intended prompts.
 
 The [video extraction workflow](../../directional-sprite-authoring/references/video-to-sprites.md)
 records source frames and timestamps. The gate verifies the chain through the
@@ -142,11 +141,6 @@ The ledger covers each nonexempt runtime image and each character clip:
       },
       "videoJob": {"path": "host/art/actor/video-job.json", "sha256": "SHA256"},
       "recipe": {"path": "host/art/actor/review/extraction.json", "sha256": "SHA256"}
-    },
-    "actor.walk.nw": {
-      "mode": "mirrored-frames",
-      "sourceClip": "actor.walk.ne",
-      "mirror": {"sourceDirection": "ne", "direction": "nw"}
     }
   }
 }
@@ -183,10 +177,3 @@ animated action. Animated clips retain the extractor's frame IDs, FPS, loop flag
 canvas and anchor. Atlas positions may change; the bound per-frame pixels must
 still match the replayed extraction. Keep the preparation, source video and
 decoded frames under `inputRoots`, not only the recipe that refers to them.
-
-A derived facing uses `mode: "mirrored-frames"` with `sourceClip` naming an
-`image-to-video-extract-pack` character clip and `mirror.sourceDirection` /
-`mirror.direction` naming one horizontal pair (`ne`/`nw`, `se`/`sw`, `e`/`w`).
-The gate replays the source recipe, flips the exported frames, packs, and
-compares those pixels to the runtime clip. It does not count the result as a
-second generated view, and it cannot judge handed equipment or lighting.

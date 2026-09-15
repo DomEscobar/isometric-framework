@@ -95,9 +95,24 @@ walking in front of and behind representative props. The board alone cannot
 prove joins, animation, depth ordering, or actual collision. Keep calibration
 content outside `src/`; do not bake a game's asset names into engine code.
 
-Bind the sidecar to the actual host image and rendering definitions, using the
-[host comparison checklist](references/contract.md#bind-the-contract-to-the-host).
-Matching the sidecar's own hash does not establish that the game uses that image.
+Bind the sidecar to the actual host image and rendering definitions. Matching the
+sidecar's own hash does not establish that the game uses that image. Check the
+delivered scene against the calibrated values:
+
+```sh
+node skills/isometric-art-integration/scripts/check-scale-binding.mjs path/to/art-contract.json path/to/scene.json path/to/binding-plan.json
+```
+
+It compares projection, crops, effective anchors, render scale, offsets, grid
+footprints and each `bodyHeight` against the one calibrated world scale, and names
+every sprite type and textured tile that no contract asset covers. Uncalibrated art
+and a deliberately conservative collider need a stated reason, not silence. Read
+[the binding plan](references/contract.md#bind-the-contract-to-the-host) for its
+fields and the comparisons it still leaves to you.
+
+This establishes that the game renders the values you measured, never that those
+values suit the game. Proportion judgement stays with the preview board and the
+rendered scene; a passing binding cannot approve a scale that reads wrong.
 
 ## Choose the repair from the evidence
 

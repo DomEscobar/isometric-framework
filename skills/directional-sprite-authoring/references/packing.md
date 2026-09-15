@@ -2,8 +2,7 @@
 
 Packing arranges already approved character pixels for the runtime. It never
 generates motion, changes facing, repairs anatomy, resizes a frame, or infers an
-anchor. Animated inputs must be emitted by the reviewed video extractor or by
-the horizontal facing helper from those extracted frames.
+anchor. Animated inputs must be emitted by the reviewed video extractor.
 
 Run the version 2 pack emitted beside extracted frames:
 
@@ -16,13 +15,6 @@ provenance, checks that it binds the exact pack specification and every frame
 hash, and then copies those pixels into equal cells. Do not hand-author this form;
 `extract-video.py export` creates it from reviewed timestamps, crop, mask route,
 direction, action, FPS, loop setting, and anchor.
-
-For `origin.kind: "mirrored-extraction"`, the packer loads the adjacent mirror
-provenance, checks that it names `mirrored-extraction` and binds the specification
-and every flipped frame hash, and then copies those pixels. Do not hand-author
-this form; `mirror-frames.py` creates it from a reviewed video-extraction pack
-and an allowed horizontal pair. The packer still does not flip, rotate, or guess
-a facing.
 
 A single generated directional facing may be packed as a static idle only:
 

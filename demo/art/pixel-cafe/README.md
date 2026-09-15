@@ -22,18 +22,10 @@ Row 4: (1) a single seamless 2:1 diamond top-face tile of small warm terracotta 
 
 All four terrain diamonds have tips at x=24 and x=488 and y=140 and y=372 within their cell, filled fully to their diamond boundary, transparent outside. All twelve prop sprites centered horizontally with ground contact near y=472 within their cells, soft tight pixel-art contact shadow only. No overlapping between cells. Produce usable beautifully detailed coherent sprite artwork. Transparent background, not a checkerboard drawn into pixels.
 
-## Gardener atlas prompt
+## Gardener fixture
 
-Use case: stylized-concept. Asset type: a transparent pixel-art character sprite sheet for an isometric cafe garden game.
-Create ONE square 1024x1024 image containing a strict FOUR columns by FOUR rows grid, each cell 256x256. Truly transparent alpha background, no text, no grid lines, no drawn checkerboard. Sixteen isolated FULL-BODY sprites of THE SAME charming small adult gardener wearing a straw sunhat with a muted green ribbon, cream blouse, terracotta apron, dark green trousers and brown boots. Cozy detailed 2000s isometric pixel-art game look, crisp clustered pixels and stepped outlines, finely shaded rich limited colors, no smooth vector art, no photorealism. Fixed orthographic 2:1 isometric viewing angle, warm upper-left lighting. Keep SAME body proportions, face, clothing, scale and ground-foot alignment in every cell. Every full sprite entirely within its cell, positioned centered horizontally at x=128, feet contact at y=230. No prop, tool or ground tile; a tiny compact contact shadow is okay.
-Rows determine screen facing, both visible body and hat orientation:
-Row1 faces UPPER-RIGHT / northeast, back and right side visible, walking away diagonally.
-Row2 faces LOWER-RIGHT / southeast, front and right side visible, facing viewer diagonally.
-Row3 faces LOWER-LEFT / southwest, front and left side visible.
-Row4 faces UPPER-LEFT / northwest, back and left side visible.
-Columns determine pose:
-Column1 standing idle both boots on ground.
-Column2 walking left boot stepping forward, arms swing.
-Column3 walking right boot stepping forward, opposite arms swing.
-Column4 jumping pose, knees slightly bent and arms lightly raised; preserve full body within cell and consistent art origin.
-Leave generous transparent gutters between each isolated sprite. The final sheet must contain exactly16 sprites in this4x4grid and genuine transparency. This character should feel at home among terracotta cafe paving, ornate golden umbrellas, dense purple/orange/white flowers and wooden furniture.
+The checked-in gardener atlas predates the version 4 character-production policy.
+It remains only so this runtime demo can exercise directional clip selection and
+playback. Its retired direct-sheet request is intentionally absent and must not be
+used as a production recipe. New or replacement character motion must begin with
+approved generated directional facings and follow the I2V extraction workflow.

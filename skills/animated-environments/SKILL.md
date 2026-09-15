@@ -10,7 +10,7 @@ New visible production world art must be generated. Existing assets and tool
 fixtures may serve only as generic technical tests. Keep original outputs and
 actual requests, including rejected candidates; do not fabricate provider fields.
 
-Use this for scenery loops. Character facings and action poses belong to
+Use this for scenery loops. Character facings and I2V animation clips belong to
 [directional-sprite-authoring](../directional-sprite-authoring/SKILL.md).
 For large footprints, passages or raised surfaces, pair this with
 [multi-tile-asset-assembly](../multi-tile-asset-assembly/SKILL.md) before final art.

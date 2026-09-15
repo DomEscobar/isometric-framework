@@ -59,6 +59,25 @@ test('starter creates a neutral self-contained host from the built package', asy
   } finally { await rm(parent, { recursive: true, force: true }); }
 });
 
+test('source checkout exposes only the I2V character-animation production route', async () => {
+  for (const retired of [
+    'skills/directional-sprite-authoring/references/poses.md',
+    'examples/new-village/art/provenance/generation-5-prompt.txt',
+    'examples/new-village/art/provenance/generation-9-prompt.txt',
+    'examples/pixel-borough/art/originals/explorer.request.json',
+    'examples/pixel-borough/art/originals/creatures.request.json',
+  ]) await assert.rejects(readFile(join(root, retired)));
+
+  const preparer = await readFile(join(root, 'skills/game-asset-generation/scripts/prepare-request.py'), 'utf8');
+  assert.doesNotMatch(preparer, /def load_receipt|identitySelections|spec\["matrix"\]|DIRECTIONS\s*=/);
+  const characterSkill = await readFile(join(root, 'skills/directional-sprite-authoring/SKILL.md'), 'utf8');
+  assert.match(characterSkill, /one production route:[\s\S]*image-to-video/);
+  assert.match(characterSkill, /background remover on the[\s\S]*unkeyed source frames/);
+  const packer = await readFile(join(root, 'skills/directional-sprite-authoring/scripts/pack-sprites.py'), 'utf8');
+  assert.match(packer, /origin\.kind must be video-extraction, static-facing, or mirrored-extraction/);
+  assert.match(packer, /static-facing origin is only valid for one-frame idle clips/);
+});
+
 test('packed consumer archive contains only consumer docs and skill tooling', () => {
   const listing = spawnSync('tar', ['-tf', archive], { cwd: root, encoding: 'utf8' });
   assert.equal(listing.status, 0, listing.stderr);
@@ -70,8 +89,12 @@ test('packed consumer archive contains only consumer docs and skill tooling', ()
   assert.ok(files.includes('package/skills/isometric-visual-loop/references/asset-policy.md'));
   assert.ok(!files.some(file => /walk-templates|mannequin/i.test(file)));
   assert.ok(files.includes('package/skills/directional-sprite-authoring/scripts/extract-video.py'));
+  assert.ok(!files.includes('package/skills/directional-sprite-authoring/scripts/mirror-frames.py'));
   assert.ok(files.includes('package/skills/directional-sprite-authoring/scripts/pack-sprites.py'));
   assert.ok(files.includes('package/skills/directional-sprite-authoring/references/video-to-sprites.md'));
+  assert.ok(files.includes('package/skills/directional-sprite-authoring/references/motion-review.md'));
+  assert.ok(!files.includes('package/skills/directional-sprite-authoring/references/poses.md'));
+  assert.ok(files.includes('package/skills/directional-sprite-authoring/references/directions.md'));
   assert.ok(!files.some(file => /(^|\/)(tests|__pycache__)(\/|$)/.test(file)));
   assert.ok(!files.some(file => file.includes('examples/') || file.includes('demo/')));
   assert.ok(!files.includes('package/AGENTS.md'));

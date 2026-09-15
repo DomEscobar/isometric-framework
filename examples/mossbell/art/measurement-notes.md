@@ -28,7 +28,7 @@ This is not a fully articulated tree-canopy simulation.
 Fern source is1254x1254 with four627x627 cells. Visible root centers are around
 (310,548) relative to each cell; shared anchors and width46/53 keep the bases
 stable to approximately1 game pixel. Two clips vary cadence and frame order.
-The source poses have some leaflet shape variation: they are generated poses,
+The source foliage frames have some leaflet shape variation: they are generated environment frames,
 not physically simulated interpolation. Final frame returns to first in each loop.
 
 Water uses12 authored transparent64x32 sprite frames at5fps (2.4 seconds).

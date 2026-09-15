@@ -48,7 +48,10 @@ Choose world assembly (modular terrain, composed ground, layered scene or hybrid
 New visible world and character art must be generated through text-to-image or
 image-to-image; accepted generated art may be reused with provenance. Character
 animation must follow approved generated facing image -> image-to-video ->
-reviewed extraction -> packing -> runtime review. Scenery/object animation may
+reviewed extraction -> alpha review -> packing -> runtime review. Preserve usable
+video alpha; otherwise inspect one color-key candidate. Halos, holes, lost subject
+colors, flickering contours or uncertainty require the approved background remover
+on selected unkeyed frames before packing. Scenery/object animation may
 use image-to-video or another fitting method on generated material. UI, collision,
 masks and technical blockouts are exempt. Follow the [asset policy](../skills/isometric-visual-loop/references/asset-policy.md).
 Preserve existing decisions and budget approvals. Missing access or budget blocks

@@ -1,9 +1,10 @@
 # Source provenance
 
-The adjacent generation records and prompts are compact historical source records
-for the final ground, cottage, workshop, elm, and traveler assets. They retain
-provider, call number or ordinal, prompt text, source hashes, and selection notes
-without shipping raw candidates, screenshots, provider URLs, or credentials.
+The adjacent records preserve compact historical source evidence for the final
+ground, cottage, workshop, elm, and traveler assets. Static world prompts remain.
+Retired direct character-sheet prompts have been removed; their hashes and output
+hashes remain only to identify pre-v4 playback fixtures without teaching that
+obsolete production route.
 
 Reference paths and raw basenames identify historical inputs. They are not files
 required by the runnable host; the original archive retains raw assets and full

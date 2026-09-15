@@ -43,29 +43,24 @@ def isolated(name, source, width, anchor=(.5,1), window=None):
     records[-1].update({'output':name,'crop':box,'outputSize':padded.size,'anchor':anchor})
     return padded
 
-# Source poses were visually inspected: row order really is NE, SE, SW, NW.
-# Measured full-pose windows isolate bodies; all poses use the same scale 0.135.
-actor=keyed('explorer')
-sheet=Image.new('RGBA',(48*4,48*4))
-rows=[(30,305),(325,596),(620,896),(918,1215)]
-cols=[(70,258),(378,558),(686,866),(994,1175)]
+def legacy_character_atlas(name):
+    path = OUT / (name + '.png')
+    if not path.is_file():
+        raise ValueError(name + ' is a frozen pre-v4 playback fixture and cannot be rebuilt by this script')
+    images[name] = {'url':'packed/'+name+'.png','sampling':'nearest'}
+    records.append({'source':str(path.relative_to(ROOT)), 'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
+                    'processing':'frozen pre-v4 playback fixture; retired character construction recipe intentionally unavailable'})
+
+# Register the frozen runtime atlas without retaining its retired construction route.
+legacy_character_atlas('explorer')
 for row,direction in enumerate(['ne','se','sw','nw']):
     ids=[]
-    for col,(left,right) in enumerate(cols):
-        top,bottom=rows[row]
-        crop=actor.crop((left,top,right,bottom))
-        bounds=crop.getbbox()
-        if not bounds: raise ValueError('empty actor frame')
-        body=crop.crop(bounds)
-        small=body.resize((round(body.width*.135),round(body.height*.135)),Image.Resampling.NEAREST)
-        # Foot plane registered; no per-frame scale fit. Preserve measured relative dimensions.
-        sheet.paste(small,(col*48+24-small.width//2,row*48+42-small.height))
+    for col in range(4):
         tid='explorer.'+direction+'.'+str(col)
         texture(tid,'explorer',(col*48,row*48,48,48),(.5,42/48))
         ids.append(tid)
     animations['explorer.walk.'+direction]={'frames':ids,'fps':7,'loop':True}
     animations['explorer.idle.'+direction]={'frames':[ids[1]],'fps':1,'loop':True}
-save('explorer',sheet)
 isolated('seed-shop','seed-shop-chroma',150,(.48,.85))
 
 if (ART/'originals/plants.png').exists():
@@ -88,21 +83,14 @@ if (ART/'originals/props.png').exists():
         ('fence-ne',(1020,80,1470,490),48,(.5,.7)),('bread-stall',(50,515,595,990),62,(.5,.84)),
         ('bench',(630,550,990,960),42,(.5,.85)),('fence-se',(1025,550,1480,965),48,(.5,.7))]:
         isolated(name,'props',width,anchor,window)
-if (ART/'originals/creatures.png').exists():
-    src=keyed('creatures')
-    atlas=Image.new('RGBA',(4*48,3*48))
-    for row,name in enumerate(['nib','bramble','pip']):
-        ids=[]
-        for col in range(4):
-            tile=src.crop((col*384,row*330,(col+1)*384,(row+1)*330))
-            box=tile.getbbox(); crop=tile.crop(box)
-            small=crop.resize((round(crop.width*.11),round(crop.height*.11)),Image.Resampling.NEAREST)
-            atlas.paste(small,(col*48+24-small.width//2,row*48+42-small.height))
-            tid=name+'.'+str(col);ids.append(tid)
-            texture(tid,'creatures',(col*48,row*48,48,48),(.5,42/48))
-        animations[name+'.idle']={'frames':[ids[0],ids[0],ids[0],ids[1]],'fps':2,'loop':True}
-        animations[name+'.greet']={'frames':[ids[0],ids[2],ids[2],ids[3]],'fps':4,'loop':False}
-    save('creatures',atlas)
+legacy_character_atlas('creatures')
+for row,name in enumerate(['nib','bramble','pip']):
+    ids=[]
+    for col in range(4):
+        tid=name+'.'+str(col);ids.append(tid)
+        texture(tid,'creatures',(col*48,row*48,48,48),(.5,42/48))
+    animations[name+'.idle']={'frames':[ids[0],ids[0],ids[0],ids[1]],'fps':2,'loop':True}
+    animations[name+'.greet']={'frames':[ids[0],ids[2],ids[2],ids[3]],'fps':4,'loop':False}
 if (ART/'originals/fountain.png').exists():
     src=keyed('fountain')
     atlas=Image.new('RGBA',(96*4,80))

@@ -13,6 +13,7 @@ const FAILED = new Set(['failed', 'cancelled', 'timeout', 'deleted']);
 const ACTIVE = new Set(['created', 'pending', 'queued', 'processing', 'running']);
 const HELP = `Usage:
   node wavespeed.mjs submit MODEL request.json job.json [--timeout-ms N]
+  node wavespeed.mjs remove-local frame.png job.json [--timeout-ms N]
   node wavespeed.mjs resume job.json [--timeout-ms N]
 
 Models: bytedance/seedream-v5.0-pro, bytedance/seedream-v5.0-pro/edit,
@@ -69,6 +70,18 @@ function requestFor(model, input) {
   return result;
 }
 
+async function localPng(path) {
+  let bytes;
+  try { bytes = await readFile(path); } catch { fail('Cannot read local PNG.'); }
+  if (bytes.length < 33 || bytes.length > 32 * 1024 * 1024 || !bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))
+      || bytes.readUInt32BE(8) !== 13 || bytes.subarray(12, 16).toString('ascii') !== 'IHDR'
+      || bytes.readUInt32BE(16) < 1 || bytes.readUInt32BE(20) < 1
+      || bytes.readUInt32BE(16) > 8192 || bytes.readUInt32BE(20) > 8192) {
+    fail('Local removal input must be a bounded PNG.');
+  }
+  return bytes;
+}
+
 async function readJson(path, label) {
   try {
     const contents = await readFile(path, 'utf8');
@@ -105,7 +118,9 @@ function readState(value) {
       || !Number.isFinite(Date.parse(value.createdAt))
       || typeof value.requestHash !== 'string' || !/^[a-f0-9]{64}$/.test(value.requestHash)) fail('Invalid job metadata.');
   // Whitelist fields so edited files cannot inject request bodies or keys into output.
-  return { version: 1, model: value.model, createdAt: value.createdAt, requestHash: value.requestHash, id: value.id, status: 'resuming', outputs: [] };
+  const sourceHash = value.model === 'wavespeed-ai/image-background-remover' && typeof value.sourceHash === 'string' && /^[a-f0-9]{64}$/.test(value.sourceHash)
+    ? { sourceHash: value.sourceHash } : {};
+  return { version: 1, model: value.model, createdAt: value.createdAt, requestHash: value.requestHash, ...sourceHash, id: value.id, status: 'resuming', outputs: [] };
 }
 
 function resultState(data, id, key) {
@@ -141,10 +156,10 @@ export async function runCli(argv, dependencies = {}) {
       if (!Number.isSafeInteger(timeoutMs) || timeoutMs < 1 || timeoutMs > 3600000) fail('Timeout must be 1 to 3600000 ms.');
     }
     const [command, modelOrFile, inputFile, outputFile] = args;
-    if (!((command === 'submit' && args.length === 4) || (command === 'resume' && args.length === 2))) fail(HELP.trim());
+    if (!((command === 'submit' && args.length === 4) || (command === 'remove-local' && args.length === 3) || (command === 'resume' && args.length === 2))) fail(HELP.trim());
     const key = env.WAVESPEED_API_KEY;
     if (typeof key !== 'string' || !key.trim() || /[\r\n]/.test(key)) fail('Set WAVESPEED_API_KEY in the environment before running this command.');
-    const jobFile = resolve(command === 'submit' ? outputFile : modelOrFile);
+    const jobFile = resolve(command === 'submit' ? outputFile : command === 'remove-local' ? inputFile : modelOrFile);
     const deadline = now() + timeoutMs;
     let job;
 
@@ -167,7 +182,50 @@ export async function runCli(argv, dependencies = {}) {
       finally { clearTimeout(timer); }
     }
 
-    if (command === 'submit') {
+    async function uploadWithoutBearer(upload, bytes) {
+      if (!object(upload) || upload.method !== 'PUT' || !publicHttps(upload.url) || !object(upload.headers)
+          || Object.keys(upload.headers).some((name) => name.toLowerCase() === 'authorization')
+          || Object.values(upload.headers).some((value) => typeof value !== 'string' || /[\r\n]/.test(value))) {
+        fail('Upload ticket returned an unsafe method, URL, or header set.');
+      }
+      const remaining = deadline - now();
+      if (remaining <= 0) fail('Timed out before upload; no remover submission was made. Inspect the job and use a new job path.');
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), Math.min(requestTimeoutMs, remaining));
+      try {
+        const response = await fetchImpl(upload.url, { method: upload.method, redirect: 'error', signal: controller.signal,
+          headers: upload.headers, body: bytes });
+        if (!response.ok) fail(`Upload HTTP ${response.status}; no remover submission was made. Inspect the job and use a new job path.`);
+      } catch (error) {
+        if (error instanceof CliError) throw error;
+        fail('Upload failed; no remover submission was made. Inspect the job and use a new job path.');
+      } finally { clearTimeout(timer); }
+    }
+
+    if (command === 'remove-local') {
+      const bytes = await localPng(modelOrFile);
+      const sourceHash = createHash('sha256').update(bytes).digest('hex');
+      job = { version: 1, model: 'wavespeed-ai/image-background-remover', createdAt: new Date(now()).toISOString(), requestHash: sourceHash, sourceHash, id: null, status: 'uploading', outputs: [] };
+      await save(jobFile, job, true);
+      const ticket = await request('POST', 'media/uploads', JSON.stringify({ filename: 'frame.png', size: bytes.length, content_type: 'image/png' }));
+      const upload = ticket.data?.upload;
+      const fileUrl = ticket.data?.download_url;
+      if (!object(upload) || !publicHttps(fileUrl)) {
+        job.status = 'upload_unknown'; await save(jobFile, job);
+        throw new CliError('Upload ticket was invalid. Inspect provider history before creating another job.');
+      }
+      await uploadWithoutBearer(upload, bytes);
+      const body = JSON.stringify({ image: fileUrl });
+      job.requestHash = createHash('sha256').update(body).digest('hex');
+      await save(jobFile, job);
+      const response = await request('POST', 'wavespeed-ai/image-background-remover', body);
+      if (!taskId(response.data?.id)) {
+        job.status = 'submission_unknown'; await save(jobFile, job);
+        throw new CliError('No valid remover task ID received. Submission was not retried and may have been accepted. Inspect provider history before submitting again.');
+      }
+      job.id = response.data.id; job.status = 'submitted'; await save(jobFile, job);
+      Object.assign(job, resultState(response.data, job.id, key)); await save(jobFile, job);
+    } else if (command === 'submit') {
       const body = JSON.stringify(requestFor(modelOrFile, await readJson(inputFile, 'request file')));
       job = { version: 1, model: modelOrFile, createdAt: new Date(now()).toISOString(), requestHash: createHash('sha256').update(body).digest('hex'), id: null, status: 'submitting', outputs: [] };
       await save(jobFile, job, true); // Reserve the path before any paid operation.

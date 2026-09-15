@@ -37,9 +37,37 @@ async function fixture(t, responses = []) {
     input, jobFile, calls, sleeps, out, err, deps,
     submit: (...options) => runCli(['submit', MODEL, input, jobFile, ...options], deps),
     resume: (...options) => runCli(['resume', jobFile, ...options], deps),
+    removeLocal: (...options) => runCli(['remove-local', join(dir, 'frame.png'), jobFile, ...options], deps),
     state: async () => JSON.parse(await readFile(jobFile, 'utf8')),
   };
 }
+
+test('remove-local uses an authenticated ticket, a bearer-free upload, then exactly one remover submission', async (t) => {
+  const f = await fixture(t, [
+    { ok: true, status: 200, json: async () => ({ data: { download_url: 'https://cdn.example.com/frame.png', upload: { method: 'PUT', url: 'https://upload.example.com/put?ticket=opaque', headers: { 'Content-Type': 'image/png', 'If-None-Match': '*' } } } }) },
+    { ok: true, status: 200, json: async () => ({}) }, result('completed'),
+  ]);
+  // Bounded PNG signature plus IHDR dimensions; the provider performs full image decoding.
+  await writeFile(join(f.input, '..', 'frame.png'), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, ...Array(9).fill(0)]));
+  assert.equal(await f.removeLocal(), 0);
+  assert.deepEqual(f.calls.map((call) => call.method), ['POST', 'PUT', 'POST']);
+  assert.equal(f.calls[0].headers.Authorization, `Bearer ${KEY}`);
+  assert.equal(f.calls[1].headers.Authorization, undefined);
+  assert.equal(f.calls[1].headers['If-None-Match'], '*');
+  assert.equal(f.calls[2].headers.Authorization, `Bearer ${KEY}`);
+  assert.equal(f.calls[0].url, 'https://api.wavespeed.ai/api/v3/media/uploads');
+  assert.equal(f.calls[2].url, 'https://api.wavespeed.ai/api/v3/wavespeed-ai/image-background-remover');
+});
+
+test('remove-local rejects unsafe ticket headers before upload or remover submission', async (t) => {
+  const f = await fixture(t, [
+    { ok: true, status: 200, json: async () => ({ data: { download_url: 'https://cdn.example.com/frame.png', upload: { method: 'PUT', url: 'https://upload.example.com/put', headers: { authorization: 'must-not-forward' } } } }) },
+  ]);
+  await writeFile(join(f.input, '..', 'frame.png'), Buffer.from([137, 80, 78, 71, 13, 10, 26, 10, 0, 0, 0, 13, 73, 72, 68, 82, 0, 0, 0, 1, 0, 0, 0, 1, ...Array(9).fill(0)]));
+  assert.equal(await f.removeLocal(), 2);
+  assert.equal(f.calls.length, 1);
+  assert.match(f.err.join(''), /unsafe method, URL, or header/);
+});
 
 test('async submission persists ID before polling, uses safe auth, and prints output URLs', async (t) => {
   const f = await fixture(t, [result('created'), async () => {
@@ -258,7 +286,7 @@ test('HTTP 200 processing code 5004 retains the task ID and continues polling', 
 test('edit forwards references in order to its endpoint and preserves provider aspect default', async (t) => {
   const f = await fixture(t, [result('completed')]);
   const images = ['https://cdn.example.com/character.png', 'https://cdn.example.com/pose.png'];
-  await writeFile(f.input, JSON.stringify({ prompt: 'Keep the character and match the action pose', images }));
+  await writeFile(f.input, JSON.stringify({ prompt: 'Keep the approved character identity and facing', images }));
   assert.equal(await runCli(['submit', EDIT_MODEL, f.input, f.jobFile], f.deps), 0);
   assert.equal(f.calls.length, 1);
   assert.equal(f.calls[0].url, 'https://api.wavespeed.ai/api/v3/bytedance/seedream-v5.0-pro/edit');

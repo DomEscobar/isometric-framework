@@ -556,36 +556,14 @@ cell transitions followed the axes. All destinations were reached, with zero
 page errors. Paths, poses, screenshots, and report are retained under
 `test-results/click-routing/`. No broader gameplay or VPS acceptance is claimed.
 
-## Previous milestone: directional poses and deterministic spritesheets
+## Retired character-sheet milestone
 
-The portable `skills/directional-sprite-authoring/` skill now covers approved
-turnarounds, the exact WASD/eight-direction mapping, reference-guided action
-phases, common roots and canvas sizes, and explicit runtime clip binding. It
-includes a Pillow packer and instructions distinguishing automatic idle/walk/jump
-from host-driven attack/cast/interact actions. AGENTS, README, the art pipeline,
-and the generation skill link to it. All six new skill files ship in npm pack
-dry-run output; frontmatter validation and relative-link checks passed.
-
-The WaveSpeed helper now supports `bytedance/seedream-v5.0-pro/edit` with ordered
-HTTPS references and safe resume. Its 28 mocked API tests passed, including the
-five new edit/reference cases. No paid generation or image-edit request was made,
-so Seedream pose quality and temporal consistency are not verified here.
-
-The sheet packer passed 11 offline tests for pixel preservation, transparent
-gutters, repeated frame order, dimensions and alpha, duplicate/missing clips,
-allocation limits, custom actions, deterministic output, and refusing overwrite.
-A synthetic 16-clip/32-frame sheet also passed the actual runtime asset validator:
-all four tile-axis vectors selected the correct idle/walk/jump clip through the
-real direction/resolver functions, and attack remained a non-looping host action.
-This is layout/mapping evidence, not visible character-facing or gameplay proof.
-Evidence: `test-results/pose-authoring/`. The cross-check uses Node's
-`--experimental-transform-types` because sprites.ts contains parameter properties;
-the initial strip-only invocation failed before running assertions.
-
-Independent read-only review found no material mismatch with runtime APIs. It
-confirmed the documented limitation that undeclared directions can use the first
-supplied general fallback; four views do not establish eight-way visual coverage.
-No engine behavior, existing game sprite, or scene was changed in this task.
+An earlier milestone verified runtime atlas packing and directional clip mapping
+with pre-v4 fixtures. Its direct character-sheet production route is retired and
+the reusable recipe has been removed. Current character motion requires an approved
+generated facing, actual image-to-video output, reviewed timestamped extraction,
+verified alpha preparation, deterministic packing and observed runtime playback.
+The historical mapping result does not satisfy that production provenance.
 
 Reproduce from Runtime:
 
@@ -744,8 +722,8 @@ check now verifies the intended axis without assuming wall-clock precision;
 the initial result is retained as `cafe-production-initial.json`.
 
 Both PNGs total approximately 3.0 MB. Vite retains its JavaScript bundle-size
-advisory (approximately 603 kB). Generated poses have small authored asymmetries;
-this is a playable art proof, with manually inspected frame metadata. The earlier
+advisory (approximately 603 kB). The legacy animation pixels have small asymmetries;
+this is a playable runtime fixture, with manually inspected frame metadata. The earlier
 156-check runtime browser suite below was not rerun for this host-content change.
 
 ## Previous milestone: sprite and texture module

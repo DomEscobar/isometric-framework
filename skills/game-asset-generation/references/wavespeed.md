@@ -92,9 +92,18 @@ sync timeout can still leave a live prediction: retain its ID and poll it.
 For a local-only source, either use local removal or the provider's upload flow:
 request a ticket with POST `/api/v3/media/uploads` and filename/size/content_type,
 PUT the bytes to the ticket URL using its supplied headers, then pass the returned
-download URL as `image`. Follow the current upload guide; this is not implemented
-by the helper. Never forward the API bearer key to a storage ticket or CDN URL.
-An existing generated URL can be reused directly without another upload.
+download URL as `image`. The helper implements this for one local PNG at a time:
+
+```sh
+node skills/game-asset-generation/scripts/wavespeed.mjs remove-local path/to/frame.png path/to/frame.job.json
+```
+
+It reserves the job record, validates the local PNG, follows the ticket's opaque
+upload method/URL/headers without adding the API bearer token, and submits the
+remover exactly once. Resume only a job that already has a prediction ID. A failure
+before remover submission needs inspection and a new job path; an ambiguous
+submission must never be retried blindly. Existing generated URLs may still use
+the explicit request-file route above.
 
 ## Reference-guided generation and alternatives
 

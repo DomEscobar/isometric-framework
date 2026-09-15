@@ -168,9 +168,11 @@ URL/frame scenes remain supported. Optional state mappings require a named base.
 ## Animate in the correct direction
 
 Use [directional sprite authoring](../skills/directional-sprite-authoring/SKILL.md)
-to create and review turnarounds/action poses, then pack normalized frames into
-explicit clips. The skill includes Seedream Pro Edit requests and a sheet packer;
-neither filenames nor a generated row arrangement prove visible facing.
+to approve one generated facing image per required direction, create motion through
+image-to-video, review and extract timestamped frames, prepare their alpha, and pack
+them into explicit clips. Directly generated character sheets and separately
+generated movement poses are not production inputs. Neither filenames nor declared
+directions prove visible facing.
 
 The runtime selects `idle`, `walk`, or `jump`. Add direction-specific clips under
 `visual.animations.directions`, for example:

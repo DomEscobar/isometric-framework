@@ -30,7 +30,7 @@ class PrepareRequestTests(unittest.TestCase):
         self.identity_selection = {"sourceSha256": self.source_hash,
                                    "crop": {"x": 1, "y": 1, "width": 3, "height": 2},
                                    "pixelsSha256": hashlib.sha256(self.sheet.crop((1, 1, 4, 3)).tobytes()).hexdigest()}
-        self.spec = {"version": 1, "description": "A measured attack reference request.", "matrix": None,
+        self.spec = {"version": 2, "description": "A measured character facing reference request.",
                      "references": [
                          {"id": "look", "path": "sheet.png", "role": "style", "approval": None, "crop": None},
                          {"id": "layout", "path": "layout.png", "role": "layout", "approval": None, "crop": None},
@@ -71,59 +71,17 @@ class PrepareRequestTests(unittest.TestCase):
             self.run_prepare(invalid)
         self.assertFalse((self.base / "out").exists())
 
-    def test_matrix_needs_matching_self_reported_single_direction_receipt(self):
-        spec = copy.deepcopy(self.spec)
-        spec["matrix"] = {"action": "attack", "directions": ["ne", "se"], "calibrationReceipt": "calibration.json"}
-        with self.assertRaises(FileNotFoundError):
-            self.run_prepare(spec)
-        receipt = {"version": 2, "kind": "directional-calibration", "action": "attack", "direction": "ne",
-                   "identitySelections": [self.identity_selection], "judgement": "self-reported-approved"}
-        (self.base / "calibration.json").write_text(json.dumps(receipt), encoding="utf-8")
-        report = self.run_prepare(spec)
-        self.assertEqual(report["request"]["calibration"]["judgement"], "self-reported-approved")
+    def test_legacy_matrix_and_calibration_fields_are_rejected(self):
+        legacy = copy.deepcopy(self.spec)
+        legacy["version"] = 1
+        legacy["matrix"] = {"action": "walk", "directions": ["ne", "se"], "calibrationReceipt": "calibration.json"}
+        with self.assertRaisesRegex(ValueError, "exactly these keys"):
+            self.run_prepare(legacy)
 
-    def test_matrix_rejects_stale_receipt_or_wrong_action(self):
-        spec = copy.deepcopy(self.spec)
-        spec["matrix"] = {"action": "attack", "directions": ["ne", "se"], "calibrationReceipt": "calibration.json"}
-        receipt = {"version": 2, "kind": "directional-calibration", "action": "walk", "direction": "ne",
-                   "identitySelections": [self.identity_selection], "judgement": "self-reported-approved"}
-        (self.base / "calibration.json").write_text(json.dumps(receipt), encoding="utf-8")
-        with self.assertRaisesRegex(ValueError, "action/direction"):
-            self.run_prepare(spec)
-        receipt["action"] = "attack"
-        receipt["identitySelections"] = [{**self.identity_selection, "sourceSha256": "0" * 64}]
-        (self.base / "calibration.json").write_text(json.dumps(receipt), encoding="utf-8")
-        with self.assertRaisesRegex(ValueError, "identity selections"):
-            self.run_prepare(spec)
-
-    def test_source_change_invalidates_receipt_and_existing_outputs_are_not_overwritten(self):
-        spec = copy.deepcopy(self.spec)
-        spec["matrix"] = {"action": "attack", "directions": ["ne", "se"], "calibrationReceipt": "calibration.json"}
-        receipt = {"version": 2, "kind": "directional-calibration", "action": "attack", "direction": "ne",
-                   "identitySelections": [self.identity_selection], "judgement": "self-reported-approved"}
-        (self.base / "calibration.json").write_text(json.dumps(receipt), encoding="utf-8")
-        self.run_prepare(spec)
+    def test_existing_outputs_are_not_overwritten(self):
+        self.run_prepare()
         with self.assertRaisesRegex(ValueError, "already exists"):
-            self.run_prepare(spec)
-        self.sheet.putpixel((0, 0), (255, 0, 0, 255))
-        self.sheet.save(self.base / "sheet.png")
-        with self.assertRaisesRegex(ValueError, "identity selections"):
-            self.run_prepare(spec, "changed")
-
-    def test_matrix_receipt_binds_the_exact_identity_crop_and_directions(self):
-        spec = copy.deepcopy(self.spec)
-        spec["matrix"] = {"action": "attack", "directions": ["ne", "se"], "calibrationReceipt": "calibration.json"}
-        receipt = {"version": 2, "kind": "directional-calibration", "action": "attack", "direction": "ne",
-                   "identitySelections": [self.identity_selection], "judgement": "self-reported-approved"}
-        (self.base / "calibration.json").write_text(json.dumps(receipt), encoding="utf-8")
-        changed_crop = copy.deepcopy(spec)
-        changed_crop["references"][2]["crop"]["x"] = 2
-        with self.assertRaisesRegex(ValueError, "identity selections"):
-            self.run_prepare(changed_crop)
-        invalid_direction = copy.deepcopy(spec)
-        invalid_direction["matrix"]["directions"] = ["banana", "ne"]
-        with self.assertRaisesRegex(ValueError, "unknown direction"):
-            self.run_prepare(invalid_direction)
+            self.run_prepare()
 
     def test_generated_board_name_is_reserved(self):
         spec = copy.deepcopy(self.spec)

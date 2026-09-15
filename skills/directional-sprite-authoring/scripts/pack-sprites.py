@@ -100,14 +100,12 @@ def json_path(base, value):
     return frame_path(base, value[:-5] + ".png").with_suffix(".json")
 
 
-def bind_export_provenance(manifest, spec_sha256, kind):
-    label = "video extraction" if kind == "video-extraction" else "mirrored extraction"
+def bind_export_provenance(manifest, spec_sha256):
+    label = "video extraction"
     if (not isinstance(manifest, dict) or manifest.get("version") != 2
             or manifest.get("spritePackSha256") != spec_sha256
             or not isinstance(manifest.get("exportedFrames"), list)):
         fail(f"{label} provenance is not a version 2 export")
-    if kind == "mirrored-extraction" and manifest.get("kind") != "mirrored-extraction":
-        fail("mirrored extraction provenance is not a version 2 export")
     return manifest
 
 
@@ -115,8 +113,8 @@ def validate(spec, base, spec_sha256):
     object_keys(spec, ("version", "origin", "imageId", "cell", "anchor", "requiredDirections", "requiredActions", "clips"), "spec")
     if type(spec["version"]) is not int or spec["version"] != 2:
         fail("version must be 2; direct character sheets are retired")
-    if not isinstance(spec["origin"], dict) or spec["origin"].get("kind") not in ("video-extraction", "static-facing", "mirrored-extraction"):
-        fail("origin.kind must be video-extraction, static-facing, or mirrored-extraction")
+    if not isinstance(spec["origin"], dict) or spec["origin"].get("kind") not in ("video-extraction", "static-facing"):
+        fail("origin.kind must be video-extraction or static-facing")
     identifier(spec["imageId"], "imageId")
     object_keys(spec["cell"], ("width", "height"), "cell")
     for key in ("width", "height"):
@@ -169,7 +167,7 @@ def validate(spec, base, spec_sha256):
             manifest = json.loads(provenance_raw, object_pairs_hook=no_duplicate_keys)
         except json.JSONDecodeError:
             fail("video extraction provenance is invalid JSON")
-        bound = bind_export_provenance(manifest, spec_sha256, origin["kind"])
+        bound = bind_export_provenance(manifest, spec_sha256)
         expected = {item.get("file"): item.get("sha256") for item in bound["exportedFrames"] if isinstance(item, dict)}
         for clip in clips:
             for frame in clip["frames"]:

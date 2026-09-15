@@ -1,38 +1,17 @@
 {
-  "source": "test-results\\new-village\\generation-9\\traveler-contacts-raw.png",
-  "sha256": "a9825fa5854356765c060dd042824b210c71ced7110273c052c78b6bb7070e20",
-  "identity": "Accepted original generation5 top-row idle views; original upper body remains pixel-identical across each facing cycle.",
-  "poses": "Generated generation9 first row supplies complete pants/boot clusters with opposite near/far leg overlap for right-facing NE/SE pair and left-facing SW/NW pair. No lower row from generation9 is used.",
-  "sourceUniformScale": 0.112,
-  "sourceCells": [
-    384,
-    512
-  ],
-  "sourceFootBaseline": 452,
-  "sourceCenters": [
-    200,
-    572,
-    956,
-    1340
-  ],
-  "contactMapping": {
-    "ne": [
-      0,
-      1
-    ],
-    "se": [
-      1,
-      0
-    ],
-    "sw": [
-      2,
-      3
-    ],
-    "nw": [
-      3,
-      2
-    ]
+  "version": 1,
+  "classification": "pre-v4-playback-fixture",
+  "runtimeImage": {
+    "path": "traveler.png",
+    "sha256": "a1c9983d98f9b59dbaa3a5fdd2e22702b0a267405e35648c815cac3adf7f38d4"
   },
-  "authoredTransform": "Uniform nearest scale and fixed registration only; lower-pants/boot crop y35+ transferred beneath original torso. Diagnostic tan boot source colors y41+ multiplied.6; no limb stretching, reflection or deformation.",
-  "status": "Bound source-derived four-facing set. Independent review and acceptance records are external under test-results/new-village; structural pass is not temporal acceptance."
+  "runtimeManifest": {
+    "path": "runtime.json",
+    "sha256": "fadd76ce66b99684889888b5a58e85091b0af1945582c27c08d9f6b7a009716e"
+  },
+  "legacySources": [
+    {"sha256": "de0aaffba65b747355fbaab084a59b44ab238a31300beaffc1144c9b1cff1163"},
+    {"sha256": "a9825fa5854356765c060dd042824b210c71ced7110273c052c78b6bb7070e20"}
+  ],
+  "status": "Frozen runtime playback fixture. Its retired assembly recipe is intentionally absent and cannot satisfy version 4 character-production acceptance."
 }

@@ -20,10 +20,11 @@ bridge support. Four 2x2 buildings have reachable exterior thresholds. The bridg
 is a flush three-cell deck in the ground surface, without an underpass or raised
 rail promise. Trees must keep their roots outside reserved circulation.
 
-The traveler uses four body facings with source-derived walking contacts at 8 fps;
+The traveler is a frozen pre-v4 four-facing playback fixture at 8 fps;
 movement is 1.1 cells/second. A clipped water overlay must flow inside fixed banks,
 and restrained leaf motion must leave roots fixed. Pause must freeze the scene.
-These bindings exist; their complete temporal and aesthetic acceptance remains open.
+These bindings exist but do not satisfy the current I2V provenance policy; their
+complete temporal and aesthetic acceptance also remains open.
 
 The migration browser check in `tests/new-village-browser.mjs` covers the four
 entrances, both crossing directions, desktop mouse/mobile touch input and pause.

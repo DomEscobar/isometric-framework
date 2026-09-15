@@ -23,20 +23,11 @@ frame. W is NE, not screen-up. Record the required directions and actions before
 generation. Four tile-axis directions are enough only when other movement/facing
 directions are intentionally excluded or explicitly mapped as visual compromises.
 
-A four-view walk is two independently drawn facings, not four videos. SE and SW
-are a horizontal pair (front three-quarter); NE and NW are a horizontal pair
-(rear three-quarter). Generate an approved facing image and I2V clip for one
-member of each pair, then derive the other with the
-[horizontal facing helper](references/video-to-sprites.md#derive-the-opposite-facing).
-E/W is the same kind of pair when eight-view coverage is required. N and S are
-not a pair: a flipped front is still a front. One video cannot fill the matrix.
-
 Choose an approved character reference: proportions, clothing, palette, equipment
 hand, asymmetric details, lighting, camera elevation, canvas, and display scale.
 For a static idle, a generated neutral view in each required direction is enough
 when no animated idle was promised. For any character motion, first approve a
-generated T2I or I2I character-facing image for that independently drawn facing.
-Record the actual
+generated T2I or I2I character-facing image for that direction. Record the actual
 local source, provider job or request ID, submitted references and its approval;
 never fabricate provider parameters or replace that record with a description.
 Reuse accepted generated views with their provenance instead of regenerating them.
@@ -45,23 +36,19 @@ face/chest versus back/pack, and left/right from the nose, torso, and feet toget
 An arrow or filename is a label, not evidence. Reject or relabel a misfacing
 candidate based on what it visibly depicts; never rotate the controls to fit it.
 
-Do not mirror asymmetric equipment, change the weapon hand, or rotate a standing
-sprite in 2D to synthesize a new camera view. Mirroring also changes light
-direction. The helper only flips reviewed extraction pixels; it does not judge
-those cases. If handed props, markings, or a directional key light make the flip
-read wrong, generate the opposite facing instead. Record every mirrored clip as
-reuse of its source clip, not as an independently drawn direction.
+Do not mirror equipment or rotate a standing sprite in 2D to synthesize a new
+camera view. Generate and approve every required facing independently so anatomy,
+lighting, handed details, and movement direction remain explicit.
 
 ## Produce character motion from an approved facing image
 
 Character motion has one production route: approved generated character-facing
 image (T2I or I2I), then image-to-video, review of the actual video, deterministic
-[video extraction](references/video-to-sprites.md), optional deterministic
-horizontal facing derivation, deterministic packing, and runtime review. Direct
-generated sheets, individual generated gait/action frames, and authored character
-animation frames are not production alternatives. Editing masks or crops, and
-horizontal flips of reviewed extraction frames into a documented facing pair, are
-allowed; synthesizing replacement motion poses is not.
+[video extraction](references/video-to-sprites.md), deterministic packing, and
+runtime review. Direct generated sheets, individual generated gait/action frames,
+authored character-animation frames, and derived mirrored motion are not production
+alternatives. Editing masks or crops is allowed; synthesizing replacement motion
+poses is not.
 
 Before spending, confirm that an approved image-to-video tool can actually submit
 the proposed input. If budget, access, or a capable approved tool is missing, stop
@@ -81,10 +68,8 @@ by [game asset generation](../game-asset-generation/references/request-preparati
 It records the selected reference pixels and hashes; it does not authorize a job
 or prove facing, motion, or visual quality.
 
-Generate each independently drawn facing's action video from its approved
-neutral view and the same master identity. Do not request a video per screen
-direction when a horizontal pair can be derived from a reviewed extraction.
-Avoid chains where each unreviewed generation becomes the next
+Generate each direction's action video from its approved neutral view and the same
+master identity. Avoid chains where each unreviewed generation becomes the next
 reference: errors in scale, anatomy, and equipment accumulate. Keep the camera,
 lighting, body proportions, and root stable throughout the motion.
 
@@ -122,9 +107,7 @@ do not also bake a full upward flight path into frame positions.
 For already normalized extracted frames, use the deterministic
 [sheet packer](references/packing.md). It copies pixels into equal cells and emits
 explicit clips; it never resizes, trims, rotates, mirrors, guesses directions, or
-creates missing poses. Derive an opposite facing before packing, with
-[mirror-frames.py](references/video-to-sprites.md#derive-the-opposite-facing); do
-not ask the packer or the runtime to flip.
+creates missing poses.
 
 For video, the [extraction helper](references/video-to-sprites.md#prepare-and-export)
 records actual decoded timestamps and applies one explicit crop and reviewed mask
@@ -175,8 +158,7 @@ In the host scene, move along all required axes and release to idle. Test jumpin
 only when it is supported and included in the requested action coverage.
 Check movement vector, visible facing, selected clip, and stable contact together.
 For eight-way play, test combined directions as well as WASD. Show front/behind
-occlusion and an asymmetric prop to make accidental or unjustified mirroring
-visible. A packed mirrored clip still needs that visual pass.
+occlusion and an asymmetric prop to make accidental mirroring visible.
 
 Automatic states are only idle/walk/jump. Custom attack/cast/interact clips use
 host-owned animation overrides and action timing, as explained in the runtime

@@ -116,7 +116,7 @@ arbitrary round cap on a finished-world request or relabel unfinished work a tri
 | Connected regions, natural edges and material variation | [Tileset authoring](../consistent-tileset-authoring/SKILL.md), starting with its landscape composition reference |
 | New raster candidates or layered contact artwork | [Asset generation](../game-asset-generation/SKILL.md), using the chosen provider |
 | Walkable decks, rigid structures, openings and depth parts | [Multi-tile assemblies](../multi-tile-asset-assembly/SKILL.md) |
-| Character facings and action poses | [Directional sprites](../directional-sprite-authoring/SKILL.md) |
+| Character facings and I2V animation clips | [Directional sprites](../directional-sprite-authoring/SKILL.md) |
 | Joined water or anchored foliage motion | [Animated environments](../animated-environments/SKILL.md) |
 
 Read the selected specialist's relevant recipe, not every provider or fixture.

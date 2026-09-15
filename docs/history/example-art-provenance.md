@@ -7,8 +7,8 @@ Paths below are relative to the framework source checkout.
 The Sunflower courtyard adds two PNG atlases generated with the built-in image
 generation tool, inspired by the user's garden reference. They contain new garden
 props, terrain, and a matching gardener; no reference-image pixels or downloaded
-asset pack were copied. The exact prompts are retained in
-`demo/art/pixel-cafe/README.md`. Both actual outputs are 1254 × 1254 RGBA images;
+asset pack were copied. The gardener is a pre-v4 playback fixture; its retired
+direct-sheet request is intentionally absent. Both actual outputs are 1254 × 1254 RGBA images;
 `demo/pixel-cafe.ts` records manually inspected source rectangles, contact anchors,
 animation mappings, and scene placement. This content stays outside `src/`.
 

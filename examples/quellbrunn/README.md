@@ -17,7 +17,7 @@ both bridges; **Pause** freezes characters and scenery. Roofs and trees fade
 when they obscure the player. House doors are exterior destinations, not interiors.
 
 The host uses the framework's public headless pathfinder. Its Canvas2D renderer,
-continuous terrain materials, water flow, wheel, smoke, authored character poses
+continuous terrain materials, water flow, wheel, smoke, and legacy directional character clips
 and resident schedules are host-owned. No engine API changed.
 
 `world.ts` owns land, stream, solid footprints and supported decks. Every dry

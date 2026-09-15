@@ -104,25 +104,11 @@ class PackSpritesTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "version 2 export"):
             packer.pack(path, self.base / "bad-provenance")
 
-    def test_mirrored_extraction_requires_kind_and_binds_frames(self):
+    def test_rejects_non_video_animated_origin(self):
         spec = copy.deepcopy(self.spec)
         spec["origin"] = {"kind": "mirrored-extraction", "provenance": "provenance.json"}
-        spec["requiredDirections"] = ["nw"]
-        spec["requiredActions"] = ["walk"]
-        spec["clips"] = [{"action": "walk", "direction": "nw", "fps": 8, "loop": True, "frames": ["pose.png"]}]
-        path = self.base / "spec.json"
-        raw = json.dumps(spec)
-        path.write_text(raw, encoding="utf-8", newline="\n")
-        digest = hashlib.sha256((self.base / "pose.png").read_bytes()).hexdigest()
-        provenance = {"version": 2, "spritePackSha256": hashlib.sha256(path.read_bytes()).hexdigest(),
-                      "exportedFrames": [{"file": "pose.png", "sha256": digest}]}
-        (self.base / "provenance.json").write_text(json.dumps(provenance), encoding="utf-8")
-        with self.assertRaisesRegex(ValueError, "mirrored extraction provenance"):
-            packer.pack(path, self.base / "missing-kind")
-        provenance["kind"] = "mirrored-extraction"
-        (self.base / "provenance.json").write_text(json.dumps(provenance), encoding="utf-8")
-        result = packer.pack(path, self.base / "mirrored")
-        self.assertEqual(result["visualAnimations"]["directions"]["nw"]["walk"], "hero.walk.nw")
+        with self.assertRaisesRegex(ValueError, "video-extraction or static-facing"):
+            self.run_pack(spec, "mirrored-origin")
 
     def test_rejects_false_or_missing_cutout_alpha(self):
         for mode, color in (("RGB", (1, 2, 3)), ("RGBA", (1, 2, 3, 255)),

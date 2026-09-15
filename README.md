@@ -52,8 +52,11 @@ Help me choose how the world is assembled: modular terrain, composed ground,
 layered scene, or a hybrid. Generate new visible world and character art using
 text-to-image or image-to-image; reuse accepted generated assets with provenance.
 Character animation must use an approved generated facing image, image-to-video,
-reviewed frame extraction and deterministic packing. Do not substitute generated
-sheets, individual movement poses or hand-drawn character animation. For scenery
+reviewed frame extraction and deterministic packing. Preserve usable source alpha;
+otherwise review one controlled chroma-key cutout. If it shows halos, holes, lost
+subject colors, flickering edges, or remains uncertain, run the approved background
+remover on the selected original video frames and review those cutouts before packing.
+Do not substitute generated sheets, individual movement poses or hand-drawn character animation. For scenery
 and other objects, choose image-to-video or another suitable animation technique.
 Blockout placeholders, UI, collision geometry and masks are exempt from generation.
 Within the approved contract, resolve any missing concept and rough layout before

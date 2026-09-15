@@ -40,10 +40,10 @@ node tests/new-village-browser.mjs --out test-results/new-village/browser-review
 
 `layout.json` is the shared route, planting, entrance and bridge contract.
 `art/art-contract.json`, `art/binding.json`, final masks, and `art/provenance/`
-retain measured integration and compact generation provenance. The textual prompts
-and provider records are historical source records; raw candidates and rejected
-packs are intentionally not copied here. The original nine built-in image calls
-are historical and authorize no further generation.
+retain measured integration and compact generation provenance. Static world prompts
+remain historical source records. Retired direct character-sheet requests were
+removed; the checked-in traveler is a pre-v4 playback fixture, not a production
+template. The original nine built-in image calls authorize no further generation.
 
 This migrated host has no full final acceptance claim. A build, decoded asset
 metadata, structural checks, or a browser journey does not establish visual,

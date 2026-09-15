@@ -112,21 +112,54 @@ fringes, or validate gameplay. Browser decoding and visual review remain require
 
 ## Bind the contract to the host
 
-For integrated art, retain a reproducible comparison command or recipe with the
-host pack. A source hash binds the sidecar to a file, not the scene to that file.
-Compare each covered entry against the actual host definition:
+A source hash binds the sidecar to a file, not the scene to that file. Keep a
+`binding-plan.json` beside the host scene that says which calibrated asset renders
+which scene definition, then run `check-scale-binding.mjs` on the delivered scene:
 
-- Resolve texture to image to the bytes actually served, and compare their hash
-  with the measured source. Do not rely only on matching texture or image IDs.
-- Compare crop and effective anchor for every kind, including terrain. Record
-  renderer defaults or overrides explicitly instead of silently skipping them.
-- Compare effective render size, offsets, occupied footprint, and sampling.
-  For terrain include the tile-fit/mask behavior; for animation resolve the
-  actual selected frames, and state which frames the comparison covers.
+```json
+{
+  "version": 1,
+  "pairings": [
+    { "asset": "terrain", "tile": "grass" },
+    { "asset": "actor-idle", "entityType": "traveler", "bodyHeightReference": "standing" },
+    {
+      "asset": "fountain",
+      "entityType": "fountain",
+      "bodyHeightReference": "basin",
+      "deliberateBodyHeight": "full-height blocker so the player cannot jump through the centrepiece"
+    }
+  ],
+  "images": { "atlas": "./art/atlas.png" },
+  "exempt": { "entityTypes": { "sparkle": "decorative particle without ground contact" }, "tiles": {} }
+}
+```
 
-Report omissions as unverified. A standalone preview or copied manifest is not
-this comparison. Keep the recipe in maintained host files and generated results
-in its ignored evidence directory so future agents can repeat it after changes.
+Pair each asset with exactly one `entityType` or `tile`. `images` maps every scene
+image ID a paired texture uses to its host file, whose bytes are hashed against the
+measured source; `null` declares an unresolvable image and records it as unverified
+instead of passing it. `bodyHeightReference` is required only when an asset names
+several height references. `exempt` is the only way to leave art uncalibrated, and
+every entry needs a stated reason, so omissions stay visible instead of silent.
+
+A collider may deviate from the measured art on purpose, for example a conservative
+full-height blocker. Say so with `deliberateBodyHeight`: the pairing is then recorded
+as a stated exception instead of a failure. A blocking entity still needs an explicit
+`bodyHeight`; the exception covers the deviation, not the omission.
+
+The check compares projection, crop, effective anchor, render scale, offset, grid
+footprint and `bodyHeight` against the shared world scale, resolves every frame of
+an animated clip rather than the first, and requires a blocking entity to declare a
+physical height. It reads declared values only: sampling, terrain tile-fit and mask
+behavior, and whether a landmark actually sits on the artwork it names remain
+manual. State which of those you compared and report the rest as unverified.
+
+A pass means the scene uses the numbers you calibrated. It is not a judgement that
+those numbers suit the game: whether a stylized actor should be 1.8 units, and
+whether the result reads correctly beside its props at playing zoom, stay visual
+decisions. Read `exceptions` and `unverified` before the verdict, and take both to
+the shared-scale board and the rendered scene. Keep the plan in maintained host
+files and generated results in the ignored evidence directory so future agents can
+repeat it after changes.
 
 ## Worked coordinates
 

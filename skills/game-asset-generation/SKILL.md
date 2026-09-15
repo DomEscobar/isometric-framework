@@ -10,7 +10,7 @@ Produce local, reusable asset files with source provenance. This skill covers
 generation and cutout preparation; the sibling
 [isometric-art-integration skill](../isometric-art-integration/SKILL.md) covers
 projection, scale, placement, and acceptance inside a game.
-For turnarounds, walk/jump/attack phases, and sheet assembly, use
+For generated directional facings and I2V-derived character clips, use
 [directional sprite authoring](../directional-sprite-authoring/SKILL.md).
 
 ## Use the project's chosen production path
@@ -26,7 +26,8 @@ An available tool is not automatically the project's preferred art pipeline.
 | Character motion | [Directional sprite workflow](../directional-sprite-authoring/SKILL.md): approved generated facing image, approved capable I2V tool, actual-video review, extraction and packing | No alternate production route |
 | General production raster artwork | Approved T2I/I2I provider, such as WaveSpeed `bytedance/seedream-v5.0-pro` | No non-generated production route |
 | Reference-guided production variants | Selected I2I provider workflow, such as Seedream Pro Edit | Masked I2I repair of approved generated art |
-| Transparent generated prop/actor | Preserve valid generated alpha; otherwise WaveSpeed `wavespeed-ai/image-background-remover` | Local CPU `rembg` |
+| Transparent generated prop | Preserve valid generated alpha; otherwise WaveSpeed `wavespeed-ai/image-background-remover` | Local CPU `rembg` |
+| Character video frames | Preserve usable source alpha; otherwise one reviewed chroma-key attempt, then WaveSpeed `wavespeed-ai/image-background-remover` on the selected original frames when that review fails or is uncertain | No silent local substitute after failed chroma key |
 | Exact modular stone/terrain geometry | Host geometry and measured contact edges | Compatible generated materials assembled on that geometry |
 
 No provider is a universal default or benchmarked winner in this framework.
@@ -150,9 +151,9 @@ When a provider needs multiple exact references, prepare a reviewable input bund
 with the offline [request preparation helper](references/request-preparation.md).
 It separates style, layout and explicitly approved identity crops, preserves their
 source hashes and cannot send a generation request. Do not feed rejected identity
-crops into a later request. For a directional action matrix, first review one
-direction/action and record its self-reported calibration receipt; ordinary
-multiasset generation does not require that receipt.
+crops into a later request. Character motion inputs proceed from these approved
+directional facings into the I2V workflow; the helper does not prepare direct
+animation frames or authorize provider submission.
 
 ## Prepare, inspect, then integrate
 

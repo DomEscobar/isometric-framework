@@ -140,9 +140,7 @@ silent substitute for this route.
 
 ```sh
 uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite-authoring/scripts/extract-video.py export art/walk-review/extraction.json --out art/walk-frames
-uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite-authoring/scripts/mirror-frames.py art/walk-frames/sprite-pack.json --to nw --out art/walk-frames-nw
 uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite-authoring/scripts/pack-sprites.py art/walk-frames/sprite-pack.json --out art/walk-packed
-uv run --python 3.12 --with "Pillow==11.3.0" python -B skills/directional-sprite-authoring/scripts/pack-sprites.py art/walk-frames-nw/sprite-pack.json --out art/walk-packed-nw
 ```
 
 Export applies one saved crop and mask across selected frames, preserving pixel
@@ -151,21 +149,6 @@ validity; it refuses existing outputs and crops that discard visible pixels.
 Outputs include PNGs, provenance, a fresh preview and the existing packer's input.
 It does not recenter, stabilize roots, infer facing or repair limbs. If source
 pixels change, prepare a new review rather than replacing hashes to bypass checks.
-
-## Derive the opposite facing
-
-After a reviewed export, derive the other member of a horizontal pair instead of
-running a second video. `--to` must be that pair: `ne`/`nw`, `se`/`sw`, or `e`/`w`.
-The helper flips each bound PNG, writes `1 - anchor.x`, and emits a new
-`sprite-pack.json` whose origin is `mirrored-extraction`. It does not invent N/S
-views, chain one mirror into another, or judge whether the flipped lighting and
-equipment still read correctly. Inspect the packed mirrored clip the same way as
-the source clip. Record it as reuse of the source extraction, not as a second
-generated direction.
-
-The example above derives NW from a NE export. Pack the source and the derived
-spec separately; merge their runtime maps in the host. The packer still does not
-flip pixels.
 
 ## Review, repair and handoff
 

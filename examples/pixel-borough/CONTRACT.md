@@ -6,11 +6,15 @@ Build a complete compact, playable original creature town using the public frame
 
 Identity: Pixel Borough, a woodland settlement with a seed shop, field station, bakery and cottages. A teal-coated explorer meets three original creatures: acorn-like Nib, mossy little Bramble, and a round river bird called Pip. Explore and greet each creature; no combat, economy or interiors.
 
-Art technique: actual built-in image generation, with the user target supplied as a reference. No separately billed provider or credential use. Preserve generated originals, exact prompts, output hashes and processing provenance. Missing generation blocks the generated-art deliverable; never substitute synthetic fixtures. Deterministic cropping/packing is asset preparation, not generation.
+Art technique: actual built-in image generation, with the user target supplied as
+a reference. No separately billed provider or credential use was authorized for
+this historical host. Static prompts, output hashes and processing provenance are
+preserved. Its pre-v4 character atlases remain playback fixtures and do not define
+the current character-production route.
 
 Design targets: 2:1 ground projection, 48x24 world-pixel cells, nearest sampling; explorer approximately 28–36 pixels tall, doors 38–48, buildings 90–150 pixels tall, trees 55–110. Warm upper-left lighting, dark blue/brown outlines. Desktop overview 1408x768 and mobile 390x844 with a playable closer camera. No exact layout replication required.
 
-Full composition: forest at the rear; tall-grass meadow at left; four to six buildings around connected paving; central fountain and stalls; stream along the front-right, crossed by a visible bridge connecting the square to a planted bank. Buildings reserve solid footprints; water rejects entry; bridge deck is authoritative traversable terrain with blocked sides. No underpass required. Axis-aligned walking with W=+c, D=+r, S=-c, A=-r; click routes diagonal:false. Four directional idle/walk poses, creature idle/response motion, flowing water and fountain loops. Pause freezes simulation. Touch controls and clear exploration status.
+Full composition: forest at the rear; tall-grass meadow at left; four to six buildings around connected paving; central fountain and stalls; stream along the front-right, crossed by a visible bridge connecting the square to a planted bank. Buildings reserve solid footprints; water rejects entry; bridge deck is authoritative traversable terrain with blocked sides. No underpass required. Axis-aligned walking with W=+c, D=+r, S=-c, A=-r; click routes diagonal:false. Four directional idle/walk clips, creature idle/response motion, flowing water and fountain loops. Pause freezes simulation. Touch controls and clear exploration status.
 
 Calibrate an actor, one building, connected terrain and bridge/water assembly before expanding. Generated frames remain candidates until decoded alpha, packed frames, scale, contacts and live playback are inspected. Plan includes complete environment even if calibration fails.
 

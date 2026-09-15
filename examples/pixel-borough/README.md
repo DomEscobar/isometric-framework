@@ -4,7 +4,13 @@ Open `/examples/pixel-borough/` on the checkout's Vite server. Click terrain to 
 
 This host uses the framework's public runtime, interaction and control APIs. No framework API changes. Five buildings, forest, meadow, fountain, markets, three original creatures and a bank-to-bank bridge form one playable town. There are no interiors or underpass.
 
-All raster originals are in `art/originals/`, with exact generation requests beside them. The two checkerboard shop attempts remain as failed originals. `prepare-art.py` performs documented alpha extraction, cropping, nearest sampling and packing; `art/processing.json` records source/output hashes. Water movement is derived from the complete generated material using cyclic sampling; fountain frames retain fixed generated masonry. These are derived animations, not independently generated frames. No demo artwork is used. Two residents intentionally share this host's explorer art.
+Static raster originals remain in `art/originals/` with their generation records.
+The two checkerboard shop attempts remain as failed originals. The explorer and
+creature atlases are frozen pre-v4 playback fixtures; their retired direct-sheet
+requests were removed and `prepare-art.py` only registers their checked-in runtime
+pixels. Water movement is derived from the complete generated material using cyclic
+sampling; fountain frames retain fixed generated masonry. No demo artwork is used.
+Two residents intentionally share this host's explorer art.
 
 The initial 28–36 pixel actor calibration was visibly too small. Review repairs render the same packed explorer at width 72 (about 45–48 visible pixels tall), and creatures at width 67. New generated grass clumps and calmer ground replace the noisy materials. Original target and rejected sources remain unchanged.
 

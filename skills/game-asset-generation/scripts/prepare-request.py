@@ -22,7 +22,6 @@ MAX_REFERENCES = 32
 MAX_TEXT = 8_192
 ID = re.compile(r"[a-z][a-z0-9_-]{0,63}\Z")
 ROLES = frozenset(("style", "layout", "identity"))
-DIRECTIONS = frozenset(("n", "ne", "e", "se", "s", "sw", "w", "nw"))
 RESERVED = frozenset(("__proto__", "prototype", "constructor"))
 RESERVED_REFERENCE_IDS = frozenset(("board",))
 
@@ -115,33 +114,6 @@ def parse_reference(entry, base, seen):
             "role": entry["role"], "crop": crop}
 
 
-def load_receipt(path):
-    raw = read_bounded(path, MAX_SPEC_BYTES)
-    value = json.loads(raw, object_pairs_hook=no_duplicate_keys,
-                       parse_constant=lambda token: fail(f"invalid JSON number: {token}"))
-    exact_keys(value, ("version", "kind", "action", "direction", "identitySelections", "judgement"), "calibration receipt")
-    if value["version"] != 2 or value["kind"] != "directional-calibration":
-        fail("calibration receipt must be directional-calibration version 2")
-    identifier(value["action"], "calibration receipt.action")
-    identifier(value["direction"], "calibration receipt.direction")
-    if value["judgement"] != "self-reported-approved":
-        fail("calibration receipt judgement must be self-reported-approved")
-    selections = value["identitySelections"]
-    if not isinstance(selections, list) or not selections:
-        fail("calibration receipt identitySelections must be a nonempty list")
-    for index, selection in enumerate(selections):
-        exact_keys(selection, ("sourceSha256", "crop", "pixelsSha256"), f"calibration receipt.identitySelections[{index}]")
-        for key in ("sourceSha256", "pixelsSha256"):
-            if not isinstance(selection[key], str) or not re.fullmatch(r"[0-9a-f]{64}", selection[key]):
-                fail("calibration receipt contains an invalid identity hash")
-        crop = selection["crop"]
-        if crop is not None:
-            exact_keys(crop, ("x", "y", "width", "height"), "calibration receipt crop")
-            for key in ("x", "y", "width", "height"):
-                integer(crop[key], 0 if key in ("x", "y") else 1, MAX_PIXELS, "calibration receipt crop")
-    return value, hashlib.sha256(raw).hexdigest()
-
-
 def prepare(spec_path, output):
     spec_path = Path(spec_path).resolve()
     output = Path(output).absolute()
@@ -150,27 +122,14 @@ def prepare(spec_path, output):
     raw_spec = read_bounded(spec_path, MAX_SPEC_BYTES)
     spec = json.loads(raw_spec, object_pairs_hook=no_duplicate_keys,
                       parse_constant=lambda token: fail(f"invalid JSON number: {token}"))
-    exact_keys(spec, ("version", "description", "references", "matrix"), "spec")
-    if spec["version"] != 1 or not isinstance(spec["description"], str) or not 1 <= len(spec["description"]) <= MAX_TEXT:
-        fail("spec needs version 1 and a bounded nonempty description")
+    exact_keys(spec, ("version", "description", "references"), "spec")
+    if spec["version"] != 2 or not isinstance(spec["description"], str) or not 1 <= len(spec["description"]) <= MAX_TEXT:
+        fail("spec needs version 2 and a bounded nonempty description; matrix and calibration receipts were retired")
     if not isinstance(spec["references"], list) or not 1 <= len(spec["references"]) <= MAX_REFERENCES:
         fail(f"references must contain 1 to {MAX_REFERENCES} entries")
     seen = set()
     references = [parse_reference(entry, spec_path.parent, seen) for entry in spec["references"]]
-    matrix = spec["matrix"]
-    if matrix is not None:
-        exact_keys(matrix, ("action", "directions", "calibrationReceipt"), "matrix")
-        identifier(matrix["action"], "matrix.action")
-        if not isinstance(matrix["directions"], list) or not 2 <= len(matrix["directions"]) <= 8:
-            fail("matrix.directions must contain 2 to 8 directions")
-        for direction in matrix["directions"]:
-            identifier(direction, "matrix.directions")
-            if direction not in DIRECTIONS:
-                fail(f"matrix.directions contains unknown direction: {direction}")
-        if len(set(matrix["directions"])) != len(matrix["directions"]):
-            fail("matrix.directions contains duplicates")
-        receipt_path = relative_path(spec_path.parent, matrix["calibrationReceipt"], ".json", "matrix.calibrationReceipt")
-    source_cache, rendered, identity_selections = {}, [], []
+    source_cache, rendered = {}, []
     for reference in references:
         path = reference["path"]
         if path not in source_cache:
@@ -186,20 +145,7 @@ def prepare(spec_path, output):
         if selected.width * selected.height > MAX_PIXELS:
             fail("selected reference exceeds pixel limit")
         source_hash = hashlib.sha256(source_bytes).hexdigest()
-        if reference["role"] == "identity":
-            identity_selections.append({"sourceSha256": source_hash, "crop": crop,
-                                        "pixelsSha256": hashlib.sha256(selected.tobytes()).hexdigest()})
         rendered.append((reference, source_bytes, source_hash, selected))
-    receipt_info = None
-    if matrix is not None:
-        receipt, receipt_hash = load_receipt(receipt_path)
-        if receipt["action"] != matrix["action"] or receipt["direction"] not in matrix["directions"]:
-            fail("calibration receipt does not match the requested matrix action/direction")
-        if receipt["identitySelections"] != identity_selections:
-            fail("calibration receipt identity selections do not match approved identity crops")
-        receipt_info = {"path": matrix["calibrationReceipt"], "sha256": receipt_hash,
-                        "action": receipt["action"], "direction": receipt["direction"],
-                        "judgement": receipt["judgement"]}
     label_height, padding = 22, 4
     label_canvas = Image.new("RGBA", (1, 1))
     label_measure = ImageDraw.Draw(label_canvas)
@@ -240,8 +186,7 @@ def prepare(spec_path, output):
         board.save(output / "board.png", format="PNG")
         board.close()
         board_hash = hashlib.sha256((output / "board.png").read_bytes()).hexdigest()
-        report = {"version": 1, "description": spec["description"], "request": {"references": report_refs, "matrix": matrix,
-                  "calibration": receipt_info}, "sourceHashes": {str(path.relative_to(spec_path.parent)).replace("\\", "/"): hashlib.sha256(raw).hexdigest() for path, (raw, _) in source_cache.items()},
+        report = {"version": 2, "description": spec["description"], "request": {"references": report_refs}, "sourceHashes": {str(path.relative_to(spec_path.parent)).replace("\\", "/"): hashlib.sha256(raw).hexdigest() for path, (raw, _) in source_cache.items()},
                   "provenance": {"specSha256": hashlib.sha256(raw_spec).hexdigest(), "boardSha256": board_hash},
                   "limits": {"judgement": "self-reported only; no automatic visual approval", "generatorAuthorization": "not enforced by this offline tool"}}
         with (output / "request.json").open("x", encoding="utf-8", newline="\n") as handle:
@@ -259,7 +204,7 @@ def prepare(spec_path, output):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("spec", type=Path, help="version 1 JSON; paths resolve beside it")
+    parser.add_argument("spec", type=Path, help="version 2 JSON; paths resolve beside it")
     parser.add_argument("--out", type=Path, required=True, help="new output directory")
     args = parser.parse_args()
     try:

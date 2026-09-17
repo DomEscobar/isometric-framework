@@ -106,7 +106,20 @@ node skills/isometric-art-integration/scripts/check-scale-binding.mjs path/to/ar
 It compares projection, crops, effective anchors, render scale, offsets, grid
 footprints and each `bodyHeight` against the one calibrated world scale, and names
 every sprite type and textured tile that no contract asset covers. Uncalibrated art
-and a deliberately conservative collider need a stated reason, not silence. Read
+and a deliberately conservative collider need a stated reason, not silence.
+The contract checker also decodes each frame's alpha and measures the visible
+silhouette, because no pixel outside the ground diamond a `footprint` reserves can
+belong to that asset at any height. Terrain and prop artwork must sit inside that
+diamond on both sides, so declaring contacts across one tile of a six-tile wall no
+longer shrinks it and an empty frame is rejected rather than passed. Deliberate
+overhang needs a measured `overhangPx` budget together with the `allowedOverhang`
+reason; a budget without a reason is a finding.
+
+The measurement cannot tell a drooping canopy from a wall base covering the
+neighboring square: both read as a wide silhouette. It decides how much artwork
+leaves the footprint, not whether that is acceptable. The declared budget and its
+reason are what a reviewer judges, so keep the number measured and the reason
+specific to the artwork that overhangs. Read
 [the binding plan](references/contract.md#bind-the-contract-to-the-host) for its
 fields and the comparisons it still leaves to you.
 

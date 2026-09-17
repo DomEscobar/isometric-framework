@@ -318,6 +318,7 @@
         ],
         "evidenceKind": "measurement",
         "source": "host/layout.json",
+        "artContract": "host/art/market/contacts.json",
         "requiredScope": {
           "regions": [
             "land",

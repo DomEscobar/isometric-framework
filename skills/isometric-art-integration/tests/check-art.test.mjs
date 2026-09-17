@@ -25,13 +25,21 @@ function chunk(type, bytes) {
   buffer.writeUInt32BE(crc32(buffer.subarray(4, -4)), buffer.length - 4);
   return buffer;
 }
-function png(width = 128, height = 128) {
+/** Opaque test art: the checker now measures the decoded silhouette, not just metadata. */
+function png(width = 128, height = 128, opaqueColumns = width) {
   const header = Buffer.alloc(13);
   header.writeUInt32BE(width, 0); header.writeUInt32BE(height, 4);
   header[8] = 8; header[9] = 6;
+  const stride = width * 4;
+  const raw = Buffer.alloc(height * (stride + 1));
+  for (let row = 0; row < height; row++) {
+    for (let column = 0; column < opaqueColumns; column++) {
+      raw.fill(255, row * (stride + 1) + 1 + column * 4, row * (stride + 1) + 1 + column * 4 + 4);
+    }
+  }
   return Buffer.concat([
     Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]), chunk('IHDR', header),
-    chunk('IDAT', deflateSync(Buffer.alloc(height * (width * 4 + 1)))), chunk('IEND', Buffer.alloc(0)),
+    chunk('IDAT', deflateSync(raw)), chunk('IEND', Buffer.alloc(0)),
   ]);
 }
 const bytes = png();
@@ -109,6 +117,79 @@ test('terrain camera mismatch fails and keeps drawable candidates', async (t) =>
   const report = await rejection(t, (c) => { c.assets[0].groundPoints[0].source.x = 6; }, /projection error/);
   assert.equal(report.assets.length, 3);
   assert.equal(report.errors[0].assetId, 'tile');
+});
+
+test('understated contacts cannot shrink artwork that overflows its footprint', async (t) => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'art-silhouette-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const wall = png(152, 128);
+  await writeFile(path.join(directory, 'atlas.png'), wall);
+  const candidate = contract();
+  candidate.projection = { tileWidth: 48, tileHeight: 24, heightPixelsPerUnit: 24 };
+  candidate.tolerances = { groundErrorPx: 0.5, heightErrorPx: 1 };
+  candidate.assets = [{
+    id: 'stadtmauer', kind: 'prop', image: 'atlas.png',
+    sha256: createHash('sha256').update(wall).digest('hex'),
+    frame: { x: 0, y: 0, width: 152, height: 128 }, anchor: { x: 0.5, y: 1 },
+    render: { width: 152 }, footprint: { columns: 1, rows: 1 }, heights: [], allowedOverhang: '',
+    // Exact contacts across the middle tile only: every declared-metadata check is satisfied.
+    groundPoints: [ground(64, 128, -0.25, -0.25), ground(88, 128, 0.25, 0.25), ground(76, 122, 0.25, -0.25)],
+  }];
+  const report = await checkContract(candidate, directory);
+  assert.equal(report.passed, false);
+  const messages = report.errors.map((e) => e.message);
+  assert.ok(!messages.some((m) => /projection error|spills outside the rigid footprint/.test(m)), messages.join('\n'));
+  assert.deepEqual(messages.map((m) => /past the (\w+) edge/.exec(m)?.[1]), ['left', 'right']);
+  assert.ok(messages.every((m) => /spills 52\.0000 rendered px/.test(m)), messages.join('\n'));
+  assert.deepEqual(report.assets[0].silhouette, { left: 0, right: 151, top: 0, bottom: 127 });
+});
+
+test('deliberate overhang needs a declared budget and a stated reason', async (t) => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'art-overhang-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const canopy = png(96, 96);
+  await writeFile(path.join(directory, 'atlas.png'), canopy);
+  const candidate = contract();
+  candidate.assets = [{
+    id: 'tree', kind: 'prop', image: 'atlas.png',
+    sha256: createHash('sha256').update(canopy).digest('hex'),
+    frame: { x: 0, y: 0, width: 96, height: 96 }, anchor: { x: 0.5, y: 1 },
+    render: { width: 96 }, footprint: { columns: 1, rows: 1 }, heights: [], allowedOverhang: '',
+    groundPoints: [ground(32, 96, -0.25, -0.25), ground(64, 96, 0.25, 0.25), ground(48, 88, 0.25, -0.25)],
+  }];
+  const undeclared = await checkContract(structuredClone(candidate), directory);
+  assert.equal(undeclared.errors.length, 2);
+  assert.ok(undeclared.errors.every((e) => /spills 16\.0000 rendered px/.test(e.message)), JSON.stringify(undeclared.errors));
+  const unexplained = structuredClone(candidate);
+  unexplained.assets[0].overhangPx = 16;
+  assert.match((await checkContract(unexplained, directory)).errors.map((e) => e.message).join('\n'), /requires allowedOverhang to state/);
+  const justified = structuredClone(candidate);
+  justified.assets[0].overhangPx = 16;
+  justified.assets[0].allowedOverhang = 'Canopy crosses tile edges; trunk base stays inside the footprint';
+  const report = await checkContract(justified, directory);
+  assert.equal(report.passed, true, JSON.stringify(report.errors));
+  const negative = structuredClone(justified);
+  negative.assets[0].overhangPx = -1;
+  assert.match((await checkContract(negative, directory)).errors.map((e) => e.message).join('\n'), /nonnegative silhouette budget/);
+});
+
+test('art narrower than its footprint passes, but a blank frame is rejected', async (t) => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'art-padding-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const padded = png(64, 32, 32);
+  await writeFile(path.join(directory, 'atlas.png'), padded);
+  const candidate = contract();
+  candidate.assets = [candidate.assets[0]];
+  candidate.assets[0].sha256 = createHash('sha256').update(padded).digest('hex');
+  const report = await checkContract(candidate, directory);
+  assert.equal(report.passed, true, JSON.stringify(report.errors));
+  assert.equal(report.assets[0].silhouette.right, 31);
+  const blankBytes = png(64, 32, 0);
+  await writeFile(path.join(directory, 'atlas.png'), blankBytes);
+  const blank = contract();
+  blank.assets = [blank.assets[0]];
+  blank.assets[0].sha256 = createHash('sha256').update(blankBytes).digest('hex');
+  assert.match((await checkContract(blank, directory)).errors.map((e) => e.message).join('\n'), /no visible pixels/);
 });
 
 test('rigid contact cannot escape footprint using allowedOverhang', async (t) => {

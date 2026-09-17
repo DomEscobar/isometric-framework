@@ -96,6 +96,7 @@ to judge its relation to the player; the checker cannot infer missing semantics.
 | `footprint` | Positive integer `columns`, `rows`; terrain must be 1×1 |
 | `groundPoints` | Array of `{source: {x,y}, grid: {c,r}}` pairs |
 | `heights` | Array of `{reference, base: {x,y}, top: {x,y}}` measurements |
+| `overhangPx` | Optional per-side rendered-pixel budget for artwork that deliberately leaves the footprint's ground diamond; needs a nonempty `allowedOverhang` reason |
 | `allowedOverhang` | Description of intentional foliage/shadow extension; empty when none |
 
 Only terrain may use a nonuniform render scale, matching this runtime's terrain

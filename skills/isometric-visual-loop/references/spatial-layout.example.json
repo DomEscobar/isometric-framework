@@ -269,6 +269,7 @@
     {
       "id": "tree",
       "kind": "tree",
+      "asset": "oak",
       "footprint": [
         [
           1,
@@ -283,6 +284,7 @@
     {
       "id": "house",
       "kind": "building",
+      "asset": "cottage",
       "footprint": [
         [
           3,

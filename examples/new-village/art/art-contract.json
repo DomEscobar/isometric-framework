@@ -81,6 +81,7 @@
           }
         }
       ],
+      "overhangPx": 7,
       "allowedOverhang": "Roof eaves and small attached ornaments extend beyond the rigid foundation; doorway and actor visibility require actual host review."
     },
     {
@@ -150,6 +151,7 @@
           }
         }
       ],
+      "overhangPx": 7,
       "allowedOverhang": "Roof eaves and small attached ornaments extend beyond the rigid foundation; doorway and actor visibility require actual host review."
     },
     {
@@ -219,6 +221,7 @@
           }
         }
       ],
+      "overhangPx": 7,
       "allowedOverhang": "Roof eaves and small attached ornaments extend beyond the rigid foundation; doorway and actor visibility require actual host review."
     },
     {
@@ -288,6 +291,7 @@
           }
         }
       ],
+      "overhangPx": 7,
       "allowedOverhang": "Roof eaves and small attached ornaments extend beyond the rigid foundation; doorway and actor visibility require actual host review."
     }
   ]

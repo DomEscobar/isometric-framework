@@ -2097,6 +2097,7 @@
           }
         }
       ],
+      "overhangPx": 14,
       "allowedOverhang": "Foliage and tight shadow may overhang the curved pot bottom. Contact grids are inferred from the observed curve; this checks containment, not independent projection compatibility."
     }
   ]

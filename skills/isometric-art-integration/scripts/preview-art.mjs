@@ -37,7 +37,7 @@ canvas{display:block;background:repeating-conic-gradient(#f1f1ed 0 25%,#e6e8e2 0
 <p id="status"></p><p>This board checks supplied measurements against a common scale. It does not certify art quality, seams, occlusion, or gameplay. Verify landmarks against the pixels, then use the host's playable calibration scene.</p>
 <label>Shared zoom <select id="zoom"><option value="0.5">0.5×</option><option value="1">1×</option><option value="2" selected>2×</option><option value="3">3×</option><option value="4">4×</option></select></label>
 <label><input id="overlay" type="checkbox" checked> Ground and height overlays</label>
-<p class="note">Cyan: expected ground contacts / footprint. Magenta: measured contacts. Gold: measured base outline and heights. Blue: reference heights. All cards share one scale and baseline. If art clips, lower the shared zoom; no card auto-fits.</p>
+<p class="note">Cyan: expected ground contacts / footprint. Magenta: measured contacts. Gold: measured base outline and heights. Blue: reference heights. Violet: decoded silhouette, labelled where it leaves the footprint's ground diamond. All cards share one scale and baseline. If art clips, lower the shared zoom; no card auto-fits.</p>
 <pre id="errors"></pre></header><main id="board"></main>
 <script type="application/json" id="data">${payload}</script>
 <script>
@@ -59,6 +59,13 @@ function paint(card){
  if(overlays){
   const C=a.footprint.columns,R=a.footprint.rows;
   line([{c:-.5,r:-.5},{c:C-.5,r:-.5},{c:C-.5,r:R-.5},{c:-.5,r:R-.5}].map(project),'#008f99',true);
+  if(a.silhouette){
+   const s=a.silhouette,sx=(col)=>(col-a.anchor.x*f.width)*a.scaleX+off.x;
+   const l=sx(s.left),r=sx(s.right+1),t=(s.top-a.anchor.y*f.height)*a.scaleY+off.y,b=(s.bottom+1-a.anchor.y*f.height)*a.scaleY+off.y;
+   line([{x:l,y:t},{x:r,y:t},{x:r,y:b},{x:l,y:b}],'#6b2fd6',true);
+   const bandL=-data.projection.tileWidth/2,bandR=(C+R-1)*data.projection.tileWidth/2;
+   for(const [x,over] of [[l,bandL-l],[r,r-bandR]])if(over>0){ctx.fillStyle='#6b2fd6';ctx.font=(11/zoom)+'px system-ui';ctx.fillText(over.toFixed(1)+'px',x-14/zoom,b+14/zoom);line([{x,y:b},{x,y:b+8/zoom}],'#6b2fd6');}
+  }
   if(a.groundPoints.length>1)line(a.groundPoints.map(p=>actual(p.source)),'#b87b00',true);
   for(const p of a.groundPoints){const source=actual(p.source),expected=project(p.grid);line([source,expected],'#d62a83');dot(expected,'#008f99');dot(source,'#d62a83');}
   for(const h of a.heights){const base=actual(h.base),top=actual(h.top),reference={x:base.x,y:base.y-data.heightReferences[h.reference]*data.projection.heightPixelsPerUnit};line([base,top],'#b87b00');line([{x:base.x+6/zoom,y:base.y},{x:reference.x+6/zoom,y:reference.y}],'#2459c4');dot(top,'#b87b00');dot(reference,'#2459c4');}
@@ -68,7 +75,7 @@ function paint(card){
 for(const asset of data.assets){
  const article=document.createElement('article'),title=document.createElement('h2'),caption=document.createElement('p'),canvas=document.createElement('canvas'),note=document.createElement('p'),decode=document.createElement('p');
  title.textContent=asset.id+' · '+asset.kind;caption.className=note.className='note';
- caption.textContent='Footprint '+asset.footprint.columns+'×'+asset.footprint.rows+'; overhang: '+(asset.allowedOverhang||'none declared');
+ caption.textContent='Footprint '+asset.footprint.columns+'×'+asset.footprint.rows+'; overhang budget '+(asset.overhangPx||0)+'px: '+(asset.allowedOverhang||'none declared');
  canvas.width=640;canvas.height=520;decode.className='decode';article.append(title,caption,canvas,note,decode);document.getElementById('board').append(article);
  const image=new Image(),card={asset,ctx:canvas.getContext('2d'),image,note};
  image.onload=()=>{if(image.naturalWidth!==asset.imageWidth||image.naturalHeight!==asset.imageHeight){decode.textContent='Decoded dimensions disagree with checked PNG metadata.';return;}cards.push(card);paint(card);};

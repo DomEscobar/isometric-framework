@@ -22,8 +22,8 @@ def layout():
         {"id": "garden", "kind": "planting", "cells": [[1, 4, "ground"]]},
         {"id": "water", "kind": "water", "cells": [[5, r, "ground"] for r in range(6)]}],
         "instances": [
-            {"id": "tree", "kind": "tree", "footprint": [[1, 4, "ground"]], "support": "garden", "solid": True, "approaches": []},
-            {"id": "house", "kind": "building", "footprint": [[3, 3, "ground"]], "support": "land", "solid": True, "approaches": [[3, 2, "ground"]]}],
+            {"id": "tree", "kind": "tree", "footprint": [[1, 4, "ground"]], "support": "garden", "solid": True, "approaches": [], "asset": "chair"},
+            {"id": "house", "kind": "building", "footprint": [[3, 3, "ground"]], "support": "land", "solid": True, "approaches": [[3, 2, "ground"]], "asset": "chair"}],
         "routes": [{"id": "main", "cells": [[c, 2, "ground"] for c in range(8)], "start": [0, 2, "ground"], "goals": [[7, 2, "ground"]], "clearanceCells": 0}],
         "bridges": [{"id": "bridge", "deck": [[c, 2, "ground"] for c in (4, 5, 6)], "landings": [[4, 2, "ground"], [6, 2, "ground"]], "waterOverlayCells": [[5, r, "ground"] for r in range(6) if r != 2]}]}
 
@@ -130,6 +130,44 @@ class SpatialTests(unittest.TestCase):
         self.assertIn("route-connectivity:island", [f["id"] for f in spatial.inspect(data)["findings"]])
 
 
+class PlacementTests(unittest.TestCase):
+    placement = flow.module("placement_checks")
+
+    def contract(self, **footprints):
+        return {"assets": [{"id": name, "footprint": {"columns": c, "rows": r}}
+                           for name, (c, r) in footprints.items()]}
+
+    def test_reserved_cells_must_match_the_calibrated_art(self):
+        data = layout()
+        for instance in data["instances"]:
+            instance["asset"] = "oak" if instance["kind"] == "tree" else "cottage"
+        contract = self.contract(oak=(1, 1), cottage=(1, 1))
+        self.assertTrue(self.placement.inspect(data, contract)["passed"])
+        # The art checker forces a wide wall to declare 6x1; reserving one cell hides five.
+        wide = self.contract(oak=(1, 1), cottage=(6, 1))
+        report = self.placement.inspect(data, wide)
+        self.assertFalse(report["passed"])
+        self.assertEqual([f["id"] for f in report["findings"]], ["footprint-disagreement:house"])
+        self.assertIn("reserves 1x1 cells but calibrated art cottage measures 6x1", report["findings"][0]["difference"])
+
+    def test_multi_cell_placement_agreeing_with_its_art_passes(self):
+        data = layout()
+        for instance in data["instances"]:
+            instance["asset"] = "oak" if instance["kind"] == "tree" else "cottage"
+        house = next(i for i in data["instances"] if i["id"] == "house")
+        house["footprint"] = [[3, 3, "ground"], [4, 3, "ground"]]
+        self.assertTrue(spatial.inspect(data)["passed"])
+        self.assertTrue(self.placement.inspect(data, self.contract(oak=(1, 1), cottage=(2, 1)))["passed"])
+
+    def test_unnamed_and_unknown_assets_are_findings_not_silent_passes(self):
+        data = layout()
+        data["instances"][0]["asset"] = "ghost"
+        del data["instances"][1]["asset"]
+        report = self.placement.inspect(data, self.contract(oak=(1, 1)))
+        self.assertEqual({f["id"] for f in report["findings"]},
+                         {"asset-unknown:tree", "asset-unnamed:house"})
+
+
 class ProductionTests(unittest.TestCase):
     def setUp(self):
         temp = tempfile.TemporaryDirectory()
@@ -151,19 +189,29 @@ class ProductionTests(unittest.TestCase):
         actual = {k: asset[k] for k in ("frame", "anchor", "render", "footprint")}
         actual["image"] = "game/asset.png"
         self.save("game/binding.json", {"projection": starter["projection"], "assets": {"chair": actual}})
-        self.plan = {"version": 3, "root": "..", "inputRoots": ["game"], "artChecks": [], "reviewMode": "independent",
+        self.write_provenance()
+        self.plan = {"version": 4, "root": "..", "inputRoots": ["game"], "artChecks": [], "reviewMode": "independent",
+                     "assetPolicy": {"version": 1, "sources": {"world": "generated", "character": "generated", "environment": "generated"},
+                                     "characterAnimation": {"animated": "image-to-video-extract-pack", "staticIdle": "generated-facing"},
+                                     "coverageLedger": "game/ledger.json", "runtime": {"manifest": "game/runtime.json", "binding": "game/used.json"}},
                      "requirements": [{"id": "look", "description": "Whole composed scene", "domain": "visual", "views": ["desktop", "mobile"]},
                                       {"id": "play", "description": "Observed traversal", "domain": "gameplay", "views": ["desktop"]}],
                      "comparisons": [{"id": v, "requirements": ["look"], "view": v, "role": "style", "focus": "Complete composition", "reference": "game/asset.png"} for v in ["desktop", "mobile"]],
                      "production": {"version": 1, "rigidAssets": ["chair"], "checks": []}}
+        provenance = ["game/ledger.json", "game/runtime.json", "game/used.json"]
         def check(cid, stage, method="review", files=None, views=None):
-            return {"id": cid, "stage": stage, "method": method, "evidenceKind": "image" if method == "review" and stage in ("assembly", "static", "final") else "measurement", "requirements": ["play" if stage == "motion" else "look"], "views": views or ["desktop"], "inputs": files or ["game/layout.json", "game/actor.json"]}
+            image = (method == "review" and stage in ("assembly", "static", "final")) or (method == "layout" and stage == "layout")
+            listed = list(files or ["game/layout.json", "game/actor.json"])
+            if flow.STAGES.index(stage) >= flow.STAGES.index("static"):
+                listed += [path for path in provenance if path not in listed]
+            return {"id": cid, "stage": stage, "method": method, "evidenceKind": "image" if image else "measurement", "requirements": ["play" if stage == "motion" else "look"], "views": views or ["desktop"], "inputs": listed}
         self.plan["production"]["checks"] = [
             check("boot", "preflight", files=["game/boot.json"]),
             dict(check("layout", "layout", "layout", ["game/layout.json"]), source="game/layout.json"),
             dict(check("rigid", "assembly", "art", ["game/rigid.json", "game/binding.json", "game/asset.png"]), source="game/rigid.json", assets=["chair"], binding="game/binding.json"),
             check("assembly", "assembly"),
-            dict(check("placement", "static", "layout", ["game/layout.json"]), source="game/layout.json"),
+            dict(check("placement", "static", "layout", ["game/layout.json", "game/rigid.json"]),
+                 source="game/layout.json", artContract="game/rigid.json"),
             check("composition", "static", views=["desktop", "mobile"]),
             check("motion", "motion"), check("final", "final", files=["game"], views=["desktop", "mobile"])]
         self.plan_path = self.save("game/plan.json", self.plan)
@@ -180,6 +228,19 @@ class ProductionTests(unittest.TestCase):
         target = self.root / path
         target.write_text(json.dumps(value), encoding="utf8")
         return target
+
+    def write_provenance(self):
+        self.save("game/generation.json", {"localJobId": "synthetic-test-not-generated-art", "outputSha256": gate.digest(self.game / "asset.png")})
+        def proof(name):
+            return {"path": "game/" + name, "sha256": gate.digest(self.game / name)}
+        ledger = {"version": 1, "clips": {}, "images": {
+            "ground": {"origin": {"kind": "generated", "record": proof("generation.json"), "output": proof("asset.png")},
+                       "transforms": [proof("asset.png")]}}}
+        self.save("game/ledger.json", ledger)
+        self.save("game/runtime.json", {"assets": {"images": {"ground": {"url": "asset.png"}}, "textures": {}, "animations": {}}})
+        self.save("game/used.json", {"version": 1, "used": {
+            category: {"images": ["ground"] if category == "world" else [], "textures": [], "animations": []}
+            for category in ("world", "character", "environment", "ui", "debug")}})
 
     def start(self, cid):
         self.counter += 1
@@ -293,19 +354,12 @@ class ProductionTests(unittest.TestCase):
         self.assertTrue(broken["missingInputs"])
 
     def test_v4_cannot_skip_stages_and_records_static_provenance_failure(self):
-        self.plan["version"] = 4
-        self.plan["assetPolicy"] = {"version": 1, "sources": {"world": "generated", "character": "generated", "environment": "generated"},
-                                    "characterAnimation": {"animated": "image-to-video-extract-pack", "staticIdle": "generated-facing"},
-                                    "coverageLedger": "game/ledger.json", "runtime": {"manifest": "game/runtime.json", "binding": "game/binding-export.json"}}
-        self.save("game/ledger.json", {}); self.save("game/runtime.json", {}); self.save("game/binding-export.json", {})
-        for check in self.plan["production"]["checks"]:
-            if check["stage"] == "layout": check["evidenceKind"] = "image"
-            if flow.STAGES.index(check["stage"]) >= flow.STAGES.index("static"):
-                check["inputs"] += ["game/ledger.json", "game/runtime.json", "game/binding-export.json"]
-        self.plan_path = self.save("game/plan.json", self.plan); self.baseline = self.root / "v4-baseline.json"; gate.freeze(self.plan_path, self.baseline)
         with self.assertRaisesRegex(ValueError, "Earlier stage"):
             self.start("placement")
         self.through_assembly()
+        self.save("game/ledger.json", {})
+        self.save("game/runtime.json", {})
+        self.save("game/used.json", {})
         value = self.complete("placement")
         self.assertEqual(value["status"], "fail")
         self.assertFalse(value["automatic"]["provenance"]["passed"])
@@ -374,15 +428,58 @@ class ProductionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Host frame/anchor"):
             self.complete("rigid")
 
+    def test_placement_rejects_art_covering_cells_the_layout_never_reserved(self):
+        data = gate.read(self.game / "layout.json")
+        house = next(i for i in data["instances"] if i["id"] == "house")
+        house["footprint"] = [[3, 3, "ground"], [4, 3, "ground"]]
+        self.save("game/layout.json", data)
+        self.through_assembly()
+        result = self.complete("placement")
+        self.assertEqual(result["status"], "fail")
+        findings = result["automatic"]["automatic"]["findings"]
+        self.assertEqual([f["id"] for f in findings], ["footprint-disagreement:house"])
+
+    def test_static_placement_cannot_skip_the_art_contract(self):
+        plan = copy.deepcopy(self.plan)
+        del next(c for c in plan["production"]["checks"] if c["id"] == "placement")["artContract"]
+        with self.assertRaisesRegex(ValueError, "declare artContract"):
+            flow.validate(plan, self.root)
+        undeclared = copy.deepcopy(self.plan)
+        check = next(c for c in undeclared["production"]["checks"] if c["id"] == "placement")
+        check["inputs"] = [p for p in check["inputs"] if p != "game/rigid.json"]
+        with self.assertRaisesRegex(ValueError, "artContract must be a declared dependency"):
+            flow.validate(undeclared, self.root)
+
+    def test_calibrating_one_asset_cannot_hide_another_exported_rigid_asset(self):
+        self.complete("boot")
+        self.complete("layout")
+        binding = gate.read(self.game / "binding.json")
+        binding["assets"]["stadtmauer"] = copy.deepcopy(binding["assets"]["chair"])
+        self.save("game/binding.json", binding)
+        with self.assertRaisesRegex(ValueError, "does not protect: stadtmauer"):
+            self.complete("rigid")
+
     def test_plan_cannot_omit_geometry_or_visual_coverage(self):
-        for defect in ("rigid", "mobile"):
+        for defect in ("rigid", "empty-rigid", "mobile"):
             plan = copy.deepcopy(self.plan)
             if defect == "rigid":
                 plan["production"]["checks"] = [c for c in plan["production"]["checks"] if c["id"] != "rigid"]
+            elif defect == "empty-rigid":
+                plan["production"]["rigidAssets"] = []
+                plan["production"]["checks"] = [c for c in plan["production"]["checks"] if c["method"] != "art"]
             else:
                 next(c for c in plan["production"]["checks"] if c["id"] == "composition")["views"] = ["desktop"]
             with self.subTest(defect=defect), self.assertRaises(ValueError):
                 flow.validate(plan, self.root)
+
+    def test_shipped_example_cannot_drop_rigid_calibration(self):
+        example_path = Path(__file__).resolve().parents[1] / "references" / "acceptance-plan.example.json"
+        example = gate.read(example_path)
+        gutted = copy.deepcopy(example)
+        gutted["production"]["rigidAssets"] = []
+        gutted["production"]["checks"] = [c for c in gutted["production"]["checks"] if c["method"] != "art"]
+        with self.assertRaisesRegex(ValueError, "nonempty rigidAssets"):
+            flow.validate(gutted, example_path.parent.parent)
 
     def test_shipped_example_covers_each_environment_dimension_with_static_evidence(self):
         example_path = Path(__file__).resolve().parents[1] / "references" / "acceptance-plan.example.json"
@@ -449,36 +546,17 @@ class ProductionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "already consumed"):
             flow.finish(self.adapter, self.baseline, consumed, submission, self.receipts, self.receipts / "y.json")
 
-    def test_v3_cli_and_existing_comparison_acceptance_work_together(self):
-        self.assertFalse(self.assert_cli_acceptance()["provenance"]["enforced"])
+    def test_new_world_production_rejects_version_3(self):
+        plan = copy.deepcopy(self.plan)
+        plan["version"] = 3
+        plan.pop("assetPolicy", None)
+        with self.assertRaisesRegex(ValueError, "acceptance-plan version 4"):
+            flow.validate(plan, self.root)
+        v3_path = self.save("game/plan-v3.json", plan)
+        with self.assertRaisesRegex(ValueError, "acceptance-plan version 4"):
+            gate.freeze(v3_path, self.root / "v3-baseline.json")
 
     def test_v4_cli_acceptance_and_valid_rechain_stales_previous_reviews(self):
-        self.plan["version"] = 4
-        self.plan["assetPolicy"] = {
-            "version": 1,
-            "sources": {"world": "generated", "character": "generated", "environment": "generated"},
-            "characterAnimation": {"animated": "image-to-video-extract-pack", "staticIdle": "generated-facing"},
-            "coverageLedger": "game/ledger.json",
-            "runtime": {"manifest": "game/runtime.json", "binding": "game/used.json"}}
-        self.save("game/generation.json", {"localJobId": "synthetic-test-not-generated-art", "outputSha256": gate.digest(self.game / "asset.png")})
-        def proof(name):
-            return {"path": "game/" + name, "sha256": gate.digest(self.game / name)}
-        ledger = {"version": 1, "clips": {}, "images": {
-            "ground": {"origin": {"kind": "generated", "record": proof("generation.json"), "output": proof("asset.png")},
-                       "transforms": [proof("asset.png")]}}}
-        self.save("game/ledger.json", ledger)
-        self.save("game/runtime.json", {"assets": {"images": {"ground": {"url": "asset.png"}}, "textures": {}, "animations": {}}})
-        self.save("game/used.json", {"version": 1, "used": {
-            category: {"images": ["ground"] if category == "world" else [], "textures": [], "animations": []}
-            for category in ("world", "character", "environment", "ui", "debug")}})
-        for check in self.plan["production"]["checks"]:
-            if check["stage"] == "layout":
-                check["evidenceKind"] = "image"
-            if flow.STAGES.index(check["stage"]) >= flow.STAGES.index("static"):
-                check["inputs"] += ["game/ledger.json", "game/runtime.json", "game/used.json"]
-        self.save("game/plan.json", self.plan)
-        self.baseline = self.root / "v4-baseline.json"
-        gate.freeze(self.plan_path, self.baseline)
         self.assertTrue(self.assert_cli_acceptance()["provenance"]["enforced"])
         command = [sys.executable, str(fixtures.SCRIPT), "production", "next", str(self.baseline), "--receipts", str(self.receipts)]
         result = subprocess.run(command, capture_output=True, text=True)
@@ -486,7 +564,8 @@ class ProductionTests(unittest.TestCase):
         self.assertEqual(json.loads(result.stdout)["state"], "complete")
         # Valid replacement evidence is still a new candidate, not reusable review.
         self.save("game/generation.json", {"localJobId": "replacement-synthetic-record", "outputSha256": gate.digest(self.game / "asset.png")})
-        ledger["images"]["ground"]["origin"]["record"] = proof("generation.json")
+        ledger = gate.read(self.game / "ledger.json")
+        ledger["images"]["ground"]["origin"]["record"] = {"path": "game/generation.json", "sha256": gate.digest(self.game / "generation.json")}
         self.save("game/ledger.json", ledger)
         self.assertTrue(gate.asset_provenance_tools().verify(self.plan, self.root)["enforced"])
         status = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)

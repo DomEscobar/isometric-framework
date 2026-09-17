@@ -8,7 +8,9 @@ New complete worlds use acceptance-plan **version 4** with the
 [production stages](production-flow.md) and mandatory [asset policy](asset-policy.md).
 It adds generated-source and character video-chain coverage plus actual blockout
 image review to the existing prerequisite, spatial-placement and rigid-binding
-checks. Versions 1–3 remain readable but do not certify this standard. Use the complete example below and pass
+checks. The tool rejects a production object on versions 1–3 and rejects an empty
+`rigidAssets` list. Versions 1–2 remain for focused packed-art work; they do not
+certify this standard. Use the complete example below and pass
 `--production-receipts DIR` to final `snapshot` and `accept`. Scene JSON versions
 are independent of authoring-plan versions.
 

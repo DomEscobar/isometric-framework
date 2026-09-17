@@ -54,6 +54,7 @@ def inputs(root, names):
 
 
 def validate(plan, root):
+    require(plan.get("version") == 4, "New world production requires acceptance-plan version 4")
     flow = plan.get("production")
     require(isinstance(flow, dict) and flow.get("version") == 1, "Production version 1 required")
     checks = flow.get("checks")
@@ -103,6 +104,14 @@ def validate(plan, root):
                     and all(isinstance(v, list) and len(v) == len(set(v)) and all(isinstance(i, str) and i for i in v) for v in scope.values()),
                     "Protect required layout region/instance/route/bridge IDs")
             require(scope["regions"] and scope["routes"], "Layout needs protected regions and traversal routes")
+            contract_name = check.get("artContract")
+            if check["stage"] == "static":
+                require(isinstance(contract_name, str) and contract_name,
+                        "Static placement must measure placed footprints against calibrated art; declare artContract")
+            if contract_name is not None:
+                require(isinstance(contract_name, str) and any(local(root, contract_name) == local(root, p)
+                        or local(root, contract_name).is_relative_to(local(root, p)) for p in check["inputs"]),
+                        "artContract must be a declared dependency")
             if plan.get("version") == 4 and check["stage"] == "layout":
                 require(check["evidenceKind"] == "image", "V4 layout requires a blockout image review")
         if plan.get("version") == 4 and check["stage"] == "layout" and check["method"] == "review":
@@ -118,7 +127,8 @@ def validate(plan, root):
     require(all((r["id"], v) in coverage for r in requirements.values() for v in r["views"]),
             "Production checks omit protected requirement/view coverage")
     rigid = flow.get("rigidAssets")
-    require(isinstance(rigid, list) and len(set(rigid)) == len(rigid), "Declare unique rigidAssets, empty only when absent")
+    require(isinstance(rigid, list) and rigid and len(set(rigid)) == len(rigid),
+            "Declare unique nonempty rigidAssets; empty lists cannot skip geometry calibration")
     checked = set()
     for c in checks:
         if c["method"] == "art":
@@ -128,8 +138,7 @@ def validate(plan, root):
                     "Actual host binding must be a declared dependency")
             checked.update(c["assets"])
     require(set(rigid) <= checked, "Rigid asset geometry coverage missing")
-    if rigid:
-        require(any(c["method"] == "art" and c["stage"] == "assembly" for c in checks), "Rigid assembly calibration required")
+    require(any(c["method"] == "art" and c["stage"] == "assembly" for c in checks), "Rigid assembly calibration required")
     return by_id
 
 
@@ -151,9 +160,14 @@ def evidence(root, values, views, kind, not_before_ns=None):
 
 def automatic(check, root, snapshot):
     if check["method"] == "layout":
-        report = module("spatial_checks").inspect(read(local(root, check["source"])))
+        layout = read(local(root, check["source"]))
+        report = module("spatial_checks").inspect(layout)
         require(all(set(ids) <= set(report["scope"][kind]) for kind, ids in check["requiredScope"].items()),
                 "Protected layout scope missing from current export")
+        if check.get("artContract"):
+            placement = module("placement_checks").inspect(layout, read(local(root, check["artContract"])))
+            report = {**report, "passed": report["passed"] and placement["passed"],
+                      "findings": report["findings"] + placement["findings"]}
         return report
     if check["method"] == "art":
         script = Path(__file__).resolve().parents[2] / "isometric-art-integration/scripts/check-art.mjs"
@@ -163,6 +177,9 @@ def automatic(check, root, snapshot):
         require(binding["projection"] == contract["projection"], "Host projection differs from measured contract")
         assets = {a["id"]: a for a in contract["assets"]}
         require(set(check["assets"]) <= set(assets), "Required rigid assets missing from measured contract")
+        unprotected = sorted(set(binding["assets"]) - set(check["assets"]))
+        require(not unprotected,
+                "Host binding exports rigid assets that this check does not protect: "+", ".join(unprotected))
         for asset in assets.values():
             path = (contract_path.parent / asset["image"]).resolve()
             require(path.is_relative_to(root) and snapshot.get(path.relative_to(root).as_posix()) == sha(path),

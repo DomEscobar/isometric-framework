@@ -3,8 +3,9 @@
 Use acceptance-plan **version 4** for new world production. It retains protected
 images and the required `production` object, and adds the mandatory generated-art
 [asset policy](asset-policy.md), character video provenance and actual blockout
-image review. Versions 1–3 remain readable for historical/focused work; they do
-not establish compliance with the version 4 policy.
+image review. Freeze, snapshot and accept reject a production object on versions
+1–3. Versions 1–2 remain for focused packed-art work without production stages;
+they do not establish compliance with the version 4 policy.
 Use the existing requirements, not a second artistic brief. Adapt the `production` object in the complete
 [version 4 plan example](acceptance-plan.example.json); its neutral feature IDs
 are illustrative. The agent prepares technical checks from the approved contract.
@@ -70,7 +71,9 @@ actual blockout image and records the observed grouping/readability. A JSON-only
 layout report cannot satisfy it. Hash the actual blockout host and projection
 alongside the layout export so changes invalidate this evidence.
 
-`production` has `version: 1`, `rigidAssets: string[]`, and `checks: object[]`.
+`production` has `version: 1`, nonempty unique `rigidAssets`, and `checks: object[]`.
+An empty `rigidAssets` list cannot skip geometry calibration: every listed ID needs
+an assembly-stage `art` check.
 Each check has a unique `id`, `stage`, `method` (`review`, `layout`, `art`),
 `requirements`, `views`, `inputs`, and `evidenceKind` (`image`, `motion`,
 `measurement`). All paths are project-root-relative and use forward slashes.
@@ -94,8 +97,18 @@ repeat earlier stages; fix the dependency design rather than skipping validation
 
 `layout` also requires `source` and `requiredScope` with region/instance/route/bridge
 ID lists. Every protected ID must remain present; extra instances are checked too.
+A `layout` check at the `static` stage must additionally declare `artContract`, the
+measured art-integration contract, as a dependency. Art exists by then, so every
+exported instance's reserved cells are compared against the footprint its calibrated
+asset measures. Grid semantics alone cannot see that a wall covers the square; the
+comparison is what makes the existing water, route and overlap checks act on truthful
+footprints instead of understated ones. The `layout` stage check runs before art and
+therefore takes no `artContract`.
 `art` also requires `source` (existing art-integration contract), `assets` (protected
 asset IDs) and `binding` (the host's exported image/frame/anchor/render/footprint).
+Every asset the host exports in that binding must appear in `assets`: calibrating one
+prop cannot leave another exported rigid asset unchecked. Split unrelated families into
+separate bindings with their own `art` checks rather than narrowing the protected list.
 Every inspected image and binding must be covered by dependencies. The existing
 Node `check-art.mjs` runs automatically; no shell command from a plan is executed.
 
@@ -139,6 +152,12 @@ integer cells `[column, row, floorId]`; different floors are different cells.
   `support` region ID, boolean `solid`, and `approaches` cells. Buildings require
   at least one approach; every approach must adjoin the footprint and a reachable
   reserved route. A tree's root belongs to a planting region, never circulation.
+  `asset` names the calibrated contract asset the instance renders. A static
+  placement check reads it for every exported instance, so an unnamed or unknown
+  asset is a finding rather than an unchecked pass. Several instances may share one
+  asset; the footprint's bounding box must equal that asset's measured
+  `footprint`. Deliberate overhang belongs in the contract's `overhangPx`, not in a
+  smaller reservation here.
 - `routes`: unique `id`, nonempty `cells`, `start`, nonempty `goals`, integer
   `clearanceCells` (0..8). Cells must form one axis-connected route reachable from
   spawn. Clearance conservatively expands in both axes; solids/water/void block it.
@@ -293,8 +312,8 @@ the final-stage check. Run `accept` with the same receipt-directory option. Vers
 blocks a candidate before prerequisite stages pass and blocks acceptance until all
 stages and the existing complete visual/motion/gameplay/performance gates pass.
 Generated-source and character-video provenance are checked against the actual
-runtime inventory as part of this acceptance. A valid legacy plan is reported as
-legacy, never as version 4 provenance acceptance.
+runtime inventory as part of this acceptance. Focused version 1–2 plans without
+production stages are reported as legacy, never as version 4 provenance acceptance.
 
 Version 2 comparison baseline corrections do not silently migrate production
 receipts: receipts bind to the frozen baseline. An explicit new production baseline

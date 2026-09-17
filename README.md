@@ -31,9 +31,8 @@ Use https://github.com/DomEscobar/isometric-framework and its new-game guide
 to build a standalone game. Read the relevant bundled skills before implementation.
 
 I want an original playable isometric pixel-art game: a lively connected town
-and forest with creature encounters, catching, and battles. Make the route
-between both places clear, with expressive creatures, animated foliage and water,
-and readable movement and battle actions.
+and forest seperated in views, animated foliage and water,
+and readable movement and battle actions. Style reference isometric-framework/style-reference-template.jpg
 
 Treat any attached image as a style reference by default, not a layout to copy.
 If I explicitly request layout reference or both style and layout, follow that

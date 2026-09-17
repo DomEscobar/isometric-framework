@@ -21,8 +21,8 @@ const frame = (x,y,width,height) => ({x,y,width,height});
 const height = (reference,base,top) => ({reference,base:xy(...base),top:xy(...top)});
 const canonical = [grid(-.5,-.5),grid(.5,-.5),grid(.5,.5),grid(-.5,.5)];
 const envelope = (sources) => sources.map((source,i)=>({source:xy(...source),grid:canonical[i]}));
-const asset = (id,kind,image,crop,anchor,render,groundPoints,heights=[],allowedOverhang='',footprint={columns:1,rows:1}) =>
-  ({id,kind,image,sha256:hashes[image],frame:crop,anchor,render,footprint,groundPoints,heights,allowedOverhang});
+const asset = (id,kind,image,crop,anchor,render,groundPoints,heights=[],allowedOverhang='',footprint={columns:1,rows:1},overhangPx=0) =>
+  ({id,kind,image,sha256:hashes[image],frame:crop,anchor,render,footprint,groundPoints,heights,...(overhangPx?{overhangPx}:{}),allowedOverhang});
 const contract = {
   version:1,pack:'Sunflower courtyard measured integration; metadata scope only',
   projection:{tileWidth:80,tileHeight:40,heightPixelsPerUnit:40},
@@ -68,15 +68,16 @@ contract.assets.push(asset('lantern','prop','garden-atlas.png',lampFrame,xy(44/1
   // A independently fitted small 2:1 diamond (16 by 8 world pixels).
   [[13,310,-.1,-.1],[44,295,.1,-.1],[76,312,.1,.1],[44,329,-.1,.1]].map(([x,y,c,r])=>({source:xy(x,y),grid:grid(c,r)})),
   [height('lantern',[44,313],[44,3])],'Tight source shadow may extend beyond the footing.'));
-for (const [id,crop,anchor,width,points,reference,base,top] of [
-  ['orange-pot',[977,59,236,277],[.5,.92],54,[[77,249],[163,249],[120,264]],'orangePlant',[120,253],[120,3]],
-  ['shrub',[993,357,223,277],[.5,.93],58,[[65,249],[153,249],[110,265]],'shrub',[110,257],[110,8]],
-  ['palm',[945,642,292,325],[153/292,300/325],104,[[118,296],[189,296],[153,310]],'palm',[153,300],[153,3]],
+for (const [id,crop,anchor,width,points,reference,base,top,overhangPx] of [
+  ['orange-pot',[977,59,236,277],[.5,.92],54,[[77,249],[163,249],[120,264]],'orangePlant',[120,253],[120,3],0],
+  ['shrub',[993,357,223,277],[.5,.93],58,[[65,249],[153,249],[110,265]],'shrub',[110,257],[110,8],0],
+  ['palm',[945,642,292,325],[153/292,300/325],104,[[118,296],[189,296],[153,310]],'palm',[153,300],[153,3],14],
 ]) {
   const f=frame(...crop),a=xy(...anchor),render={width};
   contract.assets.push(asset(id,'prop','garden-atlas.png',f,a,render,inferredContacts(points,f,a,render),
     [height(reference,base,top)],
-    'Foliage and tight shadow may overhang the curved pot bottom. Contact grids are inferred from the observed curve; this checks containment, not independent projection compatibility.'));
+    'Foliage and tight shadow may overhang the curved pot bottom. Contact grids are inferred from the observed curve; this checks containment, not independent projection compatibility.',
+    {columns:1,rows:1},overhangPx));
 }
 const before=structuredClone(contract);
 before.pack='Sunflower courtyard original purple planter diagnostic; expected failure';

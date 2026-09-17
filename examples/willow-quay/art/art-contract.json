@@ -86,6 +86,7 @@
           }
         }
       ],
+      "overhangPx": 14,
       "allowedOverhang": "Roof, sign and attached flowers may overhang foundation; rigid front/side foundation contacts measured manually on actual decoded image. Hidden rear corner not measured."
     },
     {
@@ -159,6 +160,7 @@
           }
         }
       ],
+      "overhangPx": 17,
       "allowedOverhang": "Roof, sign and attached flowers may overhang foundation; rigid front/side foundation contacts measured manually on actual decoded image. Hidden rear corner not measured."
     },
     {

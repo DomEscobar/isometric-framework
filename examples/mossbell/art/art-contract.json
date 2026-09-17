@@ -73,6 +73,7 @@
         }
       ],
       "heights": [],
+      "overhangPx": 21,
       "allowedOverhang": "Roof and hanging sign; conservative base containment, not a perfect canonical diamond."
     },
     {
@@ -130,7 +131,8 @@
         }
       ],
       "heights": [],
-      "allowedOverhang": "Spreading roots and canopy are nonblocking overhang; trunk correspondences are inferred containment."
+      "overhangPx": 99,
+      "allowedOverhang": "Weeping canopy drapes far past the root flare and hangs low on screen without touching ground; the root base itself stays inside one tile. Trunk correspondences are inferred containment."
     },
     {
       "id": "traveler-se-idle",

@@ -6,6 +6,7 @@
     "tileHeight": 32,
     "heightPixelsPerUnit": 32
   },
+  "overhangRulings": "./overhang-rulings.json",
   "tolerances": {
     "groundErrorPx": 5,
     "heightErrorPx": 2

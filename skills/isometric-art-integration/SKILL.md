@@ -115,11 +115,40 @@ longer shrinks it and an empty frame is rejected rather than passed. Deliberate
 overhang needs a measured `overhangPx` budget together with the `allowedOverhang`
 reason; a budget without a reason is a finding.
 
-The measurement cannot tell a drooping canopy from a wall base covering the
-neighboring square: both read as a wide silhouette. It decides how much artwork
-leaves the footprint, not whether that is acceptable. The declared budget and its
-reason are what a reviewer judges, so keep the number measured and the reason
-specific to the artwork that overhangs. Read
+A budget and a reason are no longer enough on their own, because the measurement
+cannot tell a drooping canopy from a wall base covering the neighboring square:
+both read as a wide silhouette. Where art fits only because of its budget, the
+checker names the exact spilling columns, measures how far their lowest material
+stays above the nearest ground contact, and hashes that region. Passing then needs
+a ruling in `overhangRulings` that classifies each spilling side and cites that
+hash, so the verdict answers the measured question and expires whenever the
+artwork, frame, anchor, scale, footprint or projection moves. Only `canopy`,
+`eave`, `attachment` and `shadow` may leave the footprint; `ground-contact`,
+`foundation` and `unclear` are findings. Read
+[the classification question](references/overhang-prompt.md) before ruling, and
+judge the band in place at magnification rather than the asset as a whole:
+
+```sh
+python skills/isometric-art-integration/scripts/show-overhang.py <contract> <new directory>
+```
+
+That writes one magnified view per spilling side, marks the nearest ground contact,
+and reports the hashes a ruling must cite. It runs before a budget exists, so view
+the band first and only then decide whether to widen the footprint or rule on it.
+
+What the framework proves is which pixels left the footprint and what they were
+weighed against; the class itself is a judgement. A wrong verdict still passes, so
+the recorded `basis` has to name the part of the artwork the band contains.
+
+The silhouette also bounds how tall a prop is. For each prop the checker reports
+`bodyHeightPx`, the band of body heights the artwork's top allows above its ground
+contact, and the host binding's `bodyHeight` may not fall below that band. That
+number is what the renderer orders depth and resolves collision with, so art
+rising above the body a host claims sorts and blocks as a stub while towering on
+screen. Only the floor is enforced, since a body taller than its art is a
+deliberate collider rather than a defect, and the floor stays generous for large
+footprints because the silhouette cannot say which cell owns the highest pixel.
+It settles orders of magnitude, not single pixels. Read
 [the binding plan](references/contract.md#bind-the-contract-to-the-host) for its
 fields and the comparisons it still leaves to you.
 

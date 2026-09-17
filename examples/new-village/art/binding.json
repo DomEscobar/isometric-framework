@@ -23,7 +23,8 @@
       "footprint": {
         "columns": 2,
         "rows": 2
-      }
+      },
+      "bodyHeight": 100
     },
     "ferry-kitchen": {
       "image": "examples/new-village/art/workshop/workshop.png",
@@ -43,7 +44,8 @@
       "footprint": {
         "columns": 2,
         "rows": 2
-      }
+      },
+      "bodyHeight": 95
     },
     "loom-house": {
       "image": "examples/new-village/art/cottage/loom-cottage.png",
@@ -63,7 +65,8 @@
       "footprint": {
         "columns": 2,
         "rows": 2
-      }
+      },
+      "bodyHeight": 100
     },
     "orchard-house": {
       "image": "examples/new-village/art/workshop/orchard-workshop.png",
@@ -83,7 +86,8 @@
       "footprint": {
         "columns": 2,
         "rows": 2
-      }
+      },
+      "bodyHeight": 95
     }
   }
 }

@@ -85,7 +85,7 @@ to judge its relation to the player; the checker cannot infer missing semantics.
 | --- | --- |
 | `version`, `pack` | Version `1` and a descriptive pack ID |
 | `projection` | Positive `tileWidth`, `tileHeight`, `heightPixelsPerUnit` |
-| `tolerances` | Nonnegative `groundErrorPx` and `heightErrorPx`, chosen before review |
+| `tolerances` | Nonnegative `groundErrorPx` and `heightErrorPx`, chosen before review; `groundErrorPx` must stay below half a tile width, because every contact, footprint and overhang measurement is judged against it |
 | `heightReferences` | Named positive heights in the pack's shared world units |
 | `assets` | Array of candidates with unique IDs |
 | `assets[].kind` | `terrain`, `prop`, or `actor` |
@@ -96,8 +96,42 @@ to judge its relation to the player; the checker cannot infer missing semantics.
 | `footprint` | Positive integer `columns`, `rows`; terrain must be 1×1 |
 | `groundPoints` | Array of `{source: {x,y}, grid: {c,r}}` pairs |
 | `heights` | Array of `{reference, base: {x,y}, top: {x,y}}` measurements |
-| `overhangPx` | Optional per-side rendered-pixel budget for artwork that deliberately leaves the footprint's ground diamond; needs a nonempty `allowedOverhang` reason |
+| `overhangPx` | Optional per-side rendered-pixel budget for artwork that deliberately leaves the footprint's ground diamond; needs a nonempty `allowedOverhang` reason and a classified ruling |
 | `allowedOverhang` | Description of intentional foliage/shadow extension; empty when none |
+
+## Rule on measured overhang
+
+Art that fits only because of its `overhangPx` budget needs a verdict on what
+actually overhangs. Point the contract at one rulings file with the optional
+top-level `overhangRulings` path, and keep that file among the acceptance check's
+declared inputs so a verdict cannot be rewritten after acceptance.
+
+The checker reports the spilling column band per side, how far its lowest material
+stays above the nearest declared ground contact, and a `regionSha256` over that
+whole question. A ruling must cite that hash and the image hash, so it expires as
+soon as the artwork or its calibration moves.
+
+```json
+{
+  "version": 1,
+  "rulings": [
+    {
+      "asset": "clay-hall",
+      "imageSha256": "<64 hex, the artwork judged>",
+      "regionSha256": "<64 hex, reported by the checker>",
+      "classification": { "left": "eave", "right": "eave" },
+      "basis": "Both bands hold terracotta roof tiles ending +69 and +63 px above the nearest ground contact.",
+      "classifier": { "model": "<who decided>", "promptSha256": "<64 hex over the question asked>", "decidedAt": "2026-09-17" }
+    }
+  ]
+}
+```
+
+Every side the silhouette leaves must be classified, and a side that is not
+measured may not be classified. `canopy`, `eave`, `attachment` and `shadow` may
+overhang; `ground-contact`, `foundation` and `unclear` are findings. See
+[the classification question](overhang-prompt.md), whose hash belongs in
+`classifier.promptSha256`.
 
 Only terrain may use a nonuniform render scale, matching this runtime's terrain
 renderer. Its actual corners must still fit the canonical ground projection.
@@ -141,6 +175,17 @@ measured source; `null` declares an unresolvable image and records it as unverif
 instead of passing it. `bodyHeightReference` is required only when an asset names
 several height references. `exempt` is the only way to leave art uncalibrated, and
 every entry needs a stated reason, so omissions stay visible instead of silent.
+
+This pairing weighs the host's `bodyHeight` against a height you declared in
+`heightReferences`, so two agreeing declarations can both understate the artwork,
+a prop naming no reference is only recorded as unverified, and
+`deliberateBodyHeight` waives the comparison with prose. None of that reaches the
+silhouette. The production flow's `art` check therefore measures each prop's body
+height from decoded alpha and requires the exported binding's `bodyHeight` to fall
+inside that band, with no prose exemption; see
+[production flow](../../isometric-visual-loop/references/production-flow.md).
+Use this pairing to prove which definition renders which asset, not to establish
+how tall it is.
 
 A collider may deviate from the measured art on purpose, for example a conservative
 full-height blocker. Say so with `deliberateBodyHeight`: the pairing is then recorded

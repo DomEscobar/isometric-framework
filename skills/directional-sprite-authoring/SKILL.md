@@ -90,7 +90,9 @@ Preserve original candidates. Remove backgrounds and review masks separately.
 Keep usable source alpha when present. Otherwise create one controlled color-key
 candidate and inspect it over light, dark, and contrasting backgrounds and during
 playback. A halo, hole, erased subject color, flickering contour, or `uncertain`
-verdict ends color-key tuning and requires the WaveSpeed background remover on the
+verdict ends color-key tuning. Isolate with WaveSpeed
+`wavespeed-ai/video-background-remover` on the reviewed I2V video (omit
+`background_image`) or `wavespeed-ai/image-background-remover` on the
 selected unkeyed source frames. Missing access or budget leaves acceptance blocked;
 do not silently substitute local removal or accept damaged edges.
 Normalize approved frames to a common canvas and root using measured landmarks;
@@ -111,10 +113,12 @@ creates missing poses.
 
 For video, the [extraction helper](references/video-to-sprites.md#prepare-and-export)
 records actual decoded timestamps and applies one explicit crop and reviewed mask
-route across selected frames. When color key fails, export the selected raw removal
-inputs, process each exactly once, and import the complete hash-bound removal
-manifest. Cycle suggestions and filenames are not facing or gait evidence. Keep
-extraction settings in its recipe and derive the packer input from that recipe.
+route across selected frames. When color key fails, isolate the reviewed video with
+`wavespeed-ai/video-background-remover` and extract its alpha, or export the
+selected raw removal inputs, process each exactly once with the image remover,
+and import the complete hash-bound removal manifest. Cycle suggestions and
+filenames are not facing or gait evidence. Keep extraction settings in its recipe
+and derive the packer input from that recipe.
 
 ## Verify the clips and play them
 

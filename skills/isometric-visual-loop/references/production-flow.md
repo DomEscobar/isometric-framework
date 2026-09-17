@@ -109,8 +109,11 @@ asset IDs) and `binding` (the host's exported image/frame/anchor/render/footprin
 Every asset the host exports in that binding must appear in `assets`: calibrating one
 prop cannot leave another exported rigid asset unchecked. Split unrelated families into
 separate bindings with their own `art` checks rather than narrowing the protected list.
-Every inspected image and binding must be covered by dependencies. The existing
-Node `check-art.mjs` runs automatically; no shell command from a plan is executed.
+Every inspected image and binding must be covered by dependencies. When the contract
+declares `overhangRulings`, that file must be covered too: the classification decides
+whether art may leave its footprint, so it has to be hashed with everything else or a
+verdict could be rewritten after acceptance. The existing Node `check-art.mjs` runs
+automatically; no shell command from a plan is executed.
 
 Example binding, using the measured contract's exact projection and values:
 
@@ -123,11 +126,25 @@ Example binding, using the measured contract's exact projection and values:
       "frame": {"x": 0, "y": 0, "width": 96, "height": 96},
       "anchor": {"x": 0.5, "y": 0.75},
       "render": {"width": 96},
-      "footprint": {"columns": 2, "rows": 2}
+      "footprint": {"columns": 2, "rows": 2},
+      "bodyHeight": 72
     }
   }
 }
 ```
+
+Every protected prop must carry the `bodyHeight` in pixels the host actually gives
+the renderer, which orders depth and blocks movement with it. The checker measures
+how far the decoded silhouette rises above the ground contact and rejects any
+declaration below that, widened by `heightErrorPx`. Since the silhouette cannot
+say which cell of a multi-cell footprint owns the highest pixel, the floor reads
+that pixel as sitting on the farthest cell, which is the smallest height the art
+can possibly need. Only this floor is enforced: art rising above its declared body
+sorts and collides as a stub while towering on screen, whereas a body taller than
+its art is a deliberate collider. Omitting the field is rejected rather than
+defaulted, since the engine's own fallback is a fixed 32px for a sprite of any
+height. Wide, low props keep a weak floor, because their farthest cell already
+accounts for most of the artwork's screen height.
 
 These numbers are illustrative, not calibrated. Export binding from the same
 host definitions used to render the scene. Matching two handwritten copies does

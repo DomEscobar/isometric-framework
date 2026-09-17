@@ -62,8 +62,12 @@ Inspect masks over contrasting backgrounds, including enclosed gaps and equipmen
 and play the candidate through at least two cycles. The key tolerance is a
 per-channel RGB distance, not semantic segmentation. Make one controlled color-key
 candidate. Halos, enclosed background, erased subject colors, flickering contours,
-or an `uncertain` verdict end key-tolerance tuning and require the WaveSpeed
-background remover on the selected unkeyed source frames.
+or an `uncertain` verdict end key-tolerance tuning. Isolate the clip with an
+approved WaveSpeed remover before packing: either
+`wavespeed-ai/video-background-remover` on the reviewed I2V video (omit
+`background_image` so the output is a transparent cutout), then prepare that
+isolated video without `--key`; or the per-frame
+`wavespeed-ai/image-background-remover` on the selected unkeyed source frames.
 
 Edit the generated recipe, keeping its preparation hashes intact. Set the shared
 `crop`, reviewed `mask`, explicit `selection`, and `clip` fields. For example,
@@ -90,6 +94,25 @@ duration and seam. Similarity may favor repeated/near-static poses: inspect actu
 opposite contacts and transitions before selecting an interval.
 
 ## Background-remover fallback
+
+After a failed or uncertain color-key review, isolate the clip before packing.
+Keep the original I2V video. Two approved WaveSpeed routes exist; pick one and
+record it. Missing access or budget leaves character cutout acceptance blocked;
+local `rembg` is not a silent substitute for either route.
+
+### Isolate the whole video
+
+Prefer this when the clip as a whole needs a mask, because one pass keeps edges
+temporally consistent. Submit the reviewed I2V video to
+[`wavespeed-ai/video-background-remover`](https://wavespeed.ai/models/wavespeed-ai/video-background-remover)
+with only `video` set. Do not send `background_image`: that composites onto a new
+plate instead of cutting out. Commands and upload notes are in
+[WaveSpeed usage](../../game-asset-generation/references/wavespeed.md#isolate-a-reviewed-animation-video).
+Download the completed output to a fresh path, inspect decoded frames for real
+alpha, then prepare that isolated video without `--key`. An opaque container is a
+failed cutout even when the prediction completed.
+
+### Isolate selected frames
 
 After choosing timestamps and a shared crop, export raw inputs before applying the
 failed color key:
@@ -134,7 +157,8 @@ have exactly one entry:
 Set the extraction recipe mask to `{"mode":"background-remover",
 "manifest":"removal-manifest.json","sha256":"SHA256"}`. Export then
 checks the manifest hash, original unkeyed crop pixels, completed job identity,
-result hash, canvas size, and real alpha. Missing WaveSpeed access or budget leaves
+result hash, canvas size, and real alpha. Use this frame route when only the
+selected stills need isolation. Missing WaveSpeed access or budget leaves
 character cutout acceptance blocked after failed color key; local `rembg` is not a
 silent substitute for this route.
 

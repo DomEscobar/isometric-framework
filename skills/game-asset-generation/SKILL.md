@@ -27,7 +27,7 @@ An available tool is not automatically the project's preferred art pipeline.
 | General production raster artwork | Approved T2I/I2I provider, such as WaveSpeed `bytedance/seedream-v5.0-pro` | No non-generated production route |
 | Reference-guided production variants | Selected I2I provider workflow, such as Seedream Pro Edit | Masked I2I repair of approved generated art |
 | Transparent generated prop | Preserve valid generated alpha; otherwise WaveSpeed `wavespeed-ai/image-background-remover` | Local CPU `rembg` |
-| Character video frames | Preserve usable source alpha; otherwise one reviewed chroma-key attempt, then WaveSpeed `wavespeed-ai/image-background-remover` on the selected original frames when that review fails or is uncertain | No silent local substitute after failed chroma key |
+| Character video frames | Preserve usable source alpha; otherwise one reviewed chroma-key attempt. If that review fails or is uncertain, WaveSpeed `wavespeed-ai/video-background-remover` on the reviewed I2V video (omit `background_image` for a transparent cutout), or `wavespeed-ai/image-background-remover` on the selected original frames | No silent local substitute after failed chroma key |
 | Exact modular stone/terrain geometry | Host geometry and measured contact edges | Compatible generated materials assembled on that geometry |
 
 No provider is a universal default or benchmarked winner in this framework.

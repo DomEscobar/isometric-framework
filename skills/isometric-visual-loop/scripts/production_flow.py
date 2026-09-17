@@ -2,6 +2,7 @@
 import hashlib
 import importlib.util
 import json
+import math
 from pathlib import Path
 import subprocess
 from datetime import datetime, timezone
@@ -173,6 +174,12 @@ def automatic(check, root, snapshot):
         script = Path(__file__).resolve().parents[2] / "isometric-art-integration/scripts/check-art.mjs"
         contract_path = local(root, check["source"])
         contract = read(contract_path)
+        if contract.get("overhangRulings"):
+            # A classification decides whether art may leave its footprint, so the file holding it
+            # has to be hashed with the rest; otherwise a verdict can be rewritten after acceptance.
+            target = (contract_path.parent / contract["overhangRulings"]).resolve()
+            require(any(target == local(root, p) or target.is_relative_to(local(root, p)) for p in check["inputs"]),
+                    "Classified overhang rulings must be a declared dependency of the art check")
         binding = read(local(root, check["binding"]))
         require(binding["projection"] == contract["projection"], "Host projection differs from measured contract")
         assets = {a["id"]: a for a in contract["assets"]}
@@ -193,6 +200,23 @@ def automatic(check, root, snapshot):
         result = subprocess.run(["node", str(script), str(contract_path)], capture_output=True, text=True, timeout=60)
         require(result.returncode in (0, 1), "Rigid-art checker could not run")
         report = json.loads(result.stdout)
+        measured = {a["id"]: a["bodyHeightPx"] for a in report["assets"] if "bodyHeightPx" in a}
+        for aid in check["assets"]:
+            if aid not in measured:
+                continue
+            slack = (contract.get("tolerances") or {}).get("heightErrorPx")
+            require(type(slack) in (int, float) and math.isfinite(slack) and slack >= 0,
+                    "Contract needs a finite nonnegative heightErrorPx to weigh body height against")
+            declared = binding["assets"][aid].get("bodyHeight")
+            require(type(declared) in (int, float) and math.isfinite(declared),
+                    "Host must declare the bodyHeight it sorts and collides with: "+aid)
+            # Only the floor is a defect. A body taller than its art is a deliberate collider,
+            # but art rising above the declared body sorts and blocks as a stub while towering.
+            low = measured[aid]["low"]
+            require(declared >= low - slack,
+                    f"Host bodyHeight {declared} for {aid} is below the {low:.1f} px its artwork needs "
+                    "even when the highest pixel is read as the farthest cell: the renderer orders depth "
+                    "and blocks movement with that number, so the art would sink behind ground it covers")
         return {"passed": report["passed"] and result.returncode == 0, "findings": report["errors"]}
     return None
 

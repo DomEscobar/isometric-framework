@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "rulings": [
+    {
+      "asset": "palm",
+      "imageSha256": "7f08b2abb668528fb81c82e99bd8dae6ddd68ad9d1fd6e0dede2292d626c4fe9",
+      "regionSha256": "5db993321a4a9a9d271faf00a0eae45f5738ffaa8ddd02894f4e7ea63e3a4d75",
+      "classification": {
+        "left": "canopy",
+        "right": "canopy"
+      },
+      "basis": "Both bands hold arching palm fronds; clearances +48 and +37 px, and the planter below stays inside the footprint.",
+      "classifier": {
+        "model": "claude-opus-5",
+        "promptSha256": "c1316b0cb194d0aedb156c6fd0dfe01a74dd54165c1cd930a178befaaa853868",
+        "decidedAt": "2026-09-17"
+      }
+    }
+  ]
+}

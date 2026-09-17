@@ -185,9 +185,14 @@ class ProductionTests(unittest.TestCase):
         asset = copy.deepcopy(starter["assets"][2])
         asset.update(image="asset.png", sha256=gate.digest(self.game / "asset.png"), frame={"x": 0, "y": 0, "width": 80, "height": 80})
         starter["assets"] = [asset]
+        starter["overhangRulings"] = "./rulings.json"
+        self.save("game/rulings.json", {"version": 1, "rulings": []})
         self.save("game/rigid.json", starter)
         actual = {k: asset[k] for k in ("frame", "anchor", "render", "footprint")}
         actual["image"] = "game/asset.png"
+        # The opaque 80x80 frame reaches 60px above the anchor row, and a 1x1 footprint leaves
+        # no doubt which cell owns that top row, so the measured body height is exactly 60.
+        actual["bodyHeight"] = 60
         self.save("game/binding.json", {"projection": starter["projection"], "assets": {"chair": actual}})
         self.write_provenance()
         self.plan = {"version": 4, "root": "..", "inputRoots": ["game"], "artChecks": [], "reviewMode": "independent",
@@ -208,7 +213,7 @@ class ProductionTests(unittest.TestCase):
         self.plan["production"]["checks"] = [
             check("boot", "preflight", files=["game/boot.json"]),
             dict(check("layout", "layout", "layout", ["game/layout.json"]), source="game/layout.json"),
-            dict(check("rigid", "assembly", "art", ["game/rigid.json", "game/binding.json", "game/asset.png"]), source="game/rigid.json", assets=["chair"], binding="game/binding.json"),
+            dict(check("rigid", "assembly", "art", ["game/rigid.json", "game/binding.json", "game/asset.png", "game/rulings.json"]), source="game/rigid.json", assets=["chair"], binding="game/binding.json"),
             check("assembly", "assembly"),
             dict(check("placement", "static", "layout", ["game/layout.json", "game/rigid.json"]),
                  source="game/layout.json", artContract="game/rigid.json"),
@@ -428,6 +433,27 @@ class ProductionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Host frame/anchor"):
             self.complete("rigid")
 
+    def test_host_body_height_must_match_the_height_the_artwork_measures(self):
+        """The renderer orders depth and blocks movement with this number, so art has to bound it."""
+        self.complete("boot")
+        self.complete("layout")
+        binding = gate.read(self.game / "binding.json")
+        # 32 is the engine's own fallback for a sprite of any height.
+        for short in (32, 57):
+            binding["assets"]["chair"]["bodyHeight"] = short
+            self.save("game/binding.json", binding)
+            with self.assertRaisesRegex(ValueError, "below the 60.0 px its artwork needs"):
+                self.complete("rigid")
+        # heightErrorPx absorbs measurement error; a taller body is a deliberate collider.
+        for allowed in (58, 200):
+            binding["assets"]["chair"]["bodyHeight"] = allowed
+            self.save("game/binding.json", binding)
+            self.assertEqual(self.complete("rigid")["status"], "pass")
+        del binding["assets"]["chair"]["bodyHeight"]
+        self.save("game/binding.json", binding)
+        with self.assertRaisesRegex(ValueError, "must declare the bodyHeight"):
+            self.complete("rigid")
+
     def test_placement_rejects_art_covering_cells_the_layout_never_reserved(self):
         data = gate.read(self.game / "layout.json")
         house = next(i for i in data["instances"] if i["id"] == "house")
@@ -457,6 +483,18 @@ class ProductionTests(unittest.TestCase):
         binding["assets"]["stadtmauer"] = copy.deepcopy(binding["assets"]["chair"])
         self.save("game/binding.json", binding)
         with self.assertRaisesRegex(ValueError, "does not protect: stadtmauer"):
+            self.complete("rigid")
+
+    def test_overhang_rulings_must_be_hashed_with_the_contract(self):
+        plan = copy.deepcopy(self.plan)
+        check = next(c for c in plan["production"]["checks"] if c["id"] == "rigid")
+        check["inputs"] = [p for p in check["inputs"] if p != "game/rulings.json"]
+        self.save("game/plan.json", plan)
+        self.baseline = self.root / "baseline-unpinned-rulings.json"
+        gate.freeze(self.plan_path, self.baseline)
+        self.complete("boot")
+        self.complete("layout")
+        with self.assertRaisesRegex(ValueError, "rulings must be a declared dependency"):
             self.complete("rigid")
 
     def test_plan_cannot_omit_geometry_or_visual_coverage(self):

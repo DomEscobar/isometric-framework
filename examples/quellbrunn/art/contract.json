@@ -6,6 +6,7 @@
     "tileHeight": 16,
     "heightPixelsPerUnit": 20
   },
+  "overhangRulings": "./overhang-rulings.json",
   "tolerances": {
     "groundErrorPx": 4,
     "heightErrorPx": 3
@@ -75,6 +76,7 @@
         }
       ],
       "heights": [],
+      "overhangPx": 13,
       "allowedOverhang": "Roof eaves and front threshold overhang the rigid wall base. Five-by-five envelope is conservative; visible base approximately4.2 by4.85 cells."
     }
   ]

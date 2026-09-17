@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "rulings": [
+    {
+      "asset": "apothecary",
+      "imageSha256": "5c398e69406bac796706e9e06dca128fddd791a15f50556cc52321bdab8b8a34",
+      "regionSha256": "6294b52f530a55e05cebf6dd0283b96599d164c849c5d9af325a703d4cc0b1f1",
+      "classification": {
+        "left": "eave",
+        "right": "attachment"
+      },
+      "basis": "Left band is the chimney stack high above the wall (+173 px); right band is the round herb sign on its bracket (+87 px).",
+      "classifier": {
+        "model": "claude-opus-5",
+        "promptSha256": "c1316b0cb194d0aedb156c6fd0dfe01a74dd54165c1cd930a178befaaa853868",
+        "decidedAt": "2026-09-17"
+      }
+    },
+    {
+      "asset": "bookbinder",
+      "imageSha256": "7ae30c8650400693eaba9734fd576948fa1c7cdd4a5e34d3bb0febcc51253ba6",
+      "regionSha256": "a31d6df0778eb7d23912df257012f2ff3e4d9f5b8a7281e0ff013333a02cada6",
+      "classification": {
+        "left": "eave",
+        "right": "attachment"
+      },
+      "basis": "Left band is roof furniture at the ridge (+173 px); right band is the hanging book sign on its ornate bracket (+87 px).",
+      "classifier": {
+        "model": "claude-opus-5",
+        "promptSha256": "c1316b0cb194d0aedb156c6fd0dfe01a74dd54165c1cd930a178befaaa853868",
+        "decidedAt": "2026-09-17"
+      }
+    }
+  ]
+}

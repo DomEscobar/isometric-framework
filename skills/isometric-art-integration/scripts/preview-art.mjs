@@ -37,7 +37,7 @@ canvas{display:block;background:repeating-conic-gradient(#f1f1ed 0 25%,#e6e8e2 0
 <p id="status"></p><p>This board checks supplied measurements against a common scale. It does not certify art quality, seams, occlusion, or gameplay. Verify landmarks against the pixels, then use the host's playable calibration scene.</p>
 <label>Shared zoom <select id="zoom"><option value="0.5">0.5×</option><option value="1">1×</option><option value="2" selected>2×</option><option value="3">3×</option><option value="4">4×</option></select></label>
 <label><input id="overlay" type="checkbox" checked> Ground and height overlays</label>
-<p class="note">Cyan: expected ground contacts / footprint. Magenta: measured contacts. Gold: measured base outline and heights. Blue: reference heights. Violet: decoded silhouette, labelled where it leaves the footprint's ground diamond. All cards share one scale and baseline. If art clips, lower the shared zoom; no card auto-fits.</p>
+<p class="note">Cyan: expected ground contacts / footprint. Magenta: measured contacts. Gold: measured base outline and heights. Blue: reference heights. Violet: decoded silhouette, labelled where it leaves the footprint's ground diamond. Where it does leave, each card names the classified verdict for that side and the clearance it was weighed against. All cards share one scale and baseline. If art clips, lower the shared zoom; no card auto-fits.</p>
 <pre id="errors"></pre></header><main id="board"></main>
 <script type="application/json" id="data">${payload}</script>
 <script>
@@ -75,7 +75,8 @@ function paint(card){
 for(const asset of data.assets){
  const article=document.createElement('article'),title=document.createElement('h2'),caption=document.createElement('p'),canvas=document.createElement('canvas'),note=document.createElement('p'),decode=document.createElement('p');
  title.textContent=asset.id+' · '+asset.kind;caption.className=note.className='note';
- caption.textContent='Footprint '+asset.footprint.columns+'×'+asset.footprint.rows+'; overhang budget '+(asset.overhangPx||0)+'px: '+(asset.allowedOverhang||'none declared');
+ const verdicts=asset.overhang?Object.entries(asset.overhang.columns).filter(([,s])=>s).map(([side,s])=>side+' '+(asset.overhang.classification&&asset.overhang.classification[side]||'unjudged')+' at '+(s.groundClearancePx===null?'unknown':s.groundClearancePx.toFixed(0)+'px')+' clearance').join(', '):'';
+ caption.textContent='Footprint '+asset.footprint.columns+'×'+asset.footprint.rows+'; overhang budget '+(asset.overhangPx||0)+'px: '+(asset.allowedOverhang||'none declared')+(verdicts?' · classified overhang: '+verdicts:'');
  canvas.width=640;canvas.height=520;decode.className='decode';article.append(title,caption,canvas,note,decode);document.getElementById('board').append(article);
  const image=new Image(),card={asset,ctx:canvas.getContext('2d'),image,note};
  image.onload=()=>{if(image.naturalWidth!==asset.imageWidth||image.naturalHeight!==asset.imageHeight){decode.textContent='Decoded dimensions disagree with checked PNG metadata.';return;}cards.push(card);paint(card);};

@@ -15,8 +15,10 @@ Legacy plans remain readable; their acceptance does not certify this policy.
   individual motion poses and authored character animation are not fallback routes.
 - Preserve usable source alpha. Otherwise make one controlled chroma-key candidate
   and inspect it over contrasting backgrounds and in motion. Halos, holes, erased
-  subject colors, flickering contours, or an uncertain verdict require the approved
-  background remover on the selected unkeyed source frames before packing. Missing
+  subject colors, flickering contours, or an uncertain verdict require an approved
+  WaveSpeed cutout before packing: `wavespeed-ai/video-background-remover` on the
+  reviewed I2V video with `background_image` omitted, or the image background
+  remover on the selected unkeyed source frames. Missing
   access or budget leaves character cutout acceptance blocked; local removal must
   not be presented as the required remote fallback.
 - A static idle may use a single approved generated facing. It does not satisfy

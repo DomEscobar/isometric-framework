@@ -1,6 +1,7 @@
 {
   "version": 1,
   "pack": "Sunflower courtyard measured integration; metadata scope only",
+  "overhangRulings": "./overhang-rulings.json",
   "projection": {
     "tileWidth": 80,
     "tileHeight": 40,

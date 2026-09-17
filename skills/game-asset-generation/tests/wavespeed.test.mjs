@@ -180,6 +180,8 @@ test('model paths, sync controls, base64, and invalid options are rejected local
   for (const image of ['data:image/png;base64,private', 'https://user:password@example.com/a.png', 'https://127.0.0.1/a.png', 'http://cdn.example.com/a.png', 'https://localhost/a.png']) {
     await writeFile(f.input, JSON.stringify({ image }));
     assert.equal(await runCli(['submit', 'wavespeed-ai/image-background-remover', f.input, f.jobFile], f.deps), 2);
+    await writeFile(f.input, JSON.stringify({ video: image }));
+    assert.equal(await runCli(['submit', 'wavespeed-ai/video-background-remover', f.input, f.jobFile], f.deps), 2);
   }
   assert.equal(f.calls.length, 0);
   assert.equal(f.err.join('').includes('base64,private'), false);
@@ -191,6 +193,22 @@ test('background remover accepts HTTPS URL and handles immediate completion', as
   assert.equal(await runCli(['submit', 'wavespeed-ai/image-background-remover', f.input, f.jobFile], f.deps), 0);
   assert.equal(f.calls.length, 1);
   assert.deepEqual(JSON.parse(f.calls[0].body), { image: OUTPUT });
+});
+
+test('video background remover accepts an HTTPS video URL and rejects a replacement plate', async (t) => {
+  const video = 'https://cdn.example.com/walk.mp4';
+  const f = await fixture(t, [result('completed')]);
+  await writeFile(f.input, JSON.stringify({ video }));
+  assert.equal(await runCli(['submit', 'wavespeed-ai/video-background-remover', f.input, f.jobFile], f.deps), 0);
+  assert.equal(f.calls[0].url, 'https://api.wavespeed.ai/api/v3/wavespeed-ai/video-background-remover');
+  assert.deepEqual(JSON.parse(f.calls[0].body), { video });
+  assert.equal((await f.state()).model, 'wavespeed-ai/video-background-remover');
+  const g = await fixture(t);
+  await writeFile(g.input, JSON.stringify({ video, background_image: OUTPUT }));
+  assert.equal(await runCli(['submit', 'wavespeed-ai/video-background-remover', g.input, g.jobFile], g.deps), 2);
+  await writeFile(g.input, JSON.stringify({ image: OUTPUT }));
+  assert.equal(await runCli(['submit', 'wavespeed-ai/video-background-remover', g.input, g.jobFile], g.deps), 2);
+  assert.equal(g.calls.length, 0);
 });
 
 test('unsafe task IDs never become URLs; valid ID survives malformed status', async (t) => {

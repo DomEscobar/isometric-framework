@@ -56,7 +56,9 @@ needed capability during calibration before producing a full pack.
 Character animation uses approved generated facing image -> image-to-video ->
 reviewed extraction -> alpha review -> packing -> runtime review. Preserve usable
 alpha; otherwise inspect one color-key candidate. Visible edge damage or uncertainty
-requires the approved background remover on selected unkeyed frames. Scenery/object animation may
+requires an approved WaveSpeed cutout: isolate the reviewed I2V video with
+`wavespeed-ai/video-background-remover`, or run the image background remover on
+selected unkeyed frames. Scenery/object animation may
 use image-to-video or another suitable method on generated material. Missing
 access or budget blocks new generation, not a silent authored fallback.
 Read the selected provider recipe when needed. The same visual, traversal and promised

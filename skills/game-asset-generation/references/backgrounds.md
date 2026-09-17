@@ -46,10 +46,12 @@ ground geometry or mismatched scale.
 Character video frames use a stricter order. Preserve usable source alpha first.
 Otherwise inspect one controlled color-key candidate over contrasting backgrounds
 and in playback. Halos, holes, lost subject colors, flickering contours, or an
-uncertain verdict require the WaveSpeed remover on the selected unkeyed source
-frames. Local `rembg` remains available for general assets, but it must not silently
-replace that required character fallback. Keep the original frames and compare
-both cutout routes at actual game scale before acceptance.
+uncertain verdict require a WaveSpeed cutout: isolate the reviewed I2V video with
+`wavespeed-ai/video-background-remover` (omit `background_image`), or run
+`wavespeed-ai/image-background-remover` on the selected unkeyed source frames.
+Local `rembg` remains available for general assets, but it must not silently
+replace that required character fallback. Keep the original video and frames and
+compare both cutout routes at actual game scale before acceptance.
 
 ## Decode and inspect
 

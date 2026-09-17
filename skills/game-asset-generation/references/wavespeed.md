@@ -1,8 +1,9 @@
 # WaveSpeed path
 
-API shapes checked 2026-09-08 against the official
+API shapes checked 2026-09-17 against the official
 [Seedream Pro model card](https://wavespeed.ai/models/bytedance/seedream-v5.0-pro),
-[background remover reference](https://wavespeed.ai/docs/docs-api/wavespeed-ai/image-background-remover),
+[image background remover reference](https://wavespeed.ai/docs/docs-api/wavespeed-ai/image-background-remover),
+[video background remover reference](https://wavespeed.ai/docs/docs-api/wavespeed-ai/video-background-remover),
 [edit model card](https://wavespeed.ai/models/bytedance/seedream-v5.0-pro/edit),
 [upload guide](https://wavespeed.ai/docs/upload-files), and
 [sync guide](https://wavespeed.ai/docs/sync-mode).
@@ -12,8 +13,9 @@ of baking a price into a skill or spending plan.
 
 ## Generate and resume
 
-The included Node 22 client supports text-to-image, Seedream Pro Edit, and the
-background-remover endpoints. It uses async jobs and URL outputs. No SDK install is needed.
+The included Node 22 client supports text-to-image, Seedream Pro Edit, the image
+background-remover, and the video background-remover. It uses async jobs and URL
+outputs. No SDK install is needed. It does not generate image-to-video.
 The wrapper restricts generation to PNG for this asset workflow even though the
 provider also accepts JPEG, and rejects unsupported fields instead of guessing.
 Set `WAVESPEED_API_KEY` through the environment/secret mechanism already in use;
@@ -105,6 +107,41 @@ before remover submission needs inspection and a new job path; an ambiguous
 submission must never be retried blindly. Existing generated URLs may still use
 the explicit request-file route above.
 
+## Isolate a reviewed animation video
+
+When chroma-key review of a character clip fails or is uncertain, an approved
+option is to isolate the whole reviewed I2V video before extraction, instead of
+removing the background from each selected frame. The model is
+[`wavespeed-ai/video-background-remover`](https://wavespeed.ai/models/wavespeed-ai/video-background-remover).
+Omit `background_image`: the documented default then returns a transparent cutout.
+A replacement plate is compositing, not isolation, and this client rejects that
+field.
+
+Keep the original I2V file. Submit a publicly retrievable HTTPS URL of that video:
+
+```json
+{"video":"https://your-video-host.example/walk-source.mp4"}
+```
+
+```sh
+node skills/game-asset-generation/scripts/wavespeed.mjs submit wavespeed-ai/video-background-remover test-results/assets/video-remove.request.json test-results/assets/video-remove.job.json
+```
+
+Video jobs can outlast the default five-minute poll; raise `--timeout-ms` rather
+than submitting again. Resume an interrupted prediction from its job file. Download
+the completed output to a fresh local path and inspect decoded frames for real
+alpha over contrasting backgrounds and in playback. A completed prediction is not
+mask approval, and an opaque container (typical MP4 without alpha) is a failed
+cutout even when the job succeeded. Prepare extraction from the isolated video
+with `--key` omitted so the extractor preserves that alpha. The per-frame image
+remover remains the other approved fallback when only selected stills need
+isolation; do not silently substitute local `rembg` on character motion.
+
+A local-only video still needs a public HTTPS URL for this model. Use the same
+upload-ticket flow as a local PNG (`POST /api/v3/media/uploads`, PUT the bytes with
+the ticket headers, then pass `download_url` as `video`). There is no
+`remove-local` helper for video.
+
 ## Reference-guided generation and alternatives
 
 For an accepted style/character reference, the separate endpoint is
@@ -121,11 +158,13 @@ does not establish animation quality.
 
 ## Optional video-to-sprite input
 
-The bundled `wavespeed.mjs` image client does **not** submit video jobs. Do not
-reuse an image-edit payload, name a hypothetical WaveSpeed video route, or claim
-that this client submitted an I2V request. Use another approved, capable tool only
-after checking its current schema and actual callable access. If it is unavailable,
-or budget/access is missing, record the blocker and stop before generation.
+The bundled `wavespeed.mjs` client does **not** generate image-to-video. Do not
+reuse an image-edit payload, name a hypothetical WaveSpeed I2V route, or claim
+that this client submitted an I2V request. The video background-remover above
+isolates an already reviewed clip; it is not a motion generator. Use another
+approved, capable I2V tool only after checking its current schema and actual
+callable access. If it is unavailable, or budget/access is missing, record the
+blocker and stop before generation.
 
 For a capable tool, supply the approved generated character view in the required
 direction and record the actual submitted image, input roles, request/job ID and

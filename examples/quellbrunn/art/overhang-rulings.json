@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "rulings": [
+    {
+      "asset": "cottage",
+      "imageSha256": "51cd6ca4264f184b7fb0775ebe9fac2ae8ec055f6067d743727154f158266d17",
+      "regionSha256": "64ad20259da2b722ea0b43c8eea6995f2b9c61531b2efea753284fd068db3121",
+      "classification": {
+        "left": "eave"
+      },
+      "basis": "The 25-column band holds the projecting terracotta roof eave; its lowest material stays +81.4 px above the nearest ground contact, and the stone base sits inside the footprint.",
+      "classifier": {
+        "model": "claude-opus-5",
+        "promptSha256": "c1316b0cb194d0aedb156c6fd0dfe01a74dd54165c1cd930a178befaaa853868",
+        "decidedAt": "2026-09-17"
+      }
+    }
+  ]
+}

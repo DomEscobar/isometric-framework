@@ -1,6 +1,7 @@
 {
   "version": 1,
   "pack": "Sunflower courtyard original purple planter diagnostic; expected failure",
+  "overhangRulings": "./overhang-rulings.json",
   "projection": {
     "tileWidth": 80,
     "tileHeight": 40,

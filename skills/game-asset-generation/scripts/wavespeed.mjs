@@ -8,7 +8,9 @@ import { pathToFileURL } from 'node:url';
 
 const API = 'https://api.wavespeed.ai/api/v3';
 const EDIT_MODEL = 'bytedance/seedream-v5.0-pro/edit';
-const MODELS = new Set(['bytedance/seedream-v5.0-pro', EDIT_MODEL, 'wavespeed-ai/image-background-remover']);
+const IMAGE_REMOVER = 'wavespeed-ai/image-background-remover';
+const VIDEO_REMOVER = 'wavespeed-ai/video-background-remover';
+const MODELS = new Set(['bytedance/seedream-v5.0-pro', EDIT_MODEL, IMAGE_REMOVER, VIDEO_REMOVER]);
 const FAILED = new Set(['failed', 'cancelled', 'timeout', 'deleted']);
 const ACTIVE = new Set(['created', 'pending', 'queued', 'processing', 'running']);
 const HELP = `Usage:
@@ -17,9 +19,10 @@ const HELP = `Usage:
   node wavespeed.mjs resume job.json [--timeout-ms N]
 
 Models: bytedance/seedream-v5.0-pro, bytedance/seedream-v5.0-pro/edit,
-wavespeed-ai/image-background-remover
+wavespeed-ai/image-background-remover, wavespeed-ai/video-background-remover
 Edit requires prompt and images (1 to 10 public HTTPS URLs, kept in order).
 Omitting edit aspect_ratio leaves the provider's reference-based default intact.
+Video cutout requires only video: a public HTTPS URL; omit background_image.
 Requires WAVESPEED_API_KEY. Reads JSON; never logs the key or request body.
 Default polling budget: 300000 ms. Timeout does not cancel a remote job.
 Exit codes: 0 completed/help, 1 remote or storage error, 2 invalid local input,
@@ -46,11 +49,18 @@ function publicHttps(value) {
 function requestFor(model, input) {
   if (!MODELS.has(model)) fail('Unsupported model. Use a model listed by --help.');
   if (!object(input)) fail('Request must be a JSON object.');
-  if (model === 'wavespeed-ai/image-background-remover') {
+  if (model === IMAGE_REMOVER) {
     if (Object.keys(input).some((key) => key !== 'image') || !publicHttps(input.image)) {
       fail('Background removal requires only image: a public HTTPS image URL (no credentials, IP literals, or data URI).');
     }
     return { image: input.image };
+  }
+  if (model === VIDEO_REMOVER) {
+    // background_image would composite onto a new plate; sprite isolation needs a transparent cutout.
+    if (Object.keys(input).some((key) => key !== 'video') || !publicHttps(input.video)) {
+      fail('Video background removal requires only video: a public HTTPS video URL (no credentials, IP literals, data URI, or background_image).');
+    }
+    return { video: input.video };
   }
   const editing = model === EDIT_MODEL;
   const allowed = new Set(['prompt', 'aspect_ratio', 'resolution', 'output_format', 'prompt_optimization_mode']);
@@ -118,7 +128,7 @@ function readState(value) {
       || !Number.isFinite(Date.parse(value.createdAt))
       || typeof value.requestHash !== 'string' || !/^[a-f0-9]{64}$/.test(value.requestHash)) fail('Invalid job metadata.');
   // Whitelist fields so edited files cannot inject request bodies or keys into output.
-  const sourceHash = value.model === 'wavespeed-ai/image-background-remover' && typeof value.sourceHash === 'string' && /^[a-f0-9]{64}$/.test(value.sourceHash)
+  const sourceHash = value.model === IMAGE_REMOVER && typeof value.sourceHash === 'string' && /^[a-f0-9]{64}$/.test(value.sourceHash)
     ? { sourceHash: value.sourceHash } : {};
   return { version: 1, model: value.model, createdAt: value.createdAt, requestHash: value.requestHash, ...sourceHash, id: value.id, status: 'resuming', outputs: [] };
 }
@@ -205,7 +215,7 @@ export async function runCli(argv, dependencies = {}) {
     if (command === 'remove-local') {
       const bytes = await localPng(modelOrFile);
       const sourceHash = createHash('sha256').update(bytes).digest('hex');
-      job = { version: 1, model: 'wavespeed-ai/image-background-remover', createdAt: new Date(now()).toISOString(), requestHash: sourceHash, sourceHash, id: null, status: 'uploading', outputs: [] };
+      job = { version: 1, model: IMAGE_REMOVER, createdAt: new Date(now()).toISOString(), requestHash: sourceHash, sourceHash, id: null, status: 'uploading', outputs: [] };
       await save(jobFile, job, true);
       const ticket = await request('POST', 'media/uploads', JSON.stringify({ filename: 'frame.png', size: bytes.length, content_type: 'image/png' }));
       const upload = ticket.data?.upload;
@@ -218,7 +228,7 @@ export async function runCli(argv, dependencies = {}) {
       const body = JSON.stringify({ image: fileUrl });
       job.requestHash = createHash('sha256').update(body).digest('hex');
       await save(jobFile, job);
-      const response = await request('POST', 'wavespeed-ai/image-background-remover', body);
+      const response = await request('POST', IMAGE_REMOVER, body);
       if (!taskId(response.data?.id)) {
         job.status = 'submission_unknown'; await save(jobFile, job);
         throw new CliError('No valid remover task ID received. Submission was not retried and may have been accepted. Inspect provider history before submitting again.');

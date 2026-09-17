@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "rulings": [
+    {
+      "asset": "clay-hall",
+      "imageSha256": "dcdf0ef7dfe7d848f801eff5f2861bdac7df131e35545dd2b2be9fc8e4fda03d",
+      "regionSha256": "4edf93505e793c5c5452e048a2ae30ad91c45d64950313e68c4443ae4d8579c8",
+      "classification": {
+        "left": "eave",
+        "right": "eave"
+      },
+      "basis": "Both two-column bands hold terracotta roof tiles only, ending +69 and +63 px above the nearest ground contact; the stone base stays inside.",
+      "classifier": {
+        "model": "claude-opus-5",
+        "promptSha256": "c1316b0cb194d0aedb156c6fd0dfe01a74dd54165c1cd930a178befaaa853868",
+        "decidedAt": "2026-09-17"
+      }
+    },
+    {
+      "asset": "ferry-kitchen",
+      "imageSha256": "1c36ce570254d598f43a07ce8f3501674a7e0f882ae6c45db3d70e2ecc46ec4a",
+      "regionSha256": "692b0d9055f8fba602f09850ea060658e8fdd8a8fceac46adfa8dff615e094a5",
+      "classification": {
+        "left": "attachment"
+      },
+      "basis": "Band holds the brass lantern hung beside the door, lowest material +47 px above the ground contact.",
+      "classifier": {
+        "model": "claude-opus-5",
+        "promptSha256": "c1316b0cb194d0aedb156c6fd0dfe01a74dd54165c1cd930a178befaaa853868",
+        "decidedAt": "2026-09-17"
+      }
+    },
+    {
+      "asset": "loom-house",
+      "imageSha256": "625832d605f4f06ea63bf699651acbbd2480a2efb6d201856ff077c2e1ea5843",
+      "regionSha256": "5c519e8c5ff73897413470c08c5c54672eb43f46c830731ee7970426cd867efe",
+      "classification": {
+        "left": "eave",
+        "right": "eave"
+      },
+      "basis": "Left band is blue roof tile, right band the rafter ends beneath the eave; +69 and +63 px clear of the ground contact.",
+      "classifier": {
+        "model": "claude-opus-5",
+        "promptSha256": "c1316b0cb194d0aedb156c6fd0dfe01a74dd54165c1cd930a178befaaa853868",
+        "decidedAt": "2026-09-17"
+      }
+    },
+    {
+      "asset": "orchard-house",
+      "imageSha256": "aad2a185a0a96996de762976675402ecf401f7b7e52f454cbe2047774aad7939",
+      "regionSha256": "a9ffdadfc4435bb78d912a983e1b3b76d45150e4f11c6abfc939a8258a54402a",
+      "classification": {
+        "left": "attachment"
+      },
+      "basis": "Band holds the brass lantern hung beside the door, lowest material +47 px above the ground contact.",
+      "classifier": {
+        "model": "claude-opus-5",
+        "promptSha256": "c1316b0cb194d0aedb156c6fd0dfe01a74dd54165c1cd930a178befaaa853868",
+        "decidedAt": "2026-09-17"
+      }
+    }
+  ]
+}

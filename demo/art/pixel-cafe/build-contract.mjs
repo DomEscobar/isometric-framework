@@ -25,6 +25,7 @@ const asset = (id,kind,image,crop,anchor,render,groundPoints,heights=[],allowedO
   ({id,kind,image,sha256:hashes[image],frame:crop,anchor,render,footprint,groundPoints,heights,...(overhangPx?{overhangPx}:{}),allowedOverhang});
 const contract = {
   version:1,pack:'Sunflower courtyard measured integration; metadata scope only',
+  overhangRulings:'./overhang-rulings.json',
   projection:{tileWidth:80,tileHeight:40,heightPixelsPerUnit:40},
   tolerances:{groundErrorPx:2,heightErrorPx:4},
   heightReferences:{standing:1.85,leftSeat:.52,rightSeat:.49,tabletop:.74,parasolApex:3.28,soil:.25,lantern:1.9,palm:2.65,orangePlant:1.43,shrub:1.62},

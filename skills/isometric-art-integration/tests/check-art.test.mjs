@@ -166,11 +166,137 @@ test('deliberate overhang needs a declared budget and a stated reason', async (t
   const justified = structuredClone(candidate);
   justified.assets[0].overhangPx = 16;
   justified.assets[0].allowedOverhang = 'Canopy crosses tile edges; trunk base stays inside the footprint';
-  const report = await checkContract(justified, directory);
-  assert.equal(report.passed, true, JSON.stringify(report.errors));
+  const report = await checkContract(structuredClone(justified), directory);
+  assert.equal(report.passed, false, 'a budget and prose alone must not pass');
+  assert.match(report.errors.map((e) => e.message).join('\n'), /needs a classified ruling/);
   const negative = structuredClone(justified);
   negative.assets[0].overhangPx = -1;
   assert.match((await checkContract(negative, directory)).errors.map((e) => e.message).join('\n'), /nonnegative silhouette budget/);
+});
+
+test('ground tolerance cannot be widened until the measurements stop biting', async (t) => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'art-tolerance-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const wide = png(96, 96);
+  await writeFile(path.join(directory, 'atlas.png'), wide);
+  const candidate = contract();
+  candidate.assets = [{
+    id: 'tree', kind: 'prop', image: 'atlas.png', sha256: createHash('sha256').update(wide).digest('hex'),
+    frame: { x: 0, y: 0, width: 96, height: 96 }, anchor: { x: 0.5, y: 1 },
+    render: { width: 96 }, footprint: { columns: 1, rows: 1 }, heights: [], allowedOverhang: '',
+    groundPoints: [ground(32, 96, -0.25, -0.25), ground(64, 96, 0.25, 0.25), ground(48, 88, 0.25, -0.25)],
+  }];
+  const half = candidate.projection.tileWidth / 2;
+  const waived = structuredClone(candidate);
+  waived.tolerances.groundErrorPx = half;
+  const report = await checkContract(waived, directory);
+  assert.equal(report.passed, false, 'a tolerance as wide as half a tile must not waive the gate');
+  assert.match(report.errors.map((e) => e.message).join('\n'), /must stay below half a tile width/);
+  const workable = structuredClone(candidate);
+  workable.tolerances.groundErrorPx = half - 1e-9;
+  assert.ok(!(await checkContract(workable, directory)).errors.some((e) => /half a tile width/.test(e.message)));
+});
+
+test('a budget only holds with a ruling pinned to the measured region', async (t) => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'art-ruling-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const canopy = png(96, 96);
+  await writeFile(path.join(directory, 'atlas.png'), canopy);
+  const candidate = contract();
+  candidate.overhangRulings = 'rulings.json';
+  candidate.assets = [{
+    id: 'tree', kind: 'prop', image: 'atlas.png',
+    sha256: createHash('sha256').update(canopy).digest('hex'),
+    frame: { x: 0, y: 0, width: 96, height: 96 }, anchor: { x: 0.5, y: 1 },
+    render: { width: 96 }, footprint: { columns: 1, rows: 1 }, heights: [],
+    overhangPx: 16, allowedOverhang: 'Canopy crosses tile edges',
+    groundPoints: [ground(32, 96, -0.25, -0.25), ground(64, 96, 0.25, 0.25), ground(48, 88, 0.25, -0.25)],
+  }];
+  const rule = async (ruling) => {
+    await writeFile(path.join(directory, 'rulings.json'), JSON.stringify({ version: 1, rulings: [ruling] }));
+    return checkContract(structuredClone(candidate), directory);
+  };
+  await writeFile(path.join(directory, 'rulings.json'), JSON.stringify({ version: 1, rulings: [] }));
+  const measured = await checkContract(structuredClone(candidate), directory);
+  const region = measured.assets[0].overhang;
+  assert.deepEqual(Object.keys(region.columns).filter((side) => region.columns[side]), ['left', 'right']);
+  assert.match(region.regionSha256, /^[0-9a-f]{64}$/);
+
+  const verdict = {
+    asset: 'tree', imageSha256: candidate.assets[0].sha256, regionSha256: region.regionSha256,
+    classification: { left: 'canopy', right: 'canopy' }, basis: 'Fronds held clear of the ground',
+    classifier: { model: 'test-classifier', promptSha256: 'b'.repeat(64), decidedAt: '2026-09-17' },
+  };
+  assert.equal((await rule(verdict)).passed, true, 'a pinned, permitted ruling passes');
+
+  const base = await rule({ ...verdict, classification: { left: 'ground-contact', right: 'canopy' } });
+  assert.equal(base.passed, false);
+  assert.match(base.errors[0].message, /left overhang is classified as ground-contact/);
+
+  const stale = await rule({ ...verdict, regionSha256: 'a'.repeat(64) });
+  assert.match(stale.errors[0].message, /decided for a different region/);
+
+  const partial = await rule({ ...verdict, classification: { left: 'canopy' } });
+  assert.match(partial.errors[0].message, /leaves the right spill unjudged/);
+
+  const invented = await rule({ ...verdict, classification: { ...verdict.classification, middle: 'canopy' } });
+  assert.match(invented.errors.map((e) => e.message).join('\n'), /unknown side middle/);
+
+  const guessed = await rule({ ...verdict, classification: { left: 'unclear', right: 'canopy' } });
+  assert.match(guessed.errors[0].message, /classified as unclear/);
+});
+
+test('a ruling cannot be carried over to repainted artwork', async (t) => {
+  const directory = await mkdtemp(path.join(tmpdir(), 'art-ruling-stale-'));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const canopy = png(96, 96);
+  await writeFile(path.join(directory, 'atlas.png'), canopy);
+  const candidate = contract();
+  candidate.overhangRulings = 'rulings.json';
+  candidate.assets = [{
+    id: 'tree', kind: 'prop', image: 'atlas.png', sha256: createHash('sha256').update(canopy).digest('hex'),
+    frame: { x: 0, y: 0, width: 96, height: 96 }, anchor: { x: 0.5, y: 1 },
+    render: { width: 96 }, footprint: { columns: 1, rows: 1 }, heights: [],
+    overhangPx: 16, allowedOverhang: 'Canopy crosses tile edges',
+    groundPoints: [ground(32, 96, -0.25, -0.25), ground(64, 96, 0.25, 0.25), ground(48, 88, 0.25, -0.25)],
+  }];
+  await writeFile(path.join(directory, 'rulings.json'), JSON.stringify({ version: 1, rulings: [] }));
+  const first = await checkContract(structuredClone(candidate), directory);
+  await writeFile(path.join(directory, 'rulings.json'), JSON.stringify({
+    version: 1,
+    rulings: [{ asset: 'tree', imageSha256: candidate.assets[0].sha256,
+      regionSha256: first.assets[0].overhang.regionSha256, classification: { left: 'canopy', right: 'canopy' },
+      basis: 'Fronds held clear of the ground',
+      classifier: { model: 'test-classifier', promptSha256: 'b'.repeat(64), decidedAt: '2026-09-17' } }],
+  }));
+  assert.equal((await checkContract(structuredClone(candidate), directory)).passed, true);
+  // Widening the footprint moves the judged region, so the old verdict must stop applying.
+  const widened = structuredClone(candidate);
+  widened.assets[0].footprint = { columns: 2, rows: 1 };
+  widened.assets[0].groundPoints = [ground(32, 96, -0.25, -0.25), ground(64, 96, 0.25, 0.25), ground(48, 88, 0.25, -0.25)];
+  const moved = await checkContract(widened, directory);
+  assert.match(moved.errors.map((e) => e.message).join('\n'), /different region|spills/);
+});
+
+test('a prop reports the body height its own artwork demands', async (t) => {
+  const directory = await fixture(t);
+  const candidate = contract();
+  const report = await checkContract(candidate, directory);
+  assert.equal(report.passed, true, JSON.stringify(report.errors));
+  const of = (id) => report.assets.find((asset) => asset.id === id);
+  // The table's opaque frame reaches 48px above its anchor row, and a 1x1 footprint leaves no
+  // doubt which cell owns that row, so the band collapses onto the single measured figure.
+  assert.deepEqual(of('table').bodyHeightPx, { low: 48, high: 48 });
+  // Terrain lies in the ground plane and an actor's body is not its drawn silhouette.
+  for (const id of ['tile', 'person']) assert.equal(of(id).bodyHeightPx, undefined);
+
+  candidate.assets[1].footprint = { columns: 2, rows: 3 };
+  const wider = await checkContract(candidate, directory);
+  assert.equal(wider.passed, true, JSON.stringify(wider.errors));
+  // Reading the highest pixel as the farthest cell lowers the floor by one column of depth;
+  // reading it as the nearest raises the ceiling by two rows. Only the floor is enforced.
+  assert.deepEqual(wider.assets.find((asset) => asset.id === 'table').bodyHeightPx,
+    { low: 48 - 16, high: 48 + 32 });
 });
 
 test('art narrower than its footprint passes, but a blank frame is rejected', async (t) => {

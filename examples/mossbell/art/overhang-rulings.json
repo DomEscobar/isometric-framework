@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "rulings": [
+    {
+      "asset": "apothecary",
+      "imageSha256": "6eef592a72e30f2cc009161cb0803c35341d5f462bff4e58ded8cf246f8476fa",
+      "regionSha256": "000d82a15dd91630e4a24abac11095066d8d4f52959e9864c7a66d9083fe791b",
+      "classification": {
+        "left": "attachment",
+        "right": "eave"
+      },
+      "basis": "Left band is the hanging mortar-and-pestle sign on its iron bracket (+72 px); right band is purple roof edging above the wall line (+31 px).",
+      "classifier": {
+        "model": "claude-opus-5",
+        "promptSha256": "c1316b0cb194d0aedb156c6fd0dfe01a74dd54165c1cd930a178befaaa853868",
+        "decidedAt": "2026-09-17"
+      }
+    }
+  ]
+}

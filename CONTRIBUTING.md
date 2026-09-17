@@ -86,7 +86,9 @@ Changes to the art checker or preview require `npm run test:art-skill`; open a
 generated preview and verify decoding, shared scale, overlays, playback and failure
 labels after preview changes. Changes to the assembly checker require
 `npm run test:assembly-skill`, which loads the engine's own core through
-`--experimental-strip-types`. Run the relevant Python tests when changing visual
+`--experimental-strip-types`. Changes to the generation client or its batch runner
+require `npm run test:asset-generation`; those tests are offline and establish no
+successful paid generation. Run the relevant Python tests when changing visual
 acceptance or production helpers. For directional sprite tools, run
 `uv run --python 3.12 --with "Pillow==11.3.0" python -B -m unittest discover -s skills/directional-sprite-authoring/tests`.
 Video fixtures require `ffmpeg` and `ffprobe` on PATH; report skipped fixtures as

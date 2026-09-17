@@ -155,6 +155,29 @@ crops into a later request. Character motion inputs proceed from these approved
 directional facings into the I2V workflow; the helper does not prepare direct
 animation frames or authorize provider submission.
 
+## Run independent jobs concurrently
+
+Provider latency, not local work, dominates a pass over many assets or directions.
+Independent requests may run at the same time with the
+[batch runner](references/wavespeed.md#fan-out-independent-jobs): it validates every
+request and job path before the first billable submission, keeps a bounded number of
+tracks in flight, and writes one result fragment per track.
+
+Concurrency is not authorization to submit more. The approval flag must equal the
+track count, and more than one track requires an accepted pilot of the same model
+and request shape: prove one track, review its downloaded art, then expand. Fanning
+out multiplies rejected art as fast as accepted art, and a money ceiling still comes
+from the provider's current estimate.
+
+A batch writes nothing shared. Merge its fragments into the runtime manifest, binding
+and coverage ledger in one sequential step; a production check already in flight fails
+when a declared input changes underneath it. A track whose polling budget ran out is
+resumed, never resubmitted, and an unknown submission outcome stops further launches
+until provider history has been inspected.
+
+Image-to-video stays outside this client, so the longest wait in a character pass fans
+out only as far as the selected I2V tool itself allows.
+
 ## Prepare, inspect, then integrate
 
 1. Keep the original generation. If it already has usable alpha, skip removal.

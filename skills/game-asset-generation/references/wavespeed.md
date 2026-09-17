@@ -73,6 +73,65 @@ then GET `/api/v3/predictions/{id}/result`. Completion is `data.status=completed
 with output values in `data.outputs`. Failed/cancelled/timeout/deleted jobs are
 terminal. HTTP success alone does not establish generation success.
 
+## Fan out independent jobs
+
+A pass over several assets or directions waits on the provider, not on local work.
+`wavespeed-batch.mjs` runs independent jobs of one model concurrently, each through
+the same audited `submit` path above, and writes one result fragment per track. Paths
+in a batch manifest are relative to the manifest's own directory and use forward
+slashes.
+
+```json
+{
+  "version": 1,
+  "concurrency": 4,
+  "pilot": "pilot/walk-south/result.json",
+  "tracks": [
+    {"id": "walk-south", "model": "bytedance/seedream-v5.0-pro", "request": "walk-south.request.json", "job": "walk-south.job.json"},
+    {"id": "walk-north", "model": "bytedance/seedream-v5.0-pro", "request": "walk-north.request.json", "job": "walk-north.job.json"}
+  ]
+}
+```
+
+```sh
+# Pilot first: one track proves the model and request shape.
+node skills/game-asset-generation/scripts/wavespeed-batch.mjs run test-results/assets/pilot.batch.json test-results/assets/pilot --approve 1
+# Download and review that output, then set "accepted": true in its result fragment.
+node skills/game-asset-generation/scripts/wavespeed-batch.mjs run test-results/assets/facings.batch.json test-results/assets/facings --approve 4
+# Recovery only, for tracks whose polling budget ran out. Submits nothing.
+node skills/game-asset-generation/scripts/wavespeed-batch.mjs resume test-results/assets/facings.batch.json test-results/assets/facings-resumed
+```
+
+Before any submission it rejects a duplicate or existing job path, a request the
+client would refuse, an approval number that differs from the track count, an
+existing results directory, and a concurrency above 8. `--approve N` authorizes
+exactly N billable submissions; a money ceiling comes from the provider's current
+task estimate, not from this script. More than one track needs `pilot`: the fragment
+of an accepted single-track run with the same model and the same request fields.
+
+Concurrency is capped because a rejected POST is never retried here. A rate limit
+therefore arrives as a task whose outcome must be inspected by hand, and each further
+launch would add another one.
+
+| Track disposition | Meaning | Next step |
+| --- | --- | --- |
+| `complete` | Outputs are listed in the job file | Download, review, then set `accepted` |
+| `resume-required` | Local polling stopped; the remote task lives on | Resume this batch |
+| `task-failed` | The provider rejected or dropped the task | Decide on a new request |
+| `inspect-provider-history` | The submission outcome is unknown | Inspect provider history; the batch stopped launching |
+| `not-started` | The batch halted before this track | Nothing was submitted for it |
+| `missing-job` | Resume found no job file | It was never submitted |
+
+Batch exit codes: 0 all complete, 1 a failed or unknown task, 2 invalid local input,
+3 a track needs resuming. Fragments record the prediction ID, request hash and output
+count, deliberately not the signed URLs or the prompt; download the outputs from the
+job file as below.
+
+The batch writes only per-track fragments. Update the runtime manifest, binding and
+coverage ledger from them in one sequential step: every production check from the
+static stage onward hashes those files as inputs and fails if they change while it is
+in flight.
+
 ## Remove a background
 
 Save another request with the actual publicly retrievable generated image URL:

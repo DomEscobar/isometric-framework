@@ -46,7 +46,8 @@ function publicHttps(value) {
   } catch { return false; }
 }
 
-function requestFor(model, input) {
+/** Exported so a batch can validate every request before the first billable submission. */
+export function requestFor(model, input) {
   if (!MODELS.has(model)) fail('Unsupported model. Use a model listed by --help.');
   if (!object(input)) fail('Request must be a JSON object.');
   if (model === IMAGE_REMOVER) {

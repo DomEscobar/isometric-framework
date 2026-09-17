@@ -53,8 +53,10 @@ text-to-image or image-to-image; reuse accepted generated assets with provenance
 Character animation must use an approved generated facing image, image-to-video,
 reviewed frame extraction and deterministic packing. Preserve usable source alpha;
 otherwise review one controlled chroma-key cutout. If it shows halos, holes, lost
-subject colors, flickering edges, or remains uncertain, run the approved background
-remover on the selected original video frames and review those cutouts before packing.
+subject colors, flickering edges, or remains uncertain, use an approved cutout before
+packing: isolate the whole reviewed video with the approved video background remover,
+or run the approved image background remover on the selected unkeyed frames. Review
+those cutouts.
 Do not substitute generated sheets, individual movement poses or hand-drawn character animation. For scenery
 and other objects, choose image-to-video or another suitable animation technique.
 Blockout placeholders, UI, collision geometry and masks are exempt from generation.

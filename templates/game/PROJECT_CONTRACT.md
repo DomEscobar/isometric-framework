@@ -15,8 +15,9 @@ Unapproved neutral calibration scaffold. Production requirements have not been s
   accepted generated art may be reused with provenance
 - Character animation: approved generated facing image -> image-to-video ->
   reviewed extraction -> alpha review -> packing -> runtime playback review;
-  after one failed color-key candidate, use the approved background remover on
-  selected unkeyed frames or record missing access/budget as a blocker
+  after one failed color-key candidate, use an approved cutout: the video
+  background remover on the reviewed clip, or the image background remover on
+  selected unkeyed frames; otherwise record missing access/budget as a blocker
 - Scenery/object animation: choose image-to-video or another fitting method on
   generated art; UI, collision, masks and blockout diagnostics are exempt
 - Concept scope and fixed/flexible layout constraints: pending; select initial

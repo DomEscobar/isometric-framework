@@ -1,6 +1,6 @@
 ---
 name: consistent-tileset-authoring
-description: Compose connected isometric terrain with consistent material transitions, shared boundaries and controlled variation, then prepare compatible tiles. Use for natural paths, grass and stream banks as well as constructed borders; the included raised-bed helper handles rigid bed geometry only.
+description: Compose connected isometric terrain with consistent material transitions, shared boundaries and controlled variation, then prepare compatible tiles. Use for natural paths, grass and stream banks as well as constructed borders. Two routes exist: reusable neighbor tiles, or a composed ground plate through render-layout, image-to-image, registration, prepare-ground and bind-ground. The raised-bed helper handles rigid bed geometry only; it is not a missing landscape compositor.
 ---
 
 # Consistent tileset authoring
@@ -19,6 +19,24 @@ For natural paths, grass or stream banks, start with
 material-pair transitions and variation across cells before selecting tile masks.
 The ground must read as one landscape at playing zoom. A valid connected catalog
 can still fail through hard fringes, mirrored motifs and inconsistent pixel style.
+
+## Pick one assembly route
+
+The raised-bed helper and the prompt patterns do not assemble organic grass, path
+or bank tiles. That sentence names one missing catalog, not a missing world pipeline.
+Do not rebuild layout export, registration, cutting or cell binding in the host
+while citing it. Choose one route and stay on it.
+
+| Route | When | What this skill already runs |
+| --- | --- | --- |
+| Reusable neighbor tiles | The map must recombine beds, walls or water from a catalog | Host-owned mask catalog plus, for rigid beds only, `prepare-bed-tileset.mjs`. Organic material-pair transitions still need that catalog; they have no assembler here. |
+| Composed ground plate | The ground layout is largely fixed and transitions should be painted together | `render-layout.mjs` → generated candidate (style authority, then layout guide) → `inspect-registration.py` → `prepare-ground.py` → `bind-ground.mjs` → `inspect-ground-support.py`. Prove a mixed-material calibration patch before a full-map generate. |
+
+Composed ground still needs a generated image. [Game asset generation](../game-asset-generation/SKILL.md)
+submits that image-to-image; this skill does not invent topology from pixels. Provider
+outputs follow aspect-ratio buckets, not an exact guide size: bring the candidate
+to the guide's pixel size before registration. Matching corners is not a pass.
+A host `tools/` copy of the four composed-ground scripts is duplication, not a gap.
 
 ## Set the contract before generating
 

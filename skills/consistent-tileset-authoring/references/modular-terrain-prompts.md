@@ -2,14 +2,18 @@
 
 These are neutral, unvalidated prompt patterns for adapting to a real project.
 They are not successful-generation evidence or a validated reusable tileset.
+They apply only to a **reusable neighbor-tile family**. A composed ground plate
+does not use this file; follow [composed ground](composed-ground.md) instead.
 
 ## Output and integration boundary
 
 Request a compatible material source or a small family of transition candidates;
 integration still owns fixed geometry, masks, world origins, collision and
 variant registration. Independently generated tiles do not autojoin. A natural-
-transition assembler is not implemented by this reference. The raised-bed
+transition assembler is not implemented by this reference: there is no script
+here that turns grass/path/bank prompts into a 47-mask catalog. The raised-bed
 helper is limited to rigid beds; it does not solve grass, trail or stream edges.
+That is not a hole in composed-ground preparation, registration or binding.
 
 Use one material authority for the family. Declare the projection (for example,
 2:1 isometric), cell dimensions, surface height, contact edge, pixel density,

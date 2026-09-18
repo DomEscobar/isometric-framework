@@ -78,6 +78,17 @@ test('source checkout exposes only the I2V character-animation production route'
   assert.match(packer, /static-facing origin is only valid for one-frame idle clips/);
 });
 
+test('tileset skill names the composed-ground pipeline and does not treat the bed helper as a missing world', async () => {
+  const skill = await readFile(join(root, 'skills/consistent-tileset-authoring/SKILL.md'), 'utf8');
+  assert.match(skill, /Pick one assembly route/);
+  assert.match(skill, /render-layout\.mjs[\s\S]*inspect-registration\.py[\s\S]*prepare-ground\.py[\s\S]*bind-ground\.mjs[\s\S]*inspect-ground-support\.py/);
+  assert.match(skill, /A host `tools\/` copy of the four composed-ground scripts is duplication, not a gap/);
+  const landscape = await readFile(join(root, 'skills/consistent-tileset-authoring/references/landscape-composition.md'), 'utf8');
+  assert.match(landscape, /That limit applies\s+to `prepare-bed-tileset\.mjs` only/);
+  const prompts = await readFile(join(root, 'skills/consistent-tileset-authoring/references/modular-terrain-prompts.md'), 'utf8');
+  assert.match(prompts, /A composed ground plate\s+does not use this file/);
+});
+
 test('packed consumer archive contains only consumer docs and skill tooling', () => {
   const listing = spawnSync('tar', ['-tf', archive], { cwd: root, encoding: 'utf8' });
   assert.equal(listing.status, 0, listing.stderr);

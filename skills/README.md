@@ -30,7 +30,7 @@ can use the same checks with a smaller requirement scope.
 | Create character facings or turn approved I2V clips into runtime animation | [directional-sprite-authoring](directional-sprite-authoring/SKILL.md) | Facing approval, video review, cutout fallback, timestamped extraction and explicit clip mapping |
 | Animate rivers, fountains, waterfalls or wind-driven plants | [animated-environments](animated-environments/SKILL.md) | Stable scenery loops, matching joins and simulation timing |
 | Build large or multipart props, buildings, bridges or raised passages | [multi-tile-asset-assembly](multi-tile-asset-assembly/SKILL.md) | Solid volumes, walkable surfaces, openings, sprite contacts and depth parts |
-| Build connected beds, paths, walls or water with compatible edges | [consistent-tileset-authoring](consistent-tileset-authoring/SKILL.md) | Shared material geometry, neighbor variants, inner corners and rendered join checks |
+| Build connected beds, paths, walls or water with compatible edges | [consistent-tileset-authoring](consistent-tileset-authoring/SKILL.md) | Neighbor catalogs or a composed ground plate; layout guide, registration, prepare-ground, bind-ground and support checks already ship. The raised-bed helper is rigid beds only. |
 
 ## Choose the art technique
 
@@ -41,7 +41,7 @@ art with its source chain. Text-to-image alone does not choose a world architect
 | World assembly | Read first | Support and remaining work |
 | --- | --- | --- |
 | Reusable modular terrain | Tileset authoring | Suitable for editable/recombined maps. Neighbor selection exists; organic material-pair transitions need a compatible catalog or scoped host assembler. The raised-bed helper is not that assembler. |
-| Composed ground plus separate actors/props | Tileset authoring: composed ground; art integration | Suitable when the ground layout is largely fixed and material transitions should be composed together. Flat-plane preparation/binding exist; crops remain position-specific. Registration, object contacts and motion need their own checks. |
+| Composed ground plus separate actors/props | Tileset authoring: composed ground; art integration | Suitable when the ground layout is largely fixed and material transitions should be composed together. Flat-plane preparation, cell binding, landmark registration and route-support checks exist. Crops remain position-specific. Do not treat the missing organic tile assembler as a missing plate pipeline. |
 | Layered scene artwork | Art integration; multi-tile assemblies | Suitable when selected occluders and moving regions can be separated. Extraction, hidden surfaces and depth bindings require host work. |
 | Hybrid by region/family | Visual loop and relevant specialists | Declare the boundaries and shared coordinates; verify a representative join before expansion. |
 

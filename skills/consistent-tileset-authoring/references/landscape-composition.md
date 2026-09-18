@@ -59,11 +59,18 @@ Both approaches can use generated material sources if that is the agreed techniq
 The optional [composed-ground tool](composed-ground.md) prepares an existing image
 as a plate or positioned chunks without a browser. It accepts declared masks and
 transforms; it does not infer routes or turn map pieces into interchangeable tiles.
-Do not generate every whole tile independently and expect matching edges. The
-raised-bed helper supplies rigid rims and walls; it does not implement natural
-path fringes, bank transitions or a general terrain compositor. If the host lacks
-the chosen assembler/catalog, implement that scoped authoring work or report the
-gap. Producing its existing bed tiles is not completion of an organic-ground brief.
+Do not generate every whole tile independently and expect matching edges.
+
+The raised-bed helper supplies rigid rims and walls; it does not implement natural
+path fringes, bank transitions or a general terrain compositor. That limit applies
+to `prepare-bed-tileset.mjs` only. A composed organic ground uses the layout guide
+from [render-layout](../../isometric-visual-loop/references/production-flow.md),
+a generated candidate, then [registration](registration-review.md),
+[prepare-ground](composed-ground.md), [bind-ground](composed-ground.md) and
+[ground-support](ground-support.md). If the host chose reusable transition tiles
+and still lacks that catalog, implement the scoped catalog or report that gap.
+Reimplementing the composed-ground scripts is not that report. Producing the
+existing bed tiles is not completion of an organic-ground brief.
 
 ## Neutral calibration patch
 

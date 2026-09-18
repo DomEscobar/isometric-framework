@@ -1,12 +1,33 @@
 # Offline composed-ground preparation
 
-Use this optional Pillow helper after a host exports a source image and any target-sized
-masks. It prepares pixels only: it does not infer terrain topology, collision, or material
-boundaries. Its input support includes technical fixtures and legacy images;
+Use this optional Pillow helper after a generated (or otherwise approved) source
+image exists at the intended output size, together with any target-sized masks.
+It prepares pixels only: it does not infer terrain topology, collision, or material
+boundaries, and it does not generate the painting. Those come from the host layout
+and the [generation client](../../game-asset-generation/references/wavespeed.md).
+Its input support includes technical fixtures and legacy images;
 new production worlds must use generated art with provenance under the
 [asset policy](../../isometric-visual-loop/references/asset-policy.md).
 Use Python 3.10+ with Pillow; `uv run --with Pillow python` can replace `python`
 below when needed. No browser, provider connection or example assets are required.
+
+Layout to bound ground, without a host copy of these tools:
+
+1. Export a same-projection layout guide with
+   `skills/isometric-visual-loop/scripts/render-layout.mjs`.
+2. Generate the candidate with image-to-image: style/material authority first,
+   layout or boundary guide second. Prove a mixed-material calibration patch
+   from [landscape composition](landscape-composition.md) before a full map.
+   WaveSpeed returns an aspect-ratio bucket, not the guide's exact pixel size;
+   resample to the guide before the next step. Do not treat a `2:1` bucket as
+   proof that `2816×1376` survived.
+3. Measure interior landmarks with [inspect-registration.py](registration-review.md).
+4. Cut the plate or chunks with `prepare-ground.py` (this file).
+5. Bind cells with `bind-ground.mjs`.
+6. Check routes with [inspect-ground-support.py](ground-support.md), then inspect
+   packed art through `verify-world.py`.
+
+A host script that repeats steps 3–6 does not fill a framework gap.
 
 ```sh
 python skills/consistent-tileset-authoring/scripts/prepare-ground.py recipe.json --out prepared-ground

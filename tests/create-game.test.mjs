@@ -89,6 +89,19 @@ test('tileset skill names the composed-ground pipeline and does not treat the be
   assert.match(prompts, /A composed ground plate\s+does not use this file/);
 });
 
+test('composed-ground guidance keeps the measured generator behaviour future agents need', async () => {
+  const skill = await readFile(join(root, 'skills/consistent-tileset-authoring/SKILL.md'), 'utf8');
+  assert.match(skill, /Registration answers a measurement\s+rather than running by default/);
+  const ground = await readFile(join(root, 'skills/consistent-tileset-authoring/references/composed-ground.md'), 'utf8');
+  assert.match(ground, /aspect ratio the provider actually offers/);
+  assert.match(ground, /Never enlarge a plate\s+to reach delivery size/);
+  assert.match(ground, /A declared region came back smaller in\s+every plate and larger in none/);
+  assert.match(ground, /gate on the area ratio, not only on boundary position/);
+  const provider = await readFile(join(root, 'skills/game-asset-generation/references/wavespeed.md'), 'utf8');
+  assert.match(provider, /A local reference such as a layout guide needs a public URL first/);
+  assert.match(provider, /one sample per setting/);
+});
+
 test('packed consumer archive contains only consumer docs and skill tooling', () => {
   const listing = spawnSync('tar', ['-tf', archive], { cwd: root, encoding: 'utf8' });
   assert.equal(listing.status, 0, listing.stderr);

@@ -34,8 +34,11 @@ while citing it. Choose one route and stay on it.
 
 Composed ground still needs a generated image. [Game asset generation](../game-asset-generation/SKILL.md)
 submits that image-to-image; this skill does not invent topology from pixels. Provider
-outputs follow aspect-ratio buckets, not an exact guide size: bring the candidate
-to the guide's pixel size before registration. Matching corners is not a pass.
+outputs follow aspect-ratio buckets, not an exact guide size: give the guide a ratio
+the provider offers, request the largest resolution and downscale to delivery, then
+bring the candidate to the guide's pixel size. Registration answers a measurement
+rather than running by default; a correctly proportioned plate can be more accurate
+before a transform than after one. Matching corners is not a pass.
 A host `tools/` copy of the four composed-ground scripts is duplication, not a gap.
 
 ## Set the contract before generating

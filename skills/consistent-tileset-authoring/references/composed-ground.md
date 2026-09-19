@@ -14,20 +14,53 @@ below when needed. No browser, provider connection or example assets are require
 Layout to bound ground, without a host copy of these tools:
 
 1. Export a same-projection layout guide with
-   `skills/isometric-visual-loop/scripts/render-layout.mjs`.
-2. Generate the candidate with image-to-image: style/material authority first,
-   layout or boundary guide second. Prove a mixed-material calibration patch
-   from [landscape composition](landscape-composition.md) before a full map.
-   WaveSpeed returns an aspect-ratio bucket, not the guide's exact pixel size;
-   resample to the guide before the next step. Do not treat a `2:1` bucket as
-   proof that `2816×1376` survived.
-3. Measure interior landmarks with [inspect-registration.py](registration-review.md).
+   `skills/isometric-visual-loop/scripts/render-layout.mjs`. Give the guide an
+   aspect ratio the provider actually offers, padding the backdrop to reach one
+   rather than accepting a ratio the provider will reimpose. A guide that
+   matches an offered ratio comes back needing only a uniform downscale; one
+   that does not is refitted during generation and arrives with a geometry
+   error that varies across the plate and that no single transform removes.
+2. Generate the candidate with image-to-image at the largest resolution the
+   provider offers, then downscale to the delivery size. Never enlarge a plate
+   to reach delivery size: the art survives but the pixel grid does not. Supply
+   a style/material authority only when its own material is good enough to
+   accept again, because the candidate inherits that reference's weaknesses
+   along with its palette; otherwise carry the art direction in the prompt and
+   pass the layout guide alone. Prove a mixed-material calibration patch from
+   [landscape composition](landscape-composition.md) before a full map.
+   A returned bucket is not the guide's exact pixel size; resample to the guide
+   before the next step. Do not treat a `2:1` bucket as proof that `2816×1376`
+   survived.
+3. Measure interior landmarks with [inspect-registration.py](registration-review.md)
+   and measure each declared region's area against the guide. Decide from those
+   numbers whether a registration pass is warranted at all. Registration answers
+   a measurement; it is not a fixed step. A correctly proportioned plate can
+   already be more accurate than a refitted one, and fitting a transform to it
+   makes it worse.
 4. Cut the plate or chunks with `prepare-ground.py` (this file).
 5. Bind cells with `bind-ground.mjs`.
 6. Check routes with [inspect-ground-support.py](ground-support.md), then inspect
    packed art through `verify-world.py`.
 
 A host script that repeats steps 3–6 does not fill a framework gap.
+
+Choose landmarks whose position the layout fixes, such as a region boundary
+crossing a known column. The centroid of a feature the prompt asks to repaint
+moves when its shape is restyled, which is not evidence that the map drifted.
+
+Three behaviours showed up across this framework's own ground trials and are
+worth checking for by name, as leads rather than as laws; each rests on a
+handful of plates from one provider. A declared region came back smaller in
+every plate and larger in none, losing a roughly constant band along its
+boundary, so a broad lake barely registered the loss while a narrow channel
+gave up a sixth of its width. Declare narrow water wider than its minimum and
+gate on the area ratio, not only on boundary position. A provider setting that
+invites the service to reinterpret the prompt traded declared geometry for
+invention: it returned the most attractive plate while moving boundaries
+further and reintroducing excluded elements. Re-measure and recheck the
+exclusion list whenever such a setting is on, and expect repeat runs to agree
+less closely. Exclusions themselves held: a plate told to contain no water
+stayed dry even though its style authority showed a river.
 
 ```sh
 python skills/consistent-tileset-authoring/scripts/prepare-ground.py recipe.json --out prepared-ground

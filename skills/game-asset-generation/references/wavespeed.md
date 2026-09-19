@@ -209,6 +209,22 @@ generation settings. The client supports 1–10 public HTTPS reference URLs and
 leaves the provider's aspect-ratio default intact when that field is omitted.
 Embedded base64 references are outside this helper's supported inputs. References
 do not belong in the text-to-image request, whose schema has no image field.
+A local reference such as a layout guide needs a public URL first: use the same
+upload-ticket flow described above for video with the PNG's own `content_type`,
+then pass the returned `download_url` in `images`. The client exposes no generic
+upload command for this.
+
+When an edit must preserve a declared layout, set `aspect_ratio` to the guide's
+own ratio instead of leaving the provider's default, request the largest
+`resolution` and downscale afterwards rather than enlarging a smaller return,
+and measure the result. In this framework's own ground trial a `1k` return
+carried the same art as `2k` but lost its pixel grid once enlarged to delivery
+size, and `prompt_optimization_mode: fast` produced the best-looking plate while
+moving declared boundaries further than `standard` and reintroducing excluded
+elements. Those comparisons are one sample per setting, so treat them as a
+reason to measure rather than a guarantee. The measurement itself belongs to
+[composed ground](../../consistent-tileset-authoring/references/composed-ground.md).
+
 For character motion, follow
 [directional sprite authoring](../../directional-sprite-authoring/SKILL.md): use
 an approved generated facing image with an approved capable I2V tool, review the

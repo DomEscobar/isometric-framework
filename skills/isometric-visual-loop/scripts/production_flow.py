@@ -54,6 +54,31 @@ def inputs(root, names):
     return result
 
 
+def fingerprint(value):
+    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+
+
+def records(directory, kind):
+    found = []
+    for path in sorted(Path(directory).glob("*.json")):
+        value = read(path)
+        if isinstance(value, dict) and value.get("kind") == kind:
+            found.append((value, path))
+    return found
+
+
+def carried(directory, baseline_hash):
+    """Receipt hashes an explicit carry-over admits from an earlier baseline."""
+    matching = [value for value, _ in records(directory, "production-carryover")
+                if value.get("baselineSha256") == baseline_hash]
+    require(len(matching) <= 1, "Several carry-over records claim this baseline; keep exactly one")
+    if not matching:
+        return set()
+    entries = matching[0].get("carried")
+    require(isinstance(entries, list), "Carry-over record needs a carried array")
+    return {entry["receiptSha256"] for entry in entries}
+
+
 def validate(plan, root):
     require(plan.get("version") == 4, "New world production requires acceptance-plan version 4")
     flow = plan.get("production")
@@ -223,12 +248,14 @@ def automatic(check, root, snapshot):
 
 def collect(plan, root, baseline_hash, directory):
     checks = validate(plan, root)
+    admitted = carried(directory, baseline_hash)
     latest = {}
     histories = {}
+    ignored = []
     provenance_checked = False
-    for path in sorted(Path(directory).glob("*.json")):
-        value = read(path)
-        if value.get("kind") != "production-receipt" or value.get("baselineSha256") != baseline_hash:
+    for value, path in records(directory, "production-receipt"):
+        if value.get("baselineSha256") != baseline_hash and sha(path) not in admitted:
+            ignored.append(str(path))
             continue
         cid = value.get("check")
         require(cid in checks, "Receipt names unknown check")
@@ -280,7 +307,8 @@ def collect(plan, root, baseline_hash, directory):
             blockers.append("Current receipt already passes; preserve it while inputs remain unchanged")
         statuses[cid]["eligible"] = not blockers
         statuses[cid]["blockers"] = blockers
-    return {"passed": all(stages.values()), "nextStage": next_stage, "stages": stages, "checks": statuses}
+    return {"passed": all(stages.values()), "nextStage": next_stage, "stages": stages, "checks": statuses,
+            "ignoredReceipts": sorted(ignored)}
 
 
 def next_work(status):
@@ -306,16 +334,75 @@ def prerequisites(plan, root, baseline_hash, directory, check):
 
 
 def attempts(baseline_hash, directory, cid):
+    # Carried receipts stay in the history, or patching the plan would clear the
+    # two-failure counter and buy an escape from the strategy requirement.
+    admitted = carried(directory, baseline_hash)
     history = []
-    for path in Path(directory).glob("*.json"):
-        record = read(path)
-        if record.get("kind") == "production-receipt" and record.get("baselineSha256") == baseline_hash and record.get("check") == cid:
+    for record, path in records(directory, "production-receipt"):
+        if record.get("check") != cid:
+            continue
+        if record.get("baselineSha256") == baseline_hash or sha(path) in admitted:
             history.append((record, path))
     return sorted(history, key=lambda r: r[0]["completedAt"], reverse=True)
 
 
 def repeated_failure(history):
     return len(history) >= 2 and all(record[0]["status"] == "fail" for record in history[:2])
+
+
+def carryover(gate, baseline, previous_baseline, directory, reason, output):
+    """Admit earlier receipts under a patched plan.
+
+    Admission is visibility only. collect still re-verifies inputs, evidence and the
+    automatic checkers, so carrying a receipt cannot turn a stale stage green.
+    """
+    _, plan, root = gate.protected(baseline)
+    checks = validate(plan, root)
+    current_hash, previous_hash = sha(baseline), sha(previous_baseline)
+    require(current_hash != previous_hash, "Carry-over needs an earlier baseline, not the current one")
+    require(isinstance(reason, str) and reason.strip(), "Record why the plan was patched")
+    earlier = read(previous_baseline)
+    require(earlier.get("plan") == read(baseline).get("plan"),
+            "Carry-over reconciles a patched plan, not receipts from a different plan file")
+    require(isinstance(earlier.get("requirements"), list) and isinstance(earlier.get("productionChecks"), dict),
+            "Earlier baseline predates carry-over and cannot prove the plan only grew; re-run its stages")
+    require(earlier.get("reviewMode") == plan["reviewMode"],
+            "Review mode changed; reconcile that before carrying receipts")
+    kept = {requirement["id"]: requirement for requirement in plan["requirements"]}
+    for requirement in earlier["requirements"]:
+        require(kept.get(requirement["id"]) == requirement,
+                "Protected requirement dropped or narrowed: " + str(requirement.get("id")))
+    require(not carried(directory, current_hash), "A carry-over already names this baseline")
+    # Receipts keep the hash of the baseline that produced them, so a second patch has to
+    # reconsider whatever the previous patch already admitted, not just fresh receipts.
+    inherited = carried(directory, previous_hash)
+    admitted, declined = [], []
+    for receipt, path in records(directory, "production-receipt"):
+        if receipt.get("baselineSha256") != previous_hash and sha(path) not in inherited:
+            continue
+        cid = receipt.get("check")
+        entry = {"check": cid, "receiptSha256": sha(path), "receipt": str(path)}
+        if cid not in checks:
+            declined.append({**entry, "reason": "Check no longer exists in the patched plan"})
+        elif earlier["productionChecks"].get(cid) != fingerprint(checks[cid]):
+            declined.append({**entry, "reason": "Check definition changed; run it again under the patched plan"})
+        else:
+            try:
+                fresh = inputs(root, checks[cid]["inputs"]) == receipt.get("inputs")
+            except (ValueError, OSError):
+                fresh = False
+            admitted.append({**entry, "inputsUnchanged": fresh})
+    require(admitted or declined, "No receipts belong to that baseline; check the earlier baseline path")
+    target = Path(output).resolve()
+    require(target.parent == Path(directory).resolve(), "Carry-over must live directly in its receipt directory")
+    require(all(not target.is_relative_to(local(root, p)) for p in plan["inputRoots"]),
+            "Carry-over must be outside source inputRoots")
+    value = {"kind": "production-carryover", "baselineSha256": current_hash,
+             "previousBaselineSha256": previous_hash, "reason": reason.strip(),
+             "carried": admitted, "declined": declined,
+             "createdAt": datetime.now(timezone.utc).isoformat()}
+    gate.write_new(output, value)
+    return value
 
 
 def begin(gate, baseline, cid, directory, output, strategy=None):

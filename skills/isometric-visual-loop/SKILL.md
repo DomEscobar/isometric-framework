@@ -194,7 +194,9 @@ A focused visual repair does not require an unrelated performance investigation.
 Run the [acceptance command](references/acceptance.md) on the final candidate.
 Use `production status` to find the next eligible check and `production draft`
 to prepare hash-bound submissions; do not hand-copy evidence hashes or maintain
-another progress ledger. Trial/session recording is framework evaluation tooling,
+another progress ledger. When approved scope grows, patch the plan, freeze a new
+baseline and reconcile the existing receipts with `production carryover` rather
+than starting a second receipt directory. Trial/session recording is framework evaluation tooling,
 not a prerequisite for making a user's game.
 Report open, failed, unverified or stale requirements as such. Passing local
 validation does not authenticate a critic's judgment or guarantee reference quality.

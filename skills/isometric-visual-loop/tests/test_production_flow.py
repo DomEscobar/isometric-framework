@@ -610,6 +610,134 @@ class ProductionTests(unittest.TestCase):
         self.assertEqual(status["nextStage"], "static")
         self.assertEqual(status["checks"]["composition"]["status"], "unverified")
 
+    def patch_plan(self, mutate):
+        self.patches = getattr(self, "patches", 0) + 1
+        previous = self.baseline
+        mutate(self.plan)
+        self.save("game/plan.json", self.plan)
+        self.baseline = self.root / f"patched-baseline-{self.patches}.json"
+        gate.freeze(self.plan_path, self.baseline)
+        return previous
+
+    def grow(self, plan):
+        plan["requirements"].append({"id": "extra", "description": "Added wing", "domain": "visual", "views": ["desktop"]})
+        plan["comparisons"].append({"id": "extra-desktop", "requirements": ["extra"], "view": "desktop",
+                                    "role": "style", "focus": "Added wing", "reference": "game/asset.png"})
+        plan["production"]["checks"].append(
+            {"id": "extra", "stage": "static", "method": "review", "evidenceKind": "image",
+             "requirements": ["extra"], "views": ["desktop"],
+             "inputs": ["game/layout.json", "game/actor.json", "game/ledger.json", "game/runtime.json", "game/used.json"]})
+
+    def carry(self, previous, reason="Added a wing to the approved scope", name="carry.json"):
+        return flow.carryover(self.adapter, self.baseline, previous, self.receipts, reason, self.receipts / name)
+
+    def test_patching_the_plan_reports_orphaned_receipts_instead_of_dropping_them(self):
+        self.through_assembly()
+        self.patch_plan(self.grow)
+        status = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        self.assertEqual(len(status["ignoredReceipts"]), 4)
+        self.assertEqual(status["nextStage"], "preflight")
+        self.assertEqual(status["checks"]["boot"]["reason"], "No receipt")
+
+    def test_carryover_keeps_unchanged_stages_and_leaves_only_the_new_work_open(self):
+        self.through_assembly()
+        for cid in ["placement", "composition", "motion", "final"]:
+            self.complete(cid)
+        record = self.carry(self.patch_plan(self.grow))
+        self.assertEqual(len(record["carried"]), 8)
+        self.assertEqual(record["declined"], [])
+        moved = {item["check"]: item["inputsUnchanged"] for item in record["carried"]}
+        # The patched plan file lives inside the final check's own input tree.
+        self.assertFalse(moved["final"])
+        self.assertTrue(moved["boot"])
+        status = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        self.assertEqual(status["ignoredReceipts"], [])
+        for cid in ["boot", "layout", "rigid", "assembly", "placement", "composition", "motion"]:
+            self.assertEqual(status["checks"][cid]["status"], "pass", cid)
+        self.assertEqual(status["checks"]["extra"]["status"], "unverified")
+        self.assertEqual(status["nextStage"], "static")
+
+    def test_a_second_patch_reconsiders_what_the_first_one_admitted(self):
+        self.through_assembly()
+        first = self.carry(self.patch_plan(self.grow), name="carry-1.json")
+        self.assertEqual(len(first["carried"]), 4)
+
+        def widen(plan):
+            next(c for c in plan["production"]["checks"] if c["id"] == "layout")["views"] = ["desktop", "mobile"]
+        second = self.carry(self.patch_plan(widen), reason="Layout now reviewed on mobile too", name="carry-2.json")
+        self.assertEqual({item["check"] for item in second["carried"]}, {"boot", "rigid", "assembly"})
+        self.assertEqual([item["check"] for item in second["declined"]], ["layout"])
+        status = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        self.assertEqual(status["ignoredReceipts"], [second["declined"][0]["receipt"]])
+        self.assertEqual(status["checks"]["boot"]["status"], "pass")
+        self.assertEqual(status["checks"]["layout"]["status"], "unverified")
+        self.assertEqual(status["nextStage"], "layout")
+
+    def test_carryover_refuses_a_plan_that_narrows_protected_requirements(self):
+        self.through_assembly()
+
+        def narrow(plan):
+            plan["requirements"] = [r for r in plan["requirements"] if r["id"] != "play"]
+            next(c for c in plan["production"]["checks"] if c["id"] == "motion")["requirements"] = ["look"]
+        previous = self.patch_plan(narrow)
+        with self.assertRaisesRegex(ValueError, "dropped or narrowed: play"):
+            self.carry(previous)
+
+    def test_a_changed_check_definition_declines_only_its_own_receipt(self):
+        self.through_assembly()
+
+        def widen(plan):
+            next(c for c in plan["production"]["checks"] if c["id"] == "boot")["views"] = ["desktop", "mobile"]
+        record = self.carry(self.patch_plan(widen))
+        self.assertEqual([item["check"] for item in record["declined"]], ["boot"])
+        self.assertIn("Check definition changed", record["declined"][0]["reason"])
+        self.assertEqual({item["check"] for item in record["carried"]}, {"layout", "rigid", "assembly"})
+        status = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        self.assertEqual(status["checks"]["boot"]["status"], "unverified")
+        self.assertEqual(status["nextStage"], "preflight")
+
+    def test_a_carried_receipt_whose_inputs_moved_is_not_green(self):
+        self.through_assembly()
+        previous = self.patch_plan(self.grow)
+        self.save("game/boot.json", {"ready": "changed after the patch"})
+        record = self.carry(previous)
+        self.assertFalse(next(item for item in record["carried"] if item["check"] == "boot")["inputsUnchanged"])
+        status = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        self.assertEqual(status["checks"]["boot"]["status"], "unverified")
+
+    def test_patching_the_plan_does_not_clear_the_two_failure_counter(self):
+        self.complete("boot", "fail")
+        self.complete("boot", "fail")
+        self.carry(self.patch_plan(self.grow))
+        self.assertTrue(flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)["checks"]["boot"]["strategyRequired"])
+        with self.assertRaisesRegex(ValueError, "Two failed attempts"):
+            self.start("boot")
+
+    def test_one_carryover_per_baseline_and_no_reconciliation_without_the_protected_surface(self):
+        self.through_assembly()
+        previous = self.patch_plan(self.grow)
+        self.carry(previous)
+        with self.assertRaisesRegex(ValueError, "already names this baseline"):
+            self.carry(previous, name="carry-again.json")
+        stale = gate.read(previous)
+        del stale["productionChecks"]
+        previous.write_text(json.dumps(stale), encoding="utf8")
+        with self.assertRaisesRegex(ValueError, "predates carry-over"):
+            self.carry(previous, name="carry-stale.json")
+
+    def test_carryover_needs_a_reason_and_the_same_patched_plan(self):
+        self.through_assembly()
+        previous = self.patch_plan(self.grow)
+        with self.assertRaisesRegex(ValueError, "why the plan was patched"):
+            self.carry(previous, reason="   ", name="carry-blank.json")
+        with self.assertRaisesRegex(ValueError, "not the current one"):
+            self.carry(self.baseline, name="carry-self.json")
+        other = gate.read(previous)
+        other["plan"] = str(self.root / "game/other-plan.json")
+        previous.write_text(json.dumps(other), encoding="utf8")
+        with self.assertRaisesRegex(ValueError, "different plan file"):
+            self.carry(previous, name="carry-other.json")
+
     def assert_cli_acceptance(self):
         command = [sys.executable, str(fixtures.SCRIPT)]
         blocked = subprocess.run(command + ["production", "begin", str(self.baseline), "--check", "final", "--receipts", str(self.receipts), "--out", str(self.root / "blocked.json")], capture_output=True, text=True)

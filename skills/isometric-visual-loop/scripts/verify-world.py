@@ -397,7 +397,16 @@ def freeze(plan_path, output):
     specs = {str(local(root, p)): digest(local(root, p)) for p in plan["artChecks"]}
     references = comparison_tools().definitions(plan, root)[1] if plan["version"] >= 2 or plan.get("comparisons") else {}
     contract = {str(local(root, plan["contract"])): digest(local(root, plan["contract"]))} if "contract" in plan else {}
-    write_new(output, {"version": 1, "plan": str(plan_path), "planSha256": digest(plan_path), "artSpecs": specs, "references": references, "contract": contract})
+    # A patched plan overwrites its own file, so the protected surface is recorded here too;
+    # otherwise a later baseline cannot prove the requirements grew rather than narrowed.
+    # The fingerprint comes from the carry-over's own module: two copies that drift apart
+    # would decline every check instead of failing loudly.
+    checks = plan.get("production", {}).get("checks", [])
+    tools = production_tools() if checks else None
+    write_new(output, {"version": 2, "plan": str(plan_path), "planSha256": digest(plan_path), "artSpecs": specs,
+                       "references": references, "contract": contract, "requirements": plan["requirements"],
+                       "reviewMode": plan["reviewMode"],
+                       "productionChecks": {check["id"]: tools.fingerprint(check) for check in checks}})
 
 
 def protected(baseline_path):
@@ -550,7 +559,7 @@ def main():
     p = sub.add_parser("snapshot"); p.add_argument("baseline"); p.add_argument("output"); p.add_argument("--production-receipts")
     p = sub.add_parser("accept"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("review"); p.add_argument("--production-receipts")
     p = sub.add_parser("attach-evidence"); p.add_argument("review"); p.add_argument("--baseline", required=True); p.add_argument("--candidate", required=True); p.add_argument("--requirement", required=True); p.add_argument("--view", required=True); p.add_argument("--file", required=True); p.add_argument("--out", required=True)
-    p = sub.add_parser("production"); p.add_argument("action", choices=("begin", "draft", "finish", "status", "next")); p.add_argument("baseline"); p.add_argument("--receipts", required=True); p.add_argument("--check"); p.add_argument("--ticket"); p.add_argument("--submission"); p.add_argument("--evidence-mapping"); p.add_argument("--out"); p.add_argument("--strategy")
+    p = sub.add_parser("production"); p.add_argument("action", choices=("begin", "draft", "finish", "status", "next", "carryover")); p.add_argument("baseline"); p.add_argument("--receipts", required=True); p.add_argument("--check"); p.add_argument("--ticket"); p.add_argument("--submission"); p.add_argument("--evidence-mapping"); p.add_argument("--out"); p.add_argument("--strategy"); p.add_argument("--previous-baseline", help="Baseline the existing receipts belong to; carry them into a patched plan"); p.add_argument("--reason", help="Why the plan was patched")
     p = sub.add_parser("compare"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("captures"); p.add_argument("--out", required=True); p.add_argument("--previous"); p.add_argument("--rebaseline-note", help="Explain an art-check correction or added comparisons; retain all previous requirements, comparisons and targets")
     args = parser.parse_args()
     try:
@@ -578,6 +587,11 @@ def main():
                 result = flow.finish(gate, args.baseline, args.ticket, args.submission, args.receipts, args.out)
                 print(json.dumps(result, indent=2))
                 return 0 if result["status"] == "pass" else 1
+            elif args.action == "carryover":
+                require(args.previous_baseline and args.reason and args.out,
+                        "carryover needs --previous-baseline, --reason and --out")
+                print(json.dumps(flow.carryover(gate, args.baseline, args.previous_baseline, args.receipts,
+                                                args.reason, args.out), indent=2))
             else:
                 _, plan, root = protected(args.baseline)
                 result = flow.collect(plan, root, digest(args.baseline), args.receipts)

@@ -321,6 +321,37 @@ This is a strategy checkpoint, not a quality waiver or permission to stop. Prese
 original targets and scope. Work on at most three root causes per round. Inspect
 the overall image before closing old findings; file counts are not a quality score.
 
+## Patch the plan without redoing every stage
+
+Long production legitimately grows its approved scope. A patch rewrites the plan
+file, so `freeze` produces a different baseline while every existing receipt still
+names the old one. Those receipts are then reported in `ignoredReceipts` and every
+stage reopens. Reconcile them instead of starting a second receipt directory:
+
+```sh
+python skills/isometric-visual-loop/scripts/verify-world.py production carryover review/baseline-2.json --previous-baseline review/baseline-1.json --reason "Approved an added wing" --receipts review/receipts --out review/receipts/carryover-1.json
+```
+
+The patched plan must keep every protected requirement verbatim and the same
+`reviewMode`; a dropped or narrowed requirement is refused, and so is a carry-over
+pointing at a different plan file. Only one carry-over may name a baseline. The
+earlier baseline must itself record the protected surface that `freeze` writes
+(`requirements`, `reviewMode` and a fingerprint per production check); a baseline
+frozen before that cannot prove the plan only grew, and its stages must run again.
+
+A receipt carries over when its check still exists with a byte-identical
+definition. Changing a check's views, inputs, requirements or evidence kind
+declines that receipt alone and reopens that check, which is why the record lists
+`carried` and `declined` separately. A second patch reconsiders whatever the first
+one admitted, so a check can survive several patches and still be declined later.
+
+Admission is visibility, never trust. `status` re-verifies declared inputs,
+evidence files and the automatic checkers exactly as before, so a carried receipt
+whose sources moved still reports `unverified`. The `inputsUnchanged` flag in the
+record describes what held at reconciliation time; it is not a gate. Failed
+attempts carry over as well, because clearing the two-attempt strategy requirement
+by patching the plan would turn a stuck loop into a fresh start.
+
 ## Candidate and final acceptance
 
 After stages through motion pass, snapshot with `--production-receipts review/receipts`,
@@ -333,7 +364,7 @@ runtime inventory as part of this acceptance. Focused version 1–2 plans withou
 production stages are reported as legacy, never as version 4 provenance acceptance.
 
 Version 2 comparison baseline corrections do not silently migrate production
-receipts: receipts bind to the frozen baseline. An explicit new production baseline
-requires revalidation. Spatial and rigid metadata still require correspondence
+receipts: receipts bind to the frozen baseline, and a new one reopens every stage
+until `production carryover` reconciles them check by check. Spatial and rigid metadata still require correspondence
 with the real game. Successful synthetic defect tests validate this machinery;
 they do not certify a generated world's visual quality.

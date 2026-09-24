@@ -1,7 +1,7 @@
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {createRequire} from 'node:module';import {pathToFileURL} from 'node:url';
 const require=createRequire(import.meta.url),dir=path.resolve(process.argv[2]);
-const links='/root/.cache/ms-playwright/.links',candidates=fs.readdirSync(links).map(f=>fs.readFileSync(path.join(links,f),'utf8')).filter(p=>fs.existsSync(p+'/package.json'));
-const {chromium}=require(process.env.PLAYWRIGHT_CORE||candidates[0]);
+const links='/root/.cache/ms-playwright/.links',installed=()=>fs.readdirSync(links).map(f=>fs.readFileSync(path.join(links,f),'utf8')).filter(p=>fs.existsSync(p+'/package.json'))[0];
+const {chromium}=require(process.env.PLAYWRIGHT_CORE||installed());
 const browser=await chromium.launch({executablePath:process.env.CHROMIUM||'/root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-linux/headless_shell',headless:true,args:['--no-sandbox']});
 try{const page=await browser.newPage({viewport:{width:1450,height:1100}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto(pathToFileURL(path.join(dir,'index.html')).href);await page.waitForFunction(()=>window.navigatorReady);
 const w=JSON.parse(fs.readFileSync(path.join(dir,'world.json'),'utf8'));

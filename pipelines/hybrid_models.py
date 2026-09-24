@@ -7,8 +7,26 @@ import httpx
 from PIL import Image
 from artifacts import canonical,digest
 from hybrid_layout import Strict,Layout
-from evaluations import validate_model
 from provider import WaveSpeed,MODEL
+
+
+def validate_model(metadata):
+    if not isinstance(metadata.get('id'), str) or not metadata['id']:
+        raise ValueError('model id missing')
+    arch = metadata.get('architecture', {})
+    if not {'text', 'image'}.issubset(arch.get('input_modalities', [])) or 'text' not in arch.get('output_modalities', []):
+        raise ValueError('review model requires image+text input and text output')
+    supported = set(metadata.get('supported_parameters', []))
+    if not {'response_format', 'max_tokens'}.issubset(supported):
+        raise ValueError('unsupported structured review configuration')
+    if 'temperature' not in supported and 'structured_outputs' not in supported:
+        raise ValueError('unsupported structured review configuration')
+    if type(metadata.get('context_length')) is not int or metadata['context_length'] <= 0:
+        raise ValueError('context limit missing')
+    for k in ('prompt', 'completion'):
+        v = Decimal(str(metadata.get('pricing', {}).get(k)))
+        if not v.is_finite() or v <= 0:
+            raise ValueError('invalid model pricing')
 
 CRITERIA=['layout_fidelity','materials','pixel_style','walkable_clearance','scale','repetition','lighting']
 class Crop(Strict):
@@ -195,6 +213,13 @@ def output_from_wire(schema,value):
         return val
     return conv(root,value)
 
+class UnbilledProviderError(ValueError):
+    """The provider ended the completion with an error and its receipt bills neither tokens nor cost."""
+
+def unbilled_error(response):
+    choice=(response.get('choices') or [{}])[0];usage=response.get('usage') or {}
+    return choice.get('finish_reason')=='error' and usage.get('completion_tokens')==0 and usage.get('cost') is not None and Decimal(str(usage['cost']))==0
+
 class OpenRouter:
     def __init__(self,model,transport=None):self.model=model;self.transport=transport
     def request(self,method,path,body=None):
@@ -305,6 +330,7 @@ class OpenRouter:
             if response is None:raise ValueError('Unknown submission; Hold bleibt, kein Retry')
         choice=(response.get('choices') or [{}])[0]
         if response.get('model')!=self.model:raise ValueError('Modellidentität stimmt nicht')
+        if unbilled_error(response):raise UnbilledProviderError('Anbieterfehler ohne Abrechnung (finish_reason=error)')
         if choice.get('finish_reason')!='stop':raise ValueError('Antwort unvollständig (finish_reason='+str(choice.get('finish_reason'))+'); abgeschnittene Ausgabe wird nie vervollständigt')
         return output_from_wire(schema,json.loads(choice.get('message',{}).get('content','')))
 
@@ -316,3 +342,13 @@ class MaterialImage(WaveSpeed):
         body={'prompt':prompt,key:urls,'output_format':'png'}
         if size is not None:body['size']=str(size[0])+'*'+str(size[1])
         return body
+
+class SceneImage(WaveSpeed):
+    """Whole-scene painter; the aspect ratio is the only framing contract it offers."""
+    model_id='meta/muse-image/edit'
+    requires_size=False
+    def inputs(self,schema,prompt,urls,aspect_ratio):
+        props=schema.get('properties',{})
+        if aspect_ratio not in props.get('aspect_ratio',{}).get('enum',[]):raise ValueError('Szenenmodell bietet Seitenverhältnis '+aspect_ratio+' nicht an')
+        key='images' if 'images' in props else 'image_urls'
+        return {'prompt':prompt,key:urls,'output_format':'png','aspect_ratio':aspect_ratio}

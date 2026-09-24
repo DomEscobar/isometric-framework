@@ -70,6 +70,9 @@ A host `tools/` copy of the four composed-ground scripts is duplication, not a g
   patch with upright/optional props hidden before expanding the world. Retain
   ground-owned root beds, wear and contact shadows, then inspect the dressed
   [object-ground connection](../isometric-art-integration/references/grounded-assemblies.md).
+  After the plate is accepted, dress frozen cells with
+  [in-situ scenery](../game-asset-generation/references/in-situ-scenery.md) rather
+  than baking upright scenery into a second ground generate.
 - Keep structural parts separate from flowers, furniture and other decoration.
   A generated bed with flowers, soil and wall baked together is a composite prop,
   not automatically a reusable border tile. Do not hide failed joins with flowers.

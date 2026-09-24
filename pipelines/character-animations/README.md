@@ -2,6 +2,15 @@
 
 Local, single-owner FastAPI service around `pipeline.run_stage(stage, workdir, params)`. The API uses a durable SQLite queue and one serial worker. It binds to localhost in all documented commands.
 
+## Framework integration
+
+This service is an optional backend for
+[directional sprite authoring](../../skills/directional-sprite-authoring/SKILL.md).
+Map stages and bridge video plus approved native indices through
+[animation-service.md](../../skills/directional-sprite-authoring/references/animation-service.md)
+into `extract-video.py` / `pack-sprites.py`. Do not treat `animation-pipeline-atlas-v1`
+or the `mirror` stage as stock framework V4 production outputs.
+
 ## Install in an isolated environment
 
 ```sh

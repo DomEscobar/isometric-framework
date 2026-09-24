@@ -102,6 +102,36 @@ test('composed-ground guidance keeps the measured generator behaviour future age
   assert.match(provider, /one sample per setting/);
 });
 
+test('pipeline methods land in packaged skills without lab paths', async () => {
+  const scenery = await readFile(join(root, 'skills/game-asset-generation/references/in-situ-scenery.md'), 'utf8');
+  assert.match(scenery, /pass` \/ `fail` \/ `uncertain/);
+  assert.match(scenery, /Do not decide identity from\s+color, size, filename order or spatial heuristics/);
+  assert.match(scenery, /candidate-and-reviewer assignment step remains mandatory/);
+  assert.match(scenery, /Do not paste cutouts into the plate for the playable scene/);
+  assert.match(scenery, /multi-tile-asset-assembly/);
+  assert.match(scenery, /does not reconstruct what they covered/);
+  assert.doesNotMatch(scenery, /pipelines\/|huecki|waldlicht/i);
+
+  const service = await readFile(join(root, 'skills/directional-sprite-authoring/references/animation-service.md'), 'utf8');
+  assert.match(service, /not motion acceptance/);
+  assert.match(service, /mirror` \| Excluded/);
+  assert.match(service, /animation-pipeline-atlas-v1[\s\S]*preview only/);
+  assert.match(service, /prediction IDs, never the service job ID/);
+  assert.match(service, /remove_background` \(paid\) \| Skip for framework hosts/);
+  assert.doesNotMatch(service, /pipelines\/|huecki|\/root\/services/i);
+
+  const support = await readFile(join(root, 'skills/consistent-tileset-authoring/references/ground-support.md'), 'utf8');
+  assert.match(support, /Optional, unvalidated for terrain/);
+  assert.match(support, /never use it as collision or to edit the frozen layout/);
+
+  const generation = await readFile(join(root, 'skills/game-asset-generation/SKILL.md'), 'utf8');
+  assert.match(generation, /in-situ-scenery\.md/);
+  const character = await readFile(join(root, 'skills/directional-sprite-authoring/SKILL.md'), 'utf8');
+  assert.match(character, /animation-service\.md/);
+  const tileset = await readFile(join(root, 'skills/consistent-tileset-authoring/SKILL.md'), 'utf8');
+  assert.match(tileset, /in-situ-scenery\.md/);
+});
+
 test('packed consumer archive contains only consumer docs and skill tooling', () => {
   const listing = spawnSync('tar', ['-tf', archive], { cwd: root, encoding: 'utf8' });
   assert.equal(listing.status, 0, listing.stderr);
@@ -117,10 +147,13 @@ test('packed consumer archive contains only consumer docs and skill tooling', ()
   assert.ok(files.includes('package/skills/directional-sprite-authoring/scripts/pack-sprites.py'));
   assert.ok(files.includes('package/skills/directional-sprite-authoring/references/video-to-sprites.md'));
   assert.ok(files.includes('package/skills/directional-sprite-authoring/references/motion-review.md'));
+  assert.ok(files.includes('package/skills/directional-sprite-authoring/references/animation-service.md'));
+  assert.ok(files.includes('package/skills/game-asset-generation/references/in-situ-scenery.md'));
   assert.ok(!files.includes('package/skills/directional-sprite-authoring/references/poses.md'));
   assert.ok(files.includes('package/skills/directional-sprite-authoring/references/directions.md'));
   assert.ok(!files.some(file => /(^|\/)(tests|__pycache__)(\/|$)/.test(file)));
   assert.ok(!files.some(file => file.includes('examples/') || file.includes('demo/')));
+  assert.ok(!files.some(file => file.includes('pipelines/')));
   assert.ok(!files.includes('package/AGENTS.md'));
   assert.ok(!files.some(file => /docs\/(AUTUMN_CROSSING|GENERATED_ENVIRONMENT_TRIAL|WILLOW_QUAY)\.md$/.test(file)));
   assert.ok(!files.some(file => /docs\/(history|evidence)\//.test(file)));

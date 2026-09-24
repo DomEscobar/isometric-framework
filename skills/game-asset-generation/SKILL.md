@@ -26,6 +26,7 @@ An available tool is not automatically the project's preferred art pipeline.
 | Character motion | [Directional sprite workflow](../directional-sprite-authoring/SKILL.md): approved generated facing image, approved capable I2V tool, actual-video review, extraction and packing | No alternate production route |
 | General production raster artwork | Approved T2I/I2I provider, such as WaveSpeed `bytedance/seedream-v5.0-pro` | No non-generated production route |
 | Reference-guided production variants | Selected I2I provider workflow, such as Seedream Pro Edit | Masked I2I repair of approved generated art |
+| Trees, wells, houses on an approved plate | [In-situ scenery](references/in-situ-scenery.md): foot-locked plate edit, instance segmentation, multimodal assignment, cutouts bound as runtime sprites | Separate portable cutouts placed after generation |
 | Transparent generated prop | Preserve valid generated alpha; otherwise WaveSpeed `wavespeed-ai/image-background-remover` | Local CPU `rembg` |
 | Character video frames | Preserve usable source alpha; otherwise one reviewed chroma-key attempt. If that review fails or is uncertain, WaveSpeed `wavespeed-ai/video-background-remover` on the reviewed I2V video (omit `background_image` for a transparent cutout), or `wavespeed-ai/image-background-remover` on the selected original frames | No silent local substitute after failed chroma key |
 | Exact modular stone/terrain geometry | Host geometry and measured contact edges | Compatible generated materials assembled on that geometry |

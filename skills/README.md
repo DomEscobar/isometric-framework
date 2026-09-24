@@ -26,8 +26,8 @@ can use the same checks with a smaller requirement scope.
 | --- | --- | --- |
 | Create a complete world from a prompt or reference, or substantially refine an environment | [isometric-visual-loop](isometric-visual-loop/SKILL.md) | Whole-scene composition, connected areas and asset families, calibration, specialist coordination and playable visual review |
 | Add an art pack or theme; fix pasted-on scenery, proportions, seams or occlusion | [isometric-art-integration](isometric-art-integration/SKILL.md) | Object-ground connections, shared scale, contact measurements and in-game acceptance |
-| Generate raster sprites or textures; prepare transparent cutouts | [game-asset-generation](game-asset-generation/SKILL.md) | Project-selected image or video provider; background removal, decoded alpha, provenance and concurrent provider batches |
-| Create character facings or turn approved I2V clips into runtime animation | [directional-sprite-authoring](directional-sprite-authoring/SKILL.md) | Facing approval, video review, cutout fallback, timestamped extraction and explicit clip mapping |
+| Generate raster sprites or textures; prepare transparent cutouts | [game-asset-generation](game-asset-generation/SKILL.md) | Project-selected image or video provider; background removal, decoded alpha, provenance, concurrent batches and in-situ scenery on an approved plate |
+| Create character facings or turn approved I2V clips into runtime animation | [directional-sprite-authoring](directional-sprite-authoring/SKILL.md) | Facing approval, video review, cutout fallback, timestamped extraction, explicit clip mapping; optional authenticated animation service as a backend |
 | Animate rivers, fountains, waterfalls or wind-driven plants | [animated-environments](animated-environments/SKILL.md) | Stable scenery loops, matching joins and simulation timing |
 | Build large or multipart props, buildings, bridges or raised passages | [multi-tile-asset-assembly](multi-tile-asset-assembly/SKILL.md) | Solid volumes, walkable surfaces, openings, sprite contacts and depth parts |
 | Build connected beds, paths, walls or water with compatible edges | [consistent-tileset-authoring](consistent-tileset-authoring/SKILL.md) | Neighbor catalogs or a composed ground plate; layout guide, registration, prepare-ground, bind-ground and support checks already ship. The raised-bed helper is rigid beds only. |
@@ -88,6 +88,11 @@ not a prerequisite for generated art.
   [ground preparer](consistent-tileset-authoring/references/composed-ground.md)
   for a plate or positioned chunks from generated artwork with provenance;
   reusable generated transition tiles remain another path.
+- **Dressed composed plate:** accept the ground plate first, then add trees,
+  wells and houses with
+  [in-situ scenery](game-asset-generation/references/in-situ-scenery.md)
+  (foot-locked edit, instance cutouts, multimodal assignment, runtime sprites);
+  buildings also use `multi-tile-asset-assembly` for footprint and depth parts.
 
 A focused task can start directly with its specialist. Unrelated gameplay or
 engine fixes follow the project's module ownership

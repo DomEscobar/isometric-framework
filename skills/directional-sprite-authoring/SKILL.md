@@ -50,6 +50,13 @@ authored character-animation frames, and derived mirrored motion are not product
 alternatives. Editing masks or crops is allowed; synthesizing replacement motion
 poses is not.
 
+An authenticated stage API may run facing edit, I2V, automatic source review and
+removal when the operator already supplies base URL, token and server policy; map
+its stages and bridge outputs through
+[the optional animation service reference](references/animation-service.md). It
+does not replace visual facing, video or packed-clip review, and its atlas format
+is not stock V4.
+
 Before spending, confirm that an approved image-to-video tool can actually submit
 the proposed input. If budget, access, or a capable approved tool is missing, stop
 and record the blocker. Do not pretend that an image client can submit video.

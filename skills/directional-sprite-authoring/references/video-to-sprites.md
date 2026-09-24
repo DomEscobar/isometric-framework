@@ -88,10 +88,13 @@ project contract or proof of visual acceptance.
 
 Find a full gait cycle between equivalent contacts of the same anatomical leg;
 exclude the repeated endpoint. Sample approximately uniform times using recorded
-timestamps, not an assumed 24 FPS. The runtime uses one FPS per clip; nonuniform
-selections require deliberate retiming or repeated frame holds. Check resulting
-duration and seam. Similarity may favor repeated/near-static poses: inspect actual
-opposite contacts and transitions before selecting an interval.
+timestamps, not an assumed 24 FPS. When exporting a compact set of N frames from
+an approved interval, spread N distinct original frames across that interval and
+set playback FPS to N / duration; do not interpolate, duplicate, ping-pong or pad.
+The runtime uses one FPS per clip; nonuniform selections require deliberate
+retiming or repeated frame holds. Check resulting duration and seam. Similarity
+may favor repeated/near-static poses: inspect actual opposite contacts and
+transitions before selecting an interval.
 
 ## Background-remover fallback
 

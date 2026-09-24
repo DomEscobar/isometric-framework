@@ -32,8 +32,10 @@ Layout to bound ground, without a host copy of these tools:
    before the next step. Do not treat a `2:1` bucket as proof that `2816×1376`
    survived.
 3. Measure interior landmarks with [inspect-registration.py](registration-review.md)
-   and measure each declared region's area against the guide. Decide from those
-   numbers whether a registration pass is warranted at all. Registration answers
+   and measure each declared region's area against the guide; a reviewed
+   segmentation proposal from [ground support](ground-support.md) can supply the
+   painted region. Decide from those numbers whether a registration pass is
+   warranted at all. Registration answers
    a measurement; it is not a fixed step. A correctly proportioned plate can
    already be more accurate than a refitted one, and fitting a transform to it
    makes it worse.

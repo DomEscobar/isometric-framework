@@ -14,6 +14,14 @@ manually authored or proposed by segmentation; expected layout colors copied int
 the visible mask are not image evidence. Uncertain fringes should be excluded.
 The checker does no segmentation and supplies no universal color thresholds.
 
+Optional, unvalidated for terrain: a segmentation provider such as WaveSpeed
+`wavespeed-ai/sam3-image` may propose region masks (for example `water` or
+`path`) on the registered plate. Class-level masks are the intended output here.
+Treat the result as a proposal: review it over the artwork, exclude uncertain
+fringes, and never use it as collision or to edit the frozen layout. When the
+reviewed mask disagrees with the planned support, reject or regenerate the plate;
+do not move the grid to fit the painting.
+
 Export route points through public `project()` using the same origin and scale as
 the image. Match the declared diamond to the actor's actual ground-contact shape,
 not its whole upright sprite or occupancy cell. Check the sprite's contact anchor.

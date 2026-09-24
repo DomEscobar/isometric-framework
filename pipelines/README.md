@@ -1,6 +1,22 @@
 # Generation Pipelines
 
 Two pipelines: **terrain** and **character**. Flat imports; keep the tree as-is.
+This tree is a framework-repo lab: it is not shipped in the npm package, and
+skills never depend on paths under `pipelines/` from a generated game.
+
+## Relation to skills
+
+| Lab method | Skill owner (packaged) |
+| --- | --- |
+| Flat deco: numbered foot markers, SAM candidates, multimodal assign, cutouts | [in-situ scenery](../skills/game-asset-generation/references/in-situ-scenery.md) |
+| Baked `scene.png` + depth stamping in the hybrid navigator | Lab preview only; framework hosts bind cutouts as runtime sprites |
+| Character stages / automatic review / compact sampling | [animation service](../skills/directional-sprite-authoring/references/animation-service.md) plus [video-to-sprites](../skills/directional-sprite-authoring/references/video-to-sprites.md) |
+
+Spec-route (`terrain_pipeline`), block assembly (`terrain_block` /
+`terrain_materials` / `terrain_assemble`) and the hybrid navigator are lab
+tooling. They are not alternate production routes beside composed ground or the
+host runtime. Extract general methods into skills; do not link skills to run
+directories under `pipelines/out/`.
 
 ## Terrain
 
@@ -41,6 +57,10 @@ Numbered diamond markers + foot-lock prompt reduce Muse swap/drift on the next p
 ## Character
 
 `character_provider.py` + `generation.py` via `tools/generate_character_once.py` (`GENERATED_CHARACTER_AUTHORIZATION.md`). Binding fixture: `assets/character/composed.png`.
+
+Staged FastAPI service (facing → I2V → review → pack): see
+[character-animations/README.md](character-animations/README.md). Framework hosts
+bridge through the skill reference above, not by consuming `animation-pipeline-atlas-v1` as V4.
 
 ## Shared
 

@@ -1,0 +1,2007 @@
+{
+  "actual_request_schema": {
+    "capability": "background_removal",
+    "required": [
+      "image"
+    ],
+    "revision": "waldlicht-recorded-2026-09",
+    "source": "waldlicht/art/character-motion/se-cutout-01/schema.json"
+  },
+  "items": [
+    {
+      "input": "selected-frame-0000.png",
+      "input_sha256": "4b2600d1fc9ef965aea502ca5ab58ab4c8c31b5147b572eb642dd5f9796768f2",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:24.691500215Z",
+        "error": "",
+        "id": "afa0b0dc50f74abcaaff09da12d51ec3",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/9b630311-07d2-4611-814b-93dac5b99fc8-u2_07613fa7-9de5-42a3-ba19-fc2675bb2a6e.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1991
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/afa0b0dc50f74abcaaff09da12d51ec3/result"
+        }
+      },
+      "order": 0,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 436,
+          "semi_transparent_pixels": 86157,
+          "transparent_pixels": 503231,
+          "visible_bounds": [
+            219,
+            133,
+            567,
+            665
+          ]
+        },
+        "bytes": 199693,
+        "file": "cutout-frame-0000.png",
+        "height": 768,
+        "sha256": "8593e6562f5dc344cfc8bc8c4deeb6ea9a514a375b0cd32dd5a2164acc5ca135",
+        "width": 768
+      },
+      "prediction_id": "afa0b0dc50f74abcaaff09da12d51ec3",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968022967020038_CB4wUcaw.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:24.692Z",
+        "error": "",
+        "id": "afa0b0dc50f74abcaaff09da12d51ec3",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968022967020038_CB4wUcaw.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/afa0b0dc50f74abcaaff09da12d51ec3/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0001.png",
+      "input_sha256": "89de2ac08442160e17612c1825dc33f7ce1e6aaf6e8736c6a07183345703d247",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:30.54956679Z",
+        "error": "",
+        "id": "4cb414ba0e5745ebb9fd34ff10360865",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/900d099c-75ab-47a8-829b-395b586094f5-u2_a66e4681-f028-4ddc-9584-1cb8ede1aafc.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1124
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/4cb414ba0e5745ebb9fd34ff10360865/result"
+        }
+      },
+      "order": 1,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 1896,
+          "semi_transparent_pixels": 87526,
+          "transparent_pixels": 500402,
+          "visible_bounds": [
+            208,
+            142,
+            581,
+            672
+          ]
+        },
+        "bytes": 207451,
+        "file": "cutout-frame-0001.png",
+        "height": 768,
+        "sha256": "dad61054b47dd1020d5864335e02d41bd49d773dc347428ff5f5f8de1dff2c18",
+        "width": 768
+      },
+      "prediction_id": "4cb414ba0e5745ebb9fd34ff10360865",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968028782163275_CeQZ9isC.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:30.55Z",
+        "error": "",
+        "id": "4cb414ba0e5745ebb9fd34ff10360865",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968028782163275_CeQZ9isC.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/4cb414ba0e5745ebb9fd34ff10360865/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0002.png",
+      "input_sha256": "682c67bee4a861609dd5946d4bd8d52a714f0f6a05c66f7b5049f4c3ee9bde41",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:36.39180025Z",
+        "error": "",
+        "id": "ae2f09bb01d9430c872273621b321028",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/4eebf4c1-9932-4543-a641-dcb07f7b105b-u1_af121a9c-b3b2-43ad-b1cb-c06b65336e65.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1101
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/ae2f09bb01d9430c872273621b321028/result"
+        }
+      },
+      "order": 2,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 2041,
+          "semi_transparent_pixels": 87465,
+          "transparent_pixels": 500318,
+          "visible_bounds": [
+            208,
+            142,
+            580,
+            672
+          ]
+        },
+        "bytes": 202674,
+        "file": "cutout-frame-0002.png",
+        "height": 768,
+        "sha256": "8e1d0705a6d93c54548d6d7f10693559085a8f3eb475ca597f748f5cbd37d349",
+        "width": 768
+      },
+      "prediction_id": "ae2f09bb01d9430c872273621b321028",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968034643686816_tqAKS1ak.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:36.392Z",
+        "error": "",
+        "id": "ae2f09bb01d9430c872273621b321028",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968034643686816_tqAKS1ak.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/ae2f09bb01d9430c872273621b321028/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0003.png",
+      "input_sha256": "2b12e968f0aaea16c58f10f1be38db060d14c55f792d728d001c685af9f360fe",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:42.219497733Z",
+        "error": "",
+        "id": "b5512e4fadfe44bda2d29ba01291f4e0",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/9c1c6cdd-3ecf-4cca-aebe-39041535c038-u1_ac4ca6ac-2829-494e-a690-41afbe4fe4a3.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1086
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/b5512e4fadfe44bda2d29ba01291f4e0/result"
+        }
+      },
+      "order": 3,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 1653,
+          "semi_transparent_pixels": 87498,
+          "transparent_pixels": 500673,
+          "visible_bounds": [
+            210,
+            142,
+            580,
+            676
+          ]
+        },
+        "bytes": 208568,
+        "file": "cutout-frame-0003.png",
+        "height": 768,
+        "sha256": "398b7399e24b31b063fd4fece29a2b3e33f2d2e11f34c98acd03087f1d9a9112",
+        "width": 768
+      },
+      "prediction_id": "b5512e4fadfe44bda2d29ba01291f4e0",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968040485505761_1xGPY8hK.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:42.22Z",
+        "error": "",
+        "id": "b5512e4fadfe44bda2d29ba01291f4e0",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968040485505761_1xGPY8hK.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/b5512e4fadfe44bda2d29ba01291f4e0/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0004.png",
+      "input_sha256": "35031e4208b33d16f3ba34c9f8e6aaa5eb76b03245b4b0aecd56ca385abf4619",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:48.194390499Z",
+        "error": "",
+        "id": "b6293e6d46c149ae8edf5880e34aebe5",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/b7454fda-5ae8-4b61-aa0e-5fcb4b3c56f6-u1_b35a652a-2859-48e8-aa36-214b1cf56545.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1984
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/b6293e6d46c149ae8edf5880e34aebe5/result"
+        }
+      },
+      "order": 4,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 1295,
+          "semi_transparent_pixels": 86111,
+          "transparent_pixels": 502418,
+          "visible_bounds": [
+            216,
+            139,
+            575,
+            669
+          ]
+        },
+        "bytes": 206117,
+        "file": "cutout-frame-0004.png",
+        "height": 768,
+        "sha256": "bda5ea51ad6133393f09bb6b4275e1ca69d497d3645a8dc449c2750fa6c6e9be",
+        "width": 768
+      },
+      "prediction_id": "b6293e6d46c149ae8edf5880e34aebe5",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968046427936755_HYbU3dnx.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:48.195Z",
+        "error": "",
+        "id": "b6293e6d46c149ae8edf5880e34aebe5",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968046427936755_HYbU3dnx.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/b6293e6d46c149ae8edf5880e34aebe5/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0005.png",
+      "input_sha256": "0919d79ffa31b183cafdc3b9dd2815e2f632d7ebc47d97523669a66bf7971d3e",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:53.635703067Z",
+        "error": "",
+        "id": "0252b46f5730479e8a6ff6e36f1437a8",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/fff29488-1ed5-4e73-ab1b-b8fe20bbbb52-u2_8695195f-2e80-4d8c-96b3-8fd4ab251aca.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1101
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/0252b46f5730479e8a6ff6e36f1437a8/result"
+        }
+      },
+      "order": 5,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 1239,
+          "semi_transparent_pixels": 85895,
+          "transparent_pixels": 502690,
+          "visible_bounds": [
+            216,
+            139,
+            570,
+            670
+          ]
+        },
+        "bytes": 201191,
+        "file": "cutout-frame-0005.png",
+        "height": 768,
+        "sha256": "0bd192e6842580c79696d75a11d2f2ea26a7e4e69df945b139c20f9ab23fcff2",
+        "width": 768
+      },
+      "prediction_id": "0252b46f5730479e8a6ff6e36f1437a8",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968051854485006_G5fwEOY7.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:53.636Z",
+        "error": "",
+        "id": "0252b46f5730479e8a6ff6e36f1437a8",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968051854485006_G5fwEOY7.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/0252b46f5730479e8a6ff6e36f1437a8/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0006.png",
+      "input_sha256": "b61cd8151ee684180e3ad7d87c85122259aa80c5af76f2a777a9ebb9b22f19c9",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:59.457112567Z",
+        "error": "",
+        "id": "24f805a55d5b4322be2650141e654c6a",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/041afab0-ebf3-416a-ab54-1c876a215a4c-u2_96e6ee1b-f68f-40a6-a5a7-3949eaeceb0e.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1086
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/24f805a55d5b4322be2650141e654c6a/result"
+        }
+      },
+      "order": 6,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 827,
+          "semi_transparent_pixels": 85003,
+          "transparent_pixels": 503994,
+          "visible_bounds": [
+            221,
+            136,
+            566,
+            660
+          ]
+        },
+        "bytes": 201128,
+        "file": "cutout-frame-0006.png",
+        "height": 768,
+        "sha256": "b07dc05e845c004ea8b11eb5b6c36794f48c7d37beb2e04f8b67528f511e6aac",
+        "width": 768
+      },
+      "prediction_id": "24f805a55d5b4322be2650141e654c6a",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968057741675117_oFNX6fJQ.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:20:59.458Z",
+        "error": "",
+        "id": "24f805a55d5b4322be2650141e654c6a",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968057741675117_oFNX6fJQ.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/24f805a55d5b4322be2650141e654c6a/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0007.png",
+      "input_sha256": "536d831bcda054bb1b4f127d2a815e020ad96cdb3a95d1ed7e4612461623006f",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:05.400896323Z",
+        "error": "",
+        "id": "6ccc5dbbba3243d391deb427b4bb2fde",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/bdef31bb-8567-4c9c-b6f4-d053d5bc332e-u1_57fef123-adec-4217-8ace-418bd52eb886.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1624
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/6ccc5dbbba3243d391deb427b4bb2fde/result"
+        }
+      },
+      "order": 7,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 86466,
+          "transparent_pixels": 503358,
+          "visible_bounds": [
+            232,
+            129,
+            555,
+            645
+          ]
+        },
+        "bytes": 199261,
+        "file": "cutout-frame-0007.png",
+        "height": 768,
+        "sha256": "f6d566afaf6e1316d6c097c9a3c6970989b19c4d755be848ff821443d1650665",
+        "width": 768
+      },
+      "prediction_id": "6ccc5dbbba3243d391deb427b4bb2fde",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968063642851825_m5fW5enw.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:05.401Z",
+        "error": "",
+        "id": "6ccc5dbbba3243d391deb427b4bb2fde",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968063642851825_m5fW5enw.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/6ccc5dbbba3243d391deb427b4bb2fde/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0008.png",
+      "input_sha256": "bdfcb9eeb061fa615672d55d7b2151b54932d10e557993d2eb437cb6b4e2076d",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:11.251316117Z",
+        "error": "",
+        "id": "87f3bf4fd5874882a9502b6bb6c375f8",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/9c44535c-a187-48dd-9391-3c0e7e15ef64-u2_91d98383-bc16-4ab9-a012-91930896b275.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1067
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/87f3bf4fd5874882a9502b6bb6c375f8/result"
+        }
+      },
+      "order": 8,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 88212,
+          "transparent_pixels": 501612,
+          "visible_bounds": [
+            233,
+            128,
+            548,
+            639
+          ]
+        },
+        "bytes": 195748,
+        "file": "cutout-frame-0008.png",
+        "height": 768,
+        "sha256": "a46d654a96694d46d18099166b6a41b4b2a2a53f88bd7ffdcc7c2ce8150f5260",
+        "width": 768
+      },
+      "prediction_id": "87f3bf4fd5874882a9502b6bb6c375f8",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968069557775779_ToyHRZ8h.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:11.252Z",
+        "error": "",
+        "id": "87f3bf4fd5874882a9502b6bb6c375f8",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968069557775779_ToyHRZ8h.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/87f3bf4fd5874882a9502b6bb6c375f8/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0009.png",
+      "input_sha256": "93481535608cc99ab02d27929be5d10bed203347e65797a4ee0cd4cb178d184e",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:17.225297096Z",
+        "error": "",
+        "id": "d3ad50c8522646699a29cce329ad16b9",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/a3d4c19d-00a8-4641-85bc-d3c4e3cabac6-u1_baa88b31-f0df-4dd8-a890-9b523d0ab852.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1091
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/d3ad50c8522646699a29cce329ad16b9/result"
+        }
+      },
+      "order": 9,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 88185,
+          "transparent_pixels": 501639,
+          "visible_bounds": [
+            232,
+            129,
+            547,
+            639
+          ]
+        },
+        "bytes": 201683,
+        "file": "cutout-frame-0009.png",
+        "height": 768,
+        "sha256": "b35fbe8c7875047c52ba49e4d89a495f12cd81583ec236cfe4218e21ea62daf5",
+        "width": 768
+      },
+      "prediction_id": "d3ad50c8522646699a29cce329ad16b9",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968075445711721_zhawYsU9.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:17.226Z",
+        "error": "",
+        "id": "d3ad50c8522646699a29cce329ad16b9",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968075445711721_zhawYsU9.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/d3ad50c8522646699a29cce329ad16b9/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0010.png",
+      "input_sha256": "a00c951e5305ecb937ce03bd57e83f93a2170f5759d7b43e8fc6c118a4bf1da9",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:23.154114768Z",
+        "error": "",
+        "id": "27ae918e210d48cca2fc52b532e22831",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/d6a622a8-6d53-4050-a8be-66c64cbfc661-u2_625c4af7-b0de-4799-b8ae-6d04d2fcc3ac.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1107
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/27ae918e210d48cca2fc52b532e22831/result"
+        }
+      },
+      "order": 10,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 89834,
+          "transparent_pixels": 499990,
+          "visible_bounds": [
+            223,
+            131,
+            543,
+            645
+          ]
+        },
+        "bytes": 206631,
+        "file": "cutout-frame-0010.png",
+        "height": 768,
+        "sha256": "ed96f67df49acf8d06f94a17b4e5f1926cc3b36255f8cf62bf6df58ffea67234",
+        "width": 768
+      },
+      "prediction_id": "27ae918e210d48cca2fc52b532e22831",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968081388238580_glFGbC7x.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:23.155Z",
+        "error": "",
+        "id": "27ae918e210d48cca2fc52b532e22831",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968081388238580_glFGbC7x.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/27ae918e210d48cca2fc52b532e22831/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0011.png",
+      "input_sha256": "f980a44101b212fd337f7e0b856c0b9136dcbb70f7aa2ad0475712cb2e1242f0",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:29.062991973Z",
+        "error": "",
+        "id": "8d749b4a8b534fc2bfc08a7f884528e6",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/4be43362-5684-4f9f-a237-607323bccda1-u2_139594b4-0e2f-4845-929c-be72e4f130ea.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1092
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/8d749b4a8b534fc2bfc08a7f884528e6/result"
+        }
+      },
+      "order": 11,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 90334,
+          "transparent_pixels": 499490,
+          "visible_bounds": [
+            214,
+            138,
+            545,
+            648
+          ]
+        },
+        "bytes": 207305,
+        "file": "cutout-frame-0011.png",
+        "height": 768,
+        "sha256": "cf8d95954557d853395fc4e1f72cf529003c92acbb1bd31ef2613ace8f29c5a5",
+        "width": 768
+      },
+      "prediction_id": "8d749b4a8b534fc2bfc08a7f884528e6",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968087217901694_hHxHPZ8i.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:29.064Z",
+        "error": "",
+        "id": "8d749b4a8b534fc2bfc08a7f884528e6",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968087217901694_hHxHPZ8i.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/8d749b4a8b534fc2bfc08a7f884528e6/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0012.png",
+      "input_sha256": "1f4a6e20d948c062325956cf9cae7c0dc241a650a36064853e809ae9ee652dd8",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:34.989532389Z",
+        "error": "",
+        "id": "fd8292602af04f308acbd8f17823a68b",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/dfdd076a-b0ec-4f5e-90d5-9014096b03b1-u1_054c54ca-f242-4c10-aecd-0c5bf591b78e.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1512
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/fd8292602af04f308acbd8f17823a68b/result"
+        }
+      },
+      "order": 12,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 90405,
+          "transparent_pixels": 499419,
+          "visible_bounds": [
+            209,
+            142,
+            546,
+            652
+          ]
+        },
+        "bytes": 208252,
+        "file": "cutout-frame-0012.png",
+        "height": 768,
+        "sha256": "31644a628f7c94933f6e70b81ae799485fb823ca94dea5fdfa3539affba8aba4",
+        "width": 768
+      },
+      "prediction_id": "fd8292602af04f308acbd8f17823a68b",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968093237746128_uCMT3cR0.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:34.99Z",
+        "error": "",
+        "id": "fd8292602af04f308acbd8f17823a68b",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968093237746128_uCMT3cR0.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/fd8292602af04f308acbd8f17823a68b/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0013.png",
+      "input_sha256": "dec62ac4b348498df31fada9eed949d577fba9ad383180d51755beb0a1f66538",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:40.89899927Z",
+        "error": "",
+        "id": "f4c3d67925f942679347c95194faab3a",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/b3c672ee-a028-423e-ac97-563490090212-u2_9d9c5299-1cc4-46f4-88d9-584b91c93734.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 8738
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/f4c3d67925f942679347c95194faab3a/result"
+        }
+      },
+      "order": 13,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 90440,
+          "transparent_pixels": 499384,
+          "visible_bounds": [
+            210,
+            142,
+            546,
+            652
+          ]
+        },
+        "bytes": 206524,
+        "file": "cutout-frame-0013.png",
+        "height": 768,
+        "sha256": "451894f4d89cb69a28687507d8fc54c6509d4cee719767d93a8270d03b6dfb66",
+        "width": 768
+      },
+      "prediction_id": "f4c3d67925f942679347c95194faab3a",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968099073666601_1DMV4d5e.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:40.9Z",
+        "error": "",
+        "id": "f4c3d67925f942679347c95194faab3a",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968099073666601_1DMV4d5e.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/f4c3d67925f942679347c95194faab3a/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0014.png",
+      "input_sha256": "3bfef996fc7f7f077604194a61a9b5b100f7d04344ac0b0f5abb101e64ef0730",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:54.492872127Z",
+        "error": "",
+        "id": "da25344fed8d4b0c8657ac833c1651b6",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/051d637e-ad29-4b6b-88d8-ce7c7a09deec-u1_f8e8f1c4-5ad3-4b55-adb3-1d676c188b5b.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 3489
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/da25344fed8d4b0c8657ac833c1651b6/result"
+        }
+      },
+      "order": 14,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 90413,
+          "transparent_pixels": 499411,
+          "visible_bounds": [
+            216,
+            140,
+            545,
+            642
+          ]
+        },
+        "bytes": 209224,
+        "file": "cutout-frame-0014.png",
+        "height": 768,
+        "sha256": "4596aa0b74920f19b60b756f3f3200237f1cd21cb23550b9b395c0819fc99f17",
+        "width": 768
+      },
+      "prediction_id": "da25344fed8d4b0c8657ac833c1651b6",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968112827938072_9aHPiMfH.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:21:54.494Z",
+        "error": "",
+        "id": "da25344fed8d4b0c8657ac833c1651b6",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968112827938072_9aHPiMfH.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/da25344fed8d4b0c8657ac833c1651b6/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0015.png",
+      "input_sha256": "5b4743891ef23e9f7a29c9253f6eb60e35bac8e3042cfb7c8ff988bcfff31b2b",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:02.378995381Z",
+        "error": "",
+        "id": "963c0448918b403dbdc67dafa1660789",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/826b566d-348c-4191-a30d-7b7f41bc3537-u2_d040a71d-fa7b-482f-a5b7-2e7aa97f9b69.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 9115
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/963c0448918b403dbdc67dafa1660789/result"
+        }
+      },
+      "order": 15,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 90410,
+          "transparent_pixels": 499414,
+          "visible_bounds": [
+            216,
+            140,
+            545,
+            642
+          ]
+        },
+        "bytes": 209634,
+        "file": "cutout-frame-0015.png",
+        "height": 768,
+        "sha256": "582cbb98d0ac3dfbd700e5b21179a4cc76420387a9ae8fcc422beac5ef380623",
+        "width": 768
+      },
+      "prediction_id": "963c0448918b403dbdc67dafa1660789",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968120556005648_7euYkHVd.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:02.38Z",
+        "error": "",
+        "id": "963c0448918b403dbdc67dafa1660789",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968120556005648_7euYkHVd.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/963c0448918b403dbdc67dafa1660789/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0016.png",
+      "input_sha256": "15564f5ccf8d6247617e9fa1bc667cd97f07d8f1934881e9dddaf94bdb146309",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:16.024500091Z",
+        "error": "",
+        "id": "151cb270b5d445308ab3314eab8e529b",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/c6f13b00-7f30-4d20-8597-3aadf4c2140c-u2_84e45f61-3e7b-4046-bdbd-3dae3ac70730.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1107
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/151cb270b5d445308ab3314eab8e529b/result"
+        }
+      },
+      "order": 16,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 89043,
+          "transparent_pixels": 500781,
+          "visible_bounds": [
+            225,
+            133,
+            549,
+            646
+          ]
+        },
+        "bytes": 200112,
+        "file": "cutout-frame-0016.png",
+        "height": 768,
+        "sha256": "c75a54576cdb9a9f5ca50aaf2ff3ef0c7a6581197b8dcf2d4a51b92fdcb3cb53",
+        "width": 768
+      },
+      "prediction_id": "151cb270b5d445308ab3314eab8e529b",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968134314450917_9kPX7hqy.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:16.025Z",
+        "error": "",
+        "id": "151cb270b5d445308ab3314eab8e529b",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968134314450917_9kPX7hqy.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/151cb270b5d445308ab3314eab8e529b/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0017.png",
+      "input_sha256": "215c3524c1fc2fcb538fc445e0d24f87c8431ed65ee3c17cd3f54ca1fa19ff08",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:21.850558167Z",
+        "error": "",
+        "id": "abf9a389568a4e90a817ab3931c49c9e",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/7b020b55-c58e-42a8-a152-119d295ba4bc-u1_de496cf7-e2f2-448e-9894-827d4c06c978.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1082
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/abf9a389568a4e90a817ab3931c49c9e/result"
+        }
+      },
+      "order": 17,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 88927,
+          "transparent_pixels": 500897,
+          "visible_bounds": [
+            231,
+            131,
+            552,
+            649
+          ]
+        },
+        "bytes": 206966,
+        "file": "cutout-frame-0017.png",
+        "height": 768,
+        "sha256": "66798e18eec35321ffec4e50d0d7bfc7cd176c566ec243827b0e23bfe426dc0a",
+        "width": 768
+      },
+      "prediction_id": "abf9a389568a4e90a817ab3931c49c9e",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968140144536415_9PZ8iqAK.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:21.851Z",
+        "error": "",
+        "id": "abf9a389568a4e90a817ab3931c49c9e",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968140144536415_9PZ8iqAK.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/abf9a389568a4e90a817ab3931c49c9e/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0018.png",
+      "input_sha256": "d818b2f766dc80543b26de6d62e2dd229af15cc16adca0b7811475ec1cc74d4e",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:27.720605853Z",
+        "error": "",
+        "id": "3217264190e94ac79231637a650692a7",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/18130e84-ff44-45d4-be85-7ade3a67c03a-u2_d69b4584-e41e-46a9-97ff-4289a5ccd3a5.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1069
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/3217264190e94ac79231637a650692a7/result"
+        }
+      },
+      "order": 18,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 88464,
+          "transparent_pixels": 501360,
+          "visible_bounds": [
+            233,
+            129,
+            556,
+            657
+          ]
+        },
+        "bytes": 203952,
+        "file": "cutout-frame-0018.png",
+        "height": 768,
+        "sha256": "9d34a250a4ddc7e8d89e7f6d271b71187e9358e954461e5617b73d8a4bd8d253",
+        "width": 768
+      },
+      "prediction_id": "3217264190e94ac79231637a650692a7",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968145964395148_camS4enw.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:27.721Z",
+        "error": "",
+        "id": "3217264190e94ac79231637a650692a7",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968145964395148_camS4enw.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/3217264190e94ac79231637a650692a7/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0019.png",
+      "input_sha256": "03e12a783112de1f7b53e8ea03dbff40897cb8e0b11e97cb1de045f295c05659",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:33.5860492Z",
+        "error": "",
+        "id": "bece7f376a06497380110875b8516a07",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/f150a770-31c7-4714-ab67-cc30276e042e-u1_047b5a1b-69f6-4ee9-9a67-97a04164d242.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1111
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/bece7f376a06497380110875b8516a07/result"
+        }
+      },
+      "order": 19,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 88670,
+          "transparent_pixels": 501154,
+          "visible_bounds": [
+            232,
+            128,
+            556,
+            657
+          ]
+        },
+        "bytes": 197491,
+        "file": "cutout-frame-0019.png",
+        "height": 768,
+        "sha256": "abb58e2e3dcc472c2ae6851305b4fde489ec2719172988285c1241842640e0ff",
+        "width": 768
+      },
+      "prediction_id": "bece7f376a06497380110875b8516a07",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968151798266414_6AKT1aV4.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:33.587Z",
+        "error": "",
+        "id": "bece7f376a06497380110875b8516a07",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968151798266414_6AKT1aV4.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/bece7f376a06497380110875b8516a07/result"
+        }
+      }
+    },
+    {
+      "input": "selected-frame-0020.png",
+      "input_sha256": "34976f6522d2e6453365fbaf0557765f5afb1f9725f342310e3c13e4ade8a4d3",
+      "last_readback": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:39.51931576Z",
+        "error": "",
+        "id": "088b75d7f47c47cb91d14edd03674384",
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [
+          "https://d2h7xmz5gqybh9.cloudfront.net/output/81c46614-3aea-437f-a46e-0d62cdc13bf4-u1_ea9a0a10-7c9d-40bf-9d1a-5e8d68e9740e.png"
+        ],
+        "status": "completed",
+        "timings": {
+          "inference": 1934
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/088b75d7f47c47cb91d14edd03674384/result"
+        }
+      },
+      "order": 20,
+      "output": {
+        "alpha": {
+          "has_true_alpha": true,
+          "maximum": 254,
+          "minimum": 0,
+          "opaque_pixels": 0,
+          "semi_transparent_pixels": 86889,
+          "transparent_pixels": 502935,
+          "visible_bounds": [
+            225,
+            130,
+            569,
+            663
+          ]
+        },
+        "bytes": 203074,
+        "file": "cutout-frame-0020.png",
+        "height": 768,
+        "sha256": "da40f9561ebb4d14a6615ed95b6f86a2050bd1055bd54b49748a253ed101f4f7",
+        "width": 768
+      },
+      "prediction_id": "088b75d7f47c47cb91d14edd03674384",
+      "provider_request": {
+        "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968157726992689_pU3bV3cl.png"
+      },
+      "status": "completed",
+      "submission_response": {
+        "code": 0,
+        "created_at": "2026-09-21T05:22:39.52Z",
+        "error": "",
+        "id": "088b75d7f47c47cb91d14edd03674384",
+        "input": {
+          "enable_base64_output": false,
+          "enable_sync_mode": false,
+          "image": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1789968157726992689_pU3bV3cl.png"
+        },
+        "model": "wavespeed-ai/image-background-remover",
+        "outputs": [],
+        "status": "created",
+        "timings": {
+          "inference": 0
+        },
+        "urls": {
+          "get": "https://api.wavespeed.ai/api/v3/predictions/088b75d7f47c47cb91d14edd03674384/result"
+        }
+      }
+    }
+  ],
+  "model": "wavespeed-ai/image-background-remover",
+  "preset": "waldlicht-removal-v1",
+  "preset_revision": "1",
+  "provider": "wavespeed",
+  "quote": {
+    "actual_charge_known": false,
+    "actual_charge_usd": null,
+    "estimate": true,
+    "model": "wavespeed-ai/image-background-remover",
+    "quoted_usd": 0.084,
+    "units": 21
+  },
+  "request": {
+    "input_sha256": {
+      "selected-frame-0000.png": "4b2600d1fc9ef965aea502ca5ab58ab4c8c31b5147b572eb642dd5f9796768f2",
+      "selected-frame-0001.png": "89de2ac08442160e17612c1825dc33f7ce1e6aaf6e8736c6a07183345703d247",
+      "selected-frame-0002.png": "682c67bee4a861609dd5946d4bd8d52a714f0f6a05c66f7b5049f4c3ee9bde41",
+      "selected-frame-0003.png": "2b12e968f0aaea16c58f10f1be38db060d14c55f792d728d001c685af9f360fe",
+      "selected-frame-0004.png": "35031e4208b33d16f3ba34c9f8e6aaa5eb76b03245b4b0aecd56ca385abf4619",
+      "selected-frame-0005.png": "0919d79ffa31b183cafdc3b9dd2815e2f632d7ebc47d97523669a66bf7971d3e",
+      "selected-frame-0006.png": "b61cd8151ee684180e3ad7d87c85122259aa80c5af76f2a777a9ebb9b22f19c9",
+      "selected-frame-0007.png": "536d831bcda054bb1b4f127d2a815e020ad96cdb3a95d1ed7e4612461623006f",
+      "selected-frame-0008.png": "bdfcb9eeb061fa615672d55d7b2151b54932d10e557993d2eb437cb6b4e2076d",
+      "selected-frame-0009.png": "93481535608cc99ab02d27929be5d10bed203347e65797a4ee0cd4cb178d184e",
+      "selected-frame-0010.png": "a00c951e5305ecb937ce03bd57e83f93a2170f5759d7b43e8fc6c118a4bf1da9",
+      "selected-frame-0011.png": "f980a44101b212fd337f7e0b856c0b9136dcbb70f7aa2ad0475712cb2e1242f0",
+      "selected-frame-0012.png": "1f4a6e20d948c062325956cf9cae7c0dc241a650a36064853e809ae9ee652dd8",
+      "selected-frame-0013.png": "dec62ac4b348498df31fada9eed949d577fba9ad383180d51755beb0a1f66538",
+      "selected-frame-0014.png": "3bfef996fc7f7f077604194a61a9b5b100f7d04344ac0b0f5abb101e64ef0730",
+      "selected-frame-0015.png": "5b4743891ef23e9f7a29c9253f6eb60e35bac8e3042cfb7c8ff988bcfff31b2b",
+      "selected-frame-0016.png": "15564f5ccf8d6247617e9fa1bc667cd97f07d8f1934881e9dddaf94bdb146309",
+      "selected-frame-0017.png": "215c3524c1fc2fcb538fc445e0d24f87c8431ed65ee3c17cd3f54ca1fa19ff08",
+      "selected-frame-0018.png": "d818b2f766dc80543b26de6d62e2dd229af15cc16adca0b7811475ec1cc74d4e",
+      "selected-frame-0019.png": "03e12a783112de1f7b53e8ea03dbff40897cb8e0b11e97cb1de045f295c05659",
+      "selected-frame-0020.png": "34976f6522d2e6453365fbaf0557765f5afb1f9725f342310e3c13e4ade8a4d3"
+    },
+    "model": "wavespeed-ai/image-background-remover",
+    "params": {
+      "budget": {
+        "authorized": true,
+        "max_usd": 0.084
+      },
+      "inputs": [
+        "selected-frame-0000.png",
+        "selected-frame-0001.png",
+        "selected-frame-0002.png",
+        "selected-frame-0003.png",
+        "selected-frame-0004.png",
+        "selected-frame-0005.png",
+        "selected-frame-0006.png",
+        "selected-frame-0007.png",
+        "selected-frame-0008.png",
+        "selected-frame-0009.png",
+        "selected-frame-0010.png",
+        "selected-frame-0011.png",
+        "selected-frame-0012.png",
+        "selected-frame-0013.png",
+        "selected-frame-0014.png",
+        "selected-frame-0015.png",
+        "selected-frame-0016.png",
+        "selected-frame-0017.png",
+        "selected-frame-0018.png",
+        "selected-frame-0019.png",
+        "selected-frame-0020.png"
+      ],
+      "preset": "waldlicht-removal-v1"
+    },
+    "preset": "waldlicht-removal-v1",
+    "schema": {
+      "capability": "background_removal",
+      "required": [
+        "image"
+      ],
+      "revision": "waldlicht-recorded-2026-09",
+      "source": "waldlicht/art/character-motion/se-cutout-01/schema.json"
+    },
+    "stage": "remove_background"
+  },
+  "result": {
+    "artifacts": [
+      "cutout-frame-0000.png",
+      "cutout-frame-0001.png",
+      "cutout-frame-0002.png",
+      "cutout-frame-0003.png",
+      "cutout-frame-0004.png",
+      "cutout-frame-0005.png",
+      "cutout-frame-0006.png",
+      "cutout-frame-0007.png",
+      "cutout-frame-0008.png",
+      "cutout-frame-0009.png",
+      "cutout-frame-0010.png",
+      "cutout-frame-0011.png",
+      "cutout-frame-0012.png",
+      "cutout-frame-0013.png",
+      "cutout-frame-0014.png",
+      "cutout-frame-0015.png",
+      "cutout-frame-0016.png",
+      "cutout-frame-0017.png",
+      "cutout-frame-0018.png",
+      "cutout-frame-0019.png",
+      "cutout-frame-0020.png",
+      "remove-background-state.json"
+    ],
+    "details": {
+      "actual_charge_known": false,
+      "actual_charge_usd": null,
+      "frames": [
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 255,
+            "minimum": 0,
+            "opaque_pixels": 436,
+            "semi_transparent_pixels": 86157,
+            "transparent_pixels": 503231,
+            "visible_bounds": [
+              219,
+              133,
+              567,
+              665
+            ]
+          },
+          "bytes": 199693,
+          "file": "cutout-frame-0000.png",
+          "height": 768,
+          "sha256": "8593e6562f5dc344cfc8bc8c4deeb6ea9a514a375b0cd32dd5a2164acc5ca135",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 255,
+            "minimum": 0,
+            "opaque_pixels": 1896,
+            "semi_transparent_pixels": 87526,
+            "transparent_pixels": 500402,
+            "visible_bounds": [
+              208,
+              142,
+              581,
+              672
+            ]
+          },
+          "bytes": 207451,
+          "file": "cutout-frame-0001.png",
+          "height": 768,
+          "sha256": "dad61054b47dd1020d5864335e02d41bd49d773dc347428ff5f5f8de1dff2c18",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 255,
+            "minimum": 0,
+            "opaque_pixels": 2041,
+            "semi_transparent_pixels": 87465,
+            "transparent_pixels": 500318,
+            "visible_bounds": [
+              208,
+              142,
+              580,
+              672
+            ]
+          },
+          "bytes": 202674,
+          "file": "cutout-frame-0002.png",
+          "height": 768,
+          "sha256": "8e1d0705a6d93c54548d6d7f10693559085a8f3eb475ca597f748f5cbd37d349",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 255,
+            "minimum": 0,
+            "opaque_pixels": 1653,
+            "semi_transparent_pixels": 87498,
+            "transparent_pixels": 500673,
+            "visible_bounds": [
+              210,
+              142,
+              580,
+              676
+            ]
+          },
+          "bytes": 208568,
+          "file": "cutout-frame-0003.png",
+          "height": 768,
+          "sha256": "398b7399e24b31b063fd4fece29a2b3e33f2d2e11f34c98acd03087f1d9a9112",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 255,
+            "minimum": 0,
+            "opaque_pixels": 1295,
+            "semi_transparent_pixels": 86111,
+            "transparent_pixels": 502418,
+            "visible_bounds": [
+              216,
+              139,
+              575,
+              669
+            ]
+          },
+          "bytes": 206117,
+          "file": "cutout-frame-0004.png",
+          "height": 768,
+          "sha256": "bda5ea51ad6133393f09bb6b4275e1ca69d497d3645a8dc449c2750fa6c6e9be",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 255,
+            "minimum": 0,
+            "opaque_pixels": 1239,
+            "semi_transparent_pixels": 85895,
+            "transparent_pixels": 502690,
+            "visible_bounds": [
+              216,
+              139,
+              570,
+              670
+            ]
+          },
+          "bytes": 201191,
+          "file": "cutout-frame-0005.png",
+          "height": 768,
+          "sha256": "0bd192e6842580c79696d75a11d2f2ea26a7e4e69df945b139c20f9ab23fcff2",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 255,
+            "minimum": 0,
+            "opaque_pixels": 827,
+            "semi_transparent_pixels": 85003,
+            "transparent_pixels": 503994,
+            "visible_bounds": [
+              221,
+              136,
+              566,
+              660
+            ]
+          },
+          "bytes": 201128,
+          "file": "cutout-frame-0006.png",
+          "height": 768,
+          "sha256": "b07dc05e845c004ea8b11eb5b6c36794f48c7d37beb2e04f8b67528f511e6aac",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 86466,
+            "transparent_pixels": 503358,
+            "visible_bounds": [
+              232,
+              129,
+              555,
+              645
+            ]
+          },
+          "bytes": 199261,
+          "file": "cutout-frame-0007.png",
+          "height": 768,
+          "sha256": "f6d566afaf6e1316d6c097c9a3c6970989b19c4d755be848ff821443d1650665",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 88212,
+            "transparent_pixels": 501612,
+            "visible_bounds": [
+              233,
+              128,
+              548,
+              639
+            ]
+          },
+          "bytes": 195748,
+          "file": "cutout-frame-0008.png",
+          "height": 768,
+          "sha256": "a46d654a96694d46d18099166b6a41b4b2a2a53f88bd7ffdcc7c2ce8150f5260",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 88185,
+            "transparent_pixels": 501639,
+            "visible_bounds": [
+              232,
+              129,
+              547,
+              639
+            ]
+          },
+          "bytes": 201683,
+          "file": "cutout-frame-0009.png",
+          "height": 768,
+          "sha256": "b35fbe8c7875047c52ba49e4d89a495f12cd81583ec236cfe4218e21ea62daf5",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 89834,
+            "transparent_pixels": 499990,
+            "visible_bounds": [
+              223,
+              131,
+              543,
+              645
+            ]
+          },
+          "bytes": 206631,
+          "file": "cutout-frame-0010.png",
+          "height": 768,
+          "sha256": "ed96f67df49acf8d06f94a17b4e5f1926cc3b36255f8cf62bf6df58ffea67234",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 90334,
+            "transparent_pixels": 499490,
+            "visible_bounds": [
+              214,
+              138,
+              545,
+              648
+            ]
+          },
+          "bytes": 207305,
+          "file": "cutout-frame-0011.png",
+          "height": 768,
+          "sha256": "cf8d95954557d853395fc4e1f72cf529003c92acbb1bd31ef2613ace8f29c5a5",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 90405,
+            "transparent_pixels": 499419,
+            "visible_bounds": [
+              209,
+              142,
+              546,
+              652
+            ]
+          },
+          "bytes": 208252,
+          "file": "cutout-frame-0012.png",
+          "height": 768,
+          "sha256": "31644a628f7c94933f6e70b81ae799485fb823ca94dea5fdfa3539affba8aba4",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 90440,
+            "transparent_pixels": 499384,
+            "visible_bounds": [
+              210,
+              142,
+              546,
+              652
+            ]
+          },
+          "bytes": 206524,
+          "file": "cutout-frame-0013.png",
+          "height": 768,
+          "sha256": "451894f4d89cb69a28687507d8fc54c6509d4cee719767d93a8270d03b6dfb66",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 90413,
+            "transparent_pixels": 499411,
+            "visible_bounds": [
+              216,
+              140,
+              545,
+              642
+            ]
+          },
+          "bytes": 209224,
+          "file": "cutout-frame-0014.png",
+          "height": 768,
+          "sha256": "4596aa0b74920f19b60b756f3f3200237f1cd21cb23550b9b395c0819fc99f17",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 90410,
+            "transparent_pixels": 499414,
+            "visible_bounds": [
+              216,
+              140,
+              545,
+              642
+            ]
+          },
+          "bytes": 209634,
+          "file": "cutout-frame-0015.png",
+          "height": 768,
+          "sha256": "582cbb98d0ac3dfbd700e5b21179a4cc76420387a9ae8fcc422beac5ef380623",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 89043,
+            "transparent_pixels": 500781,
+            "visible_bounds": [
+              225,
+              133,
+              549,
+              646
+            ]
+          },
+          "bytes": 200112,
+          "file": "cutout-frame-0016.png",
+          "height": 768,
+          "sha256": "c75a54576cdb9a9f5ca50aaf2ff3ef0c7a6581197b8dcf2d4a51b92fdcb3cb53",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 88927,
+            "transparent_pixels": 500897,
+            "visible_bounds": [
+              231,
+              131,
+              552,
+              649
+            ]
+          },
+          "bytes": 206966,
+          "file": "cutout-frame-0017.png",
+          "height": 768,
+          "sha256": "66798e18eec35321ffec4e50d0d7bfc7cd176c566ec243827b0e23bfe426dc0a",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 88464,
+            "transparent_pixels": 501360,
+            "visible_bounds": [
+              233,
+              129,
+              556,
+              657
+            ]
+          },
+          "bytes": 203952,
+          "file": "cutout-frame-0018.png",
+          "height": 768,
+          "sha256": "9d34a250a4ddc7e8d89e7f6d271b71187e9358e954461e5617b73d8a4bd8d253",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 88670,
+            "transparent_pixels": 501154,
+            "visible_bounds": [
+              232,
+              128,
+              556,
+              657
+            ]
+          },
+          "bytes": 197491,
+          "file": "cutout-frame-0019.png",
+          "height": 768,
+          "sha256": "abb58e2e3dcc472c2ae6851305b4fde489ec2719172988285c1241842640e0ff",
+          "width": 768
+        },
+        {
+          "alpha": {
+            "has_true_alpha": true,
+            "maximum": 254,
+            "minimum": 0,
+            "opaque_pixels": 0,
+            "semi_transparent_pixels": 86889,
+            "transparent_pixels": 502935,
+            "visible_bounds": [
+              225,
+              130,
+              569,
+              663
+            ]
+          },
+          "bytes": 203074,
+          "file": "cutout-frame-0020.png",
+          "height": 768,
+          "sha256": "da40f9561ebb4d14a6615ed95b6f86a2050bd1055bd54b49748a253ed101f4f7",
+          "width": 768
+        }
+      ],
+      "model": "wavespeed-ai/image-background-remover",
+      "preset": "waldlicht-removal-v1",
+      "preset_revision": "1",
+      "provider": "wavespeed",
+      "quote": {
+        "actual_charge_known": false,
+        "actual_charge_usd": null,
+        "estimate": true,
+        "model": "wavespeed-ai/image-background-remover",
+        "quoted_usd": 0.084,
+        "units": 21
+      },
+      "visual_approval": false
+    },
+    "status": "needs_review"
+  },
+  "status": "completed",
+  "version": 1
+}

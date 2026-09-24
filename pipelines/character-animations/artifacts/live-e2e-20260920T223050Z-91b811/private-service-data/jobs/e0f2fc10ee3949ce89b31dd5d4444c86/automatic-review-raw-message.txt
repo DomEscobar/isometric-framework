@@ -1,0 +1,6 @@
+{
+  "candidate_id": "candidate-01",
+  "decision": "approve",
+  "issues": [],
+  "rejection_reason": null
+}

@@ -1,0 +1,77 @@
+{
+  "output_hashes": {
+    "extract-frames.json": "d5d64dce5c1edb57c6f72f1eefaf9cebecc8788fa76076e6de3a57d0816c1ef5",
+    "selected-frame-0000.png": "1b007b7d7963796f00f7c3eec28a5d2404598edcf77c44897f6eb826d9be4bb2",
+    "selected-frame-0001.png": "46360dd9c06af29e9c734a4d17c811c8176ec51530b15550e02ef41c89cc505e",
+    "selected-frame-0002.png": "eb84f0951e9a2eb24affafc6c7a86ac1da472a3ba49bad952f380228066a0c4b",
+    "selected-frame-0003.png": "a99b79d722a9f38424c783c9fb6c9a1eab1aab78fb59b4b2bc0c755cf93f6942",
+    "selected-frame-0004.png": "df45da0c0d3526bfd08b444d590dcf8a4e114140f86dfe2cddd23b1c44a113a2",
+    "selected-frame-0005.png": "990ed8b083576db4d9083d45b117b34fb09d6711708f491cb1a911e36b6e435a",
+    "selected-frame-0006.png": "3080b845bc8bb7ea694b915342f32edfbd2479adf8ba353e300285fdf1b537c7",
+    "selected-frame-0007.png": "d39fccc20d0297e133befc44f8fa1fa22d7a6d2daacbf476f78ff2b90352e388",
+    "selected-frame-0008.png": "5e508e31f49941f2e13e114f168e97c209afb5cf8c37a668f55e8661927b913c",
+    "selected-frame-0009.png": "466d8d620e4495200264b2e7e2c4aa6a88e9af22f4ed5f4edb73a647d01f411f"
+  },
+  "request": {
+    "input_sha256": "2ca54f300087f790fbc02f1e938ff979700a9e52077da07eff96c33fb6e4e18e",
+    "params": {
+      "automatic_review": {
+        "id": "df6ba25bf1f242f1b30b67a31b2f4ebd",
+        "model": "google/gemini-3.8-flash",
+        "source_sha256": "2ca54f300087f790fbc02f1e938ff979700a9e52077da07eff96c33fb6e4e18e"
+      },
+      "fps": 30.0,
+      "indices": [
+        28,
+        33,
+        37,
+        42,
+        47,
+        52,
+        56,
+        61,
+        66,
+        70
+      ],
+      "input": "video-output.mp4",
+      "output_prefix": "selected"
+    },
+    "stage": "extract_frames"
+  },
+  "result": {
+    "artifacts": [
+      "selected-frame-0000.png",
+      "selected-frame-0001.png",
+      "selected-frame-0002.png",
+      "selected-frame-0003.png",
+      "selected-frame-0004.png",
+      "selected-frame-0005.png",
+      "selected-frame-0006.png",
+      "selected-frame-0007.png",
+      "selected-frame-0008.png",
+      "selected-frame-0009.png",
+      "extract-frames.json",
+      "extract-frames-state.json"
+    ],
+    "details": {
+      "fps": 30.0,
+      "frame_count": 10,
+      "selected_indices": [
+        28,
+        33,
+        37,
+        42,
+        47,
+        52,
+        56,
+        61,
+        66,
+        70
+      ],
+      "source_sha256": "2ca54f300087f790fbc02f1e938ff979700a9e52077da07eff96c33fb6e4e18e",
+      "visual_approval": false
+    },
+    "status": "needs_review"
+  },
+  "version": 1
+}

@@ -1,0 +1,540 @@
+{
+  "certification": {
+    "note": "Generic deterministic row-major atlas; not the framework V4 provenance format.",
+    "stock_framework_v4_claimed": false
+  },
+  "clip": {
+    "action": "walk",
+    "direction": "ne",
+    "fps": 6.382978723404255,
+    "frames": [
+      "keeper-walk-ne-live.walk.ne.0000",
+      "keeper-walk-ne-live.walk.ne.0001",
+      "keeper-walk-ne-live.walk.ne.0002",
+      "keeper-walk-ne-live.walk.ne.0003",
+      "keeper-walk-ne-live.walk.ne.0004",
+      "keeper-walk-ne-live.walk.ne.0005",
+      "keeper-walk-ne-live.walk.ne.0006",
+      "keeper-walk-ne-live.walk.ne.0007",
+      "keeper-walk-ne-live.walk.ne.0008",
+      "keeper-walk-ne-live.walk.ne.0009"
+    ],
+    "id": "keeper-walk-ne-live.walk.ne",
+    "loop": true
+  },
+  "frames": [
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0000",
+      "order": 0,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 2,
+        "y": 2
+      },
+      "source": {
+        "input": "cutout-frame-0000.png",
+        "input_alpha_bounds": [
+          312,
+          163,
+          656,
+          818
+        ],
+        "input_sha256": "58f252a6c49c1a748342ec8b86cdc70ad9e4652d6ffb1557f8ffc71f1b9ee9f1",
+        "order": 0,
+        "output": "normalized-frame-0000.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 140,
+          "semi_transparent_pixels": 1136,
+          "transparent_pixels": 5124,
+          "visible_bounds": [
+            23,
+            12,
+            58,
+            75
+          ]
+        },
+        "output_sha256": "57f55e429fe963a9c2a23e2a03924a516a8e91687cb0b06c83f34a97844f60d3",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0001",
+      "order": 1,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 84,
+        "y": 2
+      },
+      "source": {
+        "input": "cutout-frame-0001.png",
+        "input_alpha_bounds": [
+          312,
+          156,
+          650,
+          813
+        ],
+        "input_sha256": "a866b992026c42c72cf9c8fcde8062ec59f13e74d9ae5de2dc97376ff5e1a033",
+        "order": 1,
+        "output": "normalized-frame-0001.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 130,
+          "semi_transparent_pixels": 1105,
+          "transparent_pixels": 5165,
+          "visible_bounds": [
+            23,
+            11,
+            58,
+            74
+          ]
+        },
+        "output_sha256": "b2d44f836b7ad15b4c3e3b661aaa2d571cd14364d05f64b7c4ab84cb73470bc2",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0002",
+      "order": 2,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 166,
+        "y": 2
+      },
+      "source": {
+        "input": "cutout-frame-0002.png",
+        "input_alpha_bounds": [
+          312,
+          150,
+          652,
+          805
+        ],
+        "input_sha256": "b2af8a03db2484df427f86dc2006fd371b4a7e6a612f8bcd50cbfa3c0ddeb62a",
+        "order": 2,
+        "output": "normalized-frame-0002.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 123,
+          "semi_transparent_pixels": 1124,
+          "transparent_pixels": 5153,
+          "visible_bounds": [
+            23,
+            11,
+            58,
+            74
+          ]
+        },
+        "output_sha256": "1e24676f89445c416acc6084014eeaacd16aaf791c8b28e3df57fb0bb63aa382",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0003",
+      "order": 3,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 248,
+        "y": 2
+      },
+      "source": {
+        "input": "cutout-frame-0003.png",
+        "input_alpha_bounds": [
+          309,
+          152,
+          662,
+          794
+        ],
+        "input_sha256": "458dc865cadd42b1b4731fc8a52068ccffbcc163e451ac5452f38e07306c0b08",
+        "order": 3,
+        "output": "normalized-frame-0003.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 132,
+          "semi_transparent_pixels": 1172,
+          "transparent_pixels": 5096,
+          "visible_bounds": [
+            23,
+            11,
+            59,
+            73
+          ]
+        },
+        "output_sha256": "702d1f85f690d841a4628c8c74c55215d8b4529fd1cf38cc3a8de30dc4639cc6",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0004",
+      "order": 4,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 330,
+        "y": 2
+      },
+      "source": {
+        "input": "cutout-frame-0004.png",
+        "input_alpha_bounds": [
+          301,
+          160,
+          676,
+          797
+        ],
+        "input_sha256": "3dd0f038bec4c2eecd209b4a05f45e9fff5551ec6b49f2887fd43f483e6b1934",
+        "order": 4,
+        "output": "normalized-frame-0004.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 149,
+          "semi_transparent_pixels": 1182,
+          "transparent_pixels": 5069,
+          "visible_bounds": [
+            22,
+            12,
+            60,
+            73
+          ]
+        },
+        "output_sha256": "c6906a64416c2c157010e5ca4508206678f9155b23398df3bad6816a3d542c9c",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0005",
+      "order": 5,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 412,
+        "y": 2
+      },
+      "source": {
+        "input": "cutout-frame-0005.png",
+        "input_alpha_bounds": [
+          297,
+          164,
+          686,
+          804
+        ],
+        "input_sha256": "5b4368934d00a87afd5d78819c653fd89bab9bd0cf82873dbd920b34c12cc299",
+        "order": 5,
+        "output": "normalized-frame-0005.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 151,
+          "semi_transparent_pixels": 1206,
+          "transparent_pixels": 5043,
+          "visible_bounds": [
+            22,
+            12,
+            61,
+            74
+          ]
+        },
+        "output_sha256": "fbc4fac3023a16caaf764de742d32937b660bf64fd2b0802c3b74a549e630aa9",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0006",
+      "order": 6,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 494,
+        "y": 2
+      },
+      "source": {
+        "input": "cutout-frame-0006.png",
+        "input_alpha_bounds": [
+          297,
+          164,
+          693,
+          807
+        ],
+        "input_sha256": "c301ca827cd16904a1626729c0127847c6d9e69bac7c122ee9114230354b2b32",
+        "order": 6,
+        "output": "normalized-frame-0006.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 147,
+          "semi_transparent_pixels": 1212,
+          "transparent_pixels": 5041,
+          "visible_bounds": [
+            22,
+            12,
+            62,
+            74
+          ]
+        },
+        "output_sha256": "746b86e1d221a9cccfe7b54859427465677dfd429c61e3caf3414693eab0fb2a",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0007",
+      "order": 7,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 576,
+        "y": 2
+      },
+      "source": {
+        "input": "cutout-frame-0007.png",
+        "input_alpha_bounds": [
+          297,
+          157,
+          695,
+          810
+        ],
+        "input_sha256": "11318a38ab3c8c49e93982b889b1320c70c411dcd410a0e062afbad61d0ed9f7",
+        "order": 7,
+        "output": "normalized-frame-0007.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 139,
+          "semi_transparent_pixels": 1222,
+          "transparent_pixels": 5039,
+          "visible_bounds": [
+            22,
+            11,
+            62,
+            74
+          ]
+        },
+        "output_sha256": "bc85bd8491ab803f85c3208124a6ef86c32b850cac908097924bff388558307c",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0008",
+      "order": 8,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 2,
+        "y": 84
+      },
+      "source": {
+        "input": "cutout-frame-0008.png",
+        "input_alpha_bounds": [
+          301,
+          157,
+          686,
+          813
+        ],
+        "input_sha256": "13e431b16e7a180ab61d4dd865dfdd00723a2336a0dc13f6bf18523b21feb204",
+        "order": 8,
+        "output": "normalized-frame-0008.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 123,
+          "semi_transparent_pixels": 1176,
+          "transparent_pixels": 5101,
+          "visible_bounds": [
+            22,
+            11,
+            61,
+            74
+          ]
+        },
+        "output_sha256": "c51b76c4bd609fb801e2bf4153b8913c908a56efa344b92226fc58b57bd80e5b",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "id": "keeper-walk-ne-live.walk.ne.0009",
+      "order": 9,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 84,
+        "y": 84
+      },
+      "source": {
+        "input": "cutout-frame-0009.png",
+        "input_alpha_bounds": [
+          304,
+          157,
+          677,
+          814
+        ],
+        "input_sha256": "417b1c6e1f3ecd4dcb8e1cc806d14f8f095627c8d11138070d6154b738f37a70",
+        "order": 9,
+        "output": "normalized-frame-0009.png",
+        "output_alpha": {
+          "has_true_alpha": true,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 127,
+          "semi_transparent_pixels": 1148,
+          "transparent_pixels": 5125,
+          "visible_bounds": [
+            23,
+            12,
+            60,
+            75
+          ]
+        },
+        "output_sha256": "c545fc8d7c190782b4410b6204f9601eb4d2a06ac23257f64147b5f117f04f6c",
+        "paste_offset": [
+          -2,
+          0
+        ],
+        "scaled_full_canvas": [
+          85,
+          85
+        ]
+      }
+    }
+  ],
+  "image": {
+    "file": "atlas.png",
+    "height": 166,
+    "id": "keeper-walk-ne-live",
+    "sampling": "lanczos",
+    "sha256": "d9ed58a58a3c5c0fefc63bcf436a40ff163fdea1e91074fb54f8f65cf4b3ed3d",
+    "width": 658
+  },
+  "normalization": {
+    "file": "normalization.json",
+    "sha256": "60927eae16446b151b0571734c0b985c1bd7caf311a56ca4fd3551b924add66c"
+  },
+  "packing": {
+    "cell": {
+      "height": 80,
+      "width": 80
+    },
+    "columns": 8,
+    "gutter": 2,
+    "rows": 2
+  },
+  "schema": "animation-pipeline-atlas-v1",
+  "version": 1
+}

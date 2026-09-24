@@ -1,0 +1,82 @@
+{
+  "approved": true,
+  "budget": {
+    "actual_cost_known": true,
+    "actual_cost_usd": 0.011538,
+    "cap_usd": 0.01729875,
+    "context_length_tokens": 1048576,
+    "declared_max_input_tokens": 20065,
+    "evidence": {
+      "conservative_input_token_bound": 20065,
+      "image_count": 12,
+      "maximum_image_dimension_pixels": 384,
+      "mode": "numbered_image_sequence",
+      "native_video_sent": false,
+      "sample_indices": [
+        0,
+        6,
+        11,
+        17,
+        23,
+        24,
+        30,
+        31,
+        40,
+        46,
+        57,
+        63
+      ],
+      "text_bound_basis": "one token per UTF-8 byte plus 2048 envelope/schema tokens",
+      "token_authority": "Google Gemini media-resolution documentation: Gemini 3 high/unspecified images use at most 1120 tokens each",
+      "tokens_per_image_bound": 1120
+    },
+    "fixed_run_price_claimed": false,
+    "max_completion_tokens": 600,
+    "maximum_token_price_estimate_is_quote": true,
+    "maximum_token_price_estimate_usd": 0.01729875,
+    "reserved_worst_case_usd": 0.01729875
+  },
+  "issues": [],
+  "local_hard_failures": [],
+  "model": "google/gemini-3.8-flash",
+  "provider": "Google AI Studio",
+  "provider_decision": "approve",
+  "raw_message": {
+    "artifact": "automatic-review-raw-message.txt",
+    "bytes": 105,
+    "sha256": "208be6c208dcb68e6c0bd17572f28bfc7acd9729cd6864da515441d79daf96bc",
+    "truncated": false
+  },
+  "rejection_reason": null,
+  "response_id": "gen-1789943583-3xfNdfNAVvEFv1dBTG7W",
+  "selected_candidate": {
+    "duration_seconds": 1.583333,
+    "end_exclusive_sample_index": 30,
+    "end_source_frame_index": 75,
+    "end_timestamp_seconds": 2.5,
+    "endpoint_difference": 0.007223,
+    "foreground_displacement": 0.001563,
+    "heuristic_only": true,
+    "heuristic_score": 0.979079,
+    "id": "candidate-01",
+    "mean_internal_motion": 0.007138,
+    "motion_direction_discontinuity": 0.000521,
+    "start_sample_index": 11,
+    "start_source_frame_index": 28,
+    "start_timestamp_seconds": 0.916667
+  },
+  "self_reported_confidence": null,
+  "server_request_binding": {
+    "request_id": "df6ba25bf1f242f1b30b67a31b2f4ebd",
+    "source_revision": 1,
+    "source_sha256": "2ca54f300087f790fbc02f1e938ff979700a9e52077da07eff96c33fb6e4e18e"
+  },
+  "source_sha256": "2ca54f300087f790fbc02f1e938ff979700a9e52077da07eff96c33fb6e4e18e",
+  "status": "approved",
+  "usage": {
+    "completion_tokens": 39,
+    "prompt_tokens": 15189,
+    "total_tokens": 15228
+  },
+  "version": 1
+}

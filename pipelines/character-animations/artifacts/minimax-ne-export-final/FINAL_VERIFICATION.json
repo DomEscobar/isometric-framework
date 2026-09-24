@@ -1,0 +1,143 @@
+{
+  "checks": [
+    "all 24 manifest rectangles in bounds and nonblank",
+    "all delivered atlas frame alpha excludes 1..7 cleanup band",
+    "all 24 provider IDs unique and completed",
+    "all provider outputs downloaded and hash-matched",
+    "encoded previews decoded by ffprobe",
+    "two encoded loop seams extracted from actual 160px delivery MP4",
+    "ZIP CRC and required entries verified"
+  ],
+  "encoded_previews": {
+    "160": {
+      "file": "preview-160-native-petrol-3loops.mp4",
+      "probe": {
+        "format": {
+          "duration": "4.000000"
+        },
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "avg_frame_rate": "18/1",
+            "height": 160,
+            "nb_read_frames": "72",
+            "width": 160
+          }
+        ]
+      },
+      "sha256": "420784415b22840ef62f898180f6af10f0458c6caddb376681a002314bfe7605"
+    },
+    "80": {
+      "file": "preview-80-native-petrol-3loops.mp4",
+      "probe": {
+        "format": {
+          "duration": "4.000000"
+        },
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "avg_frame_rate": "18/1",
+            "height": 80,
+            "nb_read_frames": "72",
+            "width": 80
+          }
+        ]
+      },
+      "sha256": "8e8b33730b50eca22e19bd546afe2900993e848115819472b81d22c03ac75833"
+    }
+  },
+  "evidence": [
+    {
+      "file": "ALL_FRAMES_80_LIGHT.png",
+      "sha256": "1a4f47a37f4ede6e1198352350286091d78242acca896edea5ca46a45859f19b"
+    },
+    {
+      "file": "ALL_FRAMES_80_DARK.png",
+      "sha256": "6401e08734b2d1bbed96481ceb96fe713587b13464c1d9022d46ba70451f6f38"
+    },
+    {
+      "file": "ALL_FRAMES_80_PETROL.png",
+      "sha256": "689e35a787769f3a42cfc3c0d9523964d92f40a91c832ad540eccfa5374c3436"
+    },
+    {
+      "file": "ALL_FRAMES_160_LIGHT.png",
+      "sha256": "afcd3e6f9950bbf5071052cd4f8334022ac9c8b51b333697377be9803e6ba7b1"
+    },
+    {
+      "file": "ALL_FRAMES_160_DARK.png",
+      "sha256": "17baa8515ef6e4ecf9b37986842bc12329c5f47567ecefb58e76237c533246f8"
+    },
+    {
+      "file": "ALL_FRAMES_160_PETROL.png",
+      "sha256": "331511ffbb1bfd27376ebed4f228339486ccb69289eb1359e0c74c2d5818f747"
+    },
+    {
+      "file": "FINAL_ENCODED_SEAM.png",
+      "sha256": "162f22be027e8bd10d87a03bfd233b5bd8aa4ec73498a9bef64a7973680e000e"
+    }
+  ],
+  "manifests": {
+    "160": {
+      "alpha_1_7_survivors": 0,
+      "atlas_sha256": "fed19c063cadf9a917c4c0d9713ff216491908ec88023ca3d36622be758483f1",
+      "duration_seconds": 1.3333333333333333,
+      "fps": 18.0,
+      "frame_count": 24,
+      "manifest_sha256": "23ad16426a707b1affbe070af50d275d0e7c37fd91f3e018871b911ac13c0662",
+      "nonblank_frames": 24
+    },
+    "80": {
+      "alpha_1_7_survivors": 0,
+      "atlas_sha256": "d32a012e8035ccbef7279f1baa682bdc187ef8383d5fda400fa21c645a9529ea",
+      "duration_seconds": 1.3333333333333333,
+      "fps": 18.0,
+      "frame_count": 24,
+      "manifest_sha256": "8b88ba63ea30731b4c349fe24dbe6959236ab676379f08d0306c1e9a5fe9366c",
+      "nonblank_frames": 24
+    }
+  },
+  "provider": {
+    "in_flight": false,
+    "output_hashes": [
+      "7f198d5a7141d2cf558e1f9980cc9f3213cba035d1ce83fff0ba3c038200723f",
+      "2744e36828785e38d4b273d0a61035834bd600c3a587e72651c9eb96044debb6",
+      "dedcfc898c3f4a75adcc74176a90a65f4827c44bad1488cf43c5fe2744fa51ee",
+      "8593e6562f5dc344cfc8bc8c4deeb6ea9a514a375b0cd32dd5a2164acc5ca135",
+      "dad61054b47dd1020d5864335e02d41bd49d773dc347428ff5f5f8de1dff2c18",
+      "8e1d0705a6d93c54548d6d7f10693559085a8f3eb475ca597f748f5cbd37d349",
+      "398b7399e24b31b063fd4fece29a2b3e33f2d2e11f34c98acd03087f1d9a9112",
+      "bda5ea51ad6133393f09bb6b4275e1ca69d497d3645a8dc449c2750fa6c6e9be",
+      "0bd192e6842580c79696d75a11d2f2ea26a7e4e69df945b139c20f9ab23fcff2",
+      "b07dc05e845c004ea8b11eb5b6c36794f48c7d37beb2e04f8b67528f511e6aac",
+      "f6d566afaf6e1316d6c097c9a3c6970989b19c4d755be848ff821443d1650665",
+      "a46d654a96694d46d18099166b6a41b4b2a2a53f88bd7ffdcc7c2ce8150f5260",
+      "b35fbe8c7875047c52ba49e4d89a495f12cd81583ec236cfe4218e21ea62daf5",
+      "ed96f67df49acf8d06f94a17b4e5f1926cc3b36255f8cf62bf6df58ffea67234",
+      "cf8d95954557d853395fc4e1f72cf529003c92acbb1bd31ef2613ace8f29c5a5",
+      "31644a628f7c94933f6e70b81ae799485fb823ca94dea5fdfa3539affba8aba4",
+      "451894f4d89cb69a28687507d8fc54c6509d4cee719767d93a8270d03b6dfb66",
+      "4596aa0b74920f19b60b756f3f3200237f1cd21cb23550b9b395c0819fc99f17",
+      "582cbb98d0ac3dfbd700e5b21179a4cc76420387a9ae8fcc422beac5ef380623",
+      "c75a54576cdb9a9f5ca50aaf2ff3ef0c7a6581197b8dcf2d4a51b92fdcb3cb53",
+      "66798e18eec35321ffec4e50d0d7bfc7cd176c566ec243827b0e23bfe426dc0a",
+      "9d34a250a4ddc7e8d89e7f6d271b71187e9358e954461e5617b73d8a4bd8d253",
+      "abb58e2e3dcc472c2ae6851305b4fde489ec2719172988285c1241842640e0ff",
+      "da40f9561ebb4d14a6615ed95b6f86a2050bd1055bd54b49748a253ed101f4f7"
+    ],
+    "prediction_count": 24,
+    "statuses": [
+      "completed"
+    ],
+    "unique_prediction_count": 24
+  },
+  "status": "passed_technical_and_exact_visual_evidence_created",
+  "visual_quality_certified": false,
+  "zip": {
+    "entry_count": 11,
+    "file": "minimax-ne-transparent-export.zip",
+    "sha256": "6146931fa367af5a20b8e274aab737c1f2fac8e776914f9459cea55e6411737e",
+    "testzip": null
+  }
+}

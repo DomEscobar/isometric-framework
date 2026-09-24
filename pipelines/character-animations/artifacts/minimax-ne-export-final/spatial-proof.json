@@ -1,0 +1,32 @@
+{
+  "board": {
+    "file": "SPATIAL_PROOFBOARD.png",
+    "sha256": "144d14364a2223451093771ed532125e3d401c495b43d976c5f2ae12d3be6878"
+  },
+  "candidate": "candidate-01-66-98",
+  "processing": "direct full-resolution provider cutout -> premultiplied-alpha Lanczos resize -> alpha 1..7 cleanup",
+  "provider_cutout_hashes": [
+    "7f198d5a7141d2cf558e1f9980cc9f3213cba035d1ce83fff0ba3c038200723f",
+    "2744e36828785e38d4b273d0a61035834bd600c3a587e72651c9eb96044debb6",
+    "dedcfc898c3f4a75adcc74176a90a65f4827c44bad1488cf43c5fe2744fa51ee"
+  ],
+  "representative_native_indices": [
+    66,
+    82,
+    97
+  ],
+  "source_sha256": "cd02ae6369794274e49df2253ee8c5b100d7192ba9a5c5c94d98fe59a41e42dd",
+  "transform": {
+    "scale": 0.22524271844660193,
+    "source_root": [
+      395.5,
+      652.0
+    ],
+    "target_root": [
+      80,
+      144
+    ],
+    "target_visible_height": 116
+  },
+  "visual_quality_certified": false
+}

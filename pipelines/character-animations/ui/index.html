@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Animation Werkstatt</title>
+  <link rel="stylesheet" href="./app.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Animation Werkstatt Startseite">
+      <span class="brand-mark">A</span><span>Animation Werkstatt</span>
+    </a>
+    <span id="connectionState" class="pill muted">Nicht verbunden</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">SPRITE-LABOR</p>
+        <h1>Vom Referenzbild<br>zur laufenden Figur.</h1>
+        <p class="lead">Referenz prüfen, Ergebnisse freigeben und echte Atlas-Frames direkt ansehen.</p>
+      </div>
+      <div class="demo-card">
+        <div class="section-head">
+          <div><span class="tag demo">ECHTES DEMO</span><h2>Akzeptierter Replay</h2></div>
+          <span id="demoDirection" class="pill">Richtung —</span>
+        </div>
+        <div class="canvas-stage checkerboard">
+          <canvas id="demoCanvas" width="320" height="320" aria-label="Animierte Demo-Sprite-Vorschau"></canvas>
+        </div>
+        <div class="controls">
+          <button id="demoPlay" class="secondary" type="button">Pause</button>
+          <button id="demoMirror" class="secondary" type="button" aria-pressed="false">Spiegeln</button>
+          <span id="demoMeta" class="meta">Manifest wird geladen …</span>
+        </div>
+        <p class="fineprint">Reale, lokal replayte Ausgabe. Keine Generierung und keine Kosten beim Abspielen.</p>
+      </div>
+    </section>
+
+    <section class="auth-card">
+      <div>
+        <h2>Zugang</h2>
+        <p>Der Token bleibt nur in diesem Tab (sessionStorage) und wird ausschließlich als Bearer-Header gesendet.</p>
+      </div>
+      <form id="tokenForm" class="token-form">
+        <label for="token">API-Token</label>
+        <div class="field-row">
+          <input id="token" name="token" type="password" autocomplete="off" placeholder="Token einfügen" required>
+          <button type="submit">Verbinden</button>
+          <button id="forgetToken" class="ghost" type="button">Vergessen</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel agent-panel" aria-labelledby="agentHeading">
+      <div class="section-head">
+        <div><p class="step">API</p><h2 id="agentHeading">Für Coding-Agents</h2></div>
+        <span class="pill free">OPENAPI 3.1</span>
+      </div>
+      <p>Der Prompt verweist auf die echte stufenbasierte API. Er enthält keinen Token; der Agent muss <span class="mono">ANIMATION_API_TOKEN</span> aus seiner Umgebung lesen.</p>
+      <label for="agentPrompt">Kopierbarer Integrations-Prompt</label>
+      <textarea id="agentPrompt" class="agent-prompt" rows="11" readonly spellcheck="false" aria-describedby="agentCopyStatus">Prompt wird geladen …</textarea>
+      <div class="agent-actions">
+        <button id="copyAgentPrompt" type="button" disabled>Prompt kopieren</button>
+        <a class="button-link secondary" href="https://isoani.huecki.com/animation/agent-guide.md" target="_blank" rel="noreferrer">Anleitung lesen</a>
+        <a class="button-link secondary" href="https://isoani.huecki.com/animation/agent-guide.md" download="animation-pipeline-agent-guide.md">Anleitung laden</a>
+        <a class="button-link secondary" href="https://isoani.huecki.com/animation/openapi.json" target="_blank" rel="noreferrer">OpenAPI ansehen</a>
+      </div>
+      <p id="agentCopyStatus" class="fineprint" role="status" aria-live="polite">Single-Owner-Token: nur mit vertrauenswürdigen Coding-Agents teilen, nie mit nicht vertrauenswürdigen Nutzern.</p>
+    </section>
+
+    <div id="notice" class="notice hidden" role="alert"></div>
+
+    <section class="workspace-grid">
+      <div class="panel upload-panel">
+        <div class="section-head"><div><p class="step">01</p><h2>Referenz prüfen</h2></div><span class="pill free">KOSTENLOS</span></div>
+        <p>PNG auswählen. Der Upload startet nur die numerische Referenzprüfung — niemals einen bezahlten Provider-Aufruf.</p>
+        <form id="uploadForm">
+          <label id="dropzone" class="dropzone" for="reference">
+            <input id="reference" name="reference" type="file" accept="image/png" required>
+            <img id="localPreview" class="hidden" alt="Lokale Referenzvorschau">
+            <span id="dropText"><strong>PNG auswählen</strong><small>max. 20 MiB · 4096 px pro Seite</small></span>
+          </label>
+          <button id="uploadButton" class="wide" type="submit" disabled>Hochladen & prüfen</button>
+        </form>
+      </div>
+
+      <div class="panel jobs-panel">
+        <div class="section-head"><div><p class="step">02</p><h2>Aufträge</h2></div><button id="refreshJobs" class="icon-button" type="button" aria-label="Aufträge neu laden">↻</button></div>
+        <div id="jobsEmpty" class="empty">Nach dem Verbinden erscheinen hier deine Aufträge.</div>
+        <div id="jobsList" class="job-list"></div>
+      </div>
+    </section>
+
+    <section id="jobDetail" class="panel detail-panel hidden">
+      <div class="section-head">
+        <div><p class="step">03</p><h2>Auftrag <span id="detailId" class="mono"></span></h2></div>
+        <a id="downloadZip" class="button-link" href="#">ZIP laden</a>
+      </div>
+      <div id="jobStatus" class="status-strip"></div>
+      <div class="detail-grid">
+        <div>
+          <h3>Artefakte & Freigabe</h3>
+          <p class="fineprint">Eine Freigabe gilt exakt für den angezeigten SHA-256 und die Revision.</p>
+          <div id="artifactList" class="artifact-list"></div>
+        </div>
+        <div class="preview-column">
+          <h3>Ausgewähltes Artefakt</h3>
+          <div id="artifactPreview" class="artifact-preview checkerboard"><span>Artefakt auswählen</span></div>
+          <div id="reviewBox" class="review-box hidden">
+            <div id="reviewIdentity" class="mono compact"></div>
+            <div class="field-row">
+              <button id="approveArtifact" type="button">Exakt freigeben</button>
+              <button id="rejectArtifact" class="danger" type="button">Ablehnen</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="automaticReviewBox" class="stage-box">
+        <div class="section-head">
+          <div><h3>Automatische Quellenauswahl</h3><p id="automaticReviewPolicy">Lokale Analyse wird geprüft …</p></div>
+          <span class="pill free">LOKAL KOSTENLOS</span>
+        </div>
+        <p>Lokale Schnitt-/Stillstandsprüfung läuft zuerst. Nur sichere Kandidaten dürfen anschließend mit <span class="mono">google/gemini-3.8-flash</span> geprüft werden.</p>
+        <label>Videoartefakt<select id="automaticReviewArtifact"></select></label>
+        <label>Frames pro Clip
+          <select id="automaticReviewFramePolicy">
+            <option value="8" selected>8 Frames (Standard)</option>
+            <option value="12">12 Frames</option>
+            <option value="16">16 Frames</option>
+            <option value="native">Nativ / dicht</option>
+          </select>
+        </label>
+        <div id="automaticReviewCandidates" class="candidate-list"><span class="fineprint">Noch keine automatische Analyse für diesen Auftrag.</span></div>
+        <div class="paid-fields">
+          <label class="check"><input id="authorizeAutomaticReview" type="checkbox"> Einen einzelnen OpenRouter-Review autorisieren</label>
+          <label>Review-Budget-Obergrenze (USD)<input id="automaticReviewBudget" type="number" min="0.001" step="0.001"></label>
+        </div>
+        <button id="startAutomaticReview" type="button">Automatisch analysieren</button>
+        <p class="fineprint">Eine Modellfreigabe wählt native Frames automatisch aus. Extrahierte Frames, Alphaqualität und Atlas bleiben danach prüfpflichtig — das ist kein Qualitätsnachweis für die vollständige Kette.</p>
+      </div>
+
+      <div class="stage-box">
+        <div class="section-head"><div><h3>Nächste Stufe</h3><p id="paidPolicy">Serverrichtlinie wird geladen …</p></div></div>
+        <form id="stageForm">
+          <div class="form-grid">
+            <label>Stufe<select id="stageName"></select></label>
+            <label id="presetLabel">Provider-Preset<select id="presetName"></select></label>
+          </div>
+          <div id="sourceVideoFields" class="hidden">
+            <div class="form-grid">
+              <label>Videodauer
+                <select id="sourceDuration">
+                  <option value="3" selected>3 Sekunden</option>
+                  <option value="5">5 Sekunden</option>
+                  <option value="8">8 Sekunden</option>
+                  <option value="10">10 Sekunden</option>
+                </select>
+              </label>
+              <label>Videoauflösung
+                <select id="sourceResolution">
+                  <option value="480p" selected>480p</option>
+                  <option value="768p">768p</option>
+                </select>
+              </label>
+            </div>
+            <p class="fineprint">Diese Werte gelten für das Quellvideo. Der spätere Action-Export mit 8/12/16 Frames und 80/160 px bleibt davon getrennt. <span id="sourceVideoQuote"></span></p>
+          </div>
+          <div id="exportResolutionFields" class="hidden">
+            <label>Sprite-Auflösung
+              <select id="exportResolution">
+                <option value="160" selected>160 × 160 px</option>
+                <option value="80">80 × 80 px</option>
+              </select>
+            </label>
+            <p class="fineprint">Getrennt von der Videoauflösung; direkt aus dem Master abgeleitet.</p>
+          </div>
+          <label>Parameter nach dokumentiertem Schema<textarea id="stageParams" rows="9" spellcheck="false"></textarea></label>
+          <div id="paidFields" class="paid-fields hidden">
+            <label class="check"><input id="authorizePaid" type="checkbox"> Diesen einzelnen bezahlten Aufruf ausdrücklich autorisieren</label>
+            <label>Budget-Obergrenze (USD)<input id="budgetCap" type="number" min="0.001" step="0.001"></label>
+          </div>
+          <button id="submitStage" type="submit">Stufe anfordern</button>
+          <p class="fineprint">Der Server prüft Freigaben, Schema und Budget erneut. Uploads schalten keine Ausgaben frei.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>animation-pipeline-atlas-v1 · echte Frames · keine erfundene CSS-Animation</footer>
+</body>
+</html>

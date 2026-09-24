@@ -1,0 +1,249 @@
+{
+  "automatic_review_id": "df6ba25bf1f242f1b30b67a31b2f4ebd",
+  "automatic_selection": true,
+  "decode": {
+    "filter": "select=eq(n\\,28)+eq(n\\,33)+eq(n\\,37)+eq(n\\,42)+eq(n\\,47)+eq(n\\,52)+eq(n\\,56)+eq(n\\,61)+eq(n\\,66)+eq(n\\,70)",
+    "selected_indices_only_published": true,
+    "selection": "exact_sparse_native_frame_indices",
+    "stream": "0:v:0",
+    "tool": "ffmpeg"
+  },
+  "frames": [
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0000.png",
+      "height": 960,
+      "order": 0,
+      "sha256": "1b007b7d7963796f00f7c3eec28a5d2404598edcf77c44897f6eb826d9be4bb2",
+      "source_index": 28,
+      "timestamp_seconds": 0.9333333333333333,
+      "width": 960
+    },
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0001.png",
+      "height": 960,
+      "order": 1,
+      "sha256": "46360dd9c06af29e9c734a4d17c811c8176ec51530b15550e02ef41c89cc505e",
+      "source_index": 33,
+      "timestamp_seconds": 1.1,
+      "width": 960
+    },
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0002.png",
+      "height": 960,
+      "order": 2,
+      "sha256": "eb84f0951e9a2eb24affafc6c7a86ac1da472a3ba49bad952f380228066a0c4b",
+      "source_index": 37,
+      "timestamp_seconds": 1.2333333333333334,
+      "width": 960
+    },
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0003.png",
+      "height": 960,
+      "order": 3,
+      "sha256": "a99b79d722a9f38424c783c9fb6c9a1eab1aab78fb59b4b2bc0c755cf93f6942",
+      "source_index": 42,
+      "timestamp_seconds": 1.4,
+      "width": 960
+    },
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0004.png",
+      "height": 960,
+      "order": 4,
+      "sha256": "df45da0c0d3526bfd08b444d590dcf8a4e114140f86dfe2cddd23b1c44a113a2",
+      "source_index": 47,
+      "timestamp_seconds": 1.5666666666666667,
+      "width": 960
+    },
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0005.png",
+      "height": 960,
+      "order": 5,
+      "sha256": "990ed8b083576db4d9083d45b117b34fb09d6711708f491cb1a911e36b6e435a",
+      "source_index": 52,
+      "timestamp_seconds": 1.7333333333333334,
+      "width": 960
+    },
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0006.png",
+      "height": 960,
+      "order": 6,
+      "sha256": "3080b845bc8bb7ea694b915342f32edfbd2479adf8ba353e300285fdf1b537c7",
+      "source_index": 56,
+      "timestamp_seconds": 1.8666666666666667,
+      "width": 960
+    },
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0007.png",
+      "height": 960,
+      "order": 7,
+      "sha256": "d39fccc20d0297e133befc44f8fa1fa22d7a6d2daacbf476f78ff2b90352e388",
+      "source_index": 61,
+      "timestamp_seconds": 2.033333333333333,
+      "width": 960
+    },
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0008.png",
+      "height": 960,
+      "order": 8,
+      "sha256": "5e508e31f49941f2e13e114f168e97c209afb5cf8c37a668f55e8661927b913c",
+      "source_index": 66,
+      "timestamp_seconds": 2.2,
+      "width": 960
+    },
+    {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 921600,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          960,
+          960
+        ]
+      },
+      "file": "selected-frame-0009.png",
+      "height": 960,
+      "order": 9,
+      "sha256": "466d8d620e4495200264b2e7e2c4aa6a88e9af22f4ed5f4edb73a647d01f411f",
+      "source_index": 70,
+      "timestamp_seconds": 2.3333333333333335,
+      "width": 960
+    }
+  ],
+  "source": {
+    "file": "video-output.mp4",
+    "sha256": "2ca54f300087f790fbc02f1e938ff979700a9e52077da07eff96c33fb6e4e18e"
+  },
+  "version": 1,
+  "visual_approval": false
+}

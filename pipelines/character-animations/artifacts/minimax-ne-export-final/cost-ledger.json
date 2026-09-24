@@ -1,0 +1,52 @@
+{
+  "authorization": {
+    "ceiling_eur": 20,
+    "source": "QUALITY_AUTHORIZATION_20EUR.md"
+  },
+  "cumulative_ceiling_usd": 22.92,
+  "cumulative_maximum_accounted_usd": 1.56646275,
+  "cumulative_prior_maximum_accounted_usd": "1.47046275",
+  "currency": "USD",
+  "entries": [
+    {
+      "actual_charge_known": false,
+      "actual_charge_usd": null,
+      "id": "minimax-ne-selected-removals",
+      "model": "wavespeed-ai/image-background-remover",
+      "provider_references": [
+        "0252b46f5730479e8a6ff6e36f1437a8",
+        "088b75d7f47c47cb91d14edd03674384",
+        "13c89fbb7f54479ebc0e093de45d5c04",
+        "151cb270b5d445308ab3314eab8e529b",
+        "24f805a55d5b4322be2650141e654c6a",
+        "27ae918e210d48cca2fc52b532e22831",
+        "3217264190e94ac79231637a650692a7",
+        "3da7f4801a194472aafc4491bf77a855",
+        "4cb414ba0e5745ebb9fd34ff10360865",
+        "6ccc5dbbba3243d391deb427b4bb2fde",
+        "87f3bf4fd5874882a9502b6bb6c375f8",
+        "88c96e9a286f499dadc558011be44571",
+        "8d749b4a8b534fc2bfc08a7f884528e6",
+        "963c0448918b403dbdc67dafa1660789",
+        "abf9a389568a4e90a817ab3931c49c9e",
+        "ae2f09bb01d9430c872273621b321028",
+        "afa0b0dc50f74abcaaff09da12d51ec3",
+        "b5512e4fadfe44bda2d29ba01291f4e0",
+        "b6293e6d46c149ae8edf5880e34aebe5",
+        "bece7f376a06497380110875b8516a07",
+        "d3ad50c8522646699a29cce329ad16b9",
+        "da25344fed8d4b0c8657ac833c1651b6",
+        "f4c3d67925f942679347c95194faab3a",
+        "fd8292602af04f308acbd8f17823a68b"
+      ],
+      "reserved_worst_case_usd": 0.096,
+      "selected_frame_count_maximum": 24,
+      "status": "completed_charge_not_authoritatively_reported_full_reservation_retained",
+      "unit_quote_usd": 0.004
+    }
+  ],
+  "stage_cap_usd": 0.5,
+  "this_stage_maximum_accounted_usd": 0.096,
+  "updated_at_utc": "2026-09-21T05:22:43.282814Z",
+  "version": 1
+}

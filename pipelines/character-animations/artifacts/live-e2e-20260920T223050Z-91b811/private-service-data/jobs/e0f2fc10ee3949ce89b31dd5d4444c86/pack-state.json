@@ -1,0 +1,114 @@
+{
+  "output_hashes": {
+    "atlas-manifest.json": "e7e34fbcec0ecd75c1ef9986d80024a68c2cd46a857b1e1f4db001cafee0c690",
+    "atlas.png": "d9ed58a58a3c5c0fefc63bcf436a40ff163fdea1e91074fb54f8f65cf4b3ed3d",
+    "normalization.json": "60927eae16446b151b0571734c0b985c1bd7caf311a56ca4fd3551b924add66c",
+    "normalized-frame-0000.png": "57f55e429fe963a9c2a23e2a03924a516a8e91687cb0b06c83f34a97844f60d3",
+    "normalized-frame-0001.png": "b2d44f836b7ad15b4c3e3b661aaa2d571cd14364d05f64b7c4ab84cb73470bc2",
+    "normalized-frame-0002.png": "1e24676f89445c416acc6084014eeaacd16aaf791c8b28e3df57fb0bb63aa382",
+    "normalized-frame-0003.png": "702d1f85f690d841a4628c8c74c55215d8b4529fd1cf38cc3a8de30dc4639cc6",
+    "normalized-frame-0004.png": "c6906a64416c2c157010e5ca4508206678f9155b23398df3bad6816a3d542c9c",
+    "normalized-frame-0005.png": "fbc4fac3023a16caaf764de742d32937b660bf64fd2b0802c3b74a549e630aa9",
+    "normalized-frame-0006.png": "746b86e1d221a9cccfe7b54859427465677dfd429c61e3caf3414693eab0fb2a",
+    "normalized-frame-0007.png": "bc85bd8491ab803f85c3208124a6ef86c32b850cac908097924bff388558307c",
+    "normalized-frame-0008.png": "c51b76c4bd609fb801e2bf4153b8913c908a56efa344b92226fc58b57bd80e5b",
+    "normalized-frame-0009.png": "c545fc8d7c190782b4410b6204f9601eb4d2a06ac23257f64147b5f117f04f6c",
+    "pack-result.json": "8bd40478d80f8f8d0c7ce25241d140174b51c0556ce1a7fc2ab8ea244d939e54"
+  },
+  "request": {
+    "input_sha256": {
+      "cutout-frame-0000.png": "58f252a6c49c1a748342ec8b86cdc70ad9e4652d6ffb1557f8ffc71f1b9ee9f1",
+      "cutout-frame-0001.png": "a866b992026c42c72cf9c8fcde8062ec59f13e74d9ae5de2dc97376ff5e1a033",
+      "cutout-frame-0002.png": "b2af8a03db2484df427f86dc2006fd371b4a7e6a612f8bcd50cbfa3c0ddeb62a",
+      "cutout-frame-0003.png": "458dc865cadd42b1b4731fc8a52068ccffbcc163e451ac5452f38e07306c0b08",
+      "cutout-frame-0004.png": "3dd0f038bec4c2eecd209b4a05f45e9fff5551ec6b49f2887fd43f483e6b1934",
+      "cutout-frame-0005.png": "5b4368934d00a87afd5d78819c653fd89bab9bd0cf82873dbd920b34c12cc299",
+      "cutout-frame-0006.png": "c301ca827cd16904a1626729c0127847c6d9e69bac7c122ee9114230354b2b32",
+      "cutout-frame-0007.png": "11318a38ab3c8c49e93982b889b1320c70c411dcd410a0e062afbad61d0ed9f7",
+      "cutout-frame-0008.png": "13e431b16e7a180ab61d4dd865dfdd00723a2336a0dc13f6bf18523b21feb204",
+      "cutout-frame-0009.png": "417b1c6e1f3ecd4dcb8e1cc806d14f8f095627c8d11138070d6154b738f37a70"
+    },
+    "params": {
+      "action": "walk",
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "canvas": {
+        "height": 80,
+        "width": 80
+      },
+      "columns": 8,
+      "direction": "ne",
+      "fps": 6.382978723404255,
+      "gutter": 2,
+      "image_id": "keeper-walk-ne-live",
+      "inputs": [
+        "cutout-frame-0000.png",
+        "cutout-frame-0001.png",
+        "cutout-frame-0002.png",
+        "cutout-frame-0003.png",
+        "cutout-frame-0004.png",
+        "cutout-frame-0005.png",
+        "cutout-frame-0006.png",
+        "cutout-frame-0007.png",
+        "cutout-frame-0008.png",
+        "cutout-frame-0009.png"
+      ],
+      "loop": true,
+      "resample": "lanczos",
+      "target_root": {
+        "x": 40,
+        "y": 72
+      },
+      "target_visible_height": 58
+    },
+    "stage": "pack"
+  },
+  "result": {
+    "artifacts": [
+      "normalized-frame-0000.png",
+      "normalized-frame-0001.png",
+      "normalized-frame-0002.png",
+      "normalized-frame-0003.png",
+      "normalized-frame-0004.png",
+      "normalized-frame-0005.png",
+      "normalized-frame-0006.png",
+      "normalized-frame-0007.png",
+      "normalized-frame-0008.png",
+      "normalized-frame-0009.png",
+      "normalization.json",
+      "atlas.png",
+      "atlas-manifest.json",
+      "pack-result.json",
+      "pack-state.json"
+    ],
+    "details": {
+      "atlas": {
+        "height": 166,
+        "width": 658
+      },
+      "atlas_sha256": "d9ed58a58a3c5c0fefc63bcf436a40ff163fdea1e91074fb54f8f65cf4b3ed3d",
+      "canvas": {
+        "height": 80,
+        "width": 80
+      },
+      "frame_count": 10,
+      "manifest_sha256": "e7e34fbcec0ecd75c1ef9986d80024a68c2cd46a857b1e1f4db001cafee0c690",
+      "schema": "animation-pipeline-atlas-v1",
+      "shared_scale": 0.08868501529051988,
+      "shared_source_root": [
+        472.0138316800561,
+        807.5
+      ],
+      "stock_framework_v4_claimed": false,
+      "target_root": [
+        40,
+        72
+      ],
+      "visual_approval": false
+    },
+    "status": "needs_review"
+  },
+  "version": 1
+}

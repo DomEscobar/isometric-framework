@@ -1,0 +1,1143 @@
+{
+  "accepted_cutout_provenance": {
+    "copies": [
+      {
+        "accepted_alpha": {
+          "bounds": [
+            13,
+            29,
+            430,
+            671
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 30326,
+          "semi_transparent_pixels": 98244,
+          "transparent_pixels": 181954,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0000.png",
+        "copy_sha256": "0c92fb96200aeb291662a24f41e1b00c52b60d9676d1927b1fa411c479c6bf54",
+        "recorded_normalization_input_sha256": "0c92fb96200aeb291662a24f41e1b00c52b60d9676d1927b1fa411c479c6bf54",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0000.png",
+        "source_sha256": "0c92fb96200aeb291662a24f41e1b00c52b60d9676d1927b1fa411c479c6bf54"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            12,
+            30,
+            426,
+            676
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 30806,
+          "semi_transparent_pixels": 97499,
+          "transparent_pixels": 182219,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0001.png",
+        "copy_sha256": "c10aeaa08322ff5f0f2576954c91ef7f93c32b5f8105d169b4a90c02c4bef453",
+        "recorded_normalization_input_sha256": "c10aeaa08322ff5f0f2576954c91ef7f93c32b5f8105d169b4a90c02c4bef453",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0001.png",
+        "source_sha256": "c10aeaa08322ff5f0f2576954c91ef7f93c32b5f8105d169b4a90c02c4bef453"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            12,
+            25,
+            422,
+            672
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 31231,
+          "semi_transparent_pixels": 97106,
+          "transparent_pixels": 182187,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0002.png",
+        "copy_sha256": "e03e486b77ae3d7c1599d5335e42baeb3a8b4c5979fd36a19f75f82bac586ce3",
+        "recorded_normalization_input_sha256": "e03e486b77ae3d7c1599d5335e42baeb3a8b4c5979fd36a19f75f82bac586ce3",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0002.png",
+        "source_sha256": "e03e486b77ae3d7c1599d5335e42baeb3a8b4c5979fd36a19f75f82bac586ce3"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            13,
+            20,
+            417,
+            667
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 32239,
+          "semi_transparent_pixels": 98500,
+          "transparent_pixels": 179785,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0003.png",
+        "copy_sha256": "90fb72a09b2148c1cf95a297d870241171027f2da886bbb3a5de802bf0c22966",
+        "recorded_normalization_input_sha256": "90fb72a09b2148c1cf95a297d870241171027f2da886bbb3a5de802bf0c22966",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0003.png",
+        "source_sha256": "90fb72a09b2148c1cf95a297d870241171027f2da886bbb3a5de802bf0c22966"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            14,
+            14,
+            410,
+            661
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 30270,
+          "semi_transparent_pixels": 103625,
+          "transparent_pixels": 176629,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0004.png",
+        "copy_sha256": "acbddcb50c8b7f7cb45d861cacf91779a543b13794f8905b5774f02baeb501e3",
+        "recorded_normalization_input_sha256": "acbddcb50c8b7f7cb45d861cacf91779a543b13794f8905b5774f02baeb501e3",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0004.png",
+        "source_sha256": "acbddcb50c8b7f7cb45d861cacf91779a543b13794f8905b5774f02baeb501e3"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            15,
+            13,
+            406,
+            658
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 28055,
+          "semi_transparent_pixels": 104925,
+          "transparent_pixels": 177544,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0005.png",
+        "copy_sha256": "353fc286dce11176f0f9cf2cde7cdcee927ce1e907bb0d44c506ae6e0451cf00",
+        "recorded_normalization_input_sha256": "353fc286dce11176f0f9cf2cde7cdcee927ce1e907bb0d44c506ae6e0451cf00",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0005.png",
+        "source_sha256": "353fc286dce11176f0f9cf2cde7cdcee927ce1e907bb0d44c506ae6e0451cf00"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            18,
+            19,
+            401,
+            652
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 28696,
+          "semi_transparent_pixels": 102850,
+          "transparent_pixels": 178978,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0006.png",
+        "copy_sha256": "a8f1496f0e418fef13044d396d4b0abef07a5173e52f45e07a7c4fe500bbd9f7",
+        "recorded_normalization_input_sha256": "a8f1496f0e418fef13044d396d4b0abef07a5173e52f45e07a7c4fe500bbd9f7",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0006.png",
+        "source_sha256": "a8f1496f0e418fef13044d396d4b0abef07a5173e52f45e07a7c4fe500bbd9f7"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            20,
+            24,
+            400,
+            648
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 27726,
+          "semi_transparent_pixels": 102779,
+          "transparent_pixels": 180019,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0007.png",
+        "copy_sha256": "af44a4cf7b8a2386ef37ba608fc351734c849d7d10ae164f9ce2288b249b736e",
+        "recorded_normalization_input_sha256": "af44a4cf7b8a2386ef37ba608fc351734c849d7d10ae164f9ce2288b249b736e",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0007.png",
+        "source_sha256": "af44a4cf7b8a2386ef37ba608fc351734c849d7d10ae164f9ce2288b249b736e"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            23,
+            30,
+            402,
+            637
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 28483,
+          "semi_transparent_pixels": 101152,
+          "transparent_pixels": 180889,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0008.png",
+        "copy_sha256": "55c5ff6ca2094b2793b4b3e6329c03c8a1f5e99f5bae87a19816919ac3e5e1e9",
+        "recorded_normalization_input_sha256": "55c5ff6ca2094b2793b4b3e6329c03c8a1f5e99f5bae87a19816919ac3e5e1e9",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0008.png",
+        "source_sha256": "55c5ff6ca2094b2793b4b3e6329c03c8a1f5e99f5bae87a19816919ac3e5e1e9"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            24,
+            26,
+            406,
+            636
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 30618,
+          "semi_transparent_pixels": 99650,
+          "transparent_pixels": 180256,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0009.png",
+        "copy_sha256": "69fdd00a8f664e73052d1f27586ecef20c7046c9635788574669ea2392a584ce",
+        "recorded_normalization_input_sha256": "69fdd00a8f664e73052d1f27586ecef20c7046c9635788574669ea2392a584ce",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0009.png",
+        "source_sha256": "69fdd00a8f664e73052d1f27586ecef20c7046c9635788574669ea2392a584ce"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            24,
+            21,
+            410,
+            640
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 33264,
+          "semi_transparent_pixels": 97571,
+          "transparent_pixels": 179689,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0010.png",
+        "copy_sha256": "96ffab8493c2e95af882aa7b4f221286f7a9156101ca7dbd0543763831776ed7",
+        "recorded_normalization_input_sha256": "96ffab8493c2e95af882aa7b4f221286f7a9156101ca7dbd0543763831776ed7",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0010.png",
+        "source_sha256": "96ffab8493c2e95af882aa7b4f221286f7a9156101ca7dbd0543763831776ed7"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            23,
+            15,
+            415,
+            646
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 32696,
+          "semi_transparent_pixels": 98551,
+          "transparent_pixels": 179277,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0011.png",
+        "copy_sha256": "800b11c303eb1a3ae67270ee49cdab1161f4fe62ae39212741b918602758f6aa",
+        "recorded_normalization_input_sha256": "800b11c303eb1a3ae67270ee49cdab1161f4fe62ae39212741b918602758f6aa",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0011.png",
+        "source_sha256": "800b11c303eb1a3ae67270ee49cdab1161f4fe62ae39212741b918602758f6aa"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            21,
+            12,
+            421,
+            651
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 29622,
+          "semi_transparent_pixels": 98515,
+          "transparent_pixels": 182387,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0012.png",
+        "copy_sha256": "6aefb7512cd9e2dea2d17ee91e7fb103531df66c44b7336bc40045456f467dc9",
+        "recorded_normalization_input_sha256": "6aefb7512cd9e2dea2d17ee91e7fb103531df66c44b7336bc40045456f467dc9",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0012.png",
+        "source_sha256": "6aefb7512cd9e2dea2d17ee91e7fb103531df66c44b7336bc40045456f467dc9"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            19,
+            14,
+            426,
+            649
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 30946,
+          "semi_transparent_pixels": 96173,
+          "transparent_pixels": 183405,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0013.png",
+        "copy_sha256": "ebb0420f7c3daa71724fe3a86c796fb546c70cad3f22c7af6339b17eb36ebc88",
+        "recorded_normalization_input_sha256": "ebb0420f7c3daa71724fe3a86c796fb546c70cad3f22c7af6339b17eb36ebc88",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0013.png",
+        "source_sha256": "ebb0420f7c3daa71724fe3a86c796fb546c70cad3f22c7af6339b17eb36ebc88"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            15,
+            22,
+            430,
+            655
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 31625,
+          "semi_transparent_pixels": 96351,
+          "transparent_pixels": 182548,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0014.png",
+        "copy_sha256": "f53d8258f5c14e060f4dc2e7fb1ae25436d1b5d0c765c7e8b2626abf71711565",
+        "recorded_normalization_input_sha256": "f53d8258f5c14e060f4dc2e7fb1ae25436d1b5d0c765c7e8b2626abf71711565",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0014.png",
+        "source_sha256": "f53d8258f5c14e060f4dc2e7fb1ae25436d1b5d0c765c7e8b2626abf71711565"
+      },
+      {
+        "accepted_alpha": {
+          "bounds": [
+            13,
+            27,
+            429,
+            666
+          ],
+          "height": 687,
+          "maximum": 255,
+          "minimum": 0,
+          "opaque_pixels": 31063,
+          "semi_transparent_pixels": 97337,
+          "transparent_pixels": 182124,
+          "width": 452
+        },
+        "byte_equal": true,
+        "copy": "accepted-cutout-0015.png",
+        "copy_sha256": "343232909b8b6142610c3a8fcfea7815356b3e18fe39ad6874e60f393401e9f4",
+        "recorded_normalization_input_sha256": "343232909b8b6142610c3a8fcfea7815356b3e18fe39ad6874e60f393401e9f4",
+        "source": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/frames/frame-0015.png",
+        "source_sha256": "343232909b8b6142610c3a8fcfea7815356b3e18fe39ad6874e60f393401e9f4"
+      }
+    ],
+    "file": "/root/games/waldlicht/art/character-motion/se-cutout-01/official-provider-export/provenance.json",
+    "normalization": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalization.json",
+    "normalization_sha256": "81158ffbff82494fa456a56975513a5b94c5d052c6a383391f1e41f235343562",
+    "sha256": "44bf955d23a36c8cb00a8550a0e8b59025ed5c17b770735a221636d356ac08b1"
+  },
+  "atlas_check": {
+    "actual": "atlas.png",
+    "actual_alpha": {
+      "bounds": [
+        25,
+        16,
+        1293,
+        77
+      ],
+      "height": 84,
+      "maximum": 255,
+      "minimum": 0,
+      "opaque_pixels": 4031,
+      "semi_transparent_pixels": 13251,
+      "transparent_pixels": 93094,
+      "width": 1314
+    },
+    "actual_sha256": "2242f24fe5ec1403585dddeff1cce411cb7476a2225b8ff0aec8518e9664aebd",
+    "canonical": "/root/games/waldlicht/art/character-motion/se-cutout-01/packed-c-density/sheet.png",
+    "canonical_alpha": {
+      "bounds": [
+        25,
+        16,
+        1293,
+        77
+      ],
+      "height": 84,
+      "maximum": 255,
+      "minimum": 0,
+      "opaque_pixels": 4031,
+      "semi_transparent_pixels": 13251,
+      "transparent_pixels": 93094,
+      "width": 1314
+    },
+    "canonical_sha256": "2242f24fe5ec1403585dddeff1cce411cb7476a2225b8ff0aec8518e9664aebd",
+    "dimensions_and_alpha_equal": true,
+    "hash_equal": true
+  },
+  "frame_checks": [
+    {
+      "actual": "normalized-frame-0000.png",
+      "actual_alpha": {
+        "bounds": [
+          23,
+          16,
+          61,
+          75
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 253,
+        "semi_transparent_pixels": 813,
+        "transparent_pixels": 5334,
+        "width": 80
+      },
+      "actual_sha256": "e22d222561212fc8717ed02feec1fff3ab47325040e6d501b0cf2b302d955561",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          23,
+          16,
+          61,
+          75
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 253,
+        "semi_transparent_pixels": 813,
+        "transparent_pixels": 5334,
+        "width": 80
+      },
+      "expected_sha256": "e22d222561212fc8717ed02feec1fff3ab47325040e6d501b0cf2b302d955561",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0000.png",
+      "hash_equal": true,
+      "order": 0
+    },
+    {
+      "actual": "normalized-frame-0001.png",
+      "actual_alpha": {
+        "bounds": [
+          23,
+          16,
+          61,
+          75
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 254,
+        "semi_transparent_pixels": 813,
+        "transparent_pixels": 5333,
+        "width": 80
+      },
+      "actual_sha256": "7468cc27bc7ad7d3bcfe279f45856170643f69cb50b2918cc41202a298dcc712",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          23,
+          16,
+          61,
+          75
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 254,
+        "semi_transparent_pixels": 813,
+        "transparent_pixels": 5333,
+        "width": 80
+      },
+      "expected_sha256": "7468cc27bc7ad7d3bcfe279f45856170643f69cb50b2918cc41202a298dcc712",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0001.png",
+      "hash_equal": true,
+      "order": 1
+    },
+    {
+      "actual": "normalized-frame-0002.png",
+      "actual_alpha": {
+        "bounds": [
+          23,
+          15,
+          60,
+          75
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 257,
+        "semi_transparent_pixels": 822,
+        "transparent_pixels": 5321,
+        "width": 80
+      },
+      "actual_sha256": "c7fdc2e9a3565917eb197c7d48c85191b41e015c95cf93d64aac3716860378e7",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          23,
+          15,
+          60,
+          75
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 257,
+        "semi_transparent_pixels": 822,
+        "transparent_pixels": 5321,
+        "width": 80
+      },
+      "expected_sha256": "c7fdc2e9a3565917eb197c7d48c85191b41e015c95cf93d64aac3716860378e7",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0002.png",
+      "hash_equal": true,
+      "order": 2
+    },
+    {
+      "actual": "normalized-frame-0003.png",
+      "actual_alpha": {
+        "bounds": [
+          23,
+          15,
+          60,
+          74
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 264,
+        "semi_transparent_pixels": 819,
+        "transparent_pixels": 5317,
+        "width": 80
+      },
+      "actual_sha256": "30f45e3a18514763cfc605df2137c72e2251003c3680172c5d06f04476393703",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          23,
+          15,
+          60,
+          74
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 264,
+        "semi_transparent_pixels": 819,
+        "transparent_pixels": 5317,
+        "width": 80
+      },
+      "expected_sha256": "30f45e3a18514763cfc605df2137c72e2251003c3680172c5d06f04476393703",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0003.png",
+      "hash_equal": true,
+      "order": 3
+    },
+    {
+      "actual": "normalized-frame-0004.png",
+      "actual_alpha": {
+        "bounds": [
+          23,
+          14,
+          59,
+          74
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 247,
+        "semi_transparent_pixels": 864,
+        "transparent_pixels": 5289,
+        "width": 80
+      },
+      "actual_sha256": "c748d2fb4f8bc468a1e18436ed5799255bda445c997b7c1310b849d883b85b14",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          23,
+          14,
+          59,
+          74
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 247,
+        "semi_transparent_pixels": 864,
+        "transparent_pixels": 5289,
+        "width": 80
+      },
+      "expected_sha256": "c748d2fb4f8bc468a1e18436ed5799255bda445c997b7c1310b849d883b85b14",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0004.png",
+      "hash_equal": true,
+      "order": 4
+    },
+    {
+      "actual": "normalized-frame-0005.png",
+      "actual_alpha": {
+        "bounds": [
+          23,
+          14,
+          59,
+          73
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 233,
+        "semi_transparent_pixels": 868,
+        "transparent_pixels": 5299,
+        "width": 80
+      },
+      "actual_sha256": "972bba0837b3225f7e39ffc5d22cf6e7b37b9704d22d8a77047c2ec7be368a0c",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          23,
+          14,
+          59,
+          73
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 233,
+        "semi_transparent_pixels": 868,
+        "transparent_pixels": 5299,
+        "width": 80
+      },
+      "expected_sha256": "972bba0837b3225f7e39ffc5d22cf6e7b37b9704d22d8a77047c2ec7be368a0c",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0005.png",
+      "hash_equal": true,
+      "order": 5
+    },
+    {
+      "actual": "normalized-frame-0006.png",
+      "actual_alpha": {
+        "bounds": [
+          24,
+          15,
+          58,
+          73
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 238,
+        "semi_transparent_pixels": 858,
+        "transparent_pixels": 5304,
+        "width": 80
+      },
+      "actual_sha256": "7f9054daba3f4f8aa285935a1e7da29c2f10f277b3e4415f88bbf68c30c06ac5",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          24,
+          15,
+          58,
+          73
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 238,
+        "semi_transparent_pixels": 858,
+        "transparent_pixels": 5304,
+        "width": 80
+      },
+      "expected_sha256": "7f9054daba3f4f8aa285935a1e7da29c2f10f277b3e4415f88bbf68c30c06ac5",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0006.png",
+      "hash_equal": true,
+      "order": 6
+    },
+    {
+      "actual": "normalized-frame-0007.png",
+      "actual_alpha": {
+        "bounds": [
+          24,
+          15,
+          58,
+          72
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 232,
+        "semi_transparent_pixels": 855,
+        "transparent_pixels": 5313,
+        "width": 80
+      },
+      "actual_sha256": "f8b71f8ccf243993f1226164ac37aa0916b75f4c07cda79c78f5335362ef5c38",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          24,
+          15,
+          58,
+          72
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 232,
+        "semi_transparent_pixels": 855,
+        "transparent_pixels": 5313,
+        "width": 80
+      },
+      "expected_sha256": "f8b71f8ccf243993f1226164ac37aa0916b75f4c07cda79c78f5335362ef5c38",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0007.png",
+      "hash_equal": true,
+      "order": 7
+    },
+    {
+      "actual": "normalized-frame-0008.png",
+      "actual_alpha": {
+        "bounds": [
+          24,
+          16,
+          58,
+          71
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 235,
+        "semi_transparent_pixels": 836,
+        "transparent_pixels": 5329,
+        "width": 80
+      },
+      "actual_sha256": "33ce460e36a3b4b23cce81844f020bd98527347cc3b3899ddc684ba7f3839ae8",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          24,
+          16,
+          58,
+          71
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 235,
+        "semi_transparent_pixels": 836,
+        "transparent_pixels": 5329,
+        "width": 80
+      },
+      "expected_sha256": "33ce460e36a3b4b23cce81844f020bd98527347cc3b3899ddc684ba7f3839ae8",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0008.png",
+      "hash_equal": true,
+      "order": 8
+    },
+    {
+      "actual": "normalized-frame-0009.png",
+      "actual_alpha": {
+        "bounds": [
+          24,
+          15,
+          59,
+          71
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 253,
+        "semi_transparent_pixels": 830,
+        "transparent_pixels": 5317,
+        "width": 80
+      },
+      "actual_sha256": "c6f395cb05663e86e54127924939ca4b07fe9e743c7775a0aa3dd7712f0aabb7",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          24,
+          15,
+          59,
+          71
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 253,
+        "semi_transparent_pixels": 830,
+        "transparent_pixels": 5317,
+        "width": 80
+      },
+      "expected_sha256": "c6f395cb05663e86e54127924939ca4b07fe9e743c7775a0aa3dd7712f0aabb7",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0009.png",
+      "hash_equal": true,
+      "order": 9
+    },
+    {
+      "actual": "normalized-frame-0010.png",
+      "actual_alpha": {
+        "bounds": [
+          24,
+          15,
+          59,
+          72
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 271,
+        "semi_transparent_pixels": 818,
+        "transparent_pixels": 5311,
+        "width": 80
+      },
+      "actual_sha256": "c3074e996895594853119a11832a9c5945ceb5ac9879ac5e8161cc56585488e3",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          24,
+          15,
+          59,
+          72
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 271,
+        "semi_transparent_pixels": 818,
+        "transparent_pixels": 5311,
+        "width": 80
+      },
+      "expected_sha256": "c3074e996895594853119a11832a9c5945ceb5ac9879ac5e8161cc56585488e3",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0010.png",
+      "hash_equal": true,
+      "order": 10
+    },
+    {
+      "actual": "normalized-frame-0011.png",
+      "actual_alpha": {
+        "bounds": [
+          24,
+          14,
+          60,
+          72
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 272,
+        "semi_transparent_pixels": 824,
+        "transparent_pixels": 5304,
+        "width": 80
+      },
+      "actual_sha256": "6a494128a44df69a37f86f297fcb95e049cc01d5e5a921f9675aecf01b69c781",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          24,
+          14,
+          60,
+          72
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 272,
+        "semi_transparent_pixels": 824,
+        "transparent_pixels": 5304,
+        "width": 80
+      },
+      "expected_sha256": "6a494128a44df69a37f86f297fcb95e049cc01d5e5a921f9675aecf01b69c781",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0011.png",
+      "hash_equal": true,
+      "order": 11
+    },
+    {
+      "actual": "normalized-frame-0012.png",
+      "actual_alpha": {
+        "bounds": [
+          24,
+          14,
+          60,
+          73
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 244,
+        "semi_transparent_pixels": 826,
+        "transparent_pixels": 5330,
+        "width": 80
+      },
+      "actual_sha256": "281f292aedbab1bc60df2f25a569c5eb0f1b0f9684cf1f1952d2cc802b2c9408",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          24,
+          14,
+          60,
+          73
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 244,
+        "semi_transparent_pixels": 826,
+        "transparent_pixels": 5330,
+        "width": 80
+      },
+      "expected_sha256": "281f292aedbab1bc60df2f25a569c5eb0f1b0f9684cf1f1952d2cc802b2c9408",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0012.png",
+      "hash_equal": true,
+      "order": 12
+    },
+    {
+      "actual": "normalized-frame-0013.png",
+      "actual_alpha": {
+        "bounds": [
+          24,
+          14,
+          61,
+          72
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 261,
+        "semi_transparent_pixels": 795,
+        "transparent_pixels": 5344,
+        "width": 80
+      },
+      "actual_sha256": "5ed881f2be67ecca6866de55af036138db6f3ae60083cd9db915a2eb8a667766",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          24,
+          14,
+          61,
+          72
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 261,
+        "semi_transparent_pixels": 795,
+        "transparent_pixels": 5344,
+        "width": 80
+      },
+      "expected_sha256": "5ed881f2be67ecca6866de55af036138db6f3ae60083cd9db915a2eb8a667766",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0013.png",
+      "hash_equal": true,
+      "order": 13
+    },
+    {
+      "actual": "normalized-frame-0014.png",
+      "actual_alpha": {
+        "bounds": [
+          23,
+          15,
+          61,
+          73
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 259,
+        "semi_transparent_pixels": 802,
+        "transparent_pixels": 5339,
+        "width": 80
+      },
+      "actual_sha256": "78161d6028389dc8120242d0c14199d16fe04d71cedfa392892c63867e5a86d8",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          23,
+          15,
+          61,
+          73
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 259,
+        "semi_transparent_pixels": 802,
+        "transparent_pixels": 5339,
+        "width": 80
+      },
+      "expected_sha256": "78161d6028389dc8120242d0c14199d16fe04d71cedfa392892c63867e5a86d8",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0014.png",
+      "hash_equal": true,
+      "order": 14
+    },
+    {
+      "actual": "normalized-frame-0015.png",
+      "actual_alpha": {
+        "bounds": [
+          23,
+          16,
+          61,
+          74
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 258,
+        "semi_transparent_pixels": 808,
+        "transparent_pixels": 5334,
+        "width": 80
+      },
+      "actual_sha256": "be04c9612f2252ea0a4ce8d8abd3d0b959e9d93e44ee1e6b908ba4abd08b68ea",
+      "dimensions_and_alpha_equal": true,
+      "expected_alpha": {
+        "bounds": [
+          23,
+          16,
+          61,
+          74
+        ],
+        "height": 80,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 258,
+        "semi_transparent_pixels": 808,
+        "transparent_pixels": 5334,
+        "width": 80
+      },
+      "expected_sha256": "be04c9612f2252ea0a4ce8d8abd3d0b959e9d93e44ee1e6b908ba4abd08b68ea",
+      "expected_source": "/root/games/waldlicht/art/character-motion/se-cutout-01/normalized-frames/frame-0015.png",
+      "hash_equal": true,
+      "order": 15
+    }
+  ],
+  "generic_manifest": {
+    "file": "atlas-manifest.json",
+    "schema": "animation-pipeline-atlas-v1",
+    "sha256": "10959990245e163639dbc208e18f1618b54f5f157b0c851d5999dccf063662fb",
+    "stock_framework_v4_claimed": false
+  },
+  "generic_pack": {
+    "artifacts": [
+      "normalized-frame-0000.png",
+      "normalized-frame-0001.png",
+      "normalized-frame-0002.png",
+      "normalized-frame-0003.png",
+      "normalized-frame-0004.png",
+      "normalized-frame-0005.png",
+      "normalized-frame-0006.png",
+      "normalized-frame-0007.png",
+      "normalized-frame-0008.png",
+      "normalized-frame-0009.png",
+      "normalized-frame-0010.png",
+      "normalized-frame-0011.png",
+      "normalized-frame-0012.png",
+      "normalized-frame-0013.png",
+      "normalized-frame-0014.png",
+      "normalized-frame-0015.png",
+      "normalization.json",
+      "atlas.png",
+      "atlas-manifest.json",
+      "pack-result.json",
+      "pack-state.json"
+    ],
+    "details": {
+      "atlas": {
+        "height": 84,
+        "width": 1314
+      },
+      "atlas_sha256": "2242f24fe5ec1403585dddeff1cce411cb7476a2225b8ff0aec8518e9664aebd",
+      "canvas": {
+        "height": 80,
+        "width": 80
+      },
+      "frame_count": 16,
+      "manifest_sha256": "10959990245e163639dbc208e18f1618b54f5f157b0c851d5999dccf063662fb",
+      "schema": "animation-pipeline-atlas-v1",
+      "shared_scale": 0.09105180533751962,
+      "shared_source_root": [
+        196.42717680600975,
+        652.5
+      ],
+      "stock_framework_v4_claimed": false,
+      "target_root": [
+        40,
+        72
+      ],
+      "visual_approval": false
+    },
+    "status": "needs_review"
+  },
+  "paid_calls": 0,
+  "pass": true,
+  "reference": {
+    "byte_equal": true,
+    "copy": "reference.png",
+    "copy_sha256": "8e2df0c8b46580b83a9804ab140d392758be93414553142b460b906f1769fe46",
+    "source": "/root/games/waldlicht/art/placement-pilot/hero/source-01.png",
+    "source_sha256": "8e2df0c8b46580b83a9804ab140d392758be93414553142b460b906f1769fe46"
+  },
+  "reference_inspection": {
+    "artifacts": [
+      "inspect-reference.json"
+    ],
+    "details": {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 2560000,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          1600,
+          1600
+        ]
+      },
+      "bytes": 1278387,
+      "format": "PNG",
+      "height": 1600,
+      "input": "reference.png",
+      "mode": "RGB",
+      "sha256": "8e2df0c8b46580b83a9804ab140d392758be93414553142b460b906f1769fe46",
+      "visual_approval": false,
+      "width": 1600
+    },
+    "status": "completed"
+  },
+  "source_game": "/root/games/waldlicht",
+  "source_game_read_only": true,
+  "status": "passed",
+  "version": 1,
+  "workspace": "/root/services/animation-pipeline/artifacts/replay-existing"
+}

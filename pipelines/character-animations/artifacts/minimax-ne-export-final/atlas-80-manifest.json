@@ -1,0 +1,1187 @@
+{
+  "clip": {
+    "action": "walk",
+    "direction": "ne",
+    "duration_seconds": 1.3333333333333333,
+    "fps": 18.0,
+    "frames": [
+      "keeper.walk.ne.80.0000",
+      "keeper.walk.ne.80.0001",
+      "keeper.walk.ne.80.0002",
+      "keeper.walk.ne.80.0003",
+      "keeper.walk.ne.80.0004",
+      "keeper.walk.ne.80.0005",
+      "keeper.walk.ne.80.0006",
+      "keeper.walk.ne.80.0007",
+      "keeper.walk.ne.80.0008",
+      "keeper.walk.ne.80.0009",
+      "keeper.walk.ne.80.0010",
+      "keeper.walk.ne.80.0011",
+      "keeper.walk.ne.80.0012",
+      "keeper.walk.ne.80.0013",
+      "keeper.walk.ne.80.0014",
+      "keeper.walk.ne.80.0015",
+      "keeper.walk.ne.80.0016",
+      "keeper.walk.ne.80.0017",
+      "keeper.walk.ne.80.0018",
+      "keeper.walk.ne.80.0019",
+      "keeper.walk.ne.80.0020",
+      "keeper.walk.ne.80.0021",
+      "keeper.walk.ne.80.0022",
+      "keeper.walk.ne.80.0023"
+    ],
+    "id": "keeper.walk.ne.80",
+    "loop": true
+  },
+  "display": {
+    "allowed_sampling": "nearest-neighbour",
+    "allowed_scale": "integer only",
+    "fractional_css_scaling": false,
+    "native_css_pixels": [
+      80,
+      80
+    ]
+  },
+  "frames": [
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0000.png",
+      "id": "keeper.walk.ne.80.0000",
+      "native_source_index": 66,
+      "order": 0,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 2,
+        "y": 2
+      },
+      "sha256": "abee354534b0d2e26f48afbcaa726fdc1c8252172f272423d6a81ec27ba3d822",
+      "source_master": "master-cutouts/master-cutout-0000.png",
+      "source_master_sha256": "7f198d5a7141d2cf558e1f9980cc9f3213cba035d1ce83fff0ba3c038200723f",
+      "timestamp_seconds": 2.75,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 236,
+        "bounds": [
+          19,
+          14,
+          59,
+          74
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0001.png",
+      "id": "keeper.walk.ne.80.0001",
+      "native_source_index": 67,
+      "order": 1,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 84,
+        "y": 2
+      },
+      "sha256": "f07d126d7c68d28174314c13a8ac3a3a6399979918bcde640061a2e97052b577",
+      "source_master": "master-cutouts/master-cutout-0001.png",
+      "source_master_sha256": "8593e6562f5dc344cfc8bc8c4deeb6ea9a514a375b0cd32dd5a2164acc5ca135",
+      "timestamp_seconds": 2.7916666666666665,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 235,
+        "bounds": [
+          19,
+          14,
+          59,
+          74
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0002.png",
+      "id": "keeper.walk.ne.80.0002",
+      "native_source_index": 69,
+      "order": 2,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 166,
+        "y": 2
+      },
+      "sha256": "1cb6c43fb89b8f58940e94aaef12856e13a7cecab867c79bc2020e16fd4f2ae6",
+      "source_master": "master-cutouts/master-cutout-0002.png",
+      "source_master_sha256": "dad61054b47dd1020d5864335e02d41bd49d773dc347428ff5f5f8de1dff2c18",
+      "timestamp_seconds": 2.875,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 242,
+        "bounds": [
+          18,
+          15,
+          60,
+          75
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0003.png",
+      "id": "keeper.walk.ne.80.0003",
+      "native_source_index": 70,
+      "order": 3,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 248,
+        "y": 2
+      },
+      "sha256": "695a1302983c0fc92f5007d3a0bb4dfb92d9bc507fa1294aa931f5d7842c38e9",
+      "source_master": "master-cutouts/master-cutout-0003.png",
+      "source_master_sha256": "8e1d0705a6d93c54548d6d7f10693559085a8f3eb475ca597f748f5cbd37d349",
+      "timestamp_seconds": 2.9166666666666665,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 238,
+        "bounds": [
+          18,
+          15,
+          60,
+          75
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0004.png",
+      "id": "keeper.walk.ne.80.0004",
+      "native_source_index": 71,
+      "order": 4,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 330,
+        "y": 2
+      },
+      "sha256": "514fdda1c6901a1606efd896da506f8882d2392855a2d1c2718bf7861b4e53a1",
+      "source_master": "master-cutouts/master-cutout-0004.png",
+      "source_master_sha256": "398b7399e24b31b063fd4fece29a2b3e33f2d2e11f34c98acd03087f1d9a9112",
+      "timestamp_seconds": 2.9583333333333335,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 231,
+        "bounds": [
+          18,
+          15,
+          60,
+          75
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0005.png",
+      "id": "keeper.walk.ne.80.0005",
+      "native_source_index": 73,
+      "order": 5,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 412,
+        "y": 2
+      },
+      "sha256": "b1da8212db287b0365cbd8b02166fcc1edc0b76f9eab0cf6c95a2990025aacbe",
+      "source_master": "master-cutouts/master-cutout-0005.png",
+      "source_master_sha256": "bda5ea51ad6133393f09bb6b4275e1ca69d497d3645a8dc449c2750fa6c6e9be",
+      "timestamp_seconds": 3.0416666666666665,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 228,
+        "bounds": [
+          19,
+          14,
+          60,
+          74
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0006.png",
+      "id": "keeper.walk.ne.80.0006",
+      "native_source_index": 74,
+      "order": 6,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 494,
+        "y": 2
+      },
+      "sha256": "ccbad985e9c444814a052ec9c76c72165c2992d7c18458fa297de7b55ff38a45",
+      "source_master": "master-cutouts/master-cutout-0006.png",
+      "source_master_sha256": "0bd192e6842580c79696d75a11d2f2ea26a7e4e69df945b139c20f9ab23fcff2",
+      "timestamp_seconds": 3.0833333333333335,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 234,
+        "bounds": [
+          19,
+          14,
+          59,
+          74
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0007.png",
+      "id": "keeper.walk.ne.80.0007",
+      "native_source_index": 75,
+      "order": 7,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 576,
+        "y": 2
+      },
+      "sha256": "98d65de18f7604e4b42a10b9b640c1b86d04bcf2fa6695b52fb5d90fca134db2",
+      "source_master": "master-cutouts/master-cutout-0007.png",
+      "source_master_sha256": "b07dc05e845c004ea8b11eb5b6c36794f48c7d37beb2e04f8b67528f511e6aac",
+      "timestamp_seconds": 3.125,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 229,
+        "bounds": [
+          19,
+          14,
+          59,
+          73
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0008.png",
+      "id": "keeper.walk.ne.80.0008",
+      "native_source_index": 77,
+      "order": 8,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 2,
+        "y": 84
+      },
+      "sha256": "c1fa3fddb0bbf744cda1bc4437dd563849a5e645fb96d4dbee9b828dd4b3ebf3",
+      "source_master": "master-cutouts/master-cutout-0008.png",
+      "source_master_sha256": "f6d566afaf6e1316d6c097c9a3c6970989b19c4d755be848ff821443d1650665",
+      "timestamp_seconds": 3.2083333333333335,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 223,
+        "bounds": [
+          21,
+          13,
+          57,
+          71
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0009.png",
+      "id": "keeper.walk.ne.80.0009",
+      "native_source_index": 78,
+      "order": 9,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 84,
+        "y": 84
+      },
+      "sha256": "789cbc7d809054aa0302e2486f66469378f829b5b92772c2676e86ed13ead576",
+      "source_master": "master-cutouts/master-cutout-0009.png",
+      "source_master_sha256": "a46d654a96694d46d18099166b6a41b4b2a2a53f88bd7ffdcc7c2ce8150f5260",
+      "timestamp_seconds": 3.25,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 216,
+        "bounds": [
+          21,
+          13,
+          57,
+          71
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0010.png",
+      "id": "keeper.walk.ne.80.0010",
+      "native_source_index": 79,
+      "order": 10,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 166,
+        "y": 84
+      },
+      "sha256": "fda76b26c0c512a0fe48e0b64837c0054ed99fe74f7716efc7e2c1647beb0e67",
+      "source_master": "master-cutouts/master-cutout-0010.png",
+      "source_master_sha256": "b35fbe8c7875047c52ba49e4d89a495f12cd81583ec236cfe4218e21ea62daf5",
+      "timestamp_seconds": 3.2916666666666665,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 212,
+        "bounds": [
+          21,
+          13,
+          57,
+          71
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0011.png",
+      "id": "keeper.walk.ne.80.0011",
+      "native_source_index": 81,
+      "order": 11,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 248,
+        "y": 84
+      },
+      "sha256": "19bfc220e6dcf9af97470de86c131320fa57e400938eaf7dafe70a68d5593c4e",
+      "source_master": "master-cutouts/master-cutout-0011.png",
+      "source_master_sha256": "ed96f67df49acf8d06f94a17b4e5f1926cc3b36255f8cf62bf6df58ffea67234",
+      "timestamp_seconds": 3.375,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 222,
+        "bounds": [
+          20,
+          13,
+          56,
+          72
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0012.png",
+      "id": "keeper.walk.ne.80.0012",
+      "native_source_index": 82,
+      "order": 12,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 330,
+        "y": 84
+      },
+      "sha256": "b6c5f214554151f431714a0b5b319c7e4241ed99cb8c54f676122dcfffc4c813",
+      "source_master": "master-cutouts/master-cutout-0012.png",
+      "source_master_sha256": "2744e36828785e38d4b273d0a61035834bd600c3a587e72651c9eb96044debb6",
+      "timestamp_seconds": 3.4166666666666665,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 228,
+        "bounds": [
+          19,
+          14,
+          56,
+          72
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0013.png",
+      "id": "keeper.walk.ne.80.0013",
+      "native_source_index": 84,
+      "order": 13,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 412,
+        "y": 84
+      },
+      "sha256": "d951eff459a29f140b3b409679854a4c799ff37b4c0df345f19cd4ee1380427c",
+      "source_master": "master-cutouts/master-cutout-0013.png",
+      "source_master_sha256": "cf8d95954557d853395fc4e1f72cf529003c92acbb1bd31ef2613ace8f29c5a5",
+      "timestamp_seconds": 3.5,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 212,
+        "bounds": [
+          19,
+          14,
+          56,
+          72
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0014.png",
+      "id": "keeper.walk.ne.80.0014",
+      "native_source_index": 85,
+      "order": 14,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 494,
+        "y": 84
+      },
+      "sha256": "eca56456e727b2400c2c343a45e40965674af8c3e03caee7b9598982be82723d",
+      "source_master": "master-cutouts/master-cutout-0014.png",
+      "source_master_sha256": "31644a628f7c94933f6e70b81ae799485fb823ca94dea5fdfa3539affba8aba4",
+      "timestamp_seconds": 3.5416666666666665,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 213,
+        "bounds": [
+          18,
+          15,
+          56,
+          72
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0015.png",
+      "id": "keeper.walk.ne.80.0015",
+      "native_source_index": 86,
+      "order": 15,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 576,
+        "y": 84
+      },
+      "sha256": "58aab382f63f50bb9fa1f2cad129eca53e27206439089dd61e1d6b807fbaadfb",
+      "source_master": "master-cutouts/master-cutout-0015.png",
+      "source_master_sha256": "451894f4d89cb69a28687507d8fc54c6509d4cee719767d93a8270d03b6dfb66",
+      "timestamp_seconds": 3.5833333333333335,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 218,
+        "bounds": [
+          18,
+          15,
+          56,
+          72
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0016.png",
+      "id": "keeper.walk.ne.80.0016",
+      "native_source_index": 88,
+      "order": 16,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 2,
+        "y": 166
+      },
+      "sha256": "7aa9e469ab03e0e3abf1ece0fd74bca37eba8620da31b800b34c35b2e0a3fb24",
+      "source_master": "master-cutouts/master-cutout-0016.png",
+      "source_master_sha256": "4596aa0b74920f19b60b756f3f3200237f1cd21cb23550b9b395c0819fc99f17",
+      "timestamp_seconds": 3.6666666666666665,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 216,
+        "bounds": [
+          19,
+          14,
+          56,
+          71
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0017.png",
+      "id": "keeper.walk.ne.80.0017",
+      "native_source_index": 89,
+      "order": 17,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 84,
+        "y": 166
+      },
+      "sha256": "24f293b04b9a37293636613fe8a8c16f881a11284181af9d378d992da92c28e4",
+      "source_master": "master-cutouts/master-cutout-0017.png",
+      "source_master_sha256": "582cbb98d0ac3dfbd700e5b21179a4cc76420387a9ae8fcc422beac5ef380623",
+      "timestamp_seconds": 3.7083333333333335,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 222,
+        "bounds": [
+          19,
+          14,
+          56,
+          71
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0018.png",
+      "id": "keeper.walk.ne.80.0018",
+      "native_source_index": 90,
+      "order": 18,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 166,
+        "y": 166
+      },
+      "sha256": "ea6db53e6912255724c98d759bd79814a3a6d367897a765a24f45daef682c9c7",
+      "source_master": "master-cutouts/master-cutout-0018.png",
+      "source_master_sha256": "c75a54576cdb9a9f5ca50aaf2ff3ef0c7a6581197b8dcf2d4a51b92fdcb3cb53",
+      "timestamp_seconds": 3.75,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 246,
+        "bounds": [
+          20,
+          14,
+          57,
+          72
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0019.png",
+      "id": "keeper.walk.ne.80.0019",
+      "native_source_index": 92,
+      "order": 19,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 248,
+        "y": 166
+      },
+      "sha256": "57f62f6b6581e0b6b7d3a2ed6aef13f4f96ad4e9128d1942ec3a5e618b39c771",
+      "source_master": "master-cutouts/master-cutout-0019.png",
+      "source_master_sha256": "66798e18eec35321ffec4e50d0d7bfc7cd176c566ec243827b0e23bfe426dc0a",
+      "timestamp_seconds": 3.8333333333333335,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 240,
+        "bounds": [
+          21,
+          13,
+          57,
+          72
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0020.png",
+      "id": "keeper.walk.ne.80.0020",
+      "native_source_index": 93,
+      "order": 20,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 330,
+        "y": 166
+      },
+      "sha256": "91c3d9c10c8efe0a21550ebacf4b33f0b28f55811882ee96f6d3349b9abfefe3",
+      "source_master": "master-cutouts/master-cutout-0020.png",
+      "source_master_sha256": "9d34a250a4ddc7e8d89e7f6d271b71187e9358e954461e5617b73d8a4bd8d253",
+      "timestamp_seconds": 3.875,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 227,
+        "bounds": [
+          21,
+          13,
+          58,
+          73
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0021.png",
+      "id": "keeper.walk.ne.80.0021",
+      "native_source_index": 94,
+      "order": 21,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 412,
+        "y": 166
+      },
+      "sha256": "2d6a2de2b7271ef67374b5f37a33cef30c13faf5e8c354d512491e4ba392dff6",
+      "source_master": "master-cutouts/master-cutout-0021.png",
+      "source_master_sha256": "abb58e2e3dcc472c2ae6851305b4fde489ec2719172988285c1241842640e0ff",
+      "timestamp_seconds": 3.9166666666666665,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 228,
+        "bounds": [
+          21,
+          13,
+          58,
+          73
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0022.png",
+      "id": "keeper.walk.ne.80.0022",
+      "native_source_index": 96,
+      "order": 22,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 494,
+        "y": 166
+      },
+      "sha256": "eacca1f7acc4628abc98c352c953b663cb7f3ee3180d1837073486836738ffd5",
+      "source_master": "master-cutouts/master-cutout-0022.png",
+      "source_master_sha256": "da40f9561ebb4d14a6615ed95b6f86a2050bd1055bd54b49748a253ed101f4f7",
+      "timestamp_seconds": 4.0,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 236,
+        "bounds": [
+          20,
+          13,
+          59,
+          73
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    },
+    {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.9
+      },
+      "file": "frame-0023.png",
+      "id": "keeper.walk.ne.80.0023",
+      "native_source_index": 97,
+      "order": 23,
+      "rect": {
+        "height": 80,
+        "width": 80,
+        "x": 576,
+        "y": 166
+      },
+      "sha256": "7e100626da700ca5506dbc667961551fdd91d4426a5f95edb54b1ab94f7b1533",
+      "source_master": "master-cutouts/master-cutout-0023.png",
+      "source_master_sha256": "dedcfc898c3f4a75adcc74176a90a65f4827c44bad1488cf43c5fe2744fa51ee",
+      "timestamp_seconds": 4.041666666666667,
+      "transform": {
+        "alpha_1_7_pixels_cleared": 234,
+        "bounds": [
+          19,
+          14,
+          59,
+          74
+        ],
+        "paste_offset": [
+          -5,
+          -1
+        ],
+        "scale": 0.11262135922330097,
+        "scaled_full_canvas": [
+          86,
+          86
+        ],
+        "source_root": [
+          395.5,
+          652.0
+        ],
+        "target_root": [
+          40,
+          72
+        ]
+      }
+    }
+  ],
+  "image": {
+    "file": "atlas-80.png",
+    "height": 248,
+    "id": "keeper-walk-ne-80",
+    "sampling": "premultiplied-alpha-lanczos",
+    "sha256": "d32a012e8035ccbef7279f1baa682bdc187ef8383d5fda400fa21c645a9529ea",
+    "width": 658
+  },
+  "packing": {
+    "cell": {
+      "height": 80,
+      "width": 80
+    },
+    "columns": 8,
+    "gutter": 2,
+    "rows": 3
+  },
+  "processing": {
+    "cleanup": {
+      "alpha_max": 7,
+      "alpha_min": 1,
+      "component_removal": false
+    },
+    "direct_from_master": true,
+    "full_resolution_masters_preserved": true,
+    "premultiplied_alpha_resample": true
+  },
+  "schema": "animation-pipeline-atlas-v1",
+  "source": {
+    "automatic_gate_certified": false,
+    "candidate": "candidate-01-66-98",
+    "file": "artifacts/minimax-ne-source-01/provider-original.mp4",
+    "human_reviewed_source": true,
+    "sha256": "cd02ae6369794274e49df2253ee8c5b100d7192ba9a5c5c94d98fe59a41e42dd"
+  },
+  "version": 1
+}

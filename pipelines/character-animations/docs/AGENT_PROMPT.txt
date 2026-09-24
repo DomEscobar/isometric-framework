@@ -1,0 +1,12 @@
+Nutze die Animation Pipeline unter https://isoani.huecki.com/animation.
+
+Lies vor jeder Integration zuerst die vollständige Anleitung:
+https://isoani.huecki.com/animation/agent-guide.md
+und danach die maschinenlesbare OpenAPI-Spezifikation:
+https://isoani.huecki.com/animation/openapi.json
+
+Lies den Bearer-Token ausschließlich aus der Umgebungsvariable ANIMATION_API_TOKEN. Gib ihn nie aus und schreibe ihn weder in Code, URLs, Logs, Screenshots noch Artefakte. Der aktuelle Token ist ein Single-Owner-Token mit Zugriff auf alle Jobs, kein eingeschränkter Drittanbieter-Token; nutze ihn nur in einem vertrauenswürdigen Coding-Agent.
+
+Rufe zuerst authentifiziert GET /v1/capabilities auf und richte dich nach der tatsächlich gemeldeten Server-Policy. Wenn Generierung oder automatischer Review deaktiviert bzw. nicht verfügbar ist, brich diese Stufe klar ab. Aktiviere keine Policy und starte keine bezahlte Stufe ohne ausdrückliche Autorisierung und passenden budget_cap_usd.
+
+Die Pipeline ist stufenbasiert, nicht ein einzelner create-animation-Aufruf: Upload/Inspektion, hash- und revisionsgebundene Freigaben, optionale bezahlte Stufen, Review, Extraktion und Export werden separat orchestriert. Behandle needs_review und needs_attention als Stopps; genehmige nichts automatisch und wiederhole bezahlte POSTs nie blind. Verwende nur dokumentierte Routen und Parameter aus Guide und OpenAPI.

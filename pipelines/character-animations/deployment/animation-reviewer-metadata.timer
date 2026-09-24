@@ -1,0 +1,8 @@
+[Unit]
+Description=Keep Isoani reviewer metadata fresh
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=6h
+Unit=animation-reviewer-metadata.service
+[Install]
+WantedBy=timers.target

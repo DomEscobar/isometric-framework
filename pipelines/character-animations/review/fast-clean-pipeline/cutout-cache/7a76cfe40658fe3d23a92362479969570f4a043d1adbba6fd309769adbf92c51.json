@@ -1,0 +1,13 @@
+{
+  "imported_from": {
+    "file": "master-cutout-0005.png",
+    "sha256": "bda5ea51ad6133393f09bb6b4275e1ca69d497d3645a8dc449c2750fa6c6e9be"
+  },
+  "input_sha256": "35031e4208b33d16f3ba34c9f8e6aaa5eb76b03245b4b0aecd56ca385abf4619",
+  "key": "7a76cfe40658fe3d23a92362479969570f4a043d1adbba6fd309769adbf92c51",
+  "output_file": "7a76cfe40658fe3d23a92362479969570f4a043d1adbba6fd309769adbf92c51.png",
+  "output_sha256": "bda5ea51ad6133393f09bb6b4275e1ca69d497d3645a8dc449c2750fa6c6e9be",
+  "provider_preset": "waldlicht-removal-v1",
+  "removal_recipe": "wavespeed-image-background-remover-output-v1",
+  "schema": "animation-cutout-cache-v1"
+}

@@ -1,0 +1,30 @@
+{
+  "fetched_at_utc": "2026-09-20T20:36:55Z",
+  "source": "https://openrouter.ai/api/v1/models",
+  "id": "google/gemini-3.8-flash",
+  "canonical_slug": "google/gemini-3.8-flash-20260902",
+  "architecture": {
+    "input_modalities": [
+      "text",
+      "image",
+      "video",
+      "file",
+      "audio"
+    ],
+    "output_modalities": [
+      "text"
+    ]
+  },
+  "pricing_usd_per_token": {
+    "prompt": "0.00000075",
+    "completion": "0.00000375"
+  },
+  "supported_parameters_used_by_reviewer": [
+    "max_tokens",
+    "response_format",
+    "structured_outputs",
+    "temperature"
+  ],
+  "fixed_run_price_claimed": false,
+  "note": "Snapshot evidence only. Fetch fresh exact-model metadata before any future paid submission."
+}

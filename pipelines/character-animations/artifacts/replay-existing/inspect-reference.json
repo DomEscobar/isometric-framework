@@ -1,0 +1,35 @@
+{
+  "request_sha256": "573504ca4e24c1e406119bd5c891a9203f8aad461a2986d08fde2489fe0e3e78",
+  "result": {
+    "artifacts": [
+      "inspect-reference.json"
+    ],
+    "details": {
+      "alpha": {
+        "has_true_alpha": false,
+        "maximum": 255,
+        "minimum": 255,
+        "opaque_pixels": 2560000,
+        "semi_transparent_pixels": 0,
+        "transparent_pixels": 0,
+        "visible_bounds": [
+          0,
+          0,
+          1600,
+          1600
+        ]
+      },
+      "bytes": 1278387,
+      "format": "PNG",
+      "height": 1600,
+      "input": "reference.png",
+      "mode": "RGB",
+      "sha256": "8e2df0c8b46580b83a9804ab140d392758be93414553142b460b906f1769fe46",
+      "visual_approval": false,
+      "width": 1600
+    },
+    "status": "completed"
+  },
+  "stage": "inspect_reference",
+  "version": 1
+}

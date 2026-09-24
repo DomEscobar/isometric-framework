@@ -1,0 +1,33 @@
+# TEMPLATE ONLY — replace @@...@@ placeholders before installation.
+# Expected environment file (mode 0600):
+#   ANIMATION_API_TOKEN=<long random owner token>
+#   ANIMATION_PAID_ENABLED=0
+#   ANIMATION_MAX_STAGE_USD=0
+# Do not add provider credentials unless paid operation is separately approved.
+
+[Unit]
+Description=Local Animation Pipeline API
+After=network.target
+
+[Service]
+Type=simple
+User=@@SERVICE_USER@@
+Group=@@SERVICE_GROUP@@
+WorkingDirectory=@@SERVICE_ROOT@@
+EnvironmentFile=@@ENVIRONMENT_FILE@@
+Environment=ANIMATION_DATA_DIR=@@DATA_DIRECTORY@@
+ExecStart=@@SERVICE_ROOT@@/.venv/bin/python -m uvicorn app:app --host 127.0.0.1 --port 4386 --workers 1
+Restart=on-failure
+RestartSec=3
+TimeoutStartSec=30
+TimeoutStopSec=15
+KillSignal=SIGTERM
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=@@DATA_DIRECTORY@@
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

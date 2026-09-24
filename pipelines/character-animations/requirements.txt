@@ -1,0 +1,10 @@
+fastapi==0.138.0
+httpx==0.28.1
+pillow==12.3.0
+python-multipart==0.0.22
+requests==2.32.3
+uvicorn==0.49.0
+
+# Test and browser-smoke tools used by documented verification commands.
+pytest==9.1.1
+playwright==1.58.0

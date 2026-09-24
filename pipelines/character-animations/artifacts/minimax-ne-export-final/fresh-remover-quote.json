@@ -1,0 +1,13 @@
+{
+  "balance_verified_usd": 15.33,
+  "currency": "USD",
+  "discounted_price": 0.004,
+  "estimate": true,
+  "fetched_at_utc": "2026-09-21T05:17:06Z",
+  "model_id": "wavespeed-ai/image-background-remover",
+  "price": 0.004,
+  "required": [
+    "image"
+  ],
+  "unpriced_inputs": []
+}

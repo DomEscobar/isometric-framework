@@ -1,0 +1,1270 @@
+{
+  "candidates": [
+    {
+      "duration_seconds": 1.583333,
+      "end_exclusive_sample_index": 30,
+      "end_source_frame_index": 75,
+      "end_timestamp_seconds": 2.5,
+      "endpoint_difference": 0.007223,
+      "foreground_displacement": 0.001563,
+      "heuristic_only": true,
+      "heuristic_score": 0.979079,
+      "id": "candidate-01",
+      "mean_internal_motion": 0.007138,
+      "motion_direction_discontinuity": 0.000521,
+      "start_sample_index": 11,
+      "start_source_frame_index": 28,
+      "start_timestamp_seconds": 0.916667
+    },
+    {
+      "duration_seconds": 1.666667,
+      "end_exclusive_sample_index": 30,
+      "end_source_frame_index": 75,
+      "end_timestamp_seconds": 2.5,
+      "endpoint_difference": 0.007381,
+      "foreground_displacement": 0.003335,
+      "heuristic_only": true,
+      "heuristic_score": 0.975504,
+      "id": "candidate-02",
+      "mean_internal_motion": 0.007084,
+      "motion_direction_discontinuity": 0.001042,
+      "start_sample_index": 10,
+      "start_source_frame_index": 25,
+      "start_timestamp_seconds": 0.833333
+    },
+    {
+      "duration_seconds": 1.666667,
+      "end_exclusive_sample_index": 31,
+      "end_source_frame_index": 78,
+      "end_timestamp_seconds": 2.583333,
+      "endpoint_difference": 0.008641,
+      "foreground_displacement": 0.002329,
+      "heuristic_only": true,
+      "heuristic_score": 0.973863,
+      "id": "candidate-03",
+      "mean_internal_motion": 0.007311,
+      "motion_direction_discontinuity": 0.001042,
+      "start_sample_index": 11,
+      "start_source_frame_index": 28,
+      "start_timestamp_seconds": 0.916667
+    },
+    {
+      "duration_seconds": 1.666667,
+      "end_exclusive_sample_index": 28,
+      "end_source_frame_index": 70,
+      "end_timestamp_seconds": 2.333333,
+      "endpoint_difference": 0.007678,
+      "foreground_displacement": 0.004295,
+      "heuristic_only": true,
+      "heuristic_score": 0.973841,
+      "id": "candidate-04",
+      "mean_internal_motion": 0.007193,
+      "motion_direction_discontinuity": 0.000521,
+      "start_sample_index": 8,
+      "start_source_frame_index": 20,
+      "start_timestamp_seconds": 0.666667
+    },
+    {
+      "duration_seconds": 1.583333,
+      "end_exclusive_sample_index": 26,
+      "end_source_frame_index": 65,
+      "end_timestamp_seconds": 2.166667,
+      "endpoint_difference": 0.007192,
+      "foreground_displacement": 0.005208,
+      "heuristic_only": true,
+      "heuristic_score": 0.973166,
+      "id": "candidate-05",
+      "mean_internal_motion": 0.007253,
+      "motion_direction_discontinuity": 0.001042,
+      "start_sample_index": 7,
+      "start_source_frame_index": 18,
+      "start_timestamp_seconds": 0.583333
+    }
+  ],
+  "framing": {
+    "edge_touch_sample_indices": [],
+    "hard_rejection_threshold_fraction": 0.25
+  },
+  "hard_failures": [],
+  "limitations": [
+    "Local CV scores are heuristic candidate suggestions, not proof of loop quality.",
+    "Native provider video understanding is not assumed to sample exact frame boundaries."
+  ],
+  "motion": {
+    "maximum_frame_difference": 0.010944,
+    "median_frame_difference": 0.006983
+  },
+  "samples": [
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        294,
+        165,
+        704,
+        814
+      ],
+      "foreground_centroid": [
+        0.5192708333333333,
+        0.509375
+      ],
+      "foreground_coverage": 0.143457,
+      "motion_from_previous": 0.0,
+      "sample_index": 0,
+      "source_frame_index": 0,
+      "timestamp_seconds": 0.0
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        293,
+        164,
+        706,
+        816
+      ],
+      "foreground_centroid": [
+        0.5197916666666667,
+        0.5098958333333333
+      ],
+      "foreground_coverage": 0.144132,
+      "motion_from_previous": 0.006879,
+      "sample_index": 1,
+      "source_frame_index": 2,
+      "timestamp_seconds": 0.083333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        294,
+        164,
+        710,
+        817
+      ],
+      "foreground_centroid": [
+        0.5223958333333333,
+        0.5104166666666666
+      ],
+      "foreground_coverage": 0.144366,
+      "motion_from_previous": 0.007181,
+      "sample_index": 2,
+      "source_frame_index": 5,
+      "timestamp_seconds": 0.166667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        295,
+        161,
+        710,
+        816
+      ],
+      "foreground_centroid": [
+        0.5229166666666667,
+        0.5083333333333333
+      ],
+      "foreground_coverage": 0.144172,
+      "motion_from_previous": 0.004126,
+      "sample_index": 3,
+      "source_frame_index": 8,
+      "timestamp_seconds": 0.25
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        295,
+        159,
+        708,
+        818
+      ],
+      "foreground_centroid": [
+        0.521875,
+        0.5083333333333333
+      ],
+      "foreground_coverage": 0.143186,
+      "motion_from_previous": 0.005725,
+      "sample_index": 4,
+      "source_frame_index": 10,
+      "timestamp_seconds": 0.333333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        297,
+        159,
+        706,
+        819
+      ],
+      "foreground_centroid": [
+        0.521875,
+        0.5088541666666667
+      ],
+      "foreground_coverage": 0.14088,
+      "motion_from_previous": 0.005802,
+      "sample_index": 5,
+      "source_frame_index": 12,
+      "timestamp_seconds": 0.416667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        297,
+        159,
+        698,
+        819
+      ],
+      "foreground_centroid": [
+        0.5177083333333333,
+        0.5088541666666667
+      ],
+      "foreground_coverage": 0.136068,
+      "motion_from_previous": 0.009861,
+      "sample_index": 6,
+      "source_frame_index": 15,
+      "timestamp_seconds": 0.5
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        299,
+        158,
+        694,
+        819
+      ],
+      "foreground_centroid": [
+        0.5166666666666667,
+        0.5083333333333333
+      ],
+      "foreground_coverage": 0.134677,
+      "motion_from_previous": 0.008167,
+      "sample_index": 7,
+      "source_frame_index": 18,
+      "timestamp_seconds": 0.583333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        304,
+        164,
+        684,
+        821
+      ],
+      "foreground_centroid": [
+        0.5140625,
+        0.5125
+      ],
+      "foreground_coverage": 0.134035,
+      "motion_from_previous": 0.010684,
+      "sample_index": 8,
+      "source_frame_index": 20,
+      "timestamp_seconds": 0.666667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        308,
+        164,
+        678,
+        821
+      ],
+      "foreground_centroid": [
+        0.5130208333333334,
+        0.5125
+      ],
+      "foreground_coverage": 0.133663,
+      "motion_from_previous": 0.007077,
+      "sample_index": 9,
+      "source_frame_index": 22,
+      "timestamp_seconds": 0.75
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        165,
+        668,
+        819
+      ],
+      "foreground_centroid": [
+        0.5104166666666666,
+        0.5119791666666667
+      ],
+      "foreground_coverage": 0.132563,
+      "motion_from_previous": 0.010131,
+      "sample_index": 10,
+      "source_frame_index": 25,
+      "timestamp_seconds": 0.833333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        164,
+        660,
+        816
+      ],
+      "foreground_centroid": [
+        0.50625,
+        0.5098958333333333
+      ],
+      "foreground_coverage": 0.131451,
+      "motion_from_previous": 0.006128,
+      "sample_index": 11,
+      "source_frame_index": 28,
+      "timestamp_seconds": 0.916667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        314,
+        161,
+        658,
+        815
+      ],
+      "foreground_centroid": [
+        0.5057291666666667,
+        0.5078125
+      ],
+      "foreground_coverage": 0.130429,
+      "motion_from_previous": 0.005807,
+      "sample_index": 12,
+      "source_frame_index": 30,
+      "timestamp_seconds": 1.0
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        158,
+        654,
+        812
+      ],
+      "foreground_centroid": [
+        0.503125,
+        0.5046875
+      ],
+      "foreground_coverage": 0.130067,
+      "motion_from_previous": 0.005845,
+      "sample_index": 13,
+      "source_frame_index": 32,
+      "timestamp_seconds": 1.083333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        151,
+        656,
+        805
+      ],
+      "foreground_centroid": [
+        0.5041666666666667,
+        0.4973958333333333
+      ],
+      "foreground_coverage": 0.130778,
+      "motion_from_previous": 0.007318,
+      "sample_index": 14,
+      "source_frame_index": 35,
+      "timestamp_seconds": 1.166667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        152,
+        658,
+        802
+      ],
+      "foreground_centroid": [
+        0.5052083333333334,
+        0.49635416666666665
+      ],
+      "foreground_coverage": 0.1317,
+      "motion_from_previous": 0.005075,
+      "sample_index": 15,
+      "source_frame_index": 38,
+      "timestamp_seconds": 1.25
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        312,
+        153,
+        666,
+        795
+      ],
+      "foreground_centroid": [
+        0.5088541666666667,
+        0.49322916666666666
+      ],
+      "foreground_coverage": 0.135947,
+      "motion_from_previous": 0.00804,
+      "sample_index": 16,
+      "source_frame_index": 40,
+      "timestamp_seconds": 1.333333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        309,
+        156,
+        672,
+        794
+      ],
+      "foreground_centroid": [
+        0.5104166666666666,
+        0.4942708333333333
+      ],
+      "foreground_coverage": 0.138125,
+      "motion_from_previous": 0.007065,
+      "sample_index": 17,
+      "source_frame_index": 42,
+      "timestamp_seconds": 1.416667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        304,
+        157,
+        680,
+        795
+      ],
+      "foreground_centroid": [
+        0.5119791666666667,
+        0.4953125
+      ],
+      "foreground_coverage": 0.139521,
+      "motion_from_previous": 0.010878,
+      "sample_index": 18,
+      "source_frame_index": 45,
+      "timestamp_seconds": 1.5
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        301,
+        164,
+        686,
+        797
+      ],
+      "foreground_centroid": [
+        0.5135416666666667,
+        0.5
+      ],
+      "foreground_coverage": 0.139972,
+      "motion_from_previous": 0.007256,
+      "sample_index": 19,
+      "source_frame_index": 48,
+      "timestamp_seconds": 1.583333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        300,
+        164,
+        692,
+        800
+      ],
+      "foreground_centroid": [
+        0.5161458333333333,
+        0.5015625
+      ],
+      "foreground_coverage": 0.140573,
+      "motion_from_previous": 0.007327,
+      "sample_index": 20,
+      "source_frame_index": 50,
+      "timestamp_seconds": 1.666667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        298,
+        164,
+        696,
+        804
+      ],
+      "foreground_centroid": [
+        0.5171875,
+        0.5036458333333333
+      ],
+      "foreground_coverage": 0.141539,
+      "motion_from_previous": 0.006371,
+      "sample_index": 21,
+      "source_frame_index": 52,
+      "timestamp_seconds": 1.75
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        299,
+        164,
+        702,
+        805
+      ],
+      "foreground_centroid": [
+        0.5208333333333334,
+        0.5041666666666667
+      ],
+      "foreground_coverage": 0.142802,
+      "motion_from_previous": 0.008521,
+      "sample_index": 22,
+      "source_frame_index": 55,
+      "timestamp_seconds": 1.833333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        298,
+        164,
+        704,
+        808
+      ],
+      "foreground_centroid": [
+        0.5213541666666667,
+        0.5057291666666667
+      ],
+      "foreground_coverage": 0.142762,
+      "motion_from_previous": 0.005028,
+      "sample_index": 23,
+      "source_frame_index": 58,
+      "timestamp_seconds": 1.916667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        299,
+        159,
+        704,
+        810
+      ],
+      "foreground_centroid": [
+        0.521875,
+        0.5041666666666667
+      ],
+      "foreground_coverage": 0.141679,
+      "motion_from_previous": 0.006204,
+      "sample_index": 24,
+      "source_frame_index": 60,
+      "timestamp_seconds": 2.0
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        300,
+        158,
+        702,
+        811
+      ],
+      "foreground_centroid": [
+        0.5213541666666667,
+        0.5041666666666667
+      ],
+      "foreground_coverage": 0.139861,
+      "motion_from_previous": 0.005801,
+      "sample_index": 25,
+      "source_frame_index": 63,
+      "timestamp_seconds": 2.083333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        303,
+        158,
+        696,
+        811
+      ],
+      "foreground_centroid": [
+        0.5197916666666667,
+        0.5041666666666667
+      ],
+      "foreground_coverage": 0.135137,
+      "motion_from_previous": 0.009807,
+      "sample_index": 26,
+      "source_frame_index": 65,
+      "timestamp_seconds": 2.166667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        305,
+        159,
+        690,
+        812
+      ],
+      "foreground_centroid": [
+        0.5177083333333333,
+        0.5052083333333334
+      ],
+      "foreground_coverage": 0.13298,
+      "motion_from_previous": 0.006983,
+      "sample_index": 27,
+      "source_frame_index": 68,
+      "timestamp_seconds": 2.25
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        308,
+        164,
+        682,
+        813
+      ],
+      "foreground_centroid": [
+        0.5151041666666667,
+        0.5083333333333333
+      ],
+      "foreground_coverage": 0.132812,
+      "motion_from_previous": 0.007672,
+      "sample_index": 28,
+      "source_frame_index": 70,
+      "timestamp_seconds": 2.333333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        310,
+        165,
+        674,
+        814
+      ],
+      "foreground_centroid": [
+        0.5119791666666667,
+        0.509375
+      ],
+      "foreground_coverage": 0.132306,
+      "motion_from_previous": 0.007479,
+      "sample_index": 29,
+      "source_frame_index": 72,
+      "timestamp_seconds": 2.416667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        314,
+        164,
+        662,
+        816
+      ],
+      "foreground_centroid": [
+        0.5078125,
+        0.5098958333333333
+      ],
+      "foreground_coverage": 0.131714,
+      "motion_from_previous": 0.010423,
+      "sample_index": 30,
+      "source_frame_index": 75,
+      "timestamp_seconds": 2.5
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        164,
+        656,
+        814
+      ],
+      "foreground_centroid": [
+        0.5041666666666667,
+        0.5088541666666667
+      ],
+      "foreground_coverage": 0.131401,
+      "motion_from_previous": 0.006354,
+      "sample_index": 31,
+      "source_frame_index": 78,
+      "timestamp_seconds": 2.583333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        162,
+        646,
+        812
+      ],
+      "foreground_centroid": [
+        0.49895833333333334,
+        0.5067708333333333
+      ],
+      "foreground_coverage": 0.129335,
+      "motion_from_previous": 0.009356,
+      "sample_index": 32,
+      "source_frame_index": 80,
+      "timestamp_seconds": 2.666667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        312,
+        159,
+        640,
+        811
+      ],
+      "foreground_centroid": [
+        0.4953125,
+        0.5046875
+      ],
+      "foreground_coverage": 0.128488,
+      "motion_from_previous": 0.006531,
+      "sample_index": 33,
+      "source_frame_index": 82,
+      "timestamp_seconds": 2.75
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        154,
+        636,
+        806
+      ],
+      "foreground_centroid": [
+        0.49270833333333336,
+        0.49947916666666664
+      ],
+      "foreground_coverage": 0.128736,
+      "motion_from_previous": 0.008553,
+      "sample_index": 34,
+      "source_frame_index": 85,
+      "timestamp_seconds": 2.833333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        152,
+        636,
+        802
+      ],
+      "foreground_centroid": [
+        0.49270833333333336,
+        0.49635416666666665
+      ],
+      "foreground_coverage": 0.129004,
+      "motion_from_previous": 0.004859,
+      "sample_index": 35,
+      "source_frame_index": 88,
+      "timestamp_seconds": 2.916667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        312,
+        152,
+        638,
+        800
+      ],
+      "foreground_centroid": [
+        0.4942708333333333,
+        0.4953125
+      ],
+      "foreground_coverage": 0.129501,
+      "motion_from_previous": 0.004548,
+      "sample_index": 36,
+      "source_frame_index": 90,
+      "timestamp_seconds": 3.0
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        154,
+        642,
+        797
+      ],
+      "foreground_centroid": [
+        0.49583333333333335,
+        0.4947916666666667
+      ],
+      "foreground_coverage": 0.131794,
+      "motion_from_previous": 0.004789,
+      "sample_index": 37,
+      "source_frame_index": 92,
+      "timestamp_seconds": 3.083333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        312,
+        155,
+        650,
+        795
+      ],
+      "foreground_centroid": [
+        0.5005208333333333,
+        0.4942708333333333
+      ],
+      "foreground_coverage": 0.135314,
+      "motion_from_previous": 0.009807,
+      "sample_index": 38,
+      "source_frame_index": 95,
+      "timestamp_seconds": 3.166667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        312,
+        158,
+        654,
+        796
+      ],
+      "foreground_centroid": [
+        0.5026041666666666,
+        0.49635416666666665
+      ],
+      "foreground_coverage": 0.13541,
+      "motion_from_previous": 0.007318,
+      "sample_index": 39,
+      "source_frame_index": 98,
+      "timestamp_seconds": 3.25
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        312,
+        165,
+        662,
+        799
+      ],
+      "foreground_centroid": [
+        0.5067708333333333,
+        0.5015625
+      ],
+      "foreground_coverage": 0.135831,
+      "motion_from_previous": 0.009895,
+      "sample_index": 40,
+      "source_frame_index": 100,
+      "timestamp_seconds": 3.333333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        315,
+        165,
+        668,
+        801
+      ],
+      "foreground_centroid": [
+        0.5114583333333333,
+        0.5026041666666666
+      ],
+      "foreground_coverage": 0.136284,
+      "motion_from_previous": 0.006258,
+      "sample_index": 41,
+      "source_frame_index": 102,
+      "timestamp_seconds": 3.416667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        317,
+        164,
+        672,
+        804
+      ],
+      "foreground_centroid": [
+        0.5145833333333333,
+        0.5036458333333333
+      ],
+      "foreground_coverage": 0.136912,
+      "motion_from_previous": 0.007201,
+      "sample_index": 42,
+      "source_frame_index": 105,
+      "timestamp_seconds": 3.5
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        318,
+        160,
+        674,
+        807
+      ],
+      "foreground_centroid": [
+        0.5161458333333333,
+        0.503125
+      ],
+      "foreground_coverage": 0.136281,
+      "motion_from_previous": 0.004212,
+      "sample_index": 43,
+      "source_frame_index": 108,
+      "timestamp_seconds": 3.583333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        318,
+        157,
+        672,
+        808
+      ],
+      "foreground_centroid": [
+        0.5151041666666667,
+        0.5020833333333333
+      ],
+      "foreground_coverage": 0.134912,
+      "motion_from_previous": 0.004978,
+      "sample_index": 44,
+      "source_frame_index": 110,
+      "timestamp_seconds": 3.666667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        317,
+        157,
+        668,
+        807
+      ],
+      "foreground_centroid": [
+        0.5125,
+        0.5015625
+      ],
+      "foreground_coverage": 0.132423,
+      "motion_from_previous": 0.00592,
+      "sample_index": 45,
+      "source_frame_index": 112,
+      "timestamp_seconds": 3.75
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        314,
+        157,
+        660,
+        807
+      ],
+      "foreground_centroid": [
+        0.5067708333333333,
+        0.5015625
+      ],
+      "foreground_coverage": 0.128235,
+      "motion_from_previous": 0.009326,
+      "sample_index": 46,
+      "source_frame_index": 115,
+      "timestamp_seconds": 3.833333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        314,
+        158,
+        654,
+        808
+      ],
+      "foreground_centroid": [
+        0.5036458333333333,
+        0.5026041666666666
+      ],
+      "foreground_coverage": 0.128927,
+      "motion_from_previous": 0.007214,
+      "sample_index": 47,
+      "source_frame_index": 118,
+      "timestamp_seconds": 3.916667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        312,
+        163,
+        640,
+        812
+      ],
+      "foreground_centroid": [
+        0.4953125,
+        0.5072916666666667
+      ],
+      "foreground_coverage": 0.129417,
+      "motion_from_previous": 0.010944,
+      "sample_index": 48,
+      "source_frame_index": 120,
+      "timestamp_seconds": 4.0
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        164,
+        632,
+        812
+      ],
+      "foreground_centroid": [
+        0.490625,
+        0.5078125
+      ],
+      "foreground_coverage": 0.128874,
+      "motion_from_previous": 0.006592,
+      "sample_index": 49,
+      "source_frame_index": 122,
+      "timestamp_seconds": 4.083333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        164,
+        620,
+        813
+      ],
+      "foreground_centroid": [
+        0.484375,
+        0.5083333333333333
+      ],
+      "foreground_coverage": 0.127782,
+      "motion_from_previous": 0.00829,
+      "sample_index": 50,
+      "source_frame_index": 125,
+      "timestamp_seconds": 4.166667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        165,
+        614,
+        813
+      ],
+      "foreground_centroid": [
+        0.48125,
+        0.5088541666666667
+      ],
+      "foreground_coverage": 0.127513,
+      "motion_from_previous": 0.003099,
+      "sample_index": 51,
+      "source_frame_index": 128,
+      "timestamp_seconds": 4.25
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        312,
+        160,
+        608,
+        812
+      ],
+      "foreground_centroid": [
+        0.4786458333333333,
+        0.5057291666666667
+      ],
+      "foreground_coverage": 0.125923,
+      "motion_from_previous": 0.009624,
+      "sample_index": 52,
+      "source_frame_index": 130,
+      "timestamp_seconds": 4.333333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        158,
+        604,
+        809
+      ],
+      "foreground_centroid": [
+        0.47604166666666664,
+        0.503125
+      ],
+      "foreground_coverage": 0.124862,
+      "motion_from_previous": 0.006381,
+      "sample_index": 53,
+      "source_frame_index": 132,
+      "timestamp_seconds": 4.416667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        152,
+        602,
+        804
+      ],
+      "foreground_centroid": [
+        0.475,
+        0.4973958333333333
+      ],
+      "foreground_coverage": 0.124095,
+      "motion_from_previous": 0.007475,
+      "sample_index": 54,
+      "source_frame_index": 135,
+      "timestamp_seconds": 4.5
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        151,
+        604,
+        802
+      ],
+      "foreground_centroid": [
+        0.47604166666666664,
+        0.49583333333333335
+      ],
+      "foreground_coverage": 0.124048,
+      "motion_from_previous": 0.004863,
+      "sample_index": 55,
+      "source_frame_index": 138,
+      "timestamp_seconds": 4.583333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        154,
+        610,
+        799
+      ],
+      "foreground_centroid": [
+        0.4791666666666667,
+        0.49583333333333335
+      ],
+      "foreground_coverage": 0.126338,
+      "motion_from_previous": 0.006889,
+      "sample_index": 56,
+      "source_frame_index": 140,
+      "timestamp_seconds": 4.666667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        310,
+        155,
+        616,
+        795
+      ],
+      "foreground_centroid": [
+        0.4817708333333333,
+        0.4942708333333333
+      ],
+      "foreground_coverage": 0.12852,
+      "motion_from_previous": 0.006464,
+      "sample_index": 57,
+      "source_frame_index": 142,
+      "timestamp_seconds": 4.75
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        157,
+        624,
+        797
+      ],
+      "foreground_centroid": [
+        0.4864583333333333,
+        0.49635416666666665
+      ],
+      "foreground_coverage": 0.130662,
+      "motion_from_previous": 0.010162,
+      "sample_index": 58,
+      "source_frame_index": 145,
+      "timestamp_seconds": 4.833333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        311,
+        163,
+        626,
+        797
+      ],
+      "foreground_centroid": [
+        0.4875,
+        0.49947916666666664
+      ],
+      "foreground_coverage": 0.130444,
+      "motion_from_previous": 0.002993,
+      "sample_index": 59,
+      "source_frame_index": 148,
+      "timestamp_seconds": 4.916667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        165,
+        632,
+        801
+      ],
+      "foreground_centroid": [
+        0.49166666666666664,
+        0.5026041666666666
+      ],
+      "foreground_coverage": 0.131449,
+      "motion_from_previous": 0.00945,
+      "sample_index": 60,
+      "source_frame_index": 150,
+      "timestamp_seconds": 5.0
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        166,
+        636,
+        805
+      ],
+      "foreground_centroid": [
+        0.49375,
+        0.5052083333333334
+      ],
+      "foreground_coverage": 0.131929,
+      "motion_from_previous": 0.003977,
+      "sample_index": 61,
+      "source_frame_index": 152,
+      "timestamp_seconds": 5.083333
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        313,
+        159,
+        636,
+        809
+      ],
+      "foreground_centroid": [
+        0.49375,
+        0.5036458333333333
+      ],
+      "foreground_coverage": 0.131379,
+      "motion_from_previous": 0.005418,
+      "sample_index": 62,
+      "source_frame_index": 155,
+      "timestamp_seconds": 5.166667
+    },
+    {
+      "edge_touch": false,
+      "foreground_bounds": [
+        314,
+        158,
+        632,
+        808
+      ],
+      "foreground_centroid": [
+        0.4921875,
+        0.5026041666666666
+      ],
+      "foreground_coverage": 0.129425,
+      "motion_from_previous": 0.005317,
+      "sample_index": 63,
+      "source_frame_index": 158,
+      "timestamp_seconds": 5.25
+    }
+  ],
+  "sampling": {
+    "decoded_sample_count": 64,
+    "mapping": "source_frame_index=round(timestamp_seconds*native_fps); sampled indices are not native indices",
+    "native_video_sampling_frame_accurate_claimed": false,
+    "sample_fps": 12.0
+  },
+  "source": {
+    "bytes": 1298224,
+    "duration_seconds": 5.366667,
+    "file": "video-output.mp4",
+    "frame_count": 161,
+    "height": 960,
+    "native_fps": 30.0,
+    "sha256": "2ca54f300087f790fbc02f1e938ff979700a9e52077da07eff96c33fb6e4e18e",
+    "width": 960
+  },
+  "status": "candidate_suggested",
+  "version": 1,
+  "visual_approval": false
+}

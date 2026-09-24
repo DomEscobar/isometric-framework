@@ -1,0 +1,50 @@
+{
+  "atlas_sha256": "d9ed58a58a3c5c0fefc63bcf436a40ff163fdea1e91074fb54f8f65cf4b3ed3d",
+  "manifest_sha256": "e7e34fbcec0ecd75c1ef9986d80024a68c2cd46a857b1e1f4db001cafee0c690",
+  "result": {
+    "artifacts": [
+      "normalized-frame-0000.png",
+      "normalized-frame-0001.png",
+      "normalized-frame-0002.png",
+      "normalized-frame-0003.png",
+      "normalized-frame-0004.png",
+      "normalized-frame-0005.png",
+      "normalized-frame-0006.png",
+      "normalized-frame-0007.png",
+      "normalized-frame-0008.png",
+      "normalized-frame-0009.png",
+      "normalization.json",
+      "atlas.png",
+      "atlas-manifest.json",
+      "pack-result.json",
+      "pack-state.json"
+    ],
+    "details": {
+      "atlas": {
+        "height": 166,
+        "width": 658
+      },
+      "atlas_sha256": "d9ed58a58a3c5c0fefc63bcf436a40ff163fdea1e91074fb54f8f65cf4b3ed3d",
+      "canvas": {
+        "height": 80,
+        "width": 80
+      },
+      "frame_count": 10,
+      "manifest_sha256": "e7e34fbcec0ecd75c1ef9986d80024a68c2cd46a857b1e1f4db001cafee0c690",
+      "schema": "animation-pipeline-atlas-v1",
+      "shared_scale": 0.08868501529051988,
+      "shared_source_root": [
+        472.0138316800561,
+        807.5
+      ],
+      "stock_framework_v4_claimed": false,
+      "target_root": [
+        40,
+        72
+      ],
+      "visual_approval": false
+    },
+    "status": "needs_review"
+  },
+  "version": 1
+}

@@ -1,0 +1,13 @@
+[Unit]
+Description=Refresh Isoani reviewer model metadata (no paid inference)
+After=network-online.target
+[Service]
+Type=oneshot
+WorkingDirectory=/root/services/animation-pipeline
+ExecStart=/root/services/animation-pipeline/.venv/bin/python tools/refresh_reviewer_metadata.py
+User=root
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/root/services/animation-pipeline/var

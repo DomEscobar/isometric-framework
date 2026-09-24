@@ -1,0 +1,593 @@
+{
+  "canvas": {
+    "height": 80,
+    "width": 80
+  },
+  "frames": [
+    {
+      "input": "accepted-cutout-0000.png",
+      "input_alpha_bounds": [
+        13,
+        29,
+        430,
+        671
+      ],
+      "input_sha256": "0c92fb96200aeb291662a24f41e1b00c52b60d9676d1927b1fa411c479c6bf54",
+      "order": 0,
+      "output": "normalized-frame-0000.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 253,
+        "semi_transparent_pixels": 813,
+        "transparent_pixels": 5334,
+        "visible_bounds": [
+          23,
+          16,
+          61,
+          75
+        ]
+      },
+      "output_sha256": "e22d222561212fc8717ed02feec1fff3ab47325040e6d501b0cf2b302d955561",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0001.png",
+      "input_alpha_bounds": [
+        12,
+        30,
+        426,
+        676
+      ],
+      "input_sha256": "c10aeaa08322ff5f0f2576954c91ef7f93c32b5f8105d169b4a90c02c4bef453",
+      "order": 1,
+      "output": "normalized-frame-0001.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 254,
+        "semi_transparent_pixels": 813,
+        "transparent_pixels": 5333,
+        "visible_bounds": [
+          23,
+          16,
+          61,
+          75
+        ]
+      },
+      "output_sha256": "7468cc27bc7ad7d3bcfe279f45856170643f69cb50b2918cc41202a298dcc712",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0002.png",
+      "input_alpha_bounds": [
+        12,
+        25,
+        422,
+        672
+      ],
+      "input_sha256": "e03e486b77ae3d7c1599d5335e42baeb3a8b4c5979fd36a19f75f82bac586ce3",
+      "order": 2,
+      "output": "normalized-frame-0002.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 257,
+        "semi_transparent_pixels": 822,
+        "transparent_pixels": 5321,
+        "visible_bounds": [
+          23,
+          15,
+          60,
+          75
+        ]
+      },
+      "output_sha256": "c7fdc2e9a3565917eb197c7d48c85191b41e015c95cf93d64aac3716860378e7",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0003.png",
+      "input_alpha_bounds": [
+        13,
+        20,
+        417,
+        667
+      ],
+      "input_sha256": "90fb72a09b2148c1cf95a297d870241171027f2da886bbb3a5de802bf0c22966",
+      "order": 3,
+      "output": "normalized-frame-0003.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 264,
+        "semi_transparent_pixels": 819,
+        "transparent_pixels": 5317,
+        "visible_bounds": [
+          23,
+          15,
+          60,
+          74
+        ]
+      },
+      "output_sha256": "30f45e3a18514763cfc605df2137c72e2251003c3680172c5d06f04476393703",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0004.png",
+      "input_alpha_bounds": [
+        14,
+        14,
+        410,
+        661
+      ],
+      "input_sha256": "acbddcb50c8b7f7cb45d861cacf91779a543b13794f8905b5774f02baeb501e3",
+      "order": 4,
+      "output": "normalized-frame-0004.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 247,
+        "semi_transparent_pixels": 864,
+        "transparent_pixels": 5289,
+        "visible_bounds": [
+          23,
+          14,
+          59,
+          74
+        ]
+      },
+      "output_sha256": "c748d2fb4f8bc468a1e18436ed5799255bda445c997b7c1310b849d883b85b14",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0005.png",
+      "input_alpha_bounds": [
+        15,
+        13,
+        406,
+        658
+      ],
+      "input_sha256": "353fc286dce11176f0f9cf2cde7cdcee927ce1e907bb0d44c506ae6e0451cf00",
+      "order": 5,
+      "output": "normalized-frame-0005.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 233,
+        "semi_transparent_pixels": 868,
+        "transparent_pixels": 5299,
+        "visible_bounds": [
+          23,
+          14,
+          59,
+          73
+        ]
+      },
+      "output_sha256": "972bba0837b3225f7e39ffc5d22cf6e7b37b9704d22d8a77047c2ec7be368a0c",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0006.png",
+      "input_alpha_bounds": [
+        18,
+        19,
+        401,
+        652
+      ],
+      "input_sha256": "a8f1496f0e418fef13044d396d4b0abef07a5173e52f45e07a7c4fe500bbd9f7",
+      "order": 6,
+      "output": "normalized-frame-0006.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 238,
+        "semi_transparent_pixels": 858,
+        "transparent_pixels": 5304,
+        "visible_bounds": [
+          24,
+          15,
+          58,
+          73
+        ]
+      },
+      "output_sha256": "7f9054daba3f4f8aa285935a1e7da29c2f10f277b3e4415f88bbf68c30c06ac5",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0007.png",
+      "input_alpha_bounds": [
+        20,
+        24,
+        400,
+        648
+      ],
+      "input_sha256": "af44a4cf7b8a2386ef37ba608fc351734c849d7d10ae164f9ce2288b249b736e",
+      "order": 7,
+      "output": "normalized-frame-0007.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 232,
+        "semi_transparent_pixels": 855,
+        "transparent_pixels": 5313,
+        "visible_bounds": [
+          24,
+          15,
+          58,
+          72
+        ]
+      },
+      "output_sha256": "f8b71f8ccf243993f1226164ac37aa0916b75f4c07cda79c78f5335362ef5c38",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0008.png",
+      "input_alpha_bounds": [
+        23,
+        30,
+        402,
+        637
+      ],
+      "input_sha256": "55c5ff6ca2094b2793b4b3e6329c03c8a1f5e99f5bae87a19816919ac3e5e1e9",
+      "order": 8,
+      "output": "normalized-frame-0008.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 235,
+        "semi_transparent_pixels": 836,
+        "transparent_pixels": 5329,
+        "visible_bounds": [
+          24,
+          16,
+          58,
+          71
+        ]
+      },
+      "output_sha256": "33ce460e36a3b4b23cce81844f020bd98527347cc3b3899ddc684ba7f3839ae8",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0009.png",
+      "input_alpha_bounds": [
+        24,
+        26,
+        406,
+        636
+      ],
+      "input_sha256": "69fdd00a8f664e73052d1f27586ecef20c7046c9635788574669ea2392a584ce",
+      "order": 9,
+      "output": "normalized-frame-0009.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 253,
+        "semi_transparent_pixels": 830,
+        "transparent_pixels": 5317,
+        "visible_bounds": [
+          24,
+          15,
+          59,
+          71
+        ]
+      },
+      "output_sha256": "c6f395cb05663e86e54127924939ca4b07fe9e743c7775a0aa3dd7712f0aabb7",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0010.png",
+      "input_alpha_bounds": [
+        24,
+        21,
+        410,
+        640
+      ],
+      "input_sha256": "96ffab8493c2e95af882aa7b4f221286f7a9156101ca7dbd0543763831776ed7",
+      "order": 10,
+      "output": "normalized-frame-0010.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 271,
+        "semi_transparent_pixels": 818,
+        "transparent_pixels": 5311,
+        "visible_bounds": [
+          24,
+          15,
+          59,
+          72
+        ]
+      },
+      "output_sha256": "c3074e996895594853119a11832a9c5945ceb5ac9879ac5e8161cc56585488e3",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0011.png",
+      "input_alpha_bounds": [
+        23,
+        15,
+        415,
+        646
+      ],
+      "input_sha256": "800b11c303eb1a3ae67270ee49cdab1161f4fe62ae39212741b918602758f6aa",
+      "order": 11,
+      "output": "normalized-frame-0011.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 272,
+        "semi_transparent_pixels": 824,
+        "transparent_pixels": 5304,
+        "visible_bounds": [
+          24,
+          14,
+          60,
+          72
+        ]
+      },
+      "output_sha256": "6a494128a44df69a37f86f297fcb95e049cc01d5e5a921f9675aecf01b69c781",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0012.png",
+      "input_alpha_bounds": [
+        21,
+        12,
+        421,
+        651
+      ],
+      "input_sha256": "6aefb7512cd9e2dea2d17ee91e7fb103531df66c44b7336bc40045456f467dc9",
+      "order": 12,
+      "output": "normalized-frame-0012.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 244,
+        "semi_transparent_pixels": 826,
+        "transparent_pixels": 5330,
+        "visible_bounds": [
+          24,
+          14,
+          60,
+          73
+        ]
+      },
+      "output_sha256": "281f292aedbab1bc60df2f25a569c5eb0f1b0f9684cf1f1952d2cc802b2c9408",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0013.png",
+      "input_alpha_bounds": [
+        19,
+        14,
+        426,
+        649
+      ],
+      "input_sha256": "ebb0420f7c3daa71724fe3a86c796fb546c70cad3f22c7af6339b17eb36ebc88",
+      "order": 13,
+      "output": "normalized-frame-0013.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 261,
+        "semi_transparent_pixels": 795,
+        "transparent_pixels": 5344,
+        "visible_bounds": [
+          24,
+          14,
+          61,
+          72
+        ]
+      },
+      "output_sha256": "5ed881f2be67ecca6866de55af036138db6f3ae60083cd9db915a2eb8a667766",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0014.png",
+      "input_alpha_bounds": [
+        15,
+        22,
+        430,
+        655
+      ],
+      "input_sha256": "f53d8258f5c14e060f4dc2e7fb1ae25436d1b5d0c765c7e8b2626abf71711565",
+      "order": 14,
+      "output": "normalized-frame-0014.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 259,
+        "semi_transparent_pixels": 802,
+        "transparent_pixels": 5339,
+        "visible_bounds": [
+          23,
+          15,
+          61,
+          73
+        ]
+      },
+      "output_sha256": "78161d6028389dc8120242d0c14199d16fe04d71cedfa392892c63867e5a86d8",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    },
+    {
+      "input": "accepted-cutout-0015.png",
+      "input_alpha_bounds": [
+        13,
+        27,
+        429,
+        666
+      ],
+      "input_sha256": "343232909b8b6142610c3a8fcfea7815356b3e18fe39ad6874e60f393401e9f4",
+      "order": 15,
+      "output": "normalized-frame-0015.png",
+      "output_alpha": {
+        "has_true_alpha": true,
+        "maximum": 255,
+        "minimum": 0,
+        "opaque_pixels": 258,
+        "semi_transparent_pixels": 808,
+        "transparent_pixels": 5334,
+        "visible_bounds": [
+          23,
+          16,
+          61,
+          74
+        ]
+      },
+      "output_sha256": "be04c9612f2252ea0a4ce8d8abd3d0b959e9d93e44ee1e6b908ba4abd08b68ea",
+      "paste_offset": [
+        22,
+        13
+      ],
+      "scaled_full_canvas": [
+        41,
+        63
+      ]
+    }
+  ],
+  "kind": "shared-scale-root-normalization",
+  "shared_transform": {
+    "alpha": "RGBA preserved; no threshold, key, recolor, or palette conversion",
+    "paste_offset": [
+      22,
+      13
+    ],
+    "per_frame_recenter": false,
+    "per_frame_scale": false,
+    "resample": "nearest",
+    "scale": 0.09105180533751962,
+    "scaled_full_canvas": [
+      41,
+      63
+    ],
+    "source_root": [
+      196.42717680600975,
+      652.5
+    ],
+    "target_root": [
+      40,
+      72
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,117 @@
+{
+ "variant": "village",
+ "objects": [
+  {
+   "id": "oak",
+   "cell": [
+    2,
+    2
+   ],
+   "prompt": "oak tree",
+   "marker": [
+    0,
+    200,
+    40
+   ],
+   "label": "one tall leafy oak tree"
+  },
+  {
+   "id": "pine",
+   "cell": [
+    9,
+    2
+   ],
+   "prompt": "pine tree",
+   "marker": [
+    0,
+    120,
+    60
+   ],
+   "label": "one dark green pine tree"
+  },
+  {
+   "id": "bush-a",
+   "cell": [
+    3,
+    3
+   ],
+   "prompt": "bush",
+   "marker": [
+    200,
+    220,
+    0
+   ],
+   "label": "one small round green bush"
+  },
+  {
+   "id": "bush-b",
+   "cell": [
+    8,
+    3
+   ],
+   "prompt": "flowering bush",
+   "marker": [
+    255,
+    100,
+    180
+   ],
+   "label": "one flowering bush with tiny pink blossoms"
+  },
+  {
+   "id": "house",
+   "cell": [
+    6,
+    6
+   ],
+   "prompt": "cottage",
+   "marker": [
+    220,
+    40,
+    40
+   ],
+   "label": "one small wooden cottage with a warm window, no chimney smoke"
+  },
+  {
+   "id": "well",
+   "cell": [
+    4,
+    6
+   ],
+   "prompt": "stone well",
+   "marker": [
+    80,
+    80,
+    220
+   ],
+   "label": "one round stone water well with a wooden roof"
+  },
+  {
+   "id": "crate",
+   "cell": [
+    8,
+    6
+   ],
+   "prompt": "wooden crate",
+   "marker": [
+    180,
+    100,
+    40
+   ],
+   "label": "one closed wooden crate"
+  },
+  {
+   "id": "boulder",
+   "cell": [
+    2,
+    7
+   ],
+   "prompt": "boulder",
+   "marker": [
+    140,
+    140,
+    150
+   ],
+   "label": "one single grey boulder, no smoke"
+  }
+ ]
+}

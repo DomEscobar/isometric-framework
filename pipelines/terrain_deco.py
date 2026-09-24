@@ -282,15 +282,51 @@ def _load_world(run: Path):
     return flat(world)
 
 
+def stamp_deco_depth(depth: np.ndarray, run: Path, registration: dict, objects: list):
+    """Raise depth under deco sprites so the actor occludes behind them.
+
+    Hybrid navigator compares depth[p] to actor (x+y); larger depth = in front.
+    """
+    place = json.loads((run / 'placement.json').read_text()) if (run / 'placement.json').exists() else None
+    if not place:
+        return depth
+    src_w, src_h = registration['source_size']
+    frame_w, frame_h = registration['frame_size']
+    ox, oy = registration['canvas_offset']
+    cw, ch = registration['canvas']
+    sx = frame_w / src_w
+    sy = frame_h / src_h
+    by_id = {p['id']: p for p in place['objects'] if p.get('ok')}
+    for obj in objects:
+        meta = by_id.get(obj['id'])
+        if not meta:
+            continue
+        sprite = Image.open(run / f"sprite-{obj['id']}.png").convert('RGBA')
+        alpha = np.asarray(sprite)[:, :, 3] > 8
+        dx, dy = meta['paste']
+        # Object depth above its cell so actor on/behind the cell is occluded.
+        z = float(obj['cell'][0] + obj['cell'][1]) + 1.15
+        ys, xs = np.where(alpha)
+        for py, px in zip(ys, xs):
+            fx = (dx + px) * sx - ox
+            fy = (dy + py) * sy - oy
+            cx, cy = int(fx), int(fy)
+            if 0 <= cx < cw and 0 <= cy < ch and z > depth[cy, cx]:
+                depth[cy, cx] = z
+    return depth
+
+
 def build_navigator(run: Path):
     """Register scene.png onto the flat world canvas and emit a walkable hybrid navigator."""
     run = Path(run)
     if not (run / 'scene.png').exists():
         place_sprites(run)
     world = _load_world(run)
+    objects = load_objects(run)
     source = (run / 'scene.png').read_bytes()
     terrain, registration = register(world, source)
     _, depth = render_guide(world)
+    depth = stamp_deco_depth(depth, run, registration, objects)
     actor = (ACTOR / 'character.png').read_bytes()
     shadow = (ACTOR / 'shadow.png').read_bytes()
     manifest = json.loads((ACTOR / 'character-manifest.json').read_bytes())
@@ -317,7 +353,6 @@ def build_navigator(run: Path):
         'shadow': 'data:image/png;base64,' + base64.b64encode(shadow).decode(),
     }
     template = (ROOT / 'static' / 'hybrid-navigator.html').read_text(encoding='utf-8')
-    # Flat deco: no stairs — clarify copy slightly without forking the template file.
     html = (
         template
         .replace('__SCENE_DATA__', canonical(data).decode())
@@ -325,7 +360,7 @@ def build_navigator(run: Path):
         .replace('__HEIGHT__', str(world['canvas'][1]))
         .replace(
             'Nur die Treppe verbindet die Ebenen.',
-            'Flaches Deco-Terrain: eine Ebene, Deco-Sprites auf dem Plate.',
+            'Flaches Deco-Terrain: eine Ebene, Deco-Sprites occludieren den Actor.',
         )
     )
     (run / 'index.html').write_text(html, encoding='utf-8')
@@ -334,6 +369,7 @@ def build_navigator(run: Path):
         'source': 'scene.png',
         'layout_revision': world.get('revision'),
         'registration': registration,
+        'deco_occlusion': True,
         'actor_sha256': digest(actor),
         'scene_sha256': digest(source),
         'user_acceptance': 'pending',
@@ -343,6 +379,7 @@ def build_navigator(run: Path):
         'canvas': world['canvas'],
         'spawn': world['spawn'],
         'registration': registration,
+        'deco_occlusion': True,
         'index': str(run / 'index.html'),
     }
 
@@ -387,10 +424,12 @@ def package(run: Path):
         if not (run / f"sprite-{o['id']}.png").exists()
     ]
     if missing:
-        raise SystemExit(f'missing sprites: {missing}')
+        print(json.dumps({'warning': 'missing_sprites', 'ids': missing}))
     place = place_sprites(run)
+    if place['ok_count'] == 0:
+        raise SystemExit('no sprites to place')
     nav = build_navigator(run)
-    return {'placement': place, 'navigator': nav}
+    return {'placement': place, 'navigator': nav, 'missing_sprites': missing}
 
 
 def main():

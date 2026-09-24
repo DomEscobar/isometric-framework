@@ -22,6 +22,7 @@
   ],
   "resample": "uniform-lanczos"
  },
+ "deco_occlusion": true,
  "actor_sha256": "eaa8454bc05a7b798bb1fe19a7badbeaa11e533c8d094f7981b104d0fc0792cd",
  "scene_sha256": "6ed34c6ab2b9444a960df3d199c781ee1a4c6d08ada59026e73f37276f220d46",
  "user_acceptance": "pending"

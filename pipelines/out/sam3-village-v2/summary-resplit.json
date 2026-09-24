@@ -1,0 +1,237 @@
+{
+ "variant": "village",
+ "mode": "resplit-box-own",
+ "results": [
+  {
+   "id": "oak",
+   "box": {
+    "x_min": 744,
+    "y_min": 293,
+    "x_max": 924,
+    "y_max": 543
+   },
+   "foot": [
+    834,
+    493
+   ],
+   "mask": {
+    "white_px": 52135,
+    "coverage": 0.0212,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    780,
+    399,
+    888,
+    567
+   ],
+   "component_px": 10280,
+   "extract": "box",
+   "dist": 74.0
+  },
+  {
+   "id": "pine",
+   "box": {
+    "x_min": 1329,
+    "y_min": 586,
+    "x_max": 1509,
+    "y_max": 836
+   },
+   "foot": [
+    1419,
+    786
+   ],
+   "mask": {
+    "white_px": 52760,
+    "coverage": 0.0215,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": false,
+   "reason": "empty_near_foot"
+  },
+  {
+   "id": "bush-a",
+   "box": {
+    "x_min": 744,
+    "y_min": 377,
+    "x_max": 924,
+    "y_max": 627
+   },
+   "foot": [
+    834,
+    577
+   ],
+   "mask": {
+    "white_px": 12734,
+    "coverage": 0.0052,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": false,
+   "reason": "empty_near_foot"
+  },
+  {
+   "id": "bush-b",
+   "box": {
+    "x_min": 1162,
+    "y_min": 586,
+    "x_max": 1342,
+    "y_max": 836
+   },
+   "foot": [
+    1252,
+    786
+   ],
+   "mask": {
+    "white_px": 5709,
+    "coverage": 0.0023,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1213,
+    735,
+    1306,
+    818
+   ],
+   "component_px": 5709,
+   "extract": "box",
+   "dist": 32.9
+  },
+  {
+   "id": "house",
+   "box": {
+    "x_min": 744,
+    "y_min": 627,
+    "x_max": 924,
+    "y_max": 877
+   },
+   "foot": [
+    834,
+    827
+   ],
+   "mask": {
+    "white_px": 45795,
+    "coverage": 0.0186,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    933,
+    833,
+    948,
+    901
+   ],
+   "component_px": 672,
+   "extract": "box",
+   "dist": 129.7
+  },
+  {
+   "id": "well",
+   "box": {
+    "x_min": 577,
+    "y_min": 544,
+    "x_max": 757,
+    "y_max": 794
+   },
+   "foot": [
+    667,
+    744
+   ],
+   "mask": {
+    "white_px": 9375,
+    "coverage": 0.0038,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    553,
+    760,
+    562,
+    781
+   ],
+   "component_px": 156,
+   "extract": "box",
+   "dist": 115.6
+  },
+  {
+   "id": "crate",
+   "box": {
+    "x_min": 911,
+    "y_min": 711,
+    "x_max": 1091,
+    "y_max": 961
+   },
+   "foot": [
+    1001,
+    911
+   ],
+   "mask": {
+    "white_px": 7139,
+    "coverage": 0.0029,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1020,
+    1013,
+    1120,
+    1051
+   ],
+   "component_px": 2789,
+   "extract": "search",
+   "dist": 156.1
+  },
+  {
+   "id": "boulder",
+   "box": {
+    "x_min": 327,
+    "y_min": 502,
+    "x_max": 507,
+    "y_max": 752
+   },
+   "foot": [
+    417,
+    702
+   ],
+   "mask": {
+    "white_px": 7012,
+    "coverage": 0.0029,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": false,
+   "reason": "empty_near_foot"
+  }
+ ],
+ "ok_count": 5,
+ "all_ok": false,
+ "claimed_px": 19606,
+ "deco_size": [
+  1920,
+  1280
+ ]
+}

@@ -4,6 +4,13 @@ from artifacts import canonical,digest
 from hybrid_artifact import verify_artifact
 from hybrid_models import review_gate
 
+def decision_from_response(response):
+    """One normalization for review decisions: the transport may carry
+    criteria as {key,value} wire entries; gates always see the dict form."""
+    from hybrid_models import output_from_wire,Review
+    choice=(response.get('choices') or [{}])[0]
+    return output_from_wire(Review.model_json_schema(),json.loads(choice['message']['content']))
+
 def production_bundle(s,r):
     if r['phase']!='succeeded' or r['config']['mode']!='live' or not r.get('production_approved') or not r.get('latest') or r.get('best')!=r['latest']:raise ValueError('Produktion nicht freigegeben')
     d=s.g.root/'hybrid'/r['id'];out=d/r['latest'];verify_artifact(out,r.get('artifact_binding'))
@@ -28,7 +35,7 @@ def production_bundle(s,r):
             p=required.get(name,review_out/(name.removeprefix('crop-')+'-crop.png'))
             if digest(p.read_bytes())!=sha:raise ValueError('Revieweingabe verändert')
         if not set(required)<=set(inputs):raise ValueError('Reviewbilder fehlen')
-        decision=json.loads(choice['message']['content']);gate=review_gate(decision,inputs)
+        decision=decision_from_response(response);gate=review_gate(decision,inputs)
         if not gate['approved']:raise ValueError('Reviewgate abgewiesen')
         receipts.append({'role':role,'call_id':row['id'],'request_sha256':digest(row['request'].encode()),'receipt_sha256':digest(row['receipt'].encode()),'inputs':req['inputs'],'decision':decision,'model':model,'usage':response.get('usage')})
     with zipfile.ZipFile(out/'diagnostic.zip') as z:files={n:z.read(n) for n in z.namelist()}

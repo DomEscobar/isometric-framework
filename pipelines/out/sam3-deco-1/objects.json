@@ -1,0 +1,58 @@
+[
+ {
+  "id": "tree",
+  "cell": [
+   2,
+   2
+  ],
+  "prompt": "tree",
+  "marker": [
+   0,
+   220,
+   60
+  ],
+  "label": "a leafy green tree"
+ },
+ {
+  "id": "bush",
+  "cell": [
+   6,
+   2
+  ],
+  "prompt": "bush",
+  "marker": [
+   220,
+   220,
+   0
+  ],
+  "label": "a small round green bush"
+ },
+ {
+  "id": "house",
+  "cell": [
+   7,
+   5
+  ],
+  "prompt": "house",
+  "marker": [
+   220,
+   40,
+   40
+  ],
+  "label": "a tiny cottage house"
+ },
+ {
+  "id": "rock",
+  "cell": [
+   3,
+   6
+  ],
+  "prompt": "rock",
+  "marker": [
+   160,
+   160,
+   180
+  ],
+  "label": "a grey boulder"
+ }
+]

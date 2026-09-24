@@ -1,0 +1,117 @@
+{
+ "variant": "grove",
+ "objects": [
+  {
+   "id": "oak-a",
+   "cell": [
+    2,
+    2
+   ],
+   "prompt": "oak tree",
+   "marker": [
+    0,
+    210,
+    50
+   ],
+   "label": "one leafy oak tree"
+  },
+  {
+   "id": "oak-b",
+   "cell": [
+    5,
+    2
+   ],
+   "prompt": "oak tree",
+   "marker": [
+    40,
+    180,
+    40
+   ],
+   "label": "one leafy oak tree"
+  },
+  {
+   "id": "pine-a",
+   "cell": [
+    8,
+    2
+   ],
+   "prompt": "pine tree",
+   "marker": [
+    0,
+    100,
+    50
+   ],
+   "label": "one pointed pine tree"
+  },
+  {
+   "id": "pine-b",
+   "cell": [
+    9,
+    4
+   ],
+   "prompt": "pine tree",
+   "marker": [
+    20,
+    130,
+    70
+   ],
+   "label": "one pointed pine tree"
+  },
+  {
+   "id": "bush-a",
+   "cell": [
+    2,
+    5
+   ],
+   "prompt": "bush",
+   "marker": [
+    210,
+    220,
+    0
+   ],
+   "label": "one round green bush"
+  },
+  {
+   "id": "bush-b",
+   "cell": [
+    3,
+    7
+   ],
+   "prompt": "bush",
+   "marker": [
+    180,
+    200,
+    20
+   ],
+   "label": "one round green bush"
+  },
+  {
+   "id": "stump",
+   "cell": [
+    6,
+    6
+   ],
+   "prompt": "tree stump",
+   "marker": [
+    120,
+    70,
+    30
+   ],
+   "label": "one cut wooden tree stump"
+  },
+  {
+   "id": "boulder",
+   "cell": [
+    8,
+    7
+   ],
+   "prompt": "boulder",
+   "marker": [
+    150,
+    150,
+    160
+   ],
+   "label": "one grey boulder beside the path"
+  }
+ ]
+}

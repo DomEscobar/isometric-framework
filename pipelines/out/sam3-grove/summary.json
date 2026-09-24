@@ -1,0 +1,179 @@
+{
+ "variant": "grove",
+ "spent_usd": "0.062",
+ "results": [
+  {
+   "id": "oak-a",
+   "box": {
+    "x_min": 764,
+    "y_min": 353,
+    "x_max": 904,
+    "y_max": 533
+   },
+   "mask": {
+    "white_px": 137718,
+    "coverage": 0.056,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": false,
+   "reason": "empty_or_oversized_mask"
+  },
+  {
+   "id": "oak-b",
+   "box": {
+    "x_min": 1015,
+    "y_min": 479,
+    "x_max": 1155,
+    "y_max": 659
+   },
+   "mask": {
+    "white_px": 137718,
+    "coverage": 0.056,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": false,
+   "reason": "empty_or_oversized_mask"
+  },
+  {
+   "id": "pine-a",
+   "box": {
+    "x_min": 1265,
+    "y_min": 604,
+    "x_max": 1405,
+    "y_max": 784
+   },
+   "mask": {
+    "white_px": 138491,
+    "coverage": 0.0564,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": false,
+   "reason": "empty_or_oversized_mask"
+  },
+  {
+   "id": "pine-b",
+   "box": {
+    "x_min": 1182,
+    "y_min": 729,
+    "x_max": 1322,
+    "y_max": 909
+   },
+   "mask": {
+    "white_px": 138491,
+    "coverage": 0.0564,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": false,
+   "reason": "empty_or_oversized_mask"
+  },
+  {
+   "id": "bush-a",
+   "box": {
+    "x_min": 514,
+    "y_min": 479,
+    "x_max": 654,
+    "y_max": 659
+   },
+   "mask": {
+    "white_px": 23709,
+    "coverage": 0.0096,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1280,
+    613,
+    1513,
+    956
+   ]
+  },
+  {
+   "id": "bush-b",
+   "box": {
+    "x_min": 430,
+    "y_min": 604,
+    "x_max": 570,
+    "y_max": 784
+   },
+   "mask": {
+    "white_px": 23709,
+    "coverage": 0.0096,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1280,
+    613,
+    1513,
+    956
+   ]
+  },
+  {
+   "id": "stump",
+   "box": {
+    "x_min": 764,
+    "y_min": 687,
+    "x_max": 904,
+    "y_max": 867
+   },
+   "mask": {
+    "white_px": 6424,
+    "coverage": 0.0026,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    913,
+    893,
+    1031,
+    982
+   ]
+  },
+  {
+   "id": "boulder",
+   "box": {
+    "x_min": 848,
+    "y_min": 813,
+    "x_max": 988,
+    "y_max": 993
+   },
+   "mask": {
+    "white_px": 0,
+    "coverage": 0.0,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": false,
+   "reason": "empty_or_oversized_mask"
+  }
+ ],
+ "ok_count": 3,
+ "all_ok": false,
+ "deco_size": [
+  1920,
+  1280
+ ]
+}

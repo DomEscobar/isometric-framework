@@ -1,0 +1,45 @@
+{
+ "schema": "generated-static-character/1",
+ "authorship": "genuine AI provider meta/muse-image/edit, alpha-only local extraction and direct NEAREST derivation",
+ "generation_id": "4b0555fcb7c97a4ad8022274c066e44f17dba2ddf698a15e268c9a6ae7939086",
+ "prediction_id": "a7fb1d5c0ead41df84e82d5abcbef84f",
+ "source_sha256": "4f7c2ced1692ef7adbde9eef084202cf03500aa75cbf7c9f95eedf8329ad4d7d",
+ "sprite": "character.png",
+ "sprite_sha256": "eaa8454bc05a7b798bb1fe19a7badbeaa11e533c8d094f7981b104d0fc0792cd",
+ "frame_px": [
+  47,
+  70
+ ],
+ "visible_bbox_px": [
+  3,
+  3,
+  44,
+  67
+ ],
+ "visible_height_px": 64,
+ "foot_anchor_px": [
+  23,
+  67
+ ],
+ "foot_anchor_notes": "body baseline just below lowest boot; horizontal frame midpoint, visual game contact anchor not anatomical ground-plane calibration",
+ "shadow": "shadow.png",
+ "shadow_sha256": "a37c99dc485efcbed4206cb0e0edaaccfb535f7dc5db061c171960744dd7b176",
+ "shadow_frame_px": [
+  30,
+  10
+ ],
+ "shadow_anchor_px": [
+  15,
+  5
+ ],
+ "shadow_authorship": "separate procedural translucent ellipse, not provider character pixels",
+ "facing": "static front three-quarter screen-down-right",
+ "animation": null,
+ "paid_image_attempts": 1,
+ "quoted_usd": 0.011,
+ "settled_usd": null,
+ "billing_note": "provider quote/reservation, not independently settled invoice",
+ "visual_acceptance": "worker inspection only; main-session/user pending",
+ "processing": "../processing.json",
+ "terrain_binding": null
+}

@@ -1,0 +1,102 @@
+{
+ "spent_usd": "0.042",
+ "results": [
+  {
+   "id": "tree",
+   "box": {
+    "x_min": 186,
+    "y_min": 68,
+    "x_max": 258,
+    "y_max": 158
+   },
+   "mask": {
+    "white_px": 81486,
+    "coverage": 0.0332,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    707,
+    85,
+    1048,
+    512
+   ]
+  },
+  {
+   "id": "bush",
+   "box": {
+    "x_min": 282,
+    "y_min": 116,
+    "x_max": 354,
+    "y_max": 206
+   },
+   "mask": {
+    "white_px": 11370,
+    "coverage": 0.0046,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1354,
+    698,
+    1487,
+    809
+   ]
+  },
+  {
+   "id": "house",
+   "box": {
+    "x_min": 234,
+    "y_min": 164,
+    "x_max": 306,
+    "y_max": 254
+   },
+   "mask": {
+    "white_px": 21043,
+    "coverage": 0.0086,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    945,
+    871,
+    1134,
+    1036
+   ]
+  },
+  {
+   "id": "rock",
+   "box": {
+    "x_min": 114,
+    "y_min": 128,
+    "x_max": 186,
+    "y_max": 218
+   },
+   "mask": {
+    "white_px": 21775,
+    "coverage": 0.0089,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    353,
+    600,
+    1023,
+    920
+   ]
+  }
+ ],
+ "all_ok": true
+}

@@ -1,0 +1,28 @@
+{
+ "kind": "flat-deco-navigator/1",
+ "source": "scene.png",
+ "layout_revision": "d4263500e6d91dd9caae79f4b709dceacedb0d783ddba0453620604e9ffb0a67",
+ "registration": {
+  "mode": "painted-scene/1",
+  "source_size": [
+   1920,
+   1280
+  ],
+  "frame_size": [
+   552,
+   368
+  ],
+  "canvas_offset": [
+   0,
+   2
+  ],
+  "canvas": [
+   552,
+   364
+  ],
+  "resample": "uniform-lanczos"
+ },
+ "actor_sha256": "eaa8454bc05a7b798bb1fe19a7badbeaa11e533c8d094f7981b104d0fc0792cd",
+ "scene_sha256": "52676e48e470a093e9e537af5ac1e0979c86ac3a28194135acdc144b99e0cf64",
+ "user_acceptance": "pending"
+}

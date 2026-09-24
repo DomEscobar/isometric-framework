@@ -1,0 +1,137 @@
+{
+ "variant": "simple",
+ "mode": "resplit-box-own",
+ "results": [
+  {
+   "id": "tree",
+   "box": {
+    "x_min": 776,
+    "y_min": 346,
+    "x_max": 956,
+    "y_max": 596
+   },
+   "foot": [
+    866,
+    546
+   ],
+   "mask": {
+    "white_px": 81486,
+    "coverage": 0.0332,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    752,
+    322,
+    980,
+    512
+   ],
+   "component_px": 19876,
+   "extract": "box",
+   "dist": 34.0
+  },
+  {
+   "id": "bush",
+   "box": {
+    "x_min": 1150,
+    "y_min": 533,
+    "x_max": 1330,
+    "y_max": 783
+   },
+   "foot": [
+    1240,
+    733
+   ],
+   "mask": {
+    "white_px": 11370,
+    "coverage": 0.0046,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1354,
+    698,
+    1487,
+    809
+   ],
+   "component_px": 11370,
+   "extract": "search",
+   "dist": 195.8
+  },
+  {
+   "id": "house",
+   "box": {
+    "x_min": 963,
+    "y_min": 720,
+    "x_max": 1143,
+    "y_max": 970
+   },
+   "foot": [
+    1053,
+    920
+   ],
+   "mask": {
+    "white_px": 21043,
+    "coverage": 0.0086,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    945,
+    871,
+    1134,
+    994
+   ],
+   "component_px": 16862,
+   "extract": "box",
+   "dist": 75.2
+  },
+  {
+   "id": "rock",
+   "box": {
+    "x_min": 495,
+    "y_min": 580,
+    "x_max": 675,
+    "y_max": 830
+   },
+   "foot": [
+    585,
+    780
+   ],
+   "mask": {
+    "white_px": 21775,
+    "coverage": 0.0089,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    527,
+    724,
+    553,
+    738
+   ],
+   "component_px": 302,
+   "extract": "box",
+   "dist": 61.6
+  }
+ ],
+ "ok_count": 4,
+ "all_ok": true,
+ "claimed_px": 48410,
+ "deco_size": [
+  1920,
+  1280
+ ]
+}

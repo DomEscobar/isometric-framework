@@ -1,0 +1,20 @@
+{
+ "mode": "painted-scene/1",
+ "source_size": [
+  1920,
+  1280
+ ],
+ "frame_size": [
+  552,
+  368
+ ],
+ "canvas_offset": [
+  0,
+  2
+ ],
+ "canvas": [
+  552,
+  364
+ ],
+ "resample": "uniform-lanczos"
+}

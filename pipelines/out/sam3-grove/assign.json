@@ -1,0 +1,66 @@
+{
+ "boulder": {
+  "file": null,
+  "size": [
+   119,
+   82
+  ],
+  "method": "sprite-on-disk"
+ },
+ "bush-a": {
+  "file": null,
+  "size": [
+   123,
+   79
+  ],
+  "method": "sprite-on-disk"
+ },
+ "bush-b": {
+  "file": null,
+  "size": [
+   116,
+   105
+  ],
+  "method": "sprite-on-disk"
+ },
+ "oak-a": {
+  "file": null,
+  "size": [
+   267,
+   327
+  ],
+  "method": "sprite-on-disk"
+ },
+ "oak-b": {
+  "file": null,
+  "size": [
+   273,
+   329
+  ],
+  "method": "sprite-on-disk"
+ },
+ "pine-a": {
+  "file": null,
+  "size": [
+   157,
+   284
+  ],
+  "method": "sprite-on-disk"
+ },
+ "pine-b": {
+  "file": null,
+  "size": [
+   179,
+   298
+  ],
+  "method": "sprite-on-disk"
+ },
+ "stump": {
+  "file": null,
+  "size": [
+   122,
+   91
+  ],
+  "method": "sprite-on-disk"
+ }
+}

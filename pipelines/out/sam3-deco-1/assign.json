@@ -1,0 +1,34 @@
+{
+ "tree": {
+  "file": "c01-81486px.png",
+  "size": [
+   341,
+   427
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "rock": {
+  "file": "c02-18295px.png",
+  "size": [
+   187,
+   139
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "bush": {
+  "file": "c03-11370px.png",
+  "size": [
+   133,
+   111
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "house": {
+  "file": "c06-22385px.png",
+  "size": [
+   189,
+   165
+  ],
+  "method": "ai-classify-candidate"
+ }
+}

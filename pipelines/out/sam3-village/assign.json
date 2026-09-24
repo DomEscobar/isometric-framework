@@ -1,0 +1,66 @@
+{
+ "oak": {
+  "file": "c01-46057px.png",
+  "size": [
+   213,
+   363
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "well": {
+  "file": "c02-28111px.png",
+  "size": [
+   174,
+   231
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "pine": {
+  "file": "c03-11580px.png",
+  "size": [
+   122,
+   173
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "bush-a": {
+  "file": "c04-8438px.png",
+  "size": [
+   114,
+   97
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "bush-b": {
+  "file": "c19-14343px.png",
+  "size": [
+   161,
+   119
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "house": {
+  "file": "c20-26190px.png",
+  "size": [
+   204,
+   190
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "crate": {
+  "file": "c21-10123px.png",
+  "size": [
+   114,
+   113
+  ],
+  "method": "ai-classify-candidate"
+ },
+ "boulder": {
+  "file": "c07-7666px.png",
+  "size": [
+   128,
+   84
+  ],
+  "method": "ai-classify-candidate"
+ }
+}

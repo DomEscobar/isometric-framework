@@ -1,0 +1,23 @@
+/* Read-only/terminal-resume verification of retained real run; NEVER starts a paid run. */
+import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url),links='/root/.cache/ms-playwright/.links';const roots=fs.readdirSync(links).map(f=>fs.readFileSync(path.join(links,f),'utf8')).filter(p=>fs.existsSync(p+'/package.json'));const {chromium}=require(roots[0]);
+const browser=await chromium.launch({executablePath:'/root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-linux/headless_shell',headless:true,args:['--no-sandbox']});const base=process.env.BASE_URL||'http://127.0.0.1:59649',out=process.env.EVIDENCE||'evidence/auto-repair/verification';fs.mkdirSync(out,{recursive:true});
+try{
+const page=await browser.newPage({viewport:{width:1440,height:1000},acceptDownloads:true});const errors=[];page.on('pageerror',e=>errors.push(e.message));const rid=fs.readFileSync(process.env.RUN_ID_FILE||'evidence/auto-repair/run-id.txt','utf8');
+const before=await (await page.request.get(base+'/api/generation/status')).json();await page.goto(base);
+await page.locator('#brief').fill('');await page.getByText('Explizite Formparameter (optional)',{exact:true}).click();await page.locator('#kind').selectOption('urban');await page.locator('#seed').fill('20260922');await page.locator('#generate').click();await page.waitForFunction(()=>window.workbench?.revision);
+await page.locator('#autoRepairId').fill(rid);await page.locator('#autoRepairStatus').click();await page.waitForFunction(()=>window.autoRun?.id);const w=await page.evaluate(()=>window.autoRun);assert.notEqual(w.status,'running');assert.equal(Number(await page.locator('#autoRepairMax').inputValue()),w.max_iterations);assert(await page.locator('#autoRepairMax').isDisabled());
+await page.locator('#autoRepairLatest').click();await page.waitForFunction(()=>window.candidate?.id===window.autoRun.latest_candidate_id);assert.match(await page.locator('#candidateStatus').innerText(),/rejected/);assert.equal(await page.locator('#candidateDownload').isVisible(),false);
+await page.locator('#autoRepairPanel').screenshot({path:out+'/stopped-latest.png'});
+const latestDownload=await page.request.get(base+`/api/terrain/${w.latest_candidate_id}/download?revision=${w.frozen.revision}&density=1`);assert.equal(latestDownload.status(),422);
+const original=await page.request.get(base+`/api/terrain/${w.latest_candidate_id}/source.png`);assert.equal(original.status(),200);fs.writeFileSync(out+'/latest-original.png',await original.body());
+await page.locator('#autoRepairBest').click();await page.waitForFunction(()=>window.candidateImage?.complete&&window.candidate?.id===window.autoRun.best_candidate_id&&window.currentEvaluation?.id===window.autoRun.best_evaluation_id);
+await page.locator('#view').selectOption('candidate');await page.locator('#diagnostics').uncheck();await page.locator('#zoom').click();await page.locator('#scene').screenshot({path:out+'/best-after-native.png'});
+const downloadEvent=page.waitForEvent('download');await page.locator('#candidateDownload').click();const dl=await downloadEvent;await dl.saveAs(out+'/'+dl.suggestedFilename());assert.equal(await dl.failure(),null);
+const prod=await page.request.get(base+await page.locator('#candidateDownload').getAttribute('href').then(x=>x.replace('mode=diagnostic','mode=production')));assert.equal(prod.status(),409);
+await page.locator('#autoRepairResume').click();await page.waitForTimeout(1000);const afterRun=await (await page.request.get(base+'/api/auto-repair/'+rid)).json();assert.equal(afterRun.iterations.length,w.iterations.length);assert.equal(afterRun.status,w.status);
+await page.reload();await page.waitForFunction(()=>window.autoRun?.id);assert.equal(await page.evaluate(()=>window.autoRun.id),rid);await page.locator('#autoRepairPanel').screenshot({path:out+'/reload-persisted.png'});
+await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth),390);await page.locator('#autoRepairPanel').screenshot({path:out+'/mobile-status.png'});
+const after=await (await page.request.get(base+'/api/generation/status')).json();assert.deepEqual(after,before);assert.deepEqual(errors,[]);
+fs.writeFileSync(out+'/browser-report.json',JSON.stringify({result:'PASS',rid,latest:w.latest_candidate_id,best:w.best_candidate_id,iterations:w.iterations.length,status:w.status,latest_export_status:latestDownload.status(),production_status:prod.status(),download:dl.suggestedFilename(),accounting:after,errors},null,2));console.log(JSON.stringify({result:'PASS',out,download:dl.suggestedFilename()}));
+}finally{await browser.close();}

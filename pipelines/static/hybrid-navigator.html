@@ -1,0 +1,37 @@
+<!doctype html><html lang="de"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hybrid-Terrain · Höhenprototyp</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#182a27;color:#d4e0ce;font:15px system-ui,sans-serif}main{padding:20px;max-width:920px;margin:0 auto}header{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}h1{font:600 25px Georgia;margin:0 0 9px;color:#e4dfbf}small{color:#91aaa0}p{margin:8px 0 14px;line-height:1.5} .viewport{width:100%;overflow:auto;background:#1c2b28}canvas{display:block;width:__WIDTH__px;height:__HEIGHT__px;image-rendering:pixelated;outline:none}button,a{background:#314b42;color:#e0e8d3;border:1px solid #587360;border-radius:4px;padding:10px 15px;cursor:pointer;touch-action:manipulation;font:inherit;text-decoration:none}nav{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}#motion{font:13px monospace;min-height:22px;color:#bdd3b3}footer{font-size:12px;color:#99ada1;line-height:1.6}button:focus-visible,canvas:focus-visible{outline:2px solid #cecf97}@media(max-width:600px){main{padding:12px}.viewport{height:__HEIGHT__px}h1{font-size:22px}}</style>
+<main><header><h1>Hybrid-Terrain</h1><small>DIAGNOSE · FREIGABE SIEHE PROVENIENZ</small></header><p>Deterministisches Terrain aus eingefrorenem Layout.<br>Pfeile / WASD bewegen entlang der vier Rasterachsen. Nur die Treppe verbindet die Ebenen.</p><div class="viewport"><canvas id="scene" width="__WIDTH__" height="__HEIGHT__" tabindex="0" aria-label="Begehbare isometrische Hybrid-Terrain"></canvas></div><nav><button data-dir="0,-1">↗ W</button><button data-dir="1,0">↘ D</button><button data-dir="0,1">↙ S</button><button data-dir="-1,0">↖ A</button><button id="reset">Zur Wiese</button><a id="download" href="diagnostic.zip" download="multilevel-terrain.zip">Offline-ZIP</a></nav><div id="motion"></div><footer>48 × 24 · native Ansicht 1:1 · unveränderte generierte 64px-Figur, statisch<br>Muse-Edit-Materialpixel, unveränderte Höhenkarte und pixelweiser Tiefentest. Keine Nutzerfreigabe.<br>Eine begehbare Fläche je XY; keine Brücken. Mobil: Karte horizontal schieben, Tasten darunter.</footer></main>
+<script>
+const DATA=__SCENE_DATA__;
+const world=DATA.world, C=DATA.character, canvas=document.querySelector('#scene'),ctx=canvas.getContext('2d',{willReadFrequently:true});ctx.imageSmoothingEnabled=false;
+const bytes=Uint8Array.from(atob(DATA.depth),c=>c.charCodeAt(0)); const depth=new Float32Array(bytes.buffer);
+const W=canvas.width,H=canvas.height;
+let actor=[...world.spawn], visual=[actor[0]+.5,actor[1]+.5,world.heights[actor[1]][actor[0]]],moving=false,token=0,stats={hidden:0,visible:0},terrain,sprite,shadow;
+function project(x,y,z){return [world.origin[0]+24*(x-y),world.origin[1]+12*(x+y)-z]}
+function image(src){return new Promise(resolve=>{const im=new Image;im.onload=()=>resolve(im);im.src=src})}
+function pixels(im){const c=document.createElement('canvas');c.width=im.width;c.height=im.height;c.getContext('2d').drawImage(im,0,0);return {data:c.getContext('2d').getImageData(0,0,c.width,c.height).data,w:c.width,h:c.height}}
+function draw(){
+ const out=new Uint8ClampedArray(terrain.data); const [px,py]=project(...visual);stats={hidden:0,visible:0,foot:[px,py],z:visual[2]};
+ function layer(im,anchor,count){const dx=Math.round(px-anchor[0]),dy=Math.round(py-anchor[1]);
+  for(let y=0;y<im.h;y++)for(let x=0;x<im.w;x++){let i=(y*im.w+x)*4,a=im.data[i+3];if(!a)continue;let X=x+dx,Y=y+dy;if(X<0||X>=W||Y<0||Y>=H)continue;let p=Y*W+X;
+   if(depth[p]>visual[0]+visual[1]+.045){if(count)stats.hidden++;continue;}if(count)stats.visible++;
+   let j=p*4;for(let k=0;k<3;k++)out[j+k]=Math.round(im.data[i+k]*a/255)+Math.round(out[j+k]*(255-a)/255);
+  }
+ }
+ layer(shadow,C.shadow_anchor_px,false);layer(sprite,C.foot_anchor_px,true);ctx.putImageData(new ImageData(out,W,H),0,0);
+ document.querySelector('#motion').textContent=`Zelle ${actor.join(' / ')} · Fußhöhe ${visual[2].toFixed(1)} px${moving?' · unterwegs':''} · ${stats.hidden} verdeckte Körperpixel`;
+}
+function move(dx,dy){
+ if(moving||Math.abs(dx)+Math.abs(dy)!==1)return false;
+ const to=[actor[0]+dx,actor[1]+dy];if(!world.graph[actor.join(',')].some(p=>p[0]===to[0]&&p[1]===to[1])){document.querySelector('#motion').textContent='Blockiert — Klippe oder Kartenrand';return false}
+ const from=[...actor],z0=world.heights[from[1]][from[0]],z1=world.heights[to[1]][to[0]],start=performance.now(),id=++token;moving=true;
+ function frame(now){if(id!==token)return;let t=Math.min(1,(now-start)/300);visual=[from[0]+.5+dx*t,from[1]+.5+dy*t,z0+(z1-z0)*t];if(t===1){actor=to;moving=false}draw();if(t<1)requestAnimationFrame(frame)}
+ requestAnimationFrame(frame);return true;
+}
+function reset(){token++;moving=false;actor=[...world.spawn];visual=[actor[0]+.5,actor[1]+.5,world.heights[actor[1]][actor[0]]];draw();canvas.focus()}
+const keys={ArrowRight:[1,0],ArrowLeft:[-1,0],ArrowUp:[0,-1],ArrowDown:[0,1],w:[0,-1],a:[-1,0],s:[0,1],d:[1,0]};
+window.addEventListener('keydown',e=>{if(keys[e.key]){e.preventDefault();if(!e.repeat)move(...keys[e.key])}});
+document.querySelectorAll('[data-dir]').forEach(b=>b.addEventListener('click',()=>move(...b.dataset.dir.split(',').map(Number))));document.querySelector('#reset').onclick=reset;
+Promise.all([image(DATA.terrain),image(DATA.sprite),image(DATA.shadow)]).then(ims=>{[terrain,sprite,shadow]=ims.map(pixels);draw();window.navigatorReady=true});
+window.multilevel={getState:()=>({actor:[...actor],visual:[...visual],moving,stats:structuredClone(stats)}),world,project,move,reset,draw};
+</script></html>

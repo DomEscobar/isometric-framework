@@ -1,0 +1,28 @@
+{
+  "camera": "not baked; UI CSS scale independent of texture density",
+  "cell_sampling": "center=(column+0.5,row+0.5); image samples at pixel centers",
+  "column_basis_px": [
+    24.0,
+    12.0
+  ],
+  "density": 1,
+  "floor": 0,
+  "image_size": [
+    768,
+    408
+  ],
+  "logical_units": "one cell; world bounds [0,width] x [0,height]",
+  "origin_convention": "grid-vertex-0-0",
+  "origin_px": [
+    360.0,
+    24
+  ],
+  "padding_logical_px": 24,
+  "projection": "2:1-flat",
+  "row_basis_px": [
+    -24.0,
+    12.0
+  ],
+  "tile_height": 24,
+  "tile_width": 48
+}

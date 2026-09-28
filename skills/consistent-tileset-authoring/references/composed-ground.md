@@ -1,5 +1,11 @@
 # Offline composed-ground preparation
 
+For new continuous natural ground, start with [material quilting](material-quilting.md)
+unless the approved contract selects a painting or another route. Its local cache
+uses this surface format and the same binder; it is not a whole-map generated image.
+The binder accepts optional `composition.sourceScale` (integer 1..8, default 1):
+origin and frames are source pixels while scene geometry remains logical pixels.
+
 Use this optional Pillow helper after a generated (or otherwise approved) source
 image exists at the intended output size, together with any target-sized masks.
 It prepares pixels only: it does not infer terrain topology, collision, or material

@@ -5,6 +5,11 @@ describe methods and illustrative dimensions; they supply no artwork or theme.
 Keep deliberate paving grids and formal canals when the user's brief calls for
 them. Natural edges are not a universal requirement for every material.
 
+Prefer [material quilting](material-quilting.md) for new continuous natural ground:
+generated shared swatches and contact-edge family, deterministic local assembly,
+host-owned masks, then the existing density-aware binder. Whole-map image-to-image
+is optional; preserve accepted paintings and explicit alternative contracts.
+
 ## Establish the landscape contract
 
 Put these decisions in the host's existing production brief, alongside its style

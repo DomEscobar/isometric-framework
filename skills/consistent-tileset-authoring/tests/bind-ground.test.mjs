@@ -30,3 +30,27 @@ test('rejects elevated or multi-floor input and an existing output directory', a
   const multi = baseScene(); multi.version = 2; multi.levels = [{ id: 'roof', name: 'Roof', height: 32, map: [[null, null], [null, null]] }]; multi.links = []; const g = await fixture(multi); await assert.rejects(bindGround({ scene: g.scene, packed: g.packed, out: g.out, imageUrl: './ground.png' }), /flat ground/);
   const h = await fixture(); await mkdir(h.out); await assert.rejects(bindGround({ scene: h.scene, packed: h.packed, out: h.out, imageUrl: './ground.png' }), /already exists/);
 });
+
+
+test('retained source density scales frames, not entities or collision', async () => {
+  const f = await fixture(baseScene(), { width: 384, height: 192, origin: [-64, -64] });
+  const packed = JSON.parse(await readFile(f.packed, 'utf8'));
+  packed.groups[0].composition.sourceScale = 2;
+  await writeFile(f.packed, JSON.stringify(packed));
+  const result = await bindGround({ ...f, imageUrl: './art/ground.png' });
+  assert.deepEqual(result.scene.assets.textures['ground-binding-texture-1-0'].frame, { x: 64, y: 0, width: 128, height: 64 });
+  assert.equal(result.scene.tileWidth, 64);
+  assert.deepEqual(result.scene.entities, baseScene().entities);
+  assert.equal(result.scene.tiles['ground-binding-tile-1-0'].walkable, false);
+});
+
+
+test('rejects invalid retained density instead of silently defaulting', async () => {
+  for (const sourceScale of [null, 0, 1.5, 9, true]) {
+    const f = await fixture();
+    const packed = JSON.parse(await readFile(f.packed, 'utf8'));
+    packed.groups[0].composition.sourceScale = sourceScale;
+    await writeFile(f.packed, JSON.stringify(packed));
+    await assert.rejects(bindGround({ ...f, imageUrl: './ground.png' }), /sourceScale/);
+  }
+});

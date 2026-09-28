@@ -81,7 +81,7 @@ function packedSurface(packed) {
   const composition = object(group.composition, 'packed art surface composition');
   if (typeof composition.reference !== 'string' || !composition.reference) fail('packed art surface composition.reference is required');
   if (!Array.isArray(composition.origin) || composition.origin.length !== 2) fail('packed art surface composition.origin must be [x,y]');
-  return { reference: composition.reference, origin: { x: integer(composition.origin[0], 'composition.origin[0]', -1_000_000, 1_000_000), y: integer(composition.origin[1], 'composition.origin[1]', -1_000_000, 1_000_000) } };
+  return { reference: composition.reference, sourceScale: integer(composition.sourceScale === undefined ? 1 : composition.sourceScale, 'composition.sourceScale', 1, 8), origin: { x: integer(composition.origin[0], 'composition.origin[0]', -1_000_000, 1_000_000), y: integer(composition.origin[1], 'composition.origin[1]', -1_000_000, 1_000_000) } };
 }
 
 function assertFlatGround(scene) {
@@ -129,7 +129,8 @@ export async function bindGround({ scene: sceneInput, packed: packedInput, out, 
   const cells = [];
   for (let r = 0; r < cloned.map.length; r += 1) for (let c = 0; c < cloned.map[r].length; c += 1) {
     const originalTile = cloned.map[r][c]; const point = api.project({ c, r }, cloned.tileWidth, cloned.tileHeight);
-    const frame = { x: point.x - cloned.tileWidth / 2 - surface.origin.x, y: point.y - cloned.tileHeight / 2 - surface.origin.y, width: cloned.tileWidth, height: cloned.tileHeight };
+    const scale = surface.sourceScale;
+    const frame = { x: (point.x - cloned.tileWidth / 2) * scale - surface.origin.x, y: (point.y - cloned.tileHeight / 2) * scale - surface.origin.y, width: cloned.tileWidth * scale, height: cloned.tileHeight * scale };
     for (const [key, value] of Object.entries(frame)) integer(value, `frame ${key} at (${c},${r})`, 0, 65536);
     if (frame.x + frame.width > image.width || frame.y + frame.height > image.height) fail(`frame for map[${r}][${c}] exceeds composition reference ${image.width}x${image.height}`);
     const suffix = `${c}-${r}`, texture = `${PREFIX}texture-${suffix}`, tile = `${PREFIX}tile-${suffix}`;
@@ -140,7 +141,7 @@ export async function bindGround({ scene: sceneInput, packed: packedInput, out, 
   }
   const outputScene = api.validateScene(cloned);
   const toolBytes = await readFile(fileURLToPath(import.meta.url));
-  const binding = { version: 1, projectionModule: relative(root, api.modulePath).replaceAll('\\', '/'), inputs: { scene: { file: scenePath, sha256: hash(sceneBytes) }, packedArt: { file: packedPath, sha256: hash(packedBytes) }, image: { file: imagePath, sha256: imageHash }, tool: { file: 'bind-ground.mjs', sha256: hash(toolBytes) }, ...(preparer ? { preparer } : {}) }, image: { url: imageUrl, reference: surface.reference, dimensions: image, origin: surface.origin }, cells };
+  const binding = { version: 1, projectionModule: relative(root, api.modulePath).replaceAll('\\', '/'), inputs: { scene: { file: scenePath, sha256: hash(sceneBytes) }, packedArt: { file: packedPath, sha256: hash(packedBytes) }, image: { file: imagePath, sha256: imageHash }, tool: { file: 'bind-ground.mjs', sha256: hash(toolBytes) }, ...(preparer ? { preparer } : {}) }, image: { url: imageUrl, reference: surface.reference, dimensions: image, origin: surface.origin, sourceScale: surface.sourceScale }, cells };
   await mkdir(outPath, { recursive: false });
   await Promise.all([writeFile(resolve(outPath, 'scene.json'), `${JSON.stringify(outputScene, null, 2)}\n`), writeFile(resolve(outPath, 'binding.json'), `${JSON.stringify(binding, null, 2)}\n`)]);
   return { outPath, scene: outputScene, binding };

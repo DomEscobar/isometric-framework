@@ -47,6 +47,8 @@ player experience, scope, style, asset approach, and acceptance requirements.
 Derive technical plans from it; do not create a competing art brief. Once it is
 approved, use the standalone starter and new-game guide to implement the game.
 
+For new continuous natural ground, prefer generated-material quilting with host-owned
+masks and generated contact-edge families; preserve any already approved different route.
 Help me choose how the world is assembled: modular terrain, composed ground,
 layered scene, or a hybrid. Generate new visible world and character art using
 text-to-image or image-to-image; reuse accepted generated assets with provenance.

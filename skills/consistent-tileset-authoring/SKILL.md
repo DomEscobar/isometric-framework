@@ -1,6 +1,6 @@
 ---
 name: consistent-tileset-authoring
-description: Compose connected isometric terrain with consistent material transitions, shared boundaries and controlled variation, then prepare compatible tiles. Use for natural paths, grass and stream banks as well as constructed borders. Two routes exist: reusable neighbor tiles, or a composed ground plate through render-layout, image-to-image, registration, prepare-ground and bind-ground. The raised-bed helper handles rigid bed geometry only; it is not a missing landscape compositor.
+description: Compose connected isometric terrain with consistent material transitions, shared boundaries and controlled variation, then prepare compatible tiles. Use for natural paths, grass and stream banks as well as constructed borders. Prefer generated-material quilting for new continuous natural ground. Reusable neighbor tiles and accepted composed paintings remain supported. The raised-bed helper handles rigid bed geometry only; it is not a missing landscape compositor.
 ---
 
 # Consistent tileset authoring
@@ -20,6 +20,13 @@ material-pair transitions and variation across cells before selecting tile masks
 The ground must read as one landscape at playing zoom. A valid connected catalog
 can still fail through hard fringes, mirrored motifs and inconsistent pixel style.
 
+For new continuous grass, earth, moss and leaf-floor worlds, prefer
+[material quilting](references/material-quilting.md): shared generated swatches,
+minimum-error overlap cuts, host-owned masks, explicit contact-edge families and
+source-density-aware binding. Do not replace an already accepted painting or an
+explicit different contract. The shipped offline CLI assembles material interiors;
+it does not synthesize boundary artwork or infer routes.
+
 ## Pick one assembly route
 
 The raised-bed helper and the prompt patterns do not assemble organic grass, path
@@ -29,6 +36,7 @@ while citing it. Choose one route and stay on it.
 
 | Route | When | What this skill already runs |
 | --- | --- | --- |
+| Material quilting (preferred for new natural ground) | Continuous grass/earth/moss/litter at host-controlled world dimensions | `quilt-materials.py` → `bind-ground.mjs`; deterministic shared planes, host masks, provenance and retained density. Generated directional contact-edge assembly remains explicit host work. |
 | Reusable neighbor tiles | The map must recombine beds, walls or water from a catalog | Host-owned mask catalog plus, for rigid beds only, `prepare-bed-tileset.mjs`. Organic material-pair transitions still need that catalog; they have no assembler here. |
 | Composed ground plate | The ground layout is largely fixed and transitions should be painted together | `render-layout.mjs` → generated candidate (style authority, then layout guide) → `inspect-registration.py` → `prepare-ground.py` → `bind-ground.mjs` → `inspect-ground-support.py`. Prove a mixed-material calibration patch before a full-map generate. |
 

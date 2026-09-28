@@ -45,6 +45,12 @@ If scaffolding first for a setup check, its pending contract and neutral graphic
 are placeholders, not approved product choices.
 
 Choose world assembly (modular terrain, composed ground, layered scene or hybrid).
+For new continuous natural grass, earth, moss or leaf-floor ground, prefer
+[generated-material quilting](../skills/consistent-tileset-authoring/references/material-quilting.md):
+shared swatches and contact-edge families, deterministic local assembly with
+host-owned masks, then existing runtime binding. Preserve an approved painting or
+an explicitly different contract. Prove a small mixed-material pilot, then build
+the literal requested world dimensions; full-map image-to-image is optional.
 New visible world and character art must be generated through text-to-image or
 image-to-image; accepted generated art may be reused with provenance. Character
 animation must follow approved generated facing image -> image-to-video ->

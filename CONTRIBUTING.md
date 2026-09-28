@@ -93,6 +93,21 @@ acceptance or production helpers. For directional sprite tools, run
 `uv run --python 3.12 --with "Pillow==11.3.0" python -B -m unittest discover -s skills/directional-sprite-authoring/tests`.
 Video fixtures require `ffmpeg` and `ffprobe` on PATH; report skipped fixtures as
 unverified, and inspect a generated extraction preview after changing it.
+For material-quilting or ground-binding changes, run:
+
+```sh
+python3 -B -m unittest discover -s skills/consistent-tileset-authoring/tests
+node --experimental-strip-types --test skills/consistent-tileset-authoring/tests/*.test.mjs
+```
+
+The quilting tests need the optional pinned Python dependencies documented in
+[material quilting](skills/consistent-tileset-authoring/references/material-quilting.md).
+After building the package and scaffolding a fresh consumer, run `npm install`,
+then from that consumer run `node /path/to/framework/tests/quilt-consumer.mjs`.
+This executes the installed CLI/helper, deterministic replay, surface inspection
+and every source-density frame against the installed public projection. It uses
+synthetic diagnostic fixtures, not production art or visual approval.
+
 Starter/distribution changes require
 `npm run build:package`, `npm run test:starter`, and a fresh generated project's
 install, check, build and desktop/touch browser journey. Verify packed paths too;

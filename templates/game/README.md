@@ -13,6 +13,11 @@ python node_modules/isometric-framework/skills/isometric-visual-loop/scripts/ver
 python node_modules/isometric-framework/skills/isometric-visual-loop/scripts/verify-world.py accept review/baseline.json review/candidate.json review/final/review.json --production-receipts review/receipts
 ```
 
+For landscape production or refinement, start with
+`node_modules/isometric-framework/skills/isometric-visual-loop/references/landscape-iteration.md`.
+It connects early density and scale decisions to controlled visual comparisons,
+grounded placement, full-world inspection and distinct acceptance evidence.
+
 Create those files through the documented freeze, stage and comparison commands;
 they are project-specific, not supplied completion records. Build success only
 establishes technical validity. Production acceptance additionally needs generated

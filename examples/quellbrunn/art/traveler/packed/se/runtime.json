@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "assets": {
+    "images": {
+      "traveler-se": {
+        "url": "sheet.png",
+        "sampling": "nearest"
+      }
+    },
+    "textures": {
+      "traveler-se.walk.se.0000": {
+        "image": "traveler-se",
+        "frame": {
+          "x": 2,
+          "y": 2,
+          "width": 247,
+          "height": 569
+        },
+        "anchor": {
+          "x": 0.4932,
+          "y": 0.993
+        }
+      },
+      "traveler-se.walk.se.0001": {
+        "image": "traveler-se",
+        "frame": {
+          "x": 251,
+          "y": 2,
+          "width": 247,
+          "height": 569
+        },
+        "anchor": {
+          "x": 0.4932,
+          "y": 0.993
+        }
+      },
+      "traveler-se.walk.se.0002": {
+        "image": "traveler-se",
+        "frame": {
+          "x": 500,
+          "y": 2,
+          "width": 247,
+          "height": 569
+        },
+        "anchor": {
+          "x": 0.4932,
+          "y": 0.993
+        }
+      },
+      "traveler-se.walk.se.0003": {
+        "image": "traveler-se",
+        "frame": {
+          "x": 749,
+          "y": 2,
+          "width": 247,
+          "height": 569
+        },
+        "anchor": {
+          "x": 0.4932,
+          "y": 0.993
+        }
+      },
+      "traveler-se.walk.se.0004": {
+        "image": "traveler-se",
+        "frame": {
+          "x": 998,
+          "y": 2,
+          "width": 247,
+          "height": 569
+        },
+        "anchor": {
+          "x": 0.4932,
+          "y": 0.993
+        }
+      },
+      "traveler-se.walk.se.0005": {
+        "image": "traveler-se",
+        "frame": {
+          "x": 1247,
+          "y": 2,
+          "width": 247,
+          "height": 569
+        },
+        "anchor": {
+          "x": 0.4932,
+          "y": 0.993
+        }
+      },
+      "traveler-se.walk.se.0006": {
+        "image": "traveler-se",
+        "frame": {
+          "x": 1496,
+          "y": 2,
+          "width": 247,
+          "height": 569
+        },
+        "anchor": {
+          "x": 0.4932,
+          "y": 0.993
+        }
+      },
+      "traveler-se.walk.se.0007": {
+        "image": "traveler-se",
+        "frame": {
+          "x": 1745,
+          "y": 2,
+          "width": 247,
+          "height": 569
+        },
+        "anchor": {
+          "x": 0.4932,
+          "y": 0.993
+        }
+      }
+    },
+    "animations": {
+      "traveler-se.walk.se": {
+        "frames": [
+          "traveler-se.walk.se.0000",
+          "traveler-se.walk.se.0001",
+          "traveler-se.walk.se.0002",
+          "traveler-se.walk.se.0003",
+          "traveler-se.walk.se.0004",
+          "traveler-se.walk.se.0005",
+          "traveler-se.walk.se.0006",
+          "traveler-se.walk.se.0007"
+        ],
+        "fps": 8,
+        "loop": true
+      }
+    }
+  },
+  "visualAnimations": {
+    "directions": {
+      "se": {
+        "walk": "traveler-se.walk.se"
+      }
+    },
+    "walk": "traveler-se.walk.se"
+  },
+  "customActions": {},
+  "sourceHashes": {
+    "spec": "3b427d09dcef15250f4f55aac3535b8da600d0a73067182f87e9b746454ff701",
+    "provenance": "6e07cbd205273444ba4df5f7cded68daa01ab6e4a4305cf7260e8c789c03da9d",
+    "frames": {
+      "frames/frame-0000.png": "560ef067413ba7187dfe64b76e4f9b1210c836dacc4a237c352b3ce13f676075",
+      "frames/frame-0001.png": "cdf3e38460cf42e437a95c00f4e3b710b1d893b4175b7b5e69b6694b95ab78ff",
+      "frames/frame-0002.png": "840b17a4cbb5c08d26cc2d2fcbd668e84314146c18cee263f24bf7327772aa8d",
+      "frames/frame-0003.png": "46acd66329ff08448307ff5e1b17dc5100ea26ac4a82a0ab6e34e0fe1a0698c1",
+      "frames/frame-0004.png": "7c1cd5ca1fecbb4c2c19afa2d376870065b1376e7aca406ee66ff71adab4324c",
+      "frames/frame-0005.png": "c01f6ebade97cfdbe717f41d0c871ba2509a59a4c84f9a04924fc6002459d9da",
+      "frames/frame-0006.png": "2edbed98e0a8eb473f273261badbf7c4465e23799337f24e2ed71b708cd8107f",
+      "frames/frame-0007.png": "f9128ad15d6f3257065eedb9b45e67994029e5139e316ff68e7b9b0a28b63073"
+    }
+  },
+  "packing": {
+    "width": 1994,
+    "height": 573,
+    "cell": {
+      "width": 247,
+      "height": 569
+    },
+    "anchor": {
+      "x": 0.4932,
+      "y": 0.993
+    },
+    "gutter": 2,
+    "rows": [
+      {
+        "row": 0,
+        "clip": "traveler-se.walk.se",
+        "action": "walk",
+        "direction": "se"
+      }
+    ]
+  }
+}

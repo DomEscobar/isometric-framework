@@ -1,0 +1,69 @@
+{
+ "variant": "village",
+ "mode": "sam-point-retry",
+ "spent_usd": "0.072",
+ "results": [
+  {
+   "id": "pine",
+   "box": {
+    "x_min": 1329,
+    "y_min": 586,
+    "x_max": 1509,
+    "y_max": 836
+   },
+   "foot": [
+    1419,
+    786
+   ],
+   "mask": {
+    "white_px": 15658,
+    "coverage": 0.0064,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1336,
+    722,
+    1497,
+    841
+   ],
+   "component_px": 14343,
+   "extract": "box"
+  },
+  {
+   "id": "bush-a",
+   "box": {
+    "x_min": 744,
+    "y_min": 377,
+    "x_max": 924,
+    "y_max": 627
+   },
+   "foot": [
+    834,
+    577
+   ],
+   "mask": {
+    "white_px": 11539,
+    "coverage": 0.0047,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    772,
+    434,
+    894,
+    604
+   ],
+   "component_px": 11539,
+   "extract": "box"
+  }
+ ],
+ "ok_count": 2,
+ "all_ok": true
+}

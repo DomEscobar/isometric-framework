@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "assets": {
+    "images": {
+      "traveler-nw": {
+        "url": "sheet.png",
+        "sampling": "nearest"
+      }
+    },
+    "textures": {
+      "traveler-nw.walk.nw.0000": {
+        "image": "traveler-nw",
+        "frame": {
+          "x": 2,
+          "y": 2,
+          "width": 266,
+          "height": 572
+        },
+        "anchor": {
+          "x": 0.4977,
+          "y": 0.9913
+        }
+      },
+      "traveler-nw.walk.nw.0001": {
+        "image": "traveler-nw",
+        "frame": {
+          "x": 270,
+          "y": 2,
+          "width": 266,
+          "height": 572
+        },
+        "anchor": {
+          "x": 0.4977,
+          "y": 0.9913
+        }
+      },
+      "traveler-nw.walk.nw.0002": {
+        "image": "traveler-nw",
+        "frame": {
+          "x": 538,
+          "y": 2,
+          "width": 266,
+          "height": 572
+        },
+        "anchor": {
+          "x": 0.4977,
+          "y": 0.9913
+        }
+      },
+      "traveler-nw.walk.nw.0003": {
+        "image": "traveler-nw",
+        "frame": {
+          "x": 806,
+          "y": 2,
+          "width": 266,
+          "height": 572
+        },
+        "anchor": {
+          "x": 0.4977,
+          "y": 0.9913
+        }
+      },
+      "traveler-nw.walk.nw.0004": {
+        "image": "traveler-nw",
+        "frame": {
+          "x": 1074,
+          "y": 2,
+          "width": 266,
+          "height": 572
+        },
+        "anchor": {
+          "x": 0.4977,
+          "y": 0.9913
+        }
+      },
+      "traveler-nw.walk.nw.0005": {
+        "image": "traveler-nw",
+        "frame": {
+          "x": 1342,
+          "y": 2,
+          "width": 266,
+          "height": 572
+        },
+        "anchor": {
+          "x": 0.4977,
+          "y": 0.9913
+        }
+      },
+      "traveler-nw.walk.nw.0006": {
+        "image": "traveler-nw",
+        "frame": {
+          "x": 1610,
+          "y": 2,
+          "width": 266,
+          "height": 572
+        },
+        "anchor": {
+          "x": 0.4977,
+          "y": 0.9913
+        }
+      },
+      "traveler-nw.walk.nw.0007": {
+        "image": "traveler-nw",
+        "frame": {
+          "x": 1878,
+          "y": 2,
+          "width": 266,
+          "height": 572
+        },
+        "anchor": {
+          "x": 0.4977,
+          "y": 0.9913
+        }
+      }
+    },
+    "animations": {
+      "traveler-nw.walk.nw": {
+        "frames": [
+          "traveler-nw.walk.nw.0000",
+          "traveler-nw.walk.nw.0001",
+          "traveler-nw.walk.nw.0002",
+          "traveler-nw.walk.nw.0003",
+          "traveler-nw.walk.nw.0004",
+          "traveler-nw.walk.nw.0005",
+          "traveler-nw.walk.nw.0006",
+          "traveler-nw.walk.nw.0007"
+        ],
+        "fps": 8,
+        "loop": true
+      }
+    }
+  },
+  "visualAnimations": {
+    "directions": {
+      "nw": {
+        "walk": "traveler-nw.walk.nw"
+      }
+    },
+    "walk": "traveler-nw.walk.nw"
+  },
+  "customActions": {},
+  "sourceHashes": {
+    "spec": "88c478c69d1829ecbfc6ddad63cbd4ead9036e09c1144ad2b8042595b4d3fdd8",
+    "provenance": "e99c39b7aa0607cee41a31fcc7e2e98b5e19720117f360bb0398dc26f4262625",
+    "frames": {
+      "frames/frame-0000.png": "b0190249d9cd239f77e5f906b4630b17df8475fb6a85fd6d9a71b00b24870de6",
+      "frames/frame-0001.png": "a70433cac2ca82f8cdb203b4cc4981ea18a16bb97d93286553be42948405cbfb",
+      "frames/frame-0002.png": "75c3d30e8cfc450cb27c71e0f7055c3a3af27922cf61d1ecb1891d1d6e30a64d",
+      "frames/frame-0003.png": "034ed165d161fe147896023ec56ad2146c0f05f74cf56d4f0da1d5b12a113781",
+      "frames/frame-0004.png": "4d92dbb16a7040207b46566bb1cca88ffc50068e03260bfbde1c441177044047",
+      "frames/frame-0005.png": "bb05733c64ce1d2d78aab8cf4a241e3f970522cea547809e0a13180c3bff8cdd",
+      "frames/frame-0006.png": "91a4792ccc4507a9596b2341c2ca4a084a9d2256f5c69cdb965a855e1ec40125",
+      "frames/frame-0007.png": "113355364fd658de002b82e8de40db4aa09d5f97fdefd57917d65a3b205a33f7"
+    }
+  },
+  "packing": {
+    "width": 2146,
+    "height": 576,
+    "cell": {
+      "width": 266,
+      "height": 572
+    },
+    "anchor": {
+      "x": 0.4977,
+      "y": 0.9913
+    },
+    "gutter": 2,
+    "rows": [
+      {
+        "row": 0,
+        "clip": "traveler-nw.walk.nw",
+        "action": "walk",
+        "direction": "nw"
+      }
+    ]
+  }
+}

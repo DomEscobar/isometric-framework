@@ -15,6 +15,8 @@ export interface TileDefinition {
   textures?: string[];
   /** Named material repeated on vertical terrain faces; omitted keeps solid shading. */
   sideTexture?: string;
+  /** False keeps the cell for movement and height without drawing its prism. Default true. */
+  drawn?: boolean;
 }
 export interface VisualDefinition {
   kind: 'box' | 'actor' | 'gem' | 'sprite';
@@ -87,6 +89,8 @@ export interface Scene {
   levels?: LevelDefinition[];
   /** The only traversable connections between separate floors. */
   links?: LevelLink[];
+  /** World image drawn behind every tile and actor. Its top-left sits at x, y. */
+  backdrop?: { texture: string; x: number; y: number };
 }
 export type MoveResult = 'started' | 'arrived' | 'blocked' | 'missing' | 'paused';
 export type JumpResult = 'started' | 'airborne' | 'blocked' | 'missing' | 'paused';

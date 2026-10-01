@@ -10,7 +10,11 @@ keeps its affected scope; an unrelated engine/gameplay fix does not need this lo
 Honor the user's style, provider, budget and intended deliverable. A short prompt
 can request a rich world; calibration is an internal checkpoint, not a smaller
 replacement for the finished scene. Atmosphere alone does not authorize new
-combat, quests or NPC simulation.
+combat, quests or NPC simulation. For landscape-only work or a substantial environment
+revision, use [landscape iteration](references/landscape-iteration.md): establish
+source density and physical scale early, compare controlled alternatives, derive
+contacts/blocking/access from shared host data, and stress the whole map. Keep
+user selections and canceled experiments explicit in existing production notes.
 
 ## Define the result once
 

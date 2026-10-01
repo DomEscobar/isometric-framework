@@ -1,14 +1,42 @@
 import {loadImage} from './asset-loader.ts';
 import manifest from './art/manifest.json';
 import binding from './art/binding.json';
+import travelerSeUrl from './art/traveler/packed/se/sheet.png?url';
+import travelerSePacked from './art/traveler/packed/se/runtime.json';
+import travelerNwUrl from './art/traveler/packed/nw/sheet.png?url';
+import travelerNwPacked from './art/traveler/packed/nw/runtime.json';
+import travelerSeIdleUrl from './art/traveler/packed/se-idle/sheet.png?url';
+import travelerSeIdlePacked from './art/traveler/packed/se-idle/runtime.json';
+import travelerNwIdleUrl from './art/traveler/packed/nw-idle/sheet.png?url';
+import travelerNwIdlePacked from './art/traveler/packed/nw-idle/runtime.json';
 import {project,unproject,riverCenter,riverHalf,roadDistance,bridges,houses,trees,gardens,insideRect,WIDTH,HEIGHT,type Point,type Screen} from './world.ts';
 export type Person=Point&{facing:number;walk:number;moving:boolean;color:number};
 const urls=import.meta.glob('./art/*.png',{eager:true,query:'?url',import:'default'}) as Record<string,string>;
+type FrameRect={x:number;y:number;width:number;height:number};
+type TravelerClip={img:HTMLImageElement;frames:FrameRect[];anchor:{x:number;y:number}};
+type PackedSheet={
+ assets:{animations:Record<string,{frames:string[]}>;textures:Record<string,{frame:FrameRect;anchor:{x:number;y:number}}>};
+ visualAnimations:{directions:Record<string,{walk?:string;idle?:string}>};
+};
+type TravelerFacing={walk:TravelerClip;idle:TravelerClip};
+// Only SE and NW are independently generated; NE/SW are the documented
+// horizontal-flip aliases (see skills/directional-sprite-authoring/references/directions.md).
+const TRAVELER_HEIGHT=58; // Noticeably taller than the procedural villager's ~38px rendered height.
+function buildTravelerClip(img:HTMLImageElement,packed:PackedSheet,direction:'se'|'nw',action:'walk'|'idle'):TravelerClip{
+ const clipId=packed.visualAnimations.directions[direction]![action]!;
+ const frameIds=packed.assets.animations[clipId]!.frames;
+ const anchor=packed.assets.textures[frameIds[0]!]!.anchor;
+ return {img,anchor,frames:frameIds.map(id=>packed.assets.textures[id]!.frame)};
+}
 const hash=(x:number,y:number)=>{let n=Math.imul(Math.floor(x),374761393)^Math.imul(Math.floor(y),668265263);n=Math.imul(n^(n>>>13),1274126177);return((n^(n>>>16))>>>0)/4294967295};
 const blend=(a:number[],b:number[],t:number)=>a.map((v,i)=>Math.round(v+(b[i]!-v)*t));
 const color=(rgb:number[])=>`rgb(${rgb.join(',')})`;
 export async function createView(canvas:HTMLCanvasElement){
  const sprites=Object.fromEntries(await Promise.all(Object.keys(manifest.images).map(async id=>[id,await loadImage(urls['./art/'+manifest.images[id as keyof typeof manifest.images].url]!)]))) as Record<string,HTMLImageElement>;
+ const travelerClips:{se:TravelerFacing;nw:TravelerFacing}={
+  se:{walk:buildTravelerClip(await loadImage(travelerSeUrl),travelerSePacked,'se','walk'),idle:buildTravelerClip(await loadImage(travelerSeIdleUrl),travelerSeIdlePacked,'se','idle')},
+  nw:{walk:buildTravelerClip(await loadImage(travelerNwUrl),travelerNwPacked,'nw','walk'),idle:buildTravelerClip(await loadImage(travelerNwIdleUrl),travelerNwIdlePacked,'nw','idle')},
+ };
  const ctx=canvas.getContext('2d')!,terrain=document.createElement('canvas');terrain.width=1536;terrain.height=1060;const ground=terrain.getContext('2d')!;
  const image=ground.createImageData(768,530),pixels=image.data;
  for(let y=0;y<530;y++)for(let x=0;x<768;x++){
@@ -50,6 +78,17 @@ export async function createView(canvas:HTMLCanvasElement){
  if(back){r('#69492f',-8,-31,15,7);r('#85633c',-6,-29,11,3);r('#e9b981',7,-29,3,5);r('#f7d59b',8,-28,2,2);}else{r('#3b3930',right?-1:-5,-28,2,3);r('#3b3930',right?5:1,-28,2,3);r('#fff0c3',right?-1:-5,-28,1,1);r('#fff0c3',right?5:1,-28,1,1);r('#cf925f',right?3:-2,-25,3,2);r('#82533b',0,-23,4,1);}
  r('#514330',-10,-34,20,3);r('#a97948',-8,-37,16,5);r('#d4a966',-6,-37,10,2);r('#e6c689',-7,-34,14,1);r('#634a32',-12,-32,25,2);r('#d9b776',-10,-32,20,1);
  if(back){r('#4b4330',-7,-22,14,13);r('#a77b46',-6,-21,12,11);r('#d4af6b',-5,-20,10,4);r('#745333',-4,-14,8,3);r('#e0c081',-1,-16,3,3);}ctx.restore();}
+ function drawTraveler(p:Person){
+  const q=project(p),flip=p.facing===0||p.facing===3,facing=p.facing===1||p.facing===0?travelerClips.nw:travelerClips.se;
+  const clip=p.moving?facing.walk:facing.idle;
+  const index=Math.floor(p.walk*clip.frames.length)%clip.frames.length,frame=clip.frames[index]!;
+  const scale=TRAVELER_HEIGHT/frame.height,w=frame.width*scale,h=frame.height*scale,ax=clip.anchor.x*w,ay=clip.anchor.y*h;
+  ctx.save();ctx.translate(Math.round(q.x),Math.round(q.y));
+  ctx.fillStyle='#293a3266';ctx.beginPath();ctx.ellipse(0,0,11,3,0,0,Math.PI*2);ctx.fill();
+  if(flip)ctx.scale(-1,1);
+  ctx.drawImage(clip.img,frame.x,frame.y,frame.width,frame.height,-ax,-ay,w,h);
+  ctx.restore();
+ }
  function draw(time:number,people:Person[],debug=false,water?:(ctx:CanvasRenderingContext2D)=>void,target?:Point,decor?:{under:(ctx:CanvasRenderingContext2D)=>void;over:(ctx:CanvasRenderingContext2D)=>void}){
   const dpr=Math.min(devicePixelRatio,2);ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle='#244d39';ctx.fillRect(0,0,width,height);ctx.translate(width/2-camera.x*zoom,height/2-camera.y*zoom);ctx.scale(zoom,zoom);ctx.imageSmoothingEnabled=false;
   const channel:Screen[]=[];for(let c=0;c<=48;c+=.5)channel.push(project({c,r:riverCenter(c)-riverHalf}));for(let c=48;c>=0;c-=.5)channel.push(project({c,r:riverCenter(c)+riverHalf}));poly(ctx,channel,'#264f54');water?.(ctx);ctx.drawImage(activeTerrain,0,-140);
@@ -68,7 +107,7 @@ export async function createView(canvas:HTMLCanvasElement){
   for(const h of houses)for(const side of[0,1]){const p=project({c:h.c-.7,r:h.r+(side?4.4:.7)}),im=sprites.shrub!;items.push({depth:p.y,draw:()=>ctx.drawImage(im,p.x-18,p.y-25,36,31)});}
   // A point outside a visible wall must draw in front of that whole rigid footprint,
   // even when its feet are above the footprint's nearest corner in screen Y.
-  for(const p of people){let depth=project(p).y;for(const h of houses){const box=houseRect(h),q=project(p);if((p.c<h.c||p.r>h.r+5)&&q.x>box.x-12&&q.x<box.x+box.width+12&&q.y>box.y&&q.y<box.y+box.height+38)depth=Math.max(depth,project({c:h.c,r:h.r+5}).y+.1)}items.push({depth,draw:()=>drawPerson(p)});}
+  for(const p of people){let depth=project(p).y;for(const h of houses){const box=houseRect(h),q=project(p);if((p.c<h.c||p.r>h.r+5)&&q.x>box.x-12&&q.x<box.x+box.width+12&&q.y>box.y&&q.y<box.y+box.height+38)depth=Math.max(depth,project({c:h.c,r:h.r+5}).y+.1)}items.push({depth,draw:()=>p.color===0?drawTraveler(p):drawPerson(p)});}
   items.sort((a,b)=>a.depth-b.depth);for(const item of items)item.draw();decor?.over(ctx);
   const hero=people[0]!;const hp=project(hero);const hidden=houses.some(h=>{const r=houseRect(h);return hero.c>=h.c&&hero.r<=h.r+5&&hp.y<project({c:h.c,r:h.r+5}).y&&hp.x>r.x&&hp.x<r.x+r.width&&hp.y-20>r.y&&hp.y-20<r.y+r.height})||trees.some(t=>{const p=project(t);return hp.y<p.y&&Math.abs(hp.x-p.x)<48&&hp.y>p.y-120});
   if(hidden||zoom<.85){ctx.fillStyle='#ffe5a0';ctx.strokeStyle='#35503c';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(hp.x,hp.y-43);ctx.lineTo(hp.x-4,hp.y-49);ctx.lineTo(hp.x+4,hp.y-49);ctx.closePath();ctx.fill();ctx.stroke();}

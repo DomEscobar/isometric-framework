@@ -28,7 +28,10 @@ are not navigation corridors. `export-layout.mjs` emits the semantic review data
 The original generated cottage, oak, pine and shrub are recorded in `art/provenance.json`.
 Five cottage colour variants share one original building design; they are not five
 independently generated buildings. The raw generation is preserved in `art/source.png`.
-Terrain, bridge, character and animation pixels are authored, not generated.
+Terrain and bridge pixels are authored, not generated. The player-controlled traveler
+is a generated, walk-animated sprite (SE/NW independently generated, NE/SW are flip
+aliases); its brief and full production chain are recorded in
+`art/traveler/BRIEF.md` and `art/traveler/provenance.json`. Villager pixels remain authored.
 
 Build: `node node_modules/vite/bin/vite.js build --config examples/quellbrunn/vite.config.ts`.
 Type check: `node node_modules/typescript/bin/tsc --project examples/quellbrunn/tsconfig.json --noEmit`.

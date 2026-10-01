@@ -1,0 +1,19 @@
+{
+ "variant": "village",
+ "quotes_usd": {
+  "plate": "0.011",
+  "deco": "0.011",
+  "sam-oak": "0.005",
+  "sam-pine": "0.005",
+  "sam-bush-a": "0.005",
+  "sam-bush-b": "0.005",
+  "sam-house": "0.005",
+  "sam-well": "0.005",
+  "sam-crate": "0.005",
+  "sam-boulder": "0.005"
+ },
+ "total_quote_usd": "0.062",
+ "spent_usd": "0",
+ "cap_usd": "0.20",
+ "object_count": 8
+}

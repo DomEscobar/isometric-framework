@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "origin": {
+    "kind": "video-extraction",
+    "provenance": "provenance.json"
+  },
+  "imageId": "traveler-nw",
+  "cell": {
+    "width": 266,
+    "height": 572
+  },
+  "anchor": {
+    "x": 0.4977,
+    "y": 0.9913
+  },
+  "requiredDirections": [
+    "nw"
+  ],
+  "requiredActions": [
+    "walk"
+  ],
+  "clips": [
+    {
+      "action": "walk",
+      "direction": "nw",
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        "frames/frame-0000.png",
+        "frames/frame-0001.png",
+        "frames/frame-0002.png",
+        "frames/frame-0003.png",
+        "frames/frame-0004.png",
+        "frames/frame-0005.png",
+        "frames/frame-0006.png",
+        "frames/frame-0007.png"
+      ]
+    }
+  ]
+}

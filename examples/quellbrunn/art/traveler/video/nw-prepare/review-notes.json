@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "preparation": {
+    "file": "preparation.json",
+    "sha256": "2387be1d03c50cf116cea25545f0f7325ade6e6ece95f65097b82cd98022b09f"
+  },
+  "decodedFrameCount": 161,
+  "timestampsStrictlyIncreasing": true,
+  "cycleSuggestions": [
+    {
+      "start": 43,
+      "endExclusive": 70,
+      "durationSeconds": 0.9,
+      "similarity": 0.998706,
+      "note": "Approximate visual repeat; endpoint is excluded. Review before selecting."
+    },
+    {
+      "start": 44,
+      "endExclusive": 72,
+      "durationSeconds": 0.933333,
+      "similarity": 0.998598,
+      "note": "Approximate visual repeat; endpoint is excluded. Review before selecting."
+    },
+    {
+      "start": 41,
+      "endExclusive": 69,
+      "durationSeconds": 0.933333,
+      "similarity": 0.998258,
+      "note": "Approximate visual repeat; endpoint is excluded. Review before selecting."
+    }
+  ]
+}

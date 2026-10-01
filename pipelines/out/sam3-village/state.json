@@ -1,0 +1,69 @@
+{
+ "urls": {
+  "guide": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1790260459730332637_iRqzIR1a.png",
+  "marked": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1790260520892541963_RaDMV5en.png",
+  "deco": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1790260547148272384_ctJS1bku.png"
+ },
+ "predictions": {
+  "plate": {
+   "id": "b482c2d8c8a7461185d6bcd1069c57e2",
+   "call": "889584e3e69c4f8c8eb489dd5003f920",
+   "price": "0.011"
+  },
+  "deco": {
+   "id": "8d58f11f793a47c29808899f92599895",
+   "call": "8dad651b31e84c288e55d2e57df95907",
+   "price": "0.011"
+  },
+  "sam-oak": {
+   "id": "460d3ce446904cf9b231eb203a4f0c1f",
+   "call": "34322bdec0b74f6aa85dfa755a0750a1",
+   "price": "0.005"
+  },
+  "sam-pine": {
+   "id": "d9d50bf9a57d436a8c63e886f9923d64",
+   "call": "a77c88eb8cc74905b9de3b22ba7ddfac",
+   "price": "0.005"
+  },
+  "sam-bush-a": {
+   "id": "4f31e37a85804a9b894c79076247fec5",
+   "call": "dc071b8ad58b4069aaa45ddaad6048b3",
+   "price": "0.005"
+  },
+  "sam-bush-b": {
+   "id": "3a8d4f0322734ab793ddcfa3bd33ed8e",
+   "call": "142d18b23f2e42fa9ac4841612c53c6b",
+   "price": "0.005"
+  },
+  "sam-house": {
+   "id": "a213ad7755834346870c4b5990cf84af",
+   "call": "719594f0bedb47118df5206973e2b675",
+   "price": "0.005"
+  },
+  "sam-well": {
+   "id": "976db00a86b24fb2bb806d3a8ab7bbd9",
+   "call": "05796f25521a4f848ef3b728dafb87ed",
+   "price": "0.005"
+  },
+  "sam-crate": {
+   "id": "5ad47b5f8dde40898a387f1ddda474ed",
+   "call": "a951d9edc82c47daba4ec8ee0ecb6ec5",
+   "price": "0.005"
+  },
+  "sam-boulder": {
+   "id": "c003b23c1473448896fce160adf4188e",
+   "call": "254bffad340842ffa47ea6f3bb7865cc",
+   "price": "0.005"
+  },
+  "sam-pt-pine": {
+   "id": "45aac978b1cb4b9dbdd452f9791d3324",
+   "call": "8e395ea11c484ae88f2be9789740c355",
+   "price": "0.005"
+  },
+  "sam-pt-bush-a": {
+   "id": "375747bd99104f769f5426d42def5178",
+   "call": "cafa2d3ce3324d97b8a6fc63ddae3ca9",
+   "price": "0.005"
+  }
+ }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "wavespeed-ai/wan-2.2/image-to-video",
+  "createdAt": "2026-09-20T18:56:11.731Z",
+  "requestHash": "29f0eb93e6d50f2d63d123ac723f112bb1012fbd0d5dbbe4507611e68bc7697a",
+  "stillSha256": "5e1036cc38ff6c12a177a875cd671bf48ff446f13ed4c84724d287946fc0f5ab",
+  "id": "775e44c4700c4dfca5f3f1c29bd51277",
+  "status": "completed",
+  "outputs": [
+    "https://d2h7xmz5gqybh9.cloudfront.net/output/f9066e41-b26f-4d98-a57f-80f4aca4b66d-u2_059ffc3b-c6be-4125-a3da-c660e286ad63.mp4"
+  ]
+}

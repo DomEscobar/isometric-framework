@@ -1,0 +1,65 @@
+{
+ "results": [
+  {
+   "id": "bush-a",
+   "foot": [
+    1400,
+    860
+   ],
+   "mask": {
+    "white_px": 23709,
+    "coverage": 0.0096,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "box": {
+    "x_min": 1350,
+    "y_min": 790,
+    "x_max": 1450,
+    "y_max": 890
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1342,
+    844,
+    1413,
+    898
+   ],
+   "component_px": 2850,
+   "extract": "box"
+  },
+  {
+   "id": "bush-b",
+   "foot": [
+    1450,
+    680
+   ],
+   "mask": {
+    "white_px": 23709,
+    "coverage": 0.0096,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "box": {
+    "x_min": 1400,
+    "y_min": 610,
+    "x_max": 1500,
+    "y_max": 710
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1392,
+    613,
+    1508,
+    718
+   ],
+   "component_px": 10748,
+   "extract": "box"
+  }
+ ],
+ "spent": "0.107"
+}

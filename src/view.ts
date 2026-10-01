@@ -1,4 +1,4 @@
-import { Container, Graphics, Matrix } from 'pixi.js';
+import { Container, Graphics, Matrix, Sprite } from 'pixi.js';
 import { selectTileTexture } from './art.ts';
 import { project } from './geometry.ts';
 import { levelHeight, levelMaps, levelOf } from './levels.ts';
@@ -51,6 +51,14 @@ export class SceneView {
       // every upper tile over even a tall actor standing in front of its edge.
       this.root.sortChildren = () => this.sortDepth();
       this.root.addChild(this.overlay);
+      const backdrop = scene.backdrop;
+      if (backdrop) {
+        const image = new Sprite(this.bank.texture(backdrop.texture));
+        image.anchor.set(0, 0);
+        image.position.set(backdrop.x, backdrop.y);
+        image.zIndex = -1;
+        this.root.addChild(image);
+      }
       for (const level of levelMaps(scene)) {
         for (let r = 0; r < level.map.length; r++) {
           for (let c = 0; c < level.map[r]!.length; c++) {
@@ -116,6 +124,7 @@ export class SceneView {
   }
 
   private drawTile(cell: Cell, tile: TileDefinition): void {
+    if (tile.drawn === false) return;
     const { tileWidth: w, tileHeight: h } = this.scene;
     const container = new Container();
     this.root.addChild(container);

@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "assets": {
+    "images": {
+      "traveler-idle-nw": {
+        "url": "sheet.png",
+        "sampling": "nearest"
+      }
+    },
+    "textures": {
+      "traveler-idle-nw.idle.nw.0000": {
+        "image": "traveler-idle-nw",
+        "frame": {
+          "x": 2,
+          "y": 2,
+          "width": 266,
+          "height": 572
+        },
+        "anchor": {
+          "x": 0.4977,
+          "y": 0.9913
+        }
+      }
+    },
+    "animations": {
+      "traveler-idle-nw.idle.nw": {
+        "frames": [
+          "traveler-idle-nw.idle.nw.0000"
+        ],
+        "fps": 1,
+        "loop": true
+      }
+    }
+  },
+  "visualAnimations": {
+    "directions": {
+      "nw": {
+        "idle": "traveler-idle-nw.idle.nw"
+      }
+    },
+    "idle": "traveler-idle-nw.idle.nw"
+  },
+  "customActions": {},
+  "sourceHashes": {
+    "spec": "8386263936dcc24b3d98ca811c4cea21dc8e3fff744125ef83cf4f3520d43149",
+    "provenance": null,
+    "frames": {
+      "frames/frame-0006.png": "91a4792ccc4507a9596b2341c2ca4a084a9d2256f5c69cdb965a855e1ec40125"
+    }
+  },
+  "packing": {
+    "width": 270,
+    "height": 576,
+    "cell": {
+      "width": 266,
+      "height": 572
+    },
+    "anchor": {
+      "x": 0.4977,
+      "y": 0.9913
+    },
+    "gutter": 2,
+    "rows": [
+      {
+        "row": 0,
+        "clip": "traveler-idle-nw.idle.nw",
+        "action": "idle",
+        "direction": "nw"
+      }
+    ]
+  }
+}

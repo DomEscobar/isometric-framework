@@ -32,6 +32,11 @@ can use the same checks with a smaller requirement scope.
 | Build large or multipart props, buildings, bridges or raised passages | [multi-tile-asset-assembly](multi-tile-asset-assembly/SKILL.md) | Solid volumes, walkable surfaces, openings, sprite contacts and depth parts |
 | Build connected beds, paths, walls or water with compatible edges | [consistent-tileset-authoring](consistent-tileset-authoring/SKILL.md) | Neighbor catalogs or a composed ground plate; layout guide, registration, prepare-ground, bind-ground and support checks already ship. The raised-bed helper is rigid beds only. |
 
+For landscape-only work or a broad environment revision, the visual loop includes
+[landscape iteration](isometric-visual-loop/references/landscape-iteration.md): early
+density/scale calibration, controlled studies, grounded placement, whole-map review
+and separate evidence. It reuses the existing production stages and specialist tools.
+
 ## Choose the art technique
 
 Choose how the world is assembled, then the generation route for each family.

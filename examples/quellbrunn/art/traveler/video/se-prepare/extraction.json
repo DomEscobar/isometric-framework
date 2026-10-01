@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "preparation": {
+    "file": "preparation.json",
+    "sha256": "734e23c61c4fc893b8311fdfe5cdf3df7f58b477318db182818ffd69e71384e0"
+  },
+  "crop": {
+    "x": 150,
+    "y": 67,
+    "width": 247,
+    "height": 569
+  },
+  "mask": {
+    "mode": "colorkey",
+    "color": "#c31f6c",
+    "tolerance": 40
+  },
+  "selection": {"indices": [4, 8, 12, 16, 20, 24, 28, 32], "fps": 8},
+  "clip": {
+    "imageId": "traveler-se",
+    "action": "walk",
+    "direction": "se",
+    "loop": true,
+    "anchor": {"x": 0.4932, "y": 0.9930}
+  }
+}

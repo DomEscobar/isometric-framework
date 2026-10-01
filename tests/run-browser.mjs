@@ -22,7 +22,7 @@ try {
       server.once('error', error => { clearInterval(poll); clearTimeout(deadline); reject(error); });
     });
   }
-  for (const script of ['browser-api', 'levels-browser', 'jump-browser', 'art-browser', 'interactions-browser', 'progress-browser', 'footprint-depth', 'bridge-occlusion']) {
+  for (const script of ['browser-api', 'levels-browser', 'jump-browser', 'art-browser', 'interactions-browser', 'progress-browser', 'footprint-depth', 'bridge-occlusion', 'backdrop-occlusion']) {
     const result = await new Promise((done, reject) => {
       const test = spawn(process.execPath, [fileURLToPath(new URL(`./${script}.mjs`, import.meta.url))], {
         stdio: 'inherit', windowsHide: true, env: { ...process.env, RUNTIME_QA_URL: url,

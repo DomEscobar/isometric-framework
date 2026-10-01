@@ -93,6 +93,14 @@ the specialists the contract requires:
 
 ## 4. Calibrate, then build the agreed world
 
+For landscape production, follow [landscape iteration](../skills/isometric-visual-loop/references/landscape-iteration.md)
+inside the existing v4 stages. Calibrate source density, world scale and playing
+zoom before multiplying assets; compare alternatives with stable camera/state;
+connect visual feet, solid blocking, build reserves and approaches through one
+host authority. Inspect the whole map as soon as the main families exist.
+Preserve user choices and scope exclusions; no extra approval is needed for routine
+variants already delegated to the agent.
+
 Plan the whole scene and its connected areas before deriving the asset list; use
 [environment composition](../skills/isometric-visual-loop/references/environment-composition.md).
 Build one representative playable area with related objects, adjoining surfaces,

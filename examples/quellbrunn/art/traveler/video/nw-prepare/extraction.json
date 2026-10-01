@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "preparation": {
+    "file": "preparation.json",
+    "sha256": "2387be1d03c50cf116cea25545f0f7325ade6e6ece95f65097b82cd98022b09f"
+  },
+  "crop": {
+    "x": 138,
+    "y": 66,
+    "width": 266,
+    "height": 572
+  },
+  "mask": {
+    "mode": "colorkey",
+    "color": "#bf2168",
+    "tolerance": 40
+  },
+  "selection": {"indices": [43, 46, 50, 53, 57, 60, 63, 67], "fps": 8},
+  "clip": {
+    "imageId": "traveler-nw",
+    "action": "walk",
+    "direction": "nw",
+    "loop": true,
+    "anchor": {"x": 0.4977, "y": 0.9913}
+  }
+}

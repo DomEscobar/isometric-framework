@@ -1,0 +1,19 @@
+{
+ "variant": "grove",
+ "quotes_usd": {
+  "plate": "0.011",
+  "deco": "0.011",
+  "sam-oak-a": "0.005",
+  "sam-oak-b": "0.005",
+  "sam-pine-a": "0.005",
+  "sam-pine-b": "0.005",
+  "sam-bush-a": "0.005",
+  "sam-bush-b": "0.005",
+  "sam-stump": "0.005",
+  "sam-boulder": "0.005"
+ },
+ "total_quote_usd": "0.062",
+ "spent_usd": "0",
+ "cap_usd": "0.20",
+ "object_count": 8
+}

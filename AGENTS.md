@@ -38,6 +38,11 @@ calibration assembly proves the approach; it never limits the requested final
 world. Complete connected traversal, atmosphere, animation, and the agreed game
 loop when those are in scope.
 
+For landscape-only work or a substantial environment revision, apply the visual
+loop's [landscape iteration](skills/isometric-visual-loop/references/landscape-iteration.md)
+within the existing stages. Calibrate density/scale and a connected contact before
+expansion; keep actual user selections and canceled experiments distinct.
+
 `demo/` and `examples/` are references, never a starter asset library. Do not
 copy their hosts, sprites, maps, palettes, characters, layouts, or asset URLs into
 a new game. A supplied image is style-only by default, unless the user explicitly

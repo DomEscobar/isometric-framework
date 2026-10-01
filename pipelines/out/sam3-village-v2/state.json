@@ -1,0 +1,59 @@
+{
+ "urls": {
+  "guide": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1790275268813000490_GZEWiI6s.png",
+  "marked": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1790275356715061428_ySeWjHgz.png",
+  "deco": "https://d2h7xmz5gqybh9.cloudfront.net/media/4c02dd4375b04befb599e8507aa270cb/images/1790275423597930370_L1aDMW5f.png"
+ },
+ "predictions": {
+  "plate": {
+   "id": "bb0ac7a96e9046e09e3423be24fe1784",
+   "call": "7a984a0a19394532958d10c4ba1164d9",
+   "price": "0.011"
+  },
+  "deco": {
+   "id": "4de6a55c8aaa4158bf1dc9bf7ee07b27",
+   "call": "627cd50e91254eb4bf8864b23e5f0e8a",
+   "price": "0.011"
+  },
+  "sam-oak": {
+   "id": "60ac44c88a0f4b73ae24bec4323b6bea",
+   "call": "5cac08fd34044cde942b1c6446b0f26e",
+   "price": "0.005"
+  },
+  "sam-pine": {
+   "id": "0710ecae01ac4ad3b087b1564e4ee489",
+   "call": "aae60ee9e99645e48dab7e3387a66515",
+   "price": "0.005"
+  },
+  "sam-bush-a": {
+   "id": "1c320b6e20fd4d0c8c7090abcb546b84",
+   "call": "b78e769106b34c749f5bb3323ea671d3",
+   "price": "0.005"
+  },
+  "sam-bush-b": {
+   "id": "c250c3382a5849f382565aa974e9b072",
+   "call": "35944ddb30ea4def99621b31bbb5bc24",
+   "price": "0.005"
+  },
+  "sam-house": {
+   "id": "5fcc291b9c394cd9a30215f0a6e72d90",
+   "call": "3588955c157f413da6a202d40c180e4d",
+   "price": "0.005"
+  },
+  "sam-well": {
+   "id": "4adaf52bbb5f498989d4b8bd230011fc",
+   "call": "66e94c245dd14bd09b946dc50c13585d",
+   "price": "0.005"
+  },
+  "sam-crate": {
+   "id": "945bceb1a9de4fc595717dd6b1ebd7bf",
+   "call": "2547fdef33684eff9b41dc270b12ba44",
+   "price": "0.005"
+  },
+  "sam-boulder": {
+   "id": "3e1ed77686cc4aac8c5369e3f42ed170",
+   "call": "b5ccbeaed38f4e2cb62444b3531dbfbd",
+   "price": "0.005"
+  }
+ }
+}

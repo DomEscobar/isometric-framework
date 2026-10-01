@@ -121,7 +121,7 @@ The directional pad uses the same tile axes as WASD. It supports holding two dir
 
 ### Scene data and assets
 
-`Scene` accepts version 1 and version 2; use the exported `Scene` type and installed `dist/types/types.d.ts` for the full typed contract. Existing version-1 scenes remain supported as a single ground floor. The map is row-major: `map[r][c]`. Tile definitions specify color, walkability, and optional elevation in screen pixels. Entity types specify a visual, blocking behavior, and a rectangular footprint extending toward positive columns and rows.
+`Scene` accepts version 1 and version 2; use the exported `Scene` type and installed `dist/types/types.d.ts` for the full typed contract. Existing version-1 scenes remain supported as a single ground floor. The map is row-major: `map[r][c]`. Tile definitions specify color, walkability, and optional elevation in screen pixels. `drawn: false` keeps that elevation and walkability without painting the prism. An optional `backdrop` texture is drawn behind everything; `x` and `y` are the world position of its top-left. Entity types specify a visual, blocking behavior, and a rectangular footprint extending toward positive columns and rows.
 
 Version 2 adds independent stacked floors and explicit connections. Each upper map has the ground map's dimensions, with `null` where that floor does not exist. Floor IDs must be unique; `ground` is reserved for the base map. Entity collision, pathfinding, picking, and gameplay lookups distinguish floor IDs, so a rock below a bridge does not obstruct an actor above it.
 

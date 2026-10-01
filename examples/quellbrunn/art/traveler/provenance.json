@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "character": "Quellbrunn traveler (hero, color 0 in render.ts)",
+  "identity": {
+    "provider": "built-in ImageGen (GenerateImage tool)",
+    "styleReference": "examples/quellbrunn/art/source.png (village cottage/tree pixel-art style, style-only)",
+    "facings": [
+      {
+        "direction": "se",
+        "file": "source/se.jpg",
+        "sha256": "3f68ca117117bc5b6da65229b1ac5536b4aba10d4b172d9d28643b50dd9d3143"
+      },
+      {
+        "direction": "nw",
+        "file": "source/nw.jpg",
+        "sha256": "5e1036cc38ff6c12a177a875cd671bf48ff446f13ed4c84724d287946fc0f5ab"
+      }
+    ],
+    "aliasedFacings": {
+      "ne": "horizontal flip of nw at draw time (render.ts), not independently generated",
+      "sw": "horizontal flip of se at draw time (render.ts), not independently generated"
+    }
+  },
+  "animation": {
+    "provider": "wavespeed-ai/wan-2.2/image-to-video",
+    "note": "Not in the shared skill client's model allowlist (that client does not generate video); submitted directly against the documented schema at https://wavespeed.ai/docs/docs-api/wavespeed-ai/wan-2.2-image-to-video (checked 2026-09-20) via examples/quellbrunn/art/traveler/tools/i2v-wan22.mjs, reusing the same WAVESPEED_API_KEY already selected for this project.",
+    "clips": [
+      {
+        "direction": "se",
+        "requestJob": "video/se.job.json",
+        "predictionId": "9c7fa73e4e9c4d8293364b814437e804",
+        "localVideo": "video/se.mp4",
+        "videoSha256": "44e044cdd2177e208fd0fad0ac5d9b33ed82ed09af1905de3974ac124db2553c",
+        "prompt": "video/se.prompt.txt"
+      },
+      {
+        "direction": "nw",
+        "requestJob": "video/nw.job.json",
+        "predictionId": "775e44c4700c4dfca5f3f1c29bd51277",
+        "localVideo": "video/nw.mp4",
+        "videoSha256": "778f917d1000eb043f36e19396d11fffe2072539bfce73dea6d17da273245b4a",
+        "prompt": "video/nw.prompt.txt"
+      }
+    ]
+  },
+  "extraction": {
+    "tool": "skills/directional-sprite-authoring/scripts/extract-video.py (prepare/export), invoked through examples/quellbrunn/art/traveler/tools/run-extract.py",
+    "runWrapperReason": "This sandbox denies renaming a directory once a spawned subprocess (ffmpeg, used only by prepare) has written into it, even though copy+delete of the same tree succeeds. The wrapper calls the skill's unmodified prepare()/export() functions directly and finishes their publish step with copy+delete instead of the blocked rename; it does not change extraction logic, masking, or validation.",
+    "mask": "colorkey",
+    "clips": [
+      {
+        "direction": "se",
+        "reviewBundle": "video/se-prepare",
+        "keyColor": "#c31f6c",
+        "tolerance": 40,
+        "selectedIndices": [4, 8, 12, 16, 20, 24, 28, 32],
+        "exported": "frames/se"
+      },
+      {
+        "direction": "nw",
+        "reviewBundle": "video/nw-prepare",
+        "keyColor": "#bf2168",
+        "tolerance": 40,
+        "selectedIndices": [43, 46, 50, 53, 57, 60, 63, 67],
+        "exported": "frames/nw"
+      }
+    ]
+  },
+  "packing": {
+    "tool": "skills/directional-sprite-authoring/scripts/pack-sprites.py",
+    "outputs": [
+      {"imageId": "traveler-se", "direction": "se", "path": "packed/se"},
+      {"imageId": "traveler-nw", "direction": "nw", "path": "packed/nw"},
+      {
+        "imageId": "traveler-idle-se",
+        "direction": "se",
+        "path": "packed/se-idle",
+        "note": "static-facing idle clip packed from the already-approved walk frame-0006.png (identical sha256; chosen over frame-0000 because it is the walk cycle's most feet-together, weight-centered pose and reads as standing rather than a frozen stride), per asset-policy.md's generated-facing static idle allowance; no new generation."
+      },
+      {
+        "imageId": "traveler-idle-nw",
+        "direction": "nw",
+        "path": "packed/nw-idle",
+        "note": "static-facing idle clip packed from the already-approved walk frame-0006.png (identical sha256; chosen over frame-0000 because it is the walk cycle's most feet-together, weight-centered pose and reads as standing rather than a frozen stride), per asset-policy.md's generated-facing static idle allowance; no new generation."
+      }
+    ]
+  }
+}

@@ -87,6 +87,7 @@ export function validateScene(input: unknown): Scene {
     if (tile.texture !== undefined && tile.textures !== undefined) fail(`tiles.${id}`, 'must use texture or textures, not both');
     if (tile.texture !== undefined) reference(tile.texture, `tiles.${id}.texture`, 'textures');
     if (tile.sideTexture !== undefined) reference(tile.sideTexture, `tiles.${id}.sideTexture`, 'textures');
+    optionalBoolean(tile.drawn, `tiles.${id}.drawn`);
     if (tile.textures !== undefined) {
       if (!Array.isArray(tile.textures) || !tile.textures.length || tile.textures.length > 1024) fail(`tiles.${id}.textures`, 'must contain 1 to 1024 texture IDs');
       tile.textures.forEach((texture, i) => reference(texture, `tiles.${id}.textures[${i}]`, 'textures'));
@@ -223,6 +224,12 @@ export function validateScene(input: unknown): Scene {
       }
     }
     if (entity.data !== undefined) record(entity.data, `${id}.data`);
+  }
+  if (scene.backdrop !== undefined) {
+    const backdrop = record(scene.backdrop, 'backdrop');
+    reference(backdrop.texture, 'backdrop.texture', 'textures');
+    number(backdrop.x, 'backdrop.x', -8192, 8192);
+    number(backdrop.y, 'backdrop.y', -8192, 8192);
   }
   if (scene.controlledId !== undefined && !ids.has(string(scene.controlledId, 'controlledId'))) fail('controlledId', 'references an unknown entity');
   return scene as unknown as Scene;

@@ -82,7 +82,10 @@ a passing build is not production acceptance.
 Read [the skill catalog](skills/README.md) and select only the workflows the game
 needs. For a complete world or substantial visual work, start with
 [isometric-visual-loop](skills/isometric-visual-loop/SKILL.md); it coordinates
-layout, asset integration, animation, and acceptance. Use specialist skills for
+layout, asset integration, animation, and acceptance. Its
+[landscape iteration recipe](skills/isometric-visual-loop/references/landscape-iteration.md)
+covers early density/scale checks, controlled variants, grounded placement and
+whole-map review. Use specialist skills for
 focused tasks. Treat references as style-only unless the user requests layout or both.
 
 ## Maintain the framework

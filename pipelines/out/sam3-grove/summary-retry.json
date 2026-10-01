@@ -1,0 +1,129 @@
+{
+ "variant": "grove",
+ "mode": "sam-point-retry",
+ "spent_usd": "0.097",
+ "results": [
+  {
+   "id": "bush-a",
+   "box": {
+    "x_min": 1270,
+    "y_min": 620,
+    "x_max": 1450,
+    "y_max": 870
+   },
+   "foot": [
+    1360,
+    820
+   ],
+   "mask": {
+    "white_px": 43949,
+    "coverage": 0.0179,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1246,
+    600,
+    1474,
+    874
+   ],
+   "component_px": 43364,
+   "extract": "box"
+  },
+  {
+   "id": "bush-b",
+   "box": {
+    "x_min": 1290,
+    "y_min": 500,
+    "x_max": 1470,
+    "y_max": 750
+   },
+   "foot": [
+    1380,
+    700
+   ],
+   "mask": {
+    "white_px": 19867,
+    "coverage": 0.0081,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1283,
+    550,
+    1482,
+    733
+   ],
+   "component_px": 18887,
+   "extract": "box"
+  },
+  {
+   "id": "boulder",
+   "box": {
+    "x_min": 990,
+    "y_min": 820,
+    "x_max": 1170,
+    "y_max": 1070
+   },
+   "foot": [
+    1080,
+    1020
+   ],
+   "mask": {
+    "white_px": 6979,
+    "coverage": 0.0028,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    1014,
+    1012,
+    1133,
+    1094
+   ],
+   "component_px": 6976,
+   "extract": "box"
+  },
+  {
+   "id": "pine-a",
+   "box": {
+    "x_min": 430,
+    "y_min": 320,
+    "x_max": 610,
+    "y_max": 570
+   },
+   "foot": [
+    520,
+    520
+   ],
+   "mask": {
+    "white_px": 24500,
+    "coverage": 0.01,
+    "size": [
+     1920,
+     1280
+    ]
+   },
+   "ok": true,
+   "sprite_bbox": [
+    477,
+    296,
+    634,
+    580
+   ],
+   "component_px": 24215,
+   "extract": "box"
+  }
+ ],
+ "ok_count": 4,
+ "all_ok": true
+}

@@ -141,6 +141,7 @@ test('packed consumer archive contains only consumer docs and skill tooling', ()
   assert.ok(files.includes('package/skills/isometric-visual-loop/scripts/verify-world.py'));
   assert.ok(files.includes('package/skills/isometric-visual-loop/scripts/asset_provenance.py'));
   assert.ok(files.includes('package/skills/isometric-visual-loop/references/asset-policy.md'));
+  assert.ok(files.includes('package/skills/isometric-visual-loop/references/landscape-iteration.md'));
   assert.ok(!files.some(file => /walk-templates|mannequin/i.test(file)));
   assert.ok(files.includes('package/skills/directional-sprite-authoring/scripts/extract-video.py'));
   assert.ok(!files.includes('package/skills/directional-sprite-authoring/scripts/mirror-frames.py'));

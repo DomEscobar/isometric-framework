@@ -52,6 +52,13 @@ capturing their shared images; then submit each criterion's own observations.
 Evidence must postdate every ticket using it. This permits one capture session
 without repeating the browser journey for each visual criterion.
 
+For substantial landscapes, apply [landscape iteration](landscape-iteration.md)
+within these same stages. Preflight includes a source/export/world/zoom/DPR density
+comparison; assembly joins physical bases, visible contacts and usable approaches;
+static includes the whole-map stress review. Keep study choices in production data,
+not a second contract. Its evidence mapping uses the existing methods below; it
+adds no receipt status or automatic polygon checker.
+
 ## Protected check schema
 
 Version 4 also requires the fixed `assetPolicy` shown in the complete example:

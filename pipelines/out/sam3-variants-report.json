@@ -1,0 +1,158 @@
+{
+ "title": "SAM3 Deco-Varianten Probe",
+ "spent_usd": {
+  "simple": "0.042",
+  "village": "0.072",
+  "grove": "0.112",
+  "total": "0.226"
+ },
+ "rows": [
+  {
+   "variant": "simple",
+   "id": "tree",
+   "ok": true,
+   "path": "out\\sam3-deco-1\\sprite-tree.png",
+   "note": "Eichenartiger Laubbaum, sauber"
+  },
+  {
+   "variant": "simple",
+   "id": "bush",
+   "ok": true,
+   "path": "out\\sam3-deco-1\\sprite-bush.png",
+   "note": "Runder Busch"
+  },
+  {
+   "variant": "simple",
+   "id": "house",
+   "ok": true,
+   "path": "out\\sam3-deco-1\\sprite-house.png",
+   "note": "Holzhütte inkl. Schornstein"
+  },
+  {
+   "variant": "simple",
+   "id": "rock",
+   "ok": true,
+   "path": "out\\sam3-deco-1\\sprite-rock.png",
+   "note": "Grauer Steinhaufen"
+  },
+  {
+   "variant": "village",
+   "id": "oak",
+   "ok": true,
+   "path": "out\\sam3-village\\sprite-oak.png",
+   "note": "Laubbaum"
+  },
+  {
+   "variant": "village",
+   "id": "pine",
+   "ok": true,
+   "path": "out\\sam3-village\\sprite-pine.png",
+   "note": "Nadelbaum (nach Candidate-Remap)"
+  },
+  {
+   "variant": "village",
+   "id": "bush-a",
+   "ok": true,
+   "path": "out\\sam3-village\\sprite-bush-a.png",
+   "note": "Grüner Busch"
+  },
+  {
+   "variant": "village",
+   "id": "bush-b",
+   "ok": true,
+   "path": "out\\sam3-village\\sprite-bush-b.png",
+   "note": "Blühender Busch mit Rosa"
+  },
+  {
+   "variant": "village",
+   "id": "house",
+   "ok": true,
+   "path": "out\\sam3-village\\sprite-house.png",
+   "note": "Holzhütte mit Fensterlicht"
+  },
+  {
+   "variant": "village",
+   "id": "well",
+   "ok": true,
+   "path": "out\\sam3-village\\sprite-well.png",
+   "note": "Steinbrunnen mit Holzdach"
+  },
+  {
+   "variant": "village",
+   "id": "crate",
+   "ok": true,
+   "path": "out\\sam3-village\\sprite-crate.png",
+   "note": "Holzkiste"
+  },
+  {
+   "variant": "village",
+   "id": "boulder",
+   "ok": true,
+   "path": "out\\sam3-village\\sprite-boulder.png",
+   "note": "Grauer Fels"
+  },
+  {
+   "variant": "grove",
+   "id": "oak-a",
+   "ok": true,
+   "path": "out\\sam3-grove\\sprite-oak-a.png",
+   "note": "Laubbaum"
+  },
+  {
+   "variant": "grove",
+   "id": "oak-b",
+   "ok": true,
+   "path": "out\\sam3-grove\\sprite-oak-b.png",
+   "note": "Laubbaum"
+  },
+  {
+   "variant": "grove",
+   "id": "pine-a",
+   "ok": true,
+   "path": "out\\sam3-grove\\sprite-pine-a.png",
+   "note": "Nadelbaum (manueller Punkt)"
+  },
+  {
+   "variant": "grove",
+   "id": "pine-b",
+   "ok": true,
+   "path": "out\\sam3-grove\\sprite-pine-b.png",
+   "note": "Nadelbaum"
+  },
+  {
+   "variant": "grove",
+   "id": "bush-a",
+   "ok": true,
+   "path": "out\\sam3-grove\\sprite-bush-a.png",
+   "note": "Busch (manueller Punkt+Text)"
+  },
+  {
+   "variant": "grove",
+   "id": "bush-b",
+   "ok": true,
+   "path": "out\\sam3-grove\\sprite-bush-b.png",
+   "note": "Busch (manueller Punkt+Text)"
+  },
+  {
+   "variant": "grove",
+   "id": "stump",
+   "ok": true,
+   "path": "out\\sam3-grove\\sprite-stump.png",
+   "note": "Baumstumpf"
+  },
+  {
+   "variant": "grove",
+   "id": "boulder",
+   "ok": true,
+   "path": "out\\sam3-grove\\sprite-boulder.png",
+   "note": "Felsbrocken (manueller Punkt)"
+  }
+ ],
+ "notes_de": [
+  "Text-SAM liefert oft Klassenmasken (alle Baeume zusammen).",
+  "Resplit nur mit eigener Maske + Box um Grid-Fuss reicht nicht, wenn Muse Objekte verschiebt.",
+  "Loesung: Unique Components aus allen Masken + AI-Zuordnung auf Labels; fehlende Instanzen per manuellem Punkt+Text-SAM.",
+  "Kein stilles Zusammenlegen von Instanzen: Claim-Blanking + 1 Sprite pro Objekt-ID."
+ ],
+ "all_pass": true
+}

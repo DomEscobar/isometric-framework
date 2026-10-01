@@ -7,6 +7,12 @@ existing plan and review files; do not create a competing project contract.
 Version 1 remains readable for older tasks, but its acceptance result may report
 zero `visualComparisons`. That is not evidence of this workflow.
 
+For alternative landscape techniques, use the controlled-study and decision-note
+recipe in [landscape iteration](landscape-iteration.md#run-controlled-visual-comparisons).
+Name the study as well as each candidate, preserve camera/density/time invariants,
+and distinguish an agent recommendation from the actual user or delegated selection.
+A combined material-and-density change is not an isolated material comparison.
+
 ## Protect a concrete target
 
 Use the user's supplied image with its declared role: `style`, `layout`, or

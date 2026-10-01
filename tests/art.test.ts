@@ -157,6 +157,17 @@ test('scene rejects ambiguous or missing sprite sources and unknown art referenc
   for (const mutate of mutations) { const input = scene(); mutate(input); assert.throws(() => validateScene(input), TypeError); }
 });
 
+test('a backdrop and an undrawn tile stay in the validated scene', () => {
+  const input = scene();
+  input.tiles.floor!.drawn = false;
+  input.backdrop = { texture: 'first', x: -48, y: -296 };
+  const validated = validateScene(JSON.parse(JSON.stringify(input)));
+  assert.equal(validated.tiles.floor!.drawn, false);
+  assert.equal(validated.backdrop?.texture, 'first');
+  input.backdrop.texture = 'missing';
+  assert.throws(() => validateScene(input), /unknown texture/);
+});
+
 test('scene bounds presentation fields and requires a positive finite physical body height', () => {
   for (const bodyHeight of [0, -1, NaN, Infinity, 4097]) {
     const input = scene(); input.entityTypes.hero!.bodyHeight = bodyHeight;

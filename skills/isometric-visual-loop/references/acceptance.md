@@ -254,6 +254,13 @@ reviewer's identity, understand media content or prove beauty. `npm run check` a
 `npm run build` remain technical checks; they do not imply world acceptance. Report
 those verdicts separately and do not call an unaccepted world complete.
 
+Landscape refinements use the [separate evidence mapping](landscape-iteration.md#map-evidence-to-independent-version-4-gates)
+for scale, grounding, whole-world views, motion and actual input. A host polygon
+report does not make the packaged rectangular placement checker polygon-aware.
+Emulated touch, native clip FPS, RAF cadence and physical-device performance are
+different claims. Keep canceled experiments outside passing evidence, and report
+remaining user visual acceptance explicitly when the contract requires it.
+
 ## Tool regressions
 
 ```sh

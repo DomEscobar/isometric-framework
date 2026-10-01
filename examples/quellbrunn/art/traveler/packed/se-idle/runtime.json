@@ -1,0 +1,72 @@
+{
+  "version": 1,
+  "assets": {
+    "images": {
+      "traveler-idle-se": {
+        "url": "sheet.png",
+        "sampling": "nearest"
+      }
+    },
+    "textures": {
+      "traveler-idle-se.idle.se.0000": {
+        "image": "traveler-idle-se",
+        "frame": {
+          "x": 2,
+          "y": 2,
+          "width": 247,
+          "height": 569
+        },
+        "anchor": {
+          "x": 0.4932,
+          "y": 0.993
+        }
+      }
+    },
+    "animations": {
+      "traveler-idle-se.idle.se": {
+        "frames": [
+          "traveler-idle-se.idle.se.0000"
+        ],
+        "fps": 1,
+        "loop": true
+      }
+    }
+  },
+  "visualAnimations": {
+    "directions": {
+      "se": {
+        "idle": "traveler-idle-se.idle.se"
+      }
+    },
+    "idle": "traveler-idle-se.idle.se"
+  },
+  "customActions": {},
+  "sourceHashes": {
+    "spec": "107784722be3f9d0e9d201500c38a81b615afbd94785faa88333525e28f361e3",
+    "provenance": null,
+    "frames": {
+      "frames/frame-0006.png": "2edbed98e0a8eb473f273261badbf7c4465e23799337f24e2ed71b708cd8107f"
+    }
+  },
+  "packing": {
+    "width": 251,
+    "height": 573,
+    "cell": {
+      "width": 247,
+      "height": 569
+    },
+    "anchor": {
+      "x": 0.4932,
+      "y": 0.993
+    },
+    "gutter": 2,
+    "rows": [
+      {
+        "row": 0,
+        "clip": "traveler-idle-se.idle.se",
+        "action": "idle",
+        "direction": "se"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "origin": {"kind": "static-facing"},
+  "imageId": "traveler-idle-se",
+  "cell": {"width": 247, "height": 569},
+  "anchor": {"x": 0.4932, "y": 0.993},
+  "requiredDirections": ["se"],
+  "requiredActions": ["idle"],
+  "clips": [
+    {"action": "idle", "direction": "se", "fps": 1, "loop": true, "frames": ["frames/frame-0006.png"]}
+  ]
+}

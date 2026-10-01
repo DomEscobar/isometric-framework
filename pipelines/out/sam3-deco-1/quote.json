@@ -1,0 +1,95 @@
+{
+ "quotes_usd": {
+  "plate": "0.011",
+  "deco": "0.011",
+  "sam-tree": "0.005",
+  "sam-bush": "0.005",
+  "sam-house": "0.005",
+  "sam-rock": "0.005"
+ },
+ "total_quote_usd": "0.042",
+ "spent_usd": "0.027",
+ "cap_usd": "0.10",
+ "objects": [
+  {
+   "id": "tree",
+   "cell": [
+    2,
+    2
+   ],
+   "prompt": "tree",
+   "marker": [
+    0,
+    220,
+    60
+   ],
+   "label": "a leafy green tree",
+   "box": {
+    "x_min": 186,
+    "y_min": 68,
+    "x_max": 258,
+    "y_max": 158
+   }
+  },
+  {
+   "id": "bush",
+   "cell": [
+    6,
+    2
+   ],
+   "prompt": "bush",
+   "marker": [
+    220,
+    220,
+    0
+   ],
+   "label": "a small round green bush",
+   "box": {
+    "x_min": 282,
+    "y_min": 116,
+    "x_max": 354,
+    "y_max": 206
+   }
+  },
+  {
+   "id": "house",
+   "cell": [
+    7,
+    5
+   ],
+   "prompt": "house",
+   "marker": [
+    220,
+    40,
+    40
+   ],
+   "label": "a tiny cottage house",
+   "box": {
+    "x_min": 234,
+    "y_min": 164,
+    "x_max": 306,
+    "y_max": 254
+   }
+  },
+  {
+   "id": "rock",
+   "cell": [
+    3,
+    6
+   ],
+   "prompt": "rock",
+   "marker": [
+    160,
+    160,
+    180
+   ],
+   "label": "a grey boulder",
+   "box": {
+    "x_min": 114,
+    "y_min": 128,
+    "x_max": 186,
+    "y_max": 218
+   }
+  }
+ ]
+}

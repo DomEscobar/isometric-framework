@@ -94,7 +94,7 @@ the specialists the contract requires:
 ## 4. Calibrate, then build the agreed world
 
 For landscape production, follow [landscape iteration](../skills/isometric-visual-loop/references/landscape-iteration.md)
-inside the existing v4 stages. Calibrate source density, world scale and playing
+inside the existing six production stages. Calibrate source density, world scale and playing
 zoom before multiplying assets; compare alternatives with stable camera/state;
 connect visual feet, solid blocking, build reserves and approaches through one
 host authority. Inspect the whole map as soon as the main families exist.
@@ -120,7 +120,7 @@ interactions, saves, and diagnostics. See [RUNTIME_API.md](RUNTIME_API.md),
 
 Use the visual loop's [acceptance gate](../skills/isometric-visual-loop/references/acceptance.md)
 and [production stages](../skills/isometric-visual-loop/references/production-flow.md)
-with plan version 4 for world production. `production next` reports the next
+with plan version 5 for world production. `production next` reports the next
 allowed stage, pending checks and missing inputs. A layout needs both spatial
 checks and actual blockout image review. Production acceptance verifies asset
 provenance against the runtime export as well as completed stage evidence;
@@ -135,3 +135,8 @@ requirement plainly.
 
 The framework's historical trial recorder and trial documents are for framework
 evaluation only. They are not required for a normal game project.
+
+For new landscapes, follow [v5 landscape verification](../skills/isometric-visual-loop/references/landscape-verification.md)
+and [offline ground assembly](../skills/consistent-tileset-authoring/references/landscape-ground-assembly.md).
+Existing approved v4 plans remain supported; a v5 migration needs a new baseline
+and fresh evidence for added or changed checks.

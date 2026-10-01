@@ -1,7 +1,13 @@
 # Execute an image comparison round
 
+For v5 landscapes, apply [structured landscape verification](landscape-verification.md)
+also to production captures. A separate reviewer must open actual candidate and
+reference images. Match their identity to the linked criterion judgments; a
+different receipt-level name cannot legitimize self-reviewed criteria. Missing
+image access means unverified. Hashes and metadata cannot prove image viewing.
+
 The image comparison format starts with acceptance-plan version 2. New complete
-worlds use [version 4 production stages](production-flow.md), retaining this image
+worlds use [version 5 production stages](production-flow.md), retaining this image
 format and adding prerequisite checks. The comparison format extends the
 existing plan and review files; do not create a competing project contract.
 Version 1 remains readable for older tasks, but its acceptance result may report

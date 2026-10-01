@@ -25,7 +25,11 @@ For new continuous grass, earth, moss and leaf-floor worlds, prefer
 minimum-error overlap cuts, host-owned masks, explicit contact-edge families and
 source-density-aware binding. Do not replace an already accepted painting or an
 explicit different contract. The shipped offline CLI assembles material interiors;
-it does not synthesize boundary artwork or infer routes.
+it does not synthesize boundary artwork or infer routes. Use the shipped
+[landscape compositor](references/landscape-ground-assembly.md) to apply approved
+contact families and instance-specific ground patches from the same host export.
+Ground-only captures retain those patches; paired dressed captures restore upright
+objects at the same anchors and camera state.
 
 ## Pick one assembly route
 
@@ -36,7 +40,7 @@ while citing it. Choose one route and stay on it.
 
 | Route | When | What this skill already runs |
 | --- | --- | --- |
-| Material quilting (preferred for new natural ground) | Continuous grass/earth/moss/litter at host-controlled world dimensions | `quilt-materials.py` → `bind-ground.mjs`; deterministic shared planes, host masks, provenance and retained density. Generated directional contact-edge assembly remains explicit host work. |
+| Material quilting (preferred for new natural ground) | Continuous grass/earth/moss/litter at host-controlled world dimensions | `quilt-materials.py` → `compose-landscape-ground.py` → `bind-ground.mjs`; shared planes, host geometry, exterior contacts, protected object underlays and retained density. Contact artwork remains generated/approved input. |
 | Reusable neighbor tiles | The map must recombine beds, walls or water from a catalog | Host-owned mask catalog plus, for rigid beds only, `prepare-bed-tileset.mjs`. Organic material-pair transitions still need that catalog; they have no assembler here. |
 | Composed ground plate | The ground layout is largely fixed and transitions should be painted together | `render-layout.mjs` → generated candidate (style authority, then layout guide) → `inspect-registration.py` → `prepare-ground.py` → `bind-ground.mjs` → `inspect-ground-support.py`. Prove a mixed-material calibration patch before a full-map generate. |
 

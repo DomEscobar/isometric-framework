@@ -23,7 +23,7 @@ Unapproved neutral calibration scaffold. Production requirements have not been s
 - Concept scope and fixed/flexible layout constraints: pending; select initial
   references before acceptance freeze and record provenance in host production data
 - Generation provider/access and bounded budget: pending; no paid calls before approval
-- Acceptance evidence: version 4 production stages, actual runtime provenance,
+- Acceptance evidence: version 5 production stages, actual runtime provenance,
   separate visual/motion/gameplay/performance review
 
 Record approved decisions here before implementation or paid asset generation. This file is the human requirements source; technical notes belong with the code.

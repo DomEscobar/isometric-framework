@@ -1,5 +1,10 @@
 # Landscape iteration
 
+For new landscapes, use [v5 landscape verification](landscape-verification.md)
+inside the same six stages and [ground assembly](../../consistent-tileset-authoring/references/landscape-ground-assembly.md)
+for the executable quilting/contact/underlay/binding chain. The v4 evidence mapping
+below remains useful for existing plans; it does not satisfy v5 structured checks.
+
 Use this reference for landscape-only work or a substantial environment revision.
 It supplements the approved `PROJECT_CONTRACT.md`, the production stages, and the
 selected specialist skills. It does not grant a new feature, asset, or spending
@@ -198,6 +203,25 @@ reduced motion follows the host policy, joined edges remain coherent, and a full
 cycle returns without a structural snap. Frame IDs, still screenshots, or changing
 pixels alone do not prove motion quality.
 
+## Independent landscape rubric
+
+Derive protected requirement IDs from the contract. For the applicable landscape
+features, keep separate judgments for: reference/pixel treatment; meaningful
+composition; readable connected routes; continuous materials and exterior path
+edges; water/bank/grass transitions; object-ground integration; scale and physical
+bases; visible usable entrances/crossings; variation without repeated pads; and
+the complete promised extent. Motion, input and performance are separate domains.
+
+Assign a reviewer other than the builder after captures stabilize. Give that
+reviewer the original reference, requirements and actual ground-only/dressed,
+detail and overview images, not only a builder summary. Require image inspection,
+specific evidence locations, `pass`, `fail` or `unverified` per criterion, and
+reinspection of earlier findings. A missing image tool cannot yield a visual pass.
+Do not average scores: every required criterion must pass before its expansion.
+The v5 [verification schema](landscape-verification.md) binds those judgments to
+the author, reviewer, source state and capture metadata. It cannot prove honest
+image viewing or stop tool calls outside the workflow.
+
 ## Map evidence to independent version-4 gates
 
 Keep these verdicts distinct:
@@ -216,7 +240,7 @@ Hash the host code, layout/export, asset bindings, images, and configuration tha
 can change each observation. Keep evidence outside protected inputs. A build or a
 technical test is not visual, motion, touch, performance, or production acceptance.
 
-Use the existing v4 checks rather than inventing a `landscape` method or domain:
+For an existing v4 plan, use its checks rather than inventing a `landscape` domain:
 preflight `review` covers density/loading evidence; layout `layout` plus image
 review covers the map; assembly `art` and `review` cover calibrated bindings and
 contacts; static checks cover full-world geometry and comparisons; motion reviews

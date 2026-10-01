@@ -1,5 +1,12 @@
 # Connect scenery to its ground
 
+For baked object-specific ground contacts, use the shipped
+[landscape compositor](../../consistent-tileset-authoring/references/landscape-ground-assembly.md).
+Keep upright sprites separate. Match instance anchor and scale to the same geometry
+export; protect paths and water during underlay stamping. A small prop may need
+only a small contact graphic, not the same dirt pad as a tree. Capture the ground
+with contact patches retained, then restore objects for the paired review.
+
 Use when placed objects look pasted on, or a reference calls for a continuous
 landscape. These examples are illustrative; use the current project's own art,
 materials and scale. Crisp pixel clusters can create a flowing transition without

@@ -1,5 +1,10 @@
 # Bind a neutral tile family
 
+For continuous flat landscapes, [ground assembly](landscape-ground-assembly.md)
+composes contacts and protected object underlays before the existing binder.
+Keep one host geometry export for material masks, object anchors and occupancy.
+This authoring chain does not add raised-floor support to the flat binder.
+
 This L-shaped three-cell example creates catalog names, not artwork. The current
 host must supply compatible named textures for every used mask.
 

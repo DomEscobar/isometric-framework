@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "geometrySource": "geometry/landscape.json",
+  "surface": { "packedArt": "quilt/packed-art.json", "groundPng": "ground.png" },
+  "regionalMaterials": { "earth": "materials/earth.png" },
+  "regionalPaths": [{ "id": "village-route", "mask": "route", "material": "earth" }],
+  "contacts": [{
+    "id": "route-grass-west", "kind": "pathExterior", "insideMask": "route",
+    "outsideMask": "route-grass-contact", "allowedMask": "route-grass-contact",
+    "orientation": "west", "edgeWidth": 2, "asset": "contacts/route-grass-west.png", "anchor": [512, 288], "assetAnchor": [16, 8]
+  }],
+  "protectedMasks": ["route", "water"],
+  "underlays": [{
+    "id": "oak-17-root", "instanceId": "oak-17", "family": "oak-roots",
+    "asset": "underlays/oak-roots.png", "assetAnchor": [16, 8], "exportScale": [1, 1], "allowedMask": "oak-17-ground"
+  }]
+}

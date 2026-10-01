@@ -367,7 +367,7 @@ document.querySelector('#surface-mask').onclick=e=>{showMask=!showMask;e.target.
 def plan_state(plan_path):
     plan_path = Path(plan_path).resolve()
     plan = read(plan_path)
-    require(type(plan.get("version")) is int and plan["version"] in (1, 2, 3, 4), "Plan version must be 1, 2, 3 or 4")
+    require(type(plan.get("version")) is int and plan["version"] in (1, 2, 3, 4, 5), "Plan version must be 1, 2, 3, 4 or 5")
     root = local(plan_path.parent, plan["root"])
     require(plan.get("reviewMode") in ("independent", "self"), "Declare independent or self review")
     requirements = plan.get("requirements")
@@ -385,7 +385,7 @@ def plan_state(plan_path):
         contract = local(root, plan["contract"])
         require(contract.is_relative_to(root) and contract.is_file() and not contract.is_symlink(),
                 "Contract must be an existing ordinary file inside the project")
-    if plan["version"] == 4:
+    if plan["version"] >= 4:
         asset_provenance_tools().validate_policy(plan, root, require_files=False)
     if plan["version"] >= 3 or "production" in plan:
         production_tools().validate(plan, root)
@@ -441,7 +441,7 @@ def snapshot(baseline_path, output, production_receipts=None):
         require(production_receipts, "Production receipts required for final candidate snapshot")
         status = production_tools().collect(plan, root, digest(baseline_path), production_receipts)
         require(status["nextStage"] in ("final", "complete"), "Production stage blocks snapshot: "+status["nextStage"])
-    if plan["version"] == 4:
+    if plan["version"] >= 4:
         asset_provenance_tools().verify(plan, root)
     target = Path(output).resolve()
     require(all(not target.is_relative_to(local(root, p)) for p in plan["inputRoots"]), "Evidence outputs must be outside inputRoots")
@@ -502,7 +502,12 @@ def accept(baseline_path, candidate_path, review_path, production_receipts=None)
         require(production_receipts, "Production receipts required for acceptance")
         status = production_tools().collect(plan, root, digest(baseline_path), production_receipts)
         require(status["passed"], "Production stage blocks acceptance: "+status["nextStage"])
-    provenance = asset_provenance_tools().verify(plan, root) if plan["version"] == 4 else {"enforced": False, "version": "legacy-v1-v3"}
+        if plan["version"] == 5:
+            final_receipt = read(status["checks"][next(cid for cid, check in production_tools().validate(plan, root).items()
+                                                         if check["stage"] == "final")]["receipt"])
+            require(final_receipt.get("reviewer") != final_receipt.get("authorId"),
+                    "V5 final production reviewer must differ from authorId")
+    provenance = asset_provenance_tools().verify(plan, root) if plan["version"] >= 4 else {"enforced": False, "version": "legacy-v1-v3"}
     candidate, review = read(candidate_path), read(review_path)
     require(candidate["baselineSha256"] == digest(baseline_path), "Candidate belongs to a different baseline")
     require(candidate["inputs"] == source_hashes(plan, root), "Candidate is stale: source files added, removed or changed")
@@ -542,6 +547,9 @@ def accept(baseline_path, candidate_path, review_path, production_receipts=None)
     comparison_count = 0
     if plan.get("comparisons") or (plan["version"] >= 2 and any(r["domain"] == "visual" for r in plan["requirements"])):
         comparison_count = comparison_tools().validate_acceptance(plan, root, baseline_path, candidate_path, review_path)
+    if plan["version"] == 5 and comparison_count:
+        require(review["comparison"]["reviewer"] == final_receipt["reviewer"],
+                "V5 final comparison and production rubric need the same reviewer identity")
     # Detect mutations occurring during inspection rather than accepting the old snapshot.
     protected(baseline_path)
     require(candidate["inputs"] == source_hashes(plan, root), "Inputs changed during acceptance")
@@ -559,7 +567,7 @@ def main():
     p = sub.add_parser("snapshot"); p.add_argument("baseline"); p.add_argument("output"); p.add_argument("--production-receipts")
     p = sub.add_parser("accept"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("review"); p.add_argument("--production-receipts")
     p = sub.add_parser("attach-evidence"); p.add_argument("review"); p.add_argument("--baseline", required=True); p.add_argument("--candidate", required=True); p.add_argument("--requirement", required=True); p.add_argument("--view", required=True); p.add_argument("--file", required=True); p.add_argument("--out", required=True)
-    p = sub.add_parser("production"); p.add_argument("action", choices=("begin", "draft", "finish", "status", "next", "carryover")); p.add_argument("baseline"); p.add_argument("--receipts", required=True); p.add_argument("--check"); p.add_argument("--ticket"); p.add_argument("--submission"); p.add_argument("--evidence-mapping"); p.add_argument("--out"); p.add_argument("--strategy"); p.add_argument("--previous-baseline", help="Baseline the existing receipts belong to; carry them into a patched plan"); p.add_argument("--reason", help="Why the plan was patched")
+    p = sub.add_parser("production"); p.add_argument("action", choices=("begin", "draft", "finish", "status", "next", "carryover")); p.add_argument("baseline"); p.add_argument("--receipts", required=True); p.add_argument("--check"); p.add_argument("--ticket"); p.add_argument("--submission"); p.add_argument("--evidence-mapping"); p.add_argument("--out"); p.add_argument("--strategy"); p.add_argument("--author-id"); p.add_argument("--previous-baseline", help="Baseline the existing receipts belong to; carry them into a patched plan"); p.add_argument("--reason", help="Why the plan was patched")
     p = sub.add_parser("compare"); p.add_argument("baseline"); p.add_argument("candidate"); p.add_argument("captures"); p.add_argument("--out", required=True); p.add_argument("--previous"); p.add_argument("--rebaseline-note", help="Explain an art-check correction or added comparisons; retain all previous requirements, comparisons and targets")
     args = parser.parse_args()
     try:
@@ -578,7 +586,7 @@ def main():
             gate = SimpleNamespace(protected=protected, write_new=write_new)
             if args.action == "begin":
                 require(args.check and args.out, "begin needs --check and --out")
-                flow.begin(gate, args.baseline, args.check, args.receipts, args.out, args.strategy)
+                flow.begin(gate, args.baseline, args.check, args.receipts, args.out, args.strategy, args.author_id)
             elif args.action == "draft":
                 require(args.ticket and args.evidence_mapping and args.out, "draft needs --ticket, --evidence-mapping and --out")
                 flow.draft(gate, args.baseline, args.ticket, args.evidence_mapping, args.out)

@@ -19,6 +19,26 @@ preparer = importlib.util.module_from_spec(PREPARER_SPEC)
 PREPARER_SPEC.loader.exec_module(preparer)
 
 
+def write_landscape_inputs(root):
+    """Minimal on-disk dependencies for validating the shipped v5 example."""
+    folder = root / "host/landscape"
+    folder.mkdir(parents=True, exist_ok=True)
+    def save(name, data):
+        (folder / name).write_text(json.dumps(data), encoding="utf-8")
+    save("layout.json", {"version": 1})
+    Image.new("L", (8, 8), 255).save(folder / "mask.png")
+    save("geometry.json", {"version": 1, "coordinateSpace": "atlas-pixels", "projection": "isometric-2:1",
+         "origin": [0, 0], "canvas": [8, 8], "instances": [],
+         "layout": {"path": "layout.json", "sha256": gate.digest(folder / "layout.json")},
+         "masks": {"land": {"path": "mask.png", "sha256": gate.digest(folder / "mask.png")}}})
+    save("recipe.json", {"version": 1, "geometrySource": "geometry.json"})
+    save("density.json", {"version": 1, "views": [{"id": "desktop", "sourcePixels": [8, 8],
+         "exportPixels": [8, 8], "worldSize": [8, 8], "cameraZoom": 1, "dpr": 1,
+         "cssViewport": [800, 600], "rendererPixels": [800, 600], "textures": [8, 8],
+         "rendererLimits": {"maxTexture": 4096}}]})
+    save("decisions.json", {"version": 1, "decisions": []})
+
+
 class WorkflowTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
@@ -102,10 +122,11 @@ class WorkflowTests(unittest.TestCase):
     def test_complete_documented_plan_has_valid_production_coverage(self):
         example = SCRIPT.parent.parent / "references/acceptance-plan.example.json"
         plan = gate.read(example)
+        write_landscape_inputs(self.root)
         (self.root / "PROJECT_CONTRACT.md").write_text("Illustrative test scope", encoding="utf-8")
         self.save(self.plan, plan)
         _, validated, _ = gate.plan_state(self.plan)
-        self.assertEqual(validated["version"], 4)
+        self.assertEqual(validated["version"], 5)
         self.assertEqual(set(c["stage"] for c in validated["production"]["checks"]),
                          set(gate.production_tools().STAGES))
 

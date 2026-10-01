@@ -64,26 +64,26 @@ def runtime_file(root, manifest_dir, name, input_roots):
 def validate_policy(plan, root, require_files=False):
     policy = plan.get("assetPolicy")
     if not isinstance(policy, dict):
-        if plan.get("version") == 4:
-            fail("V4 plans require assetPolicy")
+        if plan.get("version", 0) >= 4:
+            fail("V4/V5 plans require assetPolicy")
         return {"enforced": False, "version": "legacy-v1-v3"}
     required = {"version", "sources", "characterAnimation", "coverageLedger", "runtime"}
     if set(policy) != required or type(policy["version"]) is not int or policy["version"] != 1:
-        fail("V4 assetPolicy version 1 requires sources, characterAnimation, coverageLedger and runtime")
+        fail("V4/V5 assetPolicy version 1 requires sources, characterAnimation, coverageLedger and runtime")
     sources = policy["sources"]
     if set(sources) != {"world", "character", "environment"} or any(value != "generated" for value in sources.values()):
-        fail("V4 assetPolicy requires generated world, character and environment sources")
+        fail("V4/V5 assetPolicy requires generated world, character and environment sources")
     animation = policy["characterAnimation"]
     if animation != {"animated": "image-to-video-extract-pack", "staticIdle": "generated-facing"}:
-        fail("V4 characterAnimation requires image-to-video-extract-pack and generated-facing staticIdle")
+        fail("V4/V5 characterAnimation requires image-to-video-extract-pack and generated-facing staticIdle")
     runtime = policy["runtime"]
     if not isinstance(runtime, dict) or set(runtime) != {"manifest", "binding"}:
-        fail("V4 runtime needs manifest and binding paths")
+        fail("V4/V5 runtime needs manifest and binding paths")
     for name in (policy["coverageLedger"], runtime["manifest"], runtime["binding"]):
         path = local(root, name, exists=require_files)
         if not under_roots(root, path, plan["inputRoots"]):
-            fail("V4 provenance paths must be under inputRoots")
-    return {"enforced": True, "version": "v4", "policy": policy}
+            fail("V4/V5 provenance paths must be under inputRoots")
+    return {"enforced": True, "version": "v%s" % plan.get("version"), "policy": policy}
 
 
 def _runtime_scope(root, plan, policy):

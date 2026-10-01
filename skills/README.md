@@ -35,7 +35,9 @@ can use the same checks with a smaller requirement scope.
 For landscape-only work or a broad environment revision, the visual loop includes
 [landscape iteration](isometric-visual-loop/references/landscape-iteration.md): early
 density/scale calibration, controlled studies, grounded placement, whole-map review
-and separate evidence. It reuses the existing production stages and specialist tools.
+and separate evidence. It reuses the existing production stages and specialist tools. New landscapes use
+[v5 verification](isometric-visual-loop/references/landscape-verification.md) and
+[ground assembly](consistent-tileset-authoring/references/landscape-ground-assembly.md).
 
 ## Choose the art technique
 
@@ -45,7 +47,7 @@ art with its source chain. Text-to-image alone does not choose a world architect
 
 | World assembly | Read first | Support and remaining work |
 | --- | --- | --- |
-| Material quilting (preferred for new natural grass/earth/moss/litter) | Tileset authoring: [material quilting](consistent-tileset-authoring/references/material-quilting.md) | Packaged offline minimum-error quilting of generated swatches, host-owned masks, cached continuous atlas and source-density-aware cell binding. Generate contact-edge families separately; host owns directional edge assembly and protected routes. |
+| Material quilting (preferred for new natural grass/earth/moss/litter) | Tileset authoring: [material quilting](consistent-tileset-authoring/references/material-quilting.md) | Packaged offline minimum-error quilting of generated swatches, host-owned masks, cached continuous atlas and source-density-aware cell binding. Generate contact-edge families separately; the shipped landscape compositor applies exterior contacts and protected instance underlays from host-owned geometry before binding. |
 | Reusable modular terrain | Tileset authoring | Suitable for editable/recombined maps. Neighbor selection exists; organic material-pair transitions need a compatible catalog or scoped host assembler. The raised-bed helper is not that assembler. |
 | Composed ground plus separate actors/props | Tileset authoring: composed ground; art integration | Suitable when the ground layout is largely fixed and material transitions should be composed together. Flat-plane preparation, cell binding, landmark registration and route-support checks exist. Crops remain position-specific. Do not treat the missing organic tile assembler as a missing plate pipeline. |
 | Layered scene artwork | Art integration; multi-tile assemblies | Suitable when selected occluders and moving regions can be separated. Extraction, hidden surfaces and depth bindings require host work. |

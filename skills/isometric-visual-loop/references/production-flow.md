@@ -1,13 +1,16 @@
 # Executed production stages
 
-Use acceptance-plan **version 4** for new world production. It retains protected
+Use acceptance-plan **version 5 / production 2** for new landscape production.
+Follow [landscape verification](landscape-verification.md) for the additional
+structured inputs and independent rubric. The six stages below stay unchanged.
+Existing **version 4 / production 1** plans retain their behavior. Both retain protected
 images and the required `production` object, and adds the mandatory generated-art
 [asset policy](asset-policy.md), character video provenance and actual blockout
 image review. Freeze, snapshot and accept reject a production object on versions
 1–3. Versions 1–2 remain for focused packed-art work without production stages;
 they do not establish compliance with the version 4 policy.
 Use the existing requirements, not a second artistic brief. Adapt the `production` object in the complete
-[version 4 plan example](acceptance-plan.example.json); its neutral feature IDs
+[version 5 plan example](acceptance-plan.example.json); its neutral feature IDs
 are illustrative. The agent prepares technical checks from the approved contract.
 
 The tool controls its own tickets, receipts, candidate snapshot and acceptance.
@@ -61,7 +64,7 @@ adds no receipt status or automatic polygon checker.
 
 ## Protected check schema
 
-Version 4 also requires the fixed `assetPolicy` shown in the complete example:
+Versions 4 and 5 require the fixed `assetPolicy` shown in the complete example:
 generated world/character/environment sources, image-to-video character animation,
 a coverage ledger and actual runtime manifest/binding paths. All paths must be
 inside `inputRoots`; they need not yet exist at freeze. Record the schema and source
@@ -72,7 +75,7 @@ manifest and binding in its source dependencies (directly or through a parent
 directory). This makes a valid replacement chain invalidate prior observations,
 even when the replacement itself passes provenance.
 
-For version 4, a `layout` check in the layout stage uses `evidenceKind: "image"`:
+For versions 4 and 5, a `layout` check in the layout stage uses `evidenceKind: "image"`:
 its `source` still supplies spatial measurements, while the reviewer inspects the
 actual blockout image and records the observed grouping/readability. A JSON-only
 layout report cannot satisfy it. Hash the actual blockout host and projection
@@ -260,7 +263,7 @@ python skills/isometric-visual-loop/scripts/verify-world.py freeze host/acceptan
 Implement the eligible candidate and ensure its input files exist. Then:
 
 ```sh
-python skills/isometric-visual-loop/scripts/verify-world.py production begin review/baseline.json --check preflight --receipts review/receipts --out review/preflight-ticket.json
+python skills/isometric-visual-loop/scripts/verify-world.py production begin review/baseline.json --check preflight --author-id builder --receipts review/receipts --out review/preflight-ticket.json
 ```
 
 Run the scoped check/capture after `begin`, keeping candidate inputs unchanged.
@@ -281,6 +284,12 @@ python skills/isometric-visual-loop/scripts/verify-world.py production draft rev
 
 The resulting submission has the actual ticket and evidence hashes, plus `status`
 (pass/fail/unverified), `reviewer`, `observed` and evidence:
+
+The abbreviated shape below is the legacy/common portion. Version 5 additionally
+requires the ticket's `authorId`, independent per-requirement/view `judgments`,
+and structured metadata for image captures. Complete the generated v5 draft using
+[landscape verification](landscape-verification.md); the common fields alone
+cannot pass a v5 check. Do not invent passing observations for placeholder fields.
 
 ```json
 {
@@ -363,7 +372,7 @@ by patching the plan would turn a stuck loop into a fresh start.
 
 After stages through motion pass, snapshot with `--production-receipts review/receipts`,
 capture current whole-world views, execute the existing `compare` loop and complete
-the final-stage check. Run `accept` with the same receipt-directory option. Version 4
+the final-stage check. Run `accept` with the same receipt-directory option. Versions 4 and 5
 blocks a candidate before prerequisite stages pass and blocks acceptance until all
 stages and the existing complete visual/motion/gameplay/performance gates pass.
 Generated-source and character-video provenance are checked against the actual

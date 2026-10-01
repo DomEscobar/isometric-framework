@@ -107,6 +107,27 @@ then from that consumer run `node /path/to/framework/tests/quilt-consumer.mjs`.
 This executes the installed CLI/helper, deterministic replay, surface inspection
 and every source-density frame against the installed public projection. It uses
 synthetic diagnostic fixtures, not production art or visual approval.
+It also runs the installed landscape compositor with regional materials, contacts
+and protected underlays. After serving that consumer, set `RUNTIME_QA_URL` and run
+`node /path/to/framework/tests/landscape-consumer-browser.mjs` from its root for
+ground-only/dressed/detail captures. Inspect those diagnostic images separately;
+they establish rendering behavior, not the visual quality of a finished game.
+
+Landscape composition and v5 verification changes also require the negative cases
+in the tileset and visual-loop Python suites:
+
+```sh
+uv run --python 3.12 --with Pillow==12.3.0 --with numpy==2.5.0 python -B -m unittest discover -s skills/consistent-tileset-authoring/tests
+uv run --python 3.12 --with Pillow==12.3.0 python -B -m unittest discover -s skills/isometric-visual-loop/tests
+```
+
+An equivalent prepared Python 3.12+ environment is supported. Check both valid v4
+receipts and v5 failures: stale source masks, protected-pixel damage, missing
+criterion/view judgments, self-review, mismatched paired captures and cropped
+whole-world claims. Keep generated diagnostic fixtures out of published source.
+For actual visual acceptance, use an authorized host's generated art and a separate
+reviewer who opens current ground-only/dressed/detail/overview images. Synthetic
+pixel invariants and metadata tests cannot establish reference fidelity.
 
 Starter/distribution changes require
 `npm run build:package`, `npm run test:starter`, and a fresh generated project's

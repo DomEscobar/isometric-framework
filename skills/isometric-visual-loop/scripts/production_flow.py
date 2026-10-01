@@ -79,10 +79,153 @@ def carried(directory, baseline_hash):
     return {entry["receiptSha256"] for entry in entries}
 
 
+def _inside_input(root, name, declared):
+    path = local(root, name)
+    return any(path == local(root, item) or path.is_relative_to(local(root, item)) for item in declared)
+
+
+def _geometry_path(root, geometry, name):
+    require(isinstance(name, str) and name and ":" not in name and "\\" not in name and not Path(name).is_absolute(),
+            "Geometry references must be project-relative forward-slash paths")
+    path = (geometry.parent / name).resolve()
+    require(path.is_relative_to(root) and path.is_file() and not path.is_symlink(), "Geometry reference is missing or leaves project root")
+    return path
+
+
+def _v5_landscape(plan, root, checks):
+    """Validate the small v5 landscape contract without creating another stage flow."""
+    flow = plan["production"]
+    land = flow.get("landscape")
+    require(isinstance(land, dict), "V5 production needs a landscape contract")
+    required = {"geometrySource", "compositionRecipe", "densityMatrix", "decisions", "compositionReport", "pairedCaptures", "wholeMapViews"}
+    require(required <= set(land), "V5 landscape needs geometrySource, compositionRecipe, densityMatrix, decisions, compositionReport, pairedCaptures and wholeMapViews")
+    geometry_path = local(root, land["geometrySource"])
+    geometry = read(geometry_path)
+    require(isinstance(geometry, dict) and isinstance(geometry.get("coordinateSpace"), str) and geometry["coordinateSpace"].strip(),
+            "Geometry export needs coordinateSpace")
+    require((isinstance(geometry.get("projection"), dict) or isinstance(geometry.get("projection"), str) and geometry["projection"].strip()) and isinstance(geometry.get("origin"), list) and len(geometry["origin"]) == 2
+            and all(isinstance(x, (int, float)) for x in geometry["origin"]), "Geometry export needs projection and numeric origin")
+    require(isinstance(geometry.get("canvas"), list) and len(geometry["canvas"]) == 2 and all(type(x) is int and x > 0 for x in geometry["canvas"]),
+            "Geometry export needs positive canvas bounds")
+    require(isinstance(geometry.get("layout"), dict) and isinstance(geometry["layout"].get("path"), str), "Geometry export needs layout path")
+    nested = [_geometry_path(root, geometry_path, geometry["layout"]["path"])]
+    for entry, path in ((geometry["layout"], nested[0]),):
+        require(isinstance(entry.get("sha256"), str) and entry["sha256"] == sha(path), "Geometry layout hash is stale")
+    masks = geometry.get("masks")
+    require(isinstance(masks, dict) and masks and all(isinstance(mid, str) and mid and isinstance(value, dict) and isinstance(value.get("path"), str) for mid, value in masks.items()),
+            "Geometry export needs named semantic masks")
+    for value in masks.values():
+        path = _geometry_path(root, geometry_path, value["path"])
+        require(isinstance(value.get("sha256"), str) and value["sha256"] == sha(path), "Geometry mask hash is stale")
+        nested.append(path)
+    instances = geometry.get("instances")
+    require(isinstance(instances, list) and all(isinstance(item, dict) and isinstance(item.get("id"), str) and item["id"]
+            and isinstance(item.get("anchor"), list) and len(item["anchor"]) == 2 and isinstance(item.get("transform"), dict) for item in instances),
+            "Geometry export instances need id, anchor and transform")
+    require(len({item["id"] for item in instances}) == len(instances), "Geometry instance IDs must be unique")
+    density = read(local(root, land["densityMatrix"]))
+    require(isinstance(density, dict) and density.get("version") == 1 and isinstance(density.get("views"), list) and density["views"],
+            "V5 densityMatrix version 1 needs named views")
+    density_fields = {"id", "sourcePixels", "exportPixels", "worldSize", "cameraZoom", "cssViewport", "dpr", "rendererPixels", "textures", "rendererLimits"}
+    require(all(isinstance(view, dict) and density_fields <= set(view) and isinstance(view["id"], str) and view["id"]
+            and all(isinstance(view[key], (int, float)) and math.isfinite(view[key]) and view[key] > 0 for key in ("cameraZoom", "dpr"))
+            and all(isinstance(view[key], list) and len(view[key]) == 2 and all(type(value) is int and value > 0 for value in view[key])
+                    for key in ("sourcePixels", "exportPixels", "worldSize", "cssViewport", "rendererPixels", "textures"))
+            and isinstance(view["rendererLimits"], dict) and type(view["rendererLimits"].get("maxTexture")) is int and view["rendererLimits"]["maxTexture"] >= max(view["textures"])
+            for view in density["views"]) and len({view["id"] for view in density["views"]}) == len(density["views"]),
+            "Each density view needs source/export/world/zoom/viewport/DPR/renderer/textures/limits")
+    decisions = read(local(root, land["decisions"]))
+    require(isinstance(decisions, dict) and decisions.get("version") == 1 and isinstance(decisions.get("decisions"), list),
+            "V5 decisions version 1 required")
+    ids = set()
+    for decision in decisions["decisions"]:
+        require(isinstance(decision, dict) and isinstance(decision.get("id"), str) and decision["id"] not in ids
+                and decision.get("status") in ("selected", "rejected", "stopped", "abandoned"), "Decision needs unique id and known status")
+        ids.add(decision["id"])
+        require(isinstance(decision.get("scope"), str) and decision["scope"].strip() and isinstance(decision.get("variant"), str) and decision["variant"].strip()
+                and isinstance(decision.get("evidence"), str) and decision["evidence"].strip(), "Decision needs scope, variant and evidence")
+    prior = {}
+    for decision in decisions["decisions"]:
+        key = (decision["scope"], decision["variant"])
+        if decision["status"] == "selected" and prior.get(key) == "stopped":
+            require(isinstance(decision.get("authorization"), str) and decision["authorization"].strip(),
+                    "Stopped decision cannot become active without later authorization")
+        prior[key] = decision["status"]
+    pairs = land["pairedCaptures"]
+    require(isinstance(pairs, list) and pairs and all(isinstance(p, dict) and set(p) == {"id", "ground", "dressed"}
+            and all(isinstance(p[k], str) and p[k] for k in ("id", "ground", "dressed")) for p in pairs),
+            "V5 pairedCaptures need id, ground and dressed capture IDs")
+    require(isinstance(land["wholeMapViews"], list) and land["wholeMapViews"] and all(isinstance(v, str) and v for v in land["wholeMapViews"]),
+            "V5 wholeMapViews required")
+    for check in checks.values():
+        if check["method"] == "layout":
+            require(local(root, check["source"]) == nested[0],
+                    "V5 layout checks must consume the geometry export's layout")
+        if check["stage"] == "preflight":
+            required_inputs = (land["geometrySource"], land["compositionRecipe"], land["densityMatrix"], land["decisions"])
+        elif check["stage"] in ("assembly", "static", "final"):
+            required_inputs = (land["geometrySource"], land["compositionRecipe"], land["densityMatrix"], land["decisions"], land["compositionReport"])
+        else:
+            required_inputs = ()
+        for item in required_inputs:
+            require(_inside_input(root, item, check["inputs"]), "V5 landscape dependency must be a declared check input: " + item)
+        if required_inputs:
+            for item in nested:
+                relative = str(item.relative_to(root)).replace("\\", "/")
+                require(_inside_input(root, relative, check["inputs"]), "Transitive geometry dependency must be a declared check input: " + relative)
+    return land
+
+
+def _v5_composition(root, land, snapshot):
+    geometry = local(root, land["geometrySource"])
+    recipe = local(root, land["compositionRecipe"])
+    report_path = local(root, land["compositionReport"])
+    report = read(report_path)
+    report_source = report.get("geometrySource")
+    recipe_data = read(recipe)
+    recipe_geometry = _geometry_path(root, recipe, recipe_data.get("geometrySource")) if isinstance(recipe_data, dict) else None
+    require(recipe_geometry == geometry and report_source == land["geometrySource"] and report.get("geometrySha256") == sha(geometry)
+            and report.get("recipeSha256") == sha(recipe),
+            "Composition report geometry source or hash is stale")
+    source_hashes = report.get("inputHashes")
+    require(isinstance(source_hashes, dict) and source_hashes, "Composition report needs nonempty inputHashes")
+    geometry_data = read(geometry)
+    consumed = {recipe, geometry, _geometry_path(root, geometry, geometry_data["layout"]["path"])}
+    consumed.update(_geometry_path(root, geometry, entry["path"]) for entry in geometry_data["masks"].values())
+    surface = recipe_data.get("surface")
+    if isinstance(surface, dict):
+        packed = _geometry_path(root, recipe, surface.get("packedArt"))
+        consumed.update((packed, _geometry_path(root, packed, surface.get("groundPng"))))
+    consumed.update(_geometry_path(root, recipe, path) for path in recipe_data.get("regionalMaterials", {}).values())
+    for category in ("contacts", "underlays"):
+        consumed.update(_geometry_path(root, recipe, item.get("asset")) for item in recipe_data.get(category, []))
+    require({path.relative_to(root).as_posix() for path in consumed} <= set(source_hashes),
+            "Composition report inputHashes omit consumed inputs")
+    for name, expected in source_hashes.items():
+        file = local(root, name)
+        require(isinstance(expected, str) and sha(file) == expected and snapshot.get(name) == expected,
+                "Composition report input is stale or not a declared source input: " + str(name))
+    for key in ("protectedPixelReport", "output"):
+        entry = report.get(key)
+        require(isinstance(entry, dict) and isinstance(entry.get("path"), str) and isinstance(entry.get("sha256"), str),
+                "Composition report needs hashed " + key)
+        file = _geometry_path(root, report_path, entry["path"])
+        require(sha(file) == entry["sha256"], "Composition report " + key + " is stale")
+        relative = str(file.relative_to(root)).replace("\\", "/")
+        require(relative in snapshot and snapshot[relative] == entry["sha256"], "Composition derivative is not a declared source input")
+    require(report.get("passOrder") == ["baseSurface", "regionalContacts", "objectUnderlays"],
+            "Composition report needs the ordered base/contact/underlay passes")
+    require(report.get("protectedPixelReport", {}).get("unchangedAfterUnderlays") is True, "Composition report must prove protected pixels stayed unchanged after underlays")
+
+
 def validate(plan, root):
-    require(plan.get("version") == 4, "New world production requires acceptance-plan version 4")
+    require(plan.get("version") in (4, 5), "New world production requires acceptance-plan version 4 or 5")
+    if plan.get("version") == 5:
+        require(plan.get("reviewMode") == "independent", "V5 landscape production requires independent review")
     flow = plan.get("production")
-    require(isinstance(flow, dict) and flow.get("version") == 1, "Production version 1 required")
+    expected_flow_version = 2 if plan.get("version") == 5 else 1
+    require(isinstance(flow, dict) and flow.get("version") == expected_flow_version,
+            "Production version %s required" % expected_flow_version)
     checks = flow.get("checks")
     require(isinstance(checks, list) and checks, "Production checks required")
     requirements = {r["id"]: r for r in plan["requirements"]}
@@ -116,7 +259,7 @@ def validate(plan, root):
             require(isinstance(source, str) and any(local(root, source) == local(root, p)
                     or local(root, source).is_relative_to(local(root, p)) for p in check["inputs"]),
                     "Checker source must be a declared dependency")
-        if plan.get("version") == 4 and STAGES.index(check["stage"]) >= STAGES.index("static"):
+        if plan.get("version") >= 4 and STAGES.index(check["stage"]) >= STAGES.index("static"):
             policy = plan["assetPolicy"]
             protected = [policy["coverageLedger"], policy["runtime"]["manifest"], policy["runtime"]["binding"]]
             for target in protected:
@@ -138,9 +281,9 @@ def validate(plan, root):
                 require(isinstance(contract_name, str) and any(local(root, contract_name) == local(root, p)
                         or local(root, contract_name).is_relative_to(local(root, p)) for p in check["inputs"]),
                         "artContract must be a declared dependency")
-            if plan.get("version") == 4 and check["stage"] == "layout":
+            if plan.get("version") >= 4 and check["stage"] == "layout":
                 require(check["evidenceKind"] == "image", "V4 layout requires a blockout image review")
-        if plan.get("version") == 4 and check["stage"] == "layout" and check["method"] == "review":
+        if plan.get("version") >= 4 and check["stage"] == "layout" and check["method"] == "review":
             require(check["evidenceKind"] == "image", "V4 layout review requires blockout images")
         for rid in check["requirements"]:
             if check["method"] == "review" and check["stage"] == ("static" if requirements[rid]["domain"] == "visual" else "motion"):
@@ -165,6 +308,8 @@ def validate(plan, root):
             checked.update(c["assets"])
     require(set(rigid) <= checked, "Rigid asset geometry coverage missing")
     require(any(c["method"] == "art" and c["stage"] == "assembly" for c in checks), "Rigid assembly calibration required")
+    if plan.get("version") == 5:
+        _v5_landscape(plan, root, by_id)
     return by_id
 
 
@@ -283,8 +428,10 @@ def collect(plan, root, baseline_hash, directory):
             require(receipt["inputs"] == current_inputs, "Source dependencies changed")
             evidence(root, receipt["evidence"], check["views"], check["evidenceKind"])
             require(receipt["status"] in ("pass", "fail", "unverified"), "Invalid receipt status")
+            if plan.get("version") == 5:
+                _v5_receipt(root, check, receipt, plan["production"]["landscape"], current_inputs)
             report = automatic(check, root, receipt["inputs"])
-            if (plan.get("version") == 4 and not provenance_checked
+            if (plan.get("version") >= 4 and not provenance_checked
                     and STAGES.index(check["stage"]) >= STAGES.index("static")):
                 module("asset_provenance").verify(plan, root)
                 provenance_checked = True
@@ -350,6 +497,75 @@ def repeated_failure(history):
     return len(history) >= 2 and all(record[0]["status"] == "fail" for record in history[:2])
 
 
+def _v5_review_submission(root, check, ticket, submission, land):
+    author = ticket.get("authorId")
+    require(isinstance(author, str) and author.strip(), "V5 ticket authorId required")
+    require(submission.get("authorId") == author, "V5 submission authorId must match ticket")
+    reviewer = submission.get("reviewer")
+    require(isinstance(reviewer, str) and reviewer.strip() and reviewer != author,
+            "V5 reviewer must be an identity different from authorId")
+    if check["method"] != "review" and check["evidenceKind"] != "image":
+        return submission["status"]
+    judgments = submission.get("judgments")
+    expected = {(rid, view) for rid in check["requirements"] for view in check["views"]}
+    require(isinstance(judgments, list), "V5 review needs per-requirement/view judgments")
+    found = {(item.get("requirement"), item.get("view")) for item in judgments if isinstance(item, dict)}
+    require(found == expected and len(judgments) == len(expected), "V5 review must judge every requirement and view exactly once")
+    for item in judgments:
+        require(item.get("status") in ("pass", "fail", "unverified") and item.get("reviewer") == reviewer
+                and isinstance(item.get("observed"), str) and item["observed"].strip(),
+                "V5 judgments need reviewer, status and observation")
+    derived = "fail" if any(item["status"] == "fail" for item in judgments) else (
+        "unverified" if any(item["status"] == "unverified" for item in judgments) else "pass")
+    require(submission["status"] == derived, "V5 review status must be derived from its judgments")
+    if check["evidenceKind"] != "image":
+        return derived
+    metadata = submission.get("captureMetadata")
+    require(isinstance(metadata, list) and metadata, "V5 image review needs captureMetadata")
+    by_id = {item.get("id"): item for item in metadata if isinstance(item, dict) and isinstance(item.get("id"), str)}
+    require(len(by_id) == len(metadata), "V5 captureMetadata IDs must be unique")
+    evidence_by_path = {(item["path"], item["sha256"], item["view"]) for item in submission.get("evidence", [])}
+    geometry = read(local(root, land["geometrySource"]))
+    pairs = {pair["id"]: pair for pair in land["pairedCaptures"]}
+    for capture in by_id.values():
+        required = {"id", "path", "sha256", "view", "mode", "pairId", "camera", "viewport", "renderer", "worldState", "timeState", "geometrySource", "geometrySha256", "scope", "worldBounds"}
+        require(required <= set(capture) and capture["mode"] in ("ground-only", "dressed") and capture["scope"] in ("whole-map", "detail"),
+                "V5 capture metadata is incomplete")
+        require(capture["geometrySource"] == land["geometrySource"], "Capture geometry source differs from landscape contract")
+        require(capture["geometrySha256"] == sha(local(root, land["geometrySource"])), "Capture geometry hash is stale")
+        require((capture["path"], capture["sha256"], capture["view"]) in evidence_by_path, "Capture metadata must bind actual evidence path, hash and view")
+        require(isinstance(capture["worldBounds"], list) and len(capture["worldBounds"]) == 2
+                and all(type(value) is int and value > 0 for value in capture["worldBounds"]),
+                "Capture worldBounds need positive width and height")
+        if capture["scope"] == "whole-map":
+            require(capture["worldBounds"] == geometry["canvas"], "Whole-map capture bounds must match geometry canvas")
+    if check["stage"] in ("assembly", "static", "final"):
+        for pair_id, pair in pairs.items():
+            ground, dressed = by_id.get(pair["ground"]), by_id.get(pair["dressed"])
+            require(ground and dressed and ground["mode"] == "ground-only" and dressed["mode"] == "dressed" and ground["pairId"] == dressed["pairId"] == pair_id,
+                    "V5 ground/dressed pair is missing")
+            for key in ("camera", "viewport", "renderer", "worldState", "timeState", "geometrySource", "geometrySha256", "worldBounds", "scope"):
+                require(ground[key] == dressed[key], "Ground/dressed pair differs in " + key)
+    required_whole = set(land["wholeMapViews"])
+    whole = {capture["view"] for capture in by_id.values() if capture["scope"] == "whole-map"}
+    if check["stage"] == "final":
+        require(required_whole <= whole, "V5 final scope needs declared whole-map views")
+    detail = {capture["view"] for capture in by_id.values() if capture["scope"] == "detail"}
+    if check["stage"] in ("static", "final"):
+        require(detail, "V5 image review needs a representative detail capture")
+    return derived
+
+
+def _v5_receipt(root, check, receipt, land, snapshot):
+    author = receipt.get("authorId")
+    require(isinstance(author, str) and author.strip() and receipt.get("reviewer") != author,
+            "V5 receipt authorId/reviewer chain is invalid")
+    if check["method"] == "review" or check["evidenceKind"] == "image":
+        _v5_review_submission(root, check, {"authorId": author}, receipt, land)
+    if check["stage"] in ("assembly", "static", "final"):
+        _v5_composition(root, land, snapshot)
+
+
 def carryover(gate, baseline, previous_baseline, directory, reason, output):
     """Admit earlier receipts under a patched plan.
 
@@ -405,7 +621,7 @@ def carryover(gate, baseline, previous_baseline, directory, reason, output):
     return value
 
 
-def begin(gate, baseline, cid, directory, output, strategy=None):
+def begin(gate, baseline, cid, directory, output, strategy=None, author_id=None):
     _, plan, root = gate.protected(baseline)
     checks = validate(plan, root)
     require(cid in checks, "Unknown production check")
@@ -422,9 +638,12 @@ def begin(gate, baseline, cid, directory, output, strategy=None):
         strategy_record = {"sha256": sha(strategy), "change": change}
     target = Path(output).resolve()
     require(all(not target.is_relative_to(local(root, p)) for p in plan["inputRoots"]), "Tickets must be outside source inputRoots")
+    if plan.get("version") == 5:
+        require(isinstance(author_id, str) and author_id.strip(), "V5 begin needs --author-id")
     gate.write_new(output, {"kind": "production-ticket", "baselineSha256": sha(baseline), "check": cid,
                            "previousReceiptSha256": sha(history[0][1]) if history else None,
                            "inputs": inputs(root, check["inputs"]), "strategy": strategy_record,
+                           "authorId": author_id.strip() if isinstance(author_id, str) else None,
                            "startedAt": datetime.now(timezone.utc).isoformat()})
 
 
@@ -450,8 +669,18 @@ def draft(gate, baseline, ticket_path, mapping_path, output):
     target = Path(output).resolve()
     require(all(not target.is_relative_to(local(root, p)) for p in plan["inputRoots"]),
             "Drafts must be outside source inputRoots")
-    gate.write_new(output, {"ticketSha256": sha(ticket_path), "status": "unverified",
-                            "reviewer": "", "observed": "", "evidence": prepared})
+    value = {"ticketSha256": sha(ticket_path), "status": "unverified", "reviewer": "", "observed": "", "evidence": prepared}
+    if plan.get("version") == 5:
+        require(isinstance(ticket.get("authorId"), str) and ticket["authorId"].strip(), "V5 ticket authorId required")
+        value["authorId"] = ticket["authorId"]
+        if check["method"] == "review" or check["evidenceKind"] == "image":
+            value["judgments"] = [{"requirement": requirement, "view": view, "status": "unverified", "reviewer": "", "observed": ""}
+                                  for requirement in check["requirements"] for view in check["views"]]
+        if check["evidenceKind"] == "image":
+            supplied = mapping.get("captureMetadata", [])
+            require(isinstance(supplied, list), "V5 captureMetadata must be a list")
+            value["captureMetadata"] = supplied
+    gate.write_new(output, value)
 
 
 def finish(gate, baseline, ticket_path, submission_path, directory, output):
@@ -474,9 +703,11 @@ def finish(gate, baseline, ticket_path, submission_path, directory, output):
     require(submission.get("status") in ("pass", "fail", "unverified"), "Submission status required")
     require(all(isinstance(submission.get(k), str) and submission[k].strip() for k in ("reviewer", "observed")), "Reviewer and observations required")
     evidence(root, submission.get("evidence"), check["views"], check["evidenceKind"], Path(ticket_path).stat().st_mtime_ns)
+    if plan.get("version") == 5:
+        _v5_review_submission(root, check, ticket, submission, plan["production"]["landscape"])
     report = automatic(check, root, ticket["inputs"])
     automatic_passed = report is None or report["passed"]
-    if plan.get("version") == 4 and STAGES.index(check["stage"]) >= STAGES.index("static"):
+    if plan.get("version") >= 4 and STAGES.index(check["stage"]) >= STAGES.index("static"):
         try:
             provenance = module("asset_provenance").verify(plan, root)
             report = {"provenance": provenance, **({"automatic": report} if report else {})}
@@ -484,6 +715,12 @@ def finish(gate, baseline, ticket_path, submission_path, directory, output):
             automatic_passed = False
             report = {"provenance": {"passed": False, "error": str(error)},
                       **({"automatic": report} if report else {})}
+    if plan.get("version") == 5 and check["stage"] in ("assembly", "static", "final"):
+        try:
+            _v5_composition(root, plan["production"]["landscape"], ticket["inputs"])
+        except (ValueError, OSError, KeyError) as error:
+            automatic_passed = False
+            report = {"landscape": {"passed": False, "error": str(error)}, **({"automatic": report} if report else {})}
     status = "fail" if not automatic_passed else submission["status"]
     target = Path(output).resolve()
     require(target.parent == Path(directory).resolve(), "Receipt output must be directly in its receipt directory")
@@ -495,6 +732,7 @@ def finish(gate, baseline, ticket_path, submission_path, directory, output):
              "strategy": ticket.get("strategy"), "previousReceiptSha256": ticket.get("previousReceiptSha256"),
              "completedAt": datetime.now(timezone.utc).isoformat(), "status": status,
              "reviewer": submission["reviewer"], "observed": submission["observed"],
-             "evidence": submission["evidence"], "automatic": report}
+             "authorId": ticket.get("authorId"), "judgments": submission.get("judgments"),
+             "captureMetadata": submission.get("captureMetadata"), "evidence": submission["evidence"], "automatic": report}
     gate.write_new(output, value)
     return value

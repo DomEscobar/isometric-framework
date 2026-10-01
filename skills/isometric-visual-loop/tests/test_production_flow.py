@@ -250,7 +250,8 @@ class ProductionTests(unittest.TestCase):
     def start(self, cid):
         self.counter += 1
         ticket = self.root / f"ticket-{self.counter}.json"
-        flow.begin(self.adapter, self.baseline, cid, self.receipts, ticket)
+        flow.begin(self.adapter, self.baseline, cid, self.receipts, ticket,
+                   author_id="builder" if self.plan.get("version") == 5 else None)
         return ticket
 
     def complete(self, cid, status="pass", omit_mobile=False):
@@ -260,7 +261,28 @@ class ProductionTests(unittest.TestCase):
         if check["evidenceKind"] == "image":
             proof = self.root / f"proof-{self.counter}.png"
             Image.new("RGB", (8, 8), "green").save(proof)
-        submission = self.save(f"submission-{self.counter}.json", {"ticketSha256": gate.digest(ticket), "status": status, "reviewer": "test-reviewer", "observed": "Synthetic gate plumbing, not visual approval", "evidence": [{"path": proof.name, "sha256": gate.digest(proof), "view": v} for v in check["views"] if not(omit_mobile and v == "mobile")]})
+        evidence = [{"path": proof.name, "sha256": gate.digest(proof), "view": v} for v in check["views"] if not(omit_mobile and v == "mobile")]
+        submission = {"ticketSha256": gate.digest(ticket), "status": status, "reviewer": "test-reviewer", "observed": "Synthetic gate plumbing, not visual approval", "evidence": evidence}
+        if self.plan.get("version") == 5:
+            submission["authorId"] = "builder"
+            if check["method"] == "review" or check["evidenceKind"] == "image":
+                submission["judgments"] = [{"requirement": requirement, "view": view, "status": status, "reviewer": "test-reviewer", "observed": "Synthetic isolated rubric judgment"}
+                                            for requirement in check["requirements"] for view in check["views"]]
+            if check["evidenceKind"] == "image":
+                source = proof.name; image_hash = gate.digest(proof); geometry_hash = gate.digest(self.game / "geometry.json")
+                captures = [{"id": "ground", "path": source, "sha256": image_hash, "view": "desktop", "mode": "ground-only", "pairId": "pair", "camera": {"x": 0}, "viewport": [8, 8], "renderer": {"dpr": 1}, "worldState": "fixture", "timeState": "paused", "geometrySource": "game/geometry.json", "geometrySha256": geometry_hash, "scope": "whole-map", "worldBounds": [512, 256]},
+                            {"id": "dressed", "path": source, "sha256": image_hash, "view": "desktop", "mode": "dressed", "pairId": "pair", "camera": {"x": 0}, "viewport": [8, 8], "renderer": {"dpr": 1}, "worldState": "fixture", "timeState": "paused", "geometrySource": "game/geometry.json", "geometrySha256": geometry_hash, "scope": "whole-map", "worldBounds": [512, 256]},
+                            {"id": "detail", "path": source, "sha256": image_hash, "view": "desktop", "mode": "dressed", "pairId": "detail", "camera": {"x": 1}, "viewport": [8, 8], "renderer": {"dpr": 1}, "worldState": "fixture", "timeState": "paused", "geometrySource": "game/geometry.json", "geometrySha256": geometry_hash, "scope": "detail", "worldBounds": [1, 1]}]
+                submission["captureMetadata"] = captures
+        if self.plan.get("version") == 5:
+            mapping = self.save(f"mapping-{self.counter}.json", {"evidence": [{"path": item["path"], "view": item["view"]} for item in evidence],
+                                                                    "captureMetadata": submission.get("captureMetadata", [])})
+            draft = self.root / f"draft-{self.counter}.json"
+            flow.draft(self.adapter, self.baseline, ticket, mapping, draft)
+            submission = gate.read(draft)
+            submission.update(status=status, reviewer="test-reviewer", observed="Synthetic gate plumbing, not visual approval")
+            for judgment in submission.get("judgments", []): judgment.update(status=status, reviewer="test-reviewer", observed="Synthetic isolated rubric judgment")
+        submission = self.save(f"submission-{self.counter}.json", submission)
         output = self.receipts / f"receipt-{self.counter}.json"
         return flow.finish(self.adapter, self.baseline, ticket, submission, self.receipts, output)
 
@@ -522,7 +544,8 @@ class ProductionTests(unittest.TestCase):
     def test_shipped_example_covers_each_environment_dimension_with_static_evidence(self):
         example_path = Path(__file__).resolve().parents[1] / "references" / "acceptance-plan.example.json"
         example = gate.read(example_path)
-        flow.validate(example, example_path.parent.parent)
+        fixtures.write_landscape_inputs(self.root)
+        flow.validate(example, self.root)
         expected_views = {
             "style": {"desktop", "mobile"},
             "composition": {"desktop", "mobile", "ground-only"},
@@ -766,6 +789,154 @@ class ProductionTests(unittest.TestCase):
         self.assertEqual(accepted.returncode, 0, accepted.stderr)
         self.assertTrue(json.loads(accepted.stdout)["passed"])
         return json.loads(accepted.stdout)
+
+    def enable_v5(self):
+        geometry = {"coordinateSpace": "world-pixels", "projection": {"tile": [64, 32]}, "origin": [0, 0], "canvas": [512, 256],
+                    "layout": {"path": "layout.json"}, "masks": {"land": {"path": "mask.png"}}, "instances": []}
+        self.save("game/geometry.json", geometry)
+        self.save("game/recipe.json", {"version": 1, "geometrySource": "geometry.json"})
+        Image.new("RGBA", (2, 2), "white").save(self.game / "mask.png")
+        geometry["layout"]["sha256"] = gate.digest(self.game / "layout.json")
+        geometry["masks"]["land"]["sha256"] = gate.digest(self.game / "mask.png")
+        self.save("game/geometry.json", geometry)
+        self.save("game/density.json", {"version": 1, "views": [{"id": "desktop", "sourcePixels": [64, 32], "exportPixels": [128, 64],
+                   "worldSize": [512, 256], "cameraZoom": 1, "cssViewport": [800, 600], "dpr": 1, "rendererPixels": [800, 600],
+                   "textures": [128, 64], "rendererLimits": {"maxTexture": 4096}}]})
+        self.save("game/decisions.json", {"version": 1, "decisions": [{"id": "bank-study", "scope": "bank", "variant": "rough", "status": "stopped", "evidence": "review-1"}]})
+        Image.new("RGBA", (2, 2), "green").save(self.game / "ground.png")
+        Image.new("RGBA", (2, 2), "black").save(self.game / "protected.png")
+        self.save("game/composition-report.json", {"geometrySource": "game/geometry.json", "geometrySha256": gate.digest(self.game / "geometry.json"), "recipeSha256": gate.digest(self.game / "recipe.json"), "inputHashes": {"game/" + name: gate.digest(self.game / name) for name in ("recipe.json", "geometry.json", "layout.json", "mask.png")},
+                   "protectedPixelReport": {"path": "protected.png", "sha256": gate.digest(self.game / "protected.png"), "unchangedAfterUnderlays": True},
+                   "output": {"path": "ground.png", "sha256": gate.digest(self.game / "ground.png")}, "passOrder": ["baseSurface", "regionalContacts", "objectUnderlays"]})
+        self.plan["version"] = 5; self.plan["production"]["version"] = 2
+        self.plan["production"]["landscape"] = {"geometrySource": "game/geometry.json", "compositionRecipe": "game/recipe.json", "densityMatrix": "game/density.json", "decisions": "game/decisions.json",
+                   "compositionReport": "game/composition-report.json", "pairedCaptures": [{"id": "pair", "ground": "ground", "dressed": "dressed"}], "wholeMapViews": ["desktop"]}
+        for check in self.plan["production"]["checks"]: check["inputs"] = ["game"]
+        self.save("game/plan.json", self.plan); self.baseline = self.root / "v5-baseline.json"; gate.freeze(self.plan_path, self.baseline)
+
+    def test_v5_invalid_density_and_unauthorized_restart_are_rejected(self):
+        self.enable_v5()
+        density = gate.read(self.game / "density.json")
+        for value in (0, -1, float("nan")):
+            broken = copy.deepcopy(density); broken["views"][0]["cameraZoom"] = value
+            self.save("game/density.json", broken)
+            with self.subTest(zoom=value), self.assertRaisesRegex(ValueError, "Each density view"):
+                flow.validate(self.plan, self.root)
+        self.save("game/density.json", density)
+        decisions = gate.read(self.game / "decisions.json")
+        decisions["decisions"].append({"id": "restart", "scope": "bank", "variant": "rough", "status": "selected", "evidence": "review-2"})
+        self.save("game/decisions.json", decisions)
+        with self.assertRaisesRegex(ValueError, "later authorization"):
+            flow.validate(self.plan, self.root)
+        decisions["decisions"][-1]["authorization"] = "User explicitly resumed the bank study"
+        self.save("game/decisions.json", decisions)
+        flow.validate(self.plan, self.root)
+
+    def test_v5_layout_cannot_check_an_unrelated_geometry_copy(self):
+        self.enable_v5()
+        self.save("game/unrelated-layout.json", layout())
+        check = next(item for item in self.plan["production"]["checks"] if item["method"] == "layout")
+        check["source"] = "game/unrelated-layout.json"
+        with self.assertRaisesRegex(ValueError, "geometry export's layout"):
+            flow.validate(self.plan, self.root)
+
+    def test_v5_composition_rejects_omitted_sources_and_false_protection(self):
+        self.enable_v5()
+        land = self.plan["production"]["landscape"]
+        report = gate.read(self.game / "composition-report.json")
+        for field, value, message in (("inputHashes", {"game/recipe.json": gate.digest(self.game / "recipe.json")}, "omit consumed"),
+                                      ("passOrder", ["anything"], "ordered base/contact/underlay")):
+            broken = copy.deepcopy(report); broken[field] = value
+            self.save("game/composition-report.json", broken)
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, message):
+                flow._v5_composition(self.root, land, flow.inputs(self.root, ["game"]))
+        broken = copy.deepcopy(report); broken["protectedPixelReport"]["unchangedAfterUnderlays"] = False
+        self.save("game/composition-report.json", broken)
+        with self.assertRaisesRegex(ValueError, "stayed unchanged"):
+            flow._v5_composition(self.root, land, flow.inputs(self.root, ["game"]))
+        recipe = gate.read(self.game / "recipe.json"); recipe["regionalMaterials"] = {"grass": "asset.png"}
+        self.save("game/recipe.json", recipe)
+        report["recipeSha256"] = gate.digest(self.game / "recipe.json")
+        report["inputHashes"]["game/recipe.json"] = report["recipeSha256"]
+        self.save("game/composition-report.json", report)
+        with self.assertRaisesRegex(ValueError, "omit consumed"):
+            flow._v5_composition(self.root, land, flow.inputs(self.root, ["game"]))
+        report["inputHashes"]["game/asset.png"] = gate.digest(self.game / "asset.png")
+        self.save("game/composition-report.json", report)
+        flow._v5_composition(self.root, land, flow.inputs(self.root, ["game"]))
+        Image.new("RGBA", (8, 8), "red").save(self.game / "asset.png")
+        with self.assertRaisesRegex(ValueError, "input is stale"):
+            flow._v5_composition(self.root, land, flow.inputs(self.root, ["game"]))
+
+    def test_v5_visual_rubric_rejects_missing_views_and_false_capture_pairs(self):
+        self.enable_v5()
+        land = self.plan["production"]["landscape"]
+        check = {"method": "review", "stage": "final", "evidenceKind": "image", "requirements": ["look"], "views": ["desktop"]}
+        evidence = {"path": "game/asset.png", "sha256": gate.digest(self.game / "asset.png"), "view": "desktop"}
+        base = {**evidence, "id": "ground", "mode": "ground-only", "pairId": "pair", "camera": {"x": 0},
+                "viewport": [800, 600], "renderer": {"dpr": 1}, "worldState": "fixture", "timeState": "paused",
+                "geometrySource": land["geometrySource"], "geometrySha256": gate.digest(self.game / "geometry.json"),
+                "scope": "whole-map", "worldBounds": [512, 256]}
+        valid = {"authorId": "builder", "reviewer": "reviewer", "status": "pass", "evidence": [evidence],
+                 "judgments": [{"requirement": "look", "view": "desktop", "reviewer": "reviewer", "status": "pass", "observed": "Inspected"}],
+                 "captureMetadata": [base, {**base, "id": "dressed", "mode": "dressed"},
+                                      {**base, "id": "detail", "scope": "detail", "worldBounds": [32, 16]}]}
+        def verify(data):
+            return flow._v5_review_submission(self.root, check, {"authorId": "builder"}, data, land)
+        self.assertEqual(verify(valid), "pass")
+        for change, message in ((lambda d: d.update(judgments=[]), "every requirement"),
+                                (lambda d: d.update(reviewer="builder"), "different from authorId"),
+                                (lambda d: d["judgments"][0].update(status="fail"), "derived"),
+                                (lambda d: d["captureMetadata"][1].update(camera={"x": 5}), "differs in camera"),
+                                (lambda d: d["captureMetadata"][1].update(scope="detail"), "differs in scope"),
+                                (lambda d: d["captureMetadata"][0].update(view="mobile"), "actual evidence"),
+                                (lambda d: d["captureMetadata"][0].update(geometrySha256="stale"), "geometry hash is stale"),
+                                (lambda d: d["captureMetadata"][0].update(worldBounds=[1, 1]), "bounds must match"),
+                                (lambda d: d["captureMetadata"].pop(), "detail capture")):
+            broken = copy.deepcopy(valid); change(broken)
+            with self.subTest(message=message), self.assertRaisesRegex(ValueError, message): verify(broken)
+        check["method"] = "art"
+        broken = copy.deepcopy(valid); broken["judgments"] = []
+        with self.assertRaisesRegex(ValueError, "every requirement"): verify(broken)
+
+    def test_v5_requires_author_chain_and_stales_a_receipt_after_geometry_change(self):
+        self.enable_v5()
+        self.plan["reviewMode"] = "self"
+        with self.assertRaisesRegex(ValueError, "independent review"):
+            flow.validate(self.plan, self.root)
+        self.plan["reviewMode"] = "independent"
+        with self.assertRaisesRegex(ValueError, "author-id"):
+            flow.begin(self.adapter, self.baseline, "boot", self.receipts, self.root / "no-author.json")
+        ticket = self.root / "v5-ticket.json"
+        flow.begin(self.adapter, self.baseline, "boot", self.receipts, ticket, author_id="builder")
+        proof = self.save("v5-proof.json", {"fresh": True})
+        submission = self.save("v5-submission.json", {"ticketSha256": gate.digest(ticket), "authorId": "builder", "status": "pass", "reviewer": "reviewer",
+                              "observed": "Measured preflight", "judgments": [{"requirement": "look", "view": "desktop", "status": "pass", "reviewer": "reviewer", "observed": "Measured"}],
+                              "evidence": [{"path": "v5-proof.json", "sha256": gate.digest(proof), "view": "desktop"}]})
+        flow.finish(self.adapter, self.baseline, ticket, submission, self.receipts, self.receipts / "v5-boot.json")
+        geometry = gate.read(self.game / "geometry.json"); geometry["origin"] = [1, 0]; self.save("game/geometry.json", geometry)
+        status = flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)
+        self.assertEqual(status["checks"]["boot"]["status"], "unverified")
+
+    def test_v5_full_six_stage_lifecycle_to_comparison_acceptance(self):
+        self.enable_v5()
+        for cid in ["boot", "layout", "rigid", "assembly", "placement", "composition", "motion", "final"]:
+            result = self.complete(cid)
+            self.assertEqual(result["status"], "pass", str(result))
+        self.assertTrue(flow.collect(self.plan, self.root, gate.digest(self.baseline), self.receipts)["passed"])
+        candidate = self.root / "v5-candidate.json"; gate.snapshot(self.baseline, candidate, self.receipts)
+        captures = self.save("v5-captures.json", {view: {"path": "game/asset.png", "captureNotes": "Synthetic fixed camera"}
+                                                   for view in ("desktop", "mobile")})
+        adapter = SimpleNamespace(protected=gate.protected, source_hashes=gate.source_hashes, local=gate.local)
+        review_path = Path(gate.comparison_tools().build(adapter, self.baseline, candidate, captures, self.root / "v5-comparison")["review"])
+        review = gate.read(review_path); review["comparison"]["reviewer"] = "test-reviewer"
+        for assessment in review["comparison"]["assessments"]:
+            assessment.update(status="pass", observations=[{"id": assessment["id"]+"-ok", "status": "pass", "currentRegion": [0, 0, 8, 8], "referenceRegion": [0, 0, 8, 8], "difference": "Synthetic match", "repair": ""}])
+        for verdict in review["verdicts"]:
+            req = next(item for item in self.plan["requirements"] if item["id"] == verdict["id"])
+            verdict.update(status="pass", reviewer="test-reviewer", notes="Synthetic inspected comparison", evidence=[{"path": "../game/asset.png", "sha256": gate.digest(self.game / "asset.png"), "kind": "image", "view": view} for view in req["views"]])
+        review_path.write_text(json.dumps(review), encoding="utf8")
+        self.assertTrue(gate.accept(self.baseline, candidate, review_path, self.receipts)["passed"])
 
 
 if __name__ == "__main__":

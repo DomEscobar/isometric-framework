@@ -26,55 +26,83 @@ you intentionally want to extend that specific work and record its provenance.
 
 ## Copy this prompt into your coding agent
 
+Replace the brief and reference fields with your project. Existing decisions and
+an approved contract take precedence over these placeholders.
+
 ```text
-Use https://github.com/DomEscobar/isometric-framework and its new-game guide
-to build a standalone game. Read the relevant bundled skills before implementation.
+Build an original standalone isometric pixel-art game using
+https://github.com/DomEscobar/isometric-framework.
 
-I want an original playable isometric pixel-art game: a lively connected town
-and forest seperated in views, animated foliage and water,
-and readable movement and battle actions. Style reference isometric-framework/style-reference-template.jpg
+My brief: [player experience, setting, requested world size and features]
+Visual references: [attached images or paths; style-only unless stated otherwise]
+Current scope and exclusions: [for example: landscape first; no residents, pets or sound]
 
-Treat any attached image as a style reference by default, not a layout to copy.
-If I explicitly request layout reference or both style and layout, follow that
-request. Create this game's own identity and assets; do not reuse framework
-examples.
+1. Establish the project and contract.
+Use the current local framework checkout when supplied; read AGENTS.md,
+docs/CREATE_GAME.md and skills/README.md there. Preserve my existing decisions.
+Ask at most three consequential unanswered questions, then draft one
+PROJECT_CONTRACT.md for approval before implementation or paid generation.
+If it is already approved, continue without asking again. Use the standalone
+starter and public runtime API; keep game code and assets in the game project.
+References guide style unless I explicitly request their layout. Create an
+original composition and assets rather than borrowing framework examples.
 
-Help me choose the concept before coding or paid asset generation. Ask no more
-than three important questions at a time, then draft one PROJECT_CONTRACT.md for
-me to approve. If I have already approved a contract, preserve it and continue;
-do not request repeated approval. That contract is the source of truth for the
-player experience, scope, style, asset approach, and acceptance requirements.
-Derive technical plans from it; do not create a competing art brief. Once it is
-approved, use the standalone starter and new-game guide to implement the game.
+2. Follow the bundled workflow.
+Read skills/isometric-visual-loop/SKILL.md and its references/landscape-iteration.md,
+references/landscape-verification.md and references/asset-policy.md. For ground,
+also read skills/consistent-tileset-authoring/SKILL.md and its
+references/landscape-ground-assembly.md. In a scaffolded host, these paths are
+under node_modules/isometric-framework/. Use acceptance-plan v5 / production v2
+for a new landscape and production next to follow the existing six stages.
+Preserve an approved older plan until an explicit migration establishes a fresh baseline.
 
-For new continuous natural ground, prefer generated-material quilting with host-owned
-masks and generated contact-edge families; preserve any already approved different route.
-Help me choose how the world is assembled: modular terrain, composed ground,
-layered scene, or a hybrid. Generate new visible world and character art using
-text-to-image or image-to-image; reuse accepted generated assets with provenance.
-Character animation must use an approved generated facing image, image-to-video,
-reviewed frame extraction and deterministic packing. Preserve usable source alpha;
-otherwise review one controlled chroma-key cutout. If it shows halos, holes, lost
-subject colors, flickering edges, or remains uncertain, use an approved cutout before
-packing: isolate the whole reviewed video with the approved video background remover,
-or run the approved image background remover on the selected unkeyed frames. Review
-those cutouts.
-Do not substitute generated sheets, individual movement poses or hand-drawn character animation. For scenery
-and other objects, choose image-to-video or another suitable animation technique.
-Blockout placeholders, UI, collision geometry and masks are exempt from generation.
-Within the approved contract, resolve any missing concept and rough layout before
-freezing acceptance. Record the selected visual reference in production data so
-later assets share its projection, palette, scale, light and pixel treatment.
-Preserve existing decisions and spending permissions; missing access or budget is
-a blocker, not permission to substitute art. Plan the whole composition before its asset list; derive families and
-deliberate variation from the areas they serve. Calibrate a connected area with
-related objects, useful open space and ground connections. Then complete the whole agreed world;
-do not shrink a rich request to the calibration scene. Playtest the real game and
-review visuals, motion, gameplay, and performance separately before declaring it
-complete. Use version 4 acceptance and production next to follow preflight,
-layout with blockout review, connected area, complete static world, motion and
-final review. Keep asset provenance bound to the actual runtime images and clips;
-a passing build is not production acceptance.
+3. Calibrate before producing the asset collection.
+Plan the complete requested world first. Establish source/export pixel density,
+world scale, playing zoom, viewport/DPR and renderer limits. Prove a connected
+pilot with representative ground and differently sized objects. Distinguish
+visible sprite bounds, physical footprint, collision, build reserve, entrance,
+contact anchor and depth sorting. Record user choices, delegated agent selections,
+recommendations and rejected/stopped studies separately. Continue routine work
+within the approved scope; do not silently restart canceled experiments.
+
+4. Build terrain from one host-owned geometry export.
+Derive semantic masks, routes, water, supports and object transforms from the
+same world definition used by placement checks. For continuous natural ground,
+prefer generated-material quilting unless another approach is already approved.
+Use this order: continuous materials -> regional path surfaces -> outer path
+edges and water/land contacts -> object-specific underlays -> upright objects
+-> bind-ground.mjs. Use compose-landscape-ground.py for the composition passes.
+Keep routes clear; vary materials by region without changing their walkability.
+Border the exterior of the combined path, including junctions. Use local contact
+art and masks for soft transitions. Protect road/water pixels during the object
+underlay pass. Match each underlay to its object's anchor and scale; avoid universal
+oval pads or global blur. Preserve host collision and bridge/floor semantics.
+
+5. Produce only the agreed content.
+Generate visible world/character art or reuse accepted generated sources with
+provenance. Follow the asset policy's approved facing -> image-to-video -> reviewed
+video -> extraction/alpha review -> packing -> runtime-review chain for character animation.
+Technical blockouts, masks, collision and UI are exempt. Preserve spending
+permissions; missing provider access or budget blocks generation. Expand the
+successful pilot to the full contracted dimensions, regions and asset families.
+A calibration scene is a milestone, not completion of the requested world.
+
+6. Verify independently against the rubric.
+Capture registered ground-only/dressed pairs at the same camera and world/time
+state, plus whole-map views and representative details at playing scale. Bind
+actual image hashes and capture metadata to current geometry and sources.
+Delegate visual review to a subagent that did not build the scene. It must open
+the images and apply the landscape rubric: reference/pixel treatment, composition,
+route clarity, material continuity/outer edges, water-bank-grass transitions,
+object grounding, scale/footprint/blocking, access/bridges, deliberate variation,
+and full requested extent. Record localized observations and pass/fail/unverified
+per criterion and required view; repair failures and capture fresh evidence.
+If independent image review is unavailable, leave it unverified.
+
+Playtest the actual host within scope. Keep build/geometry, visual, motion,
+gameplay/input, touch and performance verdicts separate. Label emulated touch
+accurately. Report remaining failures and unverified requirements; neither a
+passing build nor synthetic fixtures constitute acceptance of the game's art.
 ```
 
 ## Use the skills
@@ -87,6 +115,12 @@ layout, asset integration, animation, and acceptance. Its
 covers early density/scale checks, controlled variants, grounded placement and
 whole-map review. Use specialist skills for
 focused tasks. Treat references as style-only unless the user requests layout or both.
+
+For new landscapes, follow [v5 landscape verification](skills/isometric-visual-loop/references/landscape-verification.md)
+and [offline ground assembly](skills/consistent-tileset-authoring/references/landscape-ground-assembly.md).
+Existing approved v4 plans remain supported; a v5 migration needs a new baseline
+and fresh evidence for added or changed checks.
+
 
 ## Maintain the framework
 

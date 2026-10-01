@@ -54,7 +54,7 @@ test('starter creates a neutral self-contained host from the built package', asy
     for (const file of ['index.html', 'src/main.ts', 'src/style.css', 'AGENTS.md', 'PROJECT_CONTRACT.md', '.gitignore', `vendor/${archiveName}`]) {
       await readFile(join(target, file));
     }
-    assert.match(await readFile(join(target, '.gitignore'), 'utf8'), /node_modules\/\n.*dist\/\n.*test-results\/\n.*\.world-build\//s);
+    assert.match(await readFile(join(target, '.gitignore'), 'utf8'), /node_modules\/\r?\n.*dist\/\r?\n.*test-results\/\r?\n.*\.world-build\//s);
     assert.match(await readFile(join(target, 'PROJECT_CONTRACT.md'), 'utf8'), /single source of truth|Human requirements/);
   } finally { await rm(parent, { recursive: true, force: true }); }
 });
@@ -142,6 +142,13 @@ test('packed consumer archive contains only consumer docs and skill tooling', ()
   assert.ok(files.includes('package/skills/isometric-visual-loop/scripts/asset_provenance.py'));
   assert.ok(files.includes('package/skills/isometric-visual-loop/references/asset-policy.md'));
   assert.ok(files.includes('package/skills/isometric-visual-loop/references/landscape-iteration.md'));
+  for (const path of [
+    'skills/isometric-visual-loop/references/landscape-verification.md',
+    'skills/consistent-tileset-authoring/scripts/compose-landscape-ground.py',
+    'skills/consistent-tileset-authoring/scripts/create-landscape-fixture.py',
+    'skills/consistent-tileset-authoring/references/landscape-ground-assembly.md',
+    'skills/consistent-tileset-authoring/references/landscape-ground-recipe.example.json',
+  ]) assert.ok(files.includes(`package/${path}`), `Missing landscape production tool: ${path}`);
   assert.ok(!files.some(file => /walk-templates|mannequin/i.test(file)));
   assert.ok(files.includes('package/skills/directional-sprite-authoring/scripts/extract-video.py'));
   assert.ok(!files.includes('package/skills/directional-sprite-authoring/scripts/mirror-frames.py'));

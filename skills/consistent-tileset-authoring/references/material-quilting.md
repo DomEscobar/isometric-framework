@@ -33,15 +33,18 @@ approved composed painting or a contract that calls for another route.
 3. Generate the required **contact-edge family** for touching material pairs:
    straight, inside/outside corner and end, with a shared transition band and
    palette. See [modular prompts](modular-terrain-prompts.md). Boundary-family
-   generation and orientation-aware edge assembly remain host art work; the
-   quilting CLI does **not** automatically stamp that catalog. An isotropic contact
+   generation remains art work. The [landscape compositor](landscape-ground-assembly.md)
+   applies the explicit orientation-aware catalog after quilting; the quilting CLI
+   itself does **not** automatically stamp that catalog. An isotropic contact
    material can be an additional quilted material selected by a host-authored band
    in `materialMask`. Do not pass directional edge strips as interior swatches.
 4. Assemble shared material planes with the shipped CLI. The required `cells`
    records semantic ownership; optional `materialMask` supplies exact raster
    ownership, including irregular bands and protected walking strips. No blending,
    inferred path width, random geography or per-cell tint is applied.
-5. Bind the cache with the shipped `bind-ground.mjs`. Keep flat ground elevation
+5. Run `compose-landscape-ground.py` when contacts/underlays are required, following
+   [ground assembly](landscape-ground-assembly.md). It preserves protected path/water
+   pixels during the object-underlay pass. Bind its cache with `bind-ground.mjs`. Keep flat ground elevation
    zero and top tile colors `0xffffff` **in the input scene**; the binder deliberately
    preserves host colors, collision, entities, side textures and gameplay fields.
    A host can retain an earth `sideTexture` for exterior faces instead of a white

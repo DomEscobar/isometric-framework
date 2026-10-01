@@ -4,7 +4,7 @@ Install dependencies with `npm install`, then run `npm run dev`. Use `npm run ch
 
 Read `PROJECT_CONTRACT.md` before changing the game.
 
-Production uses the version 4 workflow in
+Production uses the version 5 workflow in
 `node_modules/isometric-framework/skills/isometric-visual-loop/`. Follow its asset
 policy and six stages. From this host, with Python/Pillow installed:
 
@@ -23,3 +23,9 @@ they are project-specific, not supplied completion records. Build success only
 establishes technical validity. Production acceptance additionally needs generated
 asset provenance, image-to-video character animation evidence and actual visual,
 motion and gameplay review. Video preparation also requires ffmpeg/ffprobe.
+
+For the v5 evidence schema read `node_modules/isometric-framework/skills/isometric-visual-loop/references/landscape-verification.md`.
+For ground composition read `node_modules/isometric-framework/skills/consistent-tileset-authoring/references/landscape-ground-assembly.md`.
+Use the installed compositor rather than copying an earlier game's terrain script.
+Retain approved v4 plans until explicitly migrating their technical baseline;
+old receipts do not establish the new v5 guarantees.

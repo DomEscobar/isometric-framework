@@ -315,5 +315,15 @@ def validate_acceptance(plan, root, baseline_path, candidate_path, review_path):
         require(item["reference"]["sha256"] == references[reference], "Comparison reference does not match protected target")
         if item["definition"]["role"] in ("layout", "both"):
             require((item["reference"]["width"], item["reference"]["height"]) == (item["current"]["width"], item["current"]["height"]), "Layout image dimensions differ")
+    if plan.get("version") == 5:
+        reviewer = review["comparison"]["reviewer"]
+        visual = {requirement["id"] for requirement in plan["requirements"] if requirement["domain"] == "visual"}
+        verdicts = {item.get("id"): item for item in review.get("verdicts", [])}
+        require(all(verdicts.get(rid, {}).get("reviewer") == reviewer for rid in visual),
+                "V5 visual requirement verdicts and comparisons need the same reviewer identity")
+        for rid in visual:
+            compared = {item["current"]["sha256"] for item in packet["items"] if rid in item["definition"]["requirements"]}
+            evidenced = {item.get("sha256") for item in verdicts[rid].get("evidence", [])}
+            require(compared <= evidenced, "V5 visual rubric evidence must be the compared capture for " + rid)
     require(not findings, "Visual differences remain failed or unverified")
     return len(specs)

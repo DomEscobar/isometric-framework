@@ -1,6 +1,6 @@
 # Production asset policy
 
-This is the mandatory policy for new version 4 worlds. It applies to production
+This is the mandatory policy for version 4 and version 5 worlds. It applies to production
 art, not UI, collision geometry, masks, blockout shapes or test diagnostics.
 Legacy plans remain readable; their acceptance does not certify this policy.
 
@@ -76,7 +76,7 @@ command does not advance a stage or approve any asset. Open evidence tickets onl
 after the candidate is ready, then capture and inspect it. A technical build is
 separate from `verify-world.py accept` with production receipts.
 
-All commands, including version 4 setup and compatibility, are described in
+All commands, including version 4/5 setup and compatibility, are described in
 [production stages](production-flow.md). Keep visual quality, movement, gameplay
 and performance verdicts separate from provenance validity.
 

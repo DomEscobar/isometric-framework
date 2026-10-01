@@ -1,5 +1,11 @@
 # Compose connected ground before cutting tiles
 
+Use [ground assembly](landscape-ground-assembly.md) for the executable offline
+compositor after material quilting. Semantic routes remain authoritative: regional
+path materials cannot change connectivity; borders belong to the global route
+exterior, never between neighboring route cells. Selective contact art supplies
+softness without blurring the whole map.
+
 Use for natural paths, grass transitions and stream banks. The examples below
 describe methods and illustrative dimensions; they supply no artwork or theme.
 Keep deliberate paving grids and formal canals when the user's brief calls for

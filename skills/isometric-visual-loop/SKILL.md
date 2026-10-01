@@ -14,7 +14,11 @@ combat, quests or NPC simulation. For landscape-only work or a substantial envir
 revision, use [landscape iteration](references/landscape-iteration.md): establish
 source density and physical scale early, compare controlled alternatives, derive
 contacts/blocking/access from shared host data, and stress the whole map. Keep
-user selections and canceled experiments explicit in existing production notes.
+user selections and canceled experiments explicit in the v5 decision record.
+Use [landscape verification](references/landscape-verification.md) for density,
+shared geometry, paired captures and per-criterion independent judgments. Retain
+v4 behavior for existing plans; migrating a plan needs a new baseline and affected
+checks, never automatic promotion of old receipts.
 
 ## Define the result once
 
@@ -60,7 +64,7 @@ additionally needs protected framing, landmark positions and scale.
 
 Derive technical checks from that contract; the agent prepares them, not the user.
 Link the contract with the plan's `contract` field so freezing also protects it.
-For full world production, use the version 4 [acceptance plan](references/acceptance.md)
+For full world production, use the version 5 [acceptance plan](references/acceptance.md)
 and [executed stages](references/production-flow.md): preflight, semantic layout,
 representative assembly, complete static scene, motion and final review.
 Implement eligible work, then begin its check immediately before capturing/reviewing
@@ -86,7 +90,9 @@ space and adjoining surfaces. An isolated asset tests technical feasibility; the
 area tests composition and relationships. Use
 [grounded assemblies](../isometric-art-integration/references/grounded-assemblies.md)
 for roots, foundations, worn approaches and banks. Record contact treatment in
-the existing brief; no additional schema is needed.
+host production data. For v5 landscapes, bind the shared geometry and composition report
+through [landscape verification](references/landscape-verification.md); this is
+technical evidence derived from the brief, not another contract.
 
 1. Block out the whole intended scene from one semantic layout: routes, planting,
    entrances, water and walking support. Resolve public API limitations before art.

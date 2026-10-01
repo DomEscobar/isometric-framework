@@ -26,7 +26,7 @@ brief. Preserve decisions already supplied. New visible world and character art
 must be generated; reuse accepted generated art with its provenance. Character
 animation must use image-to-video, reviewed extraction and packing. Scenery/object
 animation may use image-to-video or another suitable technique on generated art.
-Blockout geometry, UI, masks and diagnostics are exempt. Use version 4 production
+Blockout geometry, UI, masks and diagnostics are exempt. Use version 5 production
 gates; missing provider access or budget blocks generation, not a silent fallback.
 Once the contract is already approved, continue
 from it without asking for approval again.
@@ -48,6 +48,12 @@ copy their hosts, sprites, maps, palettes, characters, layouts, or asset URLs in
 a new game. A supplied image is style-only by default, unless the user explicitly
 requests layout reference or both. Reuse example material only when explicitly
 requested or when modifying that same host; record provenance in that case.
+
+For new landscapes, follow [v5 landscape verification](skills/isometric-visual-loop/references/landscape-verification.md)
+and [offline ground assembly](skills/consistent-tileset-authoring/references/landscape-ground-assembly.md).
+Existing approved v4 plans remain supported; a v5 migration needs a new baseline
+and fresh evidence for added or changed checks.
+
 
 ## Maintaining the framework
 
